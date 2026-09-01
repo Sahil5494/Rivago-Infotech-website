@@ -3,26 +3,42 @@ import type { Metadata } from "next";
 import RoleDetail from "./RoleDetail";
 
 export const metadata: Metadata = {
-  title: "Open role — Rivago Infotech",
-  description: "View the full details of an open role Rivago Infotech is recruiting for, and apply directly to a named recruiter — no portal.",
+  title: "Position · Rivago Infotech",
+  description: "Role description for an open position at Rivago Infotech — what you will own, what we are looking for, and how our hiring process runs.",
   alternates: { canonical: "https://rivagoinfotech.com/view-jobs/role" },
+  openGraph: {
+    title: "Position · Rivago Infotech",
+    description: "Role description for an open position at Rivago Infotech — what you will own, what we are looking for, and how our hiring process runs.",
+    url: "https://rivagoinfotech.com/view-jobs/role",
+  },
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://rivagoinfotech.com/" },
+    { "@type": "ListItem", position: 2, name: "Careers", item: "https://rivagoinfotech.com/career" },
+    { "@type": "ListItem", position: 3, name: "Role", item: "https://rivagoinfotech.com/view-jobs/role" },
+  ],
 };
 
 function RoleFallback() {
   return (
-    <header className="page-hero">
-      <div className="page-hero-inner wide">
-        <div className="eyebrow ew-light" style={{ marginBottom: 24, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Loading role…</div>
-        <h1>&nbsp;</h1>
-      </div>
-    </header>
+    <div className="pd">
+      <div className="pd-eyb">Loading role…</div>
+      <h1>&nbsp;</h1>
+    </div>
   );
 }
 
 export default function RolePage() {
   return (
-    <Suspense fallback={<RoleFallback />}>
-      <RoleDetail />
-    </Suspense>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <Suspense fallback={<RoleFallback />}>
+        <RoleDetail />
+      </Suspense>
+    </>
   );
 }

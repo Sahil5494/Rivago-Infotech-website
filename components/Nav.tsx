@@ -7,9 +7,10 @@ import { routes } from "@/lib/routes";
 
 /** Routes whose page is a light/cream canvas from y=0 (no dark hero) — nav must render
  * permanently solid with dark-on-cream colors here, matching the source design. */
-const CREAM_NAV_PREFIXES = ["/resources", "/open-positions"];
+const CREAM_NAV_PREFIXES = ["/resources", "/open-positions", "/view-jobs/role"];
 
-/** Routes that render their own standalone header and must not get the global nav at all. */
+/** Routes that render their own standalone header and must not get the global nav at all.
+ * Exact match only — "/view-jobs/role" is a normal cream page and keeps the global nav. */
 const NO_NAV_ROUTES = ["/view-jobs"];
 
 const Chevron = () => (
@@ -149,7 +150,7 @@ export default function Nav() {
     return () => window.removeEventListener("resize", onResize);
   }, [mobileOpen]);
 
-  if (NO_NAV_ROUTES.some((p) => pathname === p || pathname.startsWith(p + "/"))) return null;
+  if (NO_NAV_ROUTES.some((p) => pathname === p)) return null;
 
   function show(key: MMKey) {
     if (closeTimer.current) clearTimeout(closeTimer.current);

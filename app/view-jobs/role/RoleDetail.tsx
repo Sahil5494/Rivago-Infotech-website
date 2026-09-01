@@ -1,158 +1,220 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { routes } from "@/lib/routes";
-import { findPositionExact, positions, type Position } from "@/app/open-positions/positions-data";
 
-const Check = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 12l5 5 8-10" stroke="#3DFF87" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+type DeptCopy = { a: string; own: string[]; need: string[] };
+
+const DEPT_COPY: Record<string, DeptCopy> = {
+  Recruitment: {
+    a: "This is a full-desk search role. You take the brief, map the market, run the outreach and close the offer — no handing candidates to someone else halfway through. You will own a defined practice and the client relationships inside it.",
+    own: [
+      "Own searches end to end for your practice, from intake through to a signed start date.",
+      "Build and keep a live map of the senior talent in your sector — the people who never apply.",
+      "Run client intake sessions that produce a real scorecard, not a wish list.",
+      "Hold the quality line: five candidates who fit, not fifty who might.",
+      "Grow existing accounts by being the person they call first.",
+    ],
+    need: [
+      "Seven or more years placing inside one sector, with the billings to show it.",
+      "Genuine direct sourcing capability — this is not an inbound role.",
+      "Able to challenge a hiring manager and keep the relationship.",
+      "Written English strong enough for briefs clients forward internally.",
+    ],
+  },
+  Operations: {
+    a: "You keep delivery running behind every search — the research, the data, and the process that lets partners stay in front of clients and candidates instead of admin.",
+    own: [
+      "Own research and sourcing support across a group of live searches.",
+      "Keep pipeline and placement data accurate enough to report from.",
+      "Improve a process that is currently manual, and document it.",
+      "Coordinate scheduling, references and onboarding logistics.",
+    ],
+    need: [
+      "Three or more years in recruitment operations, research or delivery support.",
+      "Comfortable with ATS data and spreadsheets at volume.",
+      "Precise by default — you notice when a number looks wrong.",
+      "Calm when several searches peak at once.",
+    ],
+  },
+  Marketing: {
+    a: "You own how Rivago sounds and where it shows up. This is a hands-on role: you write, you ship, you measure — there is no agency behind you.",
+    own: [
+      "Own content and campaigns that generate real inbound conversations.",
+      "Write for a senior audience without falling into recruitment cliché.",
+      "Build the reporting that ties activity to pipeline.",
+      "Keep the brand consistent across site, deck and social.",
+    ],
+    need: [
+      "Four or more years in B2B marketing, ideally professional services.",
+      "A writing portfolio you are willing to be judged on.",
+      "Comfortable with analytics and honest about what is not working.",
+    ],
+  },
+  People: {
+    a: "You look after the people who look after our clients — hiring, developing and keeping a senior team across three offices.",
+    own: [
+      "Own hiring for your remit end to end, including interviewer training.",
+      "Advise partners on performance, progression and pay.",
+      "Handle employee relations matters with judgement and discretion.",
+      "Improve a people process that is currently unclear.",
+    ],
+    need: [
+      "Five or more years in HR or talent, with multi-site exposure.",
+      "Comfortable challenging senior people constructively.",
+      "Discreet — this role sees everything.",
+    ],
+  },
+  Engineering: {
+    a: "You build the internal tooling the firm runs on: our search platform, candidate data and the automation that removes busywork from every desk.",
+    own: [
+      "Ship features on our internal platform end to end.",
+      "Own data quality and integrations across our stack.",
+      "Automate the manual steps partners repeat daily.",
+      "Keep the platform reliable — the firm works in it all day.",
+    ],
+    need: [
+      "Five or more years building production software.",
+      "Strong across a modern web stack; pragmatic about tooling.",
+      "Able to talk to non-technical colleagues and translate needs into scope.",
+    ],
+  },
+  Finance: {
+    a: "You own the numbers behind a multi-market firm — billing, margin, compliance and the reporting partners actually use to run their desks.",
+    own: [
+      "Run billing, collections and month-end across five entities.",
+      "Report contribution by desk, practice and market.",
+      "Keep multi-country compliance and payroll obligations clean.",
+      "Improve close speed without losing accuracy.",
+    ],
+    need: [
+      "Qualified accountant or equivalent experience.",
+      "Multi-entity, multi-currency exposure.",
+      "Recruitment or professional services background an advantage.",
+    ],
+  },
+  Client: {
+    a: "You are the commercial face of Rivago to new and existing clients — building relationships that turn into retained, repeatable work.",
+    own: [
+      "Own a book of client relationships and the revenue inside it.",
+      "Open new accounts with a genuine point of view on their market.",
+      "Work with partners so delivery matches what you promised.",
+      "Forecast honestly.",
+    ],
+    need: [
+      "Five or more years selling professional or staffing services.",
+      "Evidence of attainment, not just activity.",
+      "Credible with talent leaders and procurement alike.",
+    ],
+  },
+  Research: {
+    a: "You produce the market intelligence every search depends on — maps, target lists and the read on what talent actually costs.",
+    own: [
+      "Build market maps and target lists for live searches.",
+      "Run first-touch outreach and qualify interest.",
+      "Keep research and pipeline data accurate.",
+      "Brief partners on market reality, including when unwelcome.",
+    ],
+    need: [
+      "Three or more years in research or sourcing.",
+      "Strong Boolean and desk-research capability.",
+      "Excellent written English for candidate outreach.",
+    ],
+  },
+};
+
+const WHAT_WE_OFFER = [
+  "Senior-only team — no juniors learning on your accounts.",
+  "One partner per search, so the work you do is visibly yours.",
+  "Transparent commission with no threshold games.",
+  "Offices in Delaware, Pune and Ontario, with real flexibility on where you work.",
+  "Budget for the tooling and data you need to do the job properly.",
+];
+
+const HOW_WE_HIRE = [
+  { n: "01", t: "Intro call", d: "Thirty minutes with the hiring partner. Real questions, no screening script." },
+  { n: "02", t: "Craft conversation", d: "We go deep on work you have actually done, with the people you would work beside." },
+  { n: "03", t: "Practical session", d: "A live problem from the desk you would own. Paid if it takes real preparation." },
+  { n: "04", t: "Offer", d: "Decision within five working days of the last conversation, either way." },
+];
+
+const BackIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M8.5 3L5 7l3.5 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
-
-function buildInternalDescription(pos: Position): string[] {
-  return [
-    `Rivago Infotech is hiring a ${pos.title} to join our ${pos.department} team, based ${pos.locationType === "Remote" ? "remotely" : `in ${pos.location}`}. This is a ${pos.type.toLowerCase()} role on the team that runs Rivago itself — not a client mandate — so you'll be working directly with the people who set how we recruit, market, operate and grow.`,
-    `You'll partner closely with leadership across ${pos.department} and the adjacent functions that depend on it, with real ownership from week one. Rivago is a senior-only, partner-track staffing firm with offices in Pune, Delaware and Ontario, serving clients across the US, Canada, the UAE and India — this role sits inside that engine, not outside it.`,
-    `We're looking for someone senior enough to own outcomes without heavy oversight, comfortable with the pace of a company still building its internal playbooks, and aligned with how we work with candidates and clients: no call centres, no automated outreach, no portal — just accountable people doing the work.`,
-    `This posting is managed directly by Rivago's internal People team. Applications go straight to the hiring manager for this role — there is no external agency or client in this loop.`,
-  ];
-}
+const ArrowIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+);
 
 export default function RoleDetail() {
   const searchParams = useSearchParams();
-  const id = searchParams.get("id");
-  const position = findPositionExact(id) ?? positions[0];
+  const role = searchParams.get("role") || "Open position";
+  const loc = searchParams.get("l") || "Delaware, US";
+  const dept = searchParams.get("d") || "Operations";
+  const sen = searchParams.get("s") || "Senior";
+  const eng = searchParams.get("e") || "Full time · Permanent";
+  const mode = searchParams.get("mode") || "internal";
+  const isInternal = mode === "internal";
 
-  const title = position.title;
-  const location = position.location;
-  const type = position.type;
-  const description = buildInternalDescription(position);
-  const companyLine = `Rivago Infotech · ${position.department}`;
+  const copy = DEPT_COPY[dept] || DEPT_COPY.Operations;
+  const engBasis = eng.toLowerCase().replace(/·/g, "").replace(/\s+/g, " ").trim();
+  const about = `${copy.a} The role is based in ${loc} on a ${engBasis} basis, at ${sen.toLowerCase()} level.`;
+  const chips = [sen, dept, eng.split("·")[0].trim(), loc].filter(Boolean);
+
+  const backHref = isInternal ? routes.openPositions : routes.viewJobs;
+  const backLabel = isInternal ? "All open positions" : "All open roles";
+  const applyHref = `${routes.signIn}?mode=signup`;
 
   return (
     <>
-      <style>{`
-        .role-grid{display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:start;max-width:1240px;margin:0 auto;padding:0 44px}
-        .role-body p{font-size:15.5px;color:var(--text2);line-height:1.85;font-weight:300;margin-bottom:20px}
-        .role-body p:last-child{margin-bottom:0}
-        .role-body h3{font-size:14px;font-weight:600;color:var(--text);margin:36px 0 14px;letter-spacing:-.01em}
-        .role-aside{position:sticky;top:90px;display:flex;flex-direction:column;gap:16px}
-        .role-apply-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px}
-        .role-apply-h{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:8px}
-        .role-apply-h::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green)}
-        .role-signin-line{font-size:12.5px;color:var(--text3);text-align:center;margin-top:14px}
-        .role-signin-line a{color:var(--green);font-weight:500}
-        .role-copy-row{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-        .role-copy-row span{font-size:12.5px;color:var(--text3)}
-        .role-copy-btn{flex-shrink:0;font-size:12px;font-weight:600;color:var(--green);border:1px solid rgba(61,255,135,.3);border-radius:8px;padding:8px 13px;background:rgba(61,255,135,.06);cursor:pointer;font-family:var(--ff);transition:all .18s}
-        .role-copy-btn:hover{background:rgba(61,255,135,.12)}
-        @media(max-width:960px){.role-grid{grid-template-columns:1fr;padding:0 20px}.role-aside{position:static}}
-      `}</style>
+      <div className="pd">
+        <Link className="pd-back" href={backHref}><BackIcon />{backLabel}</Link>
+        <div className="pd-eyb">{isInternal ? "Careers at Rivago" : "Client role"} &middot; {dept}</div>
+        <h1>{role}</h1>
+        <div className="pd-sub">{loc} &middot; {eng}</div>
+        <div className="pd-chips">
+          {chips.map((c) => <span className="pd-chip" key={c}>{c}</span>)}
+        </div>
+        <div className="pd-cta">
+          <Link className="pd-p" href={applyHref}>Apply for this role <ArrowIcon /></Link>
+        </div>
+      </div>
 
-      <header className="page-hero">
-        <div className="page-hero-inner wide">
-          <div className="crumbs">
-            <Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span>
-            <Link href={routes.openPositions}>Open positions</Link><span className="crumbs-sep">/</span>
-            <span>{title}</span>
-          </div>
-          <div className="eyebrow ew-light gs" style={{ marginBottom: 24, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Open · Joining Rivago</div>
-          <h1 className="gs">{title}</h1>
-          <p className="lead gs" style={{ marginTop: 14 }}>{companyLine}</p>
-          <div className="page-hero-meta gs" style={{ maxWidth: 640, margin: "40px auto 0" }}>
-            <div className="page-hero-meta-row"><span>Location</span><strong>{location}</strong></div>
-            <div className="page-hero-meta-row"><span>Employment type</span><strong>{type}</strong></div>
-            <div className="page-hero-meta-row"><span>Work style</span><strong>{position.locationType}</strong></div>
+      <div className="pd-body">
+        <div className="pd-sec">
+          <div className="pd-lab">About the role</div>
+          <p>{about}</p>
+        </div>
+        <div className="pd-sec">
+          <div className="pd-lab">What you will own</div>
+          <ul>{copy.own.map((x) => <li key={x}>{x}</li>)}</ul>
+        </div>
+        <div className="pd-sec">
+          <div className="pd-lab">What we are looking for</div>
+          <ul>{copy.need.map((x) => <li key={x}>{x}</li>)}</ul>
+        </div>
+        <div className="pd-sec">
+          <div className="pd-lab">What we offer</div>
+          <ul>{WHAT_WE_OFFER.map((x) => <li key={x}>{x}</li>)}</ul>
+        </div>
+        <div className="pd-sec">
+          <div className="pd-lab">How we hire</div>
+          <div className="pd-steps">
+            {HOW_WE_HIRE.map((s) => (
+              <div className="pd-step" key={s.n}>
+                <div className="n">{s.n}</div>
+                <h2>{s.t}</h2>
+                <p>{s.d}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </header>
-
-      <section className="section">
-        <div className="role-grid">
-          <div className="role-body gs">
-            <h3>About the role</h3>
-            {description.map((p, i) => <p key={i}>{p}</p>)}
-          </div>
-
-          <aside className="role-aside">
-            <ApplyCard title={title} />
-            <CopyLinkRow />
-          </aside>
+        <div className="pd-end">
+          <h2>Sound like your desk?</h2>
+          <p>Create an account to apply and track where your application stands. One partner reads every submission.</p>
+          <Link className="pd-p" href={applyHref}>Create an account to apply <ArrowIcon /></Link>
         </div>
-      </section>
+      </div>
     </>
-  );
-}
-
-function ApplyCard({ title }: { title: string }) {
-  const [submitted, setSubmitted] = useState(false);
-
-  if (submitted) {
-    return (
-      <div className="role-apply-card gs">
-        <div style={{ textAlign: "center", padding: "12px 0" }}>
-          <div style={{ width: 52, height: 52, borderRadius: "50%", background: "rgba(61,255,135,.12)", border: "1px solid rgba(61,255,135,.3)", display: "grid", placeItems: "center", margin: "0 auto 16px" }}>
-            <Check />
-          </div>
-          <div style={{ fontSize: 16, fontWeight: 500, color: "var(--text)", marginBottom: 8 }}>Application sent.</div>
-          <div style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6 }}>Your account is set up and your application for <strong style={{ color: "var(--text)" }}>{title}</strong> is with our People team. Expect a call within one business day.</div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <form
-      className="role-apply-card gs"
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSubmitted(true);
-      }}
-    >
-      <div className="role-apply-h">Create account &amp; apply</div>
-      <div className="if-field">
-        <label>Full name</label>
-        <input type="text" placeholder="Your full name" required />
-      </div>
-      <div className="if-field">
-        <label>Email</label>
-        <input type="email" placeholder="you@email.com" required />
-      </div>
-      <div className="if-field">
-        <label>Password</label>
-        <input type="password" placeholder="Create a password" required minLength={8} />
-      </div>
-      <div className="if-field">
-        <label>LinkedIn or CV link <span style={{ color: "var(--text3)", fontWeight: 400 }}>(optional)</span></label>
-        <input type="text" placeholder="linkedin.com/in/you or a link to your CV" />
-      </div>
-      <button type="submit" className="if-submit">
-        Create account &amp; apply
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-      </button>
-      <div className="role-signin-line">Already have an account? <Link href={routes.signIn}>Sign in to apply</Link></div>
-    </form>
-  );
-}
-
-function CopyLinkRow() {
-  const [copied, setCopied] = useState(false);
-
-  async function handleCopy() {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // Clipboard API unavailable — fail silently, no backend to fall back to.
-    }
-  }
-
-  return (
-    <div className="role-copy-row gs">
-      <span>Know someone right for this role?</span>
-      <button type="button" className="role-copy-btn" onClick={handleCopy}>{copied ? "Copied!" : "Copy link"}</button>
-    </div>
   );
 }

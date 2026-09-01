@@ -29,7 +29,3 @@ export const positions: Position[] = [
   { id: "client-success-manager", title: "Client Success Manager", department: "Client", location: "Dubai, UAE", type: "Full-time", locationType: "On-site" },
   { id: "account-director-strategic-clients", title: "Account Director · Strategic Clients", department: "Client", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
 ];
-
-export function findPositionExact(id: string | null | undefined): Position | undefined {
-  return positions.find((p) => p.id === id);
-}
