@@ -178,20 +178,7 @@ export default function RpoPage() {
         </div>
       </section>
 
-      {/* FAQ (general) */}
-      <FaqSection
-        heading={<>Questions we get on<br />the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>first call.</em></>}
-        items={[
-          { q: "What is the difference between RPO and using a staffing agency?", a: "A staffing agency fills the individual roles you bring them and the relationship ends at the offer. RPO outsources the recruiting function itself — Rivago owns talent strategy, sourcing, screening, onboarding and reporting as an embedded extension of your team, and is measured on retention and cost per hire, not just placements." },
-          { q: "How quickly can an RPO program be stood up?", a: "A dedicated embedded pod is typically live within two to three weeks of kickoff — including ATS access, employer-brand alignment and a calibrated hiring plan. Project RPO surges follow the same timeline; enterprise programs phase in function by function." },
-          { q: "Do your recruiters work under our brand?", a: "Yes. Embedded recruiters operate as an extension of your team — your careers page, your email domain where you want it, your candidate experience. To candidates, it feels like your in-house function, backed by Rivago capacity." },
-          { q: "Can we scale the program up or down?", a: "That is the point of the model. Ramp capacity for a growth phase or a launch, then wind down cleanly when the plan changes. Hybrid RPO flexes month to month; project RPO is scoped to a fixed surge with a defined end." },
-          { q: "How is RPO priced?", a: "Enterprise RPO is a monthly managed-service fee scaled to program size; project RPO is a fixed price against an agreed scope and timeline; hybrid is a flexible monthly rate for the capacity you use. No per-placement agency fees stacking on top." },
-          { q: "What happens to our existing TA team?", a: "We augment, not replace. Most clients keep their in-house team on strategy and employer brand while Rivago takes the sourcing and delivery load — or fills a specific function they cannot crack. The split is agreed up front." },
-        ]}
-      />
-
-      {/* FAQ (contractual detail) */}
+      {/* FAQ */}
       <FaqSection
         heading={<>RPO, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>without the sales gloss.</em></>}
         items={[
