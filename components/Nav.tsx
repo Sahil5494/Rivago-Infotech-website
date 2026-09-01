@@ -1,8 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { routes } from "@/lib/routes";
+
+/** Routes whose page is a light/cream canvas from y=0 (no dark hero) — nav must render
+ * permanently solid with dark-on-cream colors here, matching the source design. */
+const CREAM_NAV_PREFIXES = ["/resources"];
 
 const Chevron = () => (
   <svg className="caret" viewBox="0 0 8 8" fill="none">
@@ -94,6 +99,8 @@ const mobileSections: { title: string; href?: string; links: { href: string; lab
 ];
 
 export default function Nav() {
+  const pathname = usePathname();
+  const isCreamPage = CREAM_NAV_PREFIXES.some((p) => pathname === p || pathname.startsWith(p + "/") || pathname.startsWith(p + "?"));
   const [solid, setSolid] = useState(false);
   const [openKey, setOpenKey] = useState<MMKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -106,6 +113,13 @@ export default function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle("theme-cream-nav", isCreamPage);
+    return () => {
+      document.body.classList.remove("theme-cream-nav");
+    };
+  }, [isCreamPage]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -135,7 +149,7 @@ export default function Nav() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
   }
 
-  const navSolid = solid || openKey !== null;
+  const navSolid = isCreamPage || solid || openKey !== null;
 
   return (
     <>
