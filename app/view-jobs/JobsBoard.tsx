@@ -1,304 +1,396 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { routes } from "@/lib/routes";
-import { jobs as allJobs, type Job } from "./jobs-data";
-import Testimonials from "@/components/Testimonials";
+import { JOBS, FAMTXT, EEO, type BoardJob } from "./jobs-data";
 
-const PAGE_SIZE = 9;
+const FACETS = ["dept", "e", "w", "region"] as const;
+type Facet = (typeof FACETS)[number];
+type ActiveFacets = Record<Facet, Set<string>>;
 
-const popularSearches = [
-  { label: "Remote", value: "remote" },
-  { label: "Engineering", value: "engineer" },
-  { label: "Finance", value: "finance" },
-  { label: "Full-time", value: "full-time" },
-];
-
-const candidateTestimonials = [
-  { badge: "Placed · Data Engineer, Toronto", quote: "My recruiter called me back the same afternoon and was straight with me about comp before I ever spoke to the client. No portal, no ghosting between rounds — I always knew exactly where I stood.", name: "Aaron D.", role: "Data Engineer · placed with a Toronto financial group" },
-  { badge: "Placed · Compliance Analyst, NYC", quote: "I'd used two other agencies before Rivago and both went quiet after the first call. Here I had one person the whole way through, and she pushed back on a lowball offer on my behalf.", name: "Kayla S.", role: "Compliance Analyst · placed with a US regional bank" },
-  { badge: "Placed · Registered Nurse, Toronto", quote: "Healthcare staffing usually feels like a call centre reading a script. This was the opposite — someone who understood my licensing situation and found a unit that actually fit my experience.", name: "Marcus T.", role: "Registered Nurse · placed with a Toronto hospital network" },
-];
-
-function searchableText(j: Job) {
-  return [j.title, j.company, j.location, j.type, j.skills.join(" ")].join(" ").toLowerCase();
+function regionOf(c: string): string {
+  if (/India$/.test(c)) return "India";
+  if (/UAE$/.test(c)) return "UAE";
+  if (/, (ON|BC|AB)$|Canada$/.test(c)) return "Canada";
+  return "US";
 }
 
-function postedLabel(days: number) {
-  if (days <= 0) return "Posted today";
-  if (days === 1) return "Posted 1d ago";
-  return `Posted ${days}d ago`;
+function valOf(j: BoardJob, f: Facet): string {
+  return f === "region" ? regionOf(j.c) : (j[f as "dept" | "e" | "w"] as string);
+}
+
+function dk(j: BoardJob) {
+  return `${j.t}|${j.c}`;
+}
+
+function fmt(iso: string) {
+  const d = new Date(iso + "T00:00:00");
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+
+function payNum(p: string) {
+  const m = p.replace(/[^0-9.]/g, "");
+  return parseFloat(m) || 0;
+}
+
+function briefText(j: BoardJob) {
+  const f = FAMTXT[j.f] || FAMTXT.pm;
+  return {
+    s: f.s.replace(/%T%/g, j.t) + ` The role is ${j.w.toLowerCase()} in ${j.c}, on a ${j.e.toLowerCase()} basis.`,
+    r: f.r,
+    q: f.q,
+  };
 }
 
 const SearchIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.5" /><path d="M14 14l-3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+  <svg width="19" height="19" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.8" stroke="currentColor" strokeWidth="1.4" /><path d="M10.7 10.7L14 14" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" /></svg>
 );
 const PinIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 15s5-4.6 5-8.6A5 5 0 003 6.4C3 10.4 8 15 8 15z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><circle cx="8" cy="6.4" r="1.8" stroke="currentColor" strokeWidth="1.5" /></svg>
+  <svg width="19" height="19" viewBox="0 0 16 16" fill="none"><path d="M8 14s5-4.2 5-8A5 5 0 003 6c0 3.8 5 8 5 8z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" /><circle cx="8" cy="6" r="1.8" stroke="currentColor" strokeWidth="1.4" /></svg>
 );
-const Arrow = () => (
-  <svg className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+const ChevronDown = () => (
+  <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2.5 4l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
-const valueCards = [
-  {
-    title: "A career, not a quota",
-    desc: "We place people into roles they will still want in a year, not roles that fill a headcount number by Friday.",
-    icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l2 5 5 .7-3.6 3.5.9 5L11 13.5l-4.3 2.5.9-5L4 7.7l5-.7z" stroke="#3DFF87" strokeWidth="1.5" strokeLinejoin="round" /></svg>),
-  },
-  {
-    title: "One recruiter, always",
-    desc: "The person who first calls you is the person who calls you with the offer. No relay through a rotating desk of strangers.",
-    icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="#3DFF87" strokeWidth="1.5" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" /></svg>),
-  },
-  {
-    title: "Straight answers within 48h",
-    desc: "Rejected, on hold or moving forward — you hear which, in writing, within two business days of every step.",
-    icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#3DFF87" strokeWidth="1.5" /><path d="M11 7v4l3 2" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" /></svg>),
-  },
-  {
-    title: "Support past day one",
-    desc: "We check in at week one, month one and month three of every placement — not just up to the point we get paid.",
-    icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="6" width="16" height="13" rx="2" stroke="#3DFF87" strokeWidth="1.5" /><path d="M7 6V4a2 2 0 012-2h4a2 2 0 012 2v2M7 12l3 3 6-6" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>),
-  },
-];
+const FilterIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+);
+const ArrowIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+);
+const BackIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M8.5 3L5 7l3.5 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+);
+const HeartIcon = ({ filled }: { filled: boolean }) => (
+  <svg width="19" height="19" viewBox="0 0 20 20" fill={filled ? "currentColor" : "none"}><path d="M10 16.5S3.5 12.3 3.5 8.2A3.7 3.7 0 0110 6a3.7 3.7 0 016.5 2.2c0 4.1-6.5 8.3-6.5 8.3z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" /></svg>
+);
+const CalIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="2" y="5" width="12" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.3" /><path d="M6 5V3.5h4V5" stroke="currentColor" strokeWidth="1.3" /></svg>
+);
+const PayIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.3" /><circle cx="8" cy="8" r="1.8" stroke="currentColor" strokeWidth="1.3" /></svg>
+);
+const HomeIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.5 2.5H2.5v9h9v-3M8.5 2.5h3v3M11.5 2.5L6 8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+);
+const GateIcon = () => (
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="10.5" width="16" height="10" rx="2.5" stroke="#3DFF87" strokeWidth="1.5" /><path d="M8 10.5V7.5a4 4 0 018 0v3" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" /><circle cx="12" cy="15.5" r="1.6" fill="#3DFF87" /></svg>
+);
 
-const steps = [
-  { n: "01", title: "Search & apply", desc: "Filter by role, skill or city and apply straight from the listing — two minutes, no account wall in the way." },
-  { n: "02", title: "Talk it through", desc: "A named recruiter calls within one business day to walk through the role, the client and the realistic comp band." },
-  { n: "03", title: "Start your assignment", desc: "Offer, paperwork and start date are handled end-to-end, with the same recruiter checking in after day one." },
-];
-
-export default function JobsBoard({ emphasizeSearch = false }: { emphasizeSearch?: boolean }) {
-  const [keyword, setKeyword] = useState("");
-  const [location, setLocation] = useState("");
-  const [visible, setVisible] = useState(PAGE_SIZE);
-  const keywordRef = useRef<HTMLInputElement>(null);
+function JobsBoardInner() {
+  const searchParams = useSearchParams();
+  const [q, setQ] = useState(searchParams.get("q") || "");
+  const [l, setL] = useState(searchParams.get("l") || "");
+  const [sort, setSort] = useState<"relevance" | "newest" | "pay">("relevance");
+  const [per, setPer] = useState(10);
+  const [page, setPage] = useState(0);
+  const [sel, setSel] = useState(0);
+  const [saved, setSaved] = useState<Record<string, boolean>>({});
+  const [active, setActive] = useState<ActiveFacets>({ dept: new Set(), e: new Set(), w: new Set(), region: new Set() });
+  const [panelOpen, setPanelOpen] = useState(false);
+  const [gateOpen, setGateOpen] = useState(false);
+  const [gateRole, setGateRole] = useState<string | null>(null);
+  const detailRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (emphasizeSearch) keywordRef.current?.focus();
-  }, [emphasizeSearch]);
+    document.documentElement.classList.add("jb-lock");
+    document.body.classList.add("jb-lock");
+    return () => {
+      document.documentElement.classList.remove("jb-lock");
+      document.body.classList.remove("jb-lock");
+    };
+  }, []);
 
-  const filtered = useMemo(() => {
-    const kw = keyword.trim().toLowerCase();
-    const loc = location.trim().toLowerCase();
-    return allJobs.filter((j) => {
-      const text = searchableText(j);
-      return (!kw || text.includes(kw)) && (!loc || j.location.toLowerCase().includes(loc));
+  const facetValues = useMemo(() => {
+    const out: Record<Facet, string[]> = { dept: [], e: [], w: [], region: [] };
+    FACETS.forEach((f) => {
+      const vals: string[] = [];
+      JOBS.forEach((j) => {
+        const v = valOf(j, f);
+        if (!vals.includes(v)) vals.push(v);
+      });
+      vals.sort();
+      out[f] = vals;
     });
-  }, [keyword, location]);
+    return out;
+  }, []);
 
-  const shown = filtered.slice(0, visible);
-  const hasMore = visible < filtered.length;
+  const facetCount = FACETS.reduce((n, f) => n + active[f].size, 0);
 
-  function applyChip(value: string) {
-    setKeyword((current) => (current.toLowerCase() === value ? "" : value));
-    setVisible(PAGE_SIZE);
+  const view = useMemo(() => {
+    const qq = q.toLowerCase().trim();
+    const lq = l.toLowerCase().trim();
+    let list = JOBS.filter((j) => {
+      const hay = `${j.t} ${j.dept} ${j.e} ${j.f}`.toLowerCase();
+      if (qq && hay.indexOf(qq) < 0) return false;
+      const loc = `${j.c} ${j.w}`.toLowerCase();
+      if (lq && loc.indexOf(lq) < 0) return false;
+      return FACETS.every((f) => active[f].size === 0 || active[f].has(valOf(j, f)));
+    });
+    if (sort === "newest") list = [...list].sort((a, b) => (a.d < b.d ? 1 : -1));
+    else if (sort === "pay") list = [...list].sort((a, b) => payNum(b.p) - payNum(a.p));
+    else if (qq) {
+      list = [...list].sort((a, b) => {
+        const ai = a.t.toLowerCase().indexOf(qq);
+        const bi = b.t.toLowerCase().indexOf(qq);
+        return (ai < 0 ? 99 : ai) - (bi < 0 ? 99 : bi);
+      });
+    }
+    return list;
+  }, [q, l, sort, active]);
+
+  const total = view.length;
+  const start = page * per;
+  const slice = view.slice(start, start + per);
+  const selectedJob = slice[sel] || slice[0];
+
+  function toggleFacet(f: Facet, v: string) {
+    setActive((prev) => {
+      const next = { ...prev, [f]: new Set(prev[f]) };
+      if (next[f].has(v)) next[f].delete(v);
+      else next[f].add(v);
+      return next;
+    });
+    setPage(0);
+    setSel(0);
   }
+
+  function clearAll() {
+    setQ("");
+    setL("");
+    setSort("relevance");
+    setActive({ dept: new Set(), e: new Set(), w: new Set(), region: new Set() });
+    setPage(0);
+    setSel(0);
+  }
+
+  function selectCard(i: number) {
+    setSel(i);
+    if (typeof window !== "undefined" && window.matchMedia("(max-width:1080px)").matches) {
+      setTimeout(() => {
+        const top = detailRef.current?.offsetTop ?? 0;
+        window.scrollTo({ top: Math.max(0, top - 16), behavior: "smooth" });
+      }, 0);
+    }
+  }
+
+  function toggleSaved(k: string) {
+    setSaved((prev) => ({ ...prev, [k]: !prev[k] }));
+  }
+
+  function openGate(label: string | null) {
+    setGateRole(label);
+    setGateOpen(true);
+    document.body.style.overflow = "hidden";
+  }
+  function closeGate() {
+    setGateOpen(false);
+    document.body.style.overflow = "";
+  }
+
+  useEffect(() => {
+    if (!gateOpen) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") closeGate();
+    }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [gateOpen]);
+
+  const brief = selectedJob ? briefText(selectedJob) : null;
 
   return (
     <>
-      <style>{`
-        .jb-hero-search{max-width:820px;margin:36px auto 0;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:8px;display:flex;align-items:stretch;gap:0}
-        .jb-hero-search-field{flex:1;display:flex;align-items:center;gap:10px;padding:12px 16px;min-width:0}
-        .jb-hero-search-field.divider{border-left:1px solid var(--border)}
-        .jb-hero-search-field svg{flex-shrink:0;color:var(--text3)}
-        .jb-hero-search-field input{background:none;border:none;outline:none;color:var(--text);font-family:var(--ff);font-size:14.5px;width:100%}
-        .jb-hero-search-field input::placeholder{color:var(--text3)}
-        .jb-hero-search-btn{flex-shrink:0;margin:4px}
-        .jb-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
-        .jb-chips-label{font-size:12px;color:var(--text3);align-self:center;margin-right:2px}
-        @media(max-width:640px){.jb-hero-search{flex-direction:column;gap:8px}.jb-hero-search-field.divider{border-left:none;border-top:1px solid var(--border)}}
+      <div className="jb-bar">
+        <Link className="logo" href={routes.home}>
+          <div className="logo-mark">R</div>Rivago<span style={{ fontWeight: 300, color: "var(--text2)" }}> Infotech</span>
+        </Link>
+        <span className="jb-pill">Job Search</span>
+        <div className="jb-bar-r">
+          <Link className="jb-ext" href={routes.home}><HomeIcon />rivagoinfotech.com</Link>
+          <Link className="jb-signin" href={routes.signIn}>Sign In</Link>
+        </div>
+      </div>
 
-        .jb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
-        .jb-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:14px;transition:all .25s var(--ease);text-decoration:none;color:inherit}
-        .jb-card:hover{background:var(--surface2);border-color:rgba(61,255,135,.22);transform:translateY(-3px)}
-        .jb-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
-        .jb-title{font-size:16.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.32}
-        .jb-company{font-size:13px;color:var(--text2);margin-top:4px}
-        .jb-badges{display:flex;flex-direction:column;gap:6px;flex-shrink:0;align-items:flex-end}
-        .jb-badge{padding:3px 9px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
-        .jb-badge.type{background:rgba(61,255,135,.08);border:1px solid rgba(61,255,135,.2);color:var(--green)}
-        .jb-badge.remote{background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--text2)}
-        .jb-meta-row{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--text3)}
-        .jb-meta-row span{display:flex;align-items:center;gap:5px}
-        .jb-skills{display:flex;flex-wrap:wrap;gap:6px}
-        .jb-skill{padding:3px 9px;background:rgba(61,255,135,.06);border:1px solid rgba(61,255,135,.15);border-radius:6px;font-size:11px;color:var(--green);font-weight:500}
-        .jb-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;border-top:1px solid var(--border)}
-        .jb-salary{font-size:13px;color:var(--text2);font-weight:500}
-        .jb-apply{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--green)}
-        .jb-card:hover .jb-apply svg{transform:translateX(3px)}
-        .jb-apply svg{transition:transform .2s var(--ease)}
-        .jb-empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text2);font-size:15px}
-        .jb-loadmore-wrap{display:flex;justify-content:center;margin-top:40px}
-        @media(max-width:900px){.jb-grid{grid-template-columns:1fr}}
+      <div className="jb-search-wrap">
+        <form
+          className="jb-search"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setPage(0);
+            setSel(0);
+          }}
+        >
+          <div className="jb-f">
+            <SearchIcon />
+            <input type="text" placeholder="Search by job title or keyword" value={q} onChange={(e) => { setQ(e.target.value); setPage(0); setSel(0); }} />
+          </div>
+          <div className="jb-div" />
+          <div className="jb-f">
+            <PinIcon />
+            <input type="text" placeholder="City or ZIP" value={l} onChange={(e) => { setL(e.target.value); setPage(0); setSel(0); }} />
+          </div>
+        </form>
+      </div>
 
-        .jb-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-        .jb-step{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:30px}
-        .jb-step-n{font-family:var(--fs);font-style:italic;font-size:34px;color:#0A7040;line-height:1;margin-bottom:16px;letter-spacing:-.02em}
-        .jb-step-title{font-size:17px;font-weight:600;color:var(--dt);margin-bottom:8px;letter-spacing:-.01em}
-        .jb-step-desc{font-size:13.5px;color:var(--dt3);line-height:1.68}
-        @media(max-width:900px){.jb-steps{grid-template-columns:1fr}}
-      `}</style>
+      <div className="jb-meta">
+        <div className="jb-count"><b>{total}</b> openings with Rivago</div>
+        <div className="jb-meta-r">
+          <span className="jb-sel">
+            <select aria-label="Sort roles" value={sort} onChange={(e) => { setSort(e.target.value as typeof sort); setPage(0); setSel(0); }}>
+              <option value="relevance">Sort: Relevance</option>
+              <option value="newest">Sort: Newest</option>
+              <option value="pay">Sort: Pay</option>
+            </select>
+            <ChevronDown />
+          </span>
+          <button className="jb-filters-btn" type="button" aria-expanded={panelOpen} onClick={() => setPanelOpen((v) => !v)}>
+            <FilterIcon />All Filters<span className="jb-fcount" hidden={facetCount === 0}>{facetCount}</span>
+          </button>
+          <button className="jb-clear" type="button" onClick={clearAll}>Clear</button>
+        </div>
+      </div>
 
-      {/* HERO */}
-      <header className="page-hero">
-        <div className="page-hero-inner wide">
-          <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>{emphasizeSearch ? "Search jobs" : "View jobs"}</span></div>
-          <div className="eyebrow ew-light gs" style={{ marginBottom: 28, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Candidates</div>
-          {emphasizeSearch ? (
-            <h1 className="gs">Search open roles<br />at our <em>client companies.</em></h1>
+      <div className="jb-panel" hidden={!panelOpen}>
+        {(["dept", "e", "w", "region"] as Facet[]).map((f) => (
+          <div key={f}>
+            <div className="jb-flab">{f === "dept" ? "Department" : f === "e" ? "Engagement" : f === "w" ? "Work style" : "Region"}</div>
+            <div className="jb-fchips">
+              {facetValues[f].map((v) => (
+                <button key={v} type="button" className={`jb-fchip${active[f].has(v) ? " on" : ""}`} onClick={() => toggleFacet(f, v)}>
+                  {v}
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="jb-split">
+        <div className="jb-list" ref={listRef}>
+          {!slice.length ? (
+            <div className="jb-empty">No openings match your search. Try a broader title or clear the location.</div>
           ) : (
-            <h1 className="gs">Browse open roles<br />across every <em>client we serve.</em></h1>
-          )}
-          <p className="lead gs">{allJobs.length} live roles across the US, Canada, UAE and India. Every listing is a real, current mandate from a Rivago client — no aggregated postings, no expired listings left up for SEO.</p>
-
-          <div className="jb-hero-search gs">
-            <div className="jb-hero-search-field">
-              <SearchIcon />
-              <input
-                ref={keywordRef}
-                type="text"
-                placeholder="Job title or keyword"
-                value={keyword}
-                onChange={(e) => { setKeyword(e.target.value); setVisible(PAGE_SIZE); }}
-                aria-label="Job title or keyword"
-              />
-            </div>
-            <div className="jb-hero-search-field divider">
-              <PinIcon />
-              <input
-                type="text"
-                placeholder="City, state or ZIP"
-                value={location}
-                onChange={(e) => { setLocation(e.target.value); setVisible(PAGE_SIZE); }}
-                aria-label="City, state or ZIP"
-              />
-            </div>
-            <a href="#listings" className="btn btn-prim jb-hero-search-btn">Search <SearchIcon /></a>
-          </div>
-
-          <div className="jb-chips gs">
-            <span className="jb-chips-label">Popular:</span>
-            {popularSearches.map((c) => (
-              <button
-                type="button"
-                key={c.label}
-                className={`if-chip${keyword.toLowerCase() === c.value ? " on" : ""}`}
-                onClick={() => applyChip(c.value)}
-              >
-                {c.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </header>
-
-      {/* LISTINGS */}
-      <section className="section" id="listings">
-        <div className="wrap">
-          <div className="gs" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24, flexWrap: "wrap", marginBottom: 8 }}>
-            <div className="eyebrow ew-light" style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>{filtered.length} role{filtered.length === 1 ? "" : "s"} match{filtered.length === 1 ? "es" : ""}</div>
-          </div>
-          <div className="jb-grid">
-            {shown.length === 0 ? (
-              <div className="jb-empty">No roles match that search right now. Try a broader keyword, or clear the location filter — new mandates land most weeks.</div>
-            ) : (
-              shown.map((job) => (
-                <Link key={job.id} href={`${routes.role}?id=${job.id}`} className="jb-card gs">
-                  <div className="jb-card-top">
-                    <div>
-                      <div className="jb-title">{job.title}</div>
-                      <div className="jb-company">{job.company}</div>
-                    </div>
-                    <div className="jb-badges">
-                      <span className="jb-badge type">{job.type}</span>
-                      {job.remote && <span className="jb-badge remote">Remote</span>}
-                    </div>
+            slice.map((j, i) => {
+              const k = dk(j);
+              return (
+                <button
+                  key={k + i}
+                  type="button"
+                  className={`jb-card${i === sel ? " on" : ""}`}
+                  onClick={(e) => {
+                    if ((e.target as HTMLElement).closest(".jb-heart")) return;
+                    selectCard(i);
+                  }}
+                >
+                  <div className="jb-card-t">{j.t}</div>
+                  <div className="jb-card-l">{j.c} &middot; {j.w}</div>
+                  <div className="jb-card-tags">
+                    <span className="jb-tag"><CalIcon />{j.e}</span>
+                    <span className="jb-tag"><PayIcon />{j.p}</span>
                   </div>
-                  <div className="jb-meta-row">
-                    <span><PinIcon />{job.location}</span>
-                    <span>{postedLabel(job.postedDaysAgo)}</span>
-                  </div>
-                  <div className="jb-skills">
-                    {job.skills.slice(0, 4).map((s) => <span className="jb-skill" key={s}>{s}</span>)}
-                  </div>
-                  <div className="jb-foot">
-                    <span className="jb-salary">{job.salary ?? "Competitive"}</span>
-                    <span className="jb-apply">Apply <Arrow /></span>
-                  </div>
-                </Link>
-              ))
-            )}
-          </div>
-          {hasMore && (
-            <div className="jb-loadmore-wrap">
-              <button type="button" className="btn btn-ghost gs" onClick={() => setVisible((v) => v + PAGE_SIZE)}>
-                Show more roles
-              </button>
-            </div>
+                  <div className="jb-card-p">Posted {fmt(j.d)}</div>
+                  <span
+                    className={`jb-heart${saved[k] ? " sav" : ""}`}
+                    role="button"
+                    aria-label="Save role"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleSaved(k);
+                    }}
+                  >
+                    <HeartIcon filled={!!saved[k]} />
+                  </span>
+                </button>
+              );
+            })
           )}
         </div>
-      </section>
-
-      {/* GETTING STARTED */}
-      <section className="section cream">
-        <div className="wrap">
-          <div className="gs">
-            <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Getting started</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 700 }}>From application<br />to <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>first day,</em> in three steps.</h2>
-          </div>
-          <div className="jb-steps">
-            {steps.map((s) => (
-              <div className="jb-step gs" key={s.n}>
-                <div className="jb-step-n">{s.n}</div>
-                <div className="jb-step-title">{s.title}</div>
-                <div className="jb-step-desc">{s.desc}</div>
+        <div className="jb-vdiv" />
+        <div className="jb-detail" ref={detailRef}>
+          {selectedJob && brief && (
+            <>
+              <button type="button" className="jb-back" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+                <BackIcon />Back to results
+              </button>
+              <div className="jb-d-top">
+                <div>
+                  <h1 className="jb-d-h1">{selectedJob.t}</h1>
+                  <div className="jb-d-sub">{selectedJob.c} &middot; {selectedJob.w} &middot; Posted {fmt(selectedJob.d)}</div>
+                  <div className="jb-d-chips">
+                    <span className="jb-chip">{selectedJob.e}</span>
+                    <span className="jb-chip">{selectedJob.p}</span>
+                    <span className="jb-chip">{selectedJob.dept}</span>
+                  </div>
+                </div>
+                <div className="jb-d-btns">
+                  <button type="button" className={`jb-save${saved[dk(selectedJob)] ? " sav" : ""}`} onClick={() => toggleSaved(dk(selectedJob))}>
+                    <HeartIcon filled={!!saved[dk(selectedJob)]} />{saved[dk(selectedJob)] ? "Saved" : "Save"}
+                  </button>
+                  <button type="button" className="jb-apply" onClick={() => openGate(`${selectedJob.t} · ${selectedJob.c}`)}>
+                    Apply <ArrowIcon />
+                  </button>
+                </div>
               </div>
-            ))}
-          </div>
+              <div className="jb-d-sec"><div className="jb-d-lab">The brief</div><p>{brief.s}</p></div>
+              <div className="jb-d-sec"><div className="jb-d-lab">What you will own</div><ul>{brief.r.map((x) => <li key={x}>{x}</li>)}</ul></div>
+              <div className="jb-d-sec"><div className="jb-d-lab">What the client needs</div><ul>{brief.q.map((x) => <li key={x}>{x}</li>)}</ul></div>
+              <div className="jb-eeo">{EEO}</div>
+            </>
+          )}
         </div>
-      </section>
+      </div>
 
-      {/* WHO WE ARE / SHARED VALUES */}
-      <section className="section">
-        <div className="wrap">
-          <div className="gs">
-            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Who we are</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>What every candidate<br />can expect from <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>Rivago.</em></h2>
-          </div>
-          <div className="why-grid">
-            {valueCards.map((c) => (
-              <div className="why-card gs" key={c.title}>
-                <div className="why-icon">{c.icon}</div>
-                <div className="why-title">{c.title}</div>
-                <div className="why-desc">{c.desc}</div>
-              </div>
-            ))}
+      <div className={`lg-ov${gateOpen ? " open" : ""}`} role="dialog" aria-modal="true" aria-labelledby="lgTitle">
+        <div className="lg-box">
+          <button className="lg-x" aria-label="Close" onClick={closeGate}><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg></button>
+          <div className="lg-ic"><GateIcon /></div>
+          {gateRole && <div className="lg-role">{gateRole}</div>}
+          <h3 id="lgTitle">Please log in to apply</h3>
+          <p>Create an account to track your applications and save your progress.</p>
+          <div className="lg-btns">
+            <Link className="lg-p" href={routes.signIn}>Log in <ArrowIcon /></Link>
+            <Link className="lg-g" href={`${routes.signIn}?mode=signup`}>Create account</Link>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* TESTIMONIALS */}
-      <section className="testi-sec">
-        <div className="testi-head">
-          <div>
-            <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Don&apos;t just take it from us</div>
-            <h2 className="testi-h2 gs">Candidates who found<br />their next role <em>through Rivago.</em></h2>
-          </div>
+      <div className="jb-pager">
+        <div className="jb-range">{total ? `${start + 1} – ${Math.min(start + per, total)} of ${total}` : "0 – 0 of 0"}</div>
+        <div className="jb-arrows">
+          <button className="jb-arrow" aria-label="Previous page" disabled={page === 0} onClick={() => { setPage((p) => Math.max(0, p - 1)); setSel(0); listRef.current?.scrollTo({ top: 0 }); }}>
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M8.5 3L5 7l3.5 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
+          <button className="jb-arrow" aria-label="Next page" disabled={start + per >= total} onClick={() => { setPage((p) => p + 1); setSel(0); listRef.current?.scrollTo({ top: 0 }); }}>
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M5.5 3L9 7l-3.5 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
         </div>
-        <Testimonials items={candidateTestimonials} />
-      </section>
+        <div className="jb-per">
+          Items per page:
+          <span className="jb-sel">
+            <select aria-label="Items per page" value={per} onChange={(e) => { setPer(parseInt(e.target.value, 10)); setPage(0); setSel(0); }}>
+              <option>10</option><option>20</option><option>50</option><option>100</option>
+            </select>
+            <ChevronDown />
+          </span>
+        </div>
+      </div>
 
-      {/* CLOSING CTA */}
-      <section className="clients-cta gs">
-        <h2>Ready to take<br />the <em>next step?</em></h2>
-        <p>Create a profile once and apply to every role above in a couple of clicks — your recruiter picks up from there.</p>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <Link className="btn btn-cream-prim" href={`${routes.signIn}?mode=signup`}>Create your profile <Arrow /></Link>
-          <a className="btn btn-cream-ghost" href="#listings">Browse all roles</a>
+      <div className="jb-foot">
+        <div className="jb-foot-c">&copy; {new Date().getFullYear()} Rivago Infotech &middot; Client roles, briefed direct</div>
+        <div className="jb-foot-l">
+          <Link href={routes.contactUs}>Contact</Link>
+          <Link href={routes.privacy}>Privacy</Link>
+          <Link href={routes.terms}>Terms</Link>
+          <Link href={routes.home}>rivagoinfotech.com</Link>
         </div>
-      </section>
+      </div>
     </>
   );
+}
+
+export default function JobsBoard() {
+  return <JobsBoardInner />;
 }

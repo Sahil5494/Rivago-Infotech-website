@@ -1,8 +1,8 @@
 // Rivago Infotech's OWN internal corporate hiring board (/open-positions).
-// These are roles working AT Rivago itself — recruiters, ops, marketing,
-// engineering, finance, client-facing staff — reached from the Career page's
-// "See open roles" buttons. Not to be confused with app/view-jobs/jobs-data.ts,
-// which lists Rivago's CLIENTS' open roles for outside candidates.
+// These are roles working AT Rivago itself, reached from the Careers pages'
+// "See open roles" buttons. Ported verbatim from the real openpositions.html
+// export. Not to be confused with app/view-jobs/jobs-data.ts, which lists
+// Rivago's CLIENTS' open roles for outside candidates.
 
 export type Department = "Operations" | "Marketing" | "People" | "Engineering" | "Finance" | "Client";
 
@@ -16,18 +16,18 @@ export type Position = {
 };
 
 export const positions: Position[] = [
-  { id: "senior-recruiting-partner-client", title: "Senior Recruiting Partner — Client", department: "Client", location: "Wilmington, DE", type: "Full-time", locationType: "Hybrid" },
-  { id: "client-success-partner", title: "Client Success Partner", department: "Client", location: "Ontario, Canada", type: "Full-time", locationType: "Hybrid" },
-  { id: "marketing-lead-brand-content", title: "Marketing Lead — Brand & Content", department: "Marketing", location: "Remote", type: "Full-time", locationType: "Remote" },
-  { id: "demand-generation-manager", title: "Demand Generation Manager", department: "Marketing", location: "Pune, India", type: "Full-time", locationType: "Hybrid" },
-  { id: "people-operations-manager", title: "People Operations Manager", department: "People", location: "Wilmington, DE", type: "Full-time", locationType: "On-site" },
-  { id: "internal-talent-acquisition-lead", title: "Internal Talent Acquisition Lead", department: "People", location: "Pune, India", type: "Full-time", locationType: "Hybrid" },
-  { id: "platform-engineer", title: "Platform Engineer", department: "Engineering", location: "Remote", type: "Full-time", locationType: "Remote" },
-  { id: "data-engineer-internal-tools", title: "Data Engineer — Internal Tools", department: "Engineering", location: "Pune, India", type: "Full-time", locationType: "Hybrid" },
-  { id: "finance-manager-internal", title: "Finance Manager", department: "Finance", location: "Wilmington, DE", type: "Full-time", locationType: "On-site" },
-  { id: "accounts-payable-specialist", title: "Accounts Payable Specialist", department: "Finance", location: "Pune, India", type: "Full-time", locationType: "Hybrid" },
-  { id: "delivery-operations-manager", title: "Delivery Operations Manager", department: "Operations", location: "Ontario, Canada", type: "Full-time", locationType: "Hybrid" },
-  { id: "workforce-compliance-specialist", title: "Workforce Compliance Specialist", department: "Operations", location: "Wilmington, DE", type: "Full-time", locationType: "On-site" },
+  { id: "delivery-operations-manager", title: "Delivery Operations Manager", department: "Operations", location: "Pune, India", type: "Full-time", locationType: "On-site" },
+  { id: "head-of-brand-marketing", title: "Head of Brand & Marketing", department: "Marketing", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
+  { id: "content-social-lead", title: "Content & Social Lead", department: "Marketing", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
+  { id: "people-partner", title: "People Partner", department: "People", location: "Pune, India", type: "Full-time", locationType: "On-site" },
+  { id: "talent-acquisition-specialist", title: "Talent Acquisition Specialist", department: "People", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
+  { id: "senior-software-engineer-internal-platform", title: "Senior Software Engineer · Internal Platform", department: "Engineering", location: "Remote (US / CA)", type: "Full-time", locationType: "Remote" },
+  { id: "product-designer-internal-tools", title: "Product Designer · Internal Tools", department: "Engineering", location: "Pune, IN", type: "Full-time", locationType: "On-site" },
+  { id: "data-analyst-market-intelligence", title: "Data Analyst · Market Intelligence", department: "Engineering", location: "Pune, India", type: "Full-time", locationType: "On-site" },
+  { id: "finance-manager", title: "Finance Manager", department: "Finance", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
+  { id: "compliance-contracts-counsel", title: "Compliance & Contracts Counsel", department: "Finance", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
+  { id: "client-success-manager", title: "Client Success Manager", department: "Client", location: "Dubai, UAE", type: "Full-time", locationType: "On-site" },
+  { id: "account-director-strategic-clients", title: "Account Director · Strategic Clients", department: "Client", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
 ];
 
 export function findPositionExact(id: string | null | undefined): Position | undefined {

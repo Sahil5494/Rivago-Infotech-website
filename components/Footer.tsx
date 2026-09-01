@@ -1,8 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { routes, servedMarkets } from "@/lib/routes";
 
+/** Routes that render their own standalone footer and must not get the global one. */
+const NO_FOOTER_ROUTES = ["/view-jobs"];
+
 export default function Footer() {
+  const pathname = usePathname();
   const year = new Date().getFullYear();
+  if (NO_FOOTER_ROUTES.some((p) => pathname === p || pathname.startsWith(p + "/"))) return null;
   return (
     <footer>
       <div className="ft-grid">
