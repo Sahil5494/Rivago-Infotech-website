@@ -106,6 +106,15 @@ export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSectionOpen, setMobileSectionOpen] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const careersTriggerRef = useRef<HTMLAnchorElement>(null);
+  const careersPanelRef = useRef<HTMLDivElement>(null);
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setOpenKey(null);
+    setMobileOpen(false);
+    setMobileSectionOpen(null);
+  }
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 20);
@@ -139,6 +148,15 @@ export default function Nav() {
 
   function show(key: MMKey) {
     if (closeTimer.current) clearTimeout(closeTimer.current);
+    if (key === "careers" && careersTriggerRef.current && careersPanelRef.current) {
+      const tr = careersTriggerRef.current;
+      const p = careersPanelRef.current;
+      const r = tr.getBoundingClientRect();
+      const half = (p.offsetWidth || 320) / 2;
+      const pad = 16;
+      const x = Math.min(Math.max(r.left + r.width / 2, half + pad), window.innerWidth - half - pad);
+      p.style.setProperty("--mmx", `${x}px`);
+    }
     setOpenKey(key);
   }
   function scheduleHide() {
@@ -170,7 +188,7 @@ export default function Nav() {
           <Link className={`nl${openKey === "about" ? " active-mm" : ""}`} href={routes.about} aria-expanded={openKey === "about"} onMouseEnter={() => show("about")} onFocus={() => show("about")}>
             About <Chevron />
           </Link>
-          <Link className={`nl${openKey === "careers" ? " active-mm" : ""}`} href={routes.career} aria-expanded={openKey === "careers"} onMouseEnter={() => show("careers")} onFocus={() => show("careers")}>
+          <Link ref={careersTriggerRef} className={`nl${openKey === "careers" ? " active-mm" : ""}`} href={routes.career} aria-expanded={openKey === "careers"} onMouseEnter={() => show("careers")} onFocus={() => show("careers")}>
             Careers <Chevron />
           </Link>
 
@@ -255,7 +273,7 @@ export default function Nav() {
           </div>
 
           {/* CAREERS panel */}
-          <div className={`mm mm-anchor mm-careers-1col${openKey === "careers" ? " open" : ""}`} style={{ "--mmx": "auto" } as React.CSSProperties} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
+          <div ref={careersPanelRef} className={`mm mm-anchor mm-careers-1col${openKey === "careers" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
             <Link className="mm-link" href={routes.searchJobs}>
               <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 5.5h11v8h-11z" stroke="#3DFF87" strokeWidth="1.2" strokeLinejoin="round" /><path d="M6 5.5V4a1 1 0 011-1h2a1 1 0 011 1v1.5M2.5 9h11" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
               <div className="mm-link-body"><div className="mm-link-title">Search Jobs <Arrow /></div><div className="mm-link-desc">Browse every open role across our offices</div></div>
