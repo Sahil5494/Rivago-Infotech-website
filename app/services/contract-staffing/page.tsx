@@ -3,148 +3,134 @@ import type { Metadata } from "next";
 import { routes } from "@/lib/routes";
 import {
   Arrow,
-  Crumbs,
-  Eyebrow,
   breadcrumbJsonLd,
-  WhyRivagoSection,
-  ProcessSection,
-  IndustriesSection,
-  StorySection,
+  SwhySection,
+  ModesSection,
+  Proc2Section,
+  IndustriesGrid2Section,
+  TestiCreamSection,
+  IntakeBandSection,
+  FaqSection,
   CtaSection,
-  IconPartner,
-  IconClock,
-  IconShieldCheck,
-  IconDoc,
-  IconMoney,
-  IconScaleFlex,
-  IconTeam,
-  IconGuarantee,
-  IconTarget,
 } from "../_components/shared";
 
 export const metadata: Metadata = {
-  title: "Contract Staffing — Rivago Infotech",
+  title: "Contract Staffing — Flexible & Contract-to-Hire | Rivago Infotech",
   description:
-    "Skilled contractors, live in days not weeks. Rivago runs payroll, compliance and worker classification for every engagement — you get the talent, we carry the risk.",
+    "Skilled professionals on flexible terms — pure contract, contract-to-hire, or a managed team. Rivago runs payroll, compliance and worker classification; you get productive people in days, not weeks.",
   alternates: { canonical: "https://rivagoinfotech.com/services/contract-staffing" },
   openGraph: {
-    title: "Contract Staffing — Rivago Infotech",
-    description: "Skilled contractors, live in days not weeks. Rivago runs payroll, compliance and worker classification for every engagement.",
+    title: "Contract Staffing — Flexible & Contract-to-Hire | Rivago Infotech",
+    description: "Skilled professionals on flexible terms. Rivago runs payroll, compliance and worker classification; you get productive people in days, not weeks.",
     url: "https://rivagoinfotech.com/services/contract-staffing",
   },
 };
 
 const crumbs = [{ label: "Home", href: routes.home }, { label: "Services", href: routes.services }, { label: "Contract Staffing" }];
 
-const stages = [
-  { step: "Stage 01 · Day 0", title: "Calibrate", desc: "A short call to lock scope, duration, rate band and start date. For contract roles we also confirm classification — W-2, 1099 or a Rivago-employed contractor — before sourcing begins.", side: [["Owner", "Lead partner"], ["Output", "Signed scope + rate"], ["Time", "~30 min"]] as [string, string][] },
-  { step: "Stage 02 · Day 0–1", title: "Map", desc: "We pull from our active contractor bench first — people already vetted, referenced and available — before opening a fresh search. That's why contract fills move faster than permanent ones.", side: [["Bench check", "Same day"], ["Fresh sourcing", "If needed"], ["Source mix", "Bench-first"]] as [string, string][] },
-  { step: "Stage 03 · Day 1–3", title: "Screen", desc: "Skills verification, reference checks and right-to-work confirmation — compressed, not skipped. Every contractor is screened to the same bar as a permanent hire.", side: [["Screens conducted", "2–4"], ["Right-to-work", "Verified"], ["Reference depth", "2 per finalist"]] as [string, string][] },
-  { step: "Stage 04 · Day 3–4", title: "Panel", desc: "A short intro call between the contractor and your hiring manager — not a full interview loop. You're confirming fit and availability, not re-running the screening we already did.", side: [["Calls scheduled", "1–2 candidates"], ["Turnaround", "<24h"], ["Decision", "Same or next day"]] as [string, string][] },
-  { step: "Stage 05 · Day 5–7", title: "Close", desc: "Contract paperwork, payroll setup and compliance onboarding — all handled by Rivago before day one. You get a start date, not a stack of forms.", side: [["Start date", "Day 5–7"], ["Payroll setup", "Rivago-run"], ["Compliance", "Handled end to end"]] as [string, string][] },
-];
-
-const whatWeDo = [
-  { title: "Payroll, run by us", desc: "We employ the contractor, run payroll and remit taxes — you get a single invoice, not a payroll headache.", icon: <IconMoney /> },
-  { title: "Worker classification", desc: "W-2, 1099 or Rivago-employed — we determine the compliant classification before the engagement starts, not after an audit.", icon: <IconDoc /> },
-  { title: "Compliance, every market", desc: "Local labour law, statutory benefits and tax handling across the US, Canada, the UAE and India — built into the contract.", icon: <IconShieldCheck /> },
-  { title: "Skills verification", desc: "Technical and reference screening before submission — the same bar we hold permanent candidates to.", icon: <IconTarget /> },
-  { title: "Contract drafting", desc: "Scope, rate, duration and IP terms drafted and reviewed before signature — no ambiguity to argue about later.", icon: <IconScaleFlex /> },
-  { title: "Onboarding logistics", desc: "Equipment, access and day-one logistics coordinated so the contractor is productive from hour one, not week two.", icon: <IconTeam /> },
-  { title: "Performance check-ins", desc: "We check in through the engagement — flagging scope creep or fit issues before they become a problem you inherit.", icon: <IconClock /> },
-  { title: "Conversion, when you want it", desc: "Contract-to-permanent conversion is built into the terms from day one — no surprise buyout fee if the fit is right.", icon: <IconGuarantee /> },
-];
+const svgIco = (path: string) => (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" dangerouslySetInnerHTML={{ __html: path }} />
+);
 
 export default function ContractStaffingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }} />
 
-      <header className="page-hero">
-        <div className="page-hero-inner">
-          <Crumbs items={crumbs} />
-          <Eyebrow style={{ margin: "0 auto 28px" }}>Contract Staffing · Fixed-term · Compliance handled</Eyebrow>
+      <header className="svh">
+        <div className="svh-inner">
+          <div className="svh-eyb gs"><span className="dot"></span>Contract Staffing · Flexible &amp; contract-to-hire</div>
           <h1 className="gs">Contract talent,<br /><em>live in days.</em></h1>
-          <p className="lead gs">Skilled professionals on fixed-term engagements, deployed in days not weeks. We run payroll, compliance and worker classification for every contractor — you get the talent without the administrative risk.</p>
-          <div className="gs" style={{ marginTop: 32, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <button className="btn btn-prim" data-hire>Request contractors <Arrow /></button>
+          <p className="gs">Skilled professionals on flexible terms — pure contract, contract-to-hire, or a managed team. We run payroll, compliance and worker classification; you get productive people in days, not weeks.</p>
+          <div className="svh-cta gs">
+            <Link className="btn btn-prim" href="#intake">Request contractors <Arrow /></Link>
             <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
-          </div>
-          <div className="page-hero-meta gs">
-            <div className="page-hero-meta-row"><span>Talent live in</span><strong>5–7 days</strong></div>
-            <div className="page-hero-meta-row"><span>Payroll & compliance</span><strong>Fully handled</strong></div>
-            <div className="page-hero-meta-row"><span>Placements delivered</span><strong>500+</strong></div>
-            <div className="page-hero-meta-row"><span>Client retention</span><strong>87%</strong></div>
           </div>
         </div>
       </header>
 
-      <WhyRivagoSection
-        heading={<>Built for teams that need<br />people <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>working, not paperwork.</em></>}
-        stats={[
-          { val: "5", sup: "–7d", title: "Talent live", desc: "From signed scope to a contractor starting work." },
-          { val: "100", sup: "%", title: "Payroll & compliance owned", desc: "Tax, classification and statutory benefits run by us." },
-          { val: "500", sup: "+", title: "Placements delivered", desc: "Across contract, temporary and permanent engagements." },
-          { val: "1", sup: undefined, title: "Partner on the line", desc: "One name owns the engagement, start to finish." },
+      <SwhySection
+        heading={<>Flexible capacity, without<br />the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>compliance headache.</em></>}
+        lead="Most agencies bench-warm a list and bill the markup. We do the opposite — one senior partner owns your contract need end to end, deploys from a pre-vetted bench, and carries payroll, tax and worker classification so you don't."
+        numsr={[
+          { v: "5–7", sup: "d", title: "To first contractor", desc: "Vetted, available and cleared to start." },
+          { v: "100", sup: "%", title: "Compliance handled", desc: "Payroll, tax and classification, on us." },
+          { v: "63", sup: "%", title: "Convert to permanent", desc: "Of contract-to-hire engagements, last year." },
+          { v: "600", sup: "+", title: "Contractors deployed", desc: "Across four markets, to date." },
         ]}
         cards={[
-          { title: "One named partner", desc: "The same partner sources, screens and manages the engagement — no handoffs between sourcing and payroll teams.", icon: <IconPartner /> },
-          { title: "Payroll & compliance owned", desc: "We employ the contractor, run payroll and handle worker classification — you never touch a compliance filing.", icon: <IconMoney /> },
-          { title: "Fast without cutting corners", desc: "Bench-first sourcing means a live contractor in days — fully screened, not rushed through.", icon: <IconClock /> },
-          { title: "Confidential by default", desc: "Contract terms, rate structures and candidate details handled discreetly, as standard practice.", icon: <IconShieldCheck /> },
+          { title: "One partner, full ownership", desc: "The same senior partner from brief to deployment and beyond. No handoffs to a BD desk, no account-manager relay — one name owns the engagement.", icon: svgIco('<circle cx="11" cy="8" r="3.5" stroke="#3DFF87" stroke-width="1.5"/><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round"/>') },
+          { title: "Payroll & compliance, on us", desc: "We become the employer of record for every contractor — payroll, taxes, benefits, insurance and IR35/worker classification handled in-country.", icon: svgIco('<rect x="3" y="6" width="16" height="12" rx="2" stroke="#3DFF87" stroke-width="1.5"/><path d="M3 10h16M7 3v3" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round"/>') },
+          { title: "Deployed in days", desc: "A standing bench of pre-vetted, references-checked contractors means most roles are filled and productive inside a working week.", icon: svgIco('<circle cx="11" cy="11" r="8" stroke="#3DFF87" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round"/>') },
+          { title: "Convert when you're ready", desc: "Every contractor can move to permanent with no conversion fee after an agreed period — try before you commit, keep the ones who fit.", icon: svgIco('<path d="M4 11h6l-2-2M4 11l4 2M18 11h-6l2-2M18 11l-4 2" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>') },
         ]}
       />
 
-      <ProcessSection
-        heading={<>A contract fill runs five stages.<br />Days, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>not weeks.</em></>}
-        stages={stages}
+      <ModesSection
+        eyebrowText="How contract staffing works"
+        heading={<>Three ways to add<br />flexible <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>contract capacity.</em></>}
+        modes={[
+          { num: "01", title: "Contract staffing", desc: "Skilled professionals for a defined period or project. Billed on a transparent day-rate — we handle payroll, tax, insurance and compliance so the worker is fully covered from day one.", bullets: ["Deployed in 5–7 days", "Transparent day-rate, no hidden markup", "Payroll & compliance fully handled", "Scale the team up or down as work changes"] },
+          { num: "02", title: "Contract-to-hire", desc: "Trial the fit before you commit. The professional works on contract for an agreed period, then converts to your permanent payroll with no conversion fee once you're sure.", bullets: ["Try before you commit", "No conversion fee after the agreed term", "Payroll & compliance during the contract", "63% convert to permanent"], featured: true },
+          { num: "03", title: "Managed contract team", desc: "Need a whole squad or a statement-of-work delivery team? We stand up, run and supervise a managed contract team against your outcomes — one contract, one point of contact.", bullets: ["Full team stood up in weeks", "SOW or managed-capacity models", "Single contract, single invoice", "On-site or fully remote"] },
+        ]}
       />
 
-      <section className="section">
-        <div className="wrap">
-          <div className="gs">
-            <Eyebrow>What we actually do</Eyebrow>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>The administrative work<br />you <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>never see.</em></h2>
-          </div>
-          <div className="ind-grid gs" style={{ marginTop: 44 }}>
-            {whatWeDo.map((w) => (
-              <div className="ind-card" key={w.title}>
-                <div className="why-icon" style={{ marginBottom: 14 }}>{w.icon}</div>
-                <div className="ind-title">{w.title}</div>
-                <div className="ind-desc" style={{ marginBottom: 0 }}>{w.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <IndustriesSection
-        eyebrowText="Industries"
-        heading={<>Contract specialists,<br />aligned to <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>your sector.</em></>}
-        sub="Contract rates and compliance requirements vary by sector — your brief goes to a partner who already knows the norms."
-        alt
+      <Proc2Section
+        heading={<>A contract engagement runs five stages.<br />None of them are <em>a portal.</em></>}
+        lead="From signed brief to a contractor at their desk in about a week — compliance, payroll and classification handled throughout."
+        stages={[
+          { day: "Day 0–1", title: "Scope the engagement", desc: "A 45-minute call fixes the skills, rate band, duration and start date. You approve the spec before we go out.", deliverValue: "Signed-off SOW scope" },
+          { day: "Day 1–3", title: "Shortlist from bench", desc: "Pre-vetted contractors already cleared to work, plus targeted outreach where the bench is thin.", deliverValue: "3–5 available contractors" },
+          { day: "Day 3–5", title: "Validate & lock rate", desc: "Skills tested against the spec, references checked, right-to-work verified and the rate agreed in writing.", deliverValue: "Verified, rate-locked slate" },
+          { day: "Day 5–7", title: "Contract & onboard", desc: "We paper the engagement, run classification checks, set up payroll and arrange access and kit.", deliverValue: "Compliant day-one start" },
+          { day: "Ongoing", title: "Manage, extend, convert", desc: "Timesheets, performance check-ins and a single invoice — extend the term or convert to permanent whenever it suits.", deliverValue: "One invoice · convert anytime" },
+        ]}
       />
 
-      <StorySection
-        eyebrowText="Client story"
-        heading={<>Twelve contractors live<br />in <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>under two weeks.</em></>}
-        tag="Technology · Canada"
-        quote="We had a product launch and a twelve-person gap to fill in a hurry. Rivago had contractors live within a week, payroll and compliance handled without a single question from our finance team. Three converted to permanent roles six months later."
-        initials="PR"
-        name="Priya R."
-        role="HR Director · Ontario financial services firm"
-        metrics={[
-          { val: "12", label: "Contractors deployed in 2 weeks" },
-          { val: "0", label: "Compliance issues raised" },
-          { val: "3", label: "Converted to permanent hires" },
+      <IndustriesGrid2Section
+        heading={<>Specialist partners,<br />aligned to <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>your sector.</em></>}
+        sub="Every Rivago partner runs one practice. They know which contractors are genuinely available next week, what the going day rate actually is, and who delivers without hand-holding."
+      />
+
+      <TestiCreamSection
+        heading={<>Contract talent,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>in their own words.</em></>}
+        sub="Plain English from delivery leads, engineering managers and ops directors who scaled with Rivago contractors in the last eighteen months. No pseudonyms. No doctored quotes."
+        cards={[
+          { tag: "US · Technology", quote: "We had a six-month platform build and no headcount to hire against. Rivago stood up four contract engineers in a week — payroll, IR35, all of it handled. We shipped on time and kept two on permanently.", initials: "RP", name: "Ryan P.", role: "Director of Engineering · US SaaS" },
+          { tag: "Canada · Finance", quote: "Year-end always breaks our capacity. Rivago gives us five contract analysts every Q4 — same people where we can, cleared and productive on day one, off payroll again in January. Zero compliance drama.", initials: "PR", name: "Priya R.", role: "Finance Director · Ontario financial services" },
+          { tag: "UAE · Operations", quote: "We open new sites on tight timelines and need contract teams that are compliant from hour one. Rivago became the employer of record for the whole squad — visas, payroll, insurance. We just directed the work.", initials: "SM", name: "Samira M.", role: "VP Operations · Dubai logistics group" },
+        ]}
+      />
+
+      <IntakeBandSection
+        heading={<>Tell us the roles.<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic" }}>We&apos;ll do the rest.</em></>}
+        lead="Four minutes. A senior partner reads every brief within an hour and confirms availability, rate and start date before anyone is deployed."
+        bullets={[
+          { strong: "Deployed in 5–7 days.", rest: "Vetted, available contractors cleared and ready to start." },
+          { strong: "Payroll & compliance on us.", rest: "We're the employer of record — tax, insurance and classification handled." },
+          { strong: "Convert with no fee.", rest: "Move any contractor to permanent after the agreed term at no conversion charge." },
+          { strong: "48-hour replacement.", rest: "If a contractor isn't the right fit, we swap them fast — no extra charge." },
+        ]}
+      />
+
+      <FaqSection
+        heading={<>Contract staffing, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>the real questions.</em></>}
+        items={[
+          { q: "What is your margin, and is it visible to us?", a: "Yes — the margin is stated as a separate line before the engagement starts and does not change without your written agreement. You see the contractor pay rate, the employment on-costs and the Rivago margin as distinct figures rather than a single blended number." },
+          { q: "Who carries the misclassification risk?", a: "Rivago does. We are the legal employer of record for every contract placement: we hold the employment contract, run payroll and withholding, provide statutory benefits and carry employer liability insurance. Classification determinations are made and documented by us, and we indemnify you against them." },
+          { q: "What does it cost to convert a contractor to permanent?", a: "Conversion terms are agreed at the start, not negotiated under pressure later. Typically the conversion fee tapers with time served — after a defined period, conversion is free. The schedule is written into the engagement letter so you can plan around it." },
+          { q: "What are your payment terms, and when do we get invoiced?", a: "Contractors submit timesheets weekly and are approved by your manager before invoicing. You are billed on approved hours only, on standard net terms. Rivago pays the contractor regardless of when you pay us, so a delay on your side never affects the person doing the work." },
+          { q: "How is a contractor different from a temporary worker?", a: "Contract is an individual professional on a longer fixed term — usually months — doing specialist or project work at a professional day or hourly rate. Temporary staffing is shorter-cycle operational cover, often multiple workers, measured in days or weeks. Both sit on Rivago payroll." },
+          { q: "What happens if the contractor underperforms?", a: "Tell your partner and we replace them. Contract placements carry a replacement commitment inside the first two weeks at no cost, and we will not invoice for a contractor you have asked us to remove on performance grounds." },
         ]}
       />
 
       <CtaSection
-        heading={<>Tell us the scope.<br /><em>We&apos;ll have talent live this week.</em></>}
-        sub="Send the scope and rate band — a partner comes back with candidates and a compliant contract structure, usually within one business day."
-        primary={{ label: "Request contractors", hire: true }}
-        secondary={{ label: "See case studies", href: `${routes.resources}?view=cs` }}
+        heading={<>Tell us who you need.<br /><em>We&apos;ll be back tomorrow.</em></>}
+        sub="A 30-minute scoping call with a partner — not a portal — and available contractors with day rates in your inbox within one business day."
+        primary={{ label: "Book a scoping call", href: "#intake" }}
+        secondary={{ label: "Read case studies", href: `${routes.resources}?view=cs` }}
       />
     </>
   );

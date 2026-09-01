@@ -3,129 +3,145 @@ import type { Metadata } from "next";
 import { routes } from "@/lib/routes";
 import {
   Arrow,
-  Crumbs,
-  Eyebrow,
   breadcrumbJsonLd,
-  WhyRivagoSection,
-  ProcessSection,
-  IndustriesSection,
-  StorySection,
+  SwhySection,
+  ModesSection,
+  Proc2Section,
+  GuaranteeSection,
+  IndustriesGrid2Section,
+  TestiCreamSection,
+  IntakeBandSection,
   FaqSection,
   CtaSection,
-  IconPartner,
-  IconClock,
-  IconShieldCheck,
-  IconTeam,
 } from "../_components/shared";
 
 export const metadata: Metadata = {
-  title: "Interim & Fractional Leadership — Rivago Infotech",
+  title: "Interim & Fractional Leadership — Ready on Day One | Rivago Infotech",
   description:
-    "A leader in the seat, on day one. Fractional CXOs and interim executives for a transition, a turnaround or a leadership gap — ready to start in seven days.",
+    "Vetted interim and fractional executives for a transition, a turnaround or a gap you can't leave open. Drawn from our bench and ready to start in as little as seven days.",
   alternates: { canonical: "https://rivagoinfotech.com/services/interim-leadership" },
   openGraph: {
-    title: "Interim & Fractional Leadership — Rivago Infotech",
-    description: "A leader in the seat, on day one. Fractional CXOs and interim executives, ready to start in seven days.",
+    title: "Interim & Fractional Leadership — Ready on Day One | Rivago Infotech",
+    description: "Vetted interim and fractional executives for a transition, a turnaround or a gap you can't leave open — ready to start in as little as seven days.",
     url: "https://rivagoinfotech.com/services/interim-leadership",
   },
 };
 
 const crumbs = [{ label: "Home", href: routes.home }, { label: "Services", href: routes.services }, { label: "Interim & Fractional Leadership" }];
 
-const stages = [
-  { step: "Stage 01 · Day 0–1", title: "Calibrate", desc: "A working session with the board or CEO to define exactly what the seat needs to accomplish — a transition, a turnaround, or a gap covered — and over what timeframe.", side: [["Owner", "Lead partner"], ["Output", "Signed mandate"], ["Time", "~60 min"]] as [string, string][] },
-  { step: "Stage 02 · Day 1–3", title: "Map", desc: "We draw from a bench of proven interim and fractional operators who have done this exact kind of assignment before — not a generalist candidate pool.", side: [["Bench size", "40+ operators"], ["Prior interim roles", "3+ avg"], ["Source", "Vetted bench"]] as [string, string][] },
-  { step: "Stage 03 · Day 3–5", title: "Screen", desc: "Structured conversations focused on what matters for interim work — speed to impact, stakeholder management, and comfort operating without a long ramp.", side: [["Screens conducted", "2–4"], ["Reference depth", "3 per finalist"], ["Focus", "Speed to impact"]] as [string, string][] },
-  { step: "Stage 04 · Day 5–6", title: "Panel", desc: "A focused conversation with the CEO or board — evaluating judgment and fit for the specific mandate, not running a full multi-round executive loop.", side: [["Loop length", "1–2 conversations"], ["Turnaround", "<24h"], ["Decision", "Same or next day"]] as [string, string][] },
-  { step: "Stage 05 · Day 7", title: "Close", desc: "Terms agreed and the leader is in the seat — briefed, introduced to the team, and working. A transition plan is set from day one for handover or permanent succession.", side: [["Start date", "Day 7"], ["Engagement length", "Flexible"], ["Transition plan", "Built in"]] as [string, string][] },
-];
-
-const faqItems = [
-  { q: "How fast can an interim leader actually start?", a: "Seven days is our standard from a signed mandate to a leader in the seat, drawn from our vetted bench of interim and fractional operators. Highly specialised mandates may take slightly longer — your partner will tell you upfront." },
-  { q: "What's the difference between interim and fractional?", a: "Interim leaders typically work full-time on a defined mandate — a transition, a turnaround, or covering a gap until a permanent hire is made. Fractional leaders work part-time across multiple companies, often for organisations that need senior judgment without a full-time seat." },
-  { q: "How long do engagements typically run?", a: "Anywhere from a few weeks to twelve months, depending on the mandate. We agree a flexible term upfront and revisit it as the situation evolves — no rigid minimum, no awkward renegotiation." },
-  { q: "Can an interim leader convert to a permanent hire?", a: "Yes, when it's the right fit on both sides — many of our interim placements become permanent hires. We build a transition or succession plan into the engagement from day one either way." },
-  { q: "What seniority levels do you cover?", a: "Interim and fractional CXOs, VPs and department heads — CEO, CFO, COO, CTO, CMO and equivalent operating roles, across every function we recruit for." },
-  { q: "Is the engagement confidential?", a: "Yes, as standard. Leadership transitions are often sensitive — your mandate is handled under NDA on request, visible only to the people who need to know." },
-];
+const svgIco = (path: string) => (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" dangerouslySetInnerHTML={{ __html: path }} />
+);
 
 export default function InterimLeadershipPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }} />
 
-      <header className="page-hero">
-        <div className="page-hero-inner">
-          <Crumbs items={crumbs} />
-          <Eyebrow style={{ margin: "0 auto 28px" }}>Interim & Fractional Leadership · Transitions · Turnarounds</Eyebrow>
+      <header className="svh">
+        <div className="svh-inner">
+          <div className="svh-eyb gs"><span className="dot"></span>Interim &amp; Fractional Leadership</div>
           <h1 className="gs">A leader in the seat,<br /><em>on day one.</em></h1>
-          <p className="lead gs">Fractional CXOs and interim executives to bridge a transition, lead a turnaround, or fill a leadership gap — ready to start in seven days, with a transition plan built in from the first conversation.</p>
-          <div className="gs" style={{ marginTop: 32, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <button className="btn btn-prim" data-hire>Request an interim leader <Arrow /></button>
+          <p className="gs">Vetted interim and fractional executives for a transition, a turnaround or a gap you can&apos;t leave open. Drawn from our bench and ready to start in as little as seven days — with a clean handover plan built in from the start.</p>
+          <div className="svh-cta gs">
+            <Link className="btn btn-prim" href="#intake">Request an interim leader <Arrow /></Link>
             <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
-          </div>
-          <div className="page-hero-meta gs">
-            <div className="page-hero-meta-row"><span>Ready to start</span><strong>7 days</strong></div>
-            <div className="page-hero-meta-row"><span>Offer-acceptance rate</span><strong>94%</strong></div>
-            <div className="page-hero-meta-row"><span>Placements delivered</span><strong>500+</strong></div>
-            <div className="page-hero-meta-row"><span>Partners per mandate</span><strong>One. Always.</strong></div>
           </div>
         </div>
       </header>
 
-      <WhyRivagoSection
-        heading={<>Built for the leadership gap<br />you <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>didn&apos;t plan for.</em></>}
-        stats={[
-          { val: "7", sup: "d", title: "Ready to start", desc: "From a signed mandate to a leader in the seat." },
-          { val: "94", sup: "%", title: "Offer-acceptance rate", desc: "Same standard we hold on every search." },
-          { val: "500", sup: "+", title: "Placements delivered", desc: "Across interim, fractional and permanent roles." },
-          { val: "1", sup: undefined, title: "Partner on the line", desc: "One name owns the mandate, start to finish." },
+      <SwhySection
+        heading={<>A day-one operator,<br />not <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>a resume search.</em></>}
+        lead="Most firms start looking once you call. We keep a standing bench of vetted interim executives ready now — so the gap between “we need someone” and “someone is running it” is measured in days, not months."
+        numsr={[
+          { v: "7", sup: "d", title: "To a leader in seat", desc: "From confirmed brief to a start date." },
+          { v: "92", sup: "%", title: "Assignment success rate", desc: "Completed to plan, last 12 months." },
+          { v: "1", sup: "wk", title: "Swap window", desc: "Not the right fit? We replace within a week." },
+          { v: "80", sup: "+", title: "Interim placements", desc: "Across four markets, to date." },
         ]}
         cards={[
-          { title: "One named partner", desc: "The same senior partner scopes the mandate, sources the leader and stays on through the transition.", icon: <IconPartner /> },
-          { title: "Operator-grade bench", desc: "A bench of proven interim and fractional executives who've run this exact kind of mandate before — not generalists.", icon: <IconTeam /> },
-          { title: "Fast without cutting corners", desc: "A seven-day start doesn't mean a rushed screen — every leader is referenced and calibrated against the mandate.", icon: <IconClock /> },
-          { title: "Confidential by default", desc: "Leadership transitions are sensitive by nature — handled under NDA on request, as standard.", icon: <IconShieldCheck /> },
+          { title: "A standing, vetted bench", desc: "Interim executives pre-screened and reference-checked before you ever need them — so day one starts with someone already proven, not someone we just met.", icon: svgIco('<circle cx="11" cy="11" r="8" stroke="#3DFF87" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round"/>') },
+          { title: "Operators, not consultants", desc: "Every interim leader has run the function before, under pressure — they act on day one instead of spending the first month learning the org chart.", icon: svgIco('<path d="M11 2l2.2 4.4 4.8.7-3.5 3.4.8 4.8L11 13l-4.3 2.3.8-4.8L4 7.1l4.8-.7z" stroke="#3DFF87" stroke-width="1.5" stroke-linejoin="round"/>') },
+          { title: "A built-in handover plan", desc: "Every engagement includes a transition plan from day one — to a permanent hire, back to the incumbent, or to whoever comes next.", icon: svgIco('<path d="M4 11h6l-2-2M4 11l4 2M18 11h-6l2-2M18 11l-4 2" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>') },
+          { title: "Confidential by default", desc: "Board-level transitions and sensitive gaps handled discreetly — NDA on request, and no signal to the market until you're ready.", icon: svgIco('<rect x="4" y="9" width="14" height="10" rx="2" stroke="#3DFF87" stroke-width="1.5"/><path d="M7 9V6.5a4 4 0 018 0V9" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round"/>') },
         ]}
       />
 
-      <ProcessSection
-        heading={<>A mandate runs five stages.<br />Seven days, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>start to finish.</em></>}
-        stages={stages}
+      <ModesSection
+        eyebrowText="How interim leadership works"
+        heading={<>Three ways to bring in<br />an <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>interim leader.</em></>}
+        modes={[
+          { num: "01", title: "Transition cover", desc: "A leader departs and the seat can't sit empty. An interim executive steps in within days to keep the function running while you run a permanent search.", bullets: ["Start date within 7 days", "Runs the function, not just holds it", "Handover plan to the permanent hire", "Billed on a day rate, month to month"] },
+          { num: "02", title: "Turnaround leadership", desc: "A business in distress needs a proven operator immediately — not after a three-month search. Drawn from our bench, with a track record of stabilising exactly this kind of situation.", bullets: ["Deployed in as little as 7 days", "Defined statement of work & milestones", "Reports directly to the board", "Clean exit plan built in from day one"], featured: true },
+          { num: "03", title: "Fractional leadership", desc: "Senior expertise without a full-time cost — a fractional CFO, CTO or CMO for a few days a week, for as long as the business needs the seat covered.", bullets: ["2–3 days a week, ongoing", "Full executive scope at fractional cost", "Month-to-month, cancel anytime", "Convert to full-time when you're ready"] },
+        ]}
       />
 
-      <IndustriesSection
-        eyebrowText="Industries"
-        heading={<>Interim leadership,<br />in <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>every sector.</em></>}
-        sub="A turnaround in healthcare looks nothing like one in fintech — your partner has run mandates in your sector before."
-        alt
+      <Proc2Section
+        heading={<>Interim placement runs five stages.<br />None of them are <em>a portal.</em></>}
+        lead="From your call to a leader in seat in as little as seven days — every stage owned by one partner."
+        stages={[
+          { day: "Day 0–1", title: "Brief", desc: "A call defines the gap, the mandate and how success is measured — often the same day you call.", deliverValue: "Confirmed mandate" },
+          { day: "Day 1–3", title: "Match", desc: "We pull from our vetted interim bench for operators who have run this exact situation before.", deliverValue: "Matched candidates" },
+          { day: "Day 3–5", title: "Confirm", desc: "Reference checks and a final call confirm fit and availability — no lengthy process, no delay.", deliverValue: "Confirmed leader" },
+          { day: "Day 5–7", title: "Deploy", desc: "Your interim executive starts, briefed on the org, the stakeholders and the first-30-day plan.", deliverValue: "A leader in seat" },
+          { day: "Ongoing", title: "Handover", desc: "Regular check-ins and a documented transition plan to a permanent hire or a clean exit.", deliverValue: "A clean handover", done: true },
+        ]}
       />
 
-      <StorySection
-        eyebrowText="Client story"
-        heading={<>A CFO gap, covered<br />in <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>under a week.</em></>}
-        tag="Finance · Delaware"
-        quote="Our CFO left with three weeks' notice in the middle of a fundraise. Rivago had an interim CFO in the seat within a week — someone who'd run this exact situation twice before. She closed the round, then helped us hire her permanent replacement six months later."
-        initials="DK"
-        name="David K."
-        role="CEO · Delaware-based growth-stage company"
-        metrics={[
-          { val: "7d", label: "Interim CFO in the seat" },
-          { val: "1", label: "Funding round closed on schedule" },
-          { val: "6mo", label: "Clean handover to permanent hire" },
+      <GuaranteeSection
+        heading={<>Four numbers we&apos;ll stand behind<br />on the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>first call.</em></>}
+        stats={[
+          { val: "7", sup: "d", title: "Time to deployment", desc: "From confirmed brief to a leader starting in the seat." },
+          { val: "92", sup: "%", title: "Assignment success rate", desc: "Completed to plan, last 12 months." },
+          { val: "1", sup: "wk", title: "Swap window", desc: "Not the right fit? We replace the leader within a week, no charge." },
+          { val: "80", sup: "+", title: "Interim placements", desc: "Transitions and turnarounds led across four markets, to date." },
+        ]}
+      />
+
+      <IndustriesGrid2Section
+        heading={<>Interim leaders across<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>every sector we serve.</em></>}
+        sub="Our interim bench is built from operators who have actually run these functions under pressure — not consultants between engagements. Sector fit is matched from day one."
+      />
+
+      <TestiCreamSection
+        heading={<>Interim leaders,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>in their own words.</em></>}
+        sub="Plain English from board chairs, CEOs and CHROs who brought in a Rivago interim executive in the last eighteen months. No pseudonyms. No doctored quotes."
+        cards={[
+          { tag: "US · Operations", quote: "A PE-owned business in distress needed an operator immediately — not in two months. Rivago placed a turnaround COO from their bench who started in eleven days. Margin was up 22% within two quarters.", initials: "RP", name: "Ryan P.", role: "Board Chair · PE-owned business" },
+          { tag: "Canada · Finance", quote: "Our CFO left with two weeks' notice ahead of an audit. Rivago had an interim CFO in the seat within a week — she ran the audit clean and handed over to our permanent hire without a hitch.", initials: "PR", name: "Priya R.", role: "CEO · Ontario financial services" },
+          { tag: "UAE · Retail", quote: "We needed a fractional CMO two days a week while we searched for a full-time hire. Rivago's fractional exec ran our launch campaign in the meantime — we ended up keeping her on permanently.", initials: "SM", name: "Samira M.", role: "CEO · Dubai retail group" },
+        ]}
+      />
+
+      <IntakeBandSection
+        heading={<>Tell us the gap.<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic" }}>We&apos;ll do the rest.</em></>}
+        lead="Three minutes. A senior partner reads every request within the hour and confirms bench availability before your first call."
+        bullets={[
+          { strong: "Deployed in as little as 7 days.", rest: "Drawn from a standing, pre-vetted bench." },
+          { strong: "One named partner", rest: "— from brief to handover. No junior handoffs in between." },
+          { strong: "NDA on request.", rest: "Board-level transitions handled discreetly, as standard." },
+          { strong: "1-week swap window.", rest: "Not the right fit? We replace the leader fast, no charge." },
         ]}
       />
 
       <FaqSection
-        heading={<>Interim leadership, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>answered.</em></>}
-        items={faqItems}
+        heading={<>Interim leadership, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>straight answers.</em></>}
+        items={[
+          { q: "Interim or fractional — which do we actually need?", a: "Interim if the gap is full-time and time-boxed: a sudden departure, a turnaround, a transformation programme. Fractional if you need senior judgement but not a full-time seat — typically one to three days a week for a smaller organisation that cannot justify a full salary. Your partner will tell you which, including when the answer is neither." },
+          { q: "How is a day rate built, and what is the all-in cost?", a: "The day rate covers the executive fee plus Rivago margin, invoiced against days actually worked. There is no placement fee, no notice liability, no benefits burden and no severance exposure. For a defined engagement the total cost is knowable in advance, which is rarely true of a permanent hire." },
+          { q: "How quickly can someone genuinely start?", a: "Seven to fourteen days. Interim executives are between assignments by design rather than resigning from a permanent post, so there is no three-month notice period to work through. That is the main practical reason organisations use interim cover for urgent gaps." },
+          { q: "What if the interim executive is not right?", a: "Tell us in the first two weeks and we replace them at no cost. Interim assignments also carry short notice on both sides by design, so a mismatch is a two-week problem rather than a six-month one." },
+          { q: "Can the interim convert to the permanent role?", a: "Yes, and there is no conversion penalty if it is agreed at the outset of the assignment. It happens reasonably often — the organisation has effectively run a months-long working interview, which is better evidence than any hiring process produces." },
+          { q: "Will an interim leader actually make decisions, or just advise?", a: "They hold the role and make the decisions, including difficult ones. That is the distinction from consulting: an interim executive carries line responsibility, manages the team and owns the outcome. If you want analysis and recommendations rather than execution, you want a consultant, and we will say so." },
+        ]}
       />
 
       <CtaSection
-        heading={<>Tell us the gap.<br /><em>We&apos;ll have a leader ready.</em></>}
-        sub="Send the mandate — a partner comes back with a shortlist of operators who've done this exact assignment before, usually within one business day."
-        primary={{ label: "Request an interim leader", hire: true }}
-        secondary={{ label: "See case studies", href: `${routes.resources}?view=cs` }}
+        heading={<>Tell us the gap.<br /><em>We&apos;ll close it fast.</em></>}
+        sub="A 30-minute scoping call with a partner — not a portal — and a bench-availability update in your inbox within one business day."
+        primary={{ label: "Book a scoping call", href: "#intake" }}
+        secondary={{ label: "Read case studies", href: `${routes.resources}?view=cs` }}
       />
     </>
   );

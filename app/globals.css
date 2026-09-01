@@ -1186,3 +1186,77 @@ body.theme-cream-nav #nav .nav-burger{border-color:rgba(10,20,11,.14);color:#0A1
 .btn-darkghost:hover{background:rgba(10,20,11,.05)}
 
 @media(max-width:980px){.svh{padding:110px 24px 60px}.eng-grid{grid-template-columns:1fr}.gd-card{grid-template-columns:1fr}}
+
+/* ============ SERVICE SUBPAGES — ported from the real Claude Design exports ============ */
+
+/* Why Rivago — split layout (top: heading+lead | stat grid, below: 4-card grid) */
+.swhy{background:var(--bg);color:var(--text);padding:120px 44px;border-top:1px solid var(--border)}
+.swhy-inner{max-width:1240px;margin:0 auto}
+.swhy-top{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start}
+.swhy-lead{font-size:16px;color:var(--text2);line-height:1.75;font-weight:300;margin-top:20px;max-width:520px}
+.swhy-numsr{display:grid;grid-template-columns:1fr 1fr;gap:36px 30px;padding-top:6px}
+.swhy-numr .v{font-size:clamp(44px,4vw,60px);font-weight:400;color:var(--green);letter-spacing:-.04em;line-height:1;font-family:var(--fs);font-style:italic}
+.swhy-numr .v sup{font-size:18px;vertical-align:super;color:var(--text3);font-style:normal;font-family:var(--ff)}
+.swhy-numr h3{font-size:14px;font-weight:600;color:var(--text);margin:12px 0 4px}
+.swhy-numr p{font-size:12.5px;color:var(--text2);line-height:1.6;font-weight:300}
+.swhy-eyb{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:1px solid rgba(61,255,135,.22);background:rgba(61,255,135,.06);border-radius:22px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:18px}
+.swhy-eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green)}
+.swhy h2{font-size:clamp(34px,4.4vw,54px);font-weight:400;letter-spacing:-.03em;line-height:1.1;color:var(--text)}
+.swhy h2 .serif-it{font-family:var(--fs);font-style:italic;color:var(--green)}
+.swhy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px}
+.swhy-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px 28px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.swhy-card:hover{transform:translateY(-5px);border-color:rgba(61,255,135,.22);box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.swhy-ico{width:46px;height:46px;border-radius:12px;background:rgba(61,255,135,.08);border:1px solid rgba(61,255,135,.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.swhy-card h3{font-size:17px;font-weight:600;color:var(--text);margin-bottom:9px;letter-spacing:-.01em}
+.swhy-card p{font-size:13.5px;color:var(--text2);line-height:1.7;font-weight:300}
+@media(max-width:1080px){.swhy-grid{grid-template-columns:1fr 1fr}.swhy-top{grid-template-columns:1fr;gap:36px}}
+@media(max-width:560px){.swhy-grid{grid-template-columns:1fr}}
+
+/* Engagement matrix — comparison table (executive-search) */
+.matrix{margin-top:48px;border:1px solid rgba(11,19,17,.08);border-radius:28px;background:#fff;overflow:hidden}
+.matrix-head{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;background:#EFEAE0;border-bottom:1px solid rgba(11,19,17,.08)}
+.matrix-head>div{padding:22px 24px;font-size:12px;color:var(--dt3);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.matrix-head>div:first-child{color:var(--dt2)}
+.matrix-head>div.featured{background:#D6E7D4;color:var(--dt);font-weight:600}
+.matrix-row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;border-bottom:1px solid rgba(11,19,17,.08)}
+.matrix-row:last-child{border-bottom:none}
+.matrix-row>div{padding:20px 24px;font-size:14px;color:var(--dt2);display:flex;align-items:center}
+.matrix-row>div:first-child{color:var(--dt);font-weight:500}
+.matrix-row>div.featured{background:rgba(214,231,212,.35);color:var(--dt);font-weight:500}
+.matrix-check{width:18px;height:18px;border-radius:50%;background:var(--green);display:grid;place-items:center}
+.matrix-cross{width:18px;height:18px;border-radius:50%;background:rgba(11,19,17,.06);display:grid;place-items:center;color:var(--dt3);font-size:12px}
+.matrix-foot{padding:24px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:0;background:var(--cream)}
+.matrix-foot>div{padding:0 24px}
+.matrix-foot .btn{font-size:13px;padding:9px 18px}
+.matrix-btn-prim{background:#0A140B;color:var(--cream)}
+.matrix-btn-prim:hover{background:#1A2A1B}
+@media(max-width:960px){.matrix-head,.matrix-row,.matrix-foot{grid-template-columns:1fr}.matrix-row>div{border-bottom:1px solid rgba(11,19,17,.08);padding:14px 24px}}
+
+/* Perspectives cards (employer-of-record) */
+.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.ins-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;text-decoration:none;transition:all .28s var(--ease)}
+.ins-card:hover{background:var(--surface2);border-color:rgba(61,255,135,.22);transform:translateY(-5px)}
+.ins-img{height:170px;background-size:cover;background-position:center;position:relative}
+.ins-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(8,16,9,.5))}
+.ins-cat{position:absolute;top:14px;left:14px;z-index:1;padding:5px 12px;background:rgba(3,12,5,.7);backdrop-filter:blur(8px);border:1px solid rgba(61,255,135,.25);border-radius:9999px;font-size:11px;font-weight:600;color:var(--green)}
+.ins-body{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1}
+.ins-card h3{font-size:18px;font-weight:500;color:var(--text);line-height:1.32;letter-spacing:-.015em;margin-bottom:10px}
+.ins-card p{font-size:13px;color:var(--text2);line-height:1.6;font-weight:300;margin-bottom:18px}
+.ins-meta{margin-top:auto;font-size:12px;color:var(--text3);font-family:var(--fm)}
+@media(max-width:900px){.ins-grid{grid-template-columns:1fr}}
+
+/* testi-cream real markup reuses .tc-quote/.tc-author names already used by the dark
+   home-page Testimonials.tsx card — scope overrides so that component is untouched. */
+.testi-cream .tc-quote{font-family:var(--fs);font-style:italic;font-size:18px;line-height:1.5;color:var(--dt);font-weight:400;margin-bottom:24px;flex:1;letter-spacing:-.005em}
+.testi-cream .tc-author{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid rgba(11,19,17,.08);margin-top:auto}
+.testi-cream .tc-author-av{width:40px;height:40px;border-radius:50%;flex-shrink:0}
+.testi-cream .tc-author-name{font-size:13.5px;font-weight:600;color:var(--dt)}
+.testi-cream .tc-author-role{font-size:11.5px;color:var(--dt3);margin-top:2px}
+
+/* Payroll-transfer feature list (employer-of-record) */
+.ptx{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.ptx-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+.ptx-list li{display:flex;gap:13px;align-items:flex-start;padding:20px 22px;background:#fff;border:1px solid rgba(11,19,17,.08);border-radius:14px;font-size:14px;color:var(--dt2);line-height:1.6;font-weight:300;box-shadow:0 4px 16px rgba(11,19,17,.03)}
+.ptx-list li svg{flex-shrink:0;margin-top:3px}
+.ptx-list li strong{color:var(--dt);font-weight:600}
+@media(max-width:900px){.ptx{grid-template-columns:1fr;gap:36px}}

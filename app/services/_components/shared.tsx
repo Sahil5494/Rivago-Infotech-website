@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import Faq, { type FaqItem } from "@/components/Faq";
+import IntakeForm from "@/components/IntakeForm";
 import { routes, industriesList } from "@/lib/routes";
+import { indgCards } from "../data";
 
 /* ── ICONS ──
    Small inline SVGs, all matching the hire-talent visual language:
@@ -22,6 +24,18 @@ export const SmallArrow = () => (
 export const Check = () => (
   <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
     <path d="M1 4l2.5 2.5L9 1" stroke="#3DFF87" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const BulletCheck = () => (
+  <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
+    <path d="M1 6l4 4L13 1" stroke="#0A7040" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const DeliverCheck = () => (
+  <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+    <path d="M3 8.5l3.2 3.2L13 5" stroke="#3DFF87" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -468,6 +482,256 @@ export function InsightsSection({
             </Link>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── SERVICE-SUBPAGE TEMPLATE (real Claude Design leaf-page pattern) ── */
+
+export type SwhyNum = { v: string; sup?: string; title: string; desc: string };
+export type SwhyCard = { title: string; desc: string; icon: ReactNode };
+
+export function SwhySection({
+  heading,
+  lead,
+  numsr,
+  cards,
+}: {
+  heading: ReactNode;
+  lead: string;
+  numsr?: SwhyNum[];
+  cards: SwhyCard[];
+}) {
+  return (
+    <section className="swhy">
+      <div className="swhy-inner">
+        <div className="swhy-top" style={!numsr ? { gridTemplateColumns: "1fr" } : undefined}>
+          <div className="gs">
+            <div className="swhy-eyb">Why Rivago</div>
+            <h2>{heading}</h2>
+            <p className="swhy-lead">{lead}</p>
+          </div>
+          {numsr && (
+            <div className="swhy-numsr gs">
+              {numsr.map((n) => (
+                <div className="swhy-numr" key={n.title}>
+                  <div className="v">{n.v}{n.sup && <sup>{n.sup}</sup>}</div>
+                  <h3>{n.title}</h3>
+                  <p>{n.desc}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="swhy-grid">
+          {cards.map((c) => (
+            <div className="swhy-card gs" key={c.title}>
+              <div className="swhy-ico">{c.icon}</div>
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export type ModeItem = { num: string; title: string; desc: string; bullets: string[]; featured?: boolean };
+
+export function ModesSection({
+  eyebrowText,
+  heading,
+  modes,
+}: {
+  eyebrowText: string;
+  heading: ReactNode;
+  modes: ModeItem[];
+}) {
+  return (
+    <section className="section">
+      <div className="wrap">
+        <div className="gs">
+          <Eyebrow>{eyebrowText}</Eyebrow>
+          <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>{heading}</h2>
+        </div>
+        <div className="modes">
+          {modes.map((m) => (
+            <div
+              className="mode gs"
+              key={m.num}
+              style={
+                m.featured
+                  ? { background: "rgba(61,255,135,.06)", border: "1px solid rgba(61,255,135,.2)", borderRadius: 18 }
+                  : { background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18 }
+              }
+            >
+              <div className="mode-num">{m.num}</div>
+              <div>
+                <div className="mode-title">{m.title}</div>
+                <div className="mode-desc">{m.desc}</div>
+              </div>
+              <ul className="mode-list">
+                {m.bullets.map((b) => <li key={b}>{b}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export type Proc2Stage = { day: string; title: string; desc: string; deliverValue: string; done?: boolean };
+
+export function Proc2Section({
+  eyebrowText = "What we actually do",
+  heading,
+  lead,
+  stages,
+  footText = "One partner runs all of them.",
+}: {
+  eyebrowText?: string;
+  heading: ReactNode;
+  lead: string;
+  stages: Proc2Stage[];
+  footText?: string;
+}) {
+  return (
+    <section className="proc2">
+      <div className="proc2-inner">
+        <div className="proc2-top">
+          <div className="gs">
+            <div className="proc2-eyb">{eyebrowText}</div>
+            <h2>{heading}</h2>
+          </div>
+          <p className="proc2-lead gs">{lead}</p>
+        </div>
+        <div className="proc2-tl gs">
+          <div className="proc2-line"></div>
+          <div className="proc2-row">
+            {stages.map((s, i) => (
+              <div className={`proc2-step gs${s.done ? " done" : ""}`} key={s.title}>
+                <div className="proc2-node">{String(i + 1).padStart(2, "0")}</div>
+                <div className="proc2-card">
+                  <span className="proc2-day">{s.day}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.desc}</p>
+                  <div className="proc2-deliver">
+                    <DeliverCheck />
+                    <div><span className="proc2-deliver-l">You get</span><span className="proc2-deliver-v">{s.deliverValue}</span></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="proc2-foot gs"><span className="dot"></span>Five stages. <strong>{footText}</strong></div>
+      </div>
+    </section>
+  );
+}
+
+export type GteeStat = { val: ReactNode; sup?: string; title: string; desc: string };
+
+export function GuaranteeSection({ heading, stats }: { heading: ReactNode; stats: GteeStat[] }) {
+  return (
+    <section className="section alt">
+      <div className="wrap">
+        <div className="gs">
+          <Eyebrow>What we put in writing</Eyebrow>
+          <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>{heading}</h2>
+        </div>
+        <div className="guarantee">
+          {stats.map((s) => (
+            <div className="gtee gs" key={s.title}>
+              <div className="gtee-val">{s.val}{s.sup && <sup>{s.sup}</sup>}</div>
+              <div className="gtee-title">{s.title}</div>
+              <div className="gtee-desc">{s.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function IndustriesGrid2Section({ heading, sub }: { heading: ReactNode; sub: string }) {
+  return (
+    <section className="section">
+      <div className="wrap">
+        <div className="gs" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 30, flexWrap: "wrap" }}>
+          <div>
+            <Eyebrow>Industries</Eyebrow>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>{heading}</h2>
+            <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: 16, fontWeight: 300, lineHeight: 1.7 }}>{sub}</p>
+          </div>
+          <Link href={routes.industries} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--green)", fontSize: 14, fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Explore all industries <SmallArrow /></Link>
+        </div>
+        <div className="ind-grid2">
+          {indgCards.map((c) => (
+            <Link className="ind-card2 gs" href={routes.industries} key={c.title}>
+              <span className="ico">{c.icon}</span>
+              <div className="t">{c.title}</div>
+              <div className="d">{c.desc}</div>
+              <div className="tags">{c.tags.map((t) => <span className="tag" key={t}>{t}</span>)}</div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export type TcCard = { tag: string; quote: string; initials: string; name: string; role: string };
+
+export function TestiCreamSection({ heading, sub, cards }: { heading: ReactNode; sub: string; cards: TcCard[] }) {
+  return (
+    <section className="section cream">
+      <div className="wrap">
+        <div className="gs">
+          <Eyebrow dark>Customer story</Eyebrow>
+          <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>{heading}</h2>
+          <p style={{ color: "var(--dt2)", fontSize: 16, lineHeight: 1.78, fontWeight: 300, maxWidth: 540, marginTop: 22 }}>{sub}</p>
+        </div>
+        <div className="testi-cream">
+          {cards.map((c) => (
+            <div className="tc-card gs" key={c.name}>
+              <span className="tc-tag">{c.tag}</span>
+              <p className="tc-quote">{c.quote}</p>
+              <div className="tc-author">
+                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "#030C05", fontWeight: 600, fontSize: 13, letterSpacing: ".02em" }}>{c.initials}</div>
+                <div><div className="tc-author-name">{c.name}</div><div className="tc-author-role">{c.role}</div></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export type IntakeBullet = { strong: string; rest: string };
+
+export function IntakeBandSection({ heading, lead, bullets }: { heading: ReactNode; lead: string; bullets: IntakeBullet[] }) {
+  return (
+    <section className="intake-band" id="intake">
+      <div className="intake-grid">
+        <div className="intake-l gs">
+          <Eyebrow>Hire Talent</Eyebrow>
+          <h2>{heading}</h2>
+          <p>{lead}</p>
+          <div className="intake-bullets">
+            {bullets.map((b) => (
+              <div className="intake-bullet" key={b.strong}>
+                <div className="intake-bi"><Check /></div>
+                <div><strong>{b.strong}</strong> {b.rest}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <IntakeForm />
       </div>
     </section>
   );
