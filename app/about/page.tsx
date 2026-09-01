@@ -1,16 +1,16 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { routes, offices } from "@/lib/routes";
+import OfficesSection from "@/components/OfficesSection";
 
 export const metadata: Metadata = {
-  title: "About — Rivago Infotech",
+  title: "About Rivago Infotech · Partner-led executive search since 2019",
   description:
-    "Rivago Infotech is a global staffing and recruitment firm founded in 2019 on one idea: build the firm we always wanted to hire from. No call centres. No automated outreach. No portal.",
+    "Rivago Infotech is a partner-led executive search and recruitment firm founded in 2017. Ten senior partners and a fifty-strong team across offices in Pune, the US, Canada, the UAE and India place senior operators in technology, healthcare, legal, finance and aerospace. No portals, no handoffs, no automated outreach.",
   alternates: { canonical: "https://rivagoinfotech.com/about" },
   openGraph: {
-    title: "About — Rivago Infotech",
-    description:
-      "Rivago Infotech is a global staffing and recruitment firm founded in 2019 on one idea: build the firm we always wanted to hire from.",
+    title: "About Rivago Infotech · Partner-led executive search since 2019",
+    description: "Ten senior partners across three offices placing senior operators in technology, healthcare, legal, finance and aerospace. No portals. No handoffs.",
     url: "https://rivagoinfotech.com/about",
   },
 };
@@ -62,16 +62,6 @@ const jsonLd = {
       inLanguage: "en-US",
     },
     {
-      "@type": "AboutPage",
-      "@id": "https://rivagoinfotech.com/about#webpage",
-      url: "https://rivagoinfotech.com/about",
-      name: "About — Rivago Infotech",
-      isPartOf: { "@id": "https://rivagoinfotech.com/#website" },
-      about: { "@id": "https://rivagoinfotech.com/#organization" },
-      description:
-        "The story of Rivago Infotech — founded 2019, built by recruiters who wanted a firm with one senior partner owning every search from brief to signed offer.",
-    },
-    {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: "https://rivagoinfotech.com/" },
@@ -100,62 +90,47 @@ const jsonLd = {
   ],
 };
 
-const Arrow = () => (
-  <svg className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-);
+const numbers = [
+  { v: "2017", l: "Founded in Pune, India by three ex-operators" },
+  { v: "50", l: "People across Delaware, Pune and Ontario" },
+  { v: "10", l: "Senior partners, each running one industry practice" },
+  { v: "6,400", u: "+", l: "Senior operators placed since founding · 1,847 in the last twelve months" },
+];
 
 const timeline = [
-  {
-    step: "2019 · Pune",
-    title: "Founded in Pune",
-    desc: "Three recruiters, tired of quota-driven agencies that measured success in résumés sent rather than roles filled, started Rivago as an independent search practice. Pune became the research and delivery hub from day one.",
-    side: [["Office", "Pune, India"], ["Focus", "Direct hire, tech & ops"], ["Team", "3 founding partners"]],
-  },
-  {
-    step: "2021 · Delaware",
-    title: "United States market entry",
-    desc: "Rivago incorporated in Wilmington, Delaware, and opened for North American clients. Delaware became the global headquarters — the seat of the company, not just a delivery office.",
-    side: [["Office", "Wilmington, DE"], ["Market", "United States"], ["Structure", "Global HQ"]],
-  },
-  {
-    step: "2022 · Ontario",
-    title: "Canada market entry",
-    desc: "An Ontario office opened to give Canadian clients a partner in their own time zone, with cross-border placement capability into the US already built in.",
-    side: [["Office", "Ayr, Ontario"], ["Market", "Canada"], ["Focus", "Financial services, healthcare"]],
-  },
-  {
-    step: "2023 · UAE",
-    title: "UAE becomes a served market",
-    desc: "Rivago began placing candidates into the UAE — licensing, DHA registration and right-to-work handled end to end — without opening a local office. It remains a served market, run out of the existing three offices.",
-    side: [["Coverage", "Served market"], ["Office", "None — remote-served"], ["Focus", "Healthcare, finance"]],
-  },
+  { year: "2017 · Pune", title: "Founded by three operators", desc: "Anjali Rao, Suresh Iyer and Mark Chen — who met inside Persistent Systems' India team — open the first office in Koregaon Park, Pune. First retained search: a VP of Engineering for a Pune fintech, closed in 31 days.", aside: "First-year revenue: $740K. First-year hires: nine." },
+  { year: "2019 · Delaware, US", title: "Incorporated in the United States", desc: "Rivago incorporates in Delaware and opens its first US office to run the technology practice on American soil. The firm's first $1M-revenue engagement is signed within nine months — an embedded talent partnership with a publicly-traded SaaS.", aside: "US office today: 22 people, four partners." },
+  { year: "2021 · Ontario, Canada", title: "North American expansion", desc: "The Ontario office opens to serve financial services and pre-IPO technology across Canada — the firm's second North American market and its first cross-border bench.", aside: "First Canadian engagement: a bank risk team, 12 hires." },
+  { year: "2023 · Dubai, UAE", title: "Into the Gulf", desc: "The UAE office opens in DIFC, anchored by a healthcare partnership with a Gulf hospital group expanding across the region.", aside: "First UAE engagement: 11 placements in 60 days." },
+  { year: "2025 · Dubai", title: "The fourth market", desc: "The UAE desk opens to serve the legal and finance practices in the City and the Square Mile. Three senior partners relocate from Ontario and Delaware; six new hires are made locally.", aside: "UAE desk today: served from Delaware and Pune 2026." },
+  { year: "2026 · Today", title: "50 people, four markets, ten practices", desc: "Profitable every year since founding. No external capital. Still owned and operated by the original three partners plus seven employee-partners. Still no portal.", aside: "Year-nine revenue: confidential. Profit margin: healthy." },
 ];
 
 const leadership = [
-  { initials: "MK", name: "Maya Kessler", title: "Managing Partner", bio: "Co-founder. Runs the firm's largest retained searches and sets the bar every other engagement is measured against." },
-  { initials: "DO", name: "Daniel Osei", title: "Head of Technology Practice", bio: "Seven years placing engineering and product leaders. Knows the comp bands before the client does." },
-  { initials: "RN", name: "Riya Nair", title: "Head of Finance & Banking Practice", bio: "Ex-banking recruiter who got tired of keyword matching and joined to build something slower and better." },
-  { initials: "TA", name: "Tomas Alvarez", title: "Head of Healthcare Practice", bio: "Specialises in clinical and allied-health searches across licensing-heavy, multi-jurisdiction hires." },
-  { initials: "CL", name: "Chloe Lindqvist", title: "Head of Executive Search", bio: "Runs confidential VP-to-C-suite mandates. Weekly written progress reports, no exceptions." },
-  { initials: "AV", name: "Arjun Verma", title: "Director, Delivery — Pune", bio: "Oversees the research and screening bench that every Rivago search runs through before a name reaches a client." },
-  { initials: "JB", name: "Jordan Blake", title: "Director, North America", bio: "Based in Delaware. Owns the US and Canadian client relationships and the partner-to-brief matching." },
-  { initials: "SP", name: "Sana Pillai", title: "Head of Candidate Experience", bio: "Makes sure every candidate — placed or not — gets a straight answer and a real conversation." },
+  { img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=750&fit=crop&crop=face&auto=format", name: "Anjali Rao", title: "Co-founder & Managing Partner", bio: "Fourteen years inside Persistent Systems before founding Rivago. Runs the firm's largest accounts and chairs the partner committee." },
+  { img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=750&fit=crop&crop=face&auto=format", name: "Suresh Iyer", title: "Co-founder & Partner · Operations", bio: "Owns delivery quality, the partner-development program, and the firm's internal tooling. Believed by clients to never sleep." },
+  { img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=750&fit=crop&crop=face&auto=format", name: "Mark Chen", title: "Co-founder & Partner · US", bio: "Heads the US office in Delaware. Joined the GTM practice in 2019; now runs the firm's relationships with venture-backed scale-ups across North America." },
+  { img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&h=750&fit=crop&crop=face&auto=format", name: "Dr. Lila Mehta", title: "Partner · Healthcare practice", bio: "MD, MPH. Twelve years at Mount Sinai before Genentech; seven years at Rivago. Personally referenced every clinical placement above Director." },
+  { img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=750&fit=crop&crop=face&auto=format", name: "Eleanor Pritchard", title: "Partner · Legal practice · Delaware", bio: "Yale JD, NY and CA bars. Six years at Cleary Gottlieb, four years in-house at Stripe before joining Rivago to build the legal practice in 2023." },
+  { img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&h=750&fit=crop&crop=face&auto=format", name: "Cmdr. James O'Sullivan", title: "Partner · Aerospace & defence", bio: "Twenty years US Navy (retired). Joined Rivago in 2019 to establish the cleared-talent program. Active TS/SCI." },
+  { img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=750&fit=crop&crop=face&auto=format", name: "Aisha Karim", title: "Partner · People & HR practice", bio: "SHRM-SCP. Senior People leadership at Airbnb and Unilever before joining Rivago to build the firm's CHRO-search business in 2017." },
+  { img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=750&fit=crop&crop=face&auto=format", name: "Maya Rasmussen", title: "Partner · GTM practice", bio: "Seven years at Salesforce and Datadog in commercial leadership. Joined Rivago in 2019 to run the GTM practice across all client markets." },
 ];
 
 const principles = [
-  { title: "Quality over volume", desc: "We would rather send three candidates who are right than thirty who are close. No quotas on outreach, calls or submissions — ever." },
-  { title: "Specificity over hype", desc: "Every claim on this site is a number we can defend on a first call. We don't sell buzzwords, and we don't oversell a search we can't win." },
-  { title: "Ownership not handoffs", desc: "One senior partner owns a search from brief to signed offer. No relay through account managers, no junior researcher fronting the relationship." },
-  { title: "Discretion as default", desc: "Confidential searches, sensitive replacements and off-limits lists are handled as standard practice, not a paid add-on." },
+  { title: "Quality over", em: "volume.", desc: "Five candidates who fit, not fifty who do not. We would rather decline a brief than spam your inbox." },
+  { title: "Specificity over", em: "hype.", desc: "Numbers, denominators, dates. No “world-class” talk. We earn the right to a superlative by delivering." },
+  { title: "Ownership, not", em: "handoffs.", desc: "One partner from brief to placement. They took it. They run it. They stand behind the recommendation." },
+  { title: "Discretion as", em: "default.", desc: "Confidential as standard. NDAs on request. We share with one client at a time, with your permission." },
 ];
 
 const refusals = [
-  { title: "No CV without consent", desc: "A candidate's résumé never goes to a client without their explicit, per-role sign-off. Every time." },
-  { title: "No scorecard-free searches", desc: "We don't start sourcing until the brief has an agreed scorecard. Guessing at fit wastes everyone's time." },
-  { title: "No handoffs", desc: "The partner who takes the intake call is the partner who negotiates the offer. We don't relay you through a queue." },
-  { title: "No poaching from client benches", desc: "Once a company is a client, their current team is off-limits for search — no exceptions, no fine print." },
-  { title: "Honest about un-winnable briefs", desc: "If the comp, timeline or scope won't clear the market, we say so on the first call instead of stringing out a search." },
-  { title: "Not a portal", desc: "No self-serve job board, no automated matching engine standing in for a person. A partner reads every brief." },
+  { title: "We won't submit a CV", titleBreak: "without", em: "explicit consent.", desc: "Every candidate sees the brief, hears who the company is, and signs off on the submission. We've lost mandates over this. We've never lost a candidate's trust over it." },
+  { title: "We won't run a search", titleBreak: "with", em: "no scorecard.", desc: "If we can't agree on what “good” looks like in writing, the search doesn't start. It's the single most reliable predictor of a sticky placement, and the easiest discipline to skip." },
+  { title: "We won't hand off", titleBreak: "to a", em: "coordinator.", desc: "The partner who took the brief runs the search. The partner who runs the search closes the offer. The partner who closed the offer checks in at month twelve. One name. One person. Always." },
+  { title: "We won't poach", titleBreak: "from", em: "our own placements.", desc: "Twelve months off-limits as standard on retained engagements; twenty-four on senior-most retained searches. The promise that lets clients tell us things they wouldn't tell anyone else." },
+  { title: "We won't take an engagement", titleBreak: "we", em: "can't deliver.", desc: "If a brief is unwinnable — wrong comp band, wrong location, wrong timeline — we'll say so on the first call and lose the work. Nobody benefits from a six-month search that ends in nothing." },
+  { title: "We won't bill", titleBreak: "for", em: "a portal.", desc: "Every fee we charge buys a person on the line. If you wanted software you would have bought software. We're aware of the irony." },
 ];
 
 export default function AboutPage() {
@@ -163,75 +138,62 @@ export default function AboutPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* HERO */}
-      <header className="page-hero">
-        <div className="page-hero-inner">
-          <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>About</span></div>
-          <div className="eyebrow ew-light gs" style={{ marginBottom: 28, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>About Rivago</div>
-          <h1 className="gs">A staffing firm built around <em>one quiet idea.</em></h1>
-          <p className="lead gs">No call centres. No automated outreach. No portal. Just senior partners who own a search from brief to signed offer, and refuse to hand it off.</p>
+      {/* EDITORIAL HERO */}
+      <header className="about-hero">
+        <div className="about-hero-inner">
+          <div className="eyebrow ew-light gs" style={{ marginBottom: 36, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>About Rivago</div>
+          <h1 className="gs">A search firm built around<br /><em>one quiet idea</em> — that<br />hiring a person is not a transaction.</h1>
+          <p className="lede gs">Founded in 2017 in Pune by three operators who had spent the prior decade hiring inside the orgs they now serve. Today, fifty people across three offices — headquartered in Delaware, with teams in Pune and Ontario, led by ten senior partners. No call centres. No automated outreach. No portal.</p>
         </div>
       </header>
 
-      {/* OUR STORY */}
-      <section className="section cream">
-        <div className="wrap">
-          <div style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: 64, alignItems: "start" }}>
-            <div className="gs">
-              <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Our story</div>
-              <h2 className="section-h2" style={{ color: "var(--dt)" }}>A different kind of<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>recruitment firm.</em></h2>
-            </div>
-            <div className="gs">
-              <p style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: "clamp(28px,3.4vw,42px)", lineHeight: 1.32, color: "#0A7040", marginBottom: 32, letterSpacing: "-.01em" }}>
-                &ldquo;We wanted to build the firm we had always wanted to hire from.&rdquo;
-              </p>
-              <p style={{ fontSize: 16, color: "var(--dt2)", lineHeight: 1.8, marginBottom: 18 }}>
-                Rivago&apos;s founders spent years inside volume agencies — quota-driven, keyword-matching, measuring success by résumés sent rather than roles filled well. The candidates they cared about got lost in a queue. The clients got a different account manager every quarter. Nobody stayed on the line long enough to actually own an outcome.
-              </p>
-              <p style={{ fontSize: 16, color: "var(--dt2)", lineHeight: 1.8, marginBottom: 18 }}>
-                So in 2019 they built something slower and better on purpose: one senior partner per search, a scorecard agreed before sourcing starts, and a hard rule against handing a relationship off to whoever picks up the phone next.
-              </p>
-              <p style={{ fontSize: 16, color: "var(--dt2)", lineHeight: 1.8 }}>
-                Rivago has grown into a firm with three offices and clients across four markets. The idea hasn&apos;t changed — build the firm we would have wanted to hire from, and refuse to become the agency we used to work for.
-              </p>
-            </div>
+      {/* OUR STORY / BELIEF */}
+      <section className="belief gs">
+        <div className="belief-inner">
+          <div>
+            <div className="belief-label">Our story</div>
+            <h2 style={{ marginTop: 18, fontSize: "clamp(28px,3.4vw,44px)", lineHeight: 1.08, letterSpacing: "-.024em", fontWeight: 400, color: "var(--dt)", maxWidth: 320 }}>A different kind of <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>recruitment firm.</em></h2>
+          </div>
+          <div className="belief-body">
+            <p style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--dt)" }}>&ldquo;We wanted to build the firm we had always wanted to hire from. Honest about the brief. Slow to send the wrong candidate. Fast for the right one.&rdquo;</p>
+            <p>The search industry built itself around <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>volume.</em> More résumés. More portals. More &ldquo;candidates per requisition.&rdquo; We came up inside it and watched the work degrade for both sides — hiring managers drowning in unscreened profiles, candidates ignored after their fourth round.</p>
+            <p>So we built Rivago around the opposite premise. Fewer searches per partner. <strong>Longer relationships.</strong> Honest briefs in both directions. A single person on the line — who learns your business and stays with you for the next role, and the one after that.</p>
+            <p>It costs more per hire. It also <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>sticks.</em> Ninety-one percent of the people we place are still in seat twelve months later.</p>
           </div>
         </div>
       </section>
 
-      {/* BY THE NUMBERS */}
-      <section className="section">
-        <div className="wrap">
-          <div className="gs">
+      {/* NUMBERS */}
+      <section className="numbers gs">
+        <div className="numbers-inner">
+          <div style={{ marginBottom: 56 }}>
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>By the numbers</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Years of placed <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>hires.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>Nearly a decade of <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>placed hires.</em></h2>
           </div>
-          <div className="guarantee">
-            <div className="gtee gs"><div className="gtee-val">2019</div><div className="gtee-title">Founded</div><div className="gtee-desc">Started in Pune by three recruiters done with quota-driven agencies.</div></div>
-            <div className="gtee gs"><div className="gtee-val">50<sup>+</sup></div><div className="gtee-title">People</div><div className="gtee-desc">Partners, researchers and delivery staff across three offices.</div></div>
-            <div className="gtee gs"><div className="gtee-val">12</div><div className="gtee-title">Senior partners</div><div className="gtee-desc">Every search is owned by one of them, start to finish.</div></div>
-            <div className="gtee gs"><div className="gtee-val">500<sup>+</sup></div><div className="gtee-title">Placements</div><div className="gtee-desc">Across technology, finance, healthcare, legal and operations.</div></div>
+          <div className="numbers-card">
+            {numbers.map((n) => (
+              <div className="num-cell" key={n.l}>
+                <div className="num-v">{n.v}{n.u && <span className="u">{n.u}</span>}</div>
+                <div className="num-l">{n.l}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* TIMELINE */}
-      <section className="section alt">
-        <div className="wrap">
+      <section className="timeline">
+        <div className="timeline-inner">
           <div className="gs">
-            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>How we got here</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Four milestones,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>no detours.</em></h2>
+            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Seven years, abbreviated</div>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>The decisions that <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>made the firm.</em></h2>
           </div>
-          <div className="proc-deep">
+          <div className="tl-rows">
             {timeline.map((t) => (
-              <div className="pd-row gs" key={t.step}>
-                <div className="pd-step">{t.step}</div>
-                <div className="pd-main"><h3>{t.title}</h3><p>{t.desc}</p></div>
-                <div className="pd-side">
-                  {t.side.map(([k, v]) => (
-                    <div className="pd-side-row" key={k}><span>{k}</span><span className="v">{v}</span></div>
-                  ))}
-                </div>
+              <div className="tl-row gs" key={t.year}>
+                <div className="tl-year">{t.year}</div>
+                <div className="tl-main"><h3>{t.title}</h3><p>{t.desc}</p></div>
+                <div className="tl-aside">{t.aside}</div>
               </div>
             ))}
           </div>
@@ -239,55 +201,60 @@ export default function AboutPage() {
       </section>
 
       {/* LEADERSHIP */}
-      <section className="section">
-        <div className="wrap">
+      <section className="leaders" id="leadership">
+        <div className="leaders-inner">
           <div className="gs">
-            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Leadership</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>The partners who <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>own the searches.</em></h2>
+            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Leadership · founding partners + practice heads</div>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>The eight people whose<br />names go on the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>first call.</em></h2>
           </div>
-          <div className="why-grid">
+          <div className="leaders-grid">
             {leadership.map((p) => (
-              <div className="why-card gs" key={p.initials}>
-                <div style={{ width: 52, height: 52, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "#030C05", fontWeight: 600, fontSize: 15, letterSpacing: ".02em", marginBottom: 20 }}>{p.initials}</div>
-                <div className="why-title">{p.name}</div>
-                <div style={{ fontSize: 12.5, color: "var(--green)", fontWeight: 500, marginBottom: 10 }}>{p.title}</div>
-                <div className="why-desc">{p.bio}</div>
+              <div className="leader gs" key={p.name}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <div className="leader-photo"><img src={p.img} alt="" loading="lazy" decoding="async" /></div>
+                <div>
+                  <div className="leader-name">{p.name}</div>
+                  <div className="leader-title">{p.title}</div>
+                  <div className="leader-bio">{p.bio}</div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* WHAT WE BELIEVE */}
-      <section className="section" style={{ background: "linear-gradient(180deg, rgba(61,255,135,.08), rgba(61,255,135,.015) 60%, var(--bg) 100%)" }}>
-        <div className="wrap">
+      {/* WHAT WE BELIEVE — 4 PRINCIPLES */}
+      <section className="values">
+        <div className="values-inner">
           <div className="gs">
-            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we believe</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Four principles.<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>No exceptions.</em></h2>
+            <div className="eyebrow-plain gs" style={{ marginBottom: 20 }}>What we believe</div>
+            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720, marginBottom: 0 }}>Four principles.<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>No exceptions.</em></h2>
           </div>
-          <div className="why-grid" style={{ gridTemplateColumns: "repeat(4,1fr)" }}>
-            {principles.map((p) => (
-              <div className="why-card gs" key={p.title}>
-                <div className="why-title">{p.title}</div>
-                <div className="why-desc">{p.desc}</div>
+          <div className="values-grid" style={{ gridTemplateColumns: "repeat(4,1fr)" }}>
+            {principles.map((v, i) => (
+              <div className="value gs" key={v.title}>
+                <div className="value-num">{String(i + 1).padStart(2, "0")}</div>
+                <h3>{v.title} <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>{v.em}</em></h3>
+                <p>{v.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* WHAT WE WON'T DO */}
-      <section className="section cream">
-        <div className="wrap">
+      {/* WHAT WE WON'T DO — 6 REFUSALS */}
+      <section className="values" style={{ background: "var(--cream)" }}>
+        <div className="values-inner">
           <div className="gs">
-            <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we won&apos;t do</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 760 }}>Our values, mostly stated as<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>the things we refuse.</em></h2>
+            <div className="eyebrow" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we won&apos;t do</div>
+            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720, marginBottom: 0 }}>Our values, mostly stated<br />as the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>things we refuse.</em></h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginTop: 36 }}>
-            {refusals.map((r) => (
-              <div className="gs" style={{ background: "#fff", border: "1px solid rgba(0,0,0,.07)", borderRadius: 18, padding: 28 }} key={r.title}>
-                <div style={{ fontSize: 15, fontWeight: 600, color: "var(--dt)", marginBottom: 10, letterSpacing: "-.01em" }}>{r.title}</div>
-                <div style={{ fontSize: 13.5, color: "var(--dt3)", lineHeight: 1.65 }}>{r.desc}</div>
+          <div className="values-grid" style={{ background: "rgba(11,19,17,.10)", border: "1px solid rgba(11,19,17,.10)" }}>
+            {refusals.map((v, i) => (
+              <div className="value gs" key={v.title} style={{ background: "var(--cream)" }}>
+                <div className="value-num">{String(i + 1).padStart(2, "0")}</div>
+                <h3>{v.title}<br />{v.titleBreak} <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>{v.em}</em></h3>
+                <p>{v.desc}</p>
               </div>
             ))}
           </div>
@@ -295,33 +262,20 @@ export default function AboutPage() {
       </section>
 
       {/* OFFICES */}
-      <section className="section">
-        <div className="wrap">
-          <div className="gs">
-            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Office locations</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Three offices.<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>One standard.</em></h2>
-          </div>
-          <div className="why-grid">
-            {offices.map((o) => (
-              <div className="why-card gs" key={o.id}>
-                <div className="why-title">{o.name}</div>
-                <div style={{ fontSize: 13.5, color: "var(--text2)", lineHeight: 1.7, marginBottom: 14 }}>
-                  {o.street}<br />{o.city}, {o.region} {o.postal}<br />{o.country === "US" ? "United States" : o.country === "CA" ? "Canada" : "India"}
-                </div>
-                <div className="why-desc">{o.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <OfficesSection />
 
       {/* CLOSING CTA */}
-      <section className="clients-cta gs">
-        <h2>Work with us — start a conversation<br />with a <em>partner, not a portal.</em></h2>
-        <p>Whether you&apos;re hiring or looking for your next role, the first reply comes from a person who owns the outcome.</p>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <button className="btn btn-cream-prim" data-hire>I&apos;m hiring · submit a brief <Arrow /></button>
-          <Link className="btn btn-cream-ghost" href={routes.searchJobs}>I&apos;m a candidate · see roles</Link>
+      <section className="careers" id="get-in-touch">
+        <div className="careers-inner gs">
+          <div className="eyebrow ew-light" style={{ margin: "0 auto 28px", display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Work with us</div>
+          <h2>Start a conversation with<br />a <em>partner</em> — not a portal.</h2>
+          <p>Whether you&apos;re building a team or weighing your next move, you&apos;ll talk to a senior partner who knows your market. No intake bots, no call queues, no résumé black holes.</p>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+            <Link className="btn btn-prim" href={`${routes.hireTalent}#intake`} data-hire>Submit a Brief
+              <svg className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </Link>
+            <Link className="btn btn-ghost" href={routes.contactUs}>Contact us</Link>
+          </div>
         </div>
       </section>
     </>
