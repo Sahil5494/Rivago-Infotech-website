@@ -3,148 +3,134 @@ import type { Metadata } from "next";
 import { routes } from "@/lib/routes";
 import {
   Arrow,
-  Crumbs,
-  Eyebrow,
   breadcrumbJsonLd,
-  WhyRivagoSection,
-  ProcessSection,
-  IndustriesSection,
-  StorySection,
+  SwhySection,
+  ModesSection,
+  Proc2Section,
+  IndustriesGrid2Section,
+  TestiCreamSection,
+  IntakeBandSection,
+  FaqSection,
   CtaSection,
-  IconPartner,
-  IconClock,
-  IconShieldCheck,
-  IconScaleFlex,
-  IconTeam,
-  IconTarget,
-  IconLightning,
-  IconDoc,
-  IconMoney,
 } from "../_components/shared";
 
 export const metadata: Metadata = {
-  title: "Temporary Staffing — Rivago Infotech",
+  title: "Temporary Staffing — On-Demand & Seasonal | Rivago Infotech",
   description:
-    "On-demand cover for peaks, seasonal spikes and leave. Rivago deploys temporary staff in 24–72 hours, scaled up or down as work changes, with zero long-term commitment.",
+    "On-demand professionals for peaks, seasonal spikes and leave cover. Vetted, compliant and deployed in 24–72 hours — scale your team up or down as the work changes, with zero long-term commitment.",
   alternates: { canonical: "https://rivagoinfotech.com/services/temporary-staffing" },
   openGraph: {
-    title: "Temporary Staffing — Rivago Infotech",
-    description: "On-demand cover for peaks, seasonal spikes and leave. Deployed in 24–72 hours, scaled up or down as work changes.",
+    title: "Temporary Staffing — On-Demand & Seasonal | Rivago Infotech",
+    description: "On-demand professionals for peaks, seasonal spikes and leave cover, deployed in 24–72 hours with zero long-term commitment.",
     url: "https://rivagoinfotech.com/services/temporary-staffing",
   },
 };
 
 const crumbs = [{ label: "Home", href: routes.home }, { label: "Services", href: routes.services }, { label: "Temporary Staffing" }];
 
-const stages = [
-  { step: "Stage 01 · Hour 0", title: "Calibrate", desc: "A short call to confirm the role, headcount, shift pattern and how long the cover is needed. For surge staffing we skip anything that isn't essential to getting people on site fast.", side: [["Owner", "Lead partner"], ["Output", "Confirmed headcount"], ["Time", "~20 min"]] as [string, string][] },
-  { step: "Stage 02 · Hour 0–12", title: "Map", desc: "We pull directly from our active, pre-vetted temporary bench — people already screened, referenced and available on short notice — rather than opening a fresh search.", side: [["Source", "Active bench"], ["Availability check", "Same day"], ["Fresh sourcing", "Rare"]] as [string, string][] },
-  { step: "Stage 03 · Hour 12–24", title: "Screen", desc: "A compressed but real screen — identity, right-to-work and role-specific competency confirmed before anyone is deployed, even under a tight clock.", side: [["Screens conducted", "Per candidate"], ["Right-to-work", "Verified"], ["Turnaround", "<24h"]] as [string, string][] },
-  { step: "Stage 04 · Hour 24–48", title: "Panel", desc: "For most temporary roles this is a confirmation call, not a formal interview loop — you're approving the match, not re-running our screening.", side: [["Approval turn", "<4h"], ["Format", "Confirm or swap"], ["Decision", "Same day"]] as [string, string][] },
-  { step: "Stage 05 · Hour 24–72", title: "Close", desc: "Onboarding paperwork, shift confirmation and site logistics handled by Rivago. Staff arrive ready to work, and headcount flexes up or down as your need changes — no minimum term.", side: [["Deployed in", "24–72h"], ["Commitment", "Zero long-term"], ["Scale", "Up or down"]] as [string, string][] },
-];
-
-const whatWeDo = [
-  { title: "Rapid deployment", desc: "A pre-vetted bench means staff can be on site or online in as little as 24 hours — not a fresh search from zero.", icon: <IconLightning /> },
-  { title: "Flexible headcount", desc: "Scale from two people to twenty and back down again as the peak passes — no minimum term, no penalty for scaling down.", icon: <IconScaleFlex /> },
-  { title: "Shift & rota coverage", desc: "Multi-shift, weekend and overnight coverage coordinated across your site without you managing rota logistics yourself.", icon: <IconTarget /> },
-  { title: "Payroll, run by us", desc: "We employ the temporary staff and run payroll — a single invoice on your side, no time-sheet chasing.", icon: <IconMoney /> },
-  { title: "Compliance handled", desc: "Right-to-work, statutory entitlements and local labour law handled in every market we deploy into.", icon: <IconShieldCheck /> },
-  { title: "Fast re-supply", desc: "If someone doesn't show or isn't the right fit, we swap them — usually same day, without restarting intake.", icon: <IconClock /> },
-  { title: "Onboarding logistics", desc: "Site access, equipment and induction coordinated ahead of the first shift, so staff arrive genuinely ready.", icon: <IconTeam /> },
-  { title: "Zero long-term commitment", desc: "No minimum engagement length. When the surge ends, the engagement ends — nothing to unwind or renegotiate.", icon: <IconDoc /> },
-];
+const svgIco = (path: string) => (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" dangerouslySetInnerHTML={{ __html: path }} />
+);
 
 export default function TemporaryStaffingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }} />
 
-      <header className="page-hero">
-        <div className="page-hero-inner">
-          <Crumbs items={crumbs} />
-          <Eyebrow style={{ margin: "0 auto 28px" }}>Temporary Staffing · On-demand cover · No long-term commitment</Eyebrow>
+      <header className="svh">
+        <div className="svh-inner">
+          <div className="svh-eyb gs"><span className="dot"></span>Temporary Staffing · On-demand &amp; seasonal</div>
           <h1 className="gs">Cover the surge.<br /><em>Skip the scramble.</em></h1>
-          <p className="lead gs">On-demand cover for peaks, seasonal spikes and leave. We deploy in 24–72 hours, scale headcount up or down as work changes, and carry zero long-term commitment on your side.</p>
-          <div className="gs" style={{ marginTop: 32, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <button className="btn btn-prim" data-hire>Get cover fast <Arrow /></button>
+          <p className="gs">On-demand professionals for peaks, seasonal spikes and leave cover. Vetted, compliant and deployed in 24–72 hours — scale your team up or down as the work changes, with zero long-term commitment.</p>
+          <div className="svh-cta gs">
+            <Link className="btn btn-prim" href="#intake">Staff up now <Arrow /></Link>
             <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
-          </div>
-          <div className="page-hero-meta gs">
-            <div className="page-hero-meta-row"><span>Deployment window</span><strong>24–72 hours</strong></div>
-            <div className="page-hero-meta-row"><span>Minimum commitment</span><strong>None</strong></div>
-            <div className="page-hero-meta-row"><span>Placements delivered</span><strong>500+</strong></div>
-            <div className="page-hero-meta-row"><span>Client retention</span><strong>87%</strong></div>
           </div>
         </div>
       </header>
 
-      <WhyRivagoSection
-        heading={<>Built for the week you<br />didn&apos;t <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>plan for.</em></>}
-        stats={[
-          { val: "24", sup: "–72h", title: "Deployment window", desc: "From confirmed headcount to staff on site or online." },
-          { val: "0", sup: undefined, title: "Long-term commitment", desc: "No minimum term — scale up or down as work changes." },
-          { val: "500", sup: "+", title: "Placements delivered", desc: "Across temporary, contract and permanent engagements." },
-          { val: "1", sup: undefined, title: "Partner on the line", desc: "One name owns the engagement, start to finish." },
+      <SwhySection
+        heading={<>Capacity the day<br />you <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>actually need it.</em></>}
+        lead="Most agencies scramble when you call. We do the opposite — a standing pool of pre-vetted workers, one partner who knows your operation, and payroll, scheduling and compliance already handled so people are productive on arrival."
+        numsr={[
+          { v: "24–72", sup: "h", title: "To deployment", desc: "From confirmed brief to workers on the floor." },
+          { v: "100", sup: "%", title: "Compliance handled", desc: "Payroll, tax and right-to-work, on us." },
+          { v: "±", title: "Scale up or down", desc: "Flex headcount as the workload changes." },
+          { v: "600", sup: "+", title: "Temporary placements", desc: "Across four markets, to date." },
         ]}
         cards={[
-          { title: "One named partner", desc: "The same partner manages the whole engagement — no relay between a sourcing team and a payroll team.", icon: <IconPartner /> },
-          { title: "Scale without penalty", desc: "Bring on two people or twenty, then scale down the moment the peak passes — no notice period, no penalty.", icon: <IconScaleFlex /> },
-          { title: "Fast without cutting corners", desc: "A pre-vetted bench means genuine speed — every temp is still right-to-work checked and role-screened.", icon: <IconClock /> },
-          { title: "Compliant by default", desc: "Statutory entitlements and local labour law handled in every market, without you tracking the detail.", icon: <IconShieldCheck /> },
+          { title: "Deployed in 24–72 hours", desc: "A standing, pre-vetted pool means we can put people on the floor the same week you call — sometimes the same day.", icon: svgIco('<circle cx="11" cy="11" r="8" stroke="#3DFF87" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round"/>') },
+          { title: "Payroll & compliance, on us", desc: "We're the employer of record for every temp — payroll, tax, insurance, right-to-work and scheduling all handled in-country.", icon: svgIco('<rect x="3" y="6" width="16" height="12" rx="2" stroke="#3DFF87" stroke-width="1.5"/><path d="M3 10h16M7 3v3" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round"/>') },
+          { title: "Scale up or down instantly", desc: "Ramp for a peak, cover a shift, wind down after the season — flex headcount as demand moves, with no long-term commitment.", icon: svgIco('<path d="M4 11h6l-2-2M4 11l4 2M18 11h-6l2-2M18 11l-4 2" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>') },
+          { title: "Reliable, vetted people", desc: "Right-to-work, references and skills checked before anyone is offered — plus a bench of proven repeat workers you can request by name.", icon: svgIco('<path d="M11 2l2.2 4.4 4.8.7-3.5 3.4.8 4.8L11 13l-4.3 2.3.8-4.8L4 7.1l4.8-.7z" stroke="#3DFF87" stroke-width="1.5" stroke-linejoin="round"/>') },
         ]}
       />
 
-      <ProcessSection
-        heading={<>A temporary fill runs five stages.<br />Hours, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>not weeks.</em></>}
-        stages={stages}
+      <ModesSection
+        eyebrowText="How temporary staffing works"
+        heading={<>Three ways to add<br />on-demand <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>temporary capacity.</em></>}
+        modes={[
+          { num: "01", title: "Temporary cover", desc: "Fill a gap fast — sickness, parental leave, a sudden departure or a short project. A vetted professional in the seat within 24–72 hours, for as long as you need them.", bullets: ["Deployed in 24–72 hours", "Day, week or month-long assignments", "Payroll & compliance fully handled", "End the assignment anytime"] },
+          { num: "02", title: "Seasonal & peak staffing", desc: "Ramp a whole crew for a busy season, a product launch or a demand spike — then wind it down cleanly. Volume hiring, pre-planned, with the same proven faces year on year.", bullets: ["Volume ramp, planned in advance", "Request proven repeat workers by name", "Scale down cleanly when it's over", "One invoice, one point of contact"], featured: true },
+          { num: "03", title: "On-site managed team", desc: "For high-volume or shift-based operations, we place an on-site coordinator alongside the workers — managing scheduling, attendance, swaps and quality so you don't have to.", bullets: ["On-site supervision included", "Shift scheduling & attendance managed", "Same-day replacement swaps", "Volume & multi-site coverage"] },
+        ]}
       />
 
-      <section className="section">
-        <div className="wrap">
-          <div className="gs">
-            <Eyebrow>What we actually do</Eyebrow>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Everything that happens<br />before <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>hour one.</em></h2>
-          </div>
-          <div className="ind-grid gs" style={{ marginTop: 44 }}>
-            {whatWeDo.map((w) => (
-              <div className="ind-card" key={w.title}>
-                <div className="why-icon" style={{ marginBottom: 14 }}>{w.icon}</div>
-                <div className="ind-title">{w.title}</div>
-                <div className="ind-desc" style={{ marginBottom: 0 }}>{w.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <IndustriesSection
-        eyebrowText="Industries"
-        heading={<>Surge cover,<br />in <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>every sector.</em></>}
-        sub="Peaks look different in every industry — your partner already knows what a good temp looks like in yours."
-        alt
+      <Proc2Section
+        heading={<>A temporary requirement runs five stages.<br />None of them are <em>a portal.</em></>}
+        lead="From the phone call to workers on site in days, not weeks — with same-day cover behind every placement."
+        stages={[
+          { day: "Hours 0–4", title: "Take the requirement", desc: "Headcount, shift pattern, site and start time captured on one call. No forms, no portal, no delay.", deliverValue: "Confirmed requirement" },
+          { day: "Day 1", title: "Match from the bench", desc: "We draw on temps already screened, referenced and cleared to work — so there is nothing left to chase.", deliverValue: "Named workers confirmed" },
+          { day: "Day 1–2", title: "Clear compliance", desc: "Right-to-work, certifications, site inductions and any licence checks completed and filed.", deliverValue: "Audit-ready compliance file" },
+          { day: "Day 2–3", title: "Deploy on site", desc: "Workers arrive briefed on the role and the site, with a named coordinator reachable on the day.", deliverValue: "Boots on the ground" },
+          { day: "Ongoing", title: "Flex and cover", desc: "Scale up, scale down or swap in same-day replacements — all consolidated into one weekly invoice.", deliverValue: "Same-day cover · one invoice", done: true },
+        ]}
       />
 
-      <StorySection
-        eyebrowText="Client story"
-        heading={<>A holiday peak, staffed<br />in <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>under 48 hours.</em></>}
-        tag="Operations · US"
-        quote="Our seasonal peak came earlier than forecast and we were short fifteen people with two days' notice. Rivago had staff on site inside forty-eight hours — screened, briefed and ready. We scaled back down two weeks later without a single awkward conversation."
-        initials="RS"
-        name="Rachel S."
-        role="Operations Director · US logistics company"
-        metrics={[
-          { val: "15", label: "Staff deployed in 48 hours" },
-          { val: "0", label: "Long-term commitment required" },
-          { val: "2wk", label: "Peak coverage, scaled down cleanly" },
+      <IndustriesGrid2Section
+        heading={<>Specialist partners,<br />aligned to <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>your sector.</em></>}
+        sub="Every Rivago partner runs one practice. They know the shift patterns, the certifications each site demands, and which temps turn up on time in your sector."
+      />
+
+      <TestiCreamSection
+        heading={<>Temporary teams,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>in their own words.</em></>}
+        sub="Plain English from ops leads, site managers and workforce planners who scaled with Rivago temps in the last eighteen months. No pseudonyms. No doctored quotes."
+        cards={[
+          { tag: "US · Retail", quote: "Black Friday nearly broke us the year before. Rivago ramped forty temps across three sites in seventy-two hours — same crew we'd rated the prior peak. Every shift covered, off payroll by January.", initials: "RP", name: "Ryan P.", role: "Workforce Planner · US retail group" },
+          { tag: "Canada · Healthcare", quote: "A norovirus outbreak took out a third of our floor staff overnight. Rivago had eight cleared support workers on-site the next morning — right-to-work and references already done. It saved the ward.", initials: "PR", name: "Priya R.", role: "Operations Lead · Ontario care provider" },
+          { tag: "UAE · Events", quote: "We run large events on impossible timelines. Rivago fields on-site managed crews — hospitality, logistics, front-of-house — with their own supervisor. Visas and payroll handled. We just run the show.", initials: "SM", name: "Samira M.", role: "Event Operations Director · Dubai" },
+        ]}
+      />
+
+      <IntakeBandSection
+        heading={<>Tell us what you need.<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic" }}>We&apos;ll do the rest.</em></>}
+        lead="Three minutes. A senior partner reads every request within the hour and confirms headcount, shift pattern and start before anyone is deployed."
+        bullets={[
+          { strong: "Deployed in 24–72 hours.", rest: "Vetted workers on-site or online and productive, fast." },
+          { strong: "Payroll & compliance on us.", rest: "We're the employer of record — tax, insurance and right-to-work handled." },
+          { strong: "Scale up or down anytime.", rest: "Ramp for a peak, cover a shift, wind down cleanly — no long-term commitment." },
+          { strong: "Same-day replacement.", rest: "If a worker can't attend, we swap them the same day at no extra cost." },
+        ]}
+      />
+
+      <FaqSection
+        heading={<>Temporary staffing, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>the practical detail.</em></>}
+        items={[
+          { q: "How fast is “fast”, realistically?", a: "Two to three days for most requirements, and same-week for urgent cover. That is achievable because the bench is pre-screened, referenced and compliance-cleared before you call — there is no screening cycle to run once the requirement lands." },
+          { q: "What happens when someone does not turn up?", a: "You get same-day replacement cover. Every placement has a named coordinator reachable on the day, and a cleared bench behind it so a substitute does not need a fresh screening cycle. No-shows are tracked against each worker and repeat offenders come off the bench." },
+          { q: "Who is liable if a temporary worker is injured on our site?", a: "Rivago carries employer liability and workers compensation insurance for every temporary worker, and certificates are available on request. Site-specific safety induction is your responsibility as the controller of the premises; we document that it was completed before the worker starts." },
+          { q: "Can we scale down without redundancy exposure?", a: "Yes — that is the core commercial reason to use temporary staffing. Workers are employed by Rivago, so reducing headcount is a change to the assignment, not a redundancy process. There is no notice liability and no termination cost to you." },
+          { q: "How are overtime, holiday and public holidays charged?", a: "At the statutory or agreed premium rate for the jurisdiction, shown separately on the invoice. Holiday accrual is included in the rate and itemised, so there is no year-end true-up and no surprise cost when a worker takes leave." },
+          { q: "Do we get the same workers back for repeat peaks?", a: "Wherever possible, yes, and we track it deliberately. Returning workers already know your site, your systems and your standards, which removes the induction cost. We keep a named roster per client for seasonal and recurring demand." },
         ]}
       />
 
       <CtaSection
-        heading={<>Tell us the gap.<br /><em>We&apos;ll have people ready fast.</em></>}
-        sub="Send the headcount and timeline — a partner comes back same day with availability and a start plan."
-        primary={{ label: "Get cover fast", hire: true }}
-        secondary={{ label: "See case studies", href: `${routes.resources}?view=cs` }}
+        heading={<>Tell us who you need.<br /><em>We&apos;ll be back tomorrow.</em></>}
+        sub="A 30-minute call with a partner — not a portal — and a staffing plan with confirmed availability in your inbox the same day."
+        primary={{ label: "Book a scoping call", href: "#intake" }}
+        secondary={{ label: "Read case studies", href: `${routes.resources}?view=cs` }}
       />
     </>
   );

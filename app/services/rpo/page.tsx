@@ -4,93 +4,38 @@ import LogoMarquee from "@/components/LogoMarquee";
 import { routes } from "@/lib/routes";
 import {
   Arrow,
-  Crumbs,
-  Eyebrow,
+  SmallArrow,
   breadcrumbJsonLd,
-  WhyRivagoSection,
-  ProcessSection,
-  IndustriesSection,
-  StorySection,
-  InsightsSection,
+  SwhySection,
+  Proc2Section,
+  IndustriesGrid2Section,
   FaqSection,
   CtaSection,
-  IconPartner,
-  IconBadge,
-  IconChart,
-  IconShieldCheck,
 } from "../_components/shared";
+import RpoModelsTabs from "./RpoModelsTabs";
 
 export const metadata: Metadata = {
-  title: "Recruitment Process Outsourcing (RPO) — Rivago Infotech",
+  title: "RPO — Recruitment Process Outsourcing | Rivago Infotech",
   description:
-    "Your recruiting engine, running at full speed. Rivago runs all or part of your talent function as an embedded team — your brand, your workflow, our capacity.",
+    "Rivago RPO embeds a dedicated recruiting team inside your business — owning talent strategy, sourcing, screening, onboarding and reporting. Enterprise, project-based and hybrid RPO models across the US, Canada, the UAE and India.",
   alternates: { canonical: "https://rivagoinfotech.com/services/rpo" },
   openGraph: {
-    title: "Recruitment Process Outsourcing (RPO) — Rivago Infotech",
-    description: "Your recruiting engine, running at full speed. We run all or part of your talent function as an embedded team.",
+    title: "RPO — Recruitment Process Outsourcing | Rivago Infotech",
+    description: "An embedded recruiting team that owns talent strategy, sourcing, screening, onboarding and reporting — enterprise, project-based and hybrid RPO models.",
     url: "https://rivagoinfotech.com/services/rpo",
   },
 };
 
-const crumbs = [{ label: "Home", href: routes.home }, { label: "Services", href: routes.services }, { label: "RPO" }];
+const crumbs = [{ label: "Home", href: routes.home }, { label: "Services", href: routes.services }, { label: "Recruitment Process Outsourcing" }];
 
-const traditionalSteps = ["Source", "Screen", "Place"];
-const rivagoSteps = ["Source", "Screen", "Onboard", "Track", "Report"];
+const svgIco = (path: string) => (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" dangerouslySetInnerHTML={{ __html: path }} />
+);
 
-const rpoModels = [
-  {
-    num: "01",
-    title: "Enterprise RPO",
-    rows: [
-      ["Best for", "Companies hiring 50+ FTEs/year on an ongoing basis"],
-      ["Scope", "All recruiting activity for in-scope roles"],
-      ["Duration", "Multi-year program, renewable annually"],
-      ["Pricing", "Fixed-fee or per-hire, scoped to volume & outcomes"],
-    ],
-  },
-  {
-    num: "02",
-    title: "Project RPO",
-    rows: [
-      ["Best for", "Time-bounded initiatives with defined hire counts"],
-      ["Scope", "Specific roles or business unit, defined upfront"],
-      ["Duration", "3–18 months"],
-      ["Pricing", "Project fee tied to milestones/hire targets"],
-    ],
-  },
-  {
-    num: "03",
-    title: "Hybrid RPO",
-    rows: [
-      ["Best for", "Mature programs with steady hiring + periodic surges"],
-      ["Scope", "Baseline + flexible surge capacity, per quarter"],
-      ["Duration", "Multi-year with surge windows"],
-      ["Pricing", "Baseline fee + per-hire surge pricing"],
-    ],
-  },
-];
-
-const stages = [
-  { step: "Phase 01", title: "Strategy", desc: "We map your hiring plan against headcount targets, seasonality and budget — then design the sourcing channels, scorecards and SLAs the program will run on.", side: [["Owner", "Program lead"], ["Output", "Signed program plan"], ["Setup time", "2–4 weeks"]] as [string, string][] },
-  { step: "Phase 02", title: "Screening", desc: "An embedded team screens every candidate against your scorecards, under your brand — candidates experience Rivago as an extension of your own TA function, not an outside agency.", side: [["Team size", "Scoped to volume"], ["Brand", "Yours, throughout"], ["SLA", "Defined per role"]] as [string, string][] },
-  { step: "Phase 03", title: "Selection", desc: "Structured interview loops, offer management and negotiation run inside your existing ATS and workflow — no separate system for your hiring managers to learn.", side: [["ATS", "Your system"], ["Offer support", "Included"], ["Handoff", "Seamless to HR"]] as [string, string][] },
-  { step: "Phase 04", title: "Performance", desc: "We track quality-of-hire and time-to-fill against the SLAs agreed in strategy — not just volume delivered, but whether the hires are actually working out.", side: [["Metrics tracked", "Quality + speed"], ["Review cadence", "Monthly"], ["Adjustments", "In-flight"]] as [string, string][] },
-  { step: "Phase 05", title: "Reporting", desc: "A written program report goes to your leadership — pipeline health, cost-per-hire, retention and forecast for the next period. Full visibility, not a black box.", side: [["Cadence", "Monthly + QBR"], ["Format", "Written + dashboard"], ["Audience", "TA & executive leadership"]] as [string, string][] },
-];
-
-const articles = [
-  { title: "When RPO makes sense — and when it doesn't", dek: "A practical read on the volume threshold where an embedded program starts paying for itself." },
-  { title: "Enterprise, project or hybrid: choosing an RPO model", dek: "What actually determines the right structure for your hiring plan." },
-  { title: "The metrics an RPO program should report — every month", dek: "Beyond time-to-fill: the numbers that tell you the program is actually working." },
-];
-
-const faqItems = [
-  { q: "How is RPO different from just using a recruiting agency?", a: "An agency works transactionally, role by role. RPO embeds a Rivago team inside your talent function — running under your brand, inside your ATS, against your SLAs — for all or part of your hiring. It's built for volume and continuity, not one-off searches." },
-  { q: "Which RPO model is right for us?", a: "Enterprise RPO fits ongoing high-volume hiring (50+ FTEs/year). Project RPO fits a time-bounded initiative with a defined hire count. Hybrid fits a steady baseline with periodic surges. We'll recommend one on the strategy call based on your actual hiring plan, not push the most expensive option." },
-  { q: "Do candidates know they're talking to Rivago or to us?", a: "Whichever you prefer — most programs run fully under your employer brand, with candidates experiencing Rivago as an extension of your own team. Some clients prefer transparency about the partnership. We'll match your preference." },
-  { q: "How is RPO priced?", a: "Enterprise programs run on a fixed-fee or per-hire structure scoped to volume. Project RPO is a project fee tied to milestones. Hybrid combines a baseline fee with per-hire surge pricing. Every structure is agreed and documented before the program starts." },
-  { q: "What reporting do we actually get?", a: "A monthly written report covering pipeline health, cost-per-hire, time-to-fill and early retention signals, plus a quarterly business review with program leadership — not a self-serve dashboard you have to interpret yourself." },
-  { q: "How long does it take to stand up a program?", a: "Typically 2–4 weeks from signed program plan to the team being fully embedded and screening candidates — faster for a narrowly scoped project RPO, longer for a full enterprise program with multiple hiring managers to onboard." },
+const insights = [
+  { gradient: "linear-gradient(135deg,#0F2A1B,#0A7040)", cat: "Playbook", title: "When RPO beats an in-house TA team", desc: "The three signals that tell you it is time to outsource the function, not just the roles.", meta: "7 min read" },
+  { gradient: "linear-gradient(135deg,#12332A,#00A882)", cat: "Metrics", title: "The four numbers every RPO should report", desc: "Fill time, cost per hire, quality of hire and retention — and how to hold a partner to them.", meta: "6 min read" },
+  { gradient: "linear-gradient(135deg,#0B1F14,#3DFF87)", cat: "Scaling", title: "Standing up a hiring engine in three weeks", desc: "How an embedded pod goes from kickoff to first placements without breaking your brand.", meta: "9 min read" },
 ];
 
 export default function RpoPage() {
@@ -98,152 +43,172 @@ export default function RpoPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }} />
 
-      <header className="page-hero">
-        <div className="page-hero-inner">
-          <Crumbs items={crumbs} />
-          <Eyebrow style={{ margin: "0 auto 28px" }}>RPO · Recruitment Process Outsourcing · Embedded team</Eyebrow>
-          <h1 className="gs">Your recruiting engine,<br />running at <em>full speed.</em></h1>
-          <p className="lead gs">We run all or part of your talent function as an embedded team — your brand, your workflow, our capacity. Built for companies whose hiring plan has outgrown ad-hoc recruiting.</p>
-          <div className="gs" style={{ marginTop: 32, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <button className="btn btn-prim" data-hire>Book a strategy call <Arrow /></button>
+      <header className="svh">
+        <div className="svh-inner">
+          <div className="svh-eyb gs"><span className="dot"></span>Recruitment Process Outsourcing</div>
+          <h1 className="gs">Your recruiting engine,<br /><em>running at full speed.</em></h1>
+          <p className="gs">We embed a dedicated recruiting team inside your business — owning strategy, sourcing, screening, onboarding and reporting. Enterprise hiring power, measurable results, none of the overhead.</p>
+          <div className="svh-cta gs">
+            <Link className="btn btn-prim" href="#intake">Book a strategy call <Arrow /></Link>
             <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
-          </div>
-          <div className="page-hero-meta gs">
-            <div className="page-hero-meta-row"><span>Faster time-to-fill</span><strong>40%</strong></div>
-            <div className="page-hero-meta-row"><span>Lower cost-per-hire</span><strong>30%</strong></div>
-            <div className="page-hero-meta-row"><span>Client satisfaction</span><strong>92%</strong></div>
-            <div className="page-hero-meta-row"><span>Placements delivered</span><strong>500+</strong></div>
           </div>
         </div>
       </header>
 
-      {/* CLIENTS */}
       <section className="clients-sec">
         <div className="clients-label">Recruiting teams we run for</div>
         <LogoMarquee />
       </section>
 
-      {/* WHY RIVAGO FOR RPO */}
-      <WhyRivagoSection
-        eyebrowText="Why Rivago for RPO"
-        heading={<>Built for talent teams that<br />outgrew <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>ad-hoc recruiting.</em></>}
-        stats={[
-          { val: "40", sup: "%", title: "Faster time-to-fill", desc: "Versus ad-hoc recruiting across comparable roles." },
-          { val: "30", sup: "%", title: "Lower cost-per-hire", desc: "Program efficiency versus a per-role agency model." },
-          { val: "92", sup: "%", title: "Client satisfaction", desc: "Average CSAT across active RPO programs." },
-          { val: "500", sup: "+", title: "Placements delivered", desc: "Across embedded and project RPO programs." },
+      <SwhySection
+        heading={<>An RPO partner that owns<br />the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>outcome.</em></>}
+        lead="Others hand you coordinators and a dashboard. We embed senior recruiters who own the whole lifecycle — and report on what matters: fill time, cost per hire, and who is still there a year on."
+        numsr={[
+          { v: "40", sup: "%", title: "Faster time-to-fill", desc: "Versus in-house baseline, first six months." },
+          { v: "30", sup: "%", title: "Lower cost-per-hire", desc: "Fewer agency fees, one accountable team." },
+          { v: "92", sup: "%", title: "Hiring-manager CSAT", desc: "Measured every quarter, acted on." },
+          { v: "600", sup: "+", title: "Placements to date", desc: "Across four markets and ten practices." },
         ]}
         cards={[
-          { title: "Runs under your brand", desc: "Candidates experience an extension of your own TA function — not an outside agency working a transaction.", icon: <IconPartner /> },
-          { title: "Inside your workflow", desc: "We work inside your existing ATS and hiring process, so hiring managers never have to learn a new system.", icon: <IconBadge /> },
-          { title: "Reported, not opaque", desc: "Monthly written reporting and quarterly business reviews — full visibility into pipeline health and cost.", icon: <IconChart /> },
-          { title: "Accountable to SLAs", desc: "Time-to-fill and quality-of-hire targets are set upfront and tracked against every month — not just claimed at the pitch.", icon: <IconShieldCheck /> },
+          { title: "We own the program", desc: "Strategy, pipeline and delivery run through one accountable Rivago team — not a queue of tickets and a self-serve tool.", icon: svgIco('<path d="M3 8l8-4 8 4v6l-8 4-8-4z" stroke="#3DFF87" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 10v3l4 2 4-2v-3" stroke="#3DFF87" stroke-width="1.4" stroke-linejoin="round"/>') },
+          { title: "Senior recruiters, your brand", desc: "Embedded specialists work as an extension of your team — your careers page, your voice, your candidate experience.", icon: svgIco('<path d="M11 2l2.2 4.4 4.8.7-3.5 3.4.8 4.8L11 13l-4.3 2.3.8-4.8L4 7.1l4.8-.7z" stroke="#3DFF87" stroke-width="1.4" stroke-linejoin="round"/>') },
+          { title: "Measured on retention", desc: "Accountability doesn't end at the offer. We track first-90-days, retention and hiring-manager satisfaction — and optimise against them.", icon: svgIco('<path d="M3 18h16M5 18V9M9 18V6M13 18v-8M17 18V8" stroke="#3DFF87" stroke-width="1.4" stroke-linecap="round"/>') },
+          { title: "Scale up or down", desc: "Ramp for a growth phase, wind down after it. Enterprise, project or hybrid — the model flexes to your hiring plan.", icon: svgIco('<path d="M4 11h6l-2-2M4 11l4 2M18 11h-6l2-2M18 11l-4 2" stroke="#3DFF87" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>') },
         ]}
       />
 
       {/* WHAT IS RPO */}
-      <section className="section alt">
+      <section className="section">
         <div className="wrap">
           <div className="gs">
-            <Eyebrow>What is RPO?</Eyebrow>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Recruiting that doesn&apos;t<br />stop at <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>placement.</em></h2>
+            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What is RPO?</div>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Not another agency.<br />An <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>owned program.</em></h2>
+            <p style={{ color: "var(--text2)", maxWidth: 560, marginTop: 18, fontSize: 16, fontWeight: 300, lineHeight: 1.7 }}>Agencies sell candidates. RPO gives you the whole hiring engine — and owns the outcome.</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))", gap: 20, marginTop: 44 }}>
-            <div className="why-card gs">
-              <div style={{ fontSize: 11, fontWeight: 600, color: "var(--text3)", textTransform: "uppercase", letterSpacing: ".08em", marginBottom: 18 }}>Traditional recruiting</div>
-              {traditionalSteps.map((s, i) => (
-                <div key={s} style={{ display: "flex", alignItems: "center", gap: 14, padding: "14px 0", borderBottom: i < traditionalSteps.length - 1 ? "1px solid var(--border)" : "none" }}>
-                  <span style={{ width: 26, height: 26, borderRadius: "50%", background: "rgba(255,255,255,.06)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "var(--text3)", flexShrink: 0 }}>{i + 1}</span>
-                  <span style={{ fontSize: 15, color: "var(--text2)" }}>{s}</span>
-                </div>
-              ))}
-              <p style={{ marginTop: 20, fontSize: 13, color: "var(--text3)", lineHeight: 1.65 }}>Ends at placement. No visibility into performance, retention or program cost after the hire starts.</p>
+          <div className="wir-grid">
+            <div className="wir-card gs">
+              <span className="wir-tag">Traditional staffing</span>
+              <h3>You run the pipeline.</h3>
+              <div className="wir-flow"><span className="wir-step">Source</span><span className="wir-arrow">→</span><span className="wir-step">Screen</span><span className="wir-arrow">→</span><span className="wir-step">Place</span></div>
+              <p>Your team owns the strategy and runs the pipeline. A staffing partner sources and places the individual roles you bring them — and the relationship ends at the offer letter.</p>
             </div>
-            <div className="why-card gs" style={{ borderColor: "rgba(61,255,135,.25)", background: "rgba(61,255,135,.05)" }}>
-              <div style={{ fontSize: 11, fontWeight: 600, color: "var(--green)", textTransform: "uppercase", letterSpacing: ".08em", marginBottom: 18 }}>The Rivago RPO model</div>
-              {rivagoSteps.map((s, i) => (
-                <div key={s} style={{ display: "flex", alignItems: "center", gap: 14, padding: "12px 0", borderBottom: i < rivagoSteps.length - 1 ? "1px solid rgba(61,255,135,.15)" : "none" }}>
-                  <span style={{ width: 26, height: 26, borderRadius: "50%", background: "rgba(61,255,135,.14)", border: "1px solid rgba(61,255,135,.3)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "var(--green)", flexShrink: 0 }}>{i + 1}</span>
-                  <span style={{ fontSize: 15, color: "var(--text)" }}>{s}</span>
-                </div>
-              ))}
-              <p style={{ marginTop: 20, fontSize: 13, color: "var(--text2)", lineHeight: 1.65 }}>Extends past placement into onboarding, performance tracking and monthly reporting back to your leadership.</p>
+            <div className="wir-card hi gs">
+              <span className="wir-tag">RPO with Rivago</span>
+              <h3>We run the program.</h3>
+              <div className="wir-flow"><span className="wir-step">Source</span><span className="wir-arrow">→</span><span className="wir-step">Screen</span><span className="wir-arrow">→</span><span className="wir-step">Onboard</span><span className="wir-arrow">→</span><span className="wir-step">Track</span><span className="wir-arrow">→</span><span className="wir-step">Report</span></div>
+              <p>We own the strategy and run the program end to end. <strong>Accountability runs through retention and performance, not just offers</strong> — with weekly reporting on the metrics that matter.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* RPO MODELS */}
-      <section className="section">
+      <section className="section alt">
         <div className="wrap">
           <div className="gs">
-            <Eyebrow>RPO models</Eyebrow>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Three ways to<br />structure a <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>program.</em></h2>
+            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>RPO models</div>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>One partner,<br />three <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>ways to engage.</em></h2>
           </div>
-          <div className="modes" style={{ marginTop: 44 }}>
-            {rpoModels.map((m) => (
-              <div className="mode gs" style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18 }} key={m.num}>
-                <div className="mode-num">{m.num}</div>
-                <div className="mode-title">{m.title}</div>
-                <div className="pd-side" style={{ marginTop: "auto", paddingTop: 18, borderTop: "1px solid var(--border)" }}>
-                  {m.rows.map(([k, v]) => (
-                    <div className="pd-side-row" key={k}><span>{k}</span><span className="v" style={{ textAlign: "right", maxWidth: 170 }}>{v}</span></div>
-                  ))}
-                </div>
+          <RpoModelsTabs />
+        </div>
+      </section>
+
+      <Proc2Section
+        eyebrowText="How it works"
+        heading={<>How an RPO program<br />actually <em>runs.</em></>}
+        lead="Five stages, one accountable team. Enterprise, Project and Hybrid all run the same lifecycle, with the same rigor."
+        footText="One team owns all of them."
+        stages={[
+          { day: "Ongoing", title: "Strategy & sourcing", desc: "Talent strategy, market mapping, and the recruiter network behind every fill.", deliverValue: "Talent strategy" },
+          { day: "Per role", title: "Screening & assessment", desc: "Industry-specialized vetting, structured interviews, references, and skills checks.", deliverValue: "Vetted shortlists" },
+          { day: "Offer stage", title: "Selection & onboarding", desc: "Offer support, hiring-manager handoff, and ramp tracking through the first 30 days.", deliverValue: "Onboarded hires" },
+          { day: "First 90 days", title: "Performance tracking", desc: "First-90-days check-ins, retention monitoring, and hiring-manager satisfaction surveys.", deliverValue: "Retention data" },
+          { day: "Weekly", title: "Reporting & optimization", desc: "Weekly reporting on fill time, cost per hire, and quality of hire — with continuous tuning.", deliverValue: "Weekly reports", done: true },
+        ]}
+      />
+
+      <IndustriesGrid2Section
+        heading={<>RPO programs across<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>every sector we serve.</em></>}
+        sub="Recruiters who live in your market — they know the titles, the pay bands and where the talent hides."
+      />
+
+      {/* CUSTOMER STORY */}
+      <section className="section cream">
+        <div className="wrap">
+          <div className="gs">
+            <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Customer story</div>
+            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>A recruiting engine,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>handed over in weeks.</em></h2>
+          </div>
+          <div className="testi-cream" style={{ gridTemplateColumns: "1fr 1fr 1fr" }}>
+            <div className="tc-card gs" style={{ gridColumn: "span 2" }}>
+              <span className="tc-tag">US · Technology · Enterprise RPO</span>
+              <p className="tc-quote" style={{ fontSize: 22 }}>We were scaling from 200 to 600 people and our four-person TA team was drowning. Rivago stood up an embedded pod in three weeks, took over the whole funnel, and cut our time-to-fill by <em>nearly half</em> — while our internal team finally got to work on employer brand instead of firefighting.</p>
+              <div className="tc-author">
+                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "#030C05", fontWeight: 600, fontSize: 13, letterSpacing: ".02em" }}>DK</div>
+                <div><div className="tc-author-name">Daniel K.</div><div className="tc-author-role">VP People · US technology scale-up</div></div>
               </div>
+            </div>
+            <div className="tc-card gs" style={{ justifyContent: "center", gap: 26, background: "var(--bg)", borderColor: "var(--border)" }}>
+              <div><div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: 52, color: "var(--green)", lineHeight: 1, letterSpacing: "-.03em" }}>240</div><div style={{ fontSize: 13, color: "var(--text2)", marginTop: 8, fontWeight: 300 }}>hires in 12 months</div></div>
+              <div><div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: 52, color: "var(--green)", lineHeight: 1, letterSpacing: "-.03em" }}>44<span style={{ fontSize: 22 }}>%</span></div><div style={{ fontSize: 13, color: "var(--text2)", marginTop: 8, fontWeight: 300 }}>faster time-to-fill</div></div>
+              <div><div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: 52, color: "var(--green)", lineHeight: 1, letterSpacing: "-.03em" }}>3 wks</div><div style={{ fontSize: 13, color: "var(--text2)", marginTop: 8, fontWeight: 300 }}>to a live embedded team</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* INSIGHTS */}
+      <section className="section alt">
+        <div className="wrap">
+          <div className="gs" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 30, flexWrap: "wrap" }}>
+            <div>
+              <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Insights</div>
+              <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>RPO, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>in practice.</em></h2>
+            </div>
+            <Link href={routes.resources} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--green)", fontSize: 14, fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Read the blog <SmallArrow /></Link>
+          </div>
+          <div className="ins-grid">
+            {insights.map((p) => (
+              <Link className="ins-card gs" href={routes.resources} key={p.title}>
+                <div className="ins-img" style={{ background: p.gradient }}><span className="ins-cat">{p.cat}</span></div>
+                <div className="ins-body"><h3>{p.title}</h3><p>{p.desc}</p><div className="ins-meta">{p.meta}</div></div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <ProcessSection
-        eyebrowText="How it works"
-        heading={<>Five phases keep the<br />program <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>honest.</em></>}
-        stages={stages}
-      />
-
-      {/* INDUSTRIES */}
-      <IndustriesSection
-        eyebrowText="Industries"
-        heading={<>RPO programs,<br />in <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>every sector.</em></>}
-        sub="Volume hiring looks different in every industry — your program lead has run one in yours before."
-      />
-
-      {/* CUSTOMER STORY */}
-      <StorySection
-        eyebrowText="Client story"
-        heading={<>Scaling from 40 to 90,<br />ahead of a <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>funding round.</em></>}
-        tag="Technology · US"
-        quote="We needed to more than double headcount in nine months without our internal TA team burning out. Rivago's embedded team ran under our brand, inside our ATS — candidates never knew they were talking to an outside program. We hit the number two weeks early."
-        initials="SK"
-        name="Sanjay K."
-        role="VP People · US Series C SaaS company"
-        metrics={[
-          { val: "50", label: "Hires delivered in 9 months" },
-          { val: "92%", label: "Hiring-manager CSAT" },
-          { val: "2wk", label: "Ahead of program schedule" },
+      {/* FAQ (general) */}
+      <FaqSection
+        heading={<>Questions we get on<br />the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>first call.</em></>}
+        items={[
+          { q: "What is the difference between RPO and using a staffing agency?", a: "A staffing agency fills the individual roles you bring them and the relationship ends at the offer. RPO outsources the recruiting function itself — Rivago owns talent strategy, sourcing, screening, onboarding and reporting as an embedded extension of your team, and is measured on retention and cost per hire, not just placements." },
+          { q: "How quickly can an RPO program be stood up?", a: "A dedicated embedded pod is typically live within two to three weeks of kickoff — including ATS access, employer-brand alignment and a calibrated hiring plan. Project RPO surges follow the same timeline; enterprise programs phase in function by function." },
+          { q: "Do your recruiters work under our brand?", a: "Yes. Embedded recruiters operate as an extension of your team — your careers page, your email domain where you want it, your candidate experience. To candidates, it feels like your in-house function, backed by Rivago capacity." },
+          { q: "Can we scale the program up or down?", a: "That is the point of the model. Ramp capacity for a growth phase or a launch, then wind down cleanly when the plan changes. Hybrid RPO flexes month to month; project RPO is scoped to a fixed surge with a defined end." },
+          { q: "How is RPO priced?", a: "Enterprise RPO is a monthly managed-service fee scaled to program size; project RPO is a fixed price against an agreed scope and timeline; hybrid is a flexible monthly rate for the capacity you use. No per-placement agency fees stacking on top." },
+          { q: "What happens to our existing TA team?", a: "We augment, not replace. Most clients keep their in-house team on strategy and employer brand while Rivago takes the sourcing and delivery load — or fills a specific function they cannot crack. The split is agreed up front." },
         ]}
       />
 
-      {/* INSIGHTS */}
-      <InsightsSection
-        heading={<>Insights on<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>running RPO well.</em></>}
-        articles={articles}
-      />
-
-      {/* FAQ */}
+      {/* FAQ (contractual detail) */}
       <FaqSection
-        heading={<>RPO, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>answered.</em></>}
-        items={faqItems}
+        heading={<>RPO, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>without the sales gloss.</em></>}
+        items={[
+          { q: "At what hiring volume does RPO actually beat contingent recruiting?", a: "Roughly fifty or more hires a year on an ongoing basis, or any time-boxed project with a defined hire count. Below that, contingent direct hire is usually cheaper and we will say so. We would rather scope you into the right model than sell a programme you do not need." },
+          { q: "How is RPO priced, and what is included?", a: "Enterprise RPO is a fixed monthly fee scoped to volume and outcomes. Project RPO is a project fee tied to milestones and hire targets. Hybrid is a baseline fee plus per-hire surge pricing. All include sourcing, screening, scheduling, offer management and reporting — technology and assessment licences are quoted separately if you want them." },
+          { q: "Do we lose control of hiring decisions or our employer brand?", a: "No. Every hiring decision remains yours, and the team works under your brand, in your ATS, following your process. What transfers is accountability for the metrics: time-to-fill, cost per hire, quality of hire and retention — reported weekly, not quarterly." },
+          { q: "What service levels do you commit to contractually?", a: "Time-to-shortlist, time-to-fill, submittal-to-interview ratio, offer-accept rate and hiring-manager satisfaction. Targets are agreed during scoping, written into the agreement, and reported against every week. Where we miss, the report says so." },
+          { q: "What happens to the programme if we want to exit?", a: "There is a defined transition-out period with a documented handover: live requisitions, candidate pipelines, process documentation and market intelligence transfer to you. Notice terms are symmetrical, and we do not hold your pipeline hostage." },
+          { q: "Can RPO cover more than one country?", a: "Yes. Rivago runs programmes across the United States, Canada, the UAE and India on a single contract, with local partners handling in-country compensation, regulation and work authorisation, and one central team reporting to you." },
+        ]}
       />
 
-      {/* CTA */}
       <CtaSection
         heading={<>Bring us the program.<br /><em>We&apos;ll bring the team that owns it.</em></>}
-        sub="Send your hiring plan — a program lead comes back with a scoped model, timeline and SLAs within one business day."
+        sub="A 30-minute strategy call with a senior partner — we review your hiring plan, propose an RPO model and quote a realistic ramp. No cost, no obligation."
         primary={{ label: "Book a strategy call", hire: true }}
-        secondary={{ label: "See case studies", href: `${routes.resources}?view=cs` }}
+        secondary={{ label: "Read case studies", href: `${routes.resources}?view=cs` }}
       />
     </>
   );
