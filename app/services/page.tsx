@@ -2,141 +2,52 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import LogoMarquee from "@/components/LogoMarquee";
 import ServicesRolesTabs from "./ServicesRolesTabs";
-import { routes, servicesList } from "@/lib/routes";
+import { routes } from "@/lib/routes";
+import { Arrow, breadcrumbJsonLd, FaqSection } from "./_components/shared";
 import {
-  Arrow,
-  Crumbs,
-  Eyebrow,
-  breadcrumbJsonLd,
-  ProcessSection,
-  IndustriesSection,
-  StorySection,
-  InsightsSection,
-  FaqSection,
-  CtaSection,
-  IconPartner,
-  IconBadge,
-  IconClock,
-  IconShieldCheck,
-  IconBuilding,
-} from "./_components/shared";
+  engagementModels,
+  whyNumsr,
+  whyCards,
+  proc2Stages,
+  gdStats,
+  gdHubs,
+  indgCards,
+  perspectives,
+  servicesFaqItems,
+} from "./data";
 
 export const metadata: Metadata = {
-  title: "Staffing Solutions — Rivago Infotech",
+  title: "Staffing Solutions & Recruitment Services — Rivago Infotech",
   description:
-    "Eight ways to put a Rivago partner on your search — direct hire, contract, temporary staffing, RPO, executive search, interim leadership and Employer of Record. 48-hour shortlist, one partner, no portal.",
+    "Every way Rivago Infotech staffs a role: direct hire, contract, temporary staffing, RPO, executive search, interim leadership and Employer of Record. One senior partner per search, 48-hour shortlists, across the US, Canada, UAE and India.",
   alternates: { canonical: "https://rivagoinfotech.com/services" },
   openGraph: {
-    title: "Staffing Solutions — Rivago Infotech",
+    title: "Staffing Solutions & Recruitment Services — Rivago Infotech",
     description:
-      "Eight ways to put a Rivago partner on your search — direct hire, contract, temporary staffing, RPO, executive search, interim leadership and Employer of Record.",
+      "Every way Rivago Infotech staffs a role: direct hire, contract, temporary staffing, RPO, executive search, interim leadership and Employer of Record.",
     url: "https://rivagoinfotech.com/services",
   },
 };
 
 const crumbs = [{ label: "Home", href: routes.home }, { label: "Services" }];
 
-const engagementModels = [
-  {
-    num: "01",
-    title: "Contingent",
-    desc: "The default for most roles — Manager to Senior individual contributor. No retainer, no upfront fee. You pay when a hire sticks past the guarantee window, not on activity.",
-    bullets: ["No upfront fee", "48-hour median shortlist", "90-day replacement guarantee", "Best for Manager–Senior IC roles"],
-    tag: null,
-  },
-  {
-    num: "02",
-    title: "Retained",
-    desc: "For Director and VP roles where fit matters more than speed. A dedicated partner and research analyst embed for the full cycle — brief, mapping, longlist, shortlist, offer.",
-    bullets: ["Dedicated partner + research analyst", "Weekly written progress reports", "12-month replacement guarantee", "Salary benchmarking included"],
-    tag: "Most popular",
-  },
-  {
-    num: "03",
-    title: "Embedded",
-    desc: "For teams scaling 10+ hires across a quarter. A Rivago partner sits inside your TA function, runs your pipeline end to end, and owns the outcome as if they were on staff.",
-    bullets: ["4–12 week sprints, renewable", "Full ATS + scorecard integration", "Fixed monthly retainer", "Weekly hiring-manager standups"],
-    tag: null,
-  },
-];
+const Check = () => (
+  <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
+    <path d="M1 6l4 4L13 1" stroke="#0A7040" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
-const processStages = [
-  {
-    step: "Stage 01 · Day 0–2",
-    title: "Calibrate",
-    desc: "A working session with the hiring manager and the partner who will run the search. We pressure-test the JD, agree the scorecard, and set the off-limits list before a single profile is sourced.",
-    side: [["Owner", "Lead partner"], ["Output", "Signed JD + scorecard"], ["Time", "~60 min"]] as [string, string][],
-  },
-  {
-    step: "Stage 02 · Day 2–10",
-    title: "Map",
-    desc: "Research builds a longlist of 40–80 names from competitor rosters, alumni networks and the Rivago private database. Outreach is bespoke per candidate — no copy-paste sequences.",
-    side: [["Longlist size", "40–80"], ["Reply rate", "38% avg"], ["Source mix", "Passive 80%"]] as [string, string][],
-  },
-  {
-    step: "Stage 03 · Day 10–18",
-    title: "Screen",
-    desc: "Structured interviews with every respondent, against the same scorecard your panel will use. First calibration profiles land by day 12; the shortlist hardens by day 18.",
-    side: [["Screens conducted", "18–24"], ["Submitted profiles", "5–7"], ["Reference depth", "3 per finalist"]] as [string, string][],
-  },
-  {
-    step: "Stage 04 · Day 18–28",
-    title: "Panel",
-    desc: "We project-manage the interview loop — scheduling, debriefs, calibration between rounds. A written brief lands 24 hours before each interview, a synthesis the morning after.",
-    side: [["Loops scheduled", "3–5 finalists"], ["Debrief turn", "<24h"], ["Drop-off rate", "<6%"]] as [string, string][],
-  },
-  {
-    step: "Stage 05 · Day 28–35 +",
-    title: "Close",
-    desc: "We negotiate the offer, handle counter-offer defence, and stay close through the guarantee window. If anything breaks, we restart the search — no charge, no re-negotiation.",
-    side: [["Counter rate", "11%"], ["90-day stick", "97%"], ["12-mo retention", "93%"]] as [string, string][],
-  },
-];
+const DeliverCheck = () => (
+  <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+    <path d="M3 8.5l3.2 3.2L13 5" stroke="#3DFF87" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
-const whyCream = [
-  { title: "One named partner", desc: "The same senior partner from brief to signed offer. No handoffs to BD, no relays through account managers, no junior researchers running the candidate calls.", icon: <IconPartner /> },
-  { title: "Industry specialists", desc: "Your brief goes to a partner who has recruited in your sector for years — not a generalist working a shared queue. They know the comp bands and the people who aren't on LinkedIn.", icon: <IconBadge /> },
-  { title: "Fast without cutting corners", desc: "A 48-hour median shortlist, every time. Every candidate is fully screened against your scorecard before reaching your inbox — never keyword-matched, never machine-parsed.", icon: <IconClock /> },
-  { title: "Confidential by default", desc: "NDA on request, senior and sensitive searches handled as standard. Nothing about your search reaches anyone who doesn't need to know — not even internally.", icon: <IconShieldCheck /> },
-];
-
-const deliveryHubs = [
-  { city: "Pune", country: "Maharashtra, India", role: "HQ", desc: "Registered headquarters and central research, sourcing and delivery hub for every market we serve." },
-  { city: "Delaware", country: "Wilmington, USA", role: "Global HQ & NA delivery", desc: "Global operating headquarters. US delivery, compliance and the account teams for our North American clients." },
-  { city: "Ontario", country: "Ayr, Canada", role: "Canadian coverage", desc: "Dedicated Canadian market coverage — cross-border placements, CAD comp benchmarking and local compliance." },
-];
-
-const articles = [
-  { title: "How to write a brief that gets a 48-hour shortlist", dek: "The five inputs every search needs before we source a single candidate." },
-  { title: "Contingent vs. retained: which model actually fits your role", dek: "A practical breakdown of when each engagement pays for itself — and when it doesn't." },
-  { title: "What a replacement guarantee should — and shouldn't — cover", dek: "The fine print most staffing firms hope you won't ask about." },
-];
-
-const faqItems = [
-  {
-    q: "Which engagement model fits my hiring need?",
-    a: "Contingent suits Manager to Senior individual-contributor roles where speed matters and you'd rather not commit to a retainer. Retained fits Director and VP searches where fit outweighs speed. Embedded is for teams hiring 10+ roles in a quarter who want a partner running the whole pipeline. Tell us the role and volume on the strategy call and we'll recommend one — no pressure toward the more expensive option.",
-  },
-  {
-    q: "How is pricing structured across services?",
-    a: "Direct hire, contract and temporary staffing are contingent — a placement fee, paid on start date, no retainer. Retained executive search carries a staged retainer against the search. RPO and Employer of Record are priced against scope and volume, agreed before anything starts. Every engagement gets a written fee schedule before you sign anything.",
-  },
-  {
-    q: "What's a realistic timeline for filling a role?",
-    a: "Our median time to first shortlist is 48 hours from a signed brief. Contract talent typically starts within 5–7 days, temporary cover in 24–72 hours. Executive search and RPO programs run on a longer, staged timeline — we'll give you a specific day-by-day plan on the intake call, not a vague estimate.",
-  },
-  {
-    q: "What guarantees do you offer?",
-    a: "Contingent and temporary placements carry a 90-day replacement guarantee. Retained executive search carries 12 months. Employer of Record engagements are covered by our compliance guarantee across every market we operate in. If a placement doesn't work out inside the window, we restart the search at no additional fee.",
-  },
-  {
-    q: "Is my search kept confidential?",
-    a: "Yes, as standard — not as an add-on. NDAs are available on request, and senior or sensitive replacement searches are run under strict confidentiality by default. Your brief goes to one named partner; it is never posted, never shared with a wider team, and never visible on a portal.",
-  },
-  {
-    q: "Which industries do you cover?",
-    a: "Technology, Finance & Banking, Healthcare, Legal, Sales & Marketing, Operations, Human Resources and Engineering — across the United States, Canada, the UAE and India. Every brief goes to a partner who specialises in that sector, not a generalist working every industry at once.",
-  },
+const whyIcons = [
+  <svg key="0" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l2.2 4.4 4.8.7-3.5 3.4.8 4.8L11 13l-4.3 2.3.8-4.8L4 7.1l4.8-.7z" stroke="#3DFF87" strokeWidth="1.5" strokeLinejoin="round" /></svg>,
+  <svg key="1" width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="9" cy="9" r="6" stroke="#3DFF87" strokeWidth="1.5" /><path d="M14 14l5 5" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" /></svg>,
+  <svg key="2" width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="7" cy="8" r="3" stroke="#3DFF87" strokeWidth="1.5" /><circle cx="15" cy="8" r="3" stroke="#3DFF87" strokeWidth="1.5" /><path d="M2 18c0-2.5 2-4.5 4.5-4.5M20 18c0-2.5-2-4.5-4.5-4.5" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" /></svg>,
+  <svg key="3" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 19s-7-4.2-7-9a4 4 0 017-2.6A4 4 0 0118 10c0 4.8-7 9-7 9z" stroke="#3DFF87" strokeWidth="1.5" strokeLinejoin="round" /></svg>,
 ];
 
 export default function ServicesHubPage() {
@@ -145,70 +56,71 @@ export default function ServicesHubPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }} />
 
       {/* HERO */}
-      <header className="page-hero">
-        <div className="page-hero-inner wide">
-          <Crumbs items={crumbs} />
-          <Eyebrow style={{ margin: "0 auto 28px" }}>Staffing Solutions · How Rivago engages</Eyebrow>
-          <h1 className="gs">Eight ways to put a<br /><em>partner</em> on your search.</h1>
-          <p className="lead gs">Permanent, contract, temporary or embedded — one senior partner owns every engagement end to end. No call centres. No automated outreach. No portal.</p>
-          <div className="gs" style={{ marginTop: 32, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <button className="btn btn-prim" data-hire>Book a strategy call <Arrow /></button>
-            <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
-          </div>
-          <div className="page-hero-meta gs">
-            <div className="page-hero-meta-row"><span>Median time-to-shortlist</span><strong>48 hours</strong></div>
-            <div className="page-hero-meta-row"><span>Offer-acceptance rate</span><strong>94%</strong></div>
-            <div className="page-hero-meta-row"><span>Placements delivered</span><strong>500+</strong></div>
-            <div className="page-hero-meta-row"><span>Client retention</span><strong>87%</strong></div>
+      <section className="svh">
+        <div className="svh-inner">
+          <div className="svh-eyb gs"><span className="dot"></span>Staffing Solutions · How Rivago engages</div>
+          <h1 className="gs">Staffing for every role,<br />at <em>every level.</em></h1>
+          <p className="gs">Contract, contract-to-hire and direct hire across four countries. A specialist partner runs the search end to end — and stays on the line for every role after it.</p>
+          <div className="svh-cta gs">
+            <Link className="btn btn-prim" href={`${routes.hireTalent}#intake`} data-hire>Hire Talent <Arrow /></Link>
+            <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See the proof</Link>
           </div>
         </div>
-      </header>
+      </section>
 
       {/* CLIENTS */}
       <section className="clients-sec">
-        <div className="clients-label">Teams we&apos;ve built for</div>
+        <div className="clients-label">Trusted by the teams we hire for</div>
         <LogoMarquee />
       </section>
 
-      {/* ENGAGEMENT MODELS (cream) */}
-      <section className="section cream">
-        <div className="wrap">
-          <div className="gs">
-            <Eyebrow dark>How we engage</Eyebrow>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 700 }}>Three structures.<br />One <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>standard of ownership.</em></h2>
-          </div>
-          <div className="modes" style={{ marginTop: 48 }}>
-            {engagementModels.map((m) => (
-              <div
-                className="gs"
-                key={m.num}
-                style={{
-                  padding: 32,
-                  minHeight: 380,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 18,
-                  position: "relative",
-                  borderRadius: 18,
-                  background: m.tag ? "rgba(10,112,64,.05)" : "#fff",
-                  border: m.tag ? "1px solid rgba(10,112,64,.22)" : "1px solid rgba(0,0,0,.07)",
-                  boxShadow: m.tag ? "none" : "0 4px 16px rgba(11,19,17,.03)",
-                }}
-              >
-                {m.tag && (
-                  <span style={{ position: "absolute", top: 20, right: 20, padding: "3px 10px", borderRadius: 9999, background: "#0A7040", color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: ".04em", textTransform: "uppercase" }}>{m.tag}</span>
-                )}
-                <div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: 42, color: "#0A7040", lineHeight: 1, letterSpacing: "-.03em" }}>{m.num}</div>
-                <div>
-                  <div style={{ fontSize: 22, fontWeight: 500, letterSpacing: "-.02em", lineHeight: 1.2, color: "var(--dt)" }}>{m.title}</div>
-                  <div style={{ fontSize: 14, color: "var(--dt2)", lineHeight: 1.7, fontWeight: 300, marginTop: 10 }}>{m.desc}</div>
+      {/* WHY RIVAGO */}
+      <section className="svc-why">
+        <div className="svc-why-inner">
+          <div className="svc-why-top">
+            <div className="gs">
+              <div className="svc-why-eyb">Why Rivago</div>
+              <h2>Staffing, done the way<br />it <em>should be.</em></h2>
+              <p className="svc-why-lead">Most agencies sell volume and hand your role to a junior. We do the opposite — one senior partner owns the search end to end, sources the people who never apply, and puts the commitments that matter in writing before you sign.</p>
+            </div>
+            <div className="svc-why-numsr gs">
+              {whyNumsr.map((n) => (
+                <div className="svc-why-numr" key={n.title}>
+                  <div className="v">{n.v}{n.sup && <sup>{n.sup}</sup>}</div>
+                  <h3>{n.title}</h3>
+                  <p>{n.desc}</p>
                 </div>
-                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10, marginTop: "auto", paddingTop: 18, borderTop: "1px solid rgba(0,0,0,.08)" }}>
+              ))}
+            </div>
+          </div>
+          <div className="svc-why-grid">
+            {whyCards.map((c, i) => (
+              <div className="svc-why-card gs" key={c.title}>
+                <div className="svc-why-ico">{whyIcons[i]}</div>
+                <h3>{c.title}</h3>
+                <p>{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ENGAGEMENT MODELS (cream) */}
+      <section className="eng">
+        <div className="eng-inner">
+          <div className="eng-eyb gs">How we engage</div>
+          <h2 className="gs">Three ways to put a<br />partner on <em>the role.</em></h2>
+          <p className="eng-lead gs">One quality bar across all three. Tell us the role and your partner will recommend the right structure before you commit — no pressure to over-buy.</p>
+          <div className="eng-grid">
+            {engagementModels.map((m) => (
+              <div className={`eng-card gs${m.featured ? " feat" : ""}`} key={m.num}>
+                {m.featured && <span className="eng-tag">Most popular</span>}
+                <div className="eng-num">{m.num}</div>
+                <h3>{m.title}</h3>
+                <p>{m.desc}</p>
+                <ul className="eng-list">
                   {m.bullets.map((b) => (
-                    <li key={b} style={{ fontSize: 13, color: "var(--dt2)", display: "flex", alignItems: "flex-start", gap: 9 }}>
-                      <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#0A7040", marginTop: 8, flexShrink: 0 }} />
-                      {b}
-                    </li>
+                    <li key={b}><Check />{b}</li>
                   ))}
                 </ul>
               </div>
@@ -218,152 +130,180 @@ export default function ServicesHubPage() {
       </section>
 
       {/* ROLES WE FILL */}
-      <section className="section">
-        <div className="wrap">
-          <div className="gs">
-            <Eyebrow>Roles we fill</Eyebrow>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Representative roles,<br />by <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>domain.</em></h2>
-            <p style={{ color: "var(--text2)", maxWidth: 560, marginTop: 18, fontSize: 16, fontWeight: 300, lineHeight: 1.7 }}>A sample of what we place every month, with typical US market salary bands. Not exhaustive — if it isn&apos;t listed, ask your partner.</p>
+      <section className="rls">
+        <div className="rls-inner">
+          <div className="rls-eyb gs">Roles we fill</div>
+          <h2 className="gs">Specialists, not <em>generalists.</em></h2>
+          <p className="rls-lead gs">Pick a domain. Every partner runs one practice and has placed inside it for years — so they know the titles, the org charts and the people who never apply through a portal. Here is a sample of the roles we fill, and what it looks like when we do.</p>
+          <ServicesRolesTabs />
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="proc2">
+        <div className="proc2-inner">
+          <div className="proc2-top">
+            <div className="gs">
+              <div className="proc2-eyb">What we actually do</div>
+              <h2>Every engagement runs five stages.<br />None of them are <em>a portal.</em></h2>
+            </div>
+            <p className="proc2-lead gs">One partner owns every stage — permanent, contract, temporary or retained. Pace varies by engagement; each service page states its own timeline.</p>
           </div>
-          <div style={{ marginTop: 44 }}>
-            <ServicesRolesTabs />
+          <div className="proc2-tl gs">
+            <div className="proc2-line"></div>
+            <div className="proc2-row">
+              {proc2Stages.map((s) => (
+                <div className={`proc2-step gs${s.done ? " done" : ""}`} key={s.title}>
+                  <div className="proc2-node">{s.day.replace("Stage ", "")}</div>
+                  <div className="proc2-card">
+                    <span className="proc2-day">{s.day}</span>
+                    <h3>{s.title}</h3>
+                    <p>{s.desc}</p>
+                    <div className="proc2-deliver">
+                      <DeliverCheck />
+                      <div><span className="proc2-deliver-l">{s.deliverLabel}</span><span className="proc2-deliver-v">{s.deliverValue}</span></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="proc2-foot gs"><span className="dot"></span>Five stages. <strong>One partner runs all of them.</strong></div>
+        </div>
+      </section>
+
+      {/* GLOBAL DELIVERY */}
+      <section className="gd">
+        <div className="gd-inner">
+          <div className="gd-card">
+            <div className="gd-map gs">
+              <div className="gd-orb">
+                <div className="gd-orb-ring"></div>
+                {gdHubs.map((h, i) => (
+                  <div
+                    className="gd-pin"
+                    key={h.name}
+                    style={{
+                      top: `${[28, 45, 62, 40][i]}%`,
+                      left: `${[30, 42, 68, 78][i]}%`,
+                    }}
+                  >
+                    <span className="gd-pin-dot"></span>
+                    <span className="gd-pin-lbl">{h.name}</span>
+                    <span className="gd-pin-sub">{h.sub}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="gd-sun"><span className="d"></span>Follow-the-sun delivery · <strong>pipeline moves around the clock</strong></div>
+            </div>
+            <div className="gd-info gs">
+              <div className="gd-eyb">Global delivery</div>
+              <h2>Five hubs. <em>One handshake.</em></h2>
+              <p className="gd-lead">Wherever the role sits, a local partner runs it — backed by a centralised research and sourcing team. You get regional fluency and round-the-clock pipeline, on a single contract.</p>
+              <div className="gd-stats">
+                {gdStats.map(([v, l]) => (
+                  <div className="gd-stat" key={l}><div className="v">{v}</div><div className="l">{l}</div></div>
+                ))}
+              </div>
+              <Link className="gd-browse" href={`${routes.about}#offices`}>Browse all offices &amp; delivery centers <Arrow /></Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* FULL MENU */}
-      <section className="svc-sec">
-        <div className="svc-inner">
-          <div className="gs" style={{ marginBottom: 52 }}>
-            <Eyebrow>The full menu</Eyebrow>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 640 }}>Every way to <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>engage us.</em></h2>
+      {/* INDUSTRIES */}
+      <section className="indg">
+        <div className="indg-inner">
+          <div className="indg-top">
+            <div className="gs">
+              <div className="indg-eyb">Industries</div>
+              <h2>Ten practices. <em>Real depth in each.</em></h2>
+            </div>
+            <Link className="indg-link gs" href={routes.industries}>Explore all industries <Arrow /></Link>
           </div>
-          <div className="svc-grid gs">
-            {servicesList.map((s) => (
-              <Link className="svc-card" href={s.href} key={s.n}>
-                {"tag" in s && s.tag && <span className="svc-tag">{s.tag}</span>}
-                <div className="svc-n">{s.n}</div>
-                <div className="svc-title">{s.title}</div>
-                <div className="svc-desc">{s.desc}</div>
-                <div className="svc-foot"><span className="svc-meta">{s.meta}</span><Arrow /></div>
+          <div className="ind-grid2">
+            {indgCards.map((c) => (
+              <Link className="ind-card2 gs" href={routes.industries} key={c.title}>
+                <span className="ico">{c.icon}</span>
+                <div className="t">{c.title}</div>
+                <div className="d">{c.desc}</div>
+                <div className="tags">{c.tags.map((t) => <span className="tag" key={t}>{t}</span>)}</div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PROCESS */}
-      <ProcessSection
-        eyebrowText="The process"
-        heading={<>Five stages, from<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>brief to signed offer.</em></>}
-        stages={processStages}
-      />
-
-      {/* WHY RIVAGO (cream) */}
-      <section className="section cream">
-        <div className="wrap">
-          <div className="gs">
-            <Eyebrow dark>Why Rivago</Eyebrow>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 700 }}>Four numbers we&apos;ll<br />stand behind on the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>first call.</em></h2>
-          </div>
-          <div className="guarantee" style={{ marginTop: 48 }}>
-            {[
-              { val: "48", sup: "h", title: "Median time-to-shortlist", desc: "From signed brief to calibrated candidates in your inbox." },
-              { val: "94", sup: "%", title: "Offer-acceptance rate", desc: "Last 12 months, across all engagements and seniority bands." },
-              { val: "12", sup: "mo", title: "Retained replacement", desc: "Restart the search at no charge if a retained placement leaves." },
-              { val: "1", sup: undefined, title: "Partner on the line", desc: "One name on the engagement. No handoffs, no call centres." },
-            ].map((g) => (
-              <div
-                className="gs"
-                key={g.title}
-                style={{ padding: 28, borderRadius: 20, background: "#fff", border: "1px solid rgba(0,0,0,.07)", boxShadow: "0 4px 16px rgba(11,19,17,.03)" }}
-              >
-                <div style={{ fontSize: 44, lineHeight: 1, letterSpacing: "-.035em", fontWeight: 400, color: "#0A7040", marginBottom: 14 }}>{g.val}{g.sup && <sup style={{ fontSize: 18, verticalAlign: "super", marginLeft: 2, color: "var(--dt3)" }}>{g.sup}</sup>}</div>
-                <div style={{ fontSize: 15, fontWeight: 500, marginBottom: 4, color: "var(--dt)" }}>{g.title}</div>
-                <div style={{ fontSize: 13, color: "var(--dt2)", lineHeight: 1.65, fontWeight: 300 }}>{g.desc}</div>
-              </div>
-            ))}
-          </div>
-          <div className="modes" style={{ marginTop: 20, gridTemplateColumns: "repeat(4,1fr)" }}>
-            {whyCream.map((c) => (
-              <div
-                className="gs"
-                key={c.title}
-                style={{ padding: 28, borderRadius: 20, background: "#fff", border: "1px solid rgba(0,0,0,.07)", display: "flex", flexDirection: "column", gap: 14, minHeight: 0, boxShadow: "0 4px 16px rgba(11,19,17,.03)" }}
-              >
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(10,112,64,.08)", border: "1px solid rgba(10,112,64,.18)", display: "flex", alignItems: "center", justifyContent: "center" }}>{c.icon}</div>
-                <div style={{ fontSize: 16, fontWeight: 600, color: "var(--dt)", letterSpacing: "-.01em" }}>{c.title}</div>
-                <div style={{ fontSize: 13.5, color: "var(--dt2)", lineHeight: 1.65, fontWeight: 300 }}>{c.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* GLOBAL DELIVERY (dark) */}
-      <section className="section">
-        <div className="wrap">
-          <div className="gs">
-            <Eyebrow>Global delivery</Eyebrow>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 660 }}>Three hubs.<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>One standard.</em></h2>
-          </div>
-          <div className="why-grid" style={{ marginTop: 44 }}>
-            {deliveryHubs.map((h) => (
-              <div className="why-card gs" key={h.city}>
-                <div className="why-icon"><IconBuilding /></div>
-                <div style={{ fontSize: 11, fontWeight: 600, color: "var(--green)", textTransform: "uppercase", letterSpacing: ".06em", marginBottom: 8 }}>{h.role}</div>
-                <div className="why-title">{h.city}</div>
-                <div style={{ fontSize: 12, color: "var(--text3)", fontFamily: "var(--fm)", marginBottom: 10 }}>{h.country}</div>
-                <div className="why-desc">{h.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* INDUSTRIES */}
-      <IndustriesSection
-        eyebrowText="Industries"
-        heading={<>Every sector.<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>Every function.</em></>}
-        sub="Specialist partners aligned to your sector — not a shared queue working every industry at once."
-        alt
-      />
-
       {/* CUSTOMER STORY */}
-      <StorySection
-        eyebrowText="Client story"
-        heading={<>Building a compliance<br />team, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>on a bank&apos;s timeline.</em></>}
-        tag="Finance · Canada"
-        quote="We had a regulatory deadline and a risk & compliance function that was two-thirds empty. Rivago's partner didn't just source candidates — she understood OSFI requirements well enough to screen for them. Fourteen hires in sixty days, and every one of them passed our own internal audit six months later."
-        initials="MC"
-        name="Meera Chandrasekaran"
-        role="VP, People Operations · Toronto Regional Bank"
-        metrics={[
-          { val: "14", label: "Compliance & risk hires in 60 days" },
-          { val: "100%", label: "12-month retention" },
-          { val: "0", label: "Audit findings since program launch" },
-        ]}
-      />
+      <section className="cstory">
+        <div className="cstory-inner">
+          <div className="cstory-head">
+            <div className="gs">
+              <div className="cstory-eyb">Customer story</div>
+              <h2>Proof, not <em>promises.</em></h2>
+            </div>
+            <Link className="cstory-link gs" href={`${routes.resources}?view=cs`}>Read all case studies <Arrow /></Link>
+          </div>
+          <div className="cstory-card gs">
+            <div className="cstory-media" style={{ background: "linear-gradient(150deg,#0F2A1B,#0A7040 60%,#00A882)" }}>
+              <span className="cstory-badge">Healthcare · United States</span>
+              <span className="cstory-logo"><span className="tick"><svg width="11" height="9" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.2 3.2L11 1" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Second-hospital launch</span>
+            </div>
+            <div className="cstory-body">
+              <div className="cstory-mark">&ldquo;</div>
+              <p className="cstory-q">We were opening a second hospital with beds coming online in ninety days and no clinical leaders in post. Rivago filled every seat — <em>credentialed, compliant, and still here a year on.</em></p>
+              <div className="cstory-by">
+                <div className="cstory-av">DN</div>
+                <div><div className="cstory-n">Chief Nursing Officer</div><div className="cstory-r">Healthcare provider · United States</div></div>
+              </div>
+              <div className="cstory-metrics">
+                <div className="cstory-metric"><div className="v">16</div><div className="l">Clinical leaders placed in one quarter</div></div>
+                <div className="cstory-metric"><div className="v">90 days</div><div className="l">Brief to a fully-staffed unit</div></div>
+                <div className="cstory-metric"><div className="v">100%</div><div className="l">Retained at 12 months (this cohort)</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* PERSPECTIVES */}
-      <InsightsSection
-        heading={<>Recent<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>perspectives.</em></>}
-        articles={articles}
-      />
+      <section className="persp">
+        <div className="persp-inner">
+          <div className="persp-top">
+            <div className="gs">
+              <div className="persp-eyb">Recent perspectives</div>
+              <h2>Notes from the <em>front line.</em></h2>
+            </div>
+            <Link className="persp-link gs" href={routes.resources}>Read the blog <Arrow /></Link>
+          </div>
+          <div className="persp-grid">
+            {perspectives.map((p) => (
+              <Link className="persp-card gs" href={routes.resources} key={p.title}>
+                <div className="persp-img" style={{ background: p.gradient }}><span className="persp-cat">{p.cat}</span></div>
+                <div className="persp-body"><h3>{p.title}</h3><p>{p.desc}</p><div className="persp-meta">{p.meta}</div></div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* FAQ */}
       <FaqSection
-        heading={<>Questions about <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>engaging us.</em></>}
-        items={faqItems}
+        heading={<>The questions we get on<br />the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>first call.</em></>}
+        items={servicesFaqItems}
       />
 
       {/* CTA */}
-      <CtaSection
-        heading={<>Tell us the role.<br /><em>We&apos;ll be back tomorrow.</em></>}
-        sub="Send the brief and a partner comes back with a written plan — timelines, comp read and the shape of the shortlist — within one business day."
-        primary={{ label: "Book a strategy call", hire: true }}
-        secondary={{ label: "See case studies", href: `${routes.resources}?view=cs` }}
-      />
+      <section className="svcta">
+        <div className="svcta-inner gs">
+          <h2>Tell us the role.<br />We&apos;ll be back <em>tomorrow.</em></h2>
+          <p>A 30-minute scoping call with a partner — not a portal — and a written shortlist plan within one business day.</p>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+            <Link className="btn-dark" href={`${routes.hireTalent}#intake`} data-hire>Hire Talent <Arrow /></Link>
+            <Link className="btn-darkghost" href={routes.contactUs}>Talk to us</Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
