@@ -67,19 +67,19 @@ export default function CareerPage() {
         <div className="page-hero-inner">
           <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>Careers</span></div>
           <span className="eyebrow light">Work at Rivago</span>
-          <h1 className="h-display" style={{ marginTop: 18 }}>Build a career placing <em>other careers.</em></h1>
-          <p className="body-lg" style={{ maxWidth: 600, margin: "24px auto 0" }}>We hire senior — and pay accordingly. Smaller team, bigger ownership, every search yours from intake to placement.</p>
-          <div style={{ marginTop: 36, display: "flex", gap: 10, justifyContent: "center" }}>
-            <Link className="btn btn--primary btn--lg" href={routes.openPositions}>See open roles <Arrow /></Link>
-            <a className="btn btn--secondary btn--lg" href="#culture">Our culture</a>
+          <h1 className="gs" style={{ marginTop: 18 }}>Build a career placing <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>other careers.</em></h1>
+          <p className="lead gs" style={{ maxWidth: 600, margin: "24px auto 0" }}>We hire senior — and pay accordingly. Smaller team, bigger ownership, every search yours from intake to placement.</p>
+          <div className="gs" style={{ marginTop: 36, display: "flex", gap: 10, justifyContent: "center" }}>
+            <Link className="btn btn-prim" href={routes.openPositions}>See open roles <Arrow /></Link>
+            <a className="btn btn-ghost" href="#culture">Our culture</a>
           </div>
         </div>
       </section>
 
       <section className="section alt" id="culture">
-        <div className="container">
+        <div className="wrap">
           <span className="eyebrow light">How we work</span>
-          <h2 className="h-section" style={{ marginTop: 18, color: "var(--text)", maxWidth: 620 }}>A firm built for <em>good recruiters.</em></h2>
+          <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 620 }}>A firm built for <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>good recruiters.</em></h2>
           <div className="car-vals">
             {carVals.map((v) => (
               <div className="car-val" key={v.t}>
@@ -93,9 +93,9 @@ export default function CareerPage() {
       </section>
 
       <section className="section alt" id="perks">
-        <div className="container">
+        <div className="wrap">
           <span className="eyebrow light">Perks &amp; benefits</span>
-          <h2 className="h-section" style={{ marginTop: 18, color: "var(--text)", maxWidth: 620 }}>A grown-up <em>package.</em></h2>
+          <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 620 }}>A grown-up <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>package.</em></h2>
           <div className="perks">
             {perks.map((p) => (
               <div className="perk" key={p.t}>
@@ -109,9 +109,9 @@ export default function CareerPage() {
       </section>
 
       <section className="section">
-        <div className="container">
+        <div className="wrap">
           <span className="eyebrow light">Working at Rivago</span>
-          <h2 className="h-section" style={{ marginTop: 18, color: "var(--text)", maxWidth: 640 }}>What it&apos;s actually like <em>inside.</em></h2>
+          <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 640 }}>What it&apos;s actually like <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>inside.</em></h2>
           <div className="life-grid">
             <div className="life-card tall">
               <div>
@@ -142,9 +142,9 @@ export default function CareerPage() {
       </section>
 
       <section className="section cv-sec">
-        <div className="container">
+        <div className="wrap">
           <span className="eyebrow light">What we stand for</span>
-          <h2 className="h-section" style={{ marginTop: 18, color: "var(--text)", maxWidth: 640 }}>Four values we <em>actually hire for.</em></h2>
+          <h2 className="section-h2 gs" style={{ marginTop: 18, color: "#0A140B", maxWidth: 640 }}>Four values we <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>actually hire for.</em></h2>
           <div className="cv-grid">
             {values.map((v) => (
               <div className="cv" key={v.n}>
@@ -158,10 +158,10 @@ export default function CareerPage() {
       </section>
 
       <section className="section" id="hiring">
-        <div className="container">
+        <div className="wrap">
           <span className="eyebrow light">Getting started</span>
-          <h2 className="h-section" style={{ marginTop: 18, color: "var(--text)", maxWidth: 640 }}>How we hire — <em>four honest steps.</em></h2>
-          <p className="body" style={{ maxWidth: 540, marginTop: 18 }}>The same process whether you&apos;re a first-time recruiter or a sector veteran. No take-home tests, no twelve-round gauntlets — just real conversations about real work.</p>
+          <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 640 }}>How we hire — <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>four honest steps.</em></h2>
+          <p className="gs" style={{ maxWidth: 540, marginTop: 18, fontSize: 16, color: "var(--text2)", lineHeight: 1.7, fontWeight: 300 }}>The same process whether you&apos;re a first-time recruiter or a sector veteran. No take-home tests, no twelve-round gauntlets — just real conversations about real work.</p>
           <div className="hire-steps">
             {hireSteps.map((s) => (
               <div className="hstep" key={s.n}>
