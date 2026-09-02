@@ -250,7 +250,7 @@ export default function AboutPage() {
             <div className="eyebrow" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we won&apos;t do</div>
             <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720, marginBottom: 0 }}>Our values, mostly stated<br />as the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>things we refuse.</em></h2>
           </div>
-          <CardSlider trackClassName="values-grid values-grid-divider">
+          <CardSlider trackClassName="values-grid values-grid-divider" nav="dots">
             {refusals.map((v, i) => (
               <div className="value gs" key={v.title} style={{ background: "var(--cream)" }}>
                 <div className="value-num">{String(i + 1).padStart(2, "0")}</div>

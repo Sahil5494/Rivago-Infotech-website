@@ -206,7 +206,7 @@ export default function Home() {
         <div className="feat-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our approach</div>
           <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 580 }}>How we work — and why <em>it actually works.</em></h2>
-          <CardSlider trackClassName="feat-track">
+          <CardSlider trackClassName="feat-track" nav="dots">
 
             <div className="fc gs">
               <div className="fc-vis">
