@@ -4,6 +4,7 @@ import LogoMarquee from "@/components/LogoMarquee";
 import OrbCanvas from "@/components/OrbCanvas";
 import Faq from "@/components/Faq";
 import Testimonials from "@/components/Testimonials";
+import CardSlider from "@/components/CardSlider";
 import { routes, servicesList, industriesList, offices } from "@/lib/routes";
 
 const faqItems = [
@@ -205,7 +206,7 @@ export default function Home() {
         <div className="feat-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our approach</div>
           <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 580 }}>How we work — and why <em>it actually works.</em></h2>
-          <div className="feat-grid">
+          <CardSlider>
 
             <div className="fc gs">
               <div className="fc-vis">
@@ -310,7 +311,7 @@ export default function Home() {
               <div className="fc-body"><div className="fc-title">Every sector. Every function.</div><div className="fc-desc">Active hiring pipelines across finance, technology, healthcare, legal, operations and beyond — in every market we serve.</div></div>
             </div>
 
-          </div>
+          </CardSlider>
         </div>
       </section>
 
