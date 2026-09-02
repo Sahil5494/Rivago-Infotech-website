@@ -69,7 +69,7 @@ export default function CareerPage() {
           <span className="eyebrow light">Work at Rivago</span>
           <h1 className="gs" style={{ marginTop: 18 }}>Build a career placing <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>other careers.</em></h1>
           <p className="lead gs" style={{ maxWidth: 600, margin: "24px auto 0" }}>We hire senior — and pay accordingly. Smaller team, bigger ownership, every search yours from intake to placement.</p>
-          <div className="gs" style={{ marginTop: 36, display: "flex", gap: 10, justifyContent: "center" }}>
+          <div className="gs" style={{ marginTop: 36, display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
             <Link className="btn btn-prim" href={routes.openPositions}>See open roles <Arrow /></Link>
             <a className="btn btn-ghost" href="#culture">Our culture</a>
           </div>

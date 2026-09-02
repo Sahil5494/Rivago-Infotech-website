@@ -139,7 +139,7 @@ export default function RpoPage() {
             <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Customer story</div>
             <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>A recruiting engine,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>handed over in weeks.</em></h2>
           </div>
-          <div className="testi-cream" style={{ gridTemplateColumns: "1fr 1fr 1fr" }}>
+          <div className="testi-cream">
             <div className="tc-card gs" style={{ gridColumn: "span 2" }}>
               <span className="tc-tag">US · Technology · Enterprise RPO</span>
               <p className="tc-quote" style={{ fontSize: 22 }}>We were scaling from 200 to 600 people and our four-person TA team was drowning. Rivago stood up an embedded pod in three weeks, took over the whole funnel, and cut our time-to-fill by <em>nearly half</em> — while our internal team finally got to work on employer brand instead of firefighting.</p>

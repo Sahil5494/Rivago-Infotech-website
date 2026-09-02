@@ -211,7 +211,7 @@ export default function AboutPage() {
             {leadership.map((p) => (
               <div className="leader gs" key={p.name}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <div className="leader-photo"><img src={p.img} alt="" loading="lazy" decoding="async" /></div>
+                <div className="leader-photo"><img src={p.img} alt={p.name} loading="lazy" decoding="async" /></div>
                 <div>
                   <div className="leader-name">{p.name}</div>
                   <div className="leader-title">{p.title}</div>
@@ -230,7 +230,7 @@ export default function AboutPage() {
             <div className="eyebrow-plain gs" style={{ marginBottom: 20 }}>What we believe</div>
             <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720, marginBottom: 0 }}>Four principles.<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>No exceptions.</em></h2>
           </div>
-          <div className="values-grid" style={{ gridTemplateColumns: "repeat(4,1fr)" }}>
+          <div className="values-grid values-grid-4">
             {principles.map((v, i) => (
               <div className="value gs" key={v.title}>
                 <div className="value-num">{String(i + 1).padStart(2, "0")}</div>

@@ -101,7 +101,7 @@ export default function HireTalentPage() {
           <div className="eyebrow ew-light gs" style={{ marginBottom: 28, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>For clients</div>
           <h1 className="gs">The shortlist<br />that ends the <em>search.</em></h1>
           <p className="lead gs">Senior operators across technology, healthcare, legal, finance, aerospace, telecom and automotive — pre-screened, on-brief, in your inbox in 48 hours. A partner on the line, not a portal.</p>
-          <div className="gs" style={{ marginTop: 32, display: "flex", gap: 12, justifyContent: "center" }}>
+          <div className="gs" style={{ marginTop: 32, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <a className="btn btn-prim" href="#intake">Book a strategy call <Arrow /></a>
             <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See proof</Link>
           </div>
@@ -262,7 +262,7 @@ export default function HireTalentPage() {
       <section className="clients-cta gs">
         <h2>Tell us who you need.<br /><em>We&apos;ll be back tomorrow.</em></h2>
         <p>Send the brief and a partner comes back with a written plan — timelines, comp read and the shape of the shortlist — within one business day.</p>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
+        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
           <a className="btn btn-cream-prim" href="#intake">Book a scoping call <Arrow /></a>
           <Link className="btn btn-cream-ghost" href={`${routes.resources}?view=cs`}>Read case studies</Link>
         </div>

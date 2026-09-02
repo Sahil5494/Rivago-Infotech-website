@@ -108,7 +108,7 @@ export default function IndustriesPage() {
           <div className="eyebrow ew-light" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>The common spine</div>
           <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760, marginBottom: 22 }}>Ten practices.<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>One search methodology.</em></h2>
           <p style={{ color: "var(--text2)", fontSize: 17, fontWeight: 300, lineHeight: 1.7, maxWidth: 560, marginBottom: 64 }}>Every practice runs the same five-stage process. The only thing that changes is who&apos;s on the other end of the phone — and how much they already know about your sector when they pick it up.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 1, background: "var(--border)", border: "1px solid var(--border)", borderRadius: 20, overflow: "hidden" }}>
+          <div className="ind-spine-grid" style={{ gap: 1, background: "var(--border)", border: "1px solid var(--border)", borderRadius: 20, overflow: "hidden" }}>
             {spine.map(([step, title, desc]) => (
               <div key={step} style={{ background: "var(--bg)", padding: "36px 28px" }}>
                 <div style={{ fontFamily: "var(--fm)", fontSize: 12, color: "var(--green)", letterSpacing: ".06em", marginBottom: 18 }}>{step}</div>
@@ -123,14 +123,14 @@ export default function IndustriesPage() {
       {/* WHAT WE PUT IN WRITING (CREAM) */}
       <section className="section cream">
         <div className="wrap gs">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "end", marginBottom: 56 }}>
+          <div className="ind-writing-head" style={{ gap: 80, alignItems: "end", marginBottom: 56 }}>
             <div>
               <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "#3D5240" }}><span className="eyebrow-dot" style={{ background: "#0A7040" }}></span>What we put in writing</div>
               <h2 className="section-h2" style={{ color: "#0A140B" }}>Four numbers we&apos;ll stand behind<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>on the first call.</em></h2>
             </div>
             <p style={{ color: "#3D5240", fontSize: 16, lineHeight: 1.78, fontWeight: 300, maxWidth: 460 }}>Same in technology as in healthcare. Same in finance as in defence. The practice lead changes; the bar doesn&apos;t.</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }}>
+          <div className="ind-guarantee-grid" style={{ gap: 16 }}>
             {writtenGuarantees.map(([v, unit, title, desc]) => (
               <div key={title} style={{ background: "#fff", borderRadius: 24, padding: "40px 32px", border: "1px solid rgba(11,19,17,.06)" }}>
                 <div style={{ fontSize: 72, lineHeight: 1, letterSpacing: "-.035em", color: "#0A7040", fontWeight: 400, marginBottom: 20 }}>{v}{unit && <span style={{ fontSize: 18, color: "#7A9080", marginLeft: 4 }}>{unit}</span>}</div>
@@ -148,7 +148,7 @@ export default function IndustriesPage() {
           <div className="eyebrow ew-light" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>From hiring managers</div>
           <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 22 }}>Notes from the<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>other side of the table.</em></h2>
           <p style={{ color: "var(--text2)", fontSize: 17, fontWeight: 300, lineHeight: 1.7, maxWidth: 540, marginBottom: 64 }}>Plain English from heads of talent, GCs, and CFOs who hired through a Rivago practice in the last eighteen months.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 18 }}>
+          <div className="ind-testi-grid" style={{ gap: 18 }}>
             {practiceTestimonials.map((t) => (
               <div key={t.name} style={{ padding: "32px 30px", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, display: "flex", flexDirection: "column" }}>
                 <div style={{ fontFamily: "var(--fm)", fontSize: 11, color: "var(--green)", letterSpacing: ".05em", textTransform: "uppercase", marginBottom: 18 }}>{t.practice}</div>
@@ -167,7 +167,7 @@ export default function IndustriesPage() {
       <section className="clients-cta gs">
         <h2>Which practice<br />are you <em>hiring into?</em></h2>
         <p>We&apos;ll put the practice lead on the line for a 30-minute scoping call. Tell us which sector to bring.</p>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
+        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
           <button className="btn btn-cream-prim" data-hire>Book a scoping call <Arrow /></button>
           <Link className="btn btn-cream-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
         </div>
