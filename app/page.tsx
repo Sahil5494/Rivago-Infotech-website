@@ -206,7 +206,7 @@ export default function Home() {
         <div className="feat-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our approach</div>
           <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 580 }}>How we work — and why <em>it actually works.</em></h2>
-          <CardSlider>
+          <CardSlider trackClassName="feat-track">
 
             <div className="fc gs">
               <div className="fc-vis">
@@ -428,16 +428,18 @@ export default function Home() {
             </div>
             <Link className="svc-all gs" href={routes.services}>View all services <Arrow /></Link>
           </div>
-          <div className="svc-grid gs">
-            {servicesList.map((s) => (
-              <Link className="svc-card" href={s.href} key={s.n}>
-                {"tag" in s && s.tag && <span className="svc-tag">{s.tag}</span>}
-                <div className="svc-n">{s.n}</div>
-                <div className="svc-title">{s.title}</div>
-                <div className="svc-desc">{s.desc}</div>
-                <div className="svc-foot"><span className="svc-meta">{s.meta}</span><CardArrow /></div>
-              </Link>
-            ))}
+          <div className="gs">
+            <CardSlider trackClassName="svc-grid">
+              {servicesList.map((s) => (
+                <Link className="svc-card" href={s.href} key={s.n}>
+                  {"tag" in s && s.tag && <span className="svc-tag">{s.tag}</span>}
+                  <div className="svc-n">{s.n}</div>
+                  <div className="svc-title">{s.title}</div>
+                  <div className="svc-desc">{s.desc}</div>
+                  <div className="svc-foot"><span className="svc-meta">{s.meta}</span><CardArrow /></div>
+                </Link>
+              ))}
+            </CardSlider>
           </div>
         </div>
       </section>
@@ -453,15 +455,17 @@ export default function Home() {
             </div>
             <Link className="ind-all gs" href={routes.industries}>View all industries <Arrow /></Link>
           </div>
-          <div className="ind-grid gs">
-            {industriesList.map((ind) => (
-              <div className="ind-card" key={ind.title}>
-                <div className="ind-icon">{ind.icon}</div>
-                <div className="ind-title">{ind.title}</div>
-                <div className="ind-desc">{ind.desc}</div>
-                <div className="ind-tags">{ind.tags.map((t) => <span className="ind-tag" key={t}>{t}</span>)}</div>
-              </div>
-            ))}
+          <div className="gs">
+            <CardSlider trackClassName="ind-grid">
+              {industriesList.map((ind) => (
+                <div className="ind-card" key={ind.title}>
+                  <div className="ind-icon">{ind.icon}</div>
+                  <div className="ind-title">{ind.title}</div>
+                  <div className="ind-desc">{ind.desc}</div>
+                  <div className="ind-tags">{ind.tags.map((t) => <span className="ind-tag" key={t}>{t}</span>)}</div>
+                </div>
+              ))}
+            </CardSlider>
           </div>
         </div>
       </section>

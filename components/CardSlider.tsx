@@ -8,7 +8,7 @@ const ArrowIcon = ({ flip }: { flip?: boolean }) => (
   </svg>
 );
 
-export default function CardSlider({ children }: { children: React.ReactNode }) {
+export default function CardSlider({ children, trackClassName }: { children: React.ReactNode; trackClassName?: string }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [slideHeight, setSlideHeight] = useState<number | undefined>(undefined);
 
@@ -54,7 +54,7 @@ export default function CardSlider({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="fc-slider">
-      <div className="fc-track" ref={trackRef} style={slideHeight ? { height: slideHeight } : undefined}>
+      <div className={`fc-track${trackClassName ? ` ${trackClassName}` : ""}`} ref={trackRef} style={slideHeight ? { height: slideHeight } : undefined}>
         {children}
       </div>
       <button className="fc-nav fc-nav-l" type="button" aria-label="Previous" onClick={() => scroll(-1)}>

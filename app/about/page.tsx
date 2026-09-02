@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { routes, offices } from "@/lib/routes";
 import OfficesSection from "@/components/OfficesSection";
+import CardSlider from "@/components/CardSlider";
 
 export const metadata: Metadata = {
   title: "About Rivago Infotech · Partner-led executive search since 2019",
@@ -249,7 +250,7 @@ export default function AboutPage() {
             <div className="eyebrow" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we won&apos;t do</div>
             <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720, marginBottom: 0 }}>Our values, mostly stated<br />as the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>things we refuse.</em></h2>
           </div>
-          <div className="values-grid" style={{ background: "rgba(11,19,17,.10)", border: "1px solid rgba(11,19,17,.10)" }}>
+          <CardSlider trackClassName="values-grid values-grid-divider">
             {refusals.map((v, i) => (
               <div className="value gs" key={v.title} style={{ background: "var(--cream)" }}>
                 <div className="value-num">{String(i + 1).padStart(2, "0")}</div>
@@ -257,7 +258,7 @@ export default function AboutPage() {
                 <p>{v.desc}</p>
               </div>
             ))}
-          </div>
+          </CardSlider>
         </div>
       </section>
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import Faq, { type FaqItem } from "@/components/Faq";
 import IntakeForm from "@/components/IntakeForm";
+import CardSlider from "@/components/CardSlider";
 import { routes, industriesList } from "@/lib/routes";
 import { indgCards } from "../data";
 
@@ -669,7 +670,7 @@ export function IndustriesGrid2Section({ heading, sub }: { heading: ReactNode; s
           </div>
           <Link href={routes.industries} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--green)", fontSize: 14, fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Explore all industries <SmallArrow /></Link>
         </div>
-        <div className="ind-grid2">
+        <CardSlider trackClassName="ind-grid2">
           {indgCards.map((c) => (
             <Link className="ind-card2 gs" href={routes.industries} key={c.title}>
               <span className="ico">{c.icon}</span>
@@ -678,7 +679,7 @@ export function IndustriesGrid2Section({ heading, sub }: { heading: ReactNode; s
               <div className="tags">{c.tags.map((t) => <span className="tag" key={t}>{t}</span>)}</div>
             </Link>
           ))}
-        </div>
+        </CardSlider>
       </div>
     </section>
   );
