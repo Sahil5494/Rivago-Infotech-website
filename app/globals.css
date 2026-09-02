@@ -127,12 +127,17 @@ a{color:inherit;text-decoration:none}
 .fc-nav:hover{background:#0A140B;color:#fff;border-color:#0A140B}
 .fc-nav-l{left:6px}
 .fc-nav-r{right:6px}
+.fc-dots{display:none;gap:6px;justify-content:center;margin-top:20px}
+.fc-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .2s;cursor:pointer}
+.fc-dot.active{background:var(--green);width:20px;border-radius:3px}
 @media(max-width:900px){
   .fc-track{display:flex;align-items:flex-start;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:4px;transition:height .3s var(--ease)}
   .fc-track::-webkit-scrollbar{display:none}
   .fc-track>*{flex:0 0 88%;scroll-snap-align:start}
+  .fc-track-dots>*{flex:0 0 100%}
   .fc-vis.wide-vis{grid-template-columns:1fr}
   .fc-nav{display:flex}
+  .fc-dots{display:flex}
 }
 
 /* service card visuals */

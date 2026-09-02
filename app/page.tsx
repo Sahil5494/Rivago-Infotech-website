@@ -429,7 +429,7 @@ export default function Home() {
             <Link className="svc-all gs" href={routes.services}>View all services <Arrow /></Link>
           </div>
           <div className="gs">
-            <CardSlider trackClassName="svc-grid">
+            <CardSlider trackClassName="svc-grid" nav="dots">
               {servicesList.map((s) => (
                 <Link className="svc-card" href={s.href} key={s.n}>
                   {"tag" in s && s.tag && <span className="svc-tag">{s.tag}</span>}
@@ -456,7 +456,7 @@ export default function Home() {
             <Link className="ind-all gs" href={routes.industries}>View all industries <Arrow /></Link>
           </div>
           <div className="gs">
-            <CardSlider trackClassName="ind-grid">
+            <CardSlider trackClassName="ind-grid" nav="dots">
               {industriesList.map((ind) => (
                 <div className="ind-card" key={ind.title}>
                   <div className="ind-icon">{ind.icon}</div>
