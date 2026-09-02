@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="ft-grid">
         <div>
           <Link className="logo" href={routes.home}>
-            <div className="logo-mark">R</div>Rivago<span style={{ fontWeight: 300, color: "var(--text2)" }}> Infotech</span>
+            <div className="logo-mark">R</div>Rivago<span className="logo-sub"> Infotech</span>
           </Link>
           <div className="ft-brand">
             A global staffing firm built to unlimit the search. We map entire markets with AI, then put one senior

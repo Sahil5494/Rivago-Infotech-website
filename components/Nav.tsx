@@ -179,7 +179,7 @@ export default function Nav() {
     <>
       <nav id="nav" className={navSolid ? "solid" : ""}>
         <Link className="logo" href={routes.home}>
-          <div className="logo-mark">R</div>Rivago<span style={{ fontWeight: 300, color: "var(--text2)" }}> Infotech</span>
+          <div className="logo-mark">R</div>Rivago<span className="logo-sub"> Infotech</span>
         </Link>
         <div className="nav-mid" id="navMid" onMouseLeave={scheduleHide}>
           <Link className={`nl${openKey === "services" ? " active-mm" : ""}`} href={routes.services} aria-expanded={openKey === "services"} onMouseEnter={() => show("services")} onFocus={() => show("services")}>

@@ -24,8 +24,9 @@ a{color:inherit;text-decoration:none}
 /* ── NAV ── */
 #nav{position:fixed;inset:0 0 auto;z-index:200;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 44px;transition:all .4s var(--ease)}
 #nav.solid{background:rgba(3,12,5,.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06)}
-.logo{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:500;letter-spacing:-.02em}
+.logo{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:500;letter-spacing:-.02em;color:var(--text)}
 .logo-mark{width:27px;height:27px;border-radius:7px;background:linear-gradient(135deg,#3DFF87,#00D4A8);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#030C05}
+.logo-sub{font-weight:300;color:var(--text2)}
 .nav-mid{display:flex;gap:2px}
 .nl{padding:7px 13px;font-size:13px;color:var(--text2);border-radius:7px;transition:color .2s;cursor:pointer}
 .nl:hover{color:var(--text)}
@@ -696,6 +697,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 body.theme-cream-nav{background:var(--cream);color:#0A140B}
 body.theme-cream-nav #nav.solid{background:rgba(244,243,238,.92);border-bottom:1px solid rgba(10,20,11,.08)}
 body.theme-cream-nav #nav .logo{color:#0A140B}
+body.theme-cream-nav #nav .logo-sub{color:#7A9080}
 body.theme-cream-nav #nav .nl{color:#3D5240}
 body.theme-cream-nav #nav .nl:hover,body.theme-cream-nav #nav .nl.active-mm{color:#0A140B;background:rgba(10,20,11,.05)}
 body.theme-cream-nav #nav .btn-si{color:#7A9080}
