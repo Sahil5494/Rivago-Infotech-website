@@ -211,6 +211,7 @@ a{color:inherit;text-decoration:none}
 
 /* ── SECURITY ── */
 .sec-outer{padding:110px 44px;background:var(--bg);border-top:1px solid var(--border)}
+@media(max-width:900px){.sec-outer,.why-sec{display:none}}
 .sec-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .sec-h2{font-size:clamp(28px,3.2vw,44px);font-weight:400;letter-spacing:-.03em;margin-bottom:20px;line-height:1.13}
 .sec-h2 em{font-family:var(--fs);font-style:italic;color:var(--green)}
