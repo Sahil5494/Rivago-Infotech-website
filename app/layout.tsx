@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import "./rivago-home.css";
 import "./rivago-home-v2.css";
+import "./rivago-coditas.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import HireModal from "@/components/HireModal";
