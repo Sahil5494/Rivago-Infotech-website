@@ -4,13 +4,13 @@ import LogoMarquee from "@/components/LogoMarquee";
 import ServicesRolesTabs from "./ServicesRolesTabs";
 import { routes } from "@/lib/routes";
 import { Arrow, breadcrumbJsonLd, FaqSection } from "./_components/shared";
+import GlobeCanvas from "./_components/GlobeCanvas";
 import {
   engagementModels,
   whyNumsr,
   whyCards,
   proc2Stages,
   gdStats,
-  gdHubs,
   indgCards,
   perspectives,
   servicesFaqItems,
@@ -177,23 +177,7 @@ export default function ServicesHubPage() {
         <div className="gd-inner">
           <div className="gd-card">
             <div className="gd-map gs">
-              <div className="gd-orb">
-                <div className="gd-orb-ring"></div>
-                {gdHubs.map((h, i) => (
-                  <div
-                    className="gd-pin"
-                    key={h.name}
-                    style={{
-                      top: `${[28, 45, 62, 40][i]}%`,
-                      left: `${[30, 42, 68, 78][i]}%`,
-                    }}
-                  >
-                    <span className="gd-pin-dot"></span>
-                    <span className="gd-pin-lbl">{h.name}</span>
-                    <span className="gd-pin-sub">{h.sub}</span>
-                  </div>
-                ))}
-              </div>
+              <GlobeCanvas />
               <div className="gd-sun"><span className="d"></span>Follow-the-sun delivery · <strong>pipeline moves around the clock</strong></div>
             </div>
             <div className="gd-info gs">

@@ -348,11 +348,16 @@ export const gdStats: [string, string][] = [
   ["10+", "Years of global staffing"],
 ];
 
-export const gdHubs = [
-  { name: "Delaware", sub: "GLOBAL HQ" },
-  { name: "Ontario", sub: "CANADA" },
-  { name: "Dubai", sub: "UAE" },
-  { name: "Pune", sub: "INDIA" },
+// Plotted on the rotating globe in the Global Delivery section. lat/lon are
+// real coordinates — the globe projects them onto the sphere, so they must
+// stay accurate rather than being nudged for visual balance.
+export type GdHub = { name: string; sub: string; lat: number; lon: number; hq?: boolean };
+
+export const gdHubs: GdHub[] = [
+  { name: "Delaware", sub: "GLOBAL HQ", lat: 39.7, lon: -75.5, hq: true },
+  { name: "Ontario", sub: "CANADA", lat: 43.4, lon: -80.3 },
+  { name: "Dubai", sub: "UAE", lat: 25.2, lon: 55.3 },
+  { name: "Pune", sub: "INDIA", lat: 18.5, lon: 73.8 },
 ];
 
 export const indgCards: { icon: string; title: string; desc: string; tags: string[] }[] = [
