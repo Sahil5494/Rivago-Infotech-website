@@ -21,25 +21,37 @@ export default function ScrollReveals() {
   useEffect(() => {
     let cancelled = false;
 
+    // Everything below animates *from* a hidden state to the resting state the
+    // markup already renders. Nothing is gated behind opacity:0 in CSS, so if
+    // this module fails to load, or motion is reduced, the page stays readable
+    // instead of going blank.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     (async () => {
-      const [{ default: gsap }, { ScrollTrigger }] = await Promise.all([
-        import("gsap"),
-        import("gsap/ScrollTrigger"),
-      ]);
+      let mods;
+      try {
+        mods = await Promise.all([import("gsap"), import("gsap/ScrollTrigger")]);
+      } catch {
+        return; // Animation is an enhancement — content is already visible.
+      }
       if (cancelled) return;
+      const gsap = mods[0].default;
+      const { ScrollTrigger } = mods[1];
       gsap.registerPlugin(ScrollTrigger);
 
       // Reset any triggers left over from the previous route.
       ScrollTrigger.getAll().forEach((t) => t.kill());
       gsap.killTweensOf(["*"]);
 
-      // Hero entrance
+      // Hero entrance. These used to be held at opacity:0 by the stylesheet and
+      // animated *to* 1, which left the headline invisible whenever this script
+      // did not run. They now rest visible and animate from hidden instead.
       if (document.querySelector(".hero")) {
         const tl = gsap.timeline({ delay: 0.2 });
         [".hero-badge", ".hero-h1", ".hero-sub", ".hero-btns", ".hero-proof"].forEach((sel, i) => {
-          tl.to(sel, { opacity: 1, duration: 0.7, ease: "power3.out" }, i * 0.16).from(
+          tl.from(
             sel,
-            { y: i < 4 ? 20 : 16, duration: 0.7, ease: "power3.out" },
+            { opacity: 0, y: i < 4 ? 20 : 16, duration: 0.7, ease: "power3.out" },
             i * 0.16
           );
         });
