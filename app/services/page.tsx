@@ -4,6 +4,7 @@
    from /public. Every one carries real alt text. */
 import type { Metadata } from "next";
 import ServicesClient from "./ServicesClient";
+import GlobeCanvas from "./_components/GlobeCanvas";
 import "./services.css";
 
 /* The Staffing Solutions page, ported from the supplied reference.
@@ -511,7 +512,7 @@ export default function ServicesPage() {
           <div className="gd-inner">
             <div className="gd-card">
               <div className="gd-map rv">
-                <canvas className="gd-globe" id="gdGlobe" role="img" aria-label="Rotating globe showing Rivago hubs in the US, Canada, the UAE and India"></canvas>
+                <GlobeCanvas />
                 <div className="gd-sun"><span className="d"></span>Follow-the-sun delivery · <strong>pipeline moves around the clock</strong></div>
               </div>
               <div className="gd-info rv rv2">
