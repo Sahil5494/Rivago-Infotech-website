@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import { SiteNav, SiteFooter, SitePageNav } from "@/components/SiteChrome";
 import HireModal from "@/components/HireModal";
 import HelpModal from "@/components/HelpModal";
 import ScrollReveals from "@/components/ScrollReveals";
-import PageNavSide from "@/components/PageNavSide";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -28,7 +27,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rivagoinfotech.com"),
+  metadataBase: new URL(SITE_URL),
   title: "Rivago Infotech — Global Staffing & Recruitment",
   description:
     "Rivago Infotech is a global staffing firm placing senior talent across technology, finance, healthcare, legal and more — direct hire, contract and executive search in the US, Canada, the UAE and India.",
@@ -39,7 +38,7 @@ export const metadata: Metadata = {
     title: "Rivago Infotech — Global Staffing & Recruitment",
     description:
       "Rivago Infotech is a global staffing firm placing senior talent across technology, finance, healthcare, legal and more — direct hire, contract and executive search in the US, Canada, the UAE and India.",
-    url: "https://rivagoinfotech.com/",
+    url: "/",
     images: [{ url: "/assets/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
@@ -57,12 +56,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
       <body>
-        <Nav />
+        <SiteNav />
         {children}
         <HireModal />
-        <Footer />
+        <SiteFooter />
         <HelpModal />
-        <PageNavSide />
+        <SitePageNav />
         <ScrollReveals />
       </body>
     </html>
