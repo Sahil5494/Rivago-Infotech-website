@@ -517,10 +517,10 @@ export default function ServicesPage() {
               </div>
               <div className="gd-info rv rv2">
                 <div className="gd-eyb">Global delivery</div>
-                <h2>Five hubs. <em>One handshake.</em></h2>
+                <h2>Four markets. <em>One handshake.</em></h2>
                 <p className="gd-lead">Wherever the role sits, a local partner runs it — backed by a centralised research and sourcing team. You get regional fluency and round-the-clock pipeline, on a single contract.</p>
                 <div className="gd-stats">
-                  <div className="gd-stat"><div className="v">5</div><div className="l">Offices across 4 countries</div></div>
+                  <div className="gd-stat"><div className="v">3</div><div className="l">Offices across 3 countries</div></div>
                   <div className="gd-stat"><div className="v">1</div><div className="l">Central delivery hub, Pune</div></div>
                   <div className="gd-stat"><div className="v">1,000+</div><div className="l">Placements to date</div></div>
                   <div className="gd-stat"><div className="v">10+</div><div className="l">Years of global staffing</div></div>

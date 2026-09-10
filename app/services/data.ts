@@ -342,7 +342,7 @@ export const proc2Stages: { day: string; title: string; desc: string; deliverLab
 ];
 
 export const gdStats: [string, string][] = [
-  ["5", "Offices across 4 countries"],
+  ["3", "Offices across 3 countries"],
   ["1", "Central delivery hub, Pune"],
   ["1,000+", "Placements to date"],
   ["10+", "Years of global staffing"],
