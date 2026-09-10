@@ -12,7 +12,7 @@ import { routes } from "@/lib/routes";
  * routes. Every page still on the old system is unchanged. Add a route here
  * as it is migrated — leaving one out renders two navigations at once.
  */
-const COUNSEL_ROUTES: string[] = [routes.home, routes.services];
+const COUNSEL_ROUTES: string[] = [routes.services];
 
 function useIsCounsel() {
   const pathname = usePathname();
