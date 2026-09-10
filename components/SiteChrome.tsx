@@ -7,21 +7,26 @@ import PageNavSide from "@/components/PageNavSide";
 import { routes } from "@/lib/routes";
 
 /**
- * The landing page ships its own header and footer (see app/page.tsx), so the
- * shared chrome steps aside on that route only. Every other page is unchanged.
+ * Pages rebuilt in the Counsel system ship their own header and footer
+ * (components/CounselChrome.tsx), so the shared chrome steps aside on those
+ * routes. Every page still on the old system is unchanged. Add a route here
+ * as it is migrated — leaving one out renders two navigations at once.
  */
-function useIsHome() {
-  return usePathname() === routes.home;
+const COUNSEL_ROUTES: string[] = [routes.home, routes.services];
+
+function useIsCounsel() {
+  const pathname = usePathname();
+  return COUNSEL_ROUTES.includes(pathname);
 }
 
 export function SiteNav() {
-  return useIsHome() ? null : <Nav />;
+  return useIsCounsel() ? null : <Nav />;
 }
 
 export function SiteFooter() {
-  return useIsHome() ? null : <Footer />;
+  return useIsCounsel() ? null : <Footer />;
 }
 
 export function SitePageNav() {
-  return useIsHome() ? null : <PageNavSide />;
+  return useIsCounsel() ? null : <PageNavSide />;
 }

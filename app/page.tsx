@@ -5,6 +5,7 @@ import { routes } from "@/lib/routes";
 import { SITE_URL } from "@/lib/site";
 import HomeClient from "./_home/HomeClient";
 import BriefForm from "./_home/BriefForm";
+import "./counsel.css";
 import "./home.css";
 
 /* Direction B · "Counsel". Fraunces carries display at a high optical size;
