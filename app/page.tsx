@@ -195,71 +195,6 @@ const engagements = [
   },
 ];
 
-/* NOTE — the ten practice names and the role titles beneath them are PENDING
-   CLIENT CONFIRMATION. They describe seats rather than counts or outcomes,
-   but they still assert what Rivago has recruited for. Confirm before launch. */
-const practices = [
-  {
-    n: "01",
-    h: "Technology",
-    d: "Platform, cloud infrastructure, data and security. The hard part is that the strongest candidates are never looking — they are found by direct approach or not at all.",
-    seats: ["Director, Platform / SRE", "Chief Technology Officer"],
-  },
-  {
-    n: "02",
-    h: "Finance & Banking",
-    d: "Risk, compliance, treasury and FP&A. Comp bands move faster than job specs do, so calibration has to happen against this quarter’s market, not last year’s.",
-    seats: ["Chief Financial Officer", "Head of Securities & M&A"],
-  },
-  {
-    n: "03",
-    h: "Healthcare & Life Sciences",
-    d: "Clinical leadership, nursing and allied health. Licensure and in-market registration decide whether a candidate is real — so we check it before submission, not at offer.",
-    seats: ["Chief Medical Officer", "Director, Clinical Operations"],
-  },
-  {
-    n: "04",
-    h: "Engineering & Manufacturing",
-    d: "Plant, quality and manufacturing engineering leadership. Titles travel badly between companies here, so we screen on process ownership rather than job title.",
-    seats: ["Director of Manufacturing Engineering", "Director, Field Operations"],
-  },
-  {
-    n: "05",
-    h: "Telecommunications",
-    d: "Core network, RAN and 5G engineering. Genuinely thin pools — a shortlist of three is a good outcome, and anyone promising fifty is not reading the market.",
-    seats: ["Head of 5G Core Engineering"],
-  },
-  {
-    n: "06",
-    h: "Aerospace & Defence",
-    d: "Cleared and non-cleared engineering, quality and programme roles. Clearance and eligibility are verified at screening, because discovering them late costs a whole search.",
-    seats: ["Director, Cleared Cybersecurity", "Director, Aerospace Manufacturing"],
-  },
-  {
-    n: "07",
-    h: "Legal & Compliance",
-    d: "In-house counsel, contracts and regulatory. Small candidate universe, long notice periods — timelines have to be planned backwards from the start date.",
-    seats: ["Head of Commercial / Privacy"],
-  },
-  {
-    n: "08",
-    h: "Supply Chain & Operations",
-    d: "Procurement, logistics and S&OP. The difficulty is scope — two roles with the same title can be entirely different jobs, so the brief does the heavy lifting.",
-    seats: ["Director, S&OP"],
-  },
-  {
-    n: "09",
-    h: "Sales & Marketing",
-    d: "Revenue leadership, growth and demand. Easy to fill badly and hard to fill well — we screen on evidence of number-carrying, not on narrative.",
-    seats: ["Chief Revenue Officer"],
-  },
-  {
-    n: "10",
-    h: "People & HR",
-    d: "HR business partnering, talent acquisition, reward and L&D. Often the hire that unblocks every other hire, which makes the timeline unforgiving.",
-    seats: ["Chief People Officer", "Director of L&D"],
-  },
-];
 
 const objections = [
   {
@@ -429,7 +364,7 @@ export default function HomePage() {
           <ul className="nlinks" id="rvgLinks">
             <li><a href="#engage">Hire talent</a></li>
             <li><a href="#method">How we work</a></li>
-            <li><a href="#practices">Practices</a></li>
+            <li><Link href={routes.industries}>Practices</Link></li>
             <li><a href="#objections">Objections</a></li>
             <li><a href="#working">Working with us</a></li>
           </ul>
@@ -640,36 +575,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 06 — PRACTICES · paper */}
-        <section className="sec" id="practices" aria-labelledby="h-prac">
-          <div className="in">
-            <RecordRule n="06" label="Practices" scope="Seats we fill · what makes each hard" />
-            <div className="spl">
-              <h2 id="h-prac">Ten practices. Senior seats in each.</h2>
-              <p className="sub">
-                Not a list of sectors we would consider. These are the functions we run searches in, with
-                the roles and the specific difficulty each one carries.
-              </p>
-            </div>
-            <ul className="lg">
-              {practices.map((p) => (
-                <li className="row" key={p.n}>
-                  <div className="rowin static">
-                    <span className="num">{p.n}</span>
-                    <span><h3>{p.h}</h3><p className="de">{p.d}</p></span>
-                    <Rail items={["Recent seats", ...p.seats]} />
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <p className="prac-n">Role titles are drawn from searches we have run. Client names withheld by agreement.</p>
-          </div>
-        </section>
-
-        {/* 07 — OBJECTIONS · paper alt */}
+        {/* 06 — OBJECTIONS · paper alt */}
         <section className="sec alt" id="objections" aria-labelledby="h-obj">
           <div className="in">
-            <RecordRule n="07" label="Objections" scope="Answered before you have to ask" />
+            <RecordRule n="06" label="Objections" scope="Answered before you have to ask" />
             <div className="spl">
               <h2 id="h-obj">We’re smaller than the agency you’re using. That’s the point.</h2>
               <p className="sub">
@@ -691,10 +600,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 08 — WORKING WITH US · paper alt */}
+        {/* 07 — WORKING WITH US · paper alt */}
         <section className="sec alt" id="working" style={{ paddingTop: 24 }} aria-labelledby="h-work">
           <div className="in">
-            <RecordRule n="08" label="Working with us" scope="For procurement, legal and finance" />
+            <RecordRule n="07" label="Working with us" scope="For procurement, legal and finance" />
             <div className="spl">
               <h2 id="h-work">The questions procurement asks, answered here.</h2>
               <p className="sub">Everything below is agreed in the engagement rather than discovered during it.</p>
@@ -707,10 +616,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 09 — SEND A BRIEF · ink */}
+        {/* 08 — SEND A BRIEF · ink */}
         <section className="sec ink" id="brief" aria-labelledby="h-brief">
           <div className="in">
-            <RecordRule n="09" label="Send a brief" scope="One business day to a reply" />
+            <RecordRule n="08" label="Send a brief" scope="One business day to a reply" />
             <div className="spl">
               <h2 id="h-brief">Send us a brief. We’ll tell you honestly whether it’s fillable.</h2>
               <p className="sub">
@@ -765,7 +674,7 @@ export default function HomePage() {
               <h2>Company</h2>
               <ul>
                 <li><a href="#method">How we work</a></li>
-                <li><a href="#practices">Practices</a></li>
+                <li><Link href={routes.industries}>Practices</Link></li>
                 <li><a href="#objections">Objections</a></li>
                 <li><a href="#working">Working with us</a></li>
                 <li><Link href={routes.about}>About</Link></li>
