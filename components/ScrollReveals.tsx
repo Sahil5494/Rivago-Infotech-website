@@ -21,6 +21,11 @@ export default function ScrollReveals() {
   useEffect(() => {
     let cancelled = false;
 
+    // The landing page carries its own motion (app/_home/HomeClient.tsx) and
+    // none of the selectors below exist there — skip it so GSAP is never
+    // loaded on the route with the tightest LCP budget.
+    if (pathname === "/") return;
+
     // Everything below animates *from* a hidden state to the resting state the
     // markup already renders. Nothing is gated behind opacity:0 in CSS, so if
     // this module fails to load, or motion is reduced, the page stays readable

@@ -1,594 +1,706 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import HeroParticles from "@/components/HeroParticles";
-import LogoMarquee from "@/components/LogoMarquee";
-import OrbCanvas from "@/components/OrbCanvas";
-import Faq from "@/components/Faq";
-import Testimonials from "@/components/Testimonials";
-import CardSlider from "@/components/CardSlider";
-import { routes, servicesList, industriesList, offices } from "@/lib/routes";
+import { Fraunces, Public_Sans } from "next/font/google";
+import { routes } from "@/lib/routes";
+import { SITE_URL } from "@/lib/site";
+import HomeClient from "./_home/HomeClient";
+import BriefForm from "./_home/BriefForm";
+import "./counsel.css";
+import "./home.css";
 
-const faqItems = [
+/* Direction B · "Counsel". Fraunces carries display at a high optical size;
+   Public Sans carries everything else. No monospace anywhere — the metadata
+   rail is set in tracked sans instead. Scoped to this route so the other
+   pages don't pay for fonts they never use. */
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  axes: ["opsz"],
+  style: ["normal", "italic"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+const publicSans = Public_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-public-sans",
+  display: "swap",
+});
+
+const DESCRIPTION =
+  "A senior-only staffing firm. One partner owns your search from the first call to day ninety — direct hire, contract, executive search, RPO and Employer of Record across the US, Canada, the UAE and India.";
+
+export const metadata: Metadata = {
+  title: "Rivago Infotech — A shortlist you can act on",
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: "Rivago Infotech",
+    title: "Rivago Infotech — A shortlist you can act on",
+    description: DESCRIPTION,
+    url: "/",
+    images: [{ url: "/assets/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rivago Infotech — A shortlist you can act on",
+    description: DESCRIPTION,
+    images: ["/assets/og-image.png"],
+  },
+};
+
+/* ---------------------------------------------------------------
+   Content. Every string is either a description of how Rivago works
+   or a question a buyer asks. There are deliberately no placement
+   counts, retention rates, delivery times or client results on this
+   page — see the launch checklist in the PR.
+   --------------------------------------------------------------- */
+
+const failures = [
   {
-    q: "What types of roles does Rivago specialise in?",
-    a: "Rivago is a global staffing and recruitment company. We recruit across technology, finance, banking, healthcare, legal, operations, sales, marketing and HR — at every level from graduate to C-suite. We place candidates on a permanent, contract or interim basis across the US, Canada, the UAE and India.",
+    n: "01",
+    h: "The screening happens on your calendar",
+    d: "Candidates arrive matched on keywords, not calibrated against the spec. The first real assessment of fit is the interview you run — so your team absorbs the work the agency was paid to do.",
+    rail: ["You pay twice", "Once in fee", "Once in hours"],
   },
   {
-    q: "How quickly can you deliver a shortlist?",
-    a: "Our average shortlist delivery is 48 hours from the moment we receive a complete brief. For niche or senior roles this may extend to 5–7 business days. We will always communicate a realistic timeline upfront — no surprises.",
+    n: "02",
+    h: "Comp surfaces at offer stage",
+    d: "Nobody establishes the number against the live market before sourcing begins. Weeks of process end in a decline that was predictable on day one — and the role reopens at the back of the queue.",
+    rail: ["You lose weeks", "Predictable", "Preventable"],
   },
   {
-    q: "Do you recruit permanent, contract and interim roles?",
-    a: "Yes — Rivago recruits across all engagement types. We place candidates on a permanent basis, fixed-term or project contracts, and interim arrangements. This applies across all sectors and seniority levels, from graduate entry roles to C-suite leadership.",
-  },
-  {
-    q: "Do you work with small companies or only enterprises?",
-    a: "We work with companies of all sizes — from fast-growing startups placing their first hires to large enterprises scaling entire departments. Our process is the same for every client: thorough brief, fast delivery, quality-first shortlist.",
-  },
-  {
-    q: "Which markets do you operate in?",
-    a: "Rivago is a global staffing and recruitment company with active operations across the United States, Canada, the UAE and India. Our global delivery teams give us a wide sourcing reach and the ability to move fast in every market we serve.",
-  },
-  {
-    q: "Is there a replacement guarantee if a placement doesn't work out?",
-    a: "Yes. For all direct hire placements we offer a replacement guarantee period. If a placed candidate leaves or is let go within the agreed window, we restart the search at no additional fee. Terms are agreed upfront as part of our engagement.",
+    n: "03",
+    h: "Nobody owns the outcome",
+    d: "Four agencies briefed, the same twelve profiles from all of them, and a coordinator on each side who never spoke to the hiring manager. Accountability is distributed until it disappears.",
+    rail: ["You own it", "By default", "Not by choice"],
   },
 ];
 
-const testimonials = [
+const steps = [
   {
-    badge: "US · Banking",
-    quote: "We've worked with a lot of recruiters. Rivago is the first that came back with candidates who actually matched the brief — not just the keywords. Three hires, all still with us eighteen months later.",
-    name: "Head of Talent Acquisition",
-    role: "US Regional Bank",
+    k: "Step 01 · 45 minutes",
+    h: "Calibration",
+    p: "Must-haves, comp band, right-to-work and team chemistry — documented with the hiring manager before anything moves. If the number won’t fill the seat, you hear it here.",
+    out: "signed brief",
+    on: true,
   },
   {
-    badge: "Canada · Financial Services",
-    quote: "The shortlist arrived in 38 hours. Every candidate had been properly screened — comp expectations, notice period, right-to-work. We moved two to offer within the week. That's never happened before.",
-    name: "HR Director",
-    role: "Ontario Financial Services Firm",
+    k: "Step 02 · Sourcing",
+    h: "Search and screen",
+    p: "Referrals, direct approach and our own network. Every candidate screened against the spec, the band and notice period — not matched on keywords.",
+    out: "screened long list",
+    on: true,
   },
   {
-    badge: "Delaware · Professional Services",
-    quote: "Hiring clinical staff in the UAE is complicated — licensing, DHA registration, the works. Rivago handled all of it without being told twice. Eleven placements, zero compliance issues.",
-    name: "Chief People Officer",
-    role: "Dubai Hospital Group",
+    k: "Step 03 · Shortlist",
+    h: "Three to five, with reasoning",
+    p: "Each candidate comes with a written recommendation from the partner who took the brief — strengths, risks, motivation and an honest view on close probability.",
+    out: "shortlist + written rationale",
+    on: true,
   },
   {
-    badge: "Delaware · Professional Services",
-    quote: "We needed a Finance Director on short notice. Rivago had three credible candidates in front of us within 48 hours. We made an offer on day four. The hire is still with us two years on.",
-    name: "CEO",
-    role: "Delaware Professional Services Firm",
-  },
-  {
-    badge: "US · Technology",
-    quote: "What sets Rivago apart is that they push back. If the brief is unclear, they say so. If a candidate isn't right, they won't send them. That honesty saves everyone time.",
-    name: "VP of People",
-    role: "US SaaS Company",
+    k: "Step 04 · To day 90",
+    h: "Place and hold",
+    p: "Offer negotiation, references, onboarding handover. We stay on the line to day ninety and replace, free, if the fit is wrong.",
+    out: "90-day guarantee",
+    on: false,
   },
 ];
 
-const jsonLd = {
+const engagements = [
+  {
+    n: "01",
+    h: "I’m replacing a leader, confidentially.",
+    d: "Retained search with weekly written progress. The market never learns the seat is open.",
+    rail: ["Executive Search", "Retained · confidential", "CTO · CFO · CPO"],
+    facets: [
+      ["Structure", "Retained, staged"],
+      ["Employment", "Your payroll"],
+      ["Reporting", "Weekly, written"],
+    ],
+    href: routes.executiveSearch,
+  },
+  {
+    n: "02",
+    h: "I need a permanent hire that sticks.",
+    d: "Contingent fee, paid on a hire that lasts. Replaced free if it isn’t right inside ninety days.",
+    rail: ["Direct Hire", "Contingent", "90-day guarantee"],
+    facets: [
+      ["Structure", "Contingent — no placement, no fee"],
+      ["Employment", "Your payroll"],
+      ["Cover", "90-day replacement"],
+    ],
+    href: routes.directHire,
+  },
+  {
+    n: "03",
+    h: "I need skilled people for a fixed project.",
+    d: "We carry payroll, compliance and worker classification. You get capacity without the employment risk.",
+    rail: ["Contract Staffing", "We are the employer", "Timesheet-billed"],
+    facets: [
+      ["Structure", "Hourly, timesheet-billed"],
+      ["Employment", "Rivago is employer of record"],
+      ["Compliance", "Classification handled"],
+    ],
+    href: routes.contractStaffing,
+  },
+  {
+    n: "04",
+    h: "I want to see the work before I commit.",
+    d: "A defined trial period with conversion terms agreed before day one, not negotiated at the end.",
+    rail: ["Contract-to-Hire", "Terms agreed upfront", "Defined conversion"],
+    facets: [
+      ["Structure", "Hourly, then conversion fee"],
+      ["Employment", "Ours, then yours"],
+      ["Terms", "Set at engagement"],
+    ],
+    href: routes.contractStaffing,
+  },
+  {
+    n: "05",
+    h: "I have a seasonal or leave-cover gap.",
+    d: "On-demand cover for peaks and absence, scaled up or down as the work changes.",
+    rail: ["Temporary Staffing", "Scales both ways", "We are the employer"],
+    facets: [
+      ["Structure", "Hourly"],
+      ["Employment", "Rivago"],
+      ["Term", "Open or fixed"],
+    ],
+    href: routes.temporaryStaffing,
+  },
+  {
+    n: "06",
+    h: "My talent function can’t keep up.",
+    d: "An embedded team running all or part of your hiring — your brand, your workflow, our capacity.",
+    rail: ["RPO", "Monthly programme", "Embedded team"],
+    facets: [
+      ["Structure", "Monthly programme fee"],
+      ["Employment", "Your payroll"],
+      ["Branding", "Yours throughout"],
+    ],
+    href: routes.rpo,
+  },
+  {
+    n: "07",
+    h: "I need to hire where we have no entity.",
+    d: "We become the legal employer in-country — payroll, tax, benefits and contracts.",
+    rail: ["Employer of Record", "No entity needed", "US · CA · UAE · IN"],
+    facets: [
+      ["Structure", "Per-employee monthly"],
+      ["Employment", "Rivago, in-country"],
+      ["Scope", "Payroll, tax, benefits"],
+    ],
+    href: routes.employerOfRecord,
+  },
+];
+
+
+const objections = [
+  {
+    n: "01",
+    q: "“You’re small. Can you actually deliver?”",
+    a: "A large agency gives you a senior name in the pitch and a delivery pod afterwards. We are small enough that the person who takes your brief is the person who closes it — and small enough that you’d notice immediately if that stopped being true.",
+    rail: ["What it means", "No delivery desk", "No handoff"],
+  },
+  {
+    n: "02",
+    q: "“Can you handle the volume?”",
+    a: "Not unlimited volume, and we’d rather say so. We cap the number of live searches per partner. If a mandate is beyond what we can run properly, we will tell you at the first call instead of taking it and under-serving it.",
+    rail: ["What it means", "Capacity is finite", "Stated upfront"],
+  },
+  {
+    n: "03",
+    q: "“What does it actually cost?”",
+    a: "Direct hire is contingent — no placement, no fee. Executive search is retained and staged. Contract is billed hourly against an agreed rate card. Structures are agreed before the first search opens, never renegotiated at offer stage.",
+    rail: ["What it means", "Agreed at engagement", "No rebate surprises"],
+  },
+  {
+    n: "04",
+    q: "“What if the hire doesn’t work out?”",
+    a: "For direct hire placements we restart the search at no additional fee inside the agreed window. The window is written into the engagement rather than discussed after a problem.",
+    rail: ["What it means", "90-day replacement", "Contractual"],
+  },
+  {
+    n: "05",
+    q: "“Do you need exclusivity?”",
+    a: "No. Run us alongside whoever you like. We’d note that four agencies on one role tends to produce the same twelve profiles four times — but that is your call to make, not a condition of ours.",
+    rail: ["What it means", "Non-exclusive", "By default"],
+  },
+  {
+    n: "06",
+    q: "“How is this different from our current agency?”",
+    a: "The screening happens before the shortlist rather than on your calendar. Every candidate is checked against the spec, the comp band and right-to-work before you see them — which is why three to five arrive instead of fifty.",
+    rail: ["What it means", "Screened, then sent", "Not sent, then screened"],
+  },
+];
+
+const procurement = [
+  ["Contracting", "MSA or your paper. Rate cards and fee structures agreed before the first search opens, with no rebate surprises."],
+  ["Worker classification", "On contract and temporary engagements Rivago is the employer of record and carries classification, payroll and statutory obligations."],
+  ["Right to work", "Verified before submission in every market we operate in — checked at screening, not at offer."],
+  ["Candidate data", "Handled under the data protection regime of the hiring market, retained only as long as the engagement requires, and available for deletion on request."],
+  ["In-market entities", "We contract and employ locally in the US, Canada, the UAE and India — so hiring in any of them needs no entity on your side."],
+  ["Vendor onboarding", "Insurance certificates, references and compliance documentation supplied at onboarding. Supplier-portal delivery supported."],
+];
+
+const markets = [
+  ["United States", "New York · Delaware"],
+  ["Canada", "Ontario"],
+  ["UAE", "Dubai"],
+  ["India", "Pune · Hyderabad"],
+];
+
+const clients = ["HCL", "Hexaware", "Genpact", "Persistent", "Synechron", "Saama", "InfoVision"];
+
+const shortlist = [
+  { n: "01", nm: "A. K.", mt: "9 yrs · Kubernetes, Terraform · 2 wks", w: "96%", dl: ".34s", st: "Submit" },
+  { n: "02", nm: "M. R.", mt: "11 yrs · AWS, SRE lead · immediate", w: "91%", dl: ".60s", st: "Submit" },
+  { n: "03", nm: "S. D.", mt: "7 yrs · Platform, GCP · 4 wks", w: "84%", dl: ".86s", st: "Submit" },
+  { n: "04", nm: "J. P.", mt: "12 yrs · comp above band", w: "58%", dl: "1.18s", st: "Held", q: true },
+];
+
+const orgJsonLd = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": ["Organization", "EmploymentAgency"],
-      "@id": "https://rivagoinfotech.com/#organization",
-      name: "Rivago Infotech",
-      alternateName: ["Rivago", "Rivago Infotech Inc"],
-      url: "https://rivagoinfotech.com",
-      logo: { "@type": "ImageObject", url: "https://rivagoinfotech.com/assets/og-image.png" },
-      description:
-        "Rivago Infotech is a global staffing and recruitment firm placing senior talent across technology, healthcare, finance, legal, aerospace and more — direct hire, contract, temporary staffing, RPO, executive search and Employer of Record across the United States, Canada, the UAE and India.",
-      slogan: "Staffing for every role, at every level.",
-      foundingDate: "2019",
-      email: "info@rivagoinfotech.com",
-      telephone: "+1-888-508-5703",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "3524 Silverside Rd, Ste 35B",
-        addressLocality: "Wilmington",
-        addressRegion: "DE",
-        postalCode: "19810",
-        addressCountry: "US",
-      },
-      sameAs: [
-        "https://www.linkedin.com/company/rivago-infotech-inc",
-        "https://www.instagram.com/rivago.official/",
-        "https://www.glassdoor.com/Overview/Working-at-Rivago-Infotech-EI_IE.htm",
-        "https://www.google.com/maps/place/Rivago+Infotech",
-      ],
-      areaServed: [
-        { "@type": "Country", name: "United States" },
-        { "@type": "Country", name: "Canada" },
-        { "@type": "Country", name: "United Arab Emirates" },
-        { "@type": "Country", name: "India" },
-      ],
-      location: offices.map((o) => ({ "@id": `https://rivagoinfotech.com/contact-us#${o.id}` })),
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://rivagoinfotech.com/#website",
-      url: "https://rivagoinfotech.com",
-      name: "Rivago Infotech",
-      publisher: { "@id": "https://rivagoinfotech.com/#organization" },
-      inLanguage: "en-US",
-    },
-    ...offices.map((o) => ({
-      "@type": "EmploymentAgency",
-      "@id": `https://rivagoinfotech.com/contact-us#${o.id}`,
-      name: `Rivago Infotech — ${o.name}`,
-      parentOrganization: { "@id": "https://rivagoinfotech.com/#organization" },
-      url: "https://rivagoinfotech.com/contact-us",
-      description: o.desc,
-      telephone: "+1-888-508-5703",
-      email: "info@rivagoinfotech.com",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: o.street,
-        addressLocality: o.city,
-        addressRegion: o.region,
-        postalCode: o.postal,
-        addressCountry: o.country,
-      },
-      geo: { "@type": "GeoCoordinates", latitude: o.lat, longitude: o.lng },
-    })),
+  "@type": ["Organization", "EmploymentAgency"],
+  name: "Rivago Infotech",
+  url: SITE_URL,
+  description: DESCRIPTION,
+  areaServed: [
+    { "@type": "Country", name: "United States" },
+    { "@type": "Country", name: "Canada" },
+    { "@type": "Country", name: "United Arab Emirates" },
+    { "@type": "Country", name: "India" },
   ],
+};
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Staffing and recruitment engagement models",
+  itemListElement: engagements.map((e, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Service",
+      name: e.rail[0],
+      description: e.d,
+      serviceType: e.rail[0],
+      provider: { "@type": "Organization", name: "Rivago Infotech" },
+      url: `${SITE_URL}${e.href}`,
+    },
+  })),
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` }],
 };
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqItems.map((f) => ({
+  mainEntity: objections.map((o) => ({
     "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
+    name: o.q.replace(/[“”]/g, ""),
+    acceptedAnswer: { "@type": "Answer", text: o.a },
   })),
 };
 
-const Arrow = () => (
-  <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-);
-const SmallArrow = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-);
-const CardArrow = () => (
-  <svg className="svc-arr" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-);
+function RecordRule({ n, label, scope }: { n: string; label: string; scope: string }) {
+  return (
+    <div className="rr">
+      <span className="a">
+        <em>{n}</em> · {label}
+      </span>
+      <span className="b">{scope}</span>
+    </div>
+  );
+}
 
-export default function Home() {
+function Rail({ items }: { items: string[] }) {
+  return (
+    <span className="rail">
+      <b>{items[0]}</b>
+      {items.slice(1).map((t, i) => (
+        <span key={t}>
+          {i > 0 && <br />}
+          {t}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+/** Display type that rises from behind its own mask, one line at a time. */
+function Rise({ lines, className }: { lines: string[]; className?: string }) {
   return (
     <>
-      <link rel="canonical" href="https://rivagoinfotech.com/" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {lines.map((l) => (
+        <span className={`rise ${className ?? ""}`} key={l}>
+          <span>{l}</span>
+        </span>
+      ))}
+    </>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <div className={`rvg ${fraunces.variable} ${publicSans.variable}`}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      {/* HERO */}
-      <section className="hero">
-        <div className="hphoto">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1920&q=90&auto=format" alt="aerial green landscape with people" decoding="async" />
-        </div>
-        <HeroParticles />
-        <div className="hgrain"></div>
-        <div className="hero-content">
-          <div className="hero-badge gs"><span className="bdot"></span>Global Staffing · US · Canada · UAE · India</div>
-          <h1 className="hero-h1 gs">Staffing for getting<br />the <em>right people</em> in seat.</h1>
-          <p className="hero-sub gs">We connect outstanding companies with exceptional talent — across every industry, every function and every corner of the globe.</p>
-          <div className="hero-btns gs">
-            <button className="btn-hp" data-help>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+      <a className="skip" href="#main">Skip to content</a>
+
+      <header className="rvg-hdr" id="rvgHdr">
+        <nav className="nav" aria-label="Primary">
+          <Link className="logo" href={routes.home}>
+            Rivago<span>.</span>
+          </Link>
+          <ul className="nlinks" id="rvgLinks">
+            <li><a href="#engage">Hire talent</a></li>
+            <li><a href="#method">How we work</a></li>
+            <li><Link href={routes.industries}>Practices</Link></li>
+            <li><a href="#objections">Objections</a></li>
+            <li><a href="#working">Working with us</a></li>
+          </ul>
+          <div className="nact">
+            <Link className="quiet" href={routes.viewJobs}>Find work</Link>
+            <a className="btn pri" href="#brief"><span>Send a brief</span></a>
+            <button className="burger" id="rvgBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="rvgLinks">
+              <i /><i /><i />
+            </button>
           </div>
-          <div className="hero-proof gs">
-            <div><span className="pstars">★★★★★</span><div className="ptxt">Trusted by <strong>50+ companies</strong> · US, Canada, UAE &amp; India</div></div>
-          </div>
-        </div>
-      </section>
+        </nav>
+      </header>
 
-      {/* CLIENTS */}
-      <section className="clients-sec">
-        <div className="clients-label">Where world-class teams build their talent bench</div>
-        <LogoMarquee />
-      </section>
-
-      {/* ORB */}
-      <section className="orb-sec">
-        <p className="orb-quote gs">The recruitment partner with <em>full context,</em><br />helping you at every step of the <strong>hiring process.</strong></p>
-        <div className="orb-wrap gs">
-          <div className="orb-halo"></div>
-          <div className="orb-r1"></div><div className="orb-r2"></div><div className="orb-r3"></div>
-          <OrbCanvas size={360} />
-          <div className="orb-shadow"></div>
-        </div>
-        <p className="orb-desc gs">We don&apos;t just fill roles. We understand your business, your culture and what genuinely good looks like in your sector — then find the people who are ready to perform from day one.</p>
-      </section>
-
-      {/* FEATURES */}
-      <section className="feat-sec">
-        <div className="feat-inner">
-          <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our approach</div>
-          <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 580 }}>How we work — and why <em>it actually works.</em></h2>
-          <CardSlider trackClassName="feat-track" nav="dots">
-
-            <div className="fc gs">
-              <div className="fc-vis">
-                <div className="sv-tag sv-tg"><span style={{ width: 5, height: 5, borderRadius: "50%", background: "#0A6030", display: "inline-block" }}></span>Contract · Permanent · Interim</div>
-                <div className="sv-cand">
-                  <div className="sv-cand-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,var(--green),#00A882)", color: "var(--bg)", fontWeight: 600, fontSize: 15, letterSpacing: ".02em" }}>AK</div>
-                  <div><div className="sv-cand-name">Anil Kumar</div><div className="sv-cand-role">Senior Cloud Architect · 8 yrs exp</div><div className="sv-skills"><span className="sv-sk">AWS</span><span className="sv-sk">Kubernetes</span><span className="sv-sk">Terraform</span></div></div>
-                </div>
-                <div className="sv-bar-row"><div className="sv-bar-label">Role fit</div><div className="sv-bar"><div className="sv-bar-fill" style={{ width: "96%" }}></div></div><div className="sv-bar-val">96%</div></div>
-                <div className="sv-bar-row"><div className="sv-bar-label">Culture fit</div><div className="sv-bar"><div className="sv-bar-fill" style={{ width: "91%" }}></div></div><div className="sv-bar-val">91%</div></div>
-                <div className="sv-bar-row"><div className="sv-bar-label">Availability</div><div className="sv-bar"><div className="sv-bar-fill" style={{ width: "100%" }}></div></div><div className="sv-bar-val">2 wks</div></div>
-              </div>
-              <div className="fc-body"><div className="fc-title">We find people others miss</div><div className="fc-desc">Our recruiters go beyond job boards — accessing passive talent, referral networks and direct headhunting across every sector to surface candidates you won&apos;t find yourself.</div></div>
+      <main id="main">
+        {/* 01 — HERO · paper */}
+        <section className="hero" aria-labelledby="h-hero">
+          <div className="in">
+            <div className="rr">
+              <span className="a"><em>Rivago Infotech</em> · Staffing &amp; Talent</span>
+              <span className="b">US · Canada · UAE · India</span>
             </div>
-
-            <div className="fc gs">
-              <div className="fc-vis" style={{ paddingBottom: 16 }}>
-                <div className="sv-tag sv-tb">Candidate screened</div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 2, flex: 1 }}>
-                  {[
-                    ["Role competency — confirmed", "9 yrs finance leadership · cross-sector background"],
-                    ["Communication — excellent", "Articulate · confident · client-facing ready"],
-                    ["Availability — 2 weeks notice", "No competing offers · ready to start"],
-                    ["Salary expectation — within budget", "Flexible · open to package structure"],
-                  ].map(([t, s]) => (
-                    <div className="sv-check" key={t}>
-                      <div className="sv-ci"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0A6030" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
-                      <div><div className="sv-ct">{t}</div><div className="sv-cs">{s}</div></div>
+            <div className="hgrid">
+              <div>
+                {/* Deliberately not wrapped in <Rise>. The hero is above the
+                    fold so it never animates, and the mask wrapper keeps the
+                    headline out of LCP's reckoning — which hands the metric
+                    to a paragraph. Plain text here; the mask is for the
+                    display type further down. */}
+                <h1 id="h-hero">A shortlist you can act on.</h1>
+                <p className="hsub">
+                  Senior recruiters only. One partner owns your search from the first call to day ninety —
+                  no delivery desk, no handoffs, no junior learning on your role.
+                </p>
+                <p className="cap">We run a limited number of searches at a time</p>
+                <div className="hcta">
+                  <a className="btn pri" href="#brief"><span>Send a brief</span></a>
+                  <a className="tlink" href="#method">How a search runs</a>
+                </div>
+              </div>
+              <div>
+                <div className="art" id="rvgArt" role="img" aria-label="A Rivago shortlist: four screened candidates for a Director, Platform and SRE search in Toronto — three marked submit, one held because compensation sits above the band.">
+                  <div className="art-h">
+                    <span>Shortlist · Director, Platform / SRE</span>
+                    <span>Toronto</span>
+                  </div>
+                  {shortlist.map((c) => (
+                    <div className="art-r" key={c.n}>
+                      <span className="n">{c.n}</span>
+                      <div>
+                        <p className="nm">{c.nm}</p>
+                        <p className="mt">{c.mt}</p>
+                        <div className="bar" style={{ ["--w" as string]: c.w, ["--dl" as string]: c.dl }}><i /></div>
+                      </div>
+                      <span className={c.q ? "st q" : "st"}>{c.st}</span>
                     </div>
                   ))}
                 </div>
-                <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
-                  <div style={{ flex: 1, padding: 7, background: "#E3F8ED", borderRadius: 7, fontSize: 11, color: "#0A6030", textAlign: "center", fontWeight: 600 }}>Accept →</div>
-                  <div style={{ flex: 1, padding: 7, background: "#F5F0E8", borderRadius: 7, fontSize: 11, color: "#0A6030", textAlign: "center" }}>Defer</div>
-                </div>
               </div>
-              <div className="fc-body"><div className="fc-title">Screened before you see them</div><div className="fc-desc">Every candidate is fully assessed before reaching your inbox — competency, culture fit, availability and salary expectations all checked. You only meet people who are genuinely ready.</div></div>
             </div>
-
-            <div className="fc gs">
-              <div className="fc-vis">
-                <div className="sv-nl">Recruiter assessment summary</div>
-                <div className="sv-note">Anil brings 7 years of cloud architecture experience across AWS and Azure. Strong communicator, available immediately. US EST hours, no visa restrictions. Prior work spans fintech and enterprise SaaS. Panel interview strongly recommended.</div>
-                <div style={{ marginTop: 10, display: "flex", gap: 5, flexWrap: "wrap" }}>
-                  <span style={{ padding: "3px 9px", background: "#E3F8ED", borderRadius: 6, fontSize: 10, color: "#0A6030", fontWeight: 500 }}>AWS</span>
-                  <span style={{ padding: "3px 9px", background: "#E3EEFF", borderRadius: 6, fontSize: 10, color: "#1A4A9A", fontWeight: 500 }}>Azure</span>
-                  <span style={{ padding: "3px 9px", background: "#FFF5E3", borderRadius: 6, fontSize: 10, color: "#0A6030", fontWeight: 500 }}>Fintech exp</span>
-                </div>
-              </div>
-              <div className="fc-body"><div className="fc-title">Full context, every time</div><div className="fc-desc">Every shortlisted candidate comes with a written recruiter summary — background, motivations, strengths and an honest recommendation. No guesswork on your side.</div></div>
+            <div className="marks">
+              <span className="k">Placing for</span>
+              <ul>{clients.map((c) => <li key={c}>{c}</li>)}</ul>
             </div>
+          </div>
+        </section>
 
-            <div className="fc wide gs">
-              <div className="fc-vis wide-vis">
-                <div className="sv-pl-col">
-                  <div className="sv-pl-title">Live pipeline — active searches</div>
-                  {[
-                    ["Sr. Software Engineer · USA", "$130K · 3–5 candidates shortlisted", "→"],
-                    ["DevOps Lead · Canada", "CAD 120K · 2 candidates shortlisted", "→"],
-                    ["Finance Manager · UAE", "Sourcing · expected 48h", "⏳"],
-                    ["HR Director · Canada", "CAD 145K · Offer stage", "★"],
-                  ].map(([t, s, icon]) => (
-                    <div className="sv-pl-card" key={t}>
-                      <div className="sv-pl-dot" style={{ background: "var(--green)" }}></div>
-                      <div><div className="sv-pl-name">{t}</div><div className="sv-pl-sub">{s}</div></div>
-                      <div className="sv-pl-val" style={{ color: "var(--green)" }}>{icon}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="sv-pl-col">
-                  <div className="sv-pl-title">This week</div>
-                  <div style={{ marginBottom: 14 }}><div style={{ fontSize: 28, fontWeight: 700, color: "#0A140B", letterSpacing: "-.02em", lineHeight: 1 }}>14</div><div style={{ fontSize: 11, color: "var(--dt3)", marginTop: 2 }}>New submissions sent</div></div>
-                  <div style={{ marginBottom: 14 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}><span style={{ fontSize: 10, color: "var(--dt3)" }}>Client acceptance rate</span><span style={{ fontSize: 11, fontWeight: 600, color: "#0A7040" }}>94%</span></div>
-                    <div style={{ height: 5, background: "#E8ECE8", borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: "94%", background: "linear-gradient(90deg,var(--green),#00D4A8)", borderRadius: 3 }}></div></div>
+        {/* 02 — THE PROBLEM · ink */}
+        <section className="sec ink" id="problem" aria-labelledby="h-problem">
+          <div className="in">
+            <RecordRule n="02" label="The problem" scope="Why searches stall" />
+            <h2 className="stmt" id="h-problem">
+              <Rise lines={["Fifty CVs is not a shortlist.", "It’s the search handed", "back to you."]} />
+            </h2>
+            <p className="stmt2">And the partner you briefed isn’t the one who sent them.</p>
+            <ul className="lg">
+              {failures.map((f) => (
+                <li className="row" key={f.n}>
+                  <div className="rowin static">
+                    <span className="num">{f.n}</span>
+                    <span><h3>{f.h}</h3><p className="de">{f.d}</p></span>
+                    <Rail items={f.rail} />
                   </div>
-                  <div style={{ display: "flex", gap: 8 }}>
-                    <div style={{ flex: 1, background: "#fff", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: 16, fontWeight: 700, color: "#0A140B" }}>48h</div><div style={{ fontSize: 9, color: "var(--dt3)", marginTop: 2 }}>Avg delivery</div></div>
-                    <div style={{ flex: 1, background: "#fff", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: 16, fontWeight: 700, color: "#0A140B" }}>94%</div><div style={{ fontSize: 9, color: "var(--dt3)", marginTop: 2 }}>Interview rate</div></div>
-                  </div>
-                </div>
-              </div>
-              <div className="fc-body"><div className="fc-title">Your search, actively managed</div><div className="fc-desc">We don&apos;t wait for candidates to apply. We actively track your open roles across every sector, monitor the market and bring you the right people — often before they&apos;re even looking.</div></div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* 03 — METHOD · paper */}
+        <section className="sec" id="method" aria-labelledby="h-method">
+          <div className="in">
+            <RecordRule n="03" label="How a search runs" scope="Brief → shortlist · one owner throughout" />
+            <div className="spl">
+              <h2 id="h-method">We calibrate before we source.</h2>
+              <p className="sub">
+                One partner takes the brief and stays on it to day ninety. Every candidate is screened
+                against the spec, the comp band and right-to-work before it reaches your inbox.
+              </p>
             </div>
-
-            <div className="fc gs">
-              <div className="fc-vis" style={{ paddingBottom: 14 }}>
-                <div style={{ fontSize: 10, color: "var(--dt3)", fontWeight: 600, textTransform: "uppercase", letterSpacing: ".06em", marginBottom: 12 }}>Placements by industry</div>
-                {[
-                  ["Tech", 48],
-                  ["Finance", 28],
-                  ["Health", 14],
-                  ["Other", 10],
-                ].map(([name, val]) => (
-                  <div className="sv-mkt" key={name}>
-                    <div className="sv-mkt-name">{name}</div>
-                    <div className="sv-mkt-bar"><div className="sv-mkt-fill" style={{ width: `${val}%` }}></div></div>
-                    <div className="sv-mkt-val">{val}%</div>
-                  </div>
+            <div className="tl">
+              <div className="spine" aria-hidden="true"><i /></div>
+              <ol>
+                {steps.map((s) => (
+                  <li className={s.on ? "on" : undefined} key={s.k}>
+                    <p className="k">{s.k}</p>
+                    <h3>{s.h}</h3>
+                    <p>{s.p}</p>
+                    <p className="out"><b>Output:</b> {s.out}</p>
+                  </li>
                 ))}
-              </div>
-              <div className="fc-body"><div className="fc-title">Every sector. Every function.</div><div className="fc-desc">Active hiring pipelines across finance, technology, healthcare, legal, operations and beyond — in every market we serve.</div></div>
+              </ol>
             </div>
+          </div>
+        </section>
 
-          </CardSlider>
-        </div>
-      </section>
-
-      {/* PRECISION */}
-      <section className="prec-sec">
-        <div className="prec-inner">
-          <div>
-            <div className="eyebrow ew-light gs">Our standard</div>
-            <h2 className="prec-h2 gs">A shortlist that fits,<br />instead of <em>fifty that don&apos;t.</em></h2>
-            <p className="prec-p gs">Every search begins with a calibration — us, your hiring manager, and the brief. We screen against the spec before anything reaches your inbox. That&apos;s why our shortlists move.</p>
-            <div className="prec-list">
-              {[
-                "Calibration call with the hiring manager before sourcing begins",
-                "Pre-screened against role spec, comp band and right-to-work",
-                "One named partner from intake to placement — no handoffs",
-                "90-day replacement guarantee — no questions asked",
-              ].map((t) => (
-                <div className="prec-item gs" key={t}>
-                  <div className="prec-ico"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
-                  {t}
+        {/* 04 — WHAT YOU RECEIVE · paper alt */}
+        <section className="sec alt" id="deliverables" aria-labelledby="h-dlv">
+          <div className="in">
+            <RecordRule n="04" label="What you receive" scope="Three documents, every search" />
+            <div className="spl">
+              <h2 id="h-dlv">Every shortlist arrives with its working shown.</h2>
+              <p className="sub">
+                Not a folder of CVs. Three documents per candidate, so you can see the reasoning rather
+                than take the recommendation on trust.
+              </p>
+            </div>
+            <div className="dlv">
+              <article className="doc">
+                <div className="doc-h"><span>01 · Scorecard</span><span>Per candidate</span></div>
+                <div className="doc-b">
+                  {[
+                    ["Role fit — against your spec", "Scored"],
+                    ["Comp expectation vs band", "Confirmed"],
+                    ["Notice period", "Stated"],
+                    ["Right to work", "Verified"],
+                    ["Competing processes", "Disclosed"],
+                  ].map(([l, v]) => (
+                    <div className="doc-r" key={l}><span>{l}</span><b>{v}</b></div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
-          <div className="prec-panel gs">
-            <div className="pp-head"><div className="pp-title">Performance metrics</div><div className="pp-sub">Last 90 days</div></div>
-            <div className="pp-stat"><div><div className="pp-label">Avg. shortlist delivery</div><div className="pp-desc">From brief received to inbox</div></div><div className="pp-val vg" id="c1">—</div></div>
-            <div className="pp-stat"><div><div className="pp-label">Interview acceptance rate</div><div className="pp-desc">Client-side, all roles</div></div><div className="pp-val vg" id="c2">—</div></div>
-            <div className="pp-stat"><div><div className="pp-label">Total placements</div><div className="pp-desc">Contract + permanent</div></div><div className="pp-val vw" id="c3">—</div></div>
-            <div className="pp-stat"><div><div className="pp-label">Client retention rate</div><div className="pp-desc">Year-over-year</div></div><div className="pp-val vw" id="c4">—</div></div>
-          </div>
-        </div>
-      </section>
-
-      {/* PROCESS */}
-      <section className="proc-sec">
-        <div className="proc-inner">
-          <div className="eyebrow ew-light gs">The process</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 18 }}>From brief to shortlist<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>48 hours.</em></h2>
-          <p className="proc-sub gs">A simple four-step process — end to end, no surprises.</p>
-          <div className="proc-grid">
-            {[
-              { n: "Step 01", t: "Understand the brief", d: "A 45-minute call with the hiring manager and the named partner. We document must-haves, comp band, right-to-work, and team chemistry — before anything else moves.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="#3DFF87" strokeWidth="1.2" /><path d="M7 10h6M10 7v6" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
-              { n: "Step 02", t: "Source and screen", d: "We open the search across referrals, direct headhunting and our active talent pool. Every candidate is screened against the spec, comp band and notice period.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8" cy="8" r="5" stroke="#3DFF87" strokeWidth="1.2" /><path d="M14 14l3 3" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
-              { n: "Step 03", t: "Submit shortlist", d: "Inside 48 hours, you see 3–5 candidates with full scorecards, recorded screenings, and a recommendation from the partner who took the brief.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="#3DFF87" strokeWidth="1.2" /><path d="M7 9h6M7 12h4" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
-              { n: "Step 04", t: "Place and support", d: "Offer negotiation, reference checks, onboarding handover. We stay on the line through day 90 and replace, free, if it isn&apos;t the right fit.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-            ].map((s) => (
-              <div className="proc-step gs" key={s.n}>
-                <div className="proc-num">{s.n}</div>
-                <div className="proc-ico">{s.icon}</div>
-                <div className="proc-title">{s.t}</div>
-                <div className="proc-desc" dangerouslySetInnerHTML={{ __html: s.d }} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECURITY */}
-      <section className="sec-outer">
-        <div className="sec-grid">
-          <div>
-            <div className="eyebrow ew-light gs">Our commitment</div>
-            <h2 className="sec-h2 gs">Built for enterprises that<br />can&apos;t afford <em>the wrong hire.</em></h2>
-            <p className="sec-p gs">When you&apos;re hiring for a bank or a Fortune 500, a bad placement isn&apos;t just inconvenient — it&apos;s costly. Every engagement with Rivago is structured, documented and held to the same standard, every time.</p>
-            <div className="sec-badges gs">
-              <div className="sec-bdg"><div className="sec-dot"></div>NDA as Standard</div>
-              <div className="sec-bdg"><div className="sec-dot"></div>Fully Documented</div>
-              <div className="sec-bdg"><div className="sec-dot"></div>Senior Partners Only</div>
-              <div className="sec-bdg"><div className="sec-dot"></div>Confidential Search</div>
-            </div>
-          </div>
-          <div className="sec-items">
-            <div className="sec-item gs"><div className="sec-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="7" width="12" height="9" rx="2" stroke="#3DFF87" strokeWidth="1.2" /><path d="M6 7V5a3 3 0 016 0v2" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div><div><div className="sec-title">One named partner. Full accountability.</div><div className="sec-desc">A senior partner owns your search from brief to placement — no junior handoffs, no account managers in between. They took the brief, they screen the candidates, they stand behind the recommendation.</div></div></div>
-            <div className="sec-item gs"><div className="sec-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2l5.5 2.5v5c0 3.2-2.3 5.5-5.5 6.5C3.8 15 1.5 12.7 1.5 9.5v-5L9 2z" stroke="#3DFF87" strokeWidth="1.2" fill="none" /><path d="M6.5 9l2 2 4-4" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div><div><div className="sec-title">Process that holds up to scrutiny.</div><div className="sec-desc">Every search is fully documented — candidate assessments, screening notes, decision rationale. If your internal team or compliance function ever needs to audit a hiring decision, everything is on record.</div></div></div>
-            <div className="sec-item gs"><div className="sec-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#3DFF87" strokeWidth="1.2" /><path d="M9 6v3l2 2" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div><div><div className="sec-title">Discretion as standard.</div><div className="sec-desc">We work with organisations where confidentiality isn&apos;t optional. Senior hires, sensitive replacements, confidential searches — handled under NDA, shared only with the people who need to know.</div></div></div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHY RIVAGO */}
-      <section className="why-sec">
-        <div className="why-inner">
-          <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Why Rivago</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 560, marginBottom: 20 }}>Six reasons clients<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>stay with us.</em></h2>
-          <div className="why-grid">
-            {[
-              { n: "01", t: "Quality over quantity — always", d: "We submit fewer, better candidates. Every profile is fully screened before it reaches your inbox. No keyword-matching. No noise. Just people who are genuinely ready.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="#3DFF87" strokeWidth="1.3" /><path d="M7 11l3 3 5-5" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-              { n: "02", t: "48-hour shortlist — every time", d: "Your shortlist arrives within 48 hours of the brief — every time, without exception. Speed and quality, not one or the other.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#3DFF87" strokeWidth="1.3" /><path d="M11 7v4l3 3" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-              { n: "03", t: "Specialist domain knowledge", d: "Every brief goes to a specialist who recruits in your sector. They know the roles, the market rates and what a strong candidate actually looks like in your industry.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11a7 7 0 1014 0A7 7 0 004 11z" stroke="#3DFF87" strokeWidth="1.3" /><path d="M11 8v3l2 2" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" /><circle cx="18" cy="4" r="3" fill="#3DFF87" opacity=".3" /></svg>) },
-              { n: "04", t: "One dedicated account manager", d: "Every client gets a single point of contact — someone who learns your business, your culture and your hiring bar. No handoffs, no call centres, no starting over every engagement.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="4" stroke="#3DFF87" strokeWidth="1.3" /><path d="M8 11l2.5 2.5L14 8" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-              { n: "05", t: "Global delivery. US standards.", d: "Rivago is a global staffing and recruitment company with active hiring operations across the United States, Canada, the UAE and India. One firm, four markets, the same standard everywhere.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3l2.5 5 5.5.8-4 3.9.9 5.5L11 15.5l-4.9 2.7.9-5.5L3 8.8l5.5-.8z" stroke="#3DFF87" strokeWidth="1.3" strokeLinejoin="round" /></svg>) },
-              { n: "06", t: "Replacement guarantee included", d: "90-day replacement guarantee, no questions asked. If the hire doesn&apos;t work out, we start again at no cost.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2v4M11 16v4M4.22 4.22l2.83 2.83M14.95 14.95l2.83 2.83M2 11h4M16 11h4M4.22 17.78l2.83-2.83M14.95 7.05l2.83-2.83" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" /></svg>) },
-            ].map((c) => (
-              <div className="why-card gs" key={c.n}>
-                <div className="why-icon">{c.icon}</div>
-                <div className="why-num">{c.n}</div>
-                <div className="why-title">{c.t}</div>
-                <div className="why-desc" dangerouslySetInnerHTML={{ __html: c.d }} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section className="svc-sec">
-        <div className="svc-inner">
-          <div className="svc-head">
-            <div>
-              <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Services</div>
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Eight ways to put the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>right people in seat.</em></h2>
-              <p className="svc-sub gs">Permanent, contract, temporary or embedded — one senior partner owns the search end to end, whichever way you engage us.</p>
-            </div>
-            <Link className="svc-all gs" href={routes.services}>View all services <Arrow /></Link>
-          </div>
-          <div className="gs">
-            <CardSlider trackClassName="svc-grid" nav="dots">
-              {servicesList.map((s) => (
-                <Link className="svc-card" href={s.href} key={s.n}>
-                  {"tag" in s && s.tag && <span className="svc-tag">{s.tag}</span>}
-                  <div className="svc-n">{s.n}</div>
-                  <div className="svc-title">{s.title}</div>
-                  <div className="svc-desc">{s.desc}</div>
-                  <div className="svc-foot"><span className="svc-meta">{s.meta}</span><CardArrow /></div>
-                </Link>
-              ))}
-            </CardSlider>
-          </div>
-        </div>
-      </section>
-
-      {/* INDUSTRIES */}
-      <section className="ind-sec">
-        <div className="ind-inner">
-          <div className="ind-head" style={{ marginBottom: 52 }}>
-            <div>
-              <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Industries</div>
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Every sector. <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>Every function.</em></h2>
-              <p className="ind-sub gs">We recruit across every major industry — with specialist teams who understand the roles, the regulations and what a strong hire looks like in each sector.</p>
-            </div>
-            <Link className="ind-all gs" href={routes.industries}>View all industries <Arrow /></Link>
-          </div>
-          <div className="gs">
-            <CardSlider trackClassName="ind-grid" nav="dots">
-              {industriesList.map((ind) => (
-                <div className="ind-card" key={ind.title}>
-                  <div className="ind-icon">{ind.icon}</div>
-                  <div className="ind-title">{ind.title}</div>
-                  <div className="ind-desc">{ind.desc}</div>
-                  <div className="ind-tags">{ind.tags.map((t) => <span className="ind-tag" key={t}>{t}</span>)}</div>
+                <p className="doc-n">Same five checks on every candidate, so a shortlist is comparable rather than a set of opinions.</p>
+              </article>
+              <article className="doc">
+                <div className="doc-h"><span>02 · Written recommendation</span><span>From the partner</span></div>
+                <div className="doc-b doc-prose">
+                  <p><b>Strengths.</b> Where this person is genuinely strong, with evidence rather than adjectives.</p>
+                  <p><b>Risks.</b> What concerns us, and what we would probe in your interview.</p>
+                  <p><b>Motivation.</b> Why they are moving, and what would make them decline.</p>
+                  <p><b>Our view.</b> An honest read on close probability — including when it is low.</p>
                 </div>
+                <p className="doc-n">Written by the partner who took your brief. Signed, not templated.</p>
+              </article>
+              <article className="doc">
+                <div className="doc-h"><span>03 · Search record</span><span>Per search</span></div>
+                <div className="doc-b">
+                  {[
+                    ["Calibration notes", "Signed brief"],
+                    ["Where we searched", "Logged"],
+                    ["Approached vs responded", "Counted"],
+                    ["Declines, with reasons", "Recorded"],
+                    ["Market read on the band", "Included"],
+                  ].map(([l, v]) => (
+                    <div className="doc-r" key={l}><span>{l}</span><b>{v}</b></div>
+                  ))}
+                </div>
+                <p className="doc-n">What the market told us, including the parts that were unwelcome. Useful whether or not you hire.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* 05 — SERVICES · ink */}
+        <section className="sec ink" id="engage" aria-labelledby="h-engage">
+          <div className="in">
+            <RecordRule n="05" label="Services" scope="Seven engagement models" />
+            <div className="spl">
+              <h2 id="h-engage">Seven ways we engage. Start with the situation.</h2>
+              <p className="sub">
+                Nobody arrives needing “Employer of Record”. They arrive needing someone in Toronto in
+                three weeks, without opening an entity. Pick the situation; we’ll name the model.
+              </p>
+            </div>
+            <ul className="svc-idx">
+              {engagements.map((e) => <li key={e.rail[0]}>{e.rail[0]}</li>)}
+            </ul>
+            <ul className="lg" id="rvgEng">
+              {engagements.map((e) => (
+                <li className="row" key={e.n}>
+                  <button className="rowin" type="button" aria-expanded="false" aria-controls={`pan-${e.n}`}>
+                    <span className="num">{e.n}</span>
+                    <span><h3>{e.h}</h3><p className="de">{e.d}</p></span>
+                    <Rail items={e.rail} />
+                  </button>
+                  <div className="pan" id={`pan-${e.n}`}>
+                    <div className="panin">
+                      {e.facets.map(([l, v]) => (
+                        <span className="f" key={l}><b>{l}</b>{v}</span>
+                      ))}
+                      <span className="f">
+                        <b>Detail</b>
+                        <Link className="tlink" href={e.href}>{e.rail[0]} →</Link>
+                      </span>
+                    </div>
+                  </div>
+                </li>
               ))}
-            </CardSlider>
+            </ul>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* SUPPORT */}
-      <section className="supp-sec">
-        <div className="supp-inner">
-          <div style={{ textAlign: "center" }}>
-            <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>Support</div>
-            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 12 }}>We&apos;re with you<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>every step of the way.</em></h2>
-            <p className="orb-desc gs" style={{ marginBottom: 0 }}>Whether you&apos;re hiring for the first time or managing a 50-role pipeline — our team is always available to help.</p>
+        {/* 06 — OBJECTIONS · paper alt */}
+        <section className="sec alt" id="objections" aria-labelledby="h-obj">
+          <div className="in">
+            <RecordRule n="06" label="Objections" scope="Answered before you have to ask" />
+            <div className="spl">
+              <h2 id="h-obj">We’re smaller than the agency you’re using. That’s the point.</h2>
+              <p className="sub">
+                The questions you’d normally save for a reference call. Better you get straight answers
+                here than three weeks into a search.
+              </p>
+            </div>
+            <ul className="lg obj">
+              {objections.map((o) => (
+                <li className="row" key={o.n}>
+                  <div className="rowin static">
+                    <span className="num">{o.n}</span>
+                    <span><h3>{o.q}</h3><p className="de">{o.a}</p></span>
+                    <Rail items={o.rail} />
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="supp-grid">
-            <div className="supp-card gs">
-              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 3H3a1 1 0 00-1 1v10a1 1 0 001 1h3v2.5l3-2.5h8a1 1 0 001-1V4a1 1 0 00-1-1z" stroke="#3DFF87" strokeWidth="1.2" /><path d="M6 8h8M6 11h5" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
-              <div><div className="supp-tag">Live chat</div><div className="supp-title" style={{ marginTop: 10 }}>Talk to a recruiter now</div></div>
-              <div className="supp-desc">Connect instantly with one of our specialist recruiters. Whether you have a brief to share or just want to explore options — we&apos;re online and ready.</div>
-              <div>
-                <div className="supp-hours"><div className="supp-dot-live"></div>Mon–Fri · US, Canada &amp; India business hours</div>
-                <Link className="supp-link" href={routes.contactUs}>Start a conversation <SmallArrow /></Link>
-              </div>
-            </div>
-            <div className="supp-card featured gs">
-              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="14" rx="2" stroke="#3DFF87" strokeWidth="1.2" /><path d="M2 7h16" stroke="#3DFF87" strokeWidth="1.2" /><path d="M6 11h8M6 14h5" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
-              <div><div className="supp-tag">Recommended</div><div className="supp-title" style={{ marginTop: 10 }}>Book a strategy call</div></div>
-              <div className="supp-desc">Schedule a 30-minute call with your dedicated account manager. We&apos;ll review your open roles, build a hiring plan and set a realistic timeline — completely free, no commitment required.</div>
-              <div>
-                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#3DFF87" strokeWidth="1.1" /><path d="M6 3.5v2.5l1.5 1.5" stroke="#3DFF87" strokeWidth="1.1" strokeLinecap="round" /></svg>30 minutes · Free · No obligation</div>
-                <button className="supp-link" data-hire>Book your call <SmallArrow /></button>
-              </div>
-            </div>
-            <div className="supp-card gs">
-              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#3DFF87" strokeWidth="1.2" /><path d="M10 6a2 2 0 011.73 3c-.34.58-1.73 1-1.73 2M10 14v.5" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
-              <div><div className="supp-tag">Self-serve</div><div className="supp-title" style={{ marginTop: 10 }}>Help centre &amp; resources</div></div>
-              <div className="supp-desc">Explore our hiring guides, salary benchmarks and market reports. Everything you need to make smarter hiring decisions — available anytime, no sign-up needed.</div>
-              <div>
-                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#3DFF87" strokeWidth="1.1" /><path d="M4 6h4M6 4v4" stroke="#3DFF87" strokeWidth="1.1" strokeLinecap="round" /></svg>Free to access · No sign-up needed</div>
-                <Link className="supp-link" href={routes.resources}>Browse resources <SmallArrow /></Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CASE STUDIES */}
-      <section className="cs-sec">
-        <div className="cs-inner">
-          <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Client Results</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--dt)", maxWidth: 560 }}>Real results for <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>real teams.</em></h2>
-          <div className="cs-grid">
-            <div className="cs-card cs-wide gs">
-              <div className="cs-card-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&h=400&fit=crop&auto=format" alt="team" loading="lazy" decoding="async" />
-              </div>
-              <div className="cs-card-content">
-                <span className="cs-tag">Technology · US</span>
-                <div className="cs-title">Scaling a fintech company across five functions — 28 hires in 90 days</div>
-                <div className="cs-meta"><span>US Fintech Company</span><span>·</span><span>Q1 2025</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>28 placements · 100% retention at 6 months · avg 38h delivery</div>
-              </div>
+        {/* 07 — WORKING WITH US · paper alt */}
+        <section className="sec alt" id="working" style={{ paddingTop: 24 }} aria-labelledby="h-work">
+          <div className="in">
+            <RecordRule n="07" label="Working with us" scope="For procurement, legal and finance" />
+            <div className="spl">
+              <h2 id="h-work">The questions procurement asks, answered here.</h2>
+              <p className="sub">Everything below is agreed in the engagement rather than discovered during it.</p>
             </div>
-            <div className="cs-card gs">
-              <div className="cs-card-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&h=300&fit=crop&auto=format" alt="office" loading="lazy" decoding="async" />
-              </div>
-              <div className="cs-card-content">
-                <span className="cs-tag">Finance · Canada</span>
-                <div className="cs-title">Building a risk &amp; compliance team for a Ontario bank in 60 days</div>
-                <div className="cs-meta"><span>Canadian Financial Group</span><span>·</span><span>Q4 2024</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>12 placements · $0 replacement cost</div>
-              </div>
-            </div>
-            <div className="cs-card gs">
-              <div className="cs-card-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&h=300&fit=crop&auto=format" alt="healthcare" loading="lazy" decoding="async" />
-              </div>
-              <div className="cs-card-content">
-                <span className="cs-tag">Healthcare · UAE</span>
-                <div className="cs-title">Staffing a UAE hospital expansion across 5 specialist roles</div>
-                <div className="cs-meta"><span>Dubai Healthcare Group</span><span>·</span><span>Q3 2024</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>5 placements · All placed within 30 days · Zero compliance issues</div>
-              </div>
+            <div className="proc">
+              {procurement.map(([h, p]) => (
+                <div key={h}><h3>{h}</h3><p>{p}</p></div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* TESTIMONIALS */}
-      <section className="testi-sec">
-        <div className="testi-head">
-          <div>
-            <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>What our clients say</div>
-            <h2 className="testi-h2 gs">Trusted by companies who care<br />about <em>hiring right.</em></h2>
+        {/* 08 — SEND A BRIEF · ink */}
+        <section className="sec ink" id="brief" aria-labelledby="h-brief">
+          <div className="in">
+            <RecordRule n="08" label="Send a brief" scope="One business day to a reply" />
+            <div className="spl">
+              <h2 id="h-brief">Send us a brief. We’ll tell you honestly whether it’s fillable.</h2>
+              <p className="sub">
+                Tell us the role, the market and the number. If we can’t deliver it, we’ll say so — and
+                tell you what would need to change.
+              </p>
+            </div>
+            <div className="fgrid">
+              <BriefForm />
+              <aside className="person">
+                <p className="pk">What happens next</p>
+                <ol className="steps">
+                  <li><b>Within one business day</b> a partner reads your brief and replies — not an auto-acknowledgement.</li>
+                  <li><b>A 45-minute call</b> to set must-haves, comp band and right-to-work.</li>
+                  <li><b>An honest answer</b> on whether the seat is fillable at that number, before you commit to anything.</li>
+                </ol>
+                <p className="qt">If it isn’t a fit for us, we’ll tell you that on the first call rather than three weeks in.</p>
+              </aside>
+            </div>
+            <div className="mk">
+              {markets.map(([c, p]) => (
+                <div key={c}><p className="c">{c}</p><p className="p">{p}</p></div>
+              ))}
+            </div>
           </div>
-          <Link style={{ fontSize: 13, color: "var(--text2)", display: "flex", alignItems: "center", gap: 5, flexShrink: 0 }} href={`${routes.resources}?view=cs`}>Read all stories <SmallArrow /></Link>
-        </div>
-        <Testimonials items={testimonials} />
-      </section>
+        </section>
+      </main>
 
-      {/* FAQ */}
-      <section className="faq-sec">
-        <div className="faq-inner">
-          <div style={{ textAlign: "center" }}>
-            <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>FAQ</div>
-            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 0 }}>Questions we <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>hear most often.</em></h2>
+      <footer className="rvg-foot">
+        <div className="in">
+          <div className="fcols">
+            <div>
+              <Link className="lg2" href={routes.home}>Rivago<span>.</span></Link>
+              <p className="blurb">
+                A senior-only staffing firm built around one artefact: a shortlist you can act on.
+                Four markets, one team.
+              </p>
+            </div>
+            <div>
+              <h2>Hire talent</h2>
+              <ul>
+                <li><Link href={routes.directHire}>Direct hire</Link></li>
+                <li><Link href={routes.contractStaffing}>Contract staffing</Link></li>
+                <li><Link href={routes.temporaryStaffing}>Temporary staffing</Link></li>
+                <li><Link href={routes.executiveSearch}>Executive search</Link></li>
+                <li><Link href={routes.interimLeadership}>Interim leadership</Link></li>
+                <li><Link href={routes.rpo}>RPO</Link></li>
+                <li><Link href={routes.employerOfRecord}>Employer of Record</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h2>Company</h2>
+              <ul>
+                <li><a href="#method">How we work</a></li>
+                <li><Link href={routes.industries}>Practices</Link></li>
+                <li><a href="#objections">Objections</a></li>
+                <li><a href="#working">Working with us</a></li>
+                <li><Link href={routes.about}>About</Link></li>
+                <li><Link href={routes.contactUs}>Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h2>Candidates</h2>
+              <ul>
+                <li><Link href={routes.viewJobs}>Search jobs</Link></li>
+                <li><Link href={routes.searchJobs}>Submit a CV</Link></li>
+                <li><Link href={routes.career}>Work at Rivago</Link></li>
+              </ul>
+            </div>
           </div>
-          <Faq items={faqItems} />
+          <div className="fbot">
+            <span>© {new Date().getFullYear()} Rivago Infotech Inc.</span>
+            <span>
+              <Link href={routes.privacy}>Privacy</Link> · <Link href={routes.terms}>Terms</Link> ·{" "}
+              <Link href={routes.cookies}>Cookies</Link>
+            </span>
+          </div>
         </div>
-      </section>
+      </footer>
 
-      {/* CTA */}
-      <section className="cta-sec">
-        <div className="cta-orb gs"><div className="cta-halo"></div><OrbCanvas size={200} /></div>
-        <h2 className="cta-h2 gs">Your next great hire<br />starts <em>right here.</em></h2>
-        <p className="cta-sub gs">Tell us who you need across any function. Shortlist in your inbox within 48 hours.</p>
-        <div className="cta-btns gs">
-          <button className="btn-hp" data-help style={{ fontSize: 16, padding: "15px 32px" }}>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
-          <Link className="btn-hg" href={routes.viewJobs} style={{ fontSize: 16, padding: "15px 32px" }}>Browse all jobs</Link>
-        </div>
-      </section>
-    </>
+      <HomeClient />
+    </div>
   );
 }
