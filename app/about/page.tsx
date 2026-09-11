@@ -153,13 +153,6 @@ const timeline: { year: string; title: string; desc: string; aside?: string }[] 
    is correct today and gains the section the moment real people are added. */
 const leadership: { name: string; title: string; bio?: string; img?: string }[] = [];
 
-const principles = [
-  { title: "Quality over", em: "volume.", desc: "Five candidates who fit, not fifty who do not. We would rather decline a brief than spam your inbox." },
-  { title: "Specificity over", em: "hype.", desc: "Numbers, denominators, dates. No “world-class” talk. We earn the right to a superlative by delivering." },
-  { title: "Ownership, not", em: "handoffs.", desc: "One partner from brief to placement. They took it. They run it. They stand behind the recommendation." },
-  { title: "Discretion as", em: "default.", desc: "Confidential as standard. NDAs on request. We share with one client at a time, with your permission." },
-];
-
 const refusals = [
   { title: "We won't submit a CV", titleBreak: "without", em: "explicit consent.", desc: "Every candidate sees the brief, hears who the company is, and signs off on the submission. We've lost mandates over this. We've never lost a candidate's trust over it." },
   { title: "We won't run a search", titleBreak: "with", em: "no scorecard.", desc: "If we can't agree on what “good” looks like in writing, the search doesn't start. It's the single most reliable predictor of a sticky placement, and the easiest discipline to skip." },
@@ -272,25 +265,6 @@ export default function AboutPage() {
           </div>
         </section>
       )}
-
-      {/* WHAT WE BELIEVE — 4 PRINCIPLES */}
-      <section className="values inv">
-        <div className="values-inner">
-          <div className="gs">
-            <div className="eyebrow-plain gs" style={{ marginBottom: 20 }}>What we believe</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720, marginBottom: 0 }}>Four principles.<br /><em>No exceptions.</em></h2>
-          </div>
-          <div className="values-grid values-grid-4">
-            {principles.map((v, i) => (
-              <div className="value gs" key={v.title}>
-                <div className="value-num">{String(i + 1).padStart(2, "0")}</div>
-                <h3>{v.title} <em>{v.em}</em></h3>
-                <p>{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* WHAT WE WON'T DO — 6 REFUSALS */}
       <section className="values" style={{ background: "var(--cream)" }}>
