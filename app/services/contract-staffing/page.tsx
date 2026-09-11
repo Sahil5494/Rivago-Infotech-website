@@ -50,7 +50,7 @@ export default function ContractStaffingPage() {
       </header>
 
       <SwhySection
-        heading={<>Flexible capacity, without<br />the <em style={{ fontStyle: "normal", fontWeight: 700 }}>compliance headache.</em></>}
+        heading={<>Flexible capacity, without<br />the <em>compliance headache.</em></>}
         lead="Most agencies bench-warm a list and bill the markup. We do the opposite — one senior partner owns your contract need end to end, deploys from a pre-vetted bench, and carries payroll, tax and worker classification so you don't."
         numsr={[
           { v: "5–7", sup: "d", title: "To first contractor", desc: "Vetted, available and cleared to start." },
@@ -68,7 +68,7 @@ export default function ContractStaffingPage() {
 
       <ModesSection
         eyebrowText="How contract staffing works"
-        heading={<>Three ways to add<br />flexible <em style={{ fontStyle: "normal", fontWeight: 700 }}>contract capacity.</em></>}
+        heading={<>Three ways to add<br />flexible <em>contract capacity.</em></>}
         modes={[
           { num: "01", title: "Contract staffing", desc: "Skilled professionals for a defined period or project. Billed on a transparent day-rate — we handle payroll, tax, insurance and compliance so the worker is fully covered from day one.", bullets: ["Deployed in 5–7 days", "Transparent day-rate, no hidden markup", "Payroll & compliance fully handled", "Scale the team up or down as work changes"] },
           { num: "02", title: "Contract-to-hire", desc: "Trial the fit before you commit. The professional works on contract for an agreed period, then converts to your permanent payroll with no conversion fee once you're sure.", bullets: ["Try before you commit", "No conversion fee after the agreed term", "Payroll & compliance during the contract", "63% convert to permanent"], featured: true },
@@ -89,12 +89,12 @@ export default function ContractStaffingPage() {
       />
 
       <IndustriesGrid2Section
-        heading={<>Specialist partners,<br />aligned to <em style={{ fontStyle: "normal", fontWeight: 700 }}>your sector.</em></>}
+        heading={<>Specialist partners,<br />aligned to <em>your sector.</em></>}
         sub="Every Rivago partner runs one practice. They know which contractors are genuinely available next week, what the going day rate actually is, and who delivers without hand-holding."
       />
 
       <TestiCreamSection
-        heading={<>Contract talent,<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>in their own words.</em></>}
+        heading={<>Contract talent,<br /><em>in their own words.</em></>}
         sub="Plain English from delivery leads, engineering managers and ops directors who scaled with Rivago contractors in the last eighteen months. No pseudonyms. No doctored quotes."
         cards={[
           { tag: "US · Technology", quote: "We had a six-month platform build and no headcount to hire against. Rivago stood up four contract engineers in a week — payroll, IR35, all of it handled. We shipped on time and kept two on permanently.", initials: "RP", name: "Ryan P.", role: "Director of Engineering · US SaaS" },
@@ -104,7 +104,7 @@ export default function ContractStaffingPage() {
       />
 
       <IntakeBandSection
-        heading={<>Tell us the roles.<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>We&apos;ll do the rest.</em></>}
+        heading={<>Tell us the roles.<br /><em>We&apos;ll do the rest.</em></>}
         lead="Four minutes. A senior partner reads every brief within an hour and confirms availability, rate and start date before anyone is deployed."
         bullets={[
           { strong: "Deployed in 5–7 days.", rest: "Vetted, available contractors cleared and ready to start." },
@@ -115,7 +115,7 @@ export default function ContractStaffingPage() {
       />
 
       <FaqSection
-        heading={<>Contract staffing, <em style={{ fontStyle: "normal", fontWeight: 700 }}>the real questions.</em></>}
+        heading={<>Contract staffing, <em>the real questions.</em></>}
         items={[
           { q: "What is your margin, and is it visible to us?", a: "Yes — the margin is stated as a separate line before the engagement starts and does not change without your written agreement. You see the contractor pay rate, the employment on-costs and the Rivago margin as distinct figures rather than a single blended number." },
           { q: "Who carries the misclassification risk?", a: "Rivago does. We are the legal employer of record for every contract placement: we hold the employment contract, run payroll and withholding, provide statutory benefits and carry employer liability insurance. Classification determinations are made and documented by us, and we indemnify you against them." },

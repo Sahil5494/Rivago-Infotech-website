@@ -42,7 +42,7 @@ export default function ContactUsPage() {
         <div className="contact-grid">
           <div>
             <span className="eyebrow ew-light gs" style={{ marginBottom: 16, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Send a message</span>
-            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 28 }}>How can we <em style={{ fontStyle: "normal", fontWeight: 700 }}>help?</em></h2>
+            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 28 }}>How can we <em>help?</em></h2>
             <ContactForm />
           </div>
 

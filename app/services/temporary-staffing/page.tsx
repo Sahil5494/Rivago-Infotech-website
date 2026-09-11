@@ -50,7 +50,7 @@ export default function TemporaryStaffingPage() {
       </header>
 
       <SwhySection
-        heading={<>Capacity the day<br />you <em style={{ fontStyle: "normal", fontWeight: 700 }}>actually need it.</em></>}
+        heading={<>Capacity the day<br />you <em>actually need it.</em></>}
         lead="Most agencies scramble when you call. We do the opposite — a standing pool of pre-vetted workers, one partner who knows your operation, and payroll, scheduling and compliance already handled so people are productive on arrival."
         numsr={[
           { v: "24–72", sup: "h", title: "To deployment", desc: "From confirmed brief to workers on the floor." },
@@ -68,7 +68,7 @@ export default function TemporaryStaffingPage() {
 
       <ModesSection
         eyebrowText="How temporary staffing works"
-        heading={<>Three ways to add<br />on-demand <em style={{ fontStyle: "normal", fontWeight: 700 }}>temporary capacity.</em></>}
+        heading={<>Three ways to add<br />on-demand <em>temporary capacity.</em></>}
         modes={[
           { num: "01", title: "Temporary cover", desc: "Fill a gap fast — sickness, parental leave, a sudden departure or a short project. A vetted professional in the seat within 24–72 hours, for as long as you need them.", bullets: ["Deployed in 24–72 hours", "Day, week or month-long assignments", "Payroll & compliance fully handled", "End the assignment anytime"] },
           { num: "02", title: "Seasonal & peak staffing", desc: "Ramp a whole crew for a busy season, a product launch or a demand spike — then wind it down cleanly. Volume hiring, pre-planned, with the same proven faces year on year.", bullets: ["Volume ramp, planned in advance", "Request proven repeat workers by name", "Scale down cleanly when it's over", "One invoice, one point of contact"], featured: true },
@@ -89,12 +89,12 @@ export default function TemporaryStaffingPage() {
       />
 
       <IndustriesGrid2Section
-        heading={<>Specialist partners,<br />aligned to <em style={{ fontStyle: "normal", fontWeight: 700 }}>your sector.</em></>}
+        heading={<>Specialist partners,<br />aligned to <em>your sector.</em></>}
         sub="Every Rivago partner runs one practice. They know the shift patterns, the certifications each site demands, and which temps turn up on time in your sector."
       />
 
       <TestiCreamSection
-        heading={<>Temporary teams,<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>in their own words.</em></>}
+        heading={<>Temporary teams,<br /><em>in their own words.</em></>}
         sub="Plain English from ops leads, site managers and workforce planners who scaled with Rivago temps in the last eighteen months. No pseudonyms. No doctored quotes."
         cards={[
           { tag: "US · Retail", quote: "Black Friday nearly broke us the year before. Rivago ramped forty temps across three sites in seventy-two hours — same crew we'd rated the prior peak. Every shift covered, off payroll by January.", initials: "RP", name: "Ryan P.", role: "Workforce Planner · US retail group" },
@@ -104,7 +104,7 @@ export default function TemporaryStaffingPage() {
       />
 
       <IntakeBandSection
-        heading={<>Tell us what you need.<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>We&apos;ll do the rest.</em></>}
+        heading={<>Tell us what you need.<br /><em>We&apos;ll do the rest.</em></>}
         lead="Three minutes. A senior partner reads every request within the hour and confirms headcount, shift pattern and start before anyone is deployed."
         bullets={[
           { strong: "Deployed in 24–72 hours.", rest: "Vetted workers on-site or online and productive, fast." },
@@ -115,7 +115,7 @@ export default function TemporaryStaffingPage() {
       />
 
       <FaqSection
-        heading={<>Temporary staffing, <em style={{ fontStyle: "normal", fontWeight: 700 }}>the practical detail.</em></>}
+        heading={<>Temporary staffing, <em>the practical detail.</em></>}
         items={[
           { q: "How fast is “fast”, realistically?", a: "Two to three days for most requirements, and same-week for urgent cover. That is achievable because the bench is pre-screened, referenced and compliance-cleared before you call — there is no screening cycle to run once the requirement lands." },
           { q: "What happens when someone does not turn up?", a: "You get same-day replacement cover. Every placement has a named coordinator reachable on the day, and a cleared bench behind it so a substitute does not need a fresh screening cycle. No-shows are tracked against each worker and repeat offenders come off the bench." },

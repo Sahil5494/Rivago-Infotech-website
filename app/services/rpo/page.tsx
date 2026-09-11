@@ -61,7 +61,7 @@ export default function RpoPage() {
       </section>
 
       <SwhySection
-        heading={<>An RPO partner that owns<br />the <em style={{ fontStyle: "normal", fontWeight: 700 }}>outcome.</em></>}
+        heading={<>An RPO partner that owns<br />the <em>outcome.</em></>}
         lead="Others hand you coordinators and a dashboard. We embed senior recruiters who own the whole lifecycle — and report on what matters: fill time, cost per hire, and who is still there a year on."
         numsr={[
           { v: "40", sup: "%", title: "Faster time-to-fill", desc: "Versus in-house baseline, first six months." },
@@ -82,7 +82,7 @@ export default function RpoPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What is RPO?</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Not another agency.<br />An <em style={{ fontStyle: "normal", fontWeight: 700 }}>owned program.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Not another agency.<br />An <em>owned program.</em></h2>
             <p style={{ color: "var(--text2)", maxWidth: 560, marginTop: 18, fontSize: "var(--fz4)", fontWeight: 400, lineHeight: 1.7 }}>Agencies sell candidates. RPO gives you the whole hiring engine — and owns the outcome.</p>
           </div>
           <div className="wir-grid">
@@ -107,7 +107,7 @@ export default function RpoPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>RPO models</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>One partner,<br />three <em style={{ fontStyle: "normal", fontWeight: 700 }}>ways to engage.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>One partner,<br />three <em>ways to engage.</em></h2>
           </div>
           <RpoModelsTabs />
         </div>
@@ -128,7 +128,7 @@ export default function RpoPage() {
       />
 
       <IndustriesGrid2Section
-        heading={<>RPO programs across<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>every sector we serve.</em></>}
+        heading={<>RPO programs across<br /><em>every sector we serve.</em></>}
         sub="Recruiters who live in your market — they know the titles, the pay bands and where the talent hides."
       />
 
@@ -137,7 +137,7 @@ export default function RpoPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Customer story</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>A recruiting engine,<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>handed over in weeks.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>A recruiting engine,<br /><em>handed over in weeks.</em></h2>
           </div>
           <div className="testi-cream">
             <div className="tc-card gs" style={{ gridColumn: "span 2" }}>
@@ -163,7 +163,7 @@ export default function RpoPage() {
           <div className="gs" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 30, flexWrap: "wrap" }}>
             <div>
               <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Insights</div>
-              <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>RPO, <em style={{ fontStyle: "normal", fontWeight: 700 }}>in practice.</em></h2>
+              <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>RPO, <em>in practice.</em></h2>
             </div>
             <Link href={routes.resources} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--accent)", fontSize: "var(--fz3)", fontWeight: 500, textDecoration: "none", whiteSpace: "nowrap" }}>Read the blog <SmallArrow /></Link>
           </div>
@@ -180,7 +180,7 @@ export default function RpoPage() {
 
       {/* FAQ */}
       <FaqSection
-        heading={<>RPO, <em style={{ fontStyle: "normal", fontWeight: 700 }}>without the sales gloss.</em></>}
+        heading={<>RPO, <em>without the sales gloss.</em></>}
         items={[
           { q: "At what hiring volume does RPO actually beat contingent recruiting?", a: "Roughly fifty or more hires a year on an ongoing basis, or any time-boxed project with a defined hire count. Below that, contingent direct hire is usually cheaper and we will say so. We would rather scope you into the right model than sell a programme you do not need." },
           { q: "How is RPO priced, and what is included?", a: "Enterprise RPO is a fixed monthly fee scoped to volume and outcomes. Project RPO is a project fee tied to milestones and hire targets. Hybrid is a baseline fee plus per-hire surge pricing. All include sourcing, screening, scheduling, offer management and reporting — technology and assessment licences are quoted separately if you want them." },
