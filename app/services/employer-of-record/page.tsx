@@ -63,7 +63,7 @@ export default function EmployerOfRecordPage() {
       </header>
 
       <SwhySection
-        heading={<>You found them.<br />We make it <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>legal.</em></>}
+        heading={<>You found them.<br />We make it <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>legal.</em></>}
         lead="Most EOR providers are a payroll platform with a support ticket. We do the opposite — a named partner who knows the local rules, sets up the contract correctly the first time, and stays reachable for the life of the engagement."
         cards={[
           { title: "Less risk on you", desc: "Talent are our W-2 employees, so worker misclassification stops being your problem. We keep them engaged and well looked-after too — which is what actually keeps co-employment risk down.", icon: svgIco('<path d="M11 2l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V5z" stroke="#3DFF87" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>') },
@@ -75,7 +75,7 @@ export default function EmployerOfRecordPage() {
 
       <ModesSection
         eyebrowText="Ways to engage"
-        heading={<>Three ways to put someone<br />on our <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>payroll.</em></>}
+        heading={<>Three ways to put someone<br />on our <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>payroll.</em></>}
         modes={[
           { num: "01", title: "Single hire, new market", desc: "You've found one person in a country where you don't have an entity. We draft a compliant local contract and become the legal employer so they can start on schedule.", bullets: ["Contract ready in 3–5 business days", "Local payroll, tax and statutory benefits", "No entity registration required", "Month-to-month, cancel anytime"] },
           { num: "02", title: "Team of record", desc: "Several hires in the same new market — a small team or an early market test. One EOR contract covers the group, with consistent terms and one consolidated invoice.", bullets: ["Consistent contracts across the team", "Single invoice, single point of contact", "Scale headcount up or down freely", "Local benefits benchmarked to market"], featured: true },
@@ -89,7 +89,7 @@ export default function EmployerOfRecordPage() {
           <div className="ptx gs">
             <div>
               <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Payroll transfer</div>
-              <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 560 }}>You&apos;ve got the talent?<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent-inv)" }}>We&apos;ll make the hire.</em></h2>
+              <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 560 }}>You&apos;ve got the talent?<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>We&apos;ll make the hire.</em></h2>
               <p style={{ color: "var(--dt2)", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 520, marginTop: 22 }}>Our payroll-transfer model puts the people you already work with onto our books — the flexibility you need, the experience they deserve. Everyone wins.</p>
             </div>
             <ul className="ptx-list">
@@ -119,12 +119,12 @@ export default function EmployerOfRecordPage() {
       />
 
       <IndustriesGrid2Section
-        heading={<>Employer of Record across<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>every sector we serve.</em></>}
+        heading={<>Employer of Record across<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>every sector we serve.</em></>}
         sub="Whatever role you've already filled, we handle the employment — the same partner-led approach across every industry we recruit in, applied to the hire you found yourself."
       />
 
       <TestiCreamSection
-        heading={<>Compliant hires,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent-inv)" }}>in their own words.</em></>}
+        heading={<>Compliant hires,<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>in their own words.</em></>}
         sub="Plain English from founders and ops leads who hired across borders through Rivago's Employer of Record in the last eighteen months. No pseudonyms. No doctored quotes."
         cards={[
           { tag: "Canada · Technology", quote: "We found a brilliant engineer in Ontario but had no Canadian entity. Rivago had a compliant contract signed in four days — we never had to think about incorporation.", initials: "RP", name: "Ryan P.", role: "Founder · US SaaS startup" },
@@ -139,7 +139,7 @@ export default function EmployerOfRecordPage() {
           <div className="gs" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 30, flexWrap: "wrap" }}>
             <div>
               <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Perspectives</div>
-              <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 640 }}>Hiring across borders,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>made clearer.</em></h2>
+              <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 640 }}>Hiring across borders,<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>made clearer.</em></h2>
             </div>
             <Link href={routes.resources} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--accent)", fontSize: "var(--fz3)", fontWeight: 500, textDecoration: "none", whiteSpace: "nowrap" }}>Read the blog <SmallArrow /></Link>
           </div>
@@ -155,7 +155,7 @@ export default function EmployerOfRecordPage() {
       </section>
 
       <FaqSection
-        heading={<>Employer of Record, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>the detail that matters.</em></>}
+        heading={<>Employer of Record, <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>the detail that matters.</em></>}
         items={[
           { q: "What is an EOR, in one paragraph?", a: "An Employer of Record legally employs someone on your behalf in a country where you have no entity. Rivago holds the employment contract, runs payroll and tax, provides statutory benefits and carries compliance liability, while you direct the person's day-to-day work. You get a compliant employee without incorporating." },
           { q: "When is an EOR the wrong choice?", a: "When you are hiring at scale and permanently in one country — beyond roughly fifteen to twenty people, establishing an entity is usually cheaper. Also when local law restricts EOR arrangements or caps their duration. We will tell you when incorporation is the better answer rather than sell you a service you will outgrow." },

@@ -11,7 +11,7 @@ export default function OfficesSection() {
       <div className="offices-inner">
         <div className="gs">
           <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Three offices</div>
-          <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Where we&apos;re <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>on the ground.</em></h2>
+          <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Where we&apos;re <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>on the ground.</em></h2>
         </div>
         <div className="offices-grid">
           {officeCards.map((o) => (

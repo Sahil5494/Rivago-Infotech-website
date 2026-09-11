@@ -69,7 +69,7 @@ export default function ExecutiveSearchPage() {
       </header>
 
       <SwhySection
-        heading={<>Leadership searches run<br />by <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>the partner, not a team.</em></>}
+        heading={<>Leadership searches run<br />by <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>the partner, not a team.</em></>}
         lead="Most firms staff your search with a partner's name and a junior's hours. We do the opposite — the partner who takes the brief does the sourcing, the calls and the reference checks, and reports to you in writing every week."
         numsr={[
           { v: "6–10", sup: "wk", title: "Typical search length", desc: "Brief to signed offer, full market mapped." },
@@ -87,7 +87,7 @@ export default function ExecutiveSearchPage() {
 
       <ModesSection
         eyebrowText="How executive search works"
-        heading={<>Three ways to run a<br />retained <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>leadership search.</em></>}
+        heading={<>Three ways to run a<br />retained <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>leadership search.</em></>}
         modes={[
           { num: "01", title: "Single retained search", desc: "One critical leadership seat — CFO, CTO, GC or similar. A dedicated partner and researcher run a fully off-market search, staged in thirds.", bullets: ["Dedicated partner + research analyst", "Confidential, off-market approach", "12-month replacement guarantee", "Compensation benchmarking included"] },
           { num: "02", title: "Confidential replacement", desc: "Replacing a sitting executive before the market — or the incumbent — knows. No job posting, no database blast, direct outreach only, under NDA.", bullets: ["Fully off-market, NDA as standard", "Off-site shortlist review", "Sequenced to protect the transition", "12-month replacement guarantee"], featured: true },
@@ -100,7 +100,7 @@ export default function ExecutiveSearchPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Which model fits</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>Picking the right approach<br />for the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent-inv)" }}>seat you&apos;re filling.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>Picking the right approach<br />for the <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>seat you&apos;re filling.</em></h2>
           </div>
           <div className="matrix gs">
             <div className="matrix-head">
@@ -135,7 +135,7 @@ export default function ExecutiveSearchPage() {
       />
 
       <GuaranteeSection
-        heading={<>Four numbers we&apos;ll stand behind<br />on the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>first call.</em></>}
+        heading={<>Four numbers we&apos;ll stand behind<br />on the <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>first call.</em></>}
         stats={[
           { val: "6–10", sup: "wk", title: "Typical search length", desc: "Confidential mandate to a signed executive offer." },
           { val: "96", sup: "%", title: "Offer-acceptance rate", desc: "Executive searches, last 12 months." },
@@ -145,12 +145,12 @@ export default function ExecutiveSearchPage() {
       />
 
       <IndustriesGrid2Section
-        heading={<>Executive search across<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>every sector we serve.</em></>}
+        heading={<>Executive search across<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>every sector we serve.</em></>}
         sub="Every retained mandate is run by a partner who has recruited senior leaders in that sector for at least seven years — they know the boardrooms, the succession gaps and the leaders who aren't looking."
       />
 
       <TestiCreamSection
-        heading={<>Executive searches,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent-inv)" }}>in their own words.</em></>}
+        heading={<>Executive searches,<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>in their own words.</em></>}
         sub="Plain English from board members, CEOs and CHROs who ran a confidential leadership search through Rivago in the last eighteen months. No pseudonyms. No doctored quotes."
         cards={[
           { tag: "Canada · Finance", quote: "We needed to replace our CFO ahead of an earnings cycle without a single leak. Rivago ran it fully off-market — no posting, no database blast. The market found out on the day we announced it.", initials: "RP", name: "Ryan P.", role: "Board Member · TSX-listed fintech" },
@@ -160,7 +160,7 @@ export default function ExecutiveSearchPage() {
       />
 
       <IntakeBandSection
-        heading={<>Tell us the mandate.<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic" }}>We&apos;ll do the rest.</em></>}
+        heading={<>Tell us the mandate.<br /><em style={{ fontStyle: "normal", fontWeight: 500 }}>We&apos;ll do the rest.</em></>}
         lead="Four minutes, held in confidence. A senior partner reads every mandate within the hour and books a confidential scoping call before any outreach begins."
         bullets={[
           { strong: "NDA as standard.", rest: "Every mandate handled in confidence from the first call." },
@@ -171,7 +171,7 @@ export default function ExecutiveSearchPage() {
       />
 
       <FaqSection
-        heading={<>Executive search, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>the questions that matter.</em></>}
+        heading={<>Executive search, <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>the questions that matter.</em></>}
         items={[
           { q: "How is the retainer structured, and what if the search fails?", a: "Typically three instalments: on engagement, on shortlist delivery, and on completion. If we do not deliver a shortlist meeting the agreed specification, the second instalment is not invoiced. Retained fees fund exhaustive market coverage and dedicated partner time — they are not a deposit against a placement." },
           { q: "Who actually does the work — the partner who pitched, or a researcher?", a: "The partner who scoped the mandate runs it end to end, supported by a named researcher you also meet. You are not handed to a delivery team after signature. That is the single most common failure mode in executive search, and we structure against it deliberately." },

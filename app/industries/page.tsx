@@ -106,7 +106,7 @@ export default function IndustriesPage() {
       <section className="section" style={{ borderTop: "1px solid var(--border)" }}>
         <div className="wrap gs">
           <div className="eyebrow ew-light" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>The common spine</div>
-          <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760, marginBottom: 22 }}>Ten practices.<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>One search methodology.</em></h2>
+          <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760, marginBottom: 22 }}>Ten practices.<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>One search methodology.</em></h2>
           <p style={{ color: "var(--text2)", fontSize: "var(--fz5)", fontWeight: 400, lineHeight: 1.7, maxWidth: 560, marginBottom: 64 }}>Every practice runs the same five-stage process. The only thing that changes is who&apos;s on the other end of the phone — and how much they already know about your sector when they pick it up.</p>
           <div className="ind-spine-grid" style={{ gap: 1, background: "var(--border)", border: "1px solid var(--border)", borderRadius: 20, overflow: "hidden" }}>
             {spine.map(([step, title, desc]) => (
@@ -126,7 +126,7 @@ export default function IndustriesPage() {
           <div className="ind-writing-head" style={{ gap: 80, alignItems: "end", marginBottom: 56 }}>
             <div>
               <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>What we put in writing</div>
-              <h2 className="section-h2" style={{ color: "var(--text-inv-1)" }}>Four numbers we&apos;ll stand behind<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent-inv)" }}>on the first call.</em></h2>
+              <h2 className="section-h2" style={{ color: "var(--text-inv-1)" }}>Four numbers we&apos;ll stand behind<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>on the first call.</em></h2>
             </div>
             <p style={{ color: "var(--text-inv-2)", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 460 }}>Same in technology as in healthcare. Same in finance as in defence. The practice lead changes; the bar doesn&apos;t.</p>
           </div>
@@ -146,7 +146,7 @@ export default function IndustriesPage() {
       <section className="section">
         <div className="wrap gs">
           <div className="eyebrow ew-light" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>From hiring managers</div>
-          <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 22 }}>Notes from the<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>other side of the table.</em></h2>
+          <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 22 }}>Notes from the<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>other side of the table.</em></h2>
           <p style={{ color: "var(--text2)", fontSize: "var(--fz5)", fontWeight: 400, lineHeight: 1.7, maxWidth: 540, marginBottom: 64 }}>Plain English from heads of talent, GCs, and CFOs who hired through a Rivago practice in the last eighteen months.</p>
           <div className="ind-testi-grid" style={{ gap: 18 }}>
             {practiceTestimonials.map((t) => (

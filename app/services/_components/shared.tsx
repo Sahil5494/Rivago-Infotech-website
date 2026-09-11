@@ -384,7 +384,7 @@ export function StorySection({
             <div style={{ display: "flex", gap: 32, marginTop: 28, paddingTop: 24, borderTop: "1px solid rgba(0,0,0,.07)", flexWrap: "wrap" }}>
               {metrics.map((m) => (
                 <div key={m.label}>
-                  <div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: "var(--fz9)", color: "var(--accent-inv)", lineHeight: 1 }}>{m.val}</div>
+                  <div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz9)", color: "var(--accent-inv)", lineHeight: 1 }}>{m.val}</div>
                   <div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 6, maxWidth: 140 }}>{m.label}</div>
                 </div>
               ))}

@@ -209,7 +209,7 @@ export default function Home() {
       </section>
 
       {/* ORB */}
-      <section className="orb-sec">
+      <section className="orb-sec inv">
         <p className="orb-quote gs">The recruitment partner with <em>full context,</em><br />helping you at every step of the <strong>hiring process.</strong></p>
         <div className="orb-wrap gs">
           <div className="orb-halo"></div>
@@ -369,7 +369,7 @@ export default function Home() {
       <section className="proc-sec">
         <div className="proc-inner">
           <div className="eyebrow ew-light gs">The process</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 18 }}>From brief to shortlist<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>48 hours.</em></h2>
+          <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 18 }}>From brief to shortlist<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>48 hours.</em></h2>
           <p className="proc-sub gs">A simple four-step process — end to end, no surprises.</p>
           <div className="proc-grid">
             {[
@@ -415,7 +415,7 @@ export default function Home() {
       <section className="why-sec">
         <div className="why-inner">
           <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Why Rivago</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 560, marginBottom: 20 }}>Six reasons clients<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>stay with us.</em></h2>
+          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 560, marginBottom: 20 }}>Six reasons clients<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>stay with us.</em></h2>
           <div className="why-grid">
             {[
               { n: "01", t: "Quality over quantity — always", d: "We submit fewer, better candidates. Every profile is fully screened before it reaches your inbox. No keyword-matching. No noise. Just people who are genuinely ready.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="#3DFF87" strokeWidth="1.3" /><path d="M7 11l3 3 5-5" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
@@ -442,7 +442,7 @@ export default function Home() {
           <div className="svc-head">
             <div>
               <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Services</div>
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Eight ways to put the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>right people in seat.</em></h2>
+              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Eight ways to put the <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>right people in seat.</em></h2>
               <p className="svc-sub gs">Permanent, contract, temporary or embedded — one senior partner owns the search end to end, whichever way you engage us.</p>
             </div>
             <Link className="svc-all gs" href={routes.services}>View all services <Arrow /></Link>
@@ -469,7 +469,7 @@ export default function Home() {
           <div className="ind-head" style={{ marginBottom: 52 }}>
             <div>
               <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Industries</div>
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Every sector. <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>Every function.</em></h2>
+              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Every sector. <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>Every function.</em></h2>
               <p className="ind-sub gs">We recruit across every major industry — with specialist teams who understand the roles, the regulations and what a strong hire looks like in each sector.</p>
             </div>
             <Link className="ind-all gs" href={routes.industries}>View all industries <Arrow /></Link>
@@ -494,7 +494,7 @@ export default function Home() {
         <div className="supp-inner">
           <div style={{ textAlign: "center" }}>
             <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>Support</div>
-            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 12 }}>We&apos;re with you<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>every step of the way.</em></h2>
+            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 12 }}>We&apos;re with you<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>every step of the way.</em></h2>
             <p className="orb-desc gs" style={{ marginBottom: 0 }}>Whether you&apos;re hiring for the first time or managing a 50-role pipeline — our team is always available to help.</p>
           </div>
           <div className="supp-grid">
@@ -530,10 +530,10 @@ export default function Home() {
       </section>
 
       {/* CASE STUDIES */}
-      <section className="cs-sec">
+      <section className="cs-sec inv">
         <div className="cs-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Client Results</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--dt)", maxWidth: 560 }}>Real results for <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent-inv)" }}>real teams.</em></h2>
+          <h2 className="section-h2 gs" style={{ color: "var(--dt)", maxWidth: 560 }}>Real results for <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>real teams.</em></h2>
           <div className="cs-grid">
             <div className="cs-card cs-wide gs">
               <div className="cs-card-img">
@@ -592,14 +592,14 @@ export default function Home() {
         <div className="faq-inner">
           <div style={{ textAlign: "center" }}>
             <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>FAQ</div>
-            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 0 }}>Questions we <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>hear most often.</em></h2>
+            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 0 }}>Questions we <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>hear most often.</em></h2>
           </div>
           <Faq items={faqItems} />
         </div>
       </section>
 
       {/* CTA */}
-      <section className="cta-sec">
+      <section className="cta-sec inv">
         <div className="cta-orb gs"><div className="cta-halo"></div><OrbCanvas size={200} /></div>
         <h2 className="cta-h2 gs">Your next great hire<br />starts <em>right here.</em></h2>
         <p className="cta-sub gs">Tell us who you need across any function. Shortlist in your inbox within 48 hours.</p>
