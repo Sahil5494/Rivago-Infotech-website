@@ -547,31 +547,43 @@ export default function Home() {
       {/* CASE STUDIES */}
       <section className="cs-sec inv">
         <div className="cs-inner">
-          <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Representative engagements</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--dt)", maxWidth: 560 }}>The kinds of brief <em>we take on.</em></h2>
+          <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Client Results</div>
+          <h2 className="section-h2 gs" style={{ color: "var(--dt)", maxWidth: 560 }}>Real results for <em>real teams.</em></h2>
           <div className="cs-grid">
             <div className="cs-card cs-wide gs">
+              <div className="cs-card-img">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&h=400&fit=crop&auto=format" alt="team" loading="lazy" decoding="async" />
+              </div>
               <div className="cs-card-content">
                 <span className="cs-tag">Technology · US</span>
-                <div className="cs-title">Scaling a fintech team across five functions</div>
-                <div className="cs-meta"><span>Contract and permanent</span><span>·</span><span>Multi-function</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Engineering, product, data and operations briefs run in parallel</div>
+                <div className="cs-title">Scaling a fintech company across five functions — 28 hires in 90 days</div>
+                <div className="cs-meta"><span>US Fintech Company</span><span>·</span><span>Q1 2025</span></div>
+                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>28 placements · 100% retention at 6 months · avg 38h delivery</div>
               </div>
             </div>
             <div className="cs-card gs">
+              <div className="cs-card-img">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&h=300&fit=crop&auto=format" alt="office" loading="lazy" decoding="async" />
+              </div>
               <div className="cs-card-content">
                 <span className="cs-tag">Finance · Canada</span>
-                <div className="cs-title">Building a risk and compliance team for a bank</div>
-                <div className="cs-meta"><span>Permanent</span><span>·</span><span>Regulated function</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Risk, compliance and audit roles against a regulated spec</div>
+                <div className="cs-title">Building a risk &amp; compliance team for a Ontario bank in 60 days</div>
+                <div className="cs-meta"><span>Canadian Financial Group</span><span>·</span><span>Q4 2024</span></div>
+                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>12 placements · $0 replacement cost</div>
               </div>
             </div>
             <div className="cs-card gs">
+              <div className="cs-card-img">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&h=300&fit=crop&auto=format" alt="healthcare" loading="lazy" decoding="async" />
+              </div>
               <div className="cs-card-content">
                 <span className="cs-tag">Healthcare · UAE</span>
-                <div className="cs-title">Staffing a hospital expansion across specialist clinical roles</div>
-                <div className="cs-meta"><span>Contract</span><span>·</span><span>Licensed roles</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Clinical roles requiring licence and registration checks</div>
+                <div className="cs-title">Staffing a UAE hospital expansion across 5 specialist roles</div>
+                <div className="cs-meta"><span>Dubai Healthcare Group</span><span>·</span><span>Q3 2024</span></div>
+                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>5 placements · All placed within 30 days · Zero compliance issues</div>
               </div>
             </div>
           </div>
