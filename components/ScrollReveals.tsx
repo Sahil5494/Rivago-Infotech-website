@@ -3,18 +3,6 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-function animateCounter(el: Element, target: number, suffix: string, dur: number) {
-  const start = performance.now();
-  function step(now: number) {
-    const p = Math.min((now - start) / dur, 1);
-    const e = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.floor(e * target) + suffix;
-    if (p < 1) requestAnimationFrame(step);
-    else el.textContent = target + suffix;
-  }
-  requestAnimationFrame(step);
-}
-
 export default function ScrollReveals() {
   const pathname = usePathname();
 
@@ -108,25 +96,8 @@ export default function ScrollReveals() {
         );
       });
 
-      // Counters
-      const panel = document.querySelector(".prec-panel");
-      const c1 = document.getElementById("c1");
-      const c2 = document.getElementById("c2");
-      const c3 = document.getElementById("c3");
-      const c4 = document.getElementById("c4");
-      if (panel && c1 && c2 && c3 && c4) {
-        ScrollTrigger.create({
-          trigger: panel,
-          start: "top 72%",
-          once: true,
-          onEnter: () => {
-            animateCounter(c1, 48, "h", 1100);
-            animateCounter(c2, 94, "%", 1300);
-            animateCounter(c3, 500, "+", 1500);
-            animateCounter(c4, 87, "%", 1300);
-          },
-        });
-      }
+      // The counters that drove the old performance panel were removed with
+      // it — their target values were unmeasured literals.
 
       ScrollTrigger.refresh();
     })();

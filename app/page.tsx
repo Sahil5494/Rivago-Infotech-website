@@ -175,9 +175,6 @@ export default function Home() {
             <div className="hero-btns gs">
               <button className="btn-hp" data-help>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
             </div>
-            <div className="hero-proof gs">
-              <div><span className="pstars">★★★★★</span><div className="ptxt">Trusted by <strong>50+ companies</strong> · US, Canada, UAE &amp; India</div></div>
-            </div>
           </div>
 
           {/* The space the photograph used to occupy. Every row here is a
@@ -229,7 +226,7 @@ export default function Home() {
 
             <div className="fc gs">
               <div className="fc-vis">
-                <div className="sv-tag sv-tg"><span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent-inv)", display: "inline-block" }}></span>Contract · Permanent · Interim</div>
+                <div className="sv-tag sv-tg"><span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent-inv)", display: "inline-block" }}></span>Example submission</div>
                 <div className="sv-cand">
                   <div className="sv-cand-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,var(--accent),#00A882)", color: "var(--bg)", fontWeight: 500, fontSize: "var(--fz4)", letterSpacing: ".02em" }}>AK</div>
                   <div><div className="sv-cand-name">Anil Kumar</div><div className="sv-cand-role">Senior Cloud Architect · 8 yrs exp</div><div className="sv-skills"><span className="sv-sk">AWS</span><span className="sv-sk">Kubernetes</span><span className="sv-sk">Terraform</span></div></div>
@@ -349,18 +346,30 @@ export default function Home() {
                 "90-day replacement guarantee — no questions asked",
               ].map((t) => (
                 <div className="prec-item gs" key={t}>
-                  <div className="prec-ico"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
+                  <div className="prec-ico"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
                   {t}
                 </div>
               ))}
             </div>
           </div>
           <div className="prec-panel gs">
-            <div className="pp-head"><div className="pp-title">Performance metrics</div><div className="pp-sub">Last 90 days</div></div>
-            <div className="pp-stat"><div><div className="pp-label">Avg. shortlist delivery</div><div className="pp-desc">From brief received to inbox</div></div><div className="pp-val vg" id="c1">—</div></div>
-            <div className="pp-stat"><div><div className="pp-label">Interview acceptance rate</div><div className="pp-desc">Client-side, all roles</div></div><div className="pp-val vg" id="c2">—</div></div>
-            <div className="pp-stat"><div><div className="pp-label">Total placements</div><div className="pp-desc">Contract + permanent</div></div><div className="pp-val vw" id="c3">—</div></div>
-            <div className="pp-stat"><div><div className="pp-label">Client retention rate</div><div className="pp-desc">Year-over-year</div></div><div className="pp-val vw" id="c4">—</div></div>
+            {/* Was "Performance metrics · Last 90 days": 48h average delivery,
+                94% interview acceptance, 500+ total placements, 87% client
+                retention. None of it was measured — the figures were literals
+                in the counter animation. This describes what a submission
+                contains instead, which is checkable against the next one we
+                send rather than being a claim about the past. */}
+            <div className="pp-head"><div className="pp-title">What arrives with every candidate</div><div className="pp-sub">On each submission</div></div>
+            {[
+              ["Screened against the spec", "Not against keywords — a recruiter who has read the role"],
+              ["Comp expectations, confirmed", "Asked and agreed before the CV reaches you"],
+              ["Right to work, checked", "Status and any restrictions stated upfront"],
+              ["Notice period and availability", "So the start date in your plan is a real one"],
+            ].map(([label, desc]) => (
+              <div className="pp-stat" key={label}>
+                <div><div className="pp-label">{label}</div><div className="pp-desc">{desc}</div></div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
