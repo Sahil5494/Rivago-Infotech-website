@@ -176,22 +176,6 @@ export default function AboutPage() {
         </div>
       </header>
 
-      {/* OUR STORY / BELIEF */}
-      <section className="belief gs inv">
-        <div className="belief-inner">
-          <div>
-            <div className="belief-label">Our story</div>
-            <h2 style={{ marginTop: 18, fontSize: "var(--fz12)", lineHeight: 1.08, letterSpacing: "-.024em", fontWeight: 400, color: "var(--dt)", maxWidth: 320 }}>A different kind of <em>recruitment firm.</em></h2>
-          </div>
-          <div className="belief-body">
-            <p style={{ fontStyle: "normal", fontWeight: 500, color: "var(--dt)" }}>&ldquo;We wanted to build the firm we had always wanted to hire from. Honest about the brief. Slow to send the wrong candidate. Fast for the right one.&rdquo;</p>
-            <p>The search industry built itself around <em>volume.</em> More résumés. More portals. More &ldquo;candidates per requisition.&rdquo; We came up inside it and watched the work degrade for both sides — hiring managers drowning in unscreened profiles, candidates ignored after their fourth round.</p>
-            <p>So we built Rivago around the opposite premise. Fewer searches per partner. <strong>Longer relationships.</strong> Honest briefs in both directions. A single person on the line — who learns your business and stays with you for the next role, and the one after that.</p>
-            <p>It costs more per hire. It also <em>sticks.</em> The partner who placed them is still the person you call.</p>
-          </div>
-        </div>
-      </section>
-
       {/* NUMBERS */}
       <section className="numbers gs">
         <div className="numbers-inner">
@@ -206,6 +190,22 @@ export default function AboutPage() {
                 <div className="num-l">{n.l}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* OUR STORY / BELIEF */}
+      <section className="belief gs inv">
+        <div className="belief-inner">
+          <div>
+            <div className="belief-label">Our story</div>
+            <h2 style={{ marginTop: 18, fontSize: "var(--fz12)", lineHeight: 1.08, letterSpacing: "-.024em", fontWeight: 400, color: "var(--dt)", maxWidth: 320 }}>A different kind of <em>recruitment firm.</em></h2>
+          </div>
+          <div className="belief-body">
+            <p style={{ fontStyle: "normal", fontWeight: 500, color: "var(--dt)" }}>&ldquo;We wanted to build the firm we had always wanted to hire from. Honest about the brief. Slow to send the wrong candidate. Fast for the right one.&rdquo;</p>
+            <p>The search industry built itself around <em>volume.</em> More résumés. More portals. More &ldquo;candidates per requisition.&rdquo; We came up inside it and watched the work degrade for both sides — hiring managers drowning in unscreened profiles, candidates ignored after their fourth round.</p>
+            <p>So we built Rivago around the opposite premise. Fewer searches per partner. <strong>Longer relationships.</strong> Honest briefs in both directions. A single person on the line — who learns your business and stays with you for the next role, and the one after that.</p>
+            <p>It costs more per hire. It also <em>sticks.</em> The partner who placed them is still the person you call.</p>
           </div>
         </div>
       </section>
