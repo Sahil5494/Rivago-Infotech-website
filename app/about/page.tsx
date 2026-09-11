@@ -153,7 +153,7 @@ export default function AboutPage() {
         <div className="belief-inner">
           <div>
             <div className="belief-label">Our story</div>
-            <h2 style={{ marginTop: 18, fontSize: "clamp(28px,3.4vw,44px)", lineHeight: 1.08, letterSpacing: "-.024em", fontWeight: 400, color: "var(--dt)", maxWidth: 320 }}>A different kind of <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>recruitment firm.</em></h2>
+            <h2 style={{ marginTop: 18, fontSize: "var(--fz10)", lineHeight: 1.08, letterSpacing: "-.024em", fontWeight: 400, color: "var(--dt)", maxWidth: 320 }}>A different kind of <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>recruitment firm.</em></h2>
           </div>
           <div className="belief-body">
             <p style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--dt)" }}>&ldquo;We wanted to build the firm we had always wanted to hire from. Honest about the brief. Slow to send the wrong candidate. Fast for the right one.&rdquo;</p>

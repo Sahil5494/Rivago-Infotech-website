@@ -205,7 +205,7 @@ function JobsBoardInner() {
     <>
       <div className="jb-bar">
         <Link className="logo" href={routes.home}>
-          <div className="logo-mark">R</div>Rivago<span style={{ fontWeight: 300, color: "var(--text2)" }}> Infotech</span>
+          <div className="logo-mark">R</div>Rivago<span style={{ fontWeight: 400, color: "var(--text2)" }}> Infotech</span>
         </Link>
         <span className="jb-pill">Job Search</span>
         <div className="jb-bar-r">

@@ -83,7 +83,7 @@ export default function RpoPage() {
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What is RPO?</div>
             <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Not another agency.<br />An <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>owned program.</em></h2>
-            <p style={{ color: "var(--text2)", maxWidth: 560, marginTop: 18, fontSize: 16, fontWeight: 300, lineHeight: 1.7 }}>Agencies sell candidates. RPO gives you the whole hiring engine — and owns the outcome.</p>
+            <p style={{ color: "var(--text2)", maxWidth: 560, marginTop: 18, fontSize: "var(--fz4)", fontWeight: 400, lineHeight: 1.7 }}>Agencies sell candidates. RPO gives you the whole hiring engine — and owns the outcome.</p>
           </div>
           <div className="wir-grid">
             <div className="wir-card gs">
@@ -142,16 +142,16 @@ export default function RpoPage() {
           <div className="testi-cream">
             <div className="tc-card gs" style={{ gridColumn: "span 2" }}>
               <span className="tc-tag">US · Technology · Enterprise RPO</span>
-              <p className="tc-quote" style={{ fontSize: 22 }}>We were scaling from 200 to 600 people and our four-person TA team was drowning. Rivago stood up an embedded pod in three weeks, took over the whole funnel, and cut our time-to-fill by <em>nearly half</em> — while our internal team finally got to work on employer brand instead of firefighting.</p>
+              <p className="tc-quote" style={{ fontSize: "var(--fz7)" }}>We were scaling from 200 to 600 people and our four-person TA team was drowning. Rivago stood up an embedded pod in three weeks, took over the whole funnel, and cut our time-to-fill by <em>nearly half</em> — while our internal team finally got to work on employer brand instead of firefighting.</p>
               <div className="tc-author">
-                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "#030C05", fontWeight: 600, fontSize: 13, letterSpacing: ".02em" }}>DK</div>
+                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "#030C05", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>DK</div>
                 <div><div className="tc-author-name">Daniel K.</div><div className="tc-author-role">VP People · US technology scale-up</div></div>
               </div>
             </div>
             <div className="tc-card gs" style={{ justifyContent: "center", gap: 26, background: "var(--bg)", borderColor: "var(--border)" }}>
-              <div><div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: 52, color: "var(--green)", lineHeight: 1, letterSpacing: "-.03em" }}>240</div><div style={{ fontSize: 13, color: "var(--text2)", marginTop: 8, fontWeight: 300 }}>hires in 12 months</div></div>
-              <div><div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: 52, color: "var(--green)", lineHeight: 1, letterSpacing: "-.03em" }}>44<span style={{ fontSize: 22 }}>%</span></div><div style={{ fontSize: 13, color: "var(--text2)", marginTop: 8, fontWeight: 300 }}>faster time-to-fill</div></div>
-              <div><div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: 52, color: "var(--green)", lineHeight: 1, letterSpacing: "-.03em" }}>3 wks</div><div style={{ fontSize: 13, color: "var(--text2)", marginTop: 8, fontWeight: 300 }}>to a live embedded team</div></div>
+              <div><div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: "var(--fz11)", color: "var(--green)", lineHeight: 1, letterSpacing: "-.03em" }}>240</div><div style={{ fontSize: "var(--fz2)", color: "var(--text2)", marginTop: 8, fontWeight: 400 }}>hires in 12 months</div></div>
+              <div><div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: "var(--fz11)", color: "var(--green)", lineHeight: 1, letterSpacing: "-.03em" }}>44<span style={{ fontSize: "var(--fz7)" }}>%</span></div><div style={{ fontSize: "var(--fz2)", color: "var(--text2)", marginTop: 8, fontWeight: 400 }}>faster time-to-fill</div></div>
+              <div><div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: "var(--fz11)", color: "var(--green)", lineHeight: 1, letterSpacing: "-.03em" }}>3 wks</div><div style={{ fontSize: "var(--fz2)", color: "var(--text2)", marginTop: 8, fontWeight: 400 }}>to a live embedded team</div></div>
             </div>
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function RpoPage() {
               <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Insights</div>
               <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>RPO, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>in practice.</em></h2>
             </div>
-            <Link href={routes.resources} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--green)", fontSize: 14, fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Read the blog <SmallArrow /></Link>
+            <Link href={routes.resources} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--green)", fontSize: "var(--fz3)", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Read the blog <SmallArrow /></Link>
           </div>
           <div className="ins-grid">
             {insights.map((p) => (

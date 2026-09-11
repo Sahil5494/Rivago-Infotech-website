@@ -170,10 +170,10 @@ export default function GlobeCanvas() {
             ctx.textAlign = rightSide ? "left" : "right";
             const lx = rightSide ? sx + 13 : sx - 13;
             ctx.fillStyle = "rgba(240,244,240," + fade.toFixed(3) + ")";
-            ctx.font = "600 12px Geist, sans-serif";
+            ctx.font = "600 12px Urbanist, sans-serif";
             ctx.fillText(hu.name, lx, sy - 3);
             ctx.fillStyle = "rgba(122,140,126," + fade.toFixed(3) + ")";
-            ctx.font = "600 8.5px Geist Mono, monospace";
+            ctx.font = "600 8.5px 'Geist Mono', monospace";
             ctx.fillText(hu.sub, lx, sy + 8);
           }
         }

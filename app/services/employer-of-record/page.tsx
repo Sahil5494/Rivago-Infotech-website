@@ -90,7 +90,7 @@ export default function EmployerOfRecordPage() {
             <div>
               <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Payroll transfer</div>
               <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 560 }}>You&apos;ve got the talent?<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>We&apos;ll make the hire.</em></h2>
-              <p style={{ color: "var(--dt2)", fontSize: 16, lineHeight: 1.78, fontWeight: 300, maxWidth: 520, marginTop: 22 }}>Our payroll-transfer model puts the people you already work with onto our books — the flexibility you need, the experience they deserve. Everyone wins.</p>
+              <p style={{ color: "var(--dt2)", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 520, marginTop: 22 }}>Our payroll-transfer model puts the people you already work with onto our books — the flexibility you need, the experience they deserve. Everyone wins.</p>
             </div>
             <ul className="ptx-list">
               {ptxItems.map((it) => (
@@ -141,7 +141,7 @@ export default function EmployerOfRecordPage() {
               <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Perspectives</div>
               <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 640 }}>Hiring across borders,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>made clearer.</em></h2>
             </div>
-            <Link href={routes.resources} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--green)", fontSize: 14, fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Read the blog <SmallArrow /></Link>
+            <Link href={routes.resources} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--green)", fontSize: "var(--fz3)", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Read the blog <SmallArrow /></Link>
           </div>
           <div className="ins-grid">
             {perspectives.map((p) => (

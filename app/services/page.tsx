@@ -118,7 +118,7 @@ export default function ServicesPage() {
             <div className="rls-tabs rv rv2"><button className="rls-tab on" data-rls="tech">Technology</button><button className="rls-tab" data-rls="health">Healthcare</button><button className="rls-tab" data-rls="legal">Legal</button><button className="rls-tab" data-rls="fin">Finance</button><button className="rls-tab" data-rls="aero">Aerospace & Defence</button><button className="rls-tab" data-rls="telecom">Telecom</button><button className="rls-tab" data-rls="auto">Automotive</button><button className="rls-tab" data-rls="supply">Supply & Operations</button><button className="rls-tab" data-rls="sales">Sales & Marketing</button></div>
             <div className="rls-panel on" data-rls-panel="tech">
               <div className="rls-head"><h3>Technology</h3><span className="cnt">Typical roles · last 90 days</span></div>
-              <p style={{fontSize: "14.5px", color: "var(--text2)", lineHeight: 1.7, fontWeight: 300, maxWidth: "680px", marginBottom: "26px"}}>AI, data and platform engineering talent — from ML and LLM engineers to the leaders who build the teams around them — across cloud-native and enterprise stacks.</p>
+              <p style={{fontSize: "var(--fz3)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>AI, data and platform engineering talent — from ML and LLM engineers to the leaders who build the teams around them — across cloud-native and enterprise stacks.</p>
               <div className="rls-ind">
                 <div>
                   <div className="rls-illabel">Typical roles · last 90 days</div>
@@ -159,7 +159,7 @@ export default function ServicesPage() {
             </div>
               <div className="rls-panel" data-rls-panel="health">
               <div className="rls-head"><h3>Healthcare</h3><span className="cnt">Typical roles · last 90 days</span></div>
-              <p style={{fontSize: "14.5px", color: "var(--text2)", lineHeight: 1.7, fontWeight: 300, maxWidth: "680px", marginBottom: "26px"}}>Provider, payer and life-sciences senior hires — clinical, regulatory and quality leaders, held to the highest credential bar in the firm.</p>
+              <p style={{fontSize: "var(--fz3)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>Provider, payer and life-sciences senior hires — clinical, regulatory and quality leaders, held to the highest credential bar in the firm.</p>
               <div className="rls-ind">
                 <div>
                   <div className="rls-illabel">Typical roles · last 90 days</div>
@@ -200,7 +200,7 @@ export default function ServicesPage() {
             </div>
               <div className="rls-panel" data-rls-panel="legal">
               <div className="rls-head"><h3>Legal</h3><span className="cnt">Typical roles · last 90 days</span></div>
-              <p style={{fontSize: "14.5px", color: "var(--text2)", lineHeight: 1.7, fontWeight: 300, maxWidth: "680px", marginBottom: "26px"}}>First-GC searches, deputy succession and lateral hires for in-house teams scaling across jurisdictions.</p>
+              <p style={{fontSize: "var(--fz3)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>First-GC searches, deputy succession and lateral hires for in-house teams scaling across jurisdictions.</p>
               <div className="rls-ind">
                 <div>
                   <div className="rls-illabel">Typical roles · last 90 days</div>
@@ -241,7 +241,7 @@ export default function ServicesPage() {
             </div>
               <div className="rls-panel" data-rls-panel="fin">
               <div className="rls-head"><h3>Finance</h3><span className="cnt">Typical roles · last 90 days</span></div>
-              <p style={{fontSize: "14.5px", color: "var(--text2)", lineHeight: 1.7, fontWeight: 300, maxWidth: "680px", marginBottom: "26px"}}>CFO succession, treasury, FP&A and the long bench beneath — in markets where we know the comp committees by name.</p>
+              <p style={{fontSize: "var(--fz3)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>CFO succession, treasury, FP&A and the long bench beneath — in markets where we know the comp committees by name.</p>
               <div className="rls-ind">
                 <div>
                   <div className="rls-illabel">Typical roles · last 90 days</div>
@@ -282,7 +282,7 @@ export default function ServicesPage() {
             </div>
               <div className="rls-panel" data-rls-panel="aero">
               <div className="rls-head"><h3>Aerospace & Defence</h3><span className="cnt">Typical roles · last 90 days</span></div>
-              <p style={{fontSize: "14.5px", color: "var(--text2)", lineHeight: 1.7, fontWeight: 300, maxWidth: "680px", marginBottom: "26px"}}>Tier-1 OEMs, defence primes and the supplier ecosystem beneath — cleared talent pre-vetted through Rivago’s cleared-talent program.</p>
+              <p style={{fontSize: "var(--fz3)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>Tier-1 OEMs, defence primes and the supplier ecosystem beneath — cleared talent pre-vetted through Rivago’s cleared-talent program.</p>
               <div className="rls-ind">
                 <div>
                   <div className="rls-illabel">Typical roles · last 90 days</div>
@@ -323,7 +323,7 @@ export default function ServicesPage() {
             </div>
               <div className="rls-panel" data-rls-panel="telecom">
               <div className="rls-head"><h3>Telecom</h3><span className="cnt">Typical roles · last 90 days</span></div>
-              <p style={{fontSize: "14.5px", color: "var(--text2)", lineHeight: 1.7, fontWeight: 300, maxWidth: "680px", marginBottom: "26px"}}>5G core, fibre rollout and MSO leadership — staffed on both the operator and supplier side, with pricing intelligence across the table.</p>
+              <p style={{fontSize: "var(--fz3)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>5G core, fibre rollout and MSO leadership — staffed on both the operator and supplier side, with pricing intelligence across the table.</p>
               <div className="rls-ind">
                 <div>
                   <div className="rls-illabel">Typical roles · last 90 days</div>
@@ -364,7 +364,7 @@ export default function ServicesPage() {
             </div>
               <div className="rls-panel" data-rls-panel="auto">
               <div className="rls-head"><h3>Automotive</h3><span className="cnt">Typical roles · last 90 days</span></div>
-              <p style={{fontSize: "14.5px", color: "var(--text2)", lineHeight: 1.7, fontWeight: 300, maxWidth: "680px", marginBottom: "26px"}}>OEM, tier-1 supplier and the new mobility entrants — battery, ADAS and software-defined vehicle talent, sourced before it hits the market.</p>
+              <p style={{fontSize: "var(--fz3)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>OEM, tier-1 supplier and the new mobility entrants — battery, ADAS and software-defined vehicle talent, sourced before it hits the market.</p>
               <div className="rls-ind">
                 <div>
                   <div className="rls-illabel">Typical roles · last 90 days</div>
@@ -405,7 +405,7 @@ export default function ServicesPage() {
             </div>
               <div className="rls-panel" data-rls-panel="supply">
               <div className="rls-head"><h3>Supply & Operations</h3><span className="cnt">Typical roles · last 90 days</span></div>
-              <p style={{fontSize: "14.5px", color: "var(--text2)", lineHeight: 1.7, fontWeight: 300, maxWidth: "680px", marginBottom: "26px"}}>From distribution-centre leadership to global head-of-supply roles — the people who keep the operation moving when everything else is on fire.</p>
+              <p style={{fontSize: "var(--fz3)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>From distribution-centre leadership to global head-of-supply roles — the people who keep the operation moving when everything else is on fire.</p>
               <div className="rls-ind">
                 <div>
                   <div className="rls-illabel">Typical roles · last 90 days</div>
@@ -446,7 +446,7 @@ export default function ServicesPage() {
             </div>
               <div className="rls-panel" data-rls-panel="sales">
               <div className="rls-head"><h3>Sales & Marketing</h3><span className="cnt">Typical roles · last 90 days</span></div>
-              <p style={{fontSize: "14.5px", color: "var(--text2)", lineHeight: 1.7, fontWeight: 300, maxWidth: "680px", marginBottom: "26px"}}>CRO succession, first-VP-of-marketing hires and demand-gen leadership — we know the OTE patterns and which “100% to plan” résumé actually beat the number.</p>
+              <p style={{fontSize: "var(--fz3)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>CRO succession, first-VP-of-marketing hires and demand-gen leadership — we know the OTE patterns and which “100% to plan” résumé actually beat the number.</p>
               <div className="rls-ind">
                 <div>
                   <div className="rls-illabel">Typical roles · last 90 days</div>

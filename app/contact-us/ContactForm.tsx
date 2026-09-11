@@ -99,8 +99,8 @@ export default function ContactForm() {
   if (ok) {
     return (
       <div style={{ padding: 24, background: "rgba(61,255,135,.06)", border: "1px solid rgba(61,255,135,.2)", borderRadius: 14 }}>
-        <div style={{ fontSize: 16, fontWeight: 500, color: "var(--text)", marginBottom: 6 }}>Message sent.</div>
-        <div style={{ fontSize: 13, color: "var(--text2)" }}>A partner will reply within one business day.</div>
+        <div style={{ fontSize: "var(--fz4)", fontWeight: 500, color: "var(--text)", marginBottom: 6 }}>Message sent.</div>
+        <div style={{ fontSize: "var(--fz2)", color: "var(--text2)" }}>A partner will reply within one business day.</div>
       </div>
     );
   }

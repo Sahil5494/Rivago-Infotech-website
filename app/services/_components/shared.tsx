@@ -321,7 +321,7 @@ export function IndustriesSection({
         <div className="gs">
           <Eyebrow>{eyebrowText}</Eyebrow>
           <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>{heading}</h2>
-          {sub && <p style={{ color: "var(--text2)", maxWidth: 560, marginTop: 18, fontSize: 16, fontWeight: 300, lineHeight: 1.7 }}>{sub}</p>}
+          {sub && <p style={{ color: "var(--text2)", maxWidth: 560, marginTop: 18, fontSize: "var(--fz4)", fontWeight: 400, lineHeight: 1.7 }}>{sub}</p>}
         </div>
         <div className="ind-grid gs" style={{ marginTop: 44 }}>
           {industriesList.map((ind) => (
@@ -375,17 +375,17 @@ export function StorySection({
         </div>
         <div className="tc-card gs" style={{ maxWidth: 800, margin: "48px auto 0", padding: "44px 42px" }}>
           <span className="tc-tag">{tag}</span>
-          <p className="tc-quote-serif" style={{ fontSize: 21 }}>&ldquo;{quote}&rdquo;</p>
+          <p className="tc-quote-serif" style={{ fontSize: "var(--fz6)" }}>&ldquo;{quote}&rdquo;</p>
           <div className="tc-author2">
-            <div style={{ width: 42, height: 42, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "#030C05", fontWeight: 600, fontSize: 13, letterSpacing: ".02em" }}>{initials}</div>
+            <div style={{ width: 42, height: 42, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "#030C05", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{initials}</div>
             <div><div className="tc-author2-name">{name}</div><div className="tc-author2-role">{role}</div></div>
           </div>
           {metrics && metrics.length > 0 && (
             <div style={{ display: "flex", gap: 32, marginTop: 28, paddingTop: 24, borderTop: "1px solid rgba(0,0,0,.07)", flexWrap: "wrap" }}>
               {metrics.map((m) => (
                 <div key={m.label}>
-                  <div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: 32, color: "#0A7040", lineHeight: 1 }}>{m.val}</div>
-                  <div style={{ fontSize: 12, color: "var(--dt3)", marginTop: 6, maxWidth: 140 }}>{m.label}</div>
+                  <div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: "var(--fz9)", color: "#0A7040", lineHeight: 1 }}>{m.val}</div>
+                  <div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 6, maxWidth: 140 }}>{m.label}</div>
                 </div>
               ))}
             </div>
@@ -449,7 +449,7 @@ export function CtaSection({
           )
         )}
       </div>
-      {footnote && <p style={{ marginTop: 18, fontSize: 12.5, opacity: 0.7 }}>{footnote}</p>}
+      {footnote && <p style={{ marginTop: 18, fontSize: "var(--fz2)", opacity: 0.7 }}>{footnote}</p>}
     </section>
   );
 }
@@ -479,7 +479,7 @@ export function InsightsSection({
             <Link href={routes.resources} className="why-card gs" key={a.title} style={{ textDecoration: "none" }}>
               <div className="why-title">{a.title}</div>
               <div className="why-desc">{a.dek}</div>
-              <div style={{ marginTop: 18, fontSize: 13, color: "var(--green)", fontWeight: 500, display: "inline-flex", alignItems: "center", gap: 6 }}>Read more <SmallArrow /></div>
+              <div style={{ marginTop: 18, fontSize: "var(--fz2)", color: "var(--green)", fontWeight: 500, display: "inline-flex", alignItems: "center", gap: 6 }}>Read more <SmallArrow /></div>
             </Link>
           ))}
         </div>
@@ -666,9 +666,9 @@ export function IndustriesGrid2Section({ heading, sub }: { heading: ReactNode; s
           <div>
             <Eyebrow>Industries</Eyebrow>
             <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>{heading}</h2>
-            <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: 16, fontWeight: 300, lineHeight: 1.7 }}>{sub}</p>
+            <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: "var(--fz4)", fontWeight: 400, lineHeight: 1.7 }}>{sub}</p>
           </div>
-          <Link href={routes.industries} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--green)", fontSize: 14, fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Explore all industries <SmallArrow /></Link>
+          <Link href={routes.industries} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--green)", fontSize: "var(--fz3)", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Explore all industries <SmallArrow /></Link>
         </div>
         <CardSlider trackClassName="ind-grid2">
           {indgCards.map((c) => (
@@ -694,7 +694,7 @@ export function TestiCreamSection({ heading, sub, cards }: { heading: ReactNode;
         <div className="gs">
           <Eyebrow dark>Customer story</Eyebrow>
           <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>{heading}</h2>
-          <p style={{ color: "var(--dt2)", fontSize: 16, lineHeight: 1.78, fontWeight: 300, maxWidth: 540, marginTop: 22 }}>{sub}</p>
+          <p style={{ color: "var(--dt2)", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 540, marginTop: 22 }}>{sub}</p>
         </div>
         <div className="testi-cream">
           {cards.map((c) => (
@@ -702,7 +702,7 @@ export function TestiCreamSection({ heading, sub, cards }: { heading: ReactNode;
               <span className="tc-tag">{c.tag}</span>
               <p className="tc-quote">{c.quote}</p>
               <div className="tc-author">
-                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "#030C05", fontWeight: 600, fontSize: 13, letterSpacing: ".02em" }}>{c.initials}</div>
+                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "#030C05", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{c.initials}</div>
                 <div><div className="tc-author-name">{c.name}</div><div className="tc-author-role">{c.role}</div></div>
               </div>
             </div>

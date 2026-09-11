@@ -212,7 +212,7 @@ export default function Home() {
               <div className="fc-vis">
                 <div className="sv-tag sv-tg"><span style={{ width: 5, height: 5, borderRadius: "50%", background: "#0A6030", display: "inline-block" }}></span>Contract · Permanent · Interim</div>
                 <div className="sv-cand">
-                  <div className="sv-cand-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,var(--green),#00A882)", color: "var(--bg)", fontWeight: 600, fontSize: 15, letterSpacing: ".02em" }}>AK</div>
+                  <div className="sv-cand-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,var(--green),#00A882)", color: "var(--bg)", fontWeight: 600, fontSize: "var(--fz4)", letterSpacing: ".02em" }}>AK</div>
                   <div><div className="sv-cand-name">Anil Kumar</div><div className="sv-cand-role">Senior Cloud Architect · 8 yrs exp</div><div className="sv-skills"><span className="sv-sk">AWS</span><span className="sv-sk">Kubernetes</span><span className="sv-sk">Terraform</span></div></div>
                 </div>
                 <div className="sv-bar-row"><div className="sv-bar-label">Role fit</div><div className="sv-bar"><div className="sv-bar-fill" style={{ width: "96%" }}></div></div><div className="sv-bar-val">96%</div></div>
@@ -239,8 +239,8 @@ export default function Home() {
                   ))}
                 </div>
                 <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
-                  <div style={{ flex: 1, padding: 7, background: "#E3F8ED", borderRadius: 7, fontSize: 11, color: "#0A6030", textAlign: "center", fontWeight: 600 }}>Accept →</div>
-                  <div style={{ flex: 1, padding: 7, background: "#F5F0E8", borderRadius: 7, fontSize: 11, color: "#0A6030", textAlign: "center" }}>Defer</div>
+                  <div style={{ flex: 1, padding: 7, background: "#E3F8ED", borderRadius: 7, fontSize: "var(--fz1)", color: "#0A6030", textAlign: "center", fontWeight: 600 }}>Accept →</div>
+                  <div style={{ flex: 1, padding: 7, background: "#F5F0E8", borderRadius: 7, fontSize: "var(--fz1)", color: "#0A6030", textAlign: "center" }}>Defer</div>
                 </div>
               </div>
               <div className="fc-body"><div className="fc-title">Screened before you see them</div><div className="fc-desc">Every candidate is fully assessed before reaching your inbox — competency, culture fit, availability and salary expectations all checked. You only meet people who are genuinely ready.</div></div>
@@ -251,9 +251,9 @@ export default function Home() {
                 <div className="sv-nl">Recruiter assessment summary</div>
                 <div className="sv-note">Anil brings 7 years of cloud architecture experience across AWS and Azure. Strong communicator, available immediately. US EST hours, no visa restrictions. Prior work spans fintech and enterprise SaaS. Panel interview strongly recommended.</div>
                 <div style={{ marginTop: 10, display: "flex", gap: 5, flexWrap: "wrap" }}>
-                  <span style={{ padding: "3px 9px", background: "#E3F8ED", borderRadius: 6, fontSize: 10, color: "#0A6030", fontWeight: 500 }}>AWS</span>
-                  <span style={{ padding: "3px 9px", background: "#E3EEFF", borderRadius: 6, fontSize: 10, color: "#1A4A9A", fontWeight: 500 }}>Azure</span>
-                  <span style={{ padding: "3px 9px", background: "#FFF5E3", borderRadius: 6, fontSize: 10, color: "#0A6030", fontWeight: 500 }}>Fintech exp</span>
+                  <span style={{ padding: "3px 9px", background: "#E3F8ED", borderRadius: 6, fontSize: "var(--fz1)", color: "#0A6030", fontWeight: 500 }}>AWS</span>
+                  <span style={{ padding: "3px 9px", background: "#E3EEFF", borderRadius: 6, fontSize: "var(--fz1)", color: "#1A4A9A", fontWeight: 500 }}>Azure</span>
+                  <span style={{ padding: "3px 9px", background: "#FFF5E3", borderRadius: 6, fontSize: "var(--fz1)", color: "#0A6030", fontWeight: 500 }}>Fintech exp</span>
                 </div>
               </div>
               <div className="fc-body"><div className="fc-title">Full context, every time</div><div className="fc-desc">Every shortlisted candidate comes with a written recruiter summary — background, motivations, strengths and an honest recommendation. No guesswork on your side.</div></div>
@@ -278,14 +278,14 @@ export default function Home() {
                 </div>
                 <div className="sv-pl-col">
                   <div className="sv-pl-title">This week</div>
-                  <div style={{ marginBottom: 14 }}><div style={{ fontSize: 28, fontWeight: 700, color: "#0A140B", letterSpacing: "-.02em", lineHeight: 1 }}>14</div><div style={{ fontSize: 11, color: "var(--dt3)", marginTop: 2 }}>New submissions sent</div></div>
+                  <div style={{ marginBottom: 14 }}><div style={{ fontSize: "var(--fz8)", fontWeight: 700, color: "#0A140B", letterSpacing: "-.02em", lineHeight: 1 }}>14</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>New submissions sent</div></div>
                   <div style={{ marginBottom: 14 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}><span style={{ fontSize: 10, color: "var(--dt3)" }}>Client acceptance rate</span><span style={{ fontSize: 11, fontWeight: 600, color: "#0A7040" }}>94%</span></div>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}><span style={{ fontSize: "var(--fz1)", color: "var(--dt3)" }}>Client acceptance rate</span><span style={{ fontSize: "var(--fz1)", fontWeight: 600, color: "#0A7040" }}>94%</span></div>
                     <div style={{ height: 5, background: "#E8ECE8", borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: "94%", background: "linear-gradient(90deg,var(--green),#00D4A8)", borderRadius: 3 }}></div></div>
                   </div>
                   <div style={{ display: "flex", gap: 8 }}>
-                    <div style={{ flex: 1, background: "#fff", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: 16, fontWeight: 700, color: "#0A140B" }}>48h</div><div style={{ fontSize: 9, color: "var(--dt3)", marginTop: 2 }}>Avg delivery</div></div>
-                    <div style={{ flex: 1, background: "#fff", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: 16, fontWeight: 700, color: "#0A140B" }}>94%</div><div style={{ fontSize: 9, color: "var(--dt3)", marginTop: 2 }}>Interview rate</div></div>
+                    <div style={{ flex: 1, background: "#fff", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz4)", fontWeight: 700, color: "#0A140B" }}>48h</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Avg delivery</div></div>
+                    <div style={{ flex: 1, background: "#fff", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz4)", fontWeight: 700, color: "#0A140B" }}>94%</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Interview rate</div></div>
                   </div>
                 </div>
               </div>
@@ -294,7 +294,7 @@ export default function Home() {
 
             <div className="fc gs">
               <div className="fc-vis" style={{ paddingBottom: 14 }}>
-                <div style={{ fontSize: 10, color: "var(--dt3)", fontWeight: 600, textTransform: "uppercase", letterSpacing: ".06em", marginBottom: 12 }}>Placements by industry</div>
+                <div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", fontWeight: 600, textTransform: "uppercase", letterSpacing: ".06em", marginBottom: 12 }}>Placements by industry</div>
                 {[
                   ["Tech", 48],
                   ["Finance", 28],
@@ -563,7 +563,7 @@ export default function Home() {
             <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>What our clients say</div>
             <h2 className="testi-h2 gs">Trusted by companies who care<br />about <em>hiring right.</em></h2>
           </div>
-          <Link style={{ fontSize: 13, color: "var(--text2)", display: "flex", alignItems: "center", gap: 5, flexShrink: 0 }} href={`${routes.resources}?view=cs`}>Read all stories <SmallArrow /></Link>
+          <Link style={{ fontSize: "var(--fz2)", color: "var(--text2)", display: "flex", alignItems: "center", gap: 5, flexShrink: 0 }} href={`${routes.resources}?view=cs`}>Read all stories <SmallArrow /></Link>
         </div>
         <Testimonials items={testimonials} />
       </section>
@@ -585,8 +585,8 @@ export default function Home() {
         <h2 className="cta-h2 gs">Your next great hire<br />starts <em>right here.</em></h2>
         <p className="cta-sub gs">Tell us who you need across any function. Shortlist in your inbox within 48 hours.</p>
         <div className="cta-btns gs">
-          <button className="btn-hp" data-help style={{ fontSize: 16, padding: "15px 32px" }}>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
-          <Link className="btn-hg" href={routes.viewJobs} style={{ fontSize: 16, padding: "15px 32px" }}>Browse all jobs</Link>
+          <button className="btn-hp" data-help style={{ fontSize: "var(--fz4)", padding: "15px 32px" }}>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+          <Link className="btn-hg" href={routes.viewJobs} style={{ fontSize: "var(--fz4)", padding: "15px 32px" }}>Browse all jobs</Link>
         </div>
       </section>
     </>

@@ -107,7 +107,7 @@ function SignupForm({ done, onSubmit }: { done: boolean; onSubmit: () => void })
         <label>Confirm password</label>
         <input type="password" placeholder="Repeat your password" required minLength={8} value={confirm} onChange={(e) => setConfirm(e.target.value)} />
       </div>
-      {error && <div style={{ fontSize: 12.5, color: "#ffb3b3", background: "rgba(255,107,107,.09)", border: "1px solid rgba(255,107,107,.32)", borderRadius: 9, padding: "10px 13px", marginBottom: 16 }}>{error}</div>}
+      {error && <div style={{ fontSize: "var(--fz2)", color: "#ffb3b3", background: "rgba(255,107,107,.09)", border: "1px solid rgba(255,107,107,.32)", borderRadius: 9, padding: "10px 13px", marginBottom: 16 }}>{error}</div>}
       <button type="submit" className="if-submit">Create account</button>
     </form>
   );
@@ -119,8 +119,8 @@ function SuccessState({ heading, body }: { heading: string; body: string }) {
       <div style={{ width: 52, height: 52, borderRadius: "50%", background: "rgba(61,255,135,.12)", border: "1px solid rgba(61,255,135,.3)", display: "grid", placeItems: "center", margin: "0 auto 16px" }}>
         <Check />
       </div>
-      <div style={{ fontSize: 16, fontWeight: 500, color: "var(--text)", marginBottom: 8 }}>{heading}</div>
-      <div style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, maxWidth: 320, margin: "0 auto" }}>{body}</div>
+      <div style={{ fontSize: "var(--fz4)", fontWeight: 500, color: "var(--text)", marginBottom: 8 }}>{heading}</div>
+      <div style={{ fontSize: "var(--fz2)", color: "var(--text2)", lineHeight: 1.6, maxWidth: 320, margin: "0 auto" }}>{body}</div>
     </div>
   );
 }
