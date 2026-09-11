@@ -25,7 +25,7 @@ export default function Footer() {
             role. Ten specialist practices across the US, Canada, the UAE and India, since 2019.
           </div>
           <div style={{ marginTop: 18 }}>
-            <div style={{ fontSize: "var(--fz1)", fontWeight: 600, color: "var(--text3)", textTransform: "uppercase", letterSpacing: ".07em", marginBottom: 6 }}>
+            <div style={{ fontSize: "var(--fz1)", fontWeight: 500, color: "var(--text3)", textTransform: "uppercase", letterSpacing: ".07em", marginBottom: 6 }}>
               Get in touch
             </div>
             <a href="mailto:info@rivagoinfotech.com" style={{ fontSize: "var(--fz2)", color: "var(--text2)" }}>info@rivagoinfotech.com</a>

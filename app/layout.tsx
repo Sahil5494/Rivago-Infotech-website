@@ -1,34 +1,26 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site";
-import { Urbanist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteNav, SiteFooter, SitePageNav } from "@/components/SiteChrome";
 import HireModal from "@/components/HireModal";
 import HelpModal from "@/components/HelpModal";
 import ScrollReveals from "@/components/ScrollReveals";
 
-/* Urbanist is the text face — a geometric sans, the same construction as the
-   Euclid Circular A the reference sites license. It replaces Geist, which is
-   a neo-grotesque and reads as the Vercel default.
-
-   Weight 300 is deliberately absent: body copy now sets 400. */
-const urbanist = Urbanist({
+/* Geist is the only text face. The reference sets everything in one family
+   (Euclid Circular A, which is licensed) at just three weights — 400, 500
+   and 700 — so those are the three loaded here. There is no serif: the
+   italic accent the hero used has been folded into this family. */
+const geist = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "700"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -59,7 +51,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${urbanist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
       <body>
         <SiteNav />
         {children}

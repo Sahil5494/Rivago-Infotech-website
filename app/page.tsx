@@ -1,5 +1,4 @@
 import Link from "next/link";
-import HeroParticles from "@/components/HeroParticles";
 import LogoMarquee from "@/components/LogoMarquee";
 import OrbCanvas from "@/components/OrbCanvas";
 import Faq from "@/components/Faq";
@@ -163,16 +162,14 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       {/* HERO */}
-      <section className="hero inv">
-        <div className="hphoto">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1920&q=90&auto=format" alt="aerial green landscape with people" decoding="async" />
-        </div>
-        <HeroParticles />
-        <div className="hgrain"></div>
+      {/* The reference's hero is a white ground with a black headline and
+          pill CTAs — no photograph, no scrim, no particle field. Dropping
+          them also removes the hot-linked Unsplash image that was the LCP
+          element and lived on someone else's server. */}
+      <section className="hero">
         <div className="hero-content">
           <div className="hero-badge gs"><span className="bdot"></span>Global Staffing · US · Canada · UAE · India</div>
-          <h1 className="hero-h1 gs">Staffing for getting<br />the <em>right people</em> in seat.</h1>
+          <h1 className="hero-h1 gs">Staffing for getting the <em>right people</em> in seat.</h1>
           <p className="hero-sub gs">We connect outstanding companies with exceptional talent — across every industry, every function and every corner of the globe.</p>
           <div className="hero-btns gs">
             <button className="btn-hp" data-help>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
@@ -212,7 +209,7 @@ export default function Home() {
               <div className="fc-vis">
                 <div className="sv-tag sv-tg"><span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent-inv)", display: "inline-block" }}></span>Contract · Permanent · Interim</div>
                 <div className="sv-cand">
-                  <div className="sv-cand-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,var(--accent),#00A882)", color: "var(--bg)", fontWeight: 600, fontSize: "var(--fz4)", letterSpacing: ".02em" }}>AK</div>
+                  <div className="sv-cand-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,var(--accent),#00A882)", color: "var(--bg)", fontWeight: 500, fontSize: "var(--fz4)", letterSpacing: ".02em" }}>AK</div>
                   <div><div className="sv-cand-name">Anil Kumar</div><div className="sv-cand-role">Senior Cloud Architect · 8 yrs exp</div><div className="sv-skills"><span className="sv-sk">AWS</span><span className="sv-sk">Kubernetes</span><span className="sv-sk">Terraform</span></div></div>
                 </div>
                 <div className="sv-bar-row"><div className="sv-bar-label">Role fit</div><div className="sv-bar"><div className="sv-bar-fill" style={{ width: "96%" }}></div></div><div className="sv-bar-val">96%</div></div>
@@ -239,7 +236,7 @@ export default function Home() {
                   ))}
                 </div>
                 <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
-                  <div style={{ flex: 1, padding: 7, background: "var(--chip)", borderRadius: 7, fontSize: "var(--fz1)", color: "var(--accent-inv)", textAlign: "center", fontWeight: 600 }}>Accept →</div>
+                  <div style={{ flex: 1, padding: 7, background: "var(--chip)", borderRadius: 7, fontSize: "var(--fz1)", color: "var(--accent-inv)", textAlign: "center", fontWeight: 500 }}>Accept →</div>
                   <div style={{ flex: 1, padding: 7, background: "var(--surface-inv)", borderRadius: 7, fontSize: "var(--fz1)", color: "var(--accent-inv)", textAlign: "center" }}>Defer</div>
                 </div>
               </div>
@@ -280,7 +277,7 @@ export default function Home() {
                   <div className="sv-pl-title">This week</div>
                   <div style={{ marginBottom: 14 }}><div style={{ fontSize: "var(--fz8)", fontWeight: 700, color: "var(--text-inv-1)", letterSpacing: "-.02em", lineHeight: 1 }}>14</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>New submissions sent</div></div>
                   <div style={{ marginBottom: 14 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}><span style={{ fontSize: "var(--fz1)", color: "var(--dt3)" }}>Client acceptance rate</span><span style={{ fontSize: "var(--fz1)", fontWeight: 600, color: "var(--accent-inv)" }}>94%</span></div>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}><span style={{ fontSize: "var(--fz1)", color: "var(--dt3)" }}>Client acceptance rate</span><span style={{ fontSize: "var(--fz1)", fontWeight: 500, color: "var(--accent-inv)" }}>94%</span></div>
                     <div style={{ height: 5, background: "var(--surface-inv)", borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: "94%", background: "linear-gradient(90deg,var(--accent),#00D4A8)", borderRadius: 3 }}></div></div>
                   </div>
                   <div style={{ display: "flex", gap: 8 }}>
@@ -294,7 +291,7 @@ export default function Home() {
 
             <div className="fc gs">
               <div className="fc-vis" style={{ paddingBottom: 14 }}>
-                <div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", fontWeight: 600, textTransform: "uppercase", letterSpacing: ".06em", marginBottom: 12 }}>Placements by industry</div>
+                <div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", fontWeight: 500, textTransform: "uppercase", letterSpacing: ".06em", marginBottom: 12 }}>Placements by industry</div>
                 {[
                   ["Tech", 48],
                   ["Finance", 28],

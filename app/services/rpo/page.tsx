@@ -144,7 +144,7 @@ export default function RpoPage() {
               <span className="tc-tag">US · Technology · Enterprise RPO</span>
               <p className="tc-quote" style={{ fontSize: "var(--fz7)" }}>We were scaling from 200 to 600 people and our four-person TA team was drowning. Rivago stood up an embedded pod in three weeks, took over the whole funnel, and cut our time-to-fill by <em>nearly half</em> — while our internal team finally got to work on employer brand instead of firefighting.</p>
               <div className="tc-author">
-                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>DK</div>
+                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>DK</div>
                 <div><div className="tc-author-name">Daniel K.</div><div className="tc-author-role">VP People · US technology scale-up</div></div>
               </div>
             </div>
@@ -165,7 +165,7 @@ export default function RpoPage() {
               <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Insights</div>
               <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>RPO, <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>in practice.</em></h2>
             </div>
-            <Link href={routes.resources} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--accent)", fontSize: "var(--fz3)", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Read the blog <SmallArrow /></Link>
+            <Link href={routes.resources} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--accent)", fontSize: "var(--fz3)", fontWeight: 500, textDecoration: "none", whiteSpace: "nowrap" }}>Read the blog <SmallArrow /></Link>
           </div>
           <div className="ins-grid">
             {insights.map((p) => (

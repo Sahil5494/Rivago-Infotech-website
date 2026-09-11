@@ -231,7 +231,7 @@ export default function HireTalentPage() {
                 <span className="tc-tag">{t.tag}</span>
                 <p className="tc-quote-serif">{t.quote}</p>
                 <div className="tc-author2">
-                  <div style={{ width: 40, height: 40, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{t.initials}</div>
+                  <div style={{ width: 40, height: 40, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{t.initials}</div>
                   <div><div className="tc-author2-name">{t.name}</div><div className="tc-author2-role">{t.role}</div></div>
                 </div>
               </div>

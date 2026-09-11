@@ -78,7 +78,7 @@ export default function IndustriesPage() {
             </div>
             <div className="industry-panel gs">
               <div className="lead-card">
-                <div className="lead-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 600, fontSize: "var(--fz4)", letterSpacing: ".02em" }}>{p.partner.initials}</div>
+                <div className="lead-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz4)", letterSpacing: ".02em" }}>{p.partner.initials}</div>
                 <div>
                   <div className="lead-name">{p.partner.name}</div>
                   <div className="lead-title">{p.partner.title}</div>
@@ -134,7 +134,7 @@ export default function IndustriesPage() {
             {writtenGuarantees.map(([v, unit, title, desc]) => (
               <div key={title} style={{ background: "var(--surface-inv-2)", borderRadius: 24, padding: "40px 32px", border: "1px solid rgba(11,19,17,.06)" }}>
                 <div style={{ fontSize: "var(--fz13)", lineHeight: 1, letterSpacing: "-.035em", color: "var(--accent-inv)", fontWeight: 400, marginBottom: 20 }}>{v}{unit && <span style={{ fontSize: "var(--fz5)", color: "var(--text-inv-3)", marginLeft: 4 }}>{unit}</span>}</div>
-                <div style={{ fontSize: "var(--fz4)", fontWeight: 600, color: "var(--text-inv-1)", marginBottom: 8 }}>{title}</div>
+                <div style={{ fontSize: "var(--fz4)", fontWeight: 500, color: "var(--text-inv-1)", marginBottom: 8 }}>{title}</div>
                 <div style={{ fontSize: "var(--fz2)", color: "var(--text-inv-2)", lineHeight: 1.65, fontWeight: 400 }}>{desc}</div>
               </div>
             ))}
@@ -154,7 +154,7 @@ export default function IndustriesPage() {
                 <div style={{ fontFamily: "var(--fm)", fontSize: "var(--fz1)", color: "var(--accent)", letterSpacing: ".05em", textTransform: "uppercase", marginBottom: 18 }}>{t.practice}</div>
                 <p style={{ fontSize: "var(--fz4)", color: "var(--text)", lineHeight: 1.72, fontWeight: 400, marginBottom: 24, flex: 1 }}>&ldquo;{t.quote}&rdquo;</p>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, paddingTop: 18, borderTop: "1px solid var(--border)" }}>
-                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg,var(--accent),#0A7040)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, color: "var(--text-inv-1)", fontSize: "var(--fz1)" }}>{t.initials}</div>
+                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg,var(--accent),#0A7040)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 500, color: "var(--text-inv-1)", fontSize: "var(--fz1)" }}>{t.initials}</div>
                   <div><div style={{ fontSize: "var(--fz2)", fontWeight: 500, color: "var(--text)" }}>{t.name}</div><div style={{ fontSize: "var(--fz1)", color: "var(--text3)" }}>{t.role}</div></div>
                 </div>
               </div>

@@ -141,7 +141,7 @@ export default function EmployerOfRecordPage() {
               <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Perspectives</div>
               <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 640 }}>Hiring across borders,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>made clearer.</em></h2>
             </div>
-            <Link href={routes.resources} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--accent)", fontSize: "var(--fz3)", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Read the blog <SmallArrow /></Link>
+            <Link href={routes.resources} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--accent)", fontSize: "var(--fz3)", fontWeight: 500, textDecoration: "none", whiteSpace: "nowrap" }}>Read the blog <SmallArrow /></Link>
           </div>
           <div className="ins-grid">
             {perspectives.map((p) => (
