@@ -600,7 +600,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 .mm-col-head{font-size:var(--fz1);font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:8px 12px 10px;border-bottom:1px solid var(--border);margin-bottom:6px}
 .mm-link{display:flex;align-items:flex-start;gap:12px;padding:11px 12px;border-radius:11px;cursor:pointer;transition:background .18s var(--ease);position:relative}
 .mm-link:hover{background:var(--rule-1)}
-.mm-link-ico{width:32px;height:32px;border-radius:9px;background:var(--tint-1);border:1px solid var(--tint-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.mm-link-ico{width:32px;height:32px;border-radius:9px;background:var(--tint-1);border:1px solid var(--tint-2);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
 .mm-link:hover .mm-link-ico{background:var(--tint-1);border-color:var(--tint-3)}
 .mm-link-body{min-width:0;flex:1;padding-top:1px}
 .mm-link-title{font-size:var(--fz3);font-weight:500;color:var(--text);letter-spacing:-.005em;display:flex;align-items:center;gap:8px;margin-bottom:3px}

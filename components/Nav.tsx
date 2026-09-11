@@ -27,7 +27,7 @@ const Arrow = () => (
 
 const CircleIco = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <circle cx="8" cy="8" r="6" stroke="#3DFF87" strokeWidth="1.3" />
+    <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.3" />
   </svg>
 );
 
@@ -88,7 +88,6 @@ const mobileSections: { title: string; href?: string; links: { href: string; lab
     title: "About",
     links: [
       { href: routes.about, label: "Our story" },
-      { href: routes.about, label: "Leadership team" },
       { href: routes.about, label: "Offices" },
       { href: routes.contactUs, label: "Contact" },
     ],
@@ -261,19 +260,16 @@ export default function Nav() {
           {/* ABOUT panel */}
           <div className={`mm mm-about${openKey === "about" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
             <Link className="mm-link" href={routes.about}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#3DFF87" strokeWidth="1.3" /><path d="M8 5v3l2 1.5" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
+              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.3" /><path d="M8 5v3l2 1.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
               <div className="mm-link-body"><div className="mm-link-title">Our story <Arrow /></div><div className="mm-link-desc">Why we built Rivago and what we stand for</div></div>
             </Link>
+
             <Link className="mm-link" href={routes.about}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="5" cy="6" r="2" stroke="#3DFF87" strokeWidth="1.3" /><circle cx="11" cy="6" r="2" stroke="#3DFF87" strokeWidth="1.3" /><path d="M2 13c0-1.7 1.3-3 3-3M14 13c0-1.7-1.3-3-3-3" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
-              <div className="mm-link-body"><div className="mm-link-title">Leadership team</div><div className="mm-link-desc">Senior partners who own every search</div></div>
-            </Link>
-            <Link className="mm-link" href={routes.about}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5 1.5 3 4 3 7c0 4 5 7.5 5 7.5s5-3.5 5-7.5c0-3-2-5.5-5-5.5z" stroke="#3DFF87" strokeWidth="1.3" /><circle cx="8" cy="7" r="1.8" stroke="#3DFF87" strokeWidth="1.3" /></svg></div>
-              <div className="mm-link-body"><div className="mm-link-title">Offices</div><div className="mm-link-desc">US · Canada · UAE · India</div></div>
+              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5 1.5 3 4 3 7c0 4 5 7.5 5 7.5s5-3.5 5-7.5c0-3-2-5.5-5-5.5z" stroke="currentColor" strokeWidth="1.3" /><circle cx="8" cy="7" r="1.8" stroke="currentColor" strokeWidth="1.3" /></svg></div>
+              <div className="mm-link-body"><div className="mm-link-title">Offices</div><div className="mm-link-desc">Wilmington · Pune · Ayr</div></div>
             </Link>
             <Link className="mm-link" href={routes.contactUs}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="3" width="11" height="10" rx="1.5" stroke="#3DFF87" strokeWidth="1.3" /><path d="M5 6h6M5 8.5h6M5 11h4" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
+              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="3" width="11" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.3" /><path d="M5 6h6M5 8.5h6M5 11h4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
               <div className="mm-link-body"><div className="mm-link-title">Contact</div><div className="mm-link-desc">Talk to a partner across our three offices</div></div>
             </Link>
           </div>
@@ -281,11 +277,11 @@ export default function Nav() {
           {/* CAREERS panel */}
           <div ref={careersPanelRef} className={`mm mm-anchor mm-careers-1col${openKey === "careers" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
             <Link className="mm-link" href={routes.searchJobs}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 5.5h11v8h-11z" stroke="#3DFF87" strokeWidth="1.2" strokeLinejoin="round" /><path d="M6 5.5V4a1 1 0 011-1h2a1 1 0 011 1v1.5M2.5 9h11" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
+              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 5.5h11v8h-11z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" /><path d="M6 5.5V4a1 1 0 011-1h2a1 1 0 011 1v1.5M2.5 9h11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
               <div className="mm-link-body"><div className="mm-link-title">Search Jobs <Arrow /></div><div className="mm-link-desc">Browse every open role across our offices</div></div>
             </Link>
             <Link className="mm-link" href={routes.career}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="#3DFF87" strokeWidth="1.2" /><path d="M3 13.5c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
+              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="currentColor" strokeWidth="1.2" /><path d="M3 13.5c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
               <div className="mm-link-body"><div className="mm-link-title">Work at Rivago <Arrow /></div><div className="mm-link-desc">Life, values and how we run a desk</div></div>
             </Link>
           </div>
