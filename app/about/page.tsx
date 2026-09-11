@@ -5,13 +5,13 @@ import OfficesSection from "@/components/OfficesSection";
 import CardSlider from "@/components/CardSlider";
 
 export const metadata: Metadata = {
-  title: "About Rivago Infotech · Partner-led executive search since 2019",
+  title: "About Rivago Infotech · Partner-led search and staffing",
   description:
-    "Rivago Infotech is a partner-led executive search and recruitment firm founded in 2017. Ten senior partners and a fifty-strong team across offices in Pune, the US, Canada, the UAE and India place senior operators in technology, healthcare, legal, finance and aerospace. No portals, no handoffs, no automated outreach.",
+    "Rivago Infotech is a partner-led recruitment and staffing firm working from offices in Wilmington, Pune and Ayr. We place people across technology, healthcare, legal, finance and operations on a permanent, contract or interim basis. No portals, no handoffs, no automated outreach.",
   alternates: { canonical: "https://rivagoinfotech.com/about" },
   openGraph: {
-    title: "About Rivago Infotech · Partner-led executive search since 2019",
-    description: "Ten senior partners across three offices placing senior operators in technology, healthcare, legal, finance and aerospace. No portals. No handoffs.",
+    title: "About Rivago Infotech · Partner-led search and staffing",
+    description: "Partner-led recruitment across technology, healthcare, legal, finance and operations, from offices in Wilmington, Pune and Ayr. No portals. No handoffs.",
     url: "https://rivagoinfotech.com/about",
   },
 };
@@ -107,16 +107,31 @@ const timeline = [
   { year: "2026 · Today", title: "50 people, four markets, ten practices", desc: "Profitable every year since founding. No external capital. Still owned and operated by the original three partners plus seven employee-partners. Still no portal.", aside: "Year-nine revenue: confidential. Profit margin: healthy." },
 ];
 
-const leadership = [
-  { img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=750&fit=crop&crop=face&auto=format", name: "Anjali Rao", title: "Co-founder & Managing Partner", bio: "Fourteen years inside Persistent Systems before founding Rivago. Runs the firm's largest accounts and chairs the partner committee." },
-  { img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=750&fit=crop&crop=face&auto=format", name: "Suresh Iyer", title: "Co-founder & Partner · Operations", bio: "Owns delivery quality, the partner-development program, and the firm's internal tooling. Believed by clients to never sleep." },
-  { img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=750&fit=crop&crop=face&auto=format", name: "Mark Chen", title: "Co-founder & Partner · US", bio: "Heads the US office in Delaware. Joined the GTM practice in 2019; now runs the firm's relationships with venture-backed scale-ups across North America." },
-  { img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&h=750&fit=crop&crop=face&auto=format", name: "Dr. Lila Mehta", title: "Partner · Healthcare practice", bio: "MD, MPH. Twelve years at Mount Sinai before Genentech; seven years at Rivago. Personally referenced every clinical placement above Director." },
-  { img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=750&fit=crop&crop=face&auto=format", name: "Eleanor Pritchard", title: "Partner · Legal practice · Delaware", bio: "Yale JD, NY and CA bars. Six years at Cleary Gottlieb, four years in-house at Stripe before joining Rivago to build the legal practice in 2023." },
-  { img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&h=750&fit=crop&crop=face&auto=format", name: "Cmdr. James O'Sullivan", title: "Partner · Aerospace & defence", bio: "Twenty years US Navy (retired). Joined Rivago in 2019 to establish the cleared-talent program. Active TS/SCI." },
-  { img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=750&fit=crop&crop=face&auto=format", name: "Aisha Karim", title: "Partner · People & HR practice", bio: "SHRM-SCP. Senior People leadership at Airbnb and Unilever before joining Rivago to build the firm's CHRO-search business in 2017." },
-  { img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=750&fit=crop&crop=face&auto=format", name: "Maya Rasmussen", title: "Partner · GTM practice", bio: "Seven years at Salesforce and Datadog in commercial leadership. Joined Rivago in 2019 to run the GTM practice across all client markets." },
-];
+/* ── LEADERSHIP ───────────────────────────────────────────────────────────
+   Emptied deliberately. What was here was eight named partners carrying
+   specific, checkable credentials — a Yale JD and two bar admissions, an
+   MD/MPH with named hospitals, twenty years' US Navy with an active TS/SCI
+   clearance, and prior roles at Cleary Gottlieb, Stripe, Genentech, Mount
+   Sinai, Airbnb, Unilever, Salesforce, Datadog and Persistent Systems.
+   None of it was verified, and the eight photographs were Unsplash stock
+   portraits of real strangers presented as Rivago staff.
+
+   To add a real person, add an entry. Only `name` and `title` are required;
+   omit `bio` and it is simply not rendered, and omit `img` and the card
+   shows the person's initials instead of a stock photograph.
+
+     { name: "Full Name", title: "Role · practice", bio: "", img: "" }
+
+   Two rules for whatever goes in `bio`:
+     - Only state what the person can evidence — a qualification, a former
+       employer, a clearance. Each one is checkable in about a minute by
+       any prospect, and a single wrong claim discredits the rest of the page.
+     - Do not name a third-party employer or institution without that
+       person's agreement.
+
+   The section does not render at all while this array is empty, so the page
+   is correct today and gains the section the moment real people are added. */
+const leadership: { name: string; title: string; bio?: string; img?: string }[] = [];
 
 const principles = [
   { title: "Quality over", em: "volume.", desc: "Five candidates who fit, not fifty who do not. We would rather decline a brief than spam your inbox." },
@@ -201,28 +216,40 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* LEADERSHIP */}
-      <section className="leaders" id="leadership">
-        <div className="leaders-inner">
-          <div className="gs">
-            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Leadership · founding partners + practice heads</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>The eight people whose<br />names go on the <em>first call.</em></h2>
-          </div>
-          <div className="leaders-grid">
-            {leadership.map((p) => (
-              <div className="leader gs" key={p.name}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <div className="leader-photo"><img src={p.img} alt={p.name} loading="lazy" decoding="async" /></div>
-                <div>
-                  <div className="leader-name">{p.name}</div>
-                  <div className="leader-title">{p.title}</div>
-                  <div className="leader-bio">{p.bio}</div>
+      {/* LEADERSHIP — renders only once `leadership` above has real entries.
+          While it is empty the section is omitted entirely rather than shown
+          with placeholders, because a placeholder person is still a claim. */}
+      {leadership.length > 0 && (
+        <section className="leaders" id="leadership">
+          <div className="leaders-inner">
+            <div className="gs">
+              <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Leadership</div>
+              <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>The people whose names go on the <em>first call.</em></h2>
+            </div>
+            <div className="leaders-grid">
+              {leadership.map((p) => (
+                <div className="leader gs" key={p.name}>
+                  <div className="leader-photo">
+                    {p.img ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={p.img} alt={p.name} loading="lazy" decoding="async" />
+                    ) : (
+                      <span className="leader-mono" aria-hidden="true">
+                        {p.name.split(" ").filter(Boolean).slice(0, 2).map((w) => w[0]).join("")}
+                      </span>
+                    )}
+                  </div>
+                  <div>
+                    <div className="leader-name">{p.name}</div>
+                    <div className="leader-title">{p.title}</div>
+                    {p.bio ? <div className="leader-bio">{p.bio}</div> : null}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* WHAT WE BELIEVE — 4 PRINCIPLES */}
       <section className="values">
