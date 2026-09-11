@@ -52,7 +52,7 @@ export default function DirectHirePage() {
       </header>
 
       <SwhySection
-        heading={<>Built for teams that can&apos;t<br />afford <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>the wrong hire.</em></>}
+        heading={<>Built for teams that can&apos;t<br />afford <em style={{ fontStyle: "normal", fontWeight: 700 }}>the wrong hire.</em></>}
         lead="Most agencies sell volume and hand your role to a junior. We do the opposite — one senior partner owns your permanent search end to end, sources the people who never apply, and stands behind the result in writing."
         numsr={[
           { v: "48", sup: "h", title: "Median shortlist", desc: "Signed brief to three to five calibrated finalists." },
@@ -70,7 +70,7 @@ export default function DirectHirePage() {
 
       <ModesSection
         eyebrowText="How direct hire works"
-        heading={<>Three ways to run a<br />permanent <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>direct-hire search.</em></>}
+        heading={<>Three ways to run a<br />permanent <em style={{ fontStyle: "normal", fontWeight: 700 }}>direct-hire search.</em></>}
         modes={[
           { num: "01", title: "Contingent direct hire", desc: "Our most common structure. We work your permanent role on a success basis — you pay only when a candidate signs and stays past the guarantee window.", bullets: ["48-hour median shortlist", "3–5 pre-screened candidates per role", "90-day replacement guarantee", "No upfront fee — pay on hire"] },
           { num: "02", title: "Exclusive direct hire", desc: "Give us the role exclusively and it moves to the top of the desk — deeper sourcing, faster turnaround and a partner who works it like a retained search, still on a contingent fee.", bullets: ["Priority sourcing & partner focus", "Full market map, not just active jobseekers", "90-day replacement guarantee", "Weekly written progress updates"], featured: true },
@@ -91,7 +91,7 @@ export default function DirectHirePage() {
       />
 
       <GuaranteeSection
-        heading={<>Four numbers we&apos;ll stand behind<br />on the <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>first call.</em></>}
+        heading={<>Four numbers we&apos;ll stand behind<br />on the <em style={{ fontStyle: "normal", fontWeight: 700 }}>first call.</em></>}
         stats={[
           { val: "48", sup: "h", title: "Median time-to-shortlist", desc: "From signed JD to three to five calibrated finalists in your inbox." },
           { val: "94", sup: "%", title: "Offer-acceptance rate", desc: "Last 12 months, across all engagements and seniority bands." },
@@ -101,12 +101,12 @@ export default function DirectHirePage() {
       />
 
       <IndustriesGrid2Section
-        heading={<>Specialist partners,<br />aligned to <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>your sector.</em></>}
+        heading={<>Specialist partners,<br />aligned to <em style={{ fontStyle: "normal", fontWeight: 700 }}>your sector.</em></>}
         sub="Every Rivago partner runs one practice. They've placed inside it for at least seven years. They know the comp bands, the org charts, and the people who haven't updated their LinkedIn in two years."
       />
 
       <TestiCreamSection
-        heading={<>Permanent hires,<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>in their own words.</em></>}
+        heading={<>Permanent hires,<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>in their own words.</em></>}
         sub="Plain English from heads of talent, GCs, CFOs and founders who made permanent hires through Rivago in the last eighteen months. No pseudonyms. No doctored quotes."
         cards={[
           { tag: "US · Technology", quote: "We needed a permanent Head of Engineering and two staff engineers. Rivago had a shortlist in two days and all three signed inside the month — every one is still here a year later.", initials: "RP", name: "Ryan P.", role: "VP of Engineering · US Series-C SaaS" },
@@ -116,7 +116,7 @@ export default function DirectHirePage() {
       />
 
       <IntakeBandSection
-        heading={<>Tell us the role.<br /><em style={{ fontStyle: "normal", fontWeight: 500 }}>We&apos;ll do the rest.</em></>}
+        heading={<>Tell us the role.<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>We&apos;ll do the rest.</em></>}
         lead="Four minutes. A senior partner reads every brief within an hour and books a thirty-minute calibration call before any sourcing begins."
         bullets={[
           { strong: "No retainer required.", rest: "Contingent by default. Pay on placement, not on activity." },
@@ -127,7 +127,7 @@ export default function DirectHirePage() {
       />
 
       <FaqSection
-        heading={<>Direct hire, <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>answered properly.</em></>}
+        heading={<>Direct hire, <em style={{ fontStyle: "normal", fontWeight: 700 }}>answered properly.</em></>}
         items={[
           { q: "Is the fee calculated on base salary or total compensation?", a: "On first-year base salary only. Bonus, equity, sign-on, relocation and benefits are excluded from the calculation. The percentage is fixed in the engagement letter before we source, so the invoice figure is predictable the day you sign." },
           { q: "What exactly does the 90-day guarantee cover, and what voids it?", a: "It covers voluntary resignation and performance-based termination inside 90 days of the start date — we restart the search at no professional fee. It does not cover redundancy, a role being cancelled, restructuring, or a material change to the job the candidate accepted. Those exclusions are written into the agreement rather than buried in terms." },

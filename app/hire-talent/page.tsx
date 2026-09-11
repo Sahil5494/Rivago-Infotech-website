@@ -120,7 +120,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>How we engage</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Three ways to put a Rivago partner<br />on your <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>next requisition.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Three ways to put a Rivago partner<br />on your <em style={{ fontStyle: "normal", fontWeight: 700 }}>next requisition.</em></h2>
           </div>
           <div className="modes">
             {modes.map((m) => (
@@ -144,7 +144,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we actually do</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760 }}>A search runs five stages.<br />None of them are <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>a portal.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760 }}>A search runs five stages.<br />None of them are <em style={{ fontStyle: "normal", fontWeight: 700 }}>a portal.</em></h2>
           </div>
           <div className="proc-deep">
             {stages.map((s) => (
@@ -167,7 +167,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we put in writing</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Four numbers we&apos;ll stand behind<br />on the <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>first call.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Four numbers we&apos;ll stand behind<br />on the <em style={{ fontStyle: "normal", fontWeight: 700 }}>first call.</em></h2>
           </div>
           <div className="guarantee">
             <div className="gtee gs"><div className="gtee-val">21<sup>days</sup></div><div className="gtee-title">Median time-to-shortlist</div><div className="gtee-desc">From signed JD to three calibrated finalists in your inbox.</div></div>
@@ -183,7 +183,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Why hiring managers choose us</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Built for hiring teams that<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>can&apos;t afford to slow down.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Built for hiring teams that<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>can&apos;t afford to slow down.</em></h2>
           </div>
           <div className="why-grid">
             {whyCards.map((c) => (
@@ -202,7 +202,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Practices</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Specialist partners,<br />aligned to <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>your sector.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Specialist partners,<br />aligned to <em style={{ fontStyle: "normal", fontWeight: 700 }}>your sector.</em></h2>
             <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: "var(--fz4)", fontWeight: 400, lineHeight: 1.7 }}>Your brief goes straight to the partner who works your sector — not a shared queue. They already know who is good, who is moving, and what it takes to get them to take the call.</p>
           </div>
           <div className="ind-strip">
@@ -222,7 +222,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>From hiring managers</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>In their<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>own words.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>In their<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>own words.</em></h2>
             <p style={{ color: "var(--dt2)", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 540, marginTop: 22 }}>Plain English from heads of talent, GCs, CFOs and founders who hired through Rivago in the last eighteen months. No pseudonyms. No doctored quotes.</p>
           </div>
           <div className="testi-cream">

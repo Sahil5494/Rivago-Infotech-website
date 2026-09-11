@@ -153,13 +153,13 @@ export default function AboutPage() {
         <div className="belief-inner">
           <div>
             <div className="belief-label">Our story</div>
-            <h2 style={{ marginTop: 18, fontSize: "var(--fz10)", lineHeight: 1.08, letterSpacing: "-.024em", fontWeight: 400, color: "var(--dt)", maxWidth: 320 }}>A different kind of <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>recruitment firm.</em></h2>
+            <h2 style={{ marginTop: 18, fontSize: "var(--fz10)", lineHeight: 1.08, letterSpacing: "-.024em", fontWeight: 400, color: "var(--dt)", maxWidth: 320 }}>A different kind of <em style={{ fontStyle: "normal", fontWeight: 700 }}>recruitment firm.</em></h2>
           </div>
           <div className="belief-body">
             <p style={{ fontStyle: "normal", fontWeight: 500, color: "var(--dt)" }}>&ldquo;We wanted to build the firm we had always wanted to hire from. Honest about the brief. Slow to send the wrong candidate. Fast for the right one.&rdquo;</p>
-            <p>The search industry built itself around <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>volume.</em> More résumés. More portals. More &ldquo;candidates per requisition.&rdquo; We came up inside it and watched the work degrade for both sides — hiring managers drowning in unscreened profiles, candidates ignored after their fourth round.</p>
+            <p>The search industry built itself around <em style={{ fontStyle: "normal", fontWeight: 700 }}>volume.</em> More résumés. More portals. More &ldquo;candidates per requisition.&rdquo; We came up inside it and watched the work degrade for both sides — hiring managers drowning in unscreened profiles, candidates ignored after their fourth round.</p>
             <p>So we built Rivago around the opposite premise. Fewer searches per partner. <strong>Longer relationships.</strong> Honest briefs in both directions. A single person on the line — who learns your business and stays with you for the next role, and the one after that.</p>
-            <p>It costs more per hire. It also <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>sticks.</em> Ninety-one percent of the people we place are still in seat twelve months later.</p>
+            <p>It costs more per hire. It also <em style={{ fontStyle: "normal", fontWeight: 700 }}>sticks.</em> Ninety-one percent of the people we place are still in seat twelve months later.</p>
           </div>
         </div>
       </section>
@@ -169,7 +169,7 @@ export default function AboutPage() {
         <div className="numbers-inner">
           <div style={{ marginBottom: 56 }}>
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>By the numbers</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>Nearly a decade of <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>placed hires.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>Nearly a decade of <em style={{ fontStyle: "normal", fontWeight: 700 }}>placed hires.</em></h2>
           </div>
           <div className="numbers-card">
             {numbers.map((n) => (
@@ -187,7 +187,7 @@ export default function AboutPage() {
         <div className="timeline-inner">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Seven years, abbreviated</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>The decisions that <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>made the firm.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>The decisions that <em style={{ fontStyle: "normal", fontWeight: 700 }}>made the firm.</em></h2>
           </div>
           <div className="tl-rows">
             {timeline.map((t) => (
@@ -206,7 +206,7 @@ export default function AboutPage() {
         <div className="leaders-inner">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Leadership · founding partners + practice heads</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>The eight people whose<br />names go on the <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>first call.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>The eight people whose<br />names go on the <em style={{ fontStyle: "normal", fontWeight: 700 }}>first call.</em></h2>
           </div>
           <div className="leaders-grid">
             {leadership.map((p) => (
@@ -229,13 +229,13 @@ export default function AboutPage() {
         <div className="values-inner">
           <div className="gs">
             <div className="eyebrow-plain gs" style={{ marginBottom: 20 }}>What we believe</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720, marginBottom: 0 }}>Four principles.<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>No exceptions.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720, marginBottom: 0 }}>Four principles.<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>No exceptions.</em></h2>
           </div>
           <div className="values-grid values-grid-4">
             {principles.map((v, i) => (
               <div className="value gs" key={v.title}>
                 <div className="value-num">{String(i + 1).padStart(2, "0")}</div>
-                <h3>{v.title} <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>{v.em}</em></h3>
+                <h3>{v.title} <em style={{ fontStyle: "normal", fontWeight: 700 }}>{v.em}</em></h3>
                 <p>{v.desc}</p>
               </div>
             ))}
@@ -248,13 +248,13 @@ export default function AboutPage() {
         <div className="values-inner">
           <div className="gs">
             <div className="eyebrow" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we won&apos;t do</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720, marginBottom: 0 }}>Our values, mostly stated<br />as the <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>things we refuse.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720, marginBottom: 0 }}>Our values, mostly stated<br />as the <em style={{ fontStyle: "normal", fontWeight: 700 }}>things we refuse.</em></h2>
           </div>
           <CardSlider trackClassName="values-grid values-grid-divider" nav="dots">
             {refusals.map((v, i) => (
               <div className="value gs" key={v.title} style={{ background: "var(--cream)" }}>
                 <div className="value-num">{String(i + 1).padStart(2, "0")}</div>
-                <h3>{v.title}<br />{v.titleBreak} <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>{v.em}</em></h3>
+                <h3>{v.title}<br />{v.titleBreak} <em style={{ fontStyle: "normal", fontWeight: 700 }}>{v.em}</em></h3>
                 <p>{v.desc}</p>
               </div>
             ))}

@@ -51,7 +51,7 @@ export default function InterimLeadershipPage() {
       </header>
 
       <SwhySection
-        heading={<>A day-one operator,<br />not <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>a resume search.</em></>}
+        heading={<>A day-one operator,<br />not <em style={{ fontStyle: "normal", fontWeight: 700 }}>a resume search.</em></>}
         lead="Most firms start looking once you call. We keep a standing bench of vetted interim executives ready now — so the gap between “we need someone” and “someone is running it” is measured in days, not months."
         numsr={[
           { v: "7", sup: "d", title: "To a leader in seat", desc: "From confirmed brief to a start date." },
@@ -69,7 +69,7 @@ export default function InterimLeadershipPage() {
 
       <ModesSection
         eyebrowText="How interim leadership works"
-        heading={<>Three ways to bring in<br />an <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>interim leader.</em></>}
+        heading={<>Three ways to bring in<br />an <em style={{ fontStyle: "normal", fontWeight: 700 }}>interim leader.</em></>}
         modes={[
           { num: "01", title: "Transition cover", desc: "A leader departs and the seat can't sit empty. An interim executive steps in within days to keep the function running while you run a permanent search.", bullets: ["Start date within 7 days", "Runs the function, not just holds it", "Handover plan to the permanent hire", "Billed on a day rate, month to month"] },
           { num: "02", title: "Turnaround leadership", desc: "A business in distress needs a proven operator immediately — not after a three-month search. Drawn from our bench, with a track record of stabilising exactly this kind of situation.", bullets: ["Deployed in as little as 7 days", "Defined statement of work & milestones", "Reports directly to the board", "Clean exit plan built in from day one"], featured: true },
@@ -90,7 +90,7 @@ export default function InterimLeadershipPage() {
       />
 
       <GuaranteeSection
-        heading={<>Four numbers we&apos;ll stand behind<br />on the <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>first call.</em></>}
+        heading={<>Four numbers we&apos;ll stand behind<br />on the <em style={{ fontStyle: "normal", fontWeight: 700 }}>first call.</em></>}
         stats={[
           { val: "7", sup: "d", title: "Time to deployment", desc: "From confirmed brief to a leader starting in the seat." },
           { val: "92", sup: "%", title: "Assignment success rate", desc: "Completed to plan, last 12 months." },
@@ -100,12 +100,12 @@ export default function InterimLeadershipPage() {
       />
 
       <IndustriesGrid2Section
-        heading={<>Interim leaders across<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>every sector we serve.</em></>}
+        heading={<>Interim leaders across<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>every sector we serve.</em></>}
         sub="Our interim bench is built from operators who have actually run these functions under pressure — not consultants between engagements. Sector fit is matched from day one."
       />
 
       <TestiCreamSection
-        heading={<>Interim leaders,<br /><em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent-inv)" }}>in their own words.</em></>}
+        heading={<>Interim leaders,<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>in their own words.</em></>}
         sub="Plain English from board chairs, CEOs and CHROs who brought in a Rivago interim executive in the last eighteen months. No pseudonyms. No doctored quotes."
         cards={[
           { tag: "US · Operations", quote: "A PE-owned business in distress needed an operator immediately — not in two months. Rivago placed a turnaround COO from their bench who started in eleven days. Margin was up 22% within two quarters.", initials: "RP", name: "Ryan P.", role: "Board Chair · PE-owned business" },
@@ -115,7 +115,7 @@ export default function InterimLeadershipPage() {
       />
 
       <IntakeBandSection
-        heading={<>Tell us the gap.<br /><em style={{ fontStyle: "normal", fontWeight: 500 }}>We&apos;ll do the rest.</em></>}
+        heading={<>Tell us the gap.<br /><em style={{ fontStyle: "normal", fontWeight: 700 }}>We&apos;ll do the rest.</em></>}
         lead="Three minutes. A senior partner reads every request within the hour and confirms bench availability before your first call."
         bullets={[
           { strong: "Deployed in as little as 7 days.", rest: "Drawn from a standing, pre-vetted bench." },
@@ -126,7 +126,7 @@ export default function InterimLeadershipPage() {
       />
 
       <FaqSection
-        heading={<>Interim leadership, <em style={{ fontStyle: "normal", fontWeight: 500, color: "var(--accent)" }}>straight answers.</em></>}
+        heading={<>Interim leadership, <em style={{ fontStyle: "normal", fontWeight: 700 }}>straight answers.</em></>}
         items={[
           { q: "Interim or fractional — which do we actually need?", a: "Interim if the gap is full-time and time-boxed: a sudden departure, a turnaround, a transformation programme. Fractional if you need senior judgement but not a full-time seat — typically one to three days a week for a smaller organisation that cannot justify a full salary. Your partner will tell you which, including when the answer is neither." },
           { q: "How is a day rate built, and what is the all-in cost?", a: "The day rate covers the executive fee plus Rivago margin, invoiced against days actually worked. There is no placement fee, no notice liability, no benefits burden and no severance exposure. For a defined engagement the total cost is knowable in advance, which is rarely true of a permanent hire." },
