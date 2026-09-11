@@ -129,7 +129,7 @@ export default function ResourcesView({ initialView }: { initialView: View }) {
       {view === "all" && (
         <>
           <div className="rfeat">
-            <div className="rfeat-img" style={{ background: "linear-gradient(135deg,#A6F0CE,#3DA9FF)" }}>
+            <div className="rfeat-img lt" style={{ background: "linear-gradient(135deg,#A6F0CE,#3DA9FF)" }}>
               <h2 style={{ color: "var(--text-inv-1)" }}>{featuredArticle.title}</h2>
               <div style={{ position: "absolute", left: 32, bottom: 30, width: 34, height: 34, borderRadius: "50%", background: "rgba(255,255,255,.22)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--text-1)", fontWeight: 700, fontSize: "var(--fz2)" }}>R</div>
             </div>
@@ -145,7 +145,7 @@ export default function ResourcesView({ initialView }: { initialView: View }) {
           </div>
 
           <div className="rgrid-h">All resources</div>
-          <div className="rgrid">
+          <div className="rgrid lt">
             {allOrder.map((item, i) => {
               const wide = i < 2;
               if (item.kind === "article") {

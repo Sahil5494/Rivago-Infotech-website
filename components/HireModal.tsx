@@ -194,7 +194,7 @@ export default function HireModal() {
           </div>
         ) : (
           <div className="hire-ok show">
-            <div className="hire-ok-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 7" stroke="#3DFF87" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
+            <div className="hire-ok-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 7" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
             <h3>{okTitle}</h3>
             <p>{okMsg}</p>
           </div>

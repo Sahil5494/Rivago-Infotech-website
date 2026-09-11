@@ -82,7 +82,7 @@ export default function OpenPositionsBoard() {
       </div>
       <div className="jp-count">Showing <strong>{filtered.length}</strong> of <span>{positions.length}</span> open roles</div>
 
-      <div>
+      <div className="jboard lt">
         {groups.map((g) => (
           <div className="jgroup" key={g.dept}>
             <div className="jgroup-name">{g.dept} <span className="jgroup-count">{g.roles.length}</span></div>

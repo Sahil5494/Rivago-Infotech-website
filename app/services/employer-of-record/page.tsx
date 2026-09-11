@@ -66,10 +66,10 @@ export default function EmployerOfRecordPage() {
         heading={<>You found them.<br />We make it <em>legal.</em></>}
         lead="Most EOR providers are a payroll platform with a support ticket. We do the opposite — a named partner who knows the local rules, sets up the contract correctly the first time, and stays reachable for the life of the engagement."
         cards={[
-          { title: "Less risk on you", desc: "Talent are our W-2 employees, so worker misclassification stops being your problem. We keep them engaged and well looked-after too — which is what actually keeps co-employment risk down.", icon: svgIco('<path d="M11 2l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V5z" stroke="#3DFF87" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>') },
-          { title: "Benefits that hold up", desc: "Everyone qualifies — even part-time or short assignments. Subsidised medical, dental and vision; paid sick leave for hourly talent in the US and Canada; a matched retirement plan; flexible spending accounts and more.", icon: svgIco('<rect x="3" y="4" width="16" height="14" rx="2" stroke="#3DFF87" stroke-width="1.5"/><path d="M11 8v6M8 11h6" stroke="#3DFF87" stroke-width="1.5" stroke-linecap="round"/>') },
-          { title: "Genuinely good care", desc: "Regular check-ins, career coaching and real human support — not a help desk. It is why our talent-satisfaction scores stay well above the industry, year after year.", icon: svgIco('<path d="M11 19s-7-4.2-7-9a4 4 0 017-2.6A4 4 0 0118 10c0 4.8-7 9-7 9z" stroke="#3DFF87" stroke-width="1.5" stroke-linejoin="round"/>') },
-          { title: "Compliant in every market", desc: "US, Canada, the UAE or India — payroll, tax and statutory rules handled locally by a partner who knows them, so every hire is right the first time.", icon: svgIco('<circle cx="11" cy="11" r="8" stroke="#3DFF87" stroke-width="1.5"/><path d="M3 11h16M11 3a14 14 0 010 16M11 3a14 14 0 000 16" stroke="#3DFF87" stroke-width="1.5"/>') },
+          { title: "Less risk on you", desc: "Talent are our W-2 employees, so worker misclassification stops being your problem. We keep them engaged and well looked-after too — which is what actually keeps co-employment risk down.", icon: svgIco('<path d="M11 2l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V5z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>') },
+          { title: "Benefits that hold up", desc: "Everyone qualifies — even part-time or short assignments. Subsidised medical, dental and vision; paid sick leave for hourly talent in the US and Canada; a matched retirement plan; flexible spending accounts and more.", icon: svgIco('<rect x="3" y="4" width="16" height="14" rx="2" stroke="var(--accent)" stroke-width="1.5"/><path d="M11 8v6M8 11h6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>') },
+          { title: "Genuinely good care", desc: "Regular check-ins, career coaching and real human support — not a help desk. It is why our talent-satisfaction scores stay well above the industry, year after year.", icon: svgIco('<path d="M11 19s-7-4.2-7-9a4 4 0 017-2.6A4 4 0 0118 10c0 4.8-7 9-7 9z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/>') },
+          { title: "Compliant in every market", desc: "US, Canada, the UAE or India — payroll, tax and statutory rules handled locally by a partner who knows them, so every hire is right the first time.", icon: svgIco('<circle cx="11" cy="11" r="8" stroke="var(--accent)" stroke-width="1.5"/><path d="M3 11h16M11 3a14 14 0 010 16M11 3a14 14 0 000 16" stroke="var(--accent)" stroke-width="1.5"/>') },
         ]}
       />
 
@@ -95,7 +95,7 @@ export default function EmployerOfRecordPage() {
             <ul className="ptx-list">
               {ptxItems.map((it) => (
                 <li key={it.strong}>
-                  <svg width="15" height="12" viewBox="0 0 15 12" fill="none"><path d="M1 6l4.5 4.5L14 1" stroke="#0A7040" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  <svg width="15" height="12" viewBox="0 0 15 12" fill="none"><path d="M1 6l4.5 4.5L14 1" stroke="var(--accent)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                   <div><strong>{it.strong}</strong> {it.rest}</div>
                 </li>
               ))}

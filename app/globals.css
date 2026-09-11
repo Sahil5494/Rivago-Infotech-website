@@ -4,72 +4,87 @@
 ::selection{background:#3DFF87;color:#0B0F0C}
 ::-moz-selection{background:#3DFF87;color:#0B0F0C}
 :root{
-  /* ── COLOUR & TYPE · matched to the Metaview reference ────────────────
-     Measured off the supplied page with a headless browser. 66% of its CSS
-     survived the save, so what follows is what genuinely rendered — where
-     a value could not be read it is Rivago's own, and marked as such.
+  /* ── COLOUR & TYPE · dark by default ──────────────────────────────────
+     The site runs dark: near-black ground, mint text, bright green accent.
+     Roughly seven parts dark to three parts light across the whole site.
 
-     White ground, black text, green in the dark panels and the accent.
-     Every pair verified: lowest is 5.71:1.                              */
+     The DEFAULT is dark on purpose. Anything unmarked — a gap between
+     bands, overscroll rubber-banding, a section added later — lands on the
+     dark ground rather than flashing white. Light is the thing you opt
+     into, with class="lt", and it is reserved for dense functional
+     reading: long lists, forms, job boards, FAQs.
 
-  /* surfaces — the reference's page is white, its bands pale mint */
-  --surface-1:#FFFFFF;   /* page ground                    */
-  --surface-2:#F2F7F5;   /* pale mint band     (measured)  */
-  --surface-3:#FFFFFF;   /* card                           */
-  --surface-4:#EDF7F2;   /* second mint tint   (measured)  */
-  --surface-inv:#FFFFFF;
-  --surface-inv-2:#F2F7F5;
-  --chip:#EDF7F2;
+     The light palette still exists in full, in the `.lt` block below. Both
+     sets are contrast-verified independently; neither borrows a value from
+     the other.                                                          */
 
-  /* text — black on white, exactly as the reference sets it */
-  --text-1:#000000;      /* 21.0:1  (measured)  */
-  --text-2:#3A3F3D;      /* 11.2:1  — Rivago's, the reference had no mid step */
-  --text-3:#4F5252;      /*  7.9:1  — the reference's #5E6262 darkened so it also
-                             clears a panel filled with the #D9D9D9 rule */
-  --text-inv-1:#000000; --text-inv-2:#3A3F3D; --text-inv-3:#4F5252;
+  /* surfaces — near-black ground, two raised steps above it */
+  --surface-1:#000805;   /* page ground                    */
+  --surface-2:#0A2119;   /* raised band                    */
+  --surface-3:#0B1B15;   /* card                           */
+  --surface-4:#000805;
+  --surface-inv:#0A2119;
+  --surface-inv-2:#000805;
+  --chip:#0A2119;
 
-  /* brand. The reference fills its buttons near-black and keeps green for
-     the dark panels and the bright accent. Rivago needs a green that also
-     works as a link on white, which the reference does not have — #0E5C3C
-     is ours, at 8.0:1. */
-  --accent:#0E5C3C;          /* green for links and labels on white   */
-  --accent-inv:#0E5C3C;      /* the mint lives only in .inv; here it is the deep green */
-  --accent-hover:#0A4A30;
-  --on-accent:#FFFFFF;       /* 8.0:1 on the accent fill              */
-  --ink-fill:#000805;        /* the button fill          (measured)   */
-  --on-ink-fill:#FFFFFF;     /* 20.3:1                                */
+  /* text — pitched against #0B1B15, the lightest surface in the family,
+     so every step clears AA on the worst ground it can land on */
+  --text-1:#E8FFF4;                  /* 17.4:1 on the ground */
+  --text-2:#E3FFEF;                  /* 17.0:1               */
+  --text-3:rgba(232,255,244,.62);    /*  7.1:1 composited    */
+  --text-inv-1:#E8FFF4; --text-inv-2:#E3FFEF; --text-inv-3:rgba(232,255,244,.62);
 
-  /* rules — the reference runs one, #D9D9D9, on 273 borders */
-  --rule-1:#D9D9D9; --rule-2:#C9CDCB;
-  --rule-inv-1:#D9D9D9; --rule-inv-2:#C9CDCB;
+  /* brand — the mint green the site was originally built around. It is a
+     light colour, so on dark it carries text; the fill it sits on flips to
+     near-black via --on-accent. */
+  --accent:#7AFAB2;          /* 13.4:1 on the ground                  */
+  --accent-inv:#7AFAB2;
+  --accent-hover:#A9FFCE;
+  --on-accent:#000805;       /* text ON an accent fill                */
+  --ink-fill:#FFFFFF;        /* the high-contrast button fill         */
+  --on-ink-fill:#000805;
+
+  /* rules — mint at low alpha, so they read as a lift off the ground
+     rather than a drawn line */
+  --rule-1:rgba(232,255,244,.16); --rule-2:rgba(232,255,244,.28);
+  --rule-inv-1:rgba(232,255,244,.16); --rule-inv-2:rgba(232,255,244,.28);
 
   /* tints */
-  --tint-1:rgba(14,92,60,.06); --tint-2:rgba(14,92,60,.14); --tint-3:rgba(14,92,60,.24);
+  --tint-1:rgba(122,250,178,.08); --tint-2:rgba(122,250,178,.18); --tint-3:rgba(122,250,178,.28);
 
-  /* semantic */
-  --info:#1C63B8; --info-inv:#BFE3FF; --warn:#8A5A12; --alert:#A33A3A; --info-ink:#123472;
+  /* semantic — the light-ground versions of these are far too dark to read
+     here, so each is the pale end of its hue instead */
+  --info:#BFE3FF; --info-inv:#1C63B8; --warn:#F5CE7A; --alert:#FF9E9E; --info-ink:#DCEEFF;
 
-  --shadow-1:0 6px 20px rgba(0,8,5,.07);
-  --shadow-2:0 16px 44px rgba(0,8,5,.12);
+  /* A black shadow is invisible on a black ground. On dark, depth comes
+     from a harder, darker drop than the light theme uses. */
+  --shadow-1:0 6px 20px rgba(0,0,0,.45);
+  --shadow-2:0 16px 44px rgba(0,0,0,.62);
 
-  /* the reference's buttons are full pills */
+  /* Fixed chrome — the nav bar and the mobile sheet. These sit OUTSIDE any
+     band, floating over dark and light alike as the page scrolls, so they
+     get one colour site-wide rather than taking it from what happens to be
+     underneath. Translucent, because the blur behind them is the point. */
+  --chrome:rgba(0,8,5,.86);
+  --chrome-solid:rgba(4,16,11,.94);
+
   --pill:999px;
 
-  /* ── GRADIENTS ── kept subtle: the reference uses almost none */
+  /* ── GRADIENTS ── */
   --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
   --grad-brand:linear-gradient(135deg,#7AFAB2,#0E5C3C);
   --grad-accent-inv:linear-gradient(135deg,#7AFAB2,#3DD98C);
-  --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
-  --grad-ink:linear-gradient(180deg,#FFFFFF 0%,#EDF7F2 100%);
-  --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
-  --grad-accent:linear-gradient(92deg,#0E5C3C 0%,#116B45 100%);
-  --grad-rule:linear-gradient(90deg,transparent,#D9D9D9,transparent);
-  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(14,92,60,.05) 0%,transparent 70%);
+  --grad-surface:linear-gradient(180deg,#0A2119 0%,#000805 100%);
+  --grad-ink:linear-gradient(180deg,#000805 0%,#0A2119 100%);
+  --grad-paper:linear-gradient(180deg,#0A2119 0%,#000805 100%);
+  --grad-accent:linear-gradient(92deg,#7AFAB2 0%,#E8FFF4 100%);
+  --grad-rule:linear-gradient(90deg,transparent,rgba(122,250,178,.5),transparent);
+  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(122,250,178,.12) 0%,transparent 70%);
 
   /* ── LEGACY ALIASES ── */
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
   --cream:var(--surface-4);
-  --surface:rgba(0,8,5,0.03); --surface2:rgba(0,8,5,0.06);
+  --surface:rgba(232,255,244,.04); --surface2:rgba(232,255,244,.07);
   --border:var(--rule-1); --border2:var(--rule-2);
   --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
   --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
@@ -124,12 +139,13 @@
   }
 }
 
-/* ── INVERSE CONTEXT ──────────────────────────────────────────────────────
-   A section that should be near-black opts in with class="inv"; every role
-   token is redefined inside it, so the components underneath need no
-   changes at all. This is where the bright green lives on a light site —
-   the footer, the photographic hero, and the proof bands.
-   Verified: lowest pair inside this context is 4.53:1.                    */
+/* ── EXPLICIT DARK ────────────────────────────────────────────────────────
+   `.inv` restates the dark palette. Since the page default is now dark it
+   is usually a no-op, and it is kept for two reasons: the markup that
+   already carries it stays correct, and it is what forces a band back to
+   dark when it sits INSIDE a `.lt` island (a dark CTA inside a light FAQ,
+   say). Nesting either way round resolves correctly because both blocks
+   define the whole token set, never a subset.                             */
 .inv{
   --surface-1:#000805; --surface-2:#0A2119; --surface-3:#0B1B15; --surface-4:#000805;
   --surface-inv:#0A2119; --surface-inv-2:#000805;
@@ -157,6 +173,55 @@
   color:var(--text-1);
 }
 
+/* ── LIGHT ISLAND ─────────────────────────────────────────────────────────
+   A band that should be light opts in with class="lt". Every role token is
+   redefined, so the components inside need no changes at all — the same
+   card, the same button, the same rule, reading its colour from the
+   context it happens to sit in.
+
+   Where light is used, and why: dense functional reading. Long specialist
+   lists, FAQs, job boards, intake forms — places where someone scans or
+   types rather than reads a statement. The dark bands carry the argument;
+   the light ones carry the work. That split is also what keeps the ratio
+   near seven-three without the page looking striped for its own sake.
+
+   These are the values the site ran as its light theme, unchanged, and
+   they were verified as a set: every text/surface pair clears WCAG AA,
+   lowest 5.71:1.                                                          */
+.lt{
+  --surface-1:#FFFFFF; --surface-2:#F2F7F5; --surface-3:#FFFFFF; --surface-4:#EDF7F2;
+  --surface-inv:#FFFFFF; --surface-inv-2:#F2F7F5;
+  --chip:#EDF7F2;
+  --text-1:#000000; --text-2:#3A3F3D; --text-3:#4F5252;
+  --text-inv-1:#000000; --text-inv-2:#3A3F3D; --text-inv-3:#4F5252;
+  /* the mint is a light colour and cannot carry text on white; on a light
+     ground the brand reads as the deep green instead, at 8.0:1 */
+  --accent:#0E5C3C; --accent-inv:#0E5C3C; --accent-hover:#0A4A30;
+  --on-accent:#FFFFFF; --ink-fill:#000805; --on-ink-fill:#FFFFFF;
+  --rule-1:#D9D9D9; --rule-2:#C9CDCB;
+  --rule-inv-1:#D9D9D9; --rule-inv-2:#C9CDCB;
+  --tint-1:rgba(14,92,60,.06); --tint-2:rgba(14,92,60,.14); --tint-3:rgba(14,92,60,.24);
+  --info:#1C63B8; --info-inv:#BFE3FF; --warn:#8A5A12; --alert:#A33A3A; --info-ink:#123472;
+  --shadow-1:0 6px 20px rgba(0,8,5,.07);
+  --shadow-2:0 16px 44px rgba(0,8,5,.12);
+  --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
+  --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
+  --grad-ink:linear-gradient(180deg,#FFFFFF 0%,#EDF7F2 100%);
+  --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
+  --grad-accent:linear-gradient(92deg,#0E5C3C 0%,#116B45 100%);
+  --grad-rule:linear-gradient(90deg,transparent,#D9D9D9,transparent);
+  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(14,92,60,.05) 0%,transparent 70%);
+  --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
+  --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
+  --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
+  --cream:var(--surface-4); --border:var(--rule-1); --border2:var(--rule-2);
+  --surface:rgba(0,8,5,0.03); --surface2:rgba(0,8,5,0.06);
+  --green:var(--accent); --green-ink:var(--accent);
+  --paper:var(--surface-inv); --paper-2:var(--surface-inv-2);
+  background:var(--surface-1);
+  color:var(--text-1);
+}
+
 /* Inside a heading, an accent is part of the line and nothing else: same
    family, size, weight, tracking and colour as the words around it.
    `font:inherit` resets family, size, weight, style and line-height at
@@ -179,7 +244,10 @@ em,i,cite,address,var,dfn,strong,b{font:inherit;color:inherit;letter-spacing:inh
 .rmt-best strong{display:block;font-size:var(--fz5);color:var(--accent);font-weight:500;margin-top:6px}
 .sup-note .t b{display:block;font-size:var(--fz3);color:var(--text);font-weight:500;margin-bottom:3px}
 
-html{scroll-behavior:smooth}
+/* The ground is painted on <html>, not just <body>, so overscroll
+   rubber-banding at either end of the page stays dark instead of exposing
+   the browser's own white. */
+html{scroll-behavior:smooth;background:var(--surface-1)}
 body{background:var(--bg);color:var(--text);font-family:var(--ff);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
 a{color:inherit;text-decoration:none}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--surface-4);border-radius:2px}
@@ -191,8 +259,8 @@ a{color:inherit;text-decoration:none}
    cannot be correct on both, and no contrast audit can see the mismatch
    because the text's computed background is the body. So it carries its own
    light ground on every route instead. */
-#nav{position:fixed;inset:0 0 auto;z-index:999;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 44px;background:rgba(246,245,241,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--rule-1);transition:all .4s var(--ease)}
-#nav.solid{background:rgba(246,245,241,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--rule-1)}
+#nav{position:fixed;inset:0 0 auto;z-index:999;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 44px;background:var(--chrome);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--rule-1);transition:all .4s var(--ease)}
+#nav.solid{background:var(--chrome-solid);backdrop-filter:blur(24px);border-bottom:1px solid var(--rule-1)}
 .logo{display:flex;align-items:center;gap:9px;font-size:var(--fz5);font-weight:500;letter-spacing:-.02em;color:var(--text)}
 .logo-mark{width:27px;height:27px;border-radius:7px;background:var(--grad-brand);display:flex;align-items:center;justify-content:center;font-size:var(--fz1);font-weight:700;color:var(--text-inv-1)}
 .logo-sub{font-weight:400;color:var(--text2)}
@@ -291,7 +359,8 @@ a{color:inherit;text-decoration:none}
    On a light page they all but vanish, so they are knocked down to a dark
    silhouette. Inside .inv they go back to being white. A contrast audit
    cannot catch this — images carry no text nodes — so it is set explicitly. */
-.logo-chip img{max-width:150px;width:auto;height:auto;object-fit:contain;display:block;filter:brightness(0) saturate(0);opacity:.55;transition:opacity .25s}
+.logo-chip img{max-width:150px;width:auto;height:auto;object-fit:contain;display:block;filter:brightness(0) saturate(0) invert(1);opacity:.62;transition:opacity .25s}
+.lt .logo-chip img{filter:brightness(0) saturate(0);opacity:.55}
 .logo-chip:hover img{opacity:.85}
 
 .ind-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
@@ -598,7 +667,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 /* Mega panel container — sits below the nav, full-width-ish */
 .mm-anchor{left:var(--mmx,50%)!important;transform:translateX(-50%) translateY(-6px)}
 .mm-careers-1col{display:flex;flex-direction:column;gap:4px;width:320px!important;padding:10px!important}
-.mm{position:fixed;top:62px;left:50%;transform:translateX(-50%) translateY(-6px);z-index:199;width:min(1080px,calc(100vw - 64px));background:rgba(255,255,255,.97);backdrop-filter:blur(28px) saturate(140%);-webkit-backdrop-filter:blur(28px) saturate(140%);border:1px solid var(--rule-1);border-radius:18px;box-shadow:0 32px 80px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.04) inset;padding:24px;opacity:0;pointer-events:none;transition:opacity .22s var(--ease),transform .26s var(--ease);overflow:hidden}
+.mm{position:fixed;top:62px;left:50%;transform:translateX(-50%) translateY(-6px);z-index:199;width:min(1080px,calc(100vw - 64px));background:var(--chrome-solid);backdrop-filter:blur(28px) saturate(140%);-webkit-backdrop-filter:blur(28px) saturate(140%);border:1px solid var(--rule-1);border-radius:18px;box-shadow:0 32px 80px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.04) inset;padding:24px;opacity:0;pointer-events:none;transition:opacity .22s var(--ease),transform .26s var(--ease);overflow:hidden}
 .mm::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 20% 0%,rgba(61,255,135,.05) 0%,transparent 65%);pointer-events:none}
 .mm.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 
@@ -685,7 +754,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 @media(min-width:1025px){.mnav{display:none!important}}
 
 /* ── HELP CHOOSER ── */
-.hlp-ov{position:fixed;inset:0;z-index:1200;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hlp-ov{position:fixed;inset:0;z-index:1200;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,4,3,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .hlp-ov.open{display:flex;animation:hlpFade .22s ease}
 @keyframes hlpFade{from{opacity:0}to{opacity:1}}
 .hlp-modal{width:100%;max-width:700px;max-height:92vh;overflow-y:auto;background:var(--cream,var(--surface-inv));border-radius:24px;padding:40px 40px 34px;position:relative;box-shadow:0 40px 100px rgba(0,0,0,.6);animation:hlpPop .3s cubic-bezier(.32,.72,0,1)}
@@ -765,7 +834,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 @media(max-width:520px){.hire-form{grid-template-columns:1fr}.hire-modal{padding:30px 22px}}
 
 /* ── PAGE SIDE NAV ── */
-.pgnav-side{position:fixed;top:50%;transform:translateY(-50%);z-index:400;align-items:center;height:48px;padding:0 14px;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--rule-1);color:var(--text-2);text-decoration:none;font-family:var(--ff);font-size:var(--fz2);font-weight:500;box-shadow:0 14px 44px rgba(0,0,0,.4);transition:background .25s,color .25s,border-color .25s,transform .25s,box-shadow .25s}
+.pgnav-side{position:fixed;top:50%;transform:translateY(-50%);z-index:400;align-items:center;height:48px;padding:0 14px;background:var(--chrome-solid);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--rule-1);color:var(--text-2);text-decoration:none;font-family:var(--ff);font-size:var(--fz2);font-weight:500;box-shadow:0 14px 44px rgba(0,0,0,.4);transition:background .25s,color .25s,border-color .25s,transform .25s,box-shadow .25s}
 .pgnav-side[hidden]{display:none}
 .pgnav-side:not([hidden]){display:inline-flex}
 .pgnav-side.back{left:0;border-left:none;border-radius:0 9999px 9999px 0;animation:pgnavL .5s cubic-bezier(.32,.72,0,1)}
@@ -917,7 +986,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 
 /* ── CREAM-CANVAS PAGES (nav flips to permanently-solid light theme) ── */
 body.theme-cream-nav{background:var(--cream);color:var(--text-inv-1)}
-body.theme-cream-nav #nav.solid{background:rgba(244,243,238,.92);border-bottom:1px solid var(--rule-inv-1)}
+body.theme-cream-nav #nav.solid{background:var(--chrome-solid);border-bottom:1px solid var(--rule-inv-1)}
 body.theme-cream-nav #nav .logo{color:var(--text-inv-1)}
 body.theme-cream-nav #nav .logo-sub{color:var(--text-inv-3)}
 body.theme-cream-nav #nav .nl{color:var(--text-inv-2)}
@@ -956,7 +1025,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .rfeat-mono{width:38px;height:38px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--grad-accent-inv);color:var(--text-1);font-weight:500;font-size:var(--fz2)}
 .rgrid-h{font-size:var(--fz1);font-weight:500;color:var(--text-inv-1);text-transform:uppercase;letter-spacing:.12em;margin:8px 0 28px;padding-bottom:16px;border-bottom:1px solid var(--rule-inv-1);display:flex;align-items:center;gap:10px}
 .rgrid-h::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent-inv)}
-.rgrid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:auto;gap:30px 26px;padding-bottom:96px}
+.rgrid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:auto;gap:30px 26px;padding:34px 30px 40px;border-radius:24px;margin-bottom:56px}
 .rgrid .rcard{grid-column:span 2}
 .rgrid .rcard.wide{grid-column:span 3}
 .rgrid .rcard.wide .rcimg{aspect-ratio:21/9}
@@ -1109,7 +1178,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 /* ══════════════════════════════════════════════════════════
    INDUSTRIES — ported from the real Claude Design export
    ══════════════════════════════════════════════════════════ */
-.ind-nav{position:sticky;top:62px;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.ind-nav{position:sticky;top:62px;z-index:50;background:var(--chrome-solid);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 .ind-nav-inner{max-width:1240px;margin:0 auto;padding:14px 44px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
 .ind-nav-inner::-webkit-scrollbar{display:none}
 .ind-nav-link{padding:8px 14px;font-size:var(--fz2);color:var(--text3);border-radius:9999px;white-space:nowrap;cursor:pointer;transition:all .18s var(--ease);border:1px solid transparent;text-decoration:none}
@@ -1128,7 +1197,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 @media(max-width:560px){.ind-testi-grid{grid-template-columns:1fr}}
 
 .industry{padding:120px 44px;border-bottom:1px solid var(--border);position:relative}
-.industry:nth-child(even){background:var(--surface2)}
+.industry.lt{background:var(--surface-1)}
 .industry-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .industry-label{display:inline-flex;align-items:center;padding:5px 14px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:22px;font-family:var(--fm);font-size:var(--fz1);color:var(--accent);letter-spacing:.06em;margin-bottom:16px}
 .industry-h2{font-size:var(--fz13);line-height:1.04;letter-spacing:-.028em;font-weight:500;margin-bottom:22px}
@@ -1140,7 +1209,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .ir-row .ct{color:var(--text3);font-family:var(--fm);font-size:var(--fz2)}
 .industry-panel{display:flex;flex-direction:column;gap:20px}
 .lead-card{background:var(--surface2);color:var(--text);border-radius:28px;padding:32px;display:grid;grid-template-columns:64px 1fr;gap:20px;align-items:center;border:1px solid var(--border)}
-.industry:nth-child(even) .lead-card{background:var(--bg3)}
+.industry.lt .lead-card{background:var(--bg3)}
 .lead-av{width:64px;height:64px;border-radius:50%;flex-shrink:0}
 .lead-name{font-size:var(--fz5);font-weight:500}
 .lead-title{font-size:var(--fz2);color:var(--text3);margin-top:2px;line-height:1.4}
@@ -1148,7 +1217,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .lead-cred span{padding:3px 9px;background:var(--rule-1);border-radius:9999px;font-size:var(--fz1);color:var(--text2)}
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
 .stat-cell{background:var(--bg);padding:20px 22px}
-.industry:nth-child(even) .stat-cell{background:var(--surface2)}
+.industry.lt .stat-cell{background:var(--surface2)}
 .stat-v{font-size:var(--fz10);line-height:1;letter-spacing:-.025em;color:var(--text);margin-bottom:8px;font-weight:500}
 .stat-v .unit{font-size:var(--fz3);color:var(--text3);margin-left:4px}
 .stat-l{font-size:var(--fz1);color:var(--text3);line-height:1.45}
@@ -1185,7 +1254,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .eng-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
 .eng-card{background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:22px;padding:34px;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .eng-card:hover{transform:translateY(-5px);box-shadow:0 24px 60px rgba(10,20,11,.08)}
-.eng-card.feat{background:linear-gradient(160deg,#D6E7D4,#EaF4E8)}
+.eng-card.feat.lt{background:linear-gradient(160deg,#D6E7D4,#EAF4E8)}
 .eng-num{font-family:var(--ff);font-weight:500;font-size:var(--fz12);color:var(--accent-inv);line-height:1;margin-bottom:18px}
 .eng-card h3{font-size:var(--fz9);font-weight:500;letter-spacing:-.02em;color:var(--dt);margin-bottom:10px}
 .eng-card p{font-size:var(--fz6);color:var(--dt2);line-height:1.7;font-weight:400;margin-bottom:22px}
@@ -1434,9 +1503,9 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .matrix-row:last-child{border-bottom:none}
 .matrix-row>div{padding:20px 24px;font-size:var(--fz3);color:var(--dt2);display:flex;align-items:center}
 .matrix-row>div:first-child{color:var(--dt);font-weight:500}
-.matrix-row>div.featured{background:rgba(214,231,212,.35);color:var(--dt);font-weight:500}
+.matrix-row>div.featured{background:var(--tint-2);color:var(--dt);font-weight:500}
 .matrix-check{width:18px;height:18px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
-.matrix-cross{width:18px;height:18px;border-radius:50%;background:var(--rule-inv-1);display:grid;place-items:center;color:var(--dt3);font-size:var(--fz1)}
+.matrix-cross{width:18px;height:18px;border-radius:50%;background:var(--rule-inv-1);display:grid;place-items:center;color:var(--dt2);font-size:var(--fz1)}
 .matrix-foot{padding:24px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:0;background:var(--cream)}
 .matrix-foot>div{padding:0 24px}
 .matrix-foot .btn{font-size:var(--fz2);padding:9px 18px}
@@ -1700,7 +1769,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .began-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
 .began-photo{border-radius:22px;overflow:hidden;min-height:380px;background:var(--surface-3)}
 .began-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.began-card{border-radius:22px;padding:44px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,#A6F0CE 0%,#9FE8FF 45%,#C9F87E 100%);position:relative;overflow:hidden}
+.began-card.lt{border-radius:22px;padding:44px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,#A6F0CE 0%,#9FE8FF 45%,#C9F87E 100%);position:relative;overflow:hidden}
 .began-card-h{font-size:var(--fz9);font-weight:500;color:var(--text-inv-1);letter-spacing:-.02em;margin-bottom:16px}
 .began-card-p{font-size:var(--fz6);color:var(--text-inv-2);line-height:1.7;font-weight:400;margin-bottom:28px;max-width:440px}
 .began-card-btn{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:13px 24px;background:var(--surface-inv-2);color:var(--text-inv-1);border-radius:9999px;font-size:var(--fz3);font-weight:500;font-family:var(--ff);text-decoration:none;transition:all .2s var(--ease)}
@@ -1794,6 +1863,8 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .jfilter:hover{border-color:var(--accent-inv);color:var(--accent-inv)}
 .jfilter.on{background:var(--text-1);color:var(--surface-1);border-color:var(--rule-2)}
 .jp-count{font-size:var(--fz2);color:var(--text-inv-3);margin:26px 0 8px}
+.jboard{margin-top:26px;padding:10px 30px 34px;border-radius:24px}
+.jboard .jgroup:first-child{border-top:0;margin-top:0}
 .jgroup{margin-bottom:14px;border-top:1px solid var(--rule-inv-1);padding-top:26px;margin-top:26px}
 .jgroup:first-of-type{border-top:none;margin-top:8px;padding-top:0}
 .jgroup-name{font-size:var(--fz2);font-weight:500;color:var(--text-inv-1);margin-bottom:6px;letter-spacing:.02em;text-transform:uppercase}
@@ -1974,4 +2045,4 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 @media(max-width:760px){.pd-steps{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.pd-steps{grid-template-columns:1fr}.pd{padding-top:100px}}
 
-.inv .logo-chip img{filter:none;opacity:.5}
+.inv .logo-chip img{filter:brightness(0) saturate(0) invert(1);opacity:.62}

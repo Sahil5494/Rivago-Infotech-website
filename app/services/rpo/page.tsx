@@ -70,10 +70,10 @@ export default function RpoPage() {
           { v: "600", sup: "+", title: "Placements to date", desc: "Across four markets and ten practices." },
         ]}
         cards={[
-          { title: "We own the program", desc: "Strategy, pipeline and delivery run through one accountable Rivago team — not a queue of tickets and a self-serve tool.", icon: svgIco('<path d="M3 8l8-4 8 4v6l-8 4-8-4z" stroke="#3DFF87" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 10v3l4 2 4-2v-3" stroke="#3DFF87" stroke-width="1.4" stroke-linejoin="round"/>') },
-          { title: "Senior recruiters, your brand", desc: "Embedded specialists work as an extension of your team — your careers page, your voice, your candidate experience.", icon: svgIco('<path d="M11 2l2.2 4.4 4.8.7-3.5 3.4.8 4.8L11 13l-4.3 2.3.8-4.8L4 7.1l4.8-.7z" stroke="#3DFF87" stroke-width="1.4" stroke-linejoin="round"/>') },
-          { title: "Measured on retention", desc: "Accountability doesn't end at the offer. We track first-90-days, retention and hiring-manager satisfaction — and optimise against them.", icon: svgIco('<path d="M3 18h16M5 18V9M9 18V6M13 18v-8M17 18V8" stroke="#3DFF87" stroke-width="1.4" stroke-linecap="round"/>') },
-          { title: "Scale up or down", desc: "Ramp for a growth phase, wind down after it. Enterprise, project or hybrid — the model flexes to your hiring plan.", icon: svgIco('<path d="M4 11h6l-2-2M4 11l4 2M18 11h-6l2-2M18 11l-4 2" stroke="#3DFF87" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>') },
+          { title: "We own the program", desc: "Strategy, pipeline and delivery run through one accountable Rivago team — not a queue of tickets and a self-serve tool.", icon: svgIco('<path d="M3 8l8-4 8 4v6l-8 4-8-4z" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 10v3l4 2 4-2v-3" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round"/>') },
+          { title: "Senior recruiters, your brand", desc: "Embedded specialists work as an extension of your team — your careers page, your voice, your candidate experience.", icon: svgIco('<path d="M11 2l2.2 4.4 4.8.7-3.5 3.4.8 4.8L11 13l-4.3 2.3.8-4.8L4 7.1l4.8-.7z" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round"/>') },
+          { title: "Measured on retention", desc: "Accountability doesn't end at the offer. We track first-90-days, retention and hiring-manager satisfaction — and optimise against them.", icon: svgIco('<path d="M3 18h16M5 18V9M9 18V6M13 18v-8M17 18V8" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round"/>') },
+          { title: "Scale up or down", desc: "Ramp for a growth phase, wind down after it. Enterprise, project or hybrid — the model flexes to your hiring plan.", icon: svgIco('<path d="M4 11h6l-2-2M4 11l4 2M18 11h-6l2-2M18 11l-4 2" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>') },
         ]}
       />
 

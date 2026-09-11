@@ -58,8 +58,10 @@ export default function IndustriesPage() {
 
       <IndustriesNav />
 
-      {practices.map((p) => (
-        <section className="industry" id={p.id} key={p.id}>
+      {practices.map((p, i) => (
+        /* Alternate bands are the light islands: ten near-identical
+           sections in a row need the rhythm to stay countable. */
+        <section className={`industry${i % 2 === 1 ? " lt" : ""}`} id={p.id} key={p.id}>
           <div className="industry-inner">
             <div className="gs">
               <div className="industry-label">{p.practiceNum} · {p.estYear}</div>
@@ -121,7 +123,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* WHAT WE PUT IN WRITING (CREAM) */}
-      <section className="section cream">
+      <section className="section cream lt">
         <div className="wrap gs">
           <div className="ind-writing-head" style={{ gap: 80, alignItems: "end", marginBottom: 56 }}>
             <div>

@@ -177,7 +177,7 @@ export default function AboutPage() {
       </header>
 
       {/* NUMBERS */}
-      <section className="numbers gs">
+      <section className="numbers gs lt">
         <div className="numbers-inner">
           <div style={{ marginBottom: 56 }}>
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Scope</div>
@@ -267,7 +267,7 @@ export default function AboutPage() {
       )}
 
       {/* WHAT WE WON'T DO — 6 REFUSALS */}
-      <section className="values" style={{ background: "var(--cream)" }}>
+      <section className="values lt" style={{ background: "var(--cream)" }}>
         <div className="values-inner">
           <div className="gs">
             <div className="eyebrow" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we won&apos;t do</div>

@@ -28,9 +28,9 @@ const Arrow = () => (
 );
 
 const carVals = [
-  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="#3DFF87" strokeWidth="1.4" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "Senior or solo", d: "No farm of juniors. If you have placed in a sector for 5+ years, you will work as a partner here — your name on the brief, your call on the candidates." },
-  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="3" stroke="#3DFF87" strokeWidth="1.4" /><path d="M3 8h16" stroke="#3DFF87" strokeWidth="1.4" /></svg>, t: "Transparent comp", d: "Open base bands, simple commission structure. No clawbacks, no quota gymnastics. Top recruiters take home $400k+ here." },
-  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="#3DFF87" strokeWidth="1.4" /><path d="M11 6v5l3.5 2" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "No drip activity", d: "We measure outcomes, not call dials. 48-hour shortlists, placement rate, client retention. Hit them — work how you want." },
+  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="var(--accent)" strokeWidth="1.4" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "Senior or solo", d: "No farm of juniors. If you have placed in a sector for 5+ years, you will work as a partner here — your name on the brief, your call on the candidates." },
+  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="3" stroke="var(--accent)" strokeWidth="1.4" /><path d="M3 8h16" stroke="var(--accent)" strokeWidth="1.4" /></svg>, t: "Transparent comp", d: "Open base bands, simple commission structure. No clawbacks, no quota gymnastics. Top recruiters take home $400k+ here." },
+  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="var(--accent)" strokeWidth="1.4" /><path d="M11 6v5l3.5 2" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "No drip activity", d: "We measure outcomes, not call dials. 48-hour shortlists, placement rate, client retention. Hit them — work how you want." },
 ];
 
 const perks = [
@@ -92,7 +92,7 @@ export default function CareerPage() {
         </div>
       </section>
 
-      <section className="section alt" id="perks">
+      <section className="section alt lt" id="perks">
         <div className="wrap">
           <span className="eyebrow light">Perks &amp; benefits</span>
           <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 620 }}>A grown-up <em>package.</em></h2>
@@ -141,7 +141,7 @@ export default function CareerPage() {
         </div>
       </section>
 
-      <section className="section cv-sec">
+      <section className="section cv-sec lt">
         <div className="wrap">
           <span className="eyebrow light">What we stand for</span>
           <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text-inv-1)", maxWidth: 640 }}>Four values we <em>actually hire for.</em></h2>
@@ -186,7 +186,7 @@ export default function CareerPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80&auto=format&fit=crop" alt="Rivago founders and early team" loading="lazy" decoding="async" />
           </div>
-          <div className="began-card">
+          <div className="began-card lt">
             <div className="began-card-h">Build with us.</div>
             <div className="began-card-p">We&apos;re after senior operators who pair real craft with genuine care for the people they place. At Rivago every partner owns their desk end to end and shapes how we hire across four markets. Come do the best work of your career.</div>
             <Link className="began-card-btn" href={routes.openPositions}>See open roles <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#0A140B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>

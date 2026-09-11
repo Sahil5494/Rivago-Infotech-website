@@ -56,12 +56,12 @@ const stages = [
 ];
 
 const whyCards = [
-  { title: "Fast without cutting corners", desc: "21-day median shortlists, every time. Every candidate is fully screened against your scorecard before reaching your inbox — not keyword-matched and not parsed by a machine.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#3DFF87" strokeWidth="1.5" /><path d="M11 7v4l3 2" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
-  { title: "One partner, full ownership", desc: "The same senior partner from brief to placement. No handoffs to BD, no relays through account managers, no junior researchers running the candidate calls.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="#3DFF87" strokeWidth="1.5" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
-  { title: "Industry specialists", desc: "Your brief goes to a partner who's recruited in your sector for seven-plus years. They know the comp bands, the unpublished orgs and the people who haven't updated their LinkedIn in two years.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l2 5 5 .7-3.6 3.5.9 5L11 13.5l-4.3 2.5.9-5L4 7.7l5-.7z" stroke="#3DFF87" strokeWidth="1.5" strokeLinejoin="round" /></svg>) },
-  { title: "Documented & auditable", desc: "Every search produces a full audit trail — scorecards, screening notes, reference depth, decision rationale. Ready for board, compliance or DEI review at any point.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l8 4v5c0 5-3.5 8.5-8 9.5C6.5 19.5 3 16 3 11V6z" stroke="#3DFF87" strokeWidth="1.5" strokeLinejoin="round" /></svg>) },
-  { title: "Four markets, one standard", desc: "US, Canada, UAE, India — same partner-owned process everywhere. Visa, right-to-work, relocation and family logistics handled end-to-end with the hiring company.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#3DFF87" strokeWidth="1.5" /><path d="M2 11h18M11 3a13 13 0 010 16M11 3a13 13 0 000 16" stroke="#3DFF87" strokeWidth="1.5" /></svg>) },
-  { title: "Replacement guarantee", desc: "12-month replacement on retained engagements, 90-day on contingent — no questions asked, no extra fee. If a placement leaves, we restart the search at no charge.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="6" width="16" height="13" rx="2" stroke="#3DFF87" strokeWidth="1.5" /><path d="M7 6V4a2 2 0 012-2h4a2 2 0 012 2v2M7 12l3 3 6-6" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
+  { title: "Fast without cutting corners", desc: "21-day median shortlists, every time. Every candidate is fully screened against your scorecard before reaching your inbox — not keyword-matched and not parsed by a machine.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="var(--accent)" strokeWidth="1.5" /><path d="M11 7v4l3 2" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
+  { title: "One partner, full ownership", desc: "The same senior partner from brief to placement. No handoffs to BD, no relays through account managers, no junior researchers running the candidate calls.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="var(--accent)" strokeWidth="1.5" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
+  { title: "Industry specialists", desc: "Your brief goes to a partner who's recruited in your sector for seven-plus years. They know the comp bands, the unpublished orgs and the people who haven't updated their LinkedIn in two years.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l2 5 5 .7-3.6 3.5.9 5L11 13.5l-4.3 2.5.9-5L4 7.7l5-.7z" stroke="var(--accent)" strokeWidth="1.5" strokeLinejoin="round" /></svg>) },
+  { title: "Documented & auditable", desc: "Every search produces a full audit trail — scorecards, screening notes, reference depth, decision rationale. Ready for board, compliance or DEI review at any point.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l8 4v5c0 5-3.5 8.5-8 9.5C6.5 19.5 3 16 3 11V6z" stroke="var(--accent)" strokeWidth="1.5" strokeLinejoin="round" /></svg>) },
+  { title: "Four markets, one standard", desc: "US, Canada, UAE, India — same partner-owned process everywhere. Visa, right-to-work, relocation and family logistics handled end-to-end with the hiring company.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="var(--accent)" strokeWidth="1.5" /><path d="M2 11h18M11 3a13 13 0 010 16M11 3a13 13 0 000 16" stroke="var(--accent)" strokeWidth="1.5" /></svg>) },
+  { title: "Replacement guarantee", desc: "12-month replacement on retained engagements, 90-day on contingent — no questions asked, no extra fee. If a placement leaves, we restart the search at no charge.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="6" width="16" height="13" rx="2" stroke="var(--accent)" strokeWidth="1.5" /><path d="M7 6V4a2 2 0 012-2h4a2 2 0 012 2v2M7 12l3 3 6-6" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
 ];
 
 const industryTiles = [
@@ -87,7 +87,7 @@ const Arrow = () => (
   <svg className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
 const Check = () => (
-  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="#3DFF87" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="var(--accent)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
 
 export default function HireTalentPage() {
@@ -140,7 +140,7 @@ export default function HireTalentPage() {
       </section>
 
       {/* PROCESS DEEP */}
-      <section className="section alt">
+      <section className="section alt lt">
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we actually do</div>
@@ -179,7 +179,7 @@ export default function HireTalentPage() {
       </section>
 
       {/* WHY */}
-      <section className="section alt">
+      <section className="section alt lt">
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Why hiring managers choose us</div>
@@ -241,7 +241,7 @@ export default function HireTalentPage() {
       </section>
 
       {/* INTAKE FORM */}
-      <section className="intake-band" id="intake">
+      <section className="intake-band lt" id="intake">
         <div className="intake-grid">
           <div className="intake-l gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 22, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Hire Talent</div>

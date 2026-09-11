@@ -224,7 +224,7 @@ export default function Home() {
       </section>
 
       {/* FEATURES */}
-      <section className="feat-sec">
+      <section className="feat-sec lt">
         <div className="feat-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our approach</div>
           <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 580 }}>How we work — and why <em>it actually works.</em></h2>
@@ -255,7 +255,7 @@ export default function Home() {
                     ["Salary expectation — within budget", "Flexible · open to package structure"],
                   ].map(([t, s]) => (
                     <div className="sv-check" key={t}>
-                      <div className="sv-ci"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0A6030" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
+                      <div className="sv-ci"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
                       <div><div className="sv-ct">{t}</div><div className="sv-cs">{s}</div></div>
                     </div>
                   ))}
@@ -388,10 +388,10 @@ export default function Home() {
           <p className="proc-sub gs">A simple four-step process — end to end, no surprises.</p>
           <div className="proc-grid">
             {[
-              { n: "Step 01", t: "Understand the brief", d: "A 45-minute call with the hiring manager and the named partner. We document must-haves, comp band, right-to-work, and team chemistry — before anything else moves.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="#3DFF87" strokeWidth="1.2" /><path d="M7 10h6M10 7v6" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
-              { n: "Step 02", t: "Source and screen", d: "We open the search across referrals, direct headhunting and our active talent pool. Every candidate is screened against the spec, comp band and notice period.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8" cy="8" r="5" stroke="#3DFF87" strokeWidth="1.2" /><path d="M14 14l3 3" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
-              { n: "Step 03", t: "Submit shortlist", d: "Inside 48 hours, you see 3–5 candidates with full scorecards, recorded screenings, and a recommendation from the partner who took the brief.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="#3DFF87" strokeWidth="1.2" /><path d="M7 9h6M7 12h4" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
-              { n: "Step 04", t: "Place and support", d: "Offer negotiation, reference checks, onboarding handover. We stay on the line through day 90 and replace, free, if it isn&apos;t the right fit.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
+              { n: "Step 01", t: "Understand the brief", d: "A 45-minute call with the hiring manager and the named partner. We document must-haves, comp band, right-to-work, and team chemistry — before anything else moves.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="var(--accent)" strokeWidth="1.2" /><path d="M7 10h6M10 7v6" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
+              { n: "Step 02", t: "Source and screen", d: "We open the search across referrals, direct headhunting and our active talent pool. Every candidate is screened against the spec, comp band and notice period.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8" cy="8" r="5" stroke="var(--accent)" strokeWidth="1.2" /><path d="M14 14l3 3" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
+              { n: "Step 03", t: "Submit shortlist", d: "Inside 48 hours, you see 3–5 candidates with full scorecards, recorded screenings, and a recommendation from the partner who took the brief.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="var(--accent)" strokeWidth="1.2" /><path d="M7 9h6M7 12h4" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
+              { n: "Step 04", t: "Place and support", d: "Offer negotiation, reference checks, onboarding handover. We stay on the line through day 90 and replace, free, if it isn&apos;t the right fit.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
             ].map((s) => (
               <div className="proc-step gs" key={s.n}>
                 <div className="proc-num">{s.n}</div>
@@ -419,26 +419,26 @@ export default function Home() {
             </div>
           </div>
           <div className="sec-items">
-            <div className="sec-item gs"><div className="sec-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="7" width="12" height="9" rx="2" stroke="#3DFF87" strokeWidth="1.2" /><path d="M6 7V5a3 3 0 016 0v2" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div><div><div className="sec-title">One named partner. Full accountability.</div><div className="sec-desc">A senior partner owns your search from brief to placement — no junior handoffs, no account managers in between. They took the brief, they screen the candidates, they stand behind the recommendation.</div></div></div>
-            <div className="sec-item gs"><div className="sec-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2l5.5 2.5v5c0 3.2-2.3 5.5-5.5 6.5C3.8 15 1.5 12.7 1.5 9.5v-5L9 2z" stroke="#3DFF87" strokeWidth="1.2" fill="none" /><path d="M6.5 9l2 2 4-4" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div><div><div className="sec-title">Process that holds up to scrutiny.</div><div className="sec-desc">Every search is fully documented — candidate assessments, screening notes, decision rationale. If your internal team or compliance function ever needs to audit a hiring decision, everything is on record.</div></div></div>
-            <div className="sec-item gs"><div className="sec-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#3DFF87" strokeWidth="1.2" /><path d="M9 6v3l2 2" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div><div><div className="sec-title">Discretion as standard.</div><div className="sec-desc">We work with organisations where confidentiality isn&apos;t optional. Senior hires, sensitive replacements, confidential searches — handled under NDA, shared only with the people who need to know.</div></div></div>
+            <div className="sec-item gs"><div className="sec-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="7" width="12" height="9" rx="2" stroke="var(--accent)" strokeWidth="1.2" /><path d="M6 7V5a3 3 0 016 0v2" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg></div><div><div className="sec-title">One named partner. Full accountability.</div><div className="sec-desc">A senior partner owns your search from brief to placement — no junior handoffs, no account managers in between. They took the brief, they screen the candidates, they stand behind the recommendation.</div></div></div>
+            <div className="sec-item gs"><div className="sec-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2l5.5 2.5v5c0 3.2-2.3 5.5-5.5 6.5C3.8 15 1.5 12.7 1.5 9.5v-5L9 2z" stroke="var(--accent)" strokeWidth="1.2" fill="none" /><path d="M6.5 9l2 2 4-4" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div><div><div className="sec-title">Process that holds up to scrutiny.</div><div className="sec-desc">Every search is fully documented — candidate assessments, screening notes, decision rationale. If your internal team or compliance function ever needs to audit a hiring decision, everything is on record.</div></div></div>
+            <div className="sec-item gs"><div className="sec-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="var(--accent)" strokeWidth="1.2" /><path d="M9 6v3l2 2" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div><div><div className="sec-title">Discretion as standard.</div><div className="sec-desc">We work with organisations where confidentiality isn&apos;t optional. Senior hires, sensitive replacements, confidential searches — handled under NDA, shared only with the people who need to know.</div></div></div>
           </div>
         </div>
       </section>
 
       {/* WHY RIVAGO */}
-      <section className="why-sec">
+      <section className="why-sec lt">
         <div className="why-inner">
           <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Why Rivago</div>
           <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 560, marginBottom: 20 }}>Six reasons clients<br /><em>stay with us.</em></h2>
           <div className="why-grid">
             {[
-              { n: "01", t: "Quality over quantity — always", d: "We submit fewer, better candidates. Every profile is fully screened before it reaches your inbox. No keyword-matching. No noise. Just people who are genuinely ready.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="#3DFF87" strokeWidth="1.3" /><path d="M7 11l3 3 5-5" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-              { n: "02", t: "48-hour shortlist — every time", d: "Your shortlist arrives within 48 hours of the brief — every time, without exception. Speed and quality, not one or the other.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#3DFF87" strokeWidth="1.3" /><path d="M11 7v4l3 3" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-              { n: "03", t: "Specialist domain knowledge", d: "Every brief goes to a specialist who recruits in your sector. They know the roles, the market rates and what a strong candidate actually looks like in your industry.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11a7 7 0 1014 0A7 7 0 004 11z" stroke="#3DFF87" strokeWidth="1.3" /><path d="M11 8v3l2 2" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" /><circle cx="18" cy="4" r="3" fill="#3DFF87" opacity=".3" /></svg>) },
-              { n: "04", t: "One dedicated account manager", d: "Every client gets a single point of contact — someone who learns your business, your culture and your hiring bar. No handoffs, no call centres, no starting over every engagement.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="4" stroke="#3DFF87" strokeWidth="1.3" /><path d="M8 11l2.5 2.5L14 8" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-              { n: "05", t: "Global delivery. US standards.", d: "Rivago is a global staffing and recruitment company with active hiring operations across the United States, Canada, the UAE and India. One firm, four markets, the same standard everywhere.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3l2.5 5 5.5.8-4 3.9.9 5.5L11 15.5l-4.9 2.7.9-5.5L3 8.8l5.5-.8z" stroke="#3DFF87" strokeWidth="1.3" strokeLinejoin="round" /></svg>) },
-              { n: "06", t: "Replacement guarantee included", d: "90-day replacement guarantee, no questions asked. If the hire doesn&apos;t work out, we start again at no cost.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2v4M11 16v4M4.22 4.22l2.83 2.83M14.95 14.95l2.83 2.83M2 11h4M16 11h4M4.22 17.78l2.83-2.83M14.95 7.05l2.83-2.83" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" /></svg>) },
+              { n: "01", t: "Quality over quantity — always", d: "We submit fewer, better candidates. Every profile is fully screened before it reaches your inbox. No keyword-matching. No noise. Just people who are genuinely ready.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="var(--accent)" strokeWidth="1.3" /><path d="M7 11l3 3 5-5" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
+              { n: "02", t: "48-hour shortlist — every time", d: "Your shortlist arrives within 48 hours of the brief — every time, without exception. Speed and quality, not one or the other.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="var(--accent)" strokeWidth="1.3" /><path d="M11 7v4l3 3" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
+              { n: "03", t: "Specialist domain knowledge", d: "Every brief goes to a specialist who recruits in your sector. They know the roles, the market rates and what a strong candidate actually looks like in your industry.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11a7 7 0 1014 0A7 7 0 004 11z" stroke="var(--accent)" strokeWidth="1.3" /><path d="M11 8v3l2 2" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" /><circle cx="18" cy="4" r="3" fill="var(--accent)" opacity=".3" /></svg>) },
+              { n: "04", t: "One dedicated account manager", d: "Every client gets a single point of contact — someone who learns your business, your culture and your hiring bar. No handoffs, no call centres, no starting over every engagement.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="4" stroke="var(--accent)" strokeWidth="1.3" /><path d="M8 11l2.5 2.5L14 8" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
+              { n: "05", t: "Global delivery. US standards.", d: "Rivago is a global staffing and recruitment company with active hiring operations across the United States, Canada, the UAE and India. One firm, four markets, the same standard everywhere.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3l2.5 5 5.5.8-4 3.9.9 5.5L11 15.5l-4.9 2.7.9-5.5L3 8.8l5.5-.8z" stroke="var(--accent)" strokeWidth="1.3" strokeLinejoin="round" /></svg>) },
+              { n: "06", t: "Replacement guarantee included", d: "90-day replacement guarantee, no questions asked. If the hire doesn&apos;t work out, we start again at no cost.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2v4M11 16v4M4.22 4.22l2.83 2.83M14.95 14.95l2.83 2.83M2 11h4M16 11h4M4.22 17.78l2.83-2.83M14.95 7.05l2.83-2.83" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" /></svg>) },
             ].map((c) => (
               <div className="why-card gs" key={c.n}>
                 <div className="why-icon">{c.icon}</div>
@@ -479,7 +479,7 @@ export default function Home() {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="ind-sec">
+      <section className="ind-sec lt">
         <div className="ind-inner">
           <div className="ind-head" style={{ marginBottom: 52 }}>
             <div>
@@ -514,7 +514,7 @@ export default function Home() {
           </div>
           <div className="supp-grid">
             <div className="supp-card gs">
-              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 3H3a1 1 0 00-1 1v10a1 1 0 001 1h3v2.5l3-2.5h8a1 1 0 001-1V4a1 1 0 00-1-1z" stroke="#3DFF87" strokeWidth="1.2" /><path d="M6 8h8M6 11h5" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
+              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 3H3a1 1 0 00-1 1v10a1 1 0 001 1h3v2.5l3-2.5h8a1 1 0 001-1V4a1 1 0 00-1-1z" stroke="var(--accent)" strokeWidth="1.2" /><path d="M6 8h8M6 11h5" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
               <div><div className="supp-tag">Live chat</div><div className="supp-title" style={{ marginTop: 10 }}>Talk to a recruiter now</div></div>
               <div className="supp-desc">Connect instantly with one of our specialist recruiters. Whether you have a brief to share or just want to explore options — we&apos;re online and ready.</div>
               <div>
@@ -523,20 +523,20 @@ export default function Home() {
               </div>
             </div>
             <div className="supp-card featured gs">
-              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="14" rx="2" stroke="#3DFF87" strokeWidth="1.2" /><path d="M2 7h16" stroke="#3DFF87" strokeWidth="1.2" /><path d="M6 11h8M6 14h5" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
+              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="14" rx="2" stroke="var(--accent)" strokeWidth="1.2" /><path d="M2 7h16" stroke="var(--accent)" strokeWidth="1.2" /><path d="M6 11h8M6 14h5" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
               <div><div className="supp-tag">Recommended</div><div className="supp-title" style={{ marginTop: 10 }}>Book a strategy call</div></div>
               <div className="supp-desc">Schedule a 30-minute call with your dedicated account manager. We&apos;ll review your open roles, build a hiring plan and set a realistic timeline — completely free, no commitment required.</div>
               <div>
-                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#3DFF87" strokeWidth="1.1" /><path d="M6 3.5v2.5l1.5 1.5" stroke="#3DFF87" strokeWidth="1.1" strokeLinecap="round" /></svg>30 minutes · Free · No obligation</div>
+                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" strokeWidth="1.1" /><path d="M6 3.5v2.5l1.5 1.5" stroke="var(--accent)" strokeWidth="1.1" strokeLinecap="round" /></svg>30 minutes · Free · No obligation</div>
                 <button className="supp-link" data-hire>Book your call <SmallArrow /></button>
               </div>
             </div>
             <div className="supp-card gs">
-              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#3DFF87" strokeWidth="1.2" /><path d="M10 6a2 2 0 011.73 3c-.34.58-1.73 1-1.73 2M10 14v.5" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
+              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="var(--accent)" strokeWidth="1.2" /><path d="M10 6a2 2 0 011.73 3c-.34.58-1.73 1-1.73 2M10 14v.5" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
               <div><div className="supp-tag">Self-serve</div><div className="supp-title" style={{ marginTop: 10 }}>Help centre &amp; resources</div></div>
               <div className="supp-desc">Explore our hiring guides, salary benchmarks and market reports. Everything you need to make smarter hiring decisions — available anytime, no sign-up needed.</div>
               <div>
-                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#3DFF87" strokeWidth="1.1" /><path d="M4 6h4M6 4v4" stroke="#3DFF87" strokeWidth="1.1" strokeLinecap="round" /></svg>Free to access · No sign-up needed</div>
+                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" strokeWidth="1.1" /><path d="M4 6h4M6 4v4" stroke="var(--accent)" strokeWidth="1.1" strokeLinecap="round" /></svg>Free to access · No sign-up needed</div>
                 <Link className="supp-link" href={routes.resources}>Browse resources <SmallArrow /></Link>
               </div>
             </div>
@@ -559,7 +559,7 @@ export default function Home() {
                 <span className="cs-tag">Technology · US</span>
                 <div className="cs-title">Scaling a fintech company across five functions — 28 hires in 90 days</div>
                 <div className="cs-meta"><span>US Fintech Company</span><span>·</span><span>Q1 2025</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>28 placements · 100% retention at 6 months · avg 38h delivery</div>
+                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>28 placements · 100% retention at 6 months · avg 38h delivery</div>
               </div>
             </div>
             <div className="cs-card gs">
@@ -571,7 +571,7 @@ export default function Home() {
                 <span className="cs-tag">Finance · Canada</span>
                 <div className="cs-title">Building a risk &amp; compliance team for a Ontario bank in 60 days</div>
                 <div className="cs-meta"><span>Canadian Financial Group</span><span>·</span><span>Q4 2024</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>12 placements · $0 replacement cost</div>
+                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>12 placements · $0 replacement cost</div>
               </div>
             </div>
             <div className="cs-card gs">
@@ -583,7 +583,7 @@ export default function Home() {
                 <span className="cs-tag">Healthcare · UAE</span>
                 <div className="cs-title">Staffing a UAE hospital expansion across 5 specialist roles</div>
                 <div className="cs-meta"><span>Dubai Healthcare Group</span><span>·</span><span>Q3 2024</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>5 placements · All placed within 30 days · Zero compliance issues</div>
+                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>5 placements · All placed within 30 days · Zero compliance issues</div>
               </div>
             </div>
           </div>
@@ -603,7 +603,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="faq-sec">
+      <section className="faq-sec lt">
         <div className="faq-inner">
           <div style={{ textAlign: "center" }}>
             <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>FAQ</div>

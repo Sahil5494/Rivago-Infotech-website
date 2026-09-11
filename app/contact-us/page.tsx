@@ -38,7 +38,7 @@ export default function ContactUsPage() {
       </header>
 
       {/* FORM + SIDEBAR */}
-      <section className="section">
+      <section className="section lt">
         <div className="contact-grid">
           <div>
             <span className="eyebrow ew-light gs" style={{ marginBottom: 16, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Send a message</span>
@@ -48,7 +48,7 @@ export default function ContactUsPage() {
 
           <aside className="sup gs">
             <div className="sup-note">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.4" stroke="#3DFF87" strokeWidth="1.3" /><path d="M8 4.8v3.6M8 11h.01" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" /></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.4" stroke="var(--accent)" strokeWidth="1.3" /><path d="M8 4.8v3.6M8 11h.01" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" /></svg>
               <div className="t"><b>One business day</b>A senior partner reads every message and replies in writing — no ticket numbers, no queues.</div>
             </div>
             <div className="sup-card">

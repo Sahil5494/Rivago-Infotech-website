@@ -75,7 +75,7 @@ const HomeIcon = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.5 2.5H2.5v9h9v-3M8.5 2.5h3v3M11.5 2.5L6 8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
 const GateIcon = () => (
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="10.5" width="16" height="10" rx="2.5" stroke="#3DFF87" strokeWidth="1.5" /><path d="M8 10.5V7.5a4 4 0 018 0v3" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" /><circle cx="12" cy="15.5" r="1.6" fill="#3DFF87" /></svg>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="10.5" width="16" height="10" rx="2.5" stroke="var(--accent)" strokeWidth="1.5" /><path d="M8 10.5V7.5a4 4 0 018 0v3" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" /><circle cx="12" cy="15.5" r="1.6" fill="var(--accent)" /></svg>
 );
 
 function JobsBoardInner() {

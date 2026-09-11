@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { routes } from "@/lib/routes";
 
 const Check = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 12l5 5 8-10" stroke="#3DFF87" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 12l5 5 8-10" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
 
 export default function SignInCard() {
