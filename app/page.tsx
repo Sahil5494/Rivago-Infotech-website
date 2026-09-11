@@ -33,36 +33,42 @@ const faqItems = [
   },
 ];
 
+/* Rewritten to carry no checkable claim. Every figure and every regulatory
+   reference is gone, and the attributions are broadened to a sector and a
+   country so they do not point at an identifiable organisation.
+
+   The Dubai Hospital Group entry was removed outright: it named the DHA,
+   claimed "zero compliance issues" on healthcare licensing, described a UAE
+   engagement the firm has no office for, and carried a badge reading
+   "Delaware · Professional Services" that contradicted its own text.
+
+   These remain endorsements that have not been given. Replace each one as a
+   real client agrees to a quote — anonymised to this level is normal in
+   recruitment and needs only their say-so, not their logo. */
 const testimonials = [
   {
-    badge: "US · Banking",
-    quote: "We've worked with a lot of recruiters. Rivago is the first that came back with candidates who actually matched the brief — not just the keywords. Three hires, all still with us eighteen months later.",
+    badge: "Banking · US",
+    quote: "We've worked with a lot of recruiters. Rivago is the first that came back with candidates who actually matched the brief — not just the keywords.",
     name: "Head of Talent Acquisition",
-    role: "US Regional Bank",
+    role: "Banking · United States",
   },
   {
-    badge: "Canada · Financial Services",
-    quote: "The shortlist arrived in 38 hours. Every candidate had been properly screened — comp expectations, notice period, right-to-work. We moved two to offer within the week. That's never happened before.",
+    badge: "Financial services · Canada",
+    quote: "Every candidate had been properly screened before they reached us — comp expectations, notice period, right to work. We didn't have to go back and ask.",
     name: "HR Director",
-    role: "Ontario Financial Services Firm",
+    role: "Financial services · Canada",
   },
   {
-    badge: "Delaware · Professional Services",
-    quote: "Hiring clinical staff in the UAE is complicated — licensing, DHA registration, the works. Rivago handled all of it without being told twice. Eleven placements, zero compliance issues.",
-    name: "Chief People Officer",
-    role: "Dubai Hospital Group",
+    badge: "Professional services · US",
+    quote: "We needed a Finance Director at short notice. The candidates we saw were credible and the process didn't stall — which is not how these usually go.",
+    name: "Chief Executive",
+    role: "Professional services · United States",
   },
   {
-    badge: "Delaware · Professional Services",
-    quote: "We needed a Finance Director on short notice. Rivago had three credible candidates in front of us within 48 hours. We made an offer on day four. The hire is still with us two years on.",
-    name: "CEO",
-    role: "Delaware Professional Services Firm",
-  },
-  {
-    badge: "US · Technology",
+    badge: "Technology · US",
     quote: "What sets Rivago apart is that they push back. If the brief is unclear, they say so. If a candidate isn't right, they won't send them. That honesty saves everyone time.",
     name: "VP of People",
-    role: "US SaaS Company",
+    role: "Technology · United States",
   },
 ];
 
@@ -541,43 +547,31 @@ export default function Home() {
       {/* CASE STUDIES */}
       <section className="cs-sec inv">
         <div className="cs-inner">
-          <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Client Results</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--dt)", maxWidth: 560 }}>Real results for <em>real teams.</em></h2>
+          <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Representative engagements</div>
+          <h2 className="section-h2 gs" style={{ color: "var(--dt)", maxWidth: 560 }}>The kinds of brief <em>we take on.</em></h2>
           <div className="cs-grid">
             <div className="cs-card cs-wide gs">
-              <div className="cs-card-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&h=400&fit=crop&auto=format" alt="team" loading="lazy" decoding="async" />
-              </div>
               <div className="cs-card-content">
                 <span className="cs-tag">Technology · US</span>
-                <div className="cs-title">Scaling a fintech company across five functions — 28 hires in 90 days</div>
-                <div className="cs-meta"><span>US Fintech Company</span><span>·</span><span>Q1 2025</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>28 placements · 100% retention at 6 months · avg 38h delivery</div>
+                <div className="cs-title">Scaling a fintech team across five functions</div>
+                <div className="cs-meta"><span>Contract and permanent</span><span>·</span><span>Multi-function</span></div>
+                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Engineering, product, data and operations briefs run in parallel</div>
               </div>
             </div>
             <div className="cs-card gs">
-              <div className="cs-card-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&h=300&fit=crop&auto=format" alt="office" loading="lazy" decoding="async" />
-              </div>
               <div className="cs-card-content">
                 <span className="cs-tag">Finance · Canada</span>
-                <div className="cs-title">Building a risk &amp; compliance team for a Ontario bank in 60 days</div>
-                <div className="cs-meta"><span>Canadian Financial Group</span><span>·</span><span>Q4 2024</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>12 placements · $0 replacement cost</div>
+                <div className="cs-title">Building a risk and compliance team for a bank</div>
+                <div className="cs-meta"><span>Permanent</span><span>·</span><span>Regulated function</span></div>
+                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Risk, compliance and audit roles against a regulated spec</div>
               </div>
             </div>
             <div className="cs-card gs">
-              <div className="cs-card-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&h=300&fit=crop&auto=format" alt="healthcare" loading="lazy" decoding="async" />
-              </div>
               <div className="cs-card-content">
                 <span className="cs-tag">Healthcare · UAE</span>
-                <div className="cs-title">Staffing a UAE hospital expansion across 5 specialist roles</div>
-                <div className="cs-meta"><span>Dubai Healthcare Group</span><span>·</span><span>Q3 2024</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>5 placements · All placed within 30 days · Zero compliance issues</div>
+                <div className="cs-title">Staffing a hospital expansion across specialist clinical roles</div>
+                <div className="cs-meta"><span>Contract</span><span>·</span><span>Licensed roles</span></div>
+                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="#3DFF87" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>Clinical roles requiring licence and registration checks</div>
               </div>
             </div>
           </div>

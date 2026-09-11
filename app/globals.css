@@ -171,6 +171,18 @@ em,i,cite,address,var,dfn,strong,b{font:inherit;color:inherit;letter-spacing:inh
 .hp-list b{font-size:var(--fz4);font-weight:500;color:var(--text-1);letter-spacing:-.01em}
 .rmt-best strong{display:block;font-size:var(--fz4);color:var(--accent);font-weight:500;margin-top:6px}
 .sup-note .t b{display:block;font-size:var(--fz3);color:var(--text);font-weight:500;margin-bottom:3px}
+
+/* The homepage case cards no longer carry a photograph, so their content
+   flows normally instead of being absolutely positioned over one. The
+   decorative ::before gradient belongs to the case-study listing cards,
+   which share the class name — it is switched off here. */
+.cs-sec .cs-card{background:var(--surface-3);border:1px solid var(--rule-1);
+  border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:4px}
+.cs-sec .cs-card::before,.cs-sec .cs-card::after{display:none}
+.cs-sec .cs-card-content{position:static;padding:0;display:flex;
+  flex-direction:column;gap:8px;align-items:flex-start}
+.cs-sec .cs-result{margin-top:4px;align-items:flex-start;line-height:1.5}
+.cs-sec .cs-result svg{flex:none;margin-top:4px}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--ff);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
 a{color:inherit;text-decoration:none}
