@@ -83,7 +83,7 @@ export default function RpoPage() {
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What is RPO?</div>
             <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Not another agency.<br />An <em>owned program.</em></h2>
-            <p style={{ color: "var(--text2)", maxWidth: 560, marginTop: 18, fontSize: "var(--fz4)", fontWeight: 400, lineHeight: 1.7 }}>Agencies sell candidates. RPO gives you the whole hiring engine — and owns the outcome.</p>
+            <p style={{ color: "var(--text2)", maxWidth: 560, marginTop: 18, fontSize: "var(--fz5)", fontWeight: 400, lineHeight: 1.7 }}>Agencies sell candidates. RPO gives you the whole hiring engine — and owns the outcome.</p>
           </div>
           <div className="wir-grid">
             <div className="wir-card gs">
@@ -142,16 +142,16 @@ export default function RpoPage() {
           <div className="testi-cream">
             <div className="tc-card gs" style={{ gridColumn: "span 2" }}>
               <span className="tc-tag">US · Technology · Enterprise RPO</span>
-              <p className="tc-quote" style={{ fontSize: "var(--fz7)" }}>We were scaling from 200 to 600 people and our four-person TA team was drowning. Rivago stood up an embedded pod in three weeks, took over the whole funnel, and cut our time-to-fill by <em>nearly half</em> — while our internal team finally got to work on employer brand instead of firefighting.</p>
+              <p className="tc-quote" style={{ fontSize: "var(--fz9)" }}>We were scaling from 200 to 600 people and our four-person TA team was drowning. Rivago stood up an embedded pod in three weeks, took over the whole funnel, and cut our time-to-fill by <em>nearly half</em> — while our internal team finally got to work on employer brand instead of firefighting.</p>
               <div className="tc-author">
                 <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>DK</div>
                 <div><div className="tc-author-name">Daniel K.</div><div className="tc-author-role">VP People · US technology scale-up</div></div>
               </div>
             </div>
             <div className="tc-card gs" style={{ justifyContent: "center", gap: 26, background: "var(--bg)", borderColor: "var(--border)" }}>
-              <div><div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz11)", color: "var(--accent)", lineHeight: 1, letterSpacing: "-.03em" }}>240</div><div style={{ fontSize: "var(--fz2)", color: "var(--text2)", marginTop: 8, fontWeight: 400 }}>hires in 12 months</div></div>
-              <div><div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz11)", color: "var(--accent)", lineHeight: 1, letterSpacing: "-.03em" }}>44<span style={{ fontSize: "var(--fz7)" }}>%</span></div><div style={{ fontSize: "var(--fz2)", color: "var(--text2)", marginTop: 8, fontWeight: 400 }}>faster time-to-fill</div></div>
-              <div><div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz11)", color: "var(--accent)", lineHeight: 1, letterSpacing: "-.03em" }}>3 wks</div><div style={{ fontSize: "var(--fz2)", color: "var(--text2)", marginTop: 8, fontWeight: 400 }}>to a live embedded team</div></div>
+              <div><div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz13)", color: "var(--accent)", lineHeight: 1, letterSpacing: "-.03em" }}>240</div><div style={{ fontSize: "var(--fz2)", color: "var(--text2)", marginTop: 8, fontWeight: 400 }}>hires in 12 months</div></div>
+              <div><div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz13)", color: "var(--accent)", lineHeight: 1, letterSpacing: "-.03em" }}>44<span style={{ fontSize: "var(--fz9)" }}>%</span></div><div style={{ fontSize: "var(--fz2)", color: "var(--text2)", marginTop: 8, fontWeight: 400 }}>faster time-to-fill</div></div>
+              <div><div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz13)", color: "var(--accent)", lineHeight: 1, letterSpacing: "-.03em" }}>3 wks</div><div style={{ fontSize: "var(--fz2)", color: "var(--text2)", marginTop: 8, fontWeight: 400 }}>to a live embedded team</div></div>
             </div>
           </div>
         </div>

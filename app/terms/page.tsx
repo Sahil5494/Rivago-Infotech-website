@@ -28,7 +28,7 @@ export default function TermsPage() {
       <header className="page-hero" style={{ padding: "140px 44px 56px" }}>
         <div className="page-hero-inner">
           <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>Terms of Service</span></div>
-          <h1 style={{ fontSize: "var(--fz11)" }}>Terms of Service</h1>
+          <h1 style={{ fontSize: "var(--fz13)" }}>Terms of Service</h1>
           <p className="lead">Last updated: {LAST_UPDATED}</p>
         </div>
       </header>
@@ -44,9 +44,9 @@ export default function TermsPage() {
 }
 
 function LegalBody() {
-  const h2: CSSProperties = { fontSize: "var(--fz7)", fontWeight: 500, color: "var(--text)", letterSpacing: "-.01em", marginTop: 44, marginBottom: 14 };
-  const p: CSSProperties = { fontSize: "var(--fz4)", color: "var(--text2)", lineHeight: 1.8, marginBottom: 14, fontWeight: 400 };
-  const ul: CSSProperties = { fontSize: "var(--fz4)", color: "var(--text2)", lineHeight: 1.9, marginBottom: 14, paddingLeft: 22, fontWeight: 400 };
+  const h2: CSSProperties = { fontSize: "var(--fz9)", fontWeight: 500, color: "var(--text)", letterSpacing: "-.01em", marginTop: 44, marginBottom: 14 };
+  const p: CSSProperties = { fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.8, marginBottom: 14, fontWeight: 400 };
+  const ul: CSSProperties = { fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.9, marginBottom: 14, paddingLeft: 22, fontWeight: 400 };
 
   return (
     <div>

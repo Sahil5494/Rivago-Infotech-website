@@ -90,7 +90,7 @@ export default function EmployerOfRecordPage() {
             <div>
               <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Payroll transfer</div>
               <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 560 }}>You&apos;ve got the talent?<br /><em>We&apos;ll make the hire.</em></h2>
-              <p style={{ color: "var(--dt2)", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 520, marginTop: 22 }}>Our payroll-transfer model puts the people you already work with onto our books — the flexibility you need, the experience they deserve. Everyone wins.</p>
+              <p style={{ color: "var(--dt2)", fontSize: "var(--fz5)", lineHeight: 1.78, fontWeight: 400, maxWidth: 520, marginTop: 22 }}>Our payroll-transfer model puts the people you already work with onto our books — the flexibility you need, the experience they deserve. Everyone wins.</p>
             </div>
             <ul className="ptx-list">
               {ptxItems.map((it) => (

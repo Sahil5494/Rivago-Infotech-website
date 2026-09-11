@@ -203,7 +203,7 @@ export default function HireTalentPage() {
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Practices</div>
             <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Specialist partners,<br />aligned to <em>your sector.</em></h2>
-            <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: "var(--fz4)", fontWeight: 400, lineHeight: 1.7 }}>Your brief goes straight to the partner who works your sector — not a shared queue. They already know who is good, who is moving, and what it takes to get them to take the call.</p>
+            <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: "var(--fz5)", fontWeight: 400, lineHeight: 1.7 }}>Your brief goes straight to the partner who works your sector — not a shared queue. They already know who is good, who is moving, and what it takes to get them to take the call.</p>
           </div>
           <div className="ind-strip">
             {industryTiles.map((t) => (
@@ -223,7 +223,7 @@ export default function HireTalentPage() {
           <div className="gs">
             <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>From hiring managers</div>
             <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>In their<br /><em>own words.</em></h2>
-            <p style={{ color: "var(--dt2)", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 540, marginTop: 22 }}>Plain English from heads of talent, GCs, CFOs and founders who hired through Rivago in the last eighteen months. No pseudonyms. No doctored quotes.</p>
+            <p style={{ color: "var(--dt2)", fontSize: "var(--fz5)", lineHeight: 1.78, fontWeight: 400, maxWidth: 540, marginTop: 22 }}>Plain English from heads of talent, GCs, CFOs and founders who hired through Rivago in the last eighteen months. No pseudonyms. No doctored quotes.</p>
           </div>
           <div className="testi-cream">
             {testimonials.map((t) => (

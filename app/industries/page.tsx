@@ -78,7 +78,7 @@ export default function IndustriesPage() {
             </div>
             <div className="industry-panel gs">
               <div className="lead-card">
-                <div className="lead-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz4)", letterSpacing: ".02em" }}>{p.partner.initials}</div>
+                <div className="lead-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz5)", letterSpacing: ".02em" }}>{p.partner.initials}</div>
                 <div>
                   <div className="lead-name">{p.partner.name}</div>
                   <div className="lead-title">{p.partner.title}</div>
@@ -107,13 +107,13 @@ export default function IndustriesPage() {
         <div className="wrap gs">
           <div className="eyebrow ew-light" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>The common spine</div>
           <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760, marginBottom: 22 }}>Ten practices.<br /><em>One search methodology.</em></h2>
-          <p style={{ color: "var(--text2)", fontSize: "var(--fz5)", fontWeight: 400, lineHeight: 1.7, maxWidth: 560, marginBottom: 64 }}>Every practice runs the same five-stage process. The only thing that changes is who&apos;s on the other end of the phone — and how much they already know about your sector when they pick it up.</p>
+          <p style={{ color: "var(--text2)", fontSize: "var(--fz7)", fontWeight: 400, lineHeight: 1.7, maxWidth: 560, marginBottom: 64 }}>Every practice runs the same five-stage process. The only thing that changes is who&apos;s on the other end of the phone — and how much they already know about your sector when they pick it up.</p>
           <div className="ind-spine-grid" style={{ gap: 1, background: "var(--border)", border: "1px solid var(--border)", borderRadius: 20, overflow: "hidden" }}>
             {spine.map(([step, title, desc]) => (
               <div key={step} style={{ background: "var(--bg)", padding: "36px 28px" }}>
                 <div style={{ fontFamily: "var(--fm)", fontSize: "var(--fz1)", color: "var(--accent)", letterSpacing: ".06em", marginBottom: 18 }}>{step}</div>
-                <div style={{ fontSize: "var(--fz4)", color: "var(--text)", fontWeight: 500, marginBottom: 10 }}>{title}</div>
-                <div style={{ fontSize: "var(--fz2)", color: "var(--text3)", lineHeight: 1.65, fontWeight: 400 }}>{desc}</div>
+                <div style={{ fontSize: "var(--fz5)", color: "var(--text)", fontWeight: 500, marginBottom: 10 }}>{title}</div>
+                <div style={{ fontSize: "var(--fz4)", color: "var(--text3)", lineHeight: 1.65, fontWeight: 400 }}>{desc}</div>
               </div>
             ))}
           </div>
@@ -128,14 +128,14 @@ export default function IndustriesPage() {
               <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>What we put in writing</div>
               <h2 className="section-h2" style={{ color: "var(--text-inv-1)" }}>Four numbers we&apos;ll stand behind<br /><em>on the first call.</em></h2>
             </div>
-            <p style={{ color: "var(--text-inv-2)", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 460 }}>Same in technology as in healthcare. Same in finance as in defence. The practice lead changes; the bar doesn&apos;t.</p>
+            <p style={{ color: "var(--text-inv-2)", fontSize: "var(--fz5)", lineHeight: 1.78, fontWeight: 400, maxWidth: 460 }}>Same in technology as in healthcare. Same in finance as in defence. The practice lead changes; the bar doesn&apos;t.</p>
           </div>
           <div className="ind-guarantee-grid" style={{ gap: 16 }}>
             {writtenGuarantees.map(([v, unit, title, desc]) => (
               <div key={title} style={{ background: "var(--surface-inv-2)", borderRadius: 24, padding: "40px 32px", border: "1px solid rgba(11,19,17,.06)" }}>
-                <div style={{ fontSize: "var(--fz13)", lineHeight: 1, letterSpacing: "-.035em", color: "var(--accent-inv)", fontWeight: 400, marginBottom: 20 }}>{v}{unit && <span style={{ fontSize: "var(--fz5)", color: "var(--text-inv-3)", marginLeft: 4 }}>{unit}</span>}</div>
-                <div style={{ fontSize: "var(--fz4)", fontWeight: 500, color: "var(--text-inv-1)", marginBottom: 8 }}>{title}</div>
-                <div style={{ fontSize: "var(--fz2)", color: "var(--text-inv-2)", lineHeight: 1.65, fontWeight: 400 }}>{desc}</div>
+                <div style={{ fontSize: "var(--fz15)", lineHeight: 1, letterSpacing: "-.035em", color: "var(--accent-inv)", fontWeight: 400, marginBottom: 20 }}>{v}{unit && <span style={{ fontSize: "var(--fz7)", color: "var(--text-inv-3)", marginLeft: 4 }}>{unit}</span>}</div>
+                <div style={{ fontSize: "var(--fz5)", fontWeight: 500, color: "var(--text-inv-1)", marginBottom: 8 }}>{title}</div>
+                <div style={{ fontSize: "var(--fz4)", color: "var(--text-inv-2)", lineHeight: 1.65, fontWeight: 400 }}>{desc}</div>
               </div>
             ))}
           </div>
@@ -147,12 +147,12 @@ export default function IndustriesPage() {
         <div className="wrap gs">
           <div className="eyebrow ew-light" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>From hiring managers</div>
           <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 22 }}>Notes from the<br /><em>other side of the table.</em></h2>
-          <p style={{ color: "var(--text2)", fontSize: "var(--fz5)", fontWeight: 400, lineHeight: 1.7, maxWidth: 540, marginBottom: 64 }}>Plain English from heads of talent, GCs, and CFOs who hired through a Rivago practice in the last eighteen months.</p>
+          <p style={{ color: "var(--text2)", fontSize: "var(--fz7)", fontWeight: 400, lineHeight: 1.7, maxWidth: 540, marginBottom: 64 }}>Plain English from heads of talent, GCs, and CFOs who hired through a Rivago practice in the last eighteen months.</p>
           <div className="ind-testi-grid" style={{ gap: 18 }}>
             {practiceTestimonials.map((t) => (
               <div key={t.name} style={{ padding: "32px 30px", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, display: "flex", flexDirection: "column" }}>
                 <div style={{ fontFamily: "var(--fm)", fontSize: "var(--fz1)", color: "var(--accent)", letterSpacing: ".05em", textTransform: "uppercase", marginBottom: 18 }}>{t.practice}</div>
-                <p style={{ fontSize: "var(--fz4)", color: "var(--text)", lineHeight: 1.72, fontWeight: 400, marginBottom: 24, flex: 1 }}>&ldquo;{t.quote}&rdquo;</p>
+                <p style={{ fontSize: "var(--fz5)", color: "var(--text)", lineHeight: 1.72, fontWeight: 400, marginBottom: 24, flex: 1 }}>&ldquo;{t.quote}&rdquo;</p>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, paddingTop: 18, borderTop: "1px solid var(--border)" }}>
                   <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg,var(--accent),#0A7040)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 500, color: "var(--text-inv-1)", fontSize: "var(--fz1)" }}>{t.initials}</div>
                   <div><div style={{ fontSize: "var(--fz2)", fontWeight: 500, color: "var(--text)" }}>{t.name}</div><div style={{ fontSize: "var(--fz1)", color: "var(--text3)" }}>{t.role}</div></div>

@@ -161,7 +161,7 @@ export default function CareerPage() {
         <div className="wrap">
           <span className="eyebrow light">Getting started</span>
           <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 640 }}>How we hire — <em>four honest steps.</em></h2>
-          <p className="gs" style={{ maxWidth: 540, marginTop: 18, fontSize: "var(--fz4)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400 }}>The same process whether you&apos;re a first-time recruiter or a sector veteran. No take-home tests, no twelve-round gauntlets — just real conversations about real work.</p>
+          <p className="gs" style={{ maxWidth: 540, marginTop: 18, fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400 }}>The same process whether you&apos;re a first-time recruiter or a sector veteran. No take-home tests, no twelve-round gauntlets — just real conversations about real work.</p>
           <div className="hire-steps">
             {hireSteps.map((s) => (
               <div className="hstep" key={s.n}>

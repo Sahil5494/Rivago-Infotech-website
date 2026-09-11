@@ -119,8 +119,8 @@ function SuccessState({ heading, body }: { heading: string; body: string }) {
       <div style={{ width: 52, height: 52, borderRadius: "50%", background: "rgba(61,255,135,.12)", border: "1px solid rgba(61,255,135,.3)", display: "grid", placeItems: "center", margin: "0 auto 16px" }}>
         <Check />
       </div>
-      <div style={{ fontSize: "var(--fz4)", fontWeight: 500, color: "var(--text)", marginBottom: 8 }}>{heading}</div>
-      <div style={{ fontSize: "var(--fz2)", color: "var(--text2)", lineHeight: 1.6, maxWidth: 320, margin: "0 auto" }}>{body}</div>
+      <div style={{ fontSize: "var(--fz5)", fontWeight: 500, color: "var(--text)", marginBottom: 8 }}>{heading}</div>
+      <div style={{ fontSize: "var(--fz4)", color: "var(--text2)", lineHeight: 1.6, maxWidth: 320, margin: "0 auto" }}>{body}</div>
     </div>
   );
 }

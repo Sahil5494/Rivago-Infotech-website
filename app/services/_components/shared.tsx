@@ -321,7 +321,7 @@ export function IndustriesSection({
         <div className="gs">
           <Eyebrow>{eyebrowText}</Eyebrow>
           <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>{heading}</h2>
-          {sub && <p style={{ color: "var(--text2)", maxWidth: 560, marginTop: 18, fontSize: "var(--fz4)", fontWeight: 400, lineHeight: 1.7 }}>{sub}</p>}
+          {sub && <p style={{ color: "var(--text2)", maxWidth: 560, marginTop: 18, fontSize: "var(--fz5)", fontWeight: 400, lineHeight: 1.7 }}>{sub}</p>}
         </div>
         <div className="ind-grid gs" style={{ marginTop: 44 }}>
           {industriesList.map((ind) => (
@@ -375,7 +375,7 @@ export function StorySection({
         </div>
         <div className="tc-card gs" style={{ maxWidth: 800, margin: "48px auto 0", padding: "44px 42px" }}>
           <span className="tc-tag">{tag}</span>
-          <p className="tc-quote-serif" style={{ fontSize: "var(--fz6)" }}>&ldquo;{quote}&rdquo;</p>
+          <p className="tc-quote-serif" style={{ fontSize: "var(--fz8)" }}>&ldquo;{quote}&rdquo;</p>
           <div className="tc-author2">
             <div style={{ width: 42, height: 42, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{initials}</div>
             <div><div className="tc-author2-name">{name}</div><div className="tc-author2-role">{role}</div></div>
@@ -384,7 +384,7 @@ export function StorySection({
             <div style={{ display: "flex", gap: 32, marginTop: 28, paddingTop: 24, borderTop: "1px solid rgba(0,0,0,.07)", flexWrap: "wrap" }}>
               {metrics.map((m) => (
                 <div key={m.label}>
-                  <div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz9)", color: "var(--accent-inv)", lineHeight: 1 }}>{m.val}</div>
+                  <div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz11)", color: "var(--accent-inv)", lineHeight: 1 }}>{m.val}</div>
                   <div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 6, maxWidth: 140 }}>{m.label}</div>
                 </div>
               ))}
@@ -666,7 +666,7 @@ export function IndustriesGrid2Section({ heading, sub }: { heading: ReactNode; s
           <div>
             <Eyebrow>Industries</Eyebrow>
             <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>{heading}</h2>
-            <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: "var(--fz4)", fontWeight: 400, lineHeight: 1.7 }}>{sub}</p>
+            <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: "var(--fz5)", fontWeight: 400, lineHeight: 1.7 }}>{sub}</p>
           </div>
           <Link href={routes.industries} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--accent)", fontSize: "var(--fz3)", fontWeight: 500, textDecoration: "none", whiteSpace: "nowrap" }}>Explore all industries <SmallArrow /></Link>
         </div>
@@ -694,7 +694,7 @@ export function TestiCreamSection({ heading, sub, cards }: { heading: ReactNode;
         <div className="gs">
           <Eyebrow dark>Customer story</Eyebrow>
           <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>{heading}</h2>
-          <p style={{ color: "var(--dt2)", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 540, marginTop: 22 }}>{sub}</p>
+          <p style={{ color: "var(--dt2)", fontSize: "var(--fz5)", lineHeight: 1.78, fontWeight: 400, maxWidth: 540, marginTop: 22 }}>{sub}</p>
         </div>
         <div className="testi-cream">
           {cards.map((c) => (

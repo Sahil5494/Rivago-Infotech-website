@@ -21,7 +21,7 @@ export default function ServicesRolesTabs() {
           <h3>{tab.heading}</h3>
           <span className="cnt">Typical roles · last 90 days</span>
         </div>
-        <p style={{ fontSize: "var(--fz3)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: 680, marginBottom: 26 }}>{tab.blurb}</p>
+        <p style={{ fontSize: "var(--fz6)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: 680, marginBottom: 26 }}>{tab.blurb}</p>
         <div className="rls-ind">
           <div>
             <div className="rls-illabel">Typical roles · last 90 days</div>
