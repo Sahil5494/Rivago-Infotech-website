@@ -100,7 +100,7 @@ export default function ExecutiveSearchPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Which model fits</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>Picking the right approach<br />for the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>seat you&apos;re filling.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>Picking the right approach<br />for the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>seat you&apos;re filling.</em></h2>
           </div>
           <div className="matrix gs">
             <div className="matrix-head">
@@ -150,7 +150,7 @@ export default function ExecutiveSearchPage() {
       />
 
       <TestiCreamSection
-        heading={<>Executive searches,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>in their own words.</em></>}
+        heading={<>Executive searches,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>in their own words.</em></>}
         sub="Plain English from board members, CEOs and CHROs who ran a confidential leadership search through Rivago in the last eighteen months. No pseudonyms. No doctored quotes."
         cards={[
           { tag: "Canada · Finance", quote: "We needed to replace our CFO ahead of an earnings cycle without a single leak. Rivago ran it fully off-market — no posting, no database blast. The market found out on the day we announced it.", initials: "RP", name: "Ryan P.", role: "Board Member · TSX-listed fintech" },

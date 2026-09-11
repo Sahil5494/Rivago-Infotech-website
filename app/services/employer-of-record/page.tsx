@@ -89,7 +89,7 @@ export default function EmployerOfRecordPage() {
           <div className="ptx gs">
             <div>
               <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Payroll transfer</div>
-              <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 560 }}>You&apos;ve got the talent?<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>We&apos;ll make the hire.</em></h2>
+              <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 560 }}>You&apos;ve got the talent?<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>We&apos;ll make the hire.</em></h2>
               <p style={{ color: "var(--dt2)", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 520, marginTop: 22 }}>Our payroll-transfer model puts the people you already work with onto our books — the flexibility you need, the experience they deserve. Everyone wins.</p>
             </div>
             <ul className="ptx-list">
@@ -124,7 +124,7 @@ export default function EmployerOfRecordPage() {
       />
 
       <TestiCreamSection
-        heading={<>Compliant hires,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>in their own words.</em></>}
+        heading={<>Compliant hires,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>in their own words.</em></>}
         sub="Plain English from founders and ops leads who hired across borders through Rivago's Employer of Record in the last eighteen months. No pseudonyms. No doctored quotes."
         cards={[
           { tag: "Canada · Technology", quote: "We found a brilliant engineer in Ontario but had no Canadian entity. Rivago had a compliant contract signed in four days — we never had to think about incorporation.", initials: "RP", name: "Ryan P.", role: "Founder · US SaaS startup" },

@@ -94,7 +94,7 @@ export default function TemporaryStaffingPage() {
       />
 
       <TestiCreamSection
-        heading={<>Temporary teams,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>in their own words.</em></>}
+        heading={<>Temporary teams,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>in their own words.</em></>}
         sub="Plain English from ops leads, site managers and workforce planners who scaled with Rivago temps in the last eighteen months. No pseudonyms. No doctored quotes."
         cards={[
           { tag: "US · Retail", quote: "Black Friday nearly broke us the year before. Rivago ramped forty temps across three sites in seventy-two hours — same crew we'd rated the prior peak. Every shift covered, off payroll by January.", initials: "RP", name: "Ryan P.", role: "Workforce Planner · US retail group" },

@@ -107,7 +107,7 @@ function SignupForm({ done, onSubmit }: { done: boolean; onSubmit: () => void })
         <label>Confirm password</label>
         <input type="password" placeholder="Repeat your password" required minLength={8} value={confirm} onChange={(e) => setConfirm(e.target.value)} />
       </div>
-      {error && <div style={{ fontSize: "var(--fz2)", color: "#ffb3b3", background: "rgba(255,107,107,.09)", border: "1px solid rgba(255,107,107,.32)", borderRadius: 9, padding: "10px 13px", marginBottom: 16 }}>{error}</div>}
+      {error && <div style={{ fontSize: "var(--fz2)", color: "var(--alert)", background: "rgba(255,107,107,.09)", border: "1px solid rgba(255,107,107,.32)", borderRadius: 9, padding: "10px 13px", marginBottom: 16 }}>{error}</div>}
       <button type="submit" className="if-submit">Create account</button>
     </form>
   );

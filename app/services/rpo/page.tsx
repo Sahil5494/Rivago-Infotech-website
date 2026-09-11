@@ -137,14 +137,14 @@ export default function RpoPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Customer story</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>A recruiting engine,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>handed over in weeks.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>A recruiting engine,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>handed over in weeks.</em></h2>
           </div>
           <div className="testi-cream">
             <div className="tc-card gs" style={{ gridColumn: "span 2" }}>
               <span className="tc-tag">US · Technology · Enterprise RPO</span>
               <p className="tc-quote" style={{ fontSize: "var(--fz7)" }}>We were scaling from 200 to 600 people and our four-person TA team was drowning. Rivago stood up an embedded pod in three weeks, took over the whole funnel, and cut our time-to-fill by <em>nearly half</em> — while our internal team finally got to work on employer brand instead of firefighting.</p>
               <div className="tc-author">
-                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "#030C05", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>DK</div>
+                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--on-light-1)", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>DK</div>
                 <div><div className="tc-author-name">Daniel K.</div><div className="tc-author-role">VP People · US technology scale-up</div></div>
               </div>
             </div>

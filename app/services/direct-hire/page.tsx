@@ -106,7 +106,7 @@ export default function DirectHirePage() {
       />
 
       <TestiCreamSection
-        heading={<>Permanent hires,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>in their own words.</em></>}
+        heading={<>Permanent hires,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>in their own words.</em></>}
         sub="Plain English from heads of talent, GCs, CFOs and founders who made permanent hires through Rivago in the last eighteen months. No pseudonyms. No doctored quotes."
         cards={[
           { tag: "US · Technology", quote: "We needed a permanent Head of Engineering and two staff engineers. Rivago had a shortlist in two days and all three signed inside the month — every one is still here a year later.", initials: "RP", name: "Ryan P.", role: "VP of Engineering · US Series-C SaaS" },

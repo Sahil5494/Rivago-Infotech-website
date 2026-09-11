@@ -94,7 +94,7 @@ export default function ContractStaffingPage() {
       />
 
       <TestiCreamSection
-        heading={<>Contract talent,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>in their own words.</em></>}
+        heading={<>Contract talent,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>in their own words.</em></>}
         sub="Plain English from delivery leads, engineering managers and ops directors who scaled with Rivago contractors in the last eighteen months. No pseudonyms. No doctored quotes."
         cards={[
           { tag: "US · Technology", quote: "We had a six-month platform build and no headcount to hire against. Rivago stood up four contract engineers in a week — payroll, IR35, all of it handled. We shipped on time and kept two on permanently.", initials: "RP", name: "Ryan P.", role: "Director of Engineering · US SaaS" },

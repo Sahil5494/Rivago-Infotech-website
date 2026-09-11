@@ -144,7 +144,7 @@ export default function CareerPage() {
       <section className="section cv-sec">
         <div className="wrap">
           <span className="eyebrow light">What we stand for</span>
-          <h2 className="section-h2 gs" style={{ marginTop: 18, color: "#0A140B", maxWidth: 640 }}>Four values we <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>actually hire for.</em></h2>
+          <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--on-light-1)", maxWidth: 640 }}>Four values we <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>actually hire for.</em></h2>
           <div className="cv-grid">
             {values.map((v) => (
               <div className="cv" key={v.n}>

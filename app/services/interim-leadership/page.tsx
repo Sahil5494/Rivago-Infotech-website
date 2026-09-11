@@ -105,7 +105,7 @@ export default function InterimLeadershipPage() {
       />
 
       <TestiCreamSection
-        heading={<>Interim leaders,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>in their own words.</em></>}
+        heading={<>Interim leaders,<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>in their own words.</em></>}
         sub="Plain English from board chairs, CEOs and CHROs who brought in a Rivago interim executive in the last eighteen months. No pseudonyms. No doctored quotes."
         cards={[
           { tag: "US · Operations", quote: "A PE-owned business in distress needed an operator immediately — not in two months. Rivago placed a turnaround COO from their bench who started in eleven days. Margin was up 22% within two quarters.", initials: "RP", name: "Ryan P.", role: "Board Chair · PE-owned business" },

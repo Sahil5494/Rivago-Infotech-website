@@ -78,7 +78,7 @@ export default function IndustriesPage() {
             </div>
             <div className="industry-panel gs">
               <div className="lead-card">
-                <div className="lead-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "#030C05", fontWeight: 600, fontSize: "var(--fz4)", letterSpacing: ".02em" }}>{p.partner.initials}</div>
+                <div className="lead-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--on-light-1)", fontWeight: 600, fontSize: "var(--fz4)", letterSpacing: ".02em" }}>{p.partner.initials}</div>
                 <div>
                   <div className="lead-name">{p.partner.name}</div>
                   <div className="lead-title">{p.partner.title}</div>
@@ -125,17 +125,17 @@ export default function IndustriesPage() {
         <div className="wrap gs">
           <div className="ind-writing-head" style={{ gap: 80, alignItems: "end", marginBottom: 56 }}>
             <div>
-              <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "#3D5240" }}><span className="eyebrow-dot" style={{ background: "#0A7040" }}></span>What we put in writing</div>
-              <h2 className="section-h2" style={{ color: "#0A140B" }}>Four numbers we&apos;ll stand behind<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>on the first call.</em></h2>
+              <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--on-light-2)" }}><span className="eyebrow-dot" style={{ background: "var(--green-ink)" }}></span>What we put in writing</div>
+              <h2 className="section-h2" style={{ color: "var(--on-light-1)" }}>Four numbers we&apos;ll stand behind<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>on the first call.</em></h2>
             </div>
-            <p style={{ color: "#3D5240", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 460 }}>Same in technology as in healthcare. Same in finance as in defence. The practice lead changes; the bar doesn&apos;t.</p>
+            <p style={{ color: "var(--on-light-2)", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 460 }}>Same in technology as in healthcare. Same in finance as in defence. The practice lead changes; the bar doesn&apos;t.</p>
           </div>
           <div className="ind-guarantee-grid" style={{ gap: 16 }}>
             {writtenGuarantees.map(([v, unit, title, desc]) => (
-              <div key={title} style={{ background: "#fff", borderRadius: 24, padding: "40px 32px", border: "1px solid rgba(11,19,17,.06)" }}>
-                <div style={{ fontSize: "var(--fz13)", lineHeight: 1, letterSpacing: "-.035em", color: "#0A7040", fontWeight: 400, marginBottom: 20 }}>{v}{unit && <span style={{ fontSize: "var(--fz5)", color: "#7A9080", marginLeft: 4 }}>{unit}</span>}</div>
-                <div style={{ fontSize: "var(--fz4)", fontWeight: 600, color: "#0A140B", marginBottom: 8 }}>{title}</div>
-                <div style={{ fontSize: "var(--fz2)", color: "#3D5240", lineHeight: 1.65, fontWeight: 400 }}>{desc}</div>
+              <div key={title} style={{ background: "var(--paper-2)", borderRadius: 24, padding: "40px 32px", border: "1px solid rgba(11,19,17,.06)" }}>
+                <div style={{ fontSize: "var(--fz13)", lineHeight: 1, letterSpacing: "-.035em", color: "var(--green-ink)", fontWeight: 400, marginBottom: 20 }}>{v}{unit && <span style={{ fontSize: "var(--fz5)", color: "var(--on-light-3)", marginLeft: 4 }}>{unit}</span>}</div>
+                <div style={{ fontSize: "var(--fz4)", fontWeight: 600, color: "var(--on-light-1)", marginBottom: 8 }}>{title}</div>
+                <div style={{ fontSize: "var(--fz2)", color: "var(--on-light-2)", lineHeight: 1.65, fontWeight: 400 }}>{desc}</div>
               </div>
             ))}
           </div>
@@ -154,7 +154,7 @@ export default function IndustriesPage() {
                 <div style={{ fontFamily: "var(--fm)", fontSize: "var(--fz1)", color: "var(--green)", letterSpacing: ".05em", textTransform: "uppercase", marginBottom: 18 }}>{t.practice}</div>
                 <p style={{ fontSize: "var(--fz4)", color: "var(--text)", lineHeight: 1.72, fontWeight: 400, marginBottom: 24, flex: 1 }}>&ldquo;{t.quote}&rdquo;</p>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, paddingTop: 18, borderTop: "1px solid var(--border)" }}>
-                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg,var(--green),#0A7040)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, color: "#030C05", fontSize: "var(--fz1)" }}>{t.initials}</div>
+                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg,var(--green),#0A7040)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, color: "var(--on-light-1)", fontSize: "var(--fz1)" }}>{t.initials}</div>
                   <div><div style={{ fontSize: "var(--fz2)", fontWeight: 500, color: "var(--text)" }}>{t.name}</div><div style={{ fontSize: "var(--fz1)", color: "var(--text3)" }}>{t.role}</div></div>
                 </div>
               </div>
