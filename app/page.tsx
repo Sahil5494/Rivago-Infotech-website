@@ -163,7 +163,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       {/* HERO */}
-      <section className="hero">
+      <section className="hero inv">
         <div className="hphoto">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1920&q=90&auto=format" alt="aerial green landscape with people" decoding="async" />
@@ -210,9 +210,9 @@ export default function Home() {
 
             <div className="fc gs">
               <div className="fc-vis">
-                <div className="sv-tag sv-tg"><span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--green-ink)", display: "inline-block" }}></span>Contract · Permanent · Interim</div>
+                <div className="sv-tag sv-tg"><span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent-inv)", display: "inline-block" }}></span>Contract · Permanent · Interim</div>
                 <div className="sv-cand">
-                  <div className="sv-cand-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,var(--green),#00A882)", color: "var(--bg)", fontWeight: 600, fontSize: "var(--fz4)", letterSpacing: ".02em" }}>AK</div>
+                  <div className="sv-cand-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,var(--accent),#00A882)", color: "var(--bg)", fontWeight: 600, fontSize: "var(--fz4)", letterSpacing: ".02em" }}>AK</div>
                   <div><div className="sv-cand-name">Anil Kumar</div><div className="sv-cand-role">Senior Cloud Architect · 8 yrs exp</div><div className="sv-skills"><span className="sv-sk">AWS</span><span className="sv-sk">Kubernetes</span><span className="sv-sk">Terraform</span></div></div>
                 </div>
                 <div className="sv-bar-row"><div className="sv-bar-label">Role fit</div><div className="sv-bar"><div className="sv-bar-fill" style={{ width: "96%" }}></div></div><div className="sv-bar-val">96%</div></div>
@@ -239,8 +239,8 @@ export default function Home() {
                   ))}
                 </div>
                 <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
-                  <div style={{ flex: 1, padding: 7, background: "var(--mint)", borderRadius: 7, fontSize: "var(--fz1)", color: "var(--green-ink)", textAlign: "center", fontWeight: 600 }}>Accept →</div>
-                  <div style={{ flex: 1, padding: 7, background: "var(--paper)", borderRadius: 7, fontSize: "var(--fz1)", color: "var(--green-ink)", textAlign: "center" }}>Defer</div>
+                  <div style={{ flex: 1, padding: 7, background: "var(--chip)", borderRadius: 7, fontSize: "var(--fz1)", color: "var(--accent-inv)", textAlign: "center", fontWeight: 600 }}>Accept →</div>
+                  <div style={{ flex: 1, padding: 7, background: "var(--surface-inv)", borderRadius: 7, fontSize: "var(--fz1)", color: "var(--accent-inv)", textAlign: "center" }}>Defer</div>
                 </div>
               </div>
               <div className="fc-body"><div className="fc-title">Screened before you see them</div><div className="fc-desc">Every candidate is fully assessed before reaching your inbox — competency, culture fit, availability and salary expectations all checked. You only meet people who are genuinely ready.</div></div>
@@ -251,9 +251,9 @@ export default function Home() {
                 <div className="sv-nl">Recruiter assessment summary</div>
                 <div className="sv-note">Anil brings 7 years of cloud architecture experience across AWS and Azure. Strong communicator, available immediately. US EST hours, no visa restrictions. Prior work spans fintech and enterprise SaaS. Panel interview strongly recommended.</div>
                 <div style={{ marginTop: 10, display: "flex", gap: 5, flexWrap: "wrap" }}>
-                  <span style={{ padding: "3px 9px", background: "var(--mint)", borderRadius: 6, fontSize: "var(--fz1)", color: "var(--green-ink)", fontWeight: 500 }}>AWS</span>
-                  <span style={{ padding: "3px 9px", background: "var(--info)", borderRadius: 6, fontSize: "var(--fz1)", color: "var(--info-ink)", fontWeight: 500 }}>Azure</span>
-                  <span style={{ padding: "3px 9px", background: "var(--warn)", borderRadius: 6, fontSize: "var(--fz1)", color: "var(--green-ink)", fontWeight: 500 }}>Fintech exp</span>
+                  <span style={{ padding: "3px 9px", background: "var(--chip)", borderRadius: 6, fontSize: "var(--fz1)", color: "var(--accent-inv)", fontWeight: 500 }}>AWS</span>
+                  <span style={{ padding: "3px 9px", background: "var(--info)", borderRadius: 6, fontSize: "var(--fz1)", color: "var(--on-accent)", fontWeight: 500 }}>Azure</span>
+                  <span style={{ padding: "3px 9px", background: "var(--warn)", borderRadius: 6, fontSize: "var(--fz1)", color: "var(--on-accent)", fontWeight: 500 }}>Fintech exp</span>
                 </div>
               </div>
               <div className="fc-body"><div className="fc-title">Full context, every time</div><div className="fc-desc">Every shortlisted candidate comes with a written recruiter summary — background, motivations, strengths and an honest recommendation. No guesswork on your side.</div></div>
@@ -270,22 +270,22 @@ export default function Home() {
                     ["HR Director · Canada", "CAD 145K · Offer stage", "★"],
                   ].map(([t, s, icon]) => (
                     <div className="sv-pl-card" key={t}>
-                      <div className="sv-pl-dot" style={{ background: "var(--green)" }}></div>
+                      <div className="sv-pl-dot" style={{ background: "var(--accent)" }}></div>
                       <div><div className="sv-pl-name">{t}</div><div className="sv-pl-sub">{s}</div></div>
-                      <div className="sv-pl-val" style={{ color: "var(--green-ink)" }}>{icon}</div>
+                      <div className="sv-pl-val" style={{ color: "var(--accent-inv)" }}>{icon}</div>
                     </div>
                   ))}
                 </div>
                 <div className="sv-pl-col">
                   <div className="sv-pl-title">This week</div>
-                  <div style={{ marginBottom: 14 }}><div style={{ fontSize: "var(--fz8)", fontWeight: 700, color: "var(--on-light-1)", letterSpacing: "-.02em", lineHeight: 1 }}>14</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>New submissions sent</div></div>
+                  <div style={{ marginBottom: 14 }}><div style={{ fontSize: "var(--fz8)", fontWeight: 700, color: "var(--text-inv-1)", letterSpacing: "-.02em", lineHeight: 1 }}>14</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>New submissions sent</div></div>
                   <div style={{ marginBottom: 14 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}><span style={{ fontSize: "var(--fz1)", color: "var(--dt3)" }}>Client acceptance rate</span><span style={{ fontSize: "var(--fz1)", fontWeight: 600, color: "var(--green-ink)" }}>94%</span></div>
-                    <div style={{ height: 5, background: "var(--paper)", borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: "94%", background: "linear-gradient(90deg,var(--green),#00D4A8)", borderRadius: 3 }}></div></div>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}><span style={{ fontSize: "var(--fz1)", color: "var(--dt3)" }}>Client acceptance rate</span><span style={{ fontSize: "var(--fz1)", fontWeight: 600, color: "var(--accent-inv)" }}>94%</span></div>
+                    <div style={{ height: 5, background: "var(--surface-inv)", borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: "94%", background: "linear-gradient(90deg,var(--accent),#00D4A8)", borderRadius: 3 }}></div></div>
                   </div>
                   <div style={{ display: "flex", gap: 8 }}>
-                    <div style={{ flex: 1, background: "var(--paper-2)", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz4)", fontWeight: 700, color: "var(--on-light-1)" }}>48h</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Avg delivery</div></div>
-                    <div style={{ flex: 1, background: "var(--paper-2)", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz4)", fontWeight: 700, color: "var(--on-light-1)" }}>94%</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Interview rate</div></div>
+                    <div style={{ flex: 1, background: "var(--surface-inv-2)", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz4)", fontWeight: 700, color: "var(--text-inv-1)" }}>48h</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Avg delivery</div></div>
+                    <div style={{ flex: 1, background: "var(--surface-inv-2)", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz4)", fontWeight: 700, color: "var(--text-inv-1)" }}>94%</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Interview rate</div></div>
                   </div>
                 </div>
               </div>
@@ -350,7 +350,7 @@ export default function Home() {
       <section className="proc-sec">
         <div className="proc-inner">
           <div className="eyebrow ew-light gs">The process</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 18 }}>From brief to shortlist<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>48 hours.</em></h2>
+          <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 18 }}>From brief to shortlist<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>48 hours.</em></h2>
           <p className="proc-sub gs">A simple four-step process — end to end, no surprises.</p>
           <div className="proc-grid">
             {[
@@ -396,7 +396,7 @@ export default function Home() {
       <section className="why-sec">
         <div className="why-inner">
           <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Why Rivago</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 560, marginBottom: 20 }}>Six reasons clients<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>stay with us.</em></h2>
+          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 560, marginBottom: 20 }}>Six reasons clients<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>stay with us.</em></h2>
           <div className="why-grid">
             {[
               { n: "01", t: "Quality over quantity — always", d: "We submit fewer, better candidates. Every profile is fully screened before it reaches your inbox. No keyword-matching. No noise. Just people who are genuinely ready.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="#3DFF87" strokeWidth="1.3" /><path d="M7 11l3 3 5-5" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
@@ -423,7 +423,7 @@ export default function Home() {
           <div className="svc-head">
             <div>
               <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Services</div>
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Eight ways to put the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>right people in seat.</em></h2>
+              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Eight ways to put the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>right people in seat.</em></h2>
               <p className="svc-sub gs">Permanent, contract, temporary or embedded — one senior partner owns the search end to end, whichever way you engage us.</p>
             </div>
             <Link className="svc-all gs" href={routes.services}>View all services <Arrow /></Link>
@@ -450,7 +450,7 @@ export default function Home() {
           <div className="ind-head" style={{ marginBottom: 52 }}>
             <div>
               <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Industries</div>
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Every sector. <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>Every function.</em></h2>
+              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Every sector. <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>Every function.</em></h2>
               <p className="ind-sub gs">We recruit across every major industry — with specialist teams who understand the roles, the regulations and what a strong hire looks like in each sector.</p>
             </div>
             <Link className="ind-all gs" href={routes.industries}>View all industries <Arrow /></Link>
@@ -475,7 +475,7 @@ export default function Home() {
         <div className="supp-inner">
           <div style={{ textAlign: "center" }}>
             <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>Support</div>
-            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 12 }}>We&apos;re with you<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>every step of the way.</em></h2>
+            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 12 }}>We&apos;re with you<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>every step of the way.</em></h2>
             <p className="orb-desc gs" style={{ marginBottom: 0 }}>Whether you&apos;re hiring for the first time or managing a 50-role pipeline — our team is always available to help.</p>
           </div>
           <div className="supp-grid">
@@ -514,7 +514,7 @@ export default function Home() {
       <section className="cs-sec">
         <div className="cs-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Client Results</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--dt)", maxWidth: 560 }}>Real results for <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>real teams.</em></h2>
+          <h2 className="section-h2 gs" style={{ color: "var(--dt)", maxWidth: 560 }}>Real results for <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent-inv)" }}>real teams.</em></h2>
           <div className="cs-grid">
             <div className="cs-card cs-wide gs">
               <div className="cs-card-img">
@@ -573,7 +573,7 @@ export default function Home() {
         <div className="faq-inner">
           <div style={{ textAlign: "center" }}>
             <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>FAQ</div>
-            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 0 }}>Questions we <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>hear most often.</em></h2>
+            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 0 }}>Questions we <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>hear most often.</em></h2>
           </div>
           <Faq items={faqItems} />
         </div>

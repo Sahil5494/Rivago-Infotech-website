@@ -12,7 +12,7 @@ const Rcat = ({ label }: { label: string }) => <span className="rcat">{label}</s
 function NewsletterInline() {
   const [email, setEmail] = useState("");
   const [ok, setOk] = useState(false);
-  if (ok) return <span style={{ padding: "8px 16px", fontSize: "var(--fz2)", color: "var(--green-ink)", fontWeight: 600 }}>Subscribed ✓</span>;
+  if (ok) return <span style={{ padding: "8px 16px", fontSize: "var(--fz2)", color: "var(--accent-inv)", fontWeight: 600 }}>Subscribed ✓</span>;
   return (
     <form
       className="rsub-form"
@@ -36,7 +36,7 @@ function NewsletterBand({ heading, sub }: { heading: React.ReactNode; sub: strin
         <h2>{heading}</h2>
         <p>{sub}</p>
         {ok ? (
-          <div style={{ padding: "11px 18px", fontSize: "var(--fz3)", color: "var(--green-ink)", fontWeight: 600 }}>Subscribed — your first brief is on its way.</div>
+          <div style={{ padding: "11px 18px", fontSize: "var(--fz3)", color: "var(--accent-inv)", fontWeight: 600 }}>Subscribed — your first brief is on its way.</div>
         ) : (
           <form
             className="bg-news-form"
@@ -130,8 +130,8 @@ export default function ResourcesView({ initialView }: { initialView: View }) {
         <>
           <div className="rfeat">
             <div className="rfeat-img" style={{ background: "linear-gradient(135deg,#A6F0CE,#3DA9FF)" }}>
-              <h2 style={{ color: "var(--on-light-1)" }}>{featuredArticle.title}</h2>
-              <div style={{ position: "absolute", left: 32, bottom: 30, width: 34, height: 34, borderRadius: "50%", background: "rgba(255,255,255,.22)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--on-dark-1)", fontWeight: 700, fontSize: "var(--fz2)" }}>R</div>
+              <h2 style={{ color: "var(--text-inv-1)" }}>{featuredArticle.title}</h2>
+              <div style={{ position: "absolute", left: 32, bottom: 30, width: 34, height: 34, borderRadius: "50%", background: "rgba(255,255,255,.22)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--text-1)", fontWeight: 700, fontSize: "var(--fz2)" }}>R</div>
             </div>
             <div>
               <div className="rfeat-meta"><Rcat label={featuredArticle.category} /> · {featuredArticle.readTime}</div>

@@ -72,7 +72,7 @@ export default function RpoModelsTabs() {
       </div>
       <div className="rmt-panel" key={model.key}>
         <div className="rmt-l">
-          <h3>{model.titleTop}<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>{model.titleEm}</em></h3>
+          <h3>{model.titleTop}<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>{model.titleEm}</em></h3>
           <p>{model.desc}</p>
           <div className="rmt-best">Best for<strong>{model.bestFor}</strong></div>
         </div>

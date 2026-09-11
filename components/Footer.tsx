@@ -13,7 +13,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
   if (NO_FOOTER_ROUTES.some((p) => pathname === p)) return null;
   return (
-    <footer>
+    <footer className="inv">
       <div className="ft-grid">
         <div>
           <Link className="logo" href={routes.home}>

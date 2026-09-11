@@ -377,14 +377,14 @@ export function StorySection({
           <span className="tc-tag">{tag}</span>
           <p className="tc-quote-serif" style={{ fontSize: "var(--fz6)" }}>&ldquo;{quote}&rdquo;</p>
           <div className="tc-author2">
-            <div style={{ width: 42, height: 42, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--on-light-1)", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{initials}</div>
+            <div style={{ width: 42, height: 42, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{initials}</div>
             <div><div className="tc-author2-name">{name}</div><div className="tc-author2-role">{role}</div></div>
           </div>
           {metrics && metrics.length > 0 && (
             <div style={{ display: "flex", gap: 32, marginTop: 28, paddingTop: 24, borderTop: "1px solid rgba(0,0,0,.07)", flexWrap: "wrap" }}>
               {metrics.map((m) => (
                 <div key={m.label}>
-                  <div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: "var(--fz9)", color: "var(--green-ink)", lineHeight: 1 }}>{m.val}</div>
+                  <div style={{ fontFamily: "var(--fs)", fontStyle: "italic", fontSize: "var(--fz9)", color: "var(--accent-inv)", lineHeight: 1 }}>{m.val}</div>
                   <div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 6, maxWidth: 140 }}>{m.label}</div>
                 </div>
               ))}
@@ -479,7 +479,7 @@ export function InsightsSection({
             <Link href={routes.resources} className="why-card gs" key={a.title} style={{ textDecoration: "none" }}>
               <div className="why-title">{a.title}</div>
               <div className="why-desc">{a.dek}</div>
-              <div style={{ marginTop: 18, fontSize: "var(--fz2)", color: "var(--green)", fontWeight: 500, display: "inline-flex", alignItems: "center", gap: 6 }}>Read more <SmallArrow /></div>
+              <div style={{ marginTop: 18, fontSize: "var(--fz2)", color: "var(--accent)", fontWeight: 500, display: "inline-flex", alignItems: "center", gap: 6 }}>Read more <SmallArrow /></div>
             </Link>
           ))}
         </div>
@@ -668,7 +668,7 @@ export function IndustriesGrid2Section({ heading, sub }: { heading: ReactNode; s
             <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>{heading}</h2>
             <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: "var(--fz4)", fontWeight: 400, lineHeight: 1.7 }}>{sub}</p>
           </div>
-          <Link href={routes.industries} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--green)", fontSize: "var(--fz3)", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Explore all industries <SmallArrow /></Link>
+          <Link href={routes.industries} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--accent)", fontSize: "var(--fz3)", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>Explore all industries <SmallArrow /></Link>
         </div>
         <CardSlider trackClassName="ind-grid2">
           {indgCards.map((c) => (
@@ -702,7 +702,7 @@ export function TestiCreamSection({ heading, sub, cards }: { heading: ReactNode;
               <span className="tc-tag">{c.tag}</span>
               <p className="tc-quote">{c.quote}</p>
               <div className="tc-author">
-                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--on-light-1)", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{c.initials}</div>
+                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{c.initials}</div>
                 <div><div className="tc-author-name">{c.name}</div><div className="tc-author-role">{c.role}</div></div>
               </div>
             </div>

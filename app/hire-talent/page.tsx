@@ -120,7 +120,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>How we engage</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Three ways to put a Rivago partner<br />on your <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>next requisition.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Three ways to put a Rivago partner<br />on your <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>next requisition.</em></h2>
           </div>
           <div className="modes">
             {modes.map((m) => (
@@ -144,7 +144,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we actually do</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760 }}>A search runs five stages.<br />None of them are <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>a portal.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760 }}>A search runs five stages.<br />None of them are <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>a portal.</em></h2>
           </div>
           <div className="proc-deep">
             {stages.map((s) => (
@@ -167,7 +167,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we put in writing</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Four numbers we&apos;ll stand behind<br />on the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>first call.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Four numbers we&apos;ll stand behind<br />on the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>first call.</em></h2>
           </div>
           <div className="guarantee">
             <div className="gtee gs"><div className="gtee-val">21<sup>days</sup></div><div className="gtee-title">Median time-to-shortlist</div><div className="gtee-desc">From signed JD to three calibrated finalists in your inbox.</div></div>
@@ -183,7 +183,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Why hiring managers choose us</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Built for hiring teams that<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>can&apos;t afford to slow down.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Built for hiring teams that<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>can&apos;t afford to slow down.</em></h2>
           </div>
           <div className="why-grid">
             {whyCards.map((c) => (
@@ -202,7 +202,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Practices</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Specialist partners,<br />aligned to <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>your sector.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Specialist partners,<br />aligned to <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent)" }}>your sector.</em></h2>
             <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: "var(--fz4)", fontWeight: 400, lineHeight: 1.7 }}>Your brief goes straight to the partner who works your sector — not a shared queue. They already know who is good, who is moving, and what it takes to get them to take the call.</p>
           </div>
           <div className="ind-strip">
@@ -222,7 +222,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>From hiring managers</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>In their<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green-ink)" }}>own words.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>In their<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--accent-inv)" }}>own words.</em></h2>
             <p style={{ color: "var(--dt2)", fontSize: "var(--fz4)", lineHeight: 1.78, fontWeight: 400, maxWidth: 540, marginTop: 22 }}>Plain English from heads of talent, GCs, CFOs and founders who hired through Rivago in the last eighteen months. No pseudonyms. No doctored quotes.</p>
           </div>
           <div className="testi-cream">
@@ -231,7 +231,7 @@ export default function HireTalentPage() {
                 <span className="tc-tag">{t.tag}</span>
                 <p className="tc-quote-serif">{t.quote}</p>
                 <div className="tc-author2">
-                  <div style={{ width: 40, height: 40, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--on-light-1)", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{t.initials}</div>
+                  <div style={{ width: 40, height: 40, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 600, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{t.initials}</div>
                   <div><div className="tc-author2-name">{t.name}</div><div className="tc-author2-role">{t.role}</div></div>
                 </div>
               </div>

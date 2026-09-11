@@ -15,9 +15,9 @@ function LegalLinks() {
   return (
     <div style={{ marginTop: 64, paddingTop: 32, borderTop: "1px solid var(--border)", display: "flex", flexWrap: "wrap", gap: 24, alignItems: "center", fontSize: "var(--fz3)" }}>
       <span style={{ color: "var(--text3)" }}>Related:</span>
-      <Link href={routes.privacy} style={{ color: "var(--green)" }}>Privacy Policy</Link>
-      <Link href={routes.cookies} style={{ color: "var(--green)" }}>Cookie Policy</Link>
-      <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--green)" }}>legal@rivagoinfotech.com</a>
+      <Link href={routes.privacy} style={{ color: "var(--accent)" }}>Privacy Policy</Link>
+      <Link href={routes.cookies} style={{ color: "var(--accent)" }}>Cookie Policy</Link>
+      <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--accent)" }}>legal@rivagoinfotech.com</a>
     </div>
   );
 }
@@ -95,7 +95,7 @@ function LegalBody() {
       <p style={p}>We may update these Terms from time to time. Material changes will be reflected by an updated &ldquo;Last updated&rdquo; date on this page. Continued use of our website or Services after changes take effect constitutes acceptance of the revised Terms.</p>
 
       <h2 style={h2}>13. Contact us</h2>
-      <p style={p}>Questions about these Terms can be sent to <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--green)" }}>legal@rivagoinfotech.com</a>.</p>
+      <p style={p}>Questions about these Terms can be sent to <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--accent)" }}>legal@rivagoinfotech.com</a>.</p>
     </div>
   );
 }

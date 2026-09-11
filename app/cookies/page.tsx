@@ -15,9 +15,9 @@ function LegalLinks() {
   return (
     <div style={{ marginTop: 64, paddingTop: 32, borderTop: "1px solid var(--border)", display: "flex", flexWrap: "wrap", gap: 24, alignItems: "center", fontSize: "var(--fz3)" }}>
       <span style={{ color: "var(--text3)" }}>Related:</span>
-      <Link href={routes.privacy} style={{ color: "var(--green)" }}>Privacy Policy</Link>
-      <Link href={routes.terms} style={{ color: "var(--green)" }}>Terms of Service</Link>
-      <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--green)" }}>legal@rivagoinfotech.com</a>
+      <Link href={routes.privacy} style={{ color: "var(--accent)" }}>Privacy Policy</Link>
+      <Link href={routes.terms} style={{ color: "var(--accent)" }}>Terms of Service</Link>
+      <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--accent)" }}>legal@rivagoinfotech.com</a>
     </div>
   );
 }
@@ -51,7 +51,7 @@ function LegalBody() {
   return (
     <div>
       <p style={p}>
-        This Cookie Policy explains how Rivago Infotech (&ldquo;Rivago,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo; or &ldquo;our&rdquo;) uses cookies and similar technologies on rivagoinfotech.com, and the choices available to you. It should be read alongside our <Link href={routes.privacy} style={{ color: "var(--green)" }}>Privacy Policy</Link>.
+        This Cookie Policy explains how Rivago Infotech (&ldquo;Rivago,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo; or &ldquo;our&rdquo;) uses cookies and similar technologies on rivagoinfotech.com, and the choices available to you. It should be read alongside our <Link href={routes.privacy} style={{ color: "var(--accent)" }}>Privacy Policy</Link>.
       </p>
 
       <h2 style={h2}>1. What are cookies</h2>
@@ -75,7 +75,7 @@ function LegalBody() {
       <p style={p}>We may update this Cookie Policy from time to time to reflect changes in the technologies we use or applicable law. The &ldquo;Last updated&rdquo; date at the top of this page will reflect the most recent revision.</p>
 
       <h2 style={h2}>6. Contact us</h2>
-      <p style={p}>Questions about this Cookie Policy can be sent to <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--green)" }}>legal@rivagoinfotech.com</a>.</p>
+      <p style={p}>Questions about this Cookie Policy can be sent to <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--accent)" }}>legal@rivagoinfotech.com</a>.</p>
     </div>
   );
 }

@@ -508,7 +508,7 @@ export default function ServicesPage() {
 
 
 
-        <section className="gd">
+        <section className="gd inv">
           <div className="gd-inner">
             <div className="gd-card">
               <div className="gd-map rv">
