@@ -167,16 +167,38 @@ export default function Home() {
           them also removes the hot-linked Unsplash image that was the LCP
           element and lived on someone else's server. */}
       <section className="hero">
-        <div className="hero-content">
-          <div className="hero-badge gs"><span className="bdot"></span>Global Staffing · US · Canada · UAE · India</div>
-          <h1 className="hero-h1 gs">Staffing for getting the <em>right people</em> in seat.</h1>
-          <p className="hero-sub gs">We connect outstanding companies with exceptional talent — across every industry, every function and every corner of the globe.</p>
-          <div className="hero-btns gs">
-            <button className="btn-hp" data-help>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+        <div className="hero-grid">
+          <div className="hero-content">
+            <div className="hero-badge gs"><span className="bdot"></span>Global Staffing · US · Canada · UAE · India</div>
+            <h1 className="hero-h1 gs">Staffing for getting the <em>right people</em> in seat.</h1>
+            <p className="hero-sub gs">We connect outstanding companies with exceptional talent — across every industry, every function and every corner of the globe.</p>
+            <div className="hero-btns gs">
+              <button className="btn-hp" data-help>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+            </div>
+            <div className="hero-proof gs">
+              <div><span className="pstars">★★★★★</span><div className="ptxt">Trusted by <strong>50+ companies</strong> · US, Canada, UAE &amp; India</div></div>
+            </div>
           </div>
-          <div className="hero-proof gs">
-            <div><span className="pstars">★★★★★</span><div className="ptxt">Trusted by <strong>50+ companies</strong> · US, Canada, UAE &amp; India</div></div>
-          </div>
+
+          {/* The space the photograph used to occupy. Every row here is a
+              real service route and every city a real office — there is no
+              figure in it, because the figures are not verified yet. */}
+          <aside className="hero-panel gs" aria-label="How Rivago engages">
+            <div className="hp-head">
+              <span className="hp-lab">How we engage</span>
+              <Link href="/services" className="hp-all">All services</Link>
+            </div>
+            <ul className="hp-list">
+              <li><Link href="/services/contract-staffing"><b>Contract staffing</b><span>Specialist capacity for a defined window</span></Link></li>
+              <li><Link href="/services/direct-hire"><b>Direct hire</b><span>A permanent search, run end to end</span></Link></li>
+              <li><Link href="/services/executive-search"><b>Executive search</b><span>Leadership and board mandates</span></Link></li>
+              <li><Link href="/services/rpo"><b>Recruitment process outsourcing</b><span>Embedded recruiting capacity</span></Link></li>
+            </ul>
+            <div className="hp-foot">
+              <span className="hp-cities">Wilmington · Pune · Ayr</span>
+              <span className="hp-note">Three offices, three countries</span>
+            </div>
+          </aside>
         </div>
       </section>
 

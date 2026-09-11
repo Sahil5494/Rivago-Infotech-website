@@ -185,6 +185,40 @@ a{color:inherit;text-decoration:none}
 #particles{position:absolute;inset:0;z-index:1;pointer-events:none}
 
 .hero-content{position:relative;z-index:5;width:100%;max-width:1240px;margin:0 auto;padding:0 44px;text-align:left}
+
+/* ── HERO PANEL ───────────────────────────────────────────────────────────
+   The right half of the hero, where the photograph used to be. Built in the
+   reference's card language: white fill, a single 1px #D9D9D9 rule, 8px
+   radius, no shadow. Content is real service routes and real offices — no
+   metric appears in it. */
+.hero-grid{position:relative;z-index:5;width:100%;max-width:1240px;margin:0 auto;
+  padding:0 44px;display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+.hero-grid > .hero-content{padding:0;max-width:none}
+.hero-panel{border:1px solid var(--rule-1);border-radius:10px;background:var(--surface-3);
+  overflow:hidden}
+.hp-head{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:14px 18px;border-bottom:1px solid var(--rule-1);background:var(--surface-2)}
+.hp-lab{font-size:var(--fz1);font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-3)}
+.hp-all{font-size:var(--fz1);font-weight:500;color:var(--accent);white-space:nowrap}
+.hp-all:hover{text-decoration:underline}
+.hp-list{list-style:none;margin:0;padding:0}
+.hp-list li + li{border-top:1px solid var(--rule-1)}
+.hp-list a{display:grid;gap:3px;padding:15px 18px;transition:background .18s var(--ease)}
+.hp-list a:hover{background:var(--surface-2)}
+.hp-list b{font-size:var(--fz4);font-weight:500;color:var(--text-1);letter-spacing:-.01em}
+.hp-list span{font-size:var(--fz2);color:var(--text-3);line-height:1.5}
+.hp-foot{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+  gap:8px 14px;padding:14px 18px;border-top:1px solid var(--rule-1);background:var(--surface-2)}
+.hp-cities{font-size:var(--fz2);font-weight:500;color:var(--text-1)}
+.hp-note{font-size:var(--fz1);color:var(--text-3)}
+@media (min-width:1000px){
+  .hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px}
+}
+@media (max-width:640px){
+  .hero-grid{padding:0 20px;gap:34px}
+}
+
 .hero-badge{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:var(--surface-2);border:1px solid var(--rule-1);border-radius:var(--pill);font-size:var(--fz1);color:var(--accent);font-weight:500;letter-spacing:.05em;margin-bottom:28px;white-space:nowrap}
 .bdot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:bdot 2.2s ease infinite}
 @keyframes bdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
