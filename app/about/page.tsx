@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { routes, offices } from "@/lib/routes";
+import { routes, offices, servicesList, industriesList } from "@/lib/routes";
 import OfficesSection from "@/components/OfficesSection";
 import CardSlider from "@/components/CardSlider";
 
@@ -91,21 +91,41 @@ const jsonLd = {
   ],
 };
 
+/* Counts of what the firm offers and where it works — each one derived from
+   lib/routes.ts and checkable against the rest of the site. The figures that
+   were here (a 2017 founding, 50 people, 10 senior partners, "6,400+ placed
+   since founding · 1,847 in the last twelve months") were performance claims
+   with nothing behind them, and the founding year contradicted the
+   foundingDate in this page's own structured data. */
 const numbers = [
-  { v: "2017", l: "Founded in Pune, India by three ex-operators" },
-  { v: "50", l: "People across Delaware, Pune and Ontario" },
-  { v: "10", l: "Senior partners, each running one industry practice" },
-  { v: "6,400", u: "+", l: "Senior operators placed since founding · 1,847 in the last twelve months" },
+  { v: String(offices.length), l: `Offices — ${offices.map((o) => o.city).join(", ")}` },
+  { v: String(servicesList.filter((s) => s.href !== routes.services).length),
+    l: "Ways to engage, from contract cover to executive search" },
+  { v: String(industriesList.length), l: "Industry practices, each with its own specialists" },
 ];
 
-const timeline = [
-  { year: "2017 · Pune", title: "Founded by three operators", desc: "Anjali Rao, Suresh Iyer and Mark Chen — who met inside Persistent Systems' India team — open the first office in Koregaon Park, Pune. First retained search: a VP of Engineering for a Pune fintech, closed in 31 days.", aside: "First-year revenue: $740K. First-year hires: nine." },
-  { year: "2019 · Delaware, US", title: "Incorporated in the United States", desc: "Rivago incorporates in Delaware and opens its first US office to run the technology practice on American soil. The firm's first $1M-revenue engagement is signed within nine months — an embedded talent partnership with a publicly-traded SaaS.", aside: "US office today: 22 people, four partners." },
-  { year: "2021 · Ontario, Canada", title: "North American expansion", desc: "The Ontario office opens to serve financial services and pre-IPO technology across Canada — the firm's second North American market and its first cross-border bench.", aside: "First Canadian engagement: a bank risk team, 12 hires." },
-  { year: "2023 · Dubai, UAE", title: "Into the Gulf", desc: "The UAE office opens in DIFC, anchored by a healthcare partnership with a Gulf hospital group expanding across the region.", aside: "First UAE engagement: 11 placements in 60 days." },
-  { year: "2025 · Dubai", title: "The fourth market", desc: "The UAE desk opens to serve the legal and finance practices in the City and the Square Mile. Three senior partners relocate from Ontario and Delaware; six new hires are made locally.", aside: "UAE desk today: served from Delaware and Pune 2026." },
-  { year: "2026 · Today", title: "50 people, four markets, ten practices", desc: "Profitable every year since founding. No external capital. Still owned and operated by the original three partners plus seven employee-partners. Still no portal.", aside: "Year-nine revenue: confidential. Profit margin: healthy." },
-];
+/* ── TIMELINE ─────────────────────────────────────────────────────────────
+   Emptied deliberately. What was here could not have been true as written:
+
+     - it dated the founding to 2017, while this page's own structured data
+       gives foundingDate 2019;
+     - it opened a Dubai office twice, in 2023 and again in 2025;
+     - the 2025 entry described a desk serving "the City and the Square
+       Mile" — that is London, relabelled as Dubai;
+     - it claimed a UAE office at all, where lib/routes.ts has three
+       offices: Wilmington, Pune and Ayr;
+     - and every aside carried an unevidenced figure: $740K first-year
+       revenue, a $1M engagement, 22 people in the US office, 12 hires for a
+       Canadian bank, 11 placements in 60 days, profitable every year.
+
+   To restore it, add entries with real dates you can evidence:
+
+     { year: "2019 · Wilmington, US", title: "", desc: "", aside: "" }
+
+   `aside` is where the old version put its invented numbers — leave it out
+   unless the figure is one you would be comfortable being asked to prove.
+   The section does not render while this array is empty. */
+const timeline: { year: string; title: string; desc: string; aside?: string }[] = [];
 
 /* ── LEADERSHIP ───────────────────────────────────────────────────────────
    Emptied deliberately. What was here was eight named partners carrying
@@ -183,13 +203,13 @@ export default function AboutPage() {
       <section className="numbers gs">
         <div className="numbers-inner">
           <div style={{ marginBottom: 56 }}>
-            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>By the numbers</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>Nearly a decade of <em>placed hires.</em></h2>
+            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Scope</div>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>What we cover, and <em>where we cover it.</em></h2>
           </div>
           <div className="numbers-card">
             {numbers.map((n) => (
               <div className="num-cell" key={n.l}>
-                <div className="num-v">{n.v}{n.u && <span className="u">{n.u}</span>}</div>
+                <div className="num-v">{n.v}</div>
                 <div className="num-l">{n.l}</div>
               </div>
             ))}
@@ -197,11 +217,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* TIMELINE */}
+      {/* TIMELINE — renders only once `timeline` above has real entries. */}
+      {timeline.length > 0 && (
       <section className="timeline">
         <div className="timeline-inner">
           <div className="gs">
-            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Seven years, abbreviated</div>
+            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>How the firm grew</div>
             <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>The decisions that <em>made the firm.</em></h2>
           </div>
           <div className="tl-rows">
@@ -209,12 +230,13 @@ export default function AboutPage() {
               <div className="tl-row gs" key={t.year}>
                 <div className="tl-year">{t.year}</div>
                 <div className="tl-main"><h3>{t.title}</h3><p>{t.desc}</p></div>
-                <div className="tl-aside">{t.aside}</div>
+                {t.aside ? <div className="tl-aside">{t.aside}</div> : null}
               </div>
             ))}
           </div>
         </div>
       </section>
+      )}
 
       {/* LEADERSHIP — renders only once `leadership` above has real entries.
           While it is empty the section is omitted entirely rather than shown
