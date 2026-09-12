@@ -317,7 +317,8 @@ a{color:inherit;text-decoration:none}
 /* ── HERO ── */
 /* The reference's hero: white ground, black headline, generous but finite
    height. 100vh pushed the page itself out of the first frame. */
-.hero{position:relative;background:var(--surface-1);display:flex;flex-direction:column;justify-content:center;align-items:stretch;overflow:hidden;padding:160px 0 96px}
+.hero{position:relative;background:var(--surface-1);display:flex;flex-direction:column;justify-content:center;align-items:stretch;overflow:hidden;padding:136px 0 80px}
+@media (max-width:900px){.hero{padding:112px 0 68px}}
 .hphoto{position:absolute;inset:0;z-index:0}
 .hphoto img{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:brightness(.28) saturate(1.2)}
 .hphoto::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,12,5,.15) 0%,rgba(3,12,5,.1) 35%,rgba(3,12,5,.65) 72%,#030C05 100%)}
@@ -362,18 +363,25 @@ a{color:inherit;text-decoration:none}
 .hero-badge{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:var(--surface-2);border:1px solid var(--rule-1);border-radius:var(--pill);font-size:var(--fz1);color:var(--accent);font-weight:500;letter-spacing:.05em;margin-bottom:28px;white-space:nowrap}
 .bdot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:bdot 2.2s ease infinite}
 @keyframes bdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
-.hero-h1{font-size:var(--fz15);font-weight:500;line-height:1.1;letter-spacing:-.06em;color:var(--text-1);margin-bottom:28px;max-width:18ch}
-/* The accent word takes the gradient only where the clip is genuinely
-   supported. The `color` above stays as the fallback, so a browser that
-   does not paint the background never ends up with transparent — and so
-   invisible — text. Both stops clear 13:1 on the hero ground. */
+/* -.06em is -3.1px at 52px, which closed the counters on "Staffing" and
+   "people". Display tracking wants to be tight, not collapsed. */
+.hero-h1{font-size:var(--fz15);font-weight:500;line-height:1.1;letter-spacing:-.035em;color:var(--text-1);margin-bottom:28px;max-width:18ch}
+/* Stale comment removed: it described a background-clip gradient on the
+   <em>, which the `.hero-h1 em{font:inherit;color:inherit}` rule above
+   deliberately replaced. The headline is one colour throughout. */
 
-.hero-sub{font-size:var(--fz8);color:var(--text-3);max-width:52ch;margin:0 0 34px;line-height:1.55;font-weight:400}
-.hero-btns{display:flex;gap:12px;justify-content:flex-start;margin-bottom:22px}
+/* The lede is the most-read paragraph on the site, so it takes the body
+   step, not the muted one. --text-3 (#7A9E7D) put it at 6.6:1 on the forest
+   ground — legible, but it read as a caption under its own headline. */
+.hero-sub{font-size:var(--fz8);color:var(--text-2);max-width:52ch;margin:0 0 34px;line-height:1.55;font-weight:400}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-start;margin-bottom:22px}
 .btn-hp{padding:14px 28px;background:var(--ink-fill);color:var(--on-ink-fill);border-radius:var(--pill);font-size:var(--fz5);font-weight:500;font-family:var(--ff);border:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .22s}
 .btn-hp:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 14px 44px rgba(61,255,135,.32)}
-.btn-hg{padding:14px 28px;background:var(--rule-1);color:var(--text);border:1px solid var(--rule-2);border-radius:var(--pill);font-size:var(--fz5);font-family:var(--ff);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .22s}
-.btn-hg:hover{background:var(--rule-1);border-color:var(--rule-2)}
+/* The ghost CTA was filling itself with --rule-1 — a rule colour used as a
+   surface — and its hover set that same value straight back, so hovering
+   changed nothing. It now sits on the ground and lifts on hover. */
+.btn-hg{padding:14px 28px;background:transparent;color:var(--text-1);border:1px solid var(--rule-2);border-radius:var(--pill);font-size:var(--fz5);font-weight:500;font-family:var(--ff);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .22s}
+.btn-hg:hover{background:var(--surface2);border-color:var(--text-3);transform:translateY(-2px)}
 .hero-proof{display:flex;align-items:center;gap:12px;justify-content:flex-start;margin-bottom:70px}
 .pav:first-child{margin-left:0}
 .ptxt{font-size:var(--fz2);color:var(--text-2)}

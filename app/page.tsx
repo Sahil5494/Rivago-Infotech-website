@@ -180,6 +180,10 @@ export default function Home() {
             <p className="hero-sub gs">We connect outstanding companies with exceptional talent — across every industry, every function and every corner of the globe.</p>
             <div className="hero-btns gs">
               <button className="btn-hp" data-help>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+              {/* A staffing firm has two audiences and the hero offered one
+                  door. The second is the candidate's, and it goes to the job
+                  search rather than the contact form. */}
+              <Link href="/search-jobs" className="btn-hg">Browse open roles</Link>
             </div>
           </div>
 
