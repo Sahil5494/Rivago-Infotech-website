@@ -37,9 +37,9 @@
   /* brand — the mint green the site was originally built around. It is a
      light colour, so on dark it carries text; the fill it sits on flips to
      near-black via --on-accent. */
-  --accent:#7AFAB2;          /* 13.4:1 on the ground                  */
-  --accent-inv:#7AFAB2;
-  --accent-hover:#A9FFCE;
+  --accent:#3DFF87;          /* 15.0:1 on the ground — the original   */
+  --accent-inv:#3DFF87;
+  --accent-hover:#5AFFA0;
   --on-accent:#000805;       /* text ON an accent fill                */
   --ink-fill:#FFFFFF;        /* the high-contrast button fill         */
   --on-ink-fill:#000805;
@@ -50,7 +50,7 @@
   --rule-inv-1:rgba(232,255,244,.16); --rule-inv-2:rgba(232,255,244,.28);
 
   /* tints */
-  --tint-1:rgba(122,250,178,.08); --tint-2:rgba(122,250,178,.18); --tint-3:rgba(122,250,178,.28);
+  --tint-1:rgba(61,255,135,.08); --tint-2:rgba(61,255,135,.18); --tint-3:rgba(61,255,135,.28);
 
   /* semantic — the light-ground versions of these are far too dark to read
      here, so each is the pale end of its hue instead */
@@ -72,14 +72,14 @@
 
   /* ── GRADIENTS ── */
   --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
-  --grad-brand:linear-gradient(135deg,#7AFAB2,#0E5C3C);
-  --grad-accent-inv:linear-gradient(135deg,#7AFAB2,#3DD98C);
+  --grad-brand:linear-gradient(135deg,#3DFF87,#00D4A8);
+  --grad-accent-inv:linear-gradient(135deg,#3DFF87,#00D4A8);
   --grad-surface:linear-gradient(180deg,#0A2119 0%,#000805 100%);
   --grad-ink:linear-gradient(180deg,#000805 0%,#0A2119 100%);
   --grad-paper:linear-gradient(180deg,#0A2119 0%,#000805 100%);
-  --grad-accent:linear-gradient(92deg,#7AFAB2 0%,#E8FFF4 100%);
-  --grad-rule:linear-gradient(90deg,transparent,rgba(122,250,178,.5),transparent);
-  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(122,250,178,.12) 0%,transparent 70%);
+  --grad-accent:linear-gradient(92deg,#3DFF87 0%,#7DE8C0 100%);
+  --grad-rule:linear-gradient(90deg,transparent,rgba(61,255,135,.5),transparent);
+  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(61,255,135,.12) 0%,transparent 70%);
 
   /* ── LEGACY ALIASES ── */
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
@@ -152,18 +152,18 @@
   --chip:#0A2119;
   --text-1:#E8FFF4; --text-2:#E3FFEF; --text-3:rgba(232,255,244,.62);
   --text-inv-1:#E8FFF4; --text-inv-2:#E3FFEF; --text-inv-3:rgba(232,255,244,.62);
-  --accent:#7AFAB2; --accent-inv:#7AFAB2; --accent-hover:#A9FFCE;
+  --accent:#3DFF87; --accent-inv:#3DFF87; --accent-hover:#5AFFA0;
   --on-accent:#000805; --ink-fill:#FFFFFF; --on-ink-fill:#000805;
   --rule-1:rgba(232,255,244,.16); --rule-2:rgba(232,255,244,.28);
   --rule-inv-1:rgba(232,255,244,.16); --rule-inv-2:rgba(232,255,244,.28);
-  --tint-1:rgba(122,250,178,.08); --tint-2:rgba(122,250,178,.18); --tint-3:rgba(122,250,178,.28);
+  --tint-1:rgba(61,255,135,.08); --tint-2:rgba(61,255,135,.18); --tint-3:rgba(61,255,135,.28);
   --grad-cta:linear-gradient(135deg,#FFFFFF 0%,#E8FFF4 100%);
   --grad-surface:linear-gradient(180deg,#0A2119 0%,#000805 100%);
   --grad-ink:linear-gradient(180deg,#000805 0%,#0A2119 100%);
   --grad-paper:linear-gradient(180deg,#0A2119 0%,#000805 100%);
-  --grad-accent:linear-gradient(92deg,#7AFAB2 0%,#E8FFF4 100%);
-  --grad-rule:linear-gradient(90deg,transparent,rgba(122,250,178,.5),transparent);
-  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(122,250,178,.12) 0%,transparent 70%);
+  --grad-accent:linear-gradient(92deg,#3DFF87 0%,#7DE8C0 100%);
+  --grad-rule:linear-gradient(90deg,transparent,rgba(61,255,135,.5),transparent);
+  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(61,255,135,.12) 0%,transparent 70%);
   --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
   --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
@@ -196,11 +196,11 @@
   --text-inv-1:#000000; --text-inv-2:#3A3F3D; --text-inv-3:#4F5252;
   /* the mint is a light colour and cannot carry text on white; on a light
      ground the brand reads as the deep green instead, at 8.0:1 */
-  --accent:#0E5C3C; --accent-inv:#0E5C3C; --accent-hover:#0A4A30;
+  --accent:#0A7040; --accent-inv:#0A7040; --accent-hover:#086039;
   --on-accent:#FFFFFF; --ink-fill:#000805; --on-ink-fill:#FFFFFF;
   --rule-1:#D9D9D9; --rule-2:#C9CDCB;
   --rule-inv-1:#D9D9D9; --rule-inv-2:#C9CDCB;
-  --tint-1:rgba(14,92,60,.06); --tint-2:rgba(14,92,60,.14); --tint-3:rgba(14,92,60,.24);
+  --tint-1:rgba(10,112,64,.06); --tint-2:rgba(10,112,64,.14); --tint-3:rgba(10,112,64,.24);
   --info:#1C63B8; --info-inv:#BFE3FF; --warn:#8A5A12; --alert:#A33A3A; --info-ink:#123472;
   --shadow-1:0 6px 20px rgba(0,8,5,.07);
   --shadow-2:0 16px 44px rgba(0,8,5,.12);
@@ -208,9 +208,9 @@
   --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
   --grad-ink:linear-gradient(180deg,#FFFFFF 0%,#EDF7F2 100%);
   --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
-  --grad-accent:linear-gradient(92deg,#0E5C3C 0%,#116B45 100%);
+  --grad-accent:linear-gradient(92deg,#0A7040 0%,#0E8A50 100%);
   --grad-rule:linear-gradient(90deg,transparent,#D9D9D9,transparent);
-  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(14,92,60,.05) 0%,transparent 70%);
+  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(10,112,64,.05) 0%,transparent 70%);
   --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
   --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
@@ -1712,7 +1712,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 
 /* Contact sidebar */
 .sup{position:sticky;top:110px;display:flex;flex-direction:column;gap:14px}
-.sup-card{padding:26px 24px;background:var(--rule-1);border:1px solid var(--border);border-radius:16px}
+.sup-card{padding:26px 24px;background:var(--surface-2);border:1px solid var(--border);border-radius:16px}
 .sup-card h3{font-size:var(--fz5);font-weight:500;color:var(--text);letter-spacing:-.01em;margin-bottom:7px}
 .sup-card p{font-size:var(--fz4);color:var(--text2);line-height:1.65;font-weight:400;margin-bottom:14px}
 .sup-lnk{display:inline-flex;align-items:center;gap:7px;font-size:var(--fz2);font-weight:500;color:var(--accent);text-decoration:none}
@@ -1737,7 +1737,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .perk-t{font-size:var(--fz3);font-weight:500;color:var(--text);margin-bottom:6px}
 .perk-d{font-size:var(--fz1);color:var(--text2);line-height:1.6;font-weight:400}
 .cv-sec{background:var(--cream)!important}
-.cv-sec .eyebrow.light{background:var(--rule-inv-1);border:1px solid var(--rule-inv-2);color:var(--accent-inv)}
+.cv-sec .eyebrow.light{background:var(--tint-1);border:1px solid var(--tint-2);color:var(--accent-inv)}
 .cv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule-inv-1);border:1px solid var(--rule-inv-1);border-radius:20px;overflow:hidden;margin-top:48px}
 .cv-grid .cv{background:var(--surface-inv);padding:38px 34px;transition:background .25s var(--ease)}
 .cv-grid .cv:hover{background:var(--surface-inv-2)}
