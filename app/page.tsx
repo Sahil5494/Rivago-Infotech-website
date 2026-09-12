@@ -479,7 +479,7 @@ export default function Home() {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="ind-sec lt">
+      <section className="ind-sec">
         <div className="ind-inner">
           <div className="ind-head" style={{ marginBottom: 52 }}>
             <div>
@@ -545,7 +545,7 @@ export default function Home() {
       </section>
 
       {/* CASE STUDIES */}
-      <section className="cs-sec inv">
+      <section className="cs-sec lt">
         <div className="cs-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Client Results</div>
           <h2 className="section-h2 gs" style={{ color: "var(--dt)", maxWidth: 560 }}>Real results for <em>real teams.</em></h2>
@@ -603,7 +603,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="faq-sec lt">
+      <section className="faq-sec">
         <div className="faq-inner">
           <div style={{ textAlign: "center" }}>
             <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>FAQ</div>

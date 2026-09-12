@@ -18,21 +18,28 @@
      sets are contrast-verified independently; neither borrows a value from
      the other.                                                          */
 
-  /* surfaces — near-black ground, two raised steps above it */
-  --surface-1:#000805;   /* page ground                    */
-  --surface-2:#0A2119;   /* raised band                    */
-  --surface-3:#0B1B15;   /* card                           */
-  --surface-4:#000805;
-  --surface-inv:#0A2119;
-  --surface-inv-2:#000805;
-  --chip:#0A2119;
+  /* surfaces — the three forest greens, as specified.
+
+     They are 1.02:1 to 1.10:1 apart, so they do NOT separate one band from
+     the next on their own — the eye reads them as one near-black. That is
+     a deliberate choice here: the depth is the point. Section boundaries
+     are therefore carried by a hairline rule (see .band-edge below) and by
+     the cream breaks, not by the fill. Nothing else in the page depends on
+     telling these three apart. */
+  --surface-1:#030C05;   /* deep forest — page ground            */
+  --surface-2:#060F07;   /* forest — secondary band              */
+  --surface-3:#0A1A0C;   /* pine — card, and bands carrying cards */
+  --surface-4:#030C05;
+  --surface-inv:#060F07;
+  --surface-inv-2:#030C05;
+  --chip:#0A1A0C;
 
   /* text — pitched against #0B1B15, the lightest surface in the family,
      so every step clears AA on the worst ground it can land on */
-  --text-1:#E8FFF4;                  /* 17.4:1 on the ground */
-  --text-2:#E3FFEF;                  /* 17.0:1               */
-  --text-3:rgba(232,255,244,.62);    /*  7.1:1 composited    */
-  --text-inv-1:#E8FFF4; --text-inv-2:#E3FFEF; --text-inv-3:rgba(232,255,244,.62);
+  --text-1:#F0F4F0;   /* 17.9:1 — near-white  */
+  --text-2:#BFCBC0;   /* 11.8:1 — pale sage   */
+  --text-3:#7A9E7D;   /*  5.9:1 on pine, the lightest ground it can land on */
+  --text-inv-1:#F0F4F0; --text-inv-2:#BFCBC0; --text-inv-3:#7A9E7D;
 
   /* brand — the mint green the site was originally built around. It is a
      light colour, so on dark it carries text; the fill it sits on flips to
@@ -40,14 +47,14 @@
   --accent:#3DFF87;          /* 15.0:1 on the ground — the original   */
   --accent-inv:#3DFF87;
   --accent-hover:#5AFFA0;
-  --on-accent:#000805;       /* text ON an accent fill                */
+  --on-accent:#030C05;       /* text ON an accent fill                */
   --ink-fill:#FFFFFF;        /* the high-contrast button fill         */
-  --on-ink-fill:#000805;
+  --on-ink-fill:#030C05;
 
   /* rules — mint at low alpha, so they read as a lift off the ground
      rather than a drawn line */
-  --rule-1:rgba(232,255,244,.16); --rule-2:rgba(232,255,244,.28);
-  --rule-inv-1:rgba(232,255,244,.16); --rule-inv-2:rgba(232,255,244,.28);
+  --rule-1:rgba(240,244,240,.12); --rule-2:rgba(240,244,240,.22);
+  --rule-inv-1:rgba(240,244,240,.12); --rule-inv-2:rgba(240,244,240,.22);
 
   /* tints */
   --tint-1:rgba(61,255,135,.08); --tint-2:rgba(61,255,135,.18); --tint-3:rgba(61,255,135,.28);
@@ -65,18 +72,18 @@
      band, floating over dark and light alike as the page scrolls, so they
      get one colour site-wide rather than taking it from what happens to be
      underneath. Translucent, because the blur behind them is the point. */
-  --chrome:rgba(0,8,5,.86);
-  --chrome-solid:rgba(4,16,11,.94);
+  --chrome:rgba(3,12,5,.88);
+  --chrome-solid:rgba(6,15,7,.94);
 
   --pill:999px;
 
   /* ── GRADIENTS ── */
-  --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
+  --grad-cta:linear-gradient(135deg,#0A1A0C 0%,#030C05 100%);
   --grad-brand:linear-gradient(135deg,#3DFF87,#00D4A8);
   --grad-accent-inv:linear-gradient(135deg,#3DFF87,#00D4A8);
-  --grad-surface:linear-gradient(180deg,#0A2119 0%,#000805 100%);
-  --grad-ink:linear-gradient(180deg,#000805 0%,#0A2119 100%);
-  --grad-paper:linear-gradient(180deg,#0A2119 0%,#000805 100%);
+  --grad-surface:linear-gradient(180deg,#0A1A0C 0%,#030C05 100%);
+  --grad-ink:linear-gradient(180deg,#030C05 0%,#0A1A0C 100%);
+  --grad-paper:linear-gradient(180deg,#0A1A0C 0%,#030C05 100%);
   --grad-accent:linear-gradient(92deg,#3DFF87 0%,#7DE8C0 100%);
   --grad-rule:linear-gradient(90deg,transparent,rgba(61,255,135,.5),transparent);
   --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(61,255,135,.12) 0%,transparent 70%);
@@ -147,20 +154,20 @@
    say). Nesting either way round resolves correctly because both blocks
    define the whole token set, never a subset.                             */
 .inv{
-  --surface-1:#000805; --surface-2:#0A2119; --surface-3:#0B1B15; --surface-4:#000805;
-  --surface-inv:#0A2119; --surface-inv-2:#000805;
-  --chip:#0A2119;
-  --text-1:#E8FFF4; --text-2:#E3FFEF; --text-3:rgba(232,255,244,.62);
-  --text-inv-1:#E8FFF4; --text-inv-2:#E3FFEF; --text-inv-3:rgba(232,255,244,.62);
+  --surface-1:#030C05; --surface-2:#060F07; --surface-3:#0A1A0C; --surface-4:#030C05;
+  --surface-inv:#060F07; --surface-inv-2:#030C05;
+  --chip:#0A1A0C;
+  --text-1:#F0F4F0; --text-2:#BFCBC0; --text-3:#7A9E7D;
+  --text-inv-1:#F0F4F0; --text-inv-2:#BFCBC0; --text-inv-3:#7A9E7D;
   --accent:#3DFF87; --accent-inv:#3DFF87; --accent-hover:#5AFFA0;
-  --on-accent:#000805; --ink-fill:#FFFFFF; --on-ink-fill:#000805;
-  --rule-1:rgba(232,255,244,.16); --rule-2:rgba(232,255,244,.28);
-  --rule-inv-1:rgba(232,255,244,.16); --rule-inv-2:rgba(232,255,244,.28);
+  --on-accent:#030C05; --ink-fill:#FFFFFF; --on-ink-fill:#030C05;
+  --rule-1:rgba(240,244,240,.12); --rule-2:rgba(240,244,240,.22);
+  --rule-inv-1:rgba(240,244,240,.12); --rule-inv-2:rgba(240,244,240,.22);
   --tint-1:rgba(61,255,135,.08); --tint-2:rgba(61,255,135,.18); --tint-3:rgba(61,255,135,.28);
-  --grad-cta:linear-gradient(135deg,#FFFFFF 0%,#E8FFF4 100%);
-  --grad-surface:linear-gradient(180deg,#0A2119 0%,#000805 100%);
-  --grad-ink:linear-gradient(180deg,#000805 0%,#0A2119 100%);
-  --grad-paper:linear-gradient(180deg,#0A2119 0%,#000805 100%);
+  --grad-cta:linear-gradient(135deg,#0A1A0C 0%,#030C05 100%);
+  --grad-surface:linear-gradient(180deg,#0A1A0C 0%,#030C05 100%);
+  --grad-ink:linear-gradient(180deg,#030C05 0%,#0A1A0C 100%);
+  --grad-paper:linear-gradient(180deg,#0A1A0C 0%,#030C05 100%);
   --grad-accent:linear-gradient(92deg,#3DFF87 0%,#7DE8C0 100%);
   --grad-rule:linear-gradient(90deg,transparent,rgba(61,255,135,.5),transparent);
   --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(61,255,135,.12) 0%,transparent 70%);
@@ -189,27 +196,31 @@
    they were verified as a set: every text/surface pair clears WCAG AA,
    lowest 5.71:1.                                                          */
 .lt{
-  --surface-1:#FFFFFF; --surface-2:#F2F7F5; --surface-3:#FFFFFF; --surface-4:#EDF7F2;
-  --surface-inv:#FFFFFF; --surface-inv-2:#F2F7F5;
-  --chip:#EDF7F2;
-  --text-1:#000000; --text-2:#3A3F3D; --text-3:#4F5252;
-  --text-inv-1:#000000; --text-inv-2:#3A3F3D; --text-inv-3:#4F5252;
+  /* Cream, not white. #F4F3EE against #030C05 is 17.9:1 — a softer flip
+     than white's 20.3:1 — and it is the warm partner these forest greens
+     were chosen with. White stays for the cards that sit ON the cream, so
+     a card still lifts off its band. */
+  --surface-1:#F4F3EE; --surface-2:#EDEBE3; --surface-3:#FFFFFF; --surface-4:#EDEBE3;
+  --surface-inv:#FFFFFF; --surface-inv-2:#F4F3EE;
+  --chip:#E7E4DA;
+  --text-1:#0B1311; --text-2:#3D5240; --text-3:#526257;
+  --text-inv-1:#0B1311; --text-inv-2:#3D5240; --text-inv-3:#526257;
   /* the mint is a light colour and cannot carry text on white; on a light
      ground the brand reads as the deep green instead, at 8.0:1 */
   --accent:#0A7040; --accent-inv:#0A7040; --accent-hover:#086039;
-  --on-accent:#FFFFFF; --ink-fill:#000805; --on-ink-fill:#FFFFFF;
-  --rule-1:#D9D9D9; --rule-2:#C9CDCB;
-  --rule-inv-1:#D9D9D9; --rule-inv-2:#C9CDCB;
+  --on-accent:#FFFFFF; --ink-fill:#030C05; --on-ink-fill:#FFFFFF;
+  --rule-1:rgba(11,19,17,.12); --rule-2:rgba(11,19,17,.22);
+  --rule-inv-1:rgba(11,19,17,.12); --rule-inv-2:rgba(11,19,17,.22);
   --tint-1:rgba(10,112,64,.06); --tint-2:rgba(10,112,64,.14); --tint-3:rgba(10,112,64,.24);
   --info:#1C63B8; --info-inv:#BFE3FF; --warn:#8A5A12; --alert:#A33A3A; --info-ink:#123472;
   --shadow-1:0 6px 20px rgba(0,8,5,.07);
   --shadow-2:0 16px 44px rgba(0,8,5,.12);
-  --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
-  --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
-  --grad-ink:linear-gradient(180deg,#FFFFFF 0%,#EDF7F2 100%);
-  --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
+  --grad-cta:linear-gradient(135deg,#0A1A0C 0%,#030C05 100%);
+  --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F4F3EE 100%);
+  --grad-ink:linear-gradient(180deg,#F4F3EE 0%,#EDEBE3 100%);
+  --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F4F3EE 100%);
   --grad-accent:linear-gradient(92deg,#0A7040 0%,#0E8A50 100%);
-  --grad-rule:linear-gradient(90deg,transparent,#D9D9D9,transparent);
+  --grad-rule:linear-gradient(90deg,transparent,rgba(11,19,17,.18),transparent);
   --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(10,112,64,.05) 0%,transparent 70%);
   --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
   --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
@@ -384,7 +395,7 @@ a{color:inherit;text-decoration:none}
 .orb-desc{font-size:var(--fz8);color:var(--text2);max-width:520px;margin:0 auto;line-height:1.75;font-weight:400}
 
 /* ── FEATURES ── */
-.feat-sec{padding:110px 44px;background:var(--cream)}
+.feat-sec{padding:110px 44px;background:var(--bg)}
 .feat-inner{max-width:1200px;margin:0 auto}
 .eyebrow{display:inline-flex;padding:4px 13px;border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;white-space:nowrap}
 @media(max-width:480px){.eyebrow{white-space:normal;text-align:center}}
@@ -457,6 +468,13 @@ a{color:inherit;text-decoration:none}
 .sv-mkt-val{font-size:var(--fz1);font-weight:500;color:var(--accent-inv);width:28px;text-align:right}
 
 /* ── PRECISION ── */
+/* The three forest greens sit 1.02:1 to 1.10:1 apart — the eye reads them
+   as one near-black, so a change of fill does not announce a new section.
+   These hairlines are what actually draw the band boundaries; without them
+   the dark stretches merge into a single block. */
+.prec-sec,.proc-sec,.svc-sec,.ind-sec,.supp-sec,.testi-sec,.faq-sec,.cta-sec,.orb-sec{
+  border-top:1px solid var(--rule-1)
+}
 .prec-sec{padding:110px 44px;background:var(--bg)}
 .prec-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center}
 .prec-h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;margin-bottom:20px;line-height:1.13}
@@ -618,7 +636,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 /* ── REVEAL ── */
 .gs{will-change:transform,opacity}
 /* ── CASE STUDIES ── */
-.cs-sec{padding:110px 44px;background:var(--cream)}
+.cs-sec{padding:110px 44px;background:var(--bg)}
 .cs-inner{max-width:1200px;margin:0 auto}
 .cs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
 .cs-card{border-radius:20px;overflow:hidden;position:relative;cursor:default;transition:transform .28s var(--ease)}
@@ -1217,7 +1235,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .lead-cred span{padding:3px 9px;background:var(--rule-1);border-radius:9999px;font-size:var(--fz1);color:var(--text2)}
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
 .stat-cell{background:var(--bg);padding:20px 22px}
-.industry.lt .stat-cell{background:var(--surface2)}
+.industry.lt .stat-cell{background:var(--surface-3)}
 .stat-v{font-size:var(--fz10);line-height:1;letter-spacing:-.025em;color:var(--text);margin-bottom:8px;font-weight:500}
 .stat-v .unit{font-size:var(--fz3);color:var(--text3);margin-left:4px}
 .stat-l{font-size:var(--fz1);color:var(--text3);line-height:1.45}
@@ -1264,7 +1282,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .eng-tag{align-self:flex-start;padding:3px 10px;border-radius:9999px;font-size:var(--fz1);font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--accent-inv);color:var(--cream);margin-bottom:16px}
 
 /* roles we fill — tabs + Industries-style panel */
-.rls{background:var(--bg2);padding:120px 44px;border-top:1px solid var(--border)}
+.rls{background:var(--bg);padding:120px 44px;border-top:1px solid var(--border)}
 .rls-inner{max-width:1240px;margin:0 auto}
 .rls-eyb{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
 .rls-eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
@@ -1287,7 +1305,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .rls-ir .ct{color:var(--text3);font-family:var(--fm);font-size:var(--fz2);white-space:nowrap}
 .rls-panelR{display:flex;flex-direction:column;gap:16px}
 .rls-statgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
-.rls-stat{background:var(--surface);padding:22px 24px}
+.rls-stat{background:var(--bg);padding:22px 24px}
 .rls-stat .v{font-size:var(--fz11);line-height:1;letter-spacing:-.025em;color:var(--text);margin-bottom:8px;font-weight:500}
 .rls-stat .v .u{font-size:var(--fz3);color:var(--text3);margin-left:4px}
 .rls-stat .l{font-size:var(--fz1);color:var(--text3);line-height:1.45}
@@ -1398,7 +1416,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .indg-link{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:var(--fz3);font-weight:500;text-decoration:none;white-space:nowrap}
 .indg-link:hover{gap:11px}
 .ind-grid2{grid-template-columns:repeat(4,1fr);margin-top:52px}
-.ind-card2{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:26px;transition:all .28s var(--ease);text-decoration:none;display:block}
+.ind-card2{background:var(--surface-3);border:1px solid var(--border);border-radius:18px;padding:26px;transition:all .28s var(--ease);text-decoration:none;display:block}
 .ind-card2:hover{background:var(--surface2);border-color:var(--tint-2);transform:translateY(-4px)}
 .ind-card2 .ico{font-size:var(--fz10);margin-bottom:14px;display:block}
 .ind-card2 .t{font-size:var(--fz5);font-weight:500;color:var(--text);margin-bottom:8px;letter-spacing:-.01em}
