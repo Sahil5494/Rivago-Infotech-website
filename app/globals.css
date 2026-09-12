@@ -77,8 +77,9 @@
      #0A1A0C, so none of them fails on a raised card */
   --text-1:#F0F4F0;   /* 17.9:1 */
   --text-2:#BFCBC0;   /* 11.8:1 */
-  --text-3:#95B398;   /*  8.7:1 — clears even the lightest overlay panel */
-  --text-inv-1:#F0F4F0; --text-inv-2:#BFCBC0; --text-inv-3:#95B398;
+  --text-3:#7A9E7D;   /*  6.0:1 — the original theme's muted step, which sits
+                         further back from the body copy than #95B398 did */
+  --text-inv-1:#F0F4F0; --text-inv-2:#BFCBC0; --text-inv-3:#7A9E7D;
 
   /* brand — the bright green, for dark grounds only */
   --accent:#3DFF87;          /* 15.0:1 on the ground */
@@ -93,8 +94,8 @@
 
   /* rules — neutral white at low alpha reads as a lift off the ground
      rather than a drawn line */
-  --rule-1:rgba(255,255,255,.10); --rule-2:rgba(255,255,255,.20);
-  --rule-inv-1:rgba(255,255,255,.10); --rule-inv-2:rgba(255,255,255,.20);
+  --rule-1:rgba(255,255,255,.07); --rule-2:rgba(255,255,255,.14);
+  --rule-inv-1:rgba(255,255,255,.07); --rule-inv-2:rgba(255,255,255,.14);
 
   /* green washes */
   --tint-1:rgba(61,255,135,.08); --tint-2:rgba(61,255,135,.20); --tint-3:rgba(61,255,135,.30);
