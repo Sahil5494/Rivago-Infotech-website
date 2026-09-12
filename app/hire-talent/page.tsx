@@ -95,7 +95,7 @@ export default function HireTalentPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
-      <header className="page-hero">
+      <header className="page-hero inv">
         <div className="page-hero-inner wide">
           <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>For clients</span></div>
           <div className="eyebrow ew-light gs" style={{ marginBottom: 28, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>For clients</div>
@@ -218,7 +218,7 @@ export default function HireTalentPage() {
       </section>
 
       {/* TESTIMONIALS CREAM */}
-      <section className="section cream">
+      <section className="section cream inv">
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>From hiring managers</div>
@@ -259,7 +259,7 @@ export default function HireTalentPage() {
       </section>
 
       {/* CTA */}
-      <section className="clients-cta gs">
+      <section className="clients-cta gs inv">
         <h2>Tell us who you need.<br /><em>We&apos;ll be back tomorrow.</em></h2>
         <p>Send the brief and a partner comes back with a written plan — timelines, comp read and the shape of the shortlist — within one business day.</p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>

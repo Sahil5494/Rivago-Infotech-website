@@ -145,7 +145,7 @@ export default function ResourcesView({ initialView }: { initialView: View }) {
           </div>
 
           <div className="rgrid-h">All resources</div>
-          <div className="rgrid lt">
+          <div className="rgrid">
             {allOrder.map((item, i) => {
               const wide = i < 2;
               if (item.kind === "article") {

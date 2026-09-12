@@ -29,7 +29,7 @@ export default function ContactUsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
-      <header className="page-hero" style={{ minHeight: "62vh", display: "flex", alignItems: "center", paddingTop: 190, paddingBottom: 110 }}>
+      <header className="page-hero inv" style={{ minHeight: "62vh", display: "flex", alignItems: "center", paddingTop: 190, paddingBottom: 110 }}>
         <div className="page-hero-inner">
           <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>Contact</span></div>
           <h1 className="gs" style={{ marginTop: 22 }}>Get in touch with a global<br />leader in <em>specialist staffing.</em></h1>

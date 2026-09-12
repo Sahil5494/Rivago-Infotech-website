@@ -56,7 +56,7 @@ export default function ExecutiveSearchPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }} />
 
-      <header className="svh">
+      <header className="svh inv">
         <div className="svh-inner">
           <div className="svh-eyb gs"><span className="dot"></span>Executive Search · Retained</div>
           <h1 className="gs">Leadership hires,<br /><em>handled with discretion.</em></h1>

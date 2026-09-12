@@ -37,7 +37,7 @@ export default function TemporaryStaffingPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }} />
 
-      <header className="svh">
+      <header className="svh inv">
         <div className="svh-inner">
           <div className="svh-eyb gs"><span className="dot"></span>Temporary Staffing · On-demand &amp; seasonal</div>
           <h1 className="gs">Cover the surge.<br /><em>Skip the scramble.</em></h1>

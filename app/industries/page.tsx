@@ -33,7 +33,7 @@ export default function IndustriesPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
-      <header className="page-hero">
+      <header className="page-hero inv">
         <div className="page-hero-inner">
           <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>Industries</span></div>
           <div className="eyebrow ew-light gs" style={{ marginBottom: 28, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Industries · 10 practices</div>
@@ -61,7 +61,7 @@ export default function IndustriesPage() {
       {practices.map((p, i) => (
         /* Alternate bands are the light islands: ten near-identical
            sections in a row need the rhythm to stay countable. */
-        <section className={`industry${i % 2 === 1 ? " lt" : ""}`} id={p.id} key={p.id}>
+        <section className={`industry${i % 2 === 1 ? " inv" : ""}`} id={p.id} key={p.id}>
           <div className="industry-inner">
             <div className="gs">
               <div className="industry-label">{p.practiceNum} · {p.estYear}</div>
@@ -166,7 +166,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* CTA */}
-      <section className="clients-cta gs">
+      <section className="clients-cta gs inv">
         <h2>Which practice<br />are you <em>hiring into?</em></h2>
         <p>We&apos;ll put the practice lead on the line for a 30-minute scoping call. Tell us which sector to bring.</p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>

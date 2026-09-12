@@ -168,7 +168,7 @@ export default function AboutPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* EDITORIAL HERO */}
-      <header className="about-hero">
+      <header className="about-hero inv">
         <div className="about-hero-inner">
           <div className="eyebrow ew-light gs" style={{ marginBottom: 36, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>About Rivago</div>
           <h1 className="gs">A search firm built around<br /><em>one quiet idea</em> — that<br />hiring a person is not a transaction.</h1>

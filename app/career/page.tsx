@@ -63,7 +63,7 @@ export default function CareerPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
-      <section className="page-hero">
+      <section className="page-hero inv">
         <div className="page-hero-inner">
           <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>Careers</span></div>
           <span className="eyebrow light">Work at Rivago</span>
@@ -175,7 +175,7 @@ export default function CareerPage() {
         </div>
       </section>
 
-      <section className="began">
+      <section className="began inv">
         <div className="began-intro">
           <span className="eyebrow light">Where it all began</span>
           <h2>Built by people who&apos;d <em>grown tired of the theatre.</em></h2>

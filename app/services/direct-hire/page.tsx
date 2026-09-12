@@ -39,7 +39,7 @@ export default function DirectHirePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }} />
 
-      <header className="svh">
+      <header className="svh inv">
         <div className="svh-inner">
           <div className="svh-eyb gs"><span className="dot"></span>Direct Hire · Permanent placement</div>
           <h1 className="gs">Direct hire,<br /><em>done properly.</em></h1>

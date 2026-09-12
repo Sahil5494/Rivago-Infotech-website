@@ -38,7 +38,7 @@ export default function InterimLeadershipPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }} />
 
-      <header className="svh">
+      <header className="svh inv">
         <div className="svh-inner">
           <div className="svh-eyb gs"><span className="dot"></span>Interim &amp; Fractional Leadership</div>
           <h1 className="gs">A leader in the seat,<br /><em>on day one.</em></h1>

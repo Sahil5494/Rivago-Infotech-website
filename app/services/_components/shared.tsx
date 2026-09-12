@@ -400,7 +400,7 @@ export function StorySection({
 
 export function FaqSection({ heading, items }: { heading: ReactNode; items: FaqItem[] }) {
   return (
-    <section className="faq-sec lt">
+    <section className="faq-sec">
       <div className="faq-inner">
         <div style={{ textAlign: "center" }}>
           <Eyebrow style={{ margin: "0 auto 16px" }}>FAQ</Eyebrow>
@@ -432,7 +432,7 @@ export function CtaSection({
   footnote?: string;
 }) {
   return (
-    <section className="clients-cta gs">
+    <section className="clients-cta gs inv">
       <h2>{heading}</h2>
       <p>{sub}</p>
       <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -638,7 +638,7 @@ export type GteeStat = { val: ReactNode; sup?: string; title: string; desc: stri
 
 export function GuaranteeSection({ heading, stats }: { heading: ReactNode; stats: GteeStat[] }) {
   return (
-    <section className="section alt lt">
+    <section className="section alt">
       <div className="wrap">
         <div className="gs">
           <Eyebrow>What we put in writing</Eyebrow>
@@ -689,7 +689,7 @@ export type TcCard = { tag: string; quote: string; initials: string; name: strin
 
 export function TestiCreamSection({ heading, sub, cards }: { heading: ReactNode; sub: string; cards: TcCard[] }) {
   return (
-    <section className="section cream">
+    <section className="section cream inv">
       <div className="wrap">
         <div className="gs">
           <Eyebrow dark>Customer story</Eyebrow>

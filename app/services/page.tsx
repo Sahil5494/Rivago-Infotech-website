@@ -31,7 +31,7 @@ export default function ServicesPage() {
   return (
     <>
       <div className="svc2">
-        <section className="svh">
+        <section className="svh inv">
           <div className="svh-inner">
             <div className="svh-eyb rv"><span className="dot"></span>Staffing Solutions · How Rivago engages</div>
             <h1 className="rv rv2">Staffing for every role,<br />at <em>every level.</em></h1>
@@ -594,7 +594,7 @@ export default function ServicesPage() {
         </section>
 
 
-        <section className="cstory">
+        <section className="cstory inv">
           <div className="cstory-inner">
             <div className="cstory-head">
               <div>
@@ -666,7 +666,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <section className="svcta">
+        <section className="svcta inv">
           <div className="svcta-inner rv">
             <h2>Tell us the role.<br />We&rsquo;ll be back <em>tomorrow.</em></h2>
             <p>A 30-minute scoping call with a partner — not a portal — and a written shortlist plan within one business day.</p>

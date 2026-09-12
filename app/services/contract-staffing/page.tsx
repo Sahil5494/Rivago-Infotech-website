@@ -37,7 +37,7 @@ export default function ContractStaffingPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }} />
 
-      <header className="svh">
+      <header className="svh inv">
         <div className="svh-inner">
           <div className="svh-eyb gs"><span className="dot"></span>Contract Staffing · Flexible &amp; contract-to-hire</div>
           <h1 className="gs">Contract talent,<br /><em>live in days.</em></h1>

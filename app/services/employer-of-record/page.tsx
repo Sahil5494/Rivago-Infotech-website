@@ -50,7 +50,7 @@ export default function EmployerOfRecordPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }} />
 
-      <header className="svh">
+      <header className="svh inv">
         <div className="svh-inner">
           <div className="svh-eyb gs"><span className="dot"></span>Employer of Record</div>
           <h1 className="gs">You&apos;ve got the talent?<br /><em>We&apos;ll make the hire.</em></h1>

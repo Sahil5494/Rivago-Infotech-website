@@ -172,7 +172,7 @@ export default function Home() {
           pill CTAs — no photograph, no scrim, no particle field. Dropping
           them also removes the hot-linked Unsplash image that was the LCP
           element and lived on someone else's server. */}
-      <section className="hero">
+      <section className="hero inv">
         <div className="hero-grid">
           <div className="hero-content">
             <div className="hero-badge gs"><span className="bdot"></span>Global Staffing · US · Canada · UAE · India</div>
@@ -206,7 +206,7 @@ export default function Home() {
       </section>
 
       {/* CLIENTS */}
-      <section className="clients-sec">
+      <section className="clients-sec inv">
         <div className="clients-label">Where world-class teams build their talent bench</div>
         <LogoMarquee />
       </section>
@@ -224,7 +224,7 @@ export default function Home() {
       </section>
 
       {/* FEATURES */}
-      <section className="feat-sec lt">
+      <section className="feat-sec">
         <div className="feat-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our approach</div>
           <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 580 }}>How we work — and why <em>it actually works.</em></h2>
@@ -427,7 +427,7 @@ export default function Home() {
       </section>
 
       {/* WHY RIVAGO */}
-      <section className="why-sec lt">
+      <section className="why-sec">
         <div className="why-inner">
           <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Why Rivago</div>
           <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 560, marginBottom: 20 }}>Six reasons clients<br /><em>stay with us.</em></h2>
@@ -452,7 +452,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section className="svc-sec">
+      <section className="svc-sec inv">
         <div className="svc-inner">
           <div className="svc-head">
             <div>
@@ -545,7 +545,7 @@ export default function Home() {
       </section>
 
       {/* CASE STUDIES */}
-      <section className="cs-sec lt">
+      <section className="cs-sec">
         <div className="cs-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Client Results</div>
           <h2 className="section-h2 gs" style={{ color: "var(--dt)", maxWidth: 560 }}>Real results for <em>real teams.</em></h2>
@@ -591,7 +591,7 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="testi-sec">
+      <section className="testi-sec inv">
         <div className="testi-head">
           <div>
             <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>What our clients say</div>
