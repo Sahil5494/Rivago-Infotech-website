@@ -13,11 +13,11 @@ const LAST_UPDATED = "September 1, 2026";
 
 function LegalLinks() {
   return (
-    <div style={{ marginTop: 64, paddingTop: 32, borderTop: "1px solid var(--border)", display: "flex", flexWrap: "wrap", gap: 24, alignItems: "center", fontSize: 13.5 }}>
+    <div style={{ marginTop: 64, paddingTop: 32, borderTop: "1px solid var(--border)", display: "flex", flexWrap: "wrap", gap: 24, alignItems: "center", fontSize: "var(--fz3)" }}>
       <span style={{ color: "var(--text3)" }}>Related:</span>
-      <Link href={routes.terms} style={{ color: "var(--green)" }}>Terms of Service</Link>
-      <Link href={routes.cookies} style={{ color: "var(--green)" }}>Cookie Policy</Link>
-      <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--green)" }}>legal@rivagoinfotech.com</a>
+      <Link href={routes.terms} style={{ color: "var(--accent)" }}>Terms of Service</Link>
+      <Link href={routes.cookies} style={{ color: "var(--accent)" }}>Cookie Policy</Link>
+      <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--accent)" }}>legal@rivagoinfotech.com</a>
     </div>
   );
 }
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
       <header className="page-hero" style={{ padding: "140px 44px 56px" }}>
         <div className="page-hero-inner">
           <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>Privacy Policy</span></div>
-          <h1 style={{ fontSize: "clamp(32px,4vw,48px)" }}>Privacy Policy</h1>
+          <h1 style={{ fontSize: "var(--fz13)" }}>Privacy Policy</h1>
           <p className="lead">Last updated: {LAST_UPDATED}</p>
         </div>
       </header>
@@ -44,9 +44,9 @@ export default function PrivacyPage() {
 }
 
 function LegalBody() {
-  const h2: CSSProperties = { fontSize: 22, fontWeight: 500, color: "var(--text)", letterSpacing: "-.01em", marginTop: 44, marginBottom: 14 };
-  const p: CSSProperties = { fontSize: 15, color: "var(--text2)", lineHeight: 1.8, marginBottom: 14, fontWeight: 300 };
-  const ul: CSSProperties = { fontSize: 15, color: "var(--text2)", lineHeight: 1.9, marginBottom: 14, paddingLeft: 22, fontWeight: 300 };
+  const h2: CSSProperties = { fontSize: "var(--fz9)", fontWeight: 500, color: "var(--text)", letterSpacing: "-.01em", marginTop: 44, marginBottom: 14 };
+  const p: CSSProperties = { fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.8, marginBottom: 14, fontWeight: 400 };
+  const ul: CSSProperties = { fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.9, marginBottom: 14, paddingLeft: 22, fontWeight: 400 };
 
   return (
     <div>
@@ -59,7 +59,7 @@ function LegalBody() {
       <ul style={ul}>
         <li><strong>Candidates:</strong> name, contact details, CV/resume, employment and education history, skills, salary expectations, right-to-work or work-authorization status, references, and — where relevant to a role and provided voluntarily or as required by law — identity or licensing documentation.</li>
         <li><strong>Clients:</strong> company name and contact details, hiring requirements, and information about roles you ask us to fill.</li>
-        <li><strong>Website visitors:</strong> information submitted through contact and intake forms, and technical data such as IP address, browser type and pages visited, some of which is collected via cookies (see our <Link href={routes.cookies} style={{ color: "var(--green)" }}>Cookie Policy</Link>).</li>
+        <li><strong>Website visitors:</strong> information submitted through contact and intake forms, and technical data such as IP address, browser type and pages visited, some of which is collected via cookies (see our <Link href={routes.cookies} style={{ color: "var(--accent)" }}>Cookie Policy</Link>).</li>
       </ul>
 
       <h2 style={h2}>2. How we use your information</h2>
@@ -69,7 +69,7 @@ function LegalBody() {
       <p style={p}>A candidate&apos;s CV or resume is never shared with a prospective employer without that candidate&apos;s explicit, per-role consent. We retain candidate profiles on file so we can consider you for future roles that may be a better fit; you may ask us to delete your profile or opt out of future contact at any time by emailing legal@rivagoinfotech.com. Where a role requires licensing, right-to-work verification or background screening, we only collect the documentation needed for that specific process and share it only with the parties required to complete it (e.g. the hiring client, a licensing authority, or a screening provider acting on our behalf).</p>
 
       <h2 style={h2}>4. Cookies</h2>
-      <p style={p}>Our website uses cookies and similar technologies for essential functionality, performance measurement and, where applicable, marketing. Full detail on the categories of cookies we use and how to manage them is set out in our <Link href={routes.cookies} style={{ color: "var(--green)" }}>Cookie Policy</Link>.</p>
+      <p style={p}>Our website uses cookies and similar technologies for essential functionality, performance measurement and, where applicable, marketing. Full detail on the categories of cookies we use and how to manage them is set out in our <Link href={routes.cookies} style={{ color: "var(--accent)" }}>Cookie Policy</Link>.</p>
 
       <h2 style={h2}>5. How we share information</h2>
       <p style={p}>We share personal information with: prospective employer clients (candidate data, with consent, as described above); service providers who support our operations (e.g. background screening, payroll and IT infrastructure providers), under contractual confidentiality obligations; professional advisers and regulators where required by law; and, in the event of a merger, acquisition or asset sale, a successor entity. We do not sell personal information to third parties for their own marketing purposes.</p>
@@ -93,7 +93,7 @@ function LegalBody() {
       <p style={p}>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable law. We will post the revised policy on this page with an updated &ldquo;Last updated&rdquo; date.</p>
 
       <h2 style={h2}>12. Contact us</h2>
-      <p style={p}>For questions about this Privacy Policy, or to exercise your rights over your personal information, contact our team at <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--green)" }}>legal@rivagoinfotech.com</a>.</p>
+      <p style={p}>For questions about this Privacy Policy, or to exercise your rights over your personal information, contact our team at <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--accent)" }}>legal@rivagoinfotech.com</a>.</p>
     </div>
   );
 }

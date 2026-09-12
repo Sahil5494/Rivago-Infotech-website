@@ -10,7 +10,7 @@ export type Testimonial = {
 };
 
 const Star = () => (
-  <svg className="tc-star" viewBox="0 0 14 14" fill="#3DFF87"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.3l-3.7 2 .7-4.1L1 5.3l4.2-.7z" /></svg>
+  <svg className="tc-star" viewBox="0 0 14 14" fill="var(--accent)"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.3l-3.7 2 .7-4.1L1 5.3l4.2-.7z" /></svg>
 );
 
 export default function Testimonials({ items }: { items: Testimonial[] }) {

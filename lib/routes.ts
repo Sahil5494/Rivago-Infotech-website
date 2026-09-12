@@ -123,8 +123,6 @@ export const pageOrder: { name: string; href: string }[] = [
   { name: "About", href: routes.about },
   { name: "Careers", href: routes.career },
   { name: "Search Jobs", href: routes.searchJobs },
-  { name: "View Jobs", href: routes.viewJobs },
-  { name: "Role", href: routes.role },
   { name: "Open Positions", href: routes.openPositions },
   { name: "Contact", href: routes.contactUs },
   { name: "Sign In", href: routes.signIn },

@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { SITE_URL } from "@/lib/site";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import { SiteNav, SiteFooter, SitePageNav } from "@/components/SiteChrome";
 import HireModal from "@/components/HireModal";
 import HelpModal from "@/components/HelpModal";
 import ScrollReveals from "@/components/ScrollReveals";
-import PageNavSide from "@/components/PageNavSide";
 
+/* Geist is the only text face. The reference sets everything in one family
+   (Euclid Circular A, which is licensed) at just three weights — 400, 500
+   and 700 — so those are the three loaded here. There is no serif: the
+   italic accent the hero used has been folded into this family. */
 const geist = Geist({
-  variable: "--font-geist",
+  variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -20,15 +23,8 @@ const geistMono = Geist_Mono({
   weight: ["400", "500"],
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: "400",
-});
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rivagoinfotech.com"),
+  metadataBase: new URL(SITE_URL),
   title: "Rivago Infotech — Global Staffing & Recruitment",
   description:
     "Rivago Infotech is a global staffing firm placing senior talent across technology, finance, healthcare, legal and more — direct hire, contract and executive search in the US, Canada, the UAE and India.",
@@ -39,7 +35,7 @@ export const metadata: Metadata = {
     title: "Rivago Infotech — Global Staffing & Recruitment",
     description:
       "Rivago Infotech is a global staffing firm placing senior talent across technology, finance, healthcare, legal and more — direct hire, contract and executive search in the US, Canada, the UAE and India.",
-    url: "https://rivagoinfotech.com/",
+    url: "/",
     images: [{ url: "/assets/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
@@ -55,14 +51,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
       <body>
-        <Nav />
+        <SiteNav />
         {children}
         <HireModal />
-        <Footer />
+        <SiteFooter />
         <HelpModal />
-        <PageNavSide />
+        <SitePageNav />
         <ScrollReveals />
       </body>
     </html>

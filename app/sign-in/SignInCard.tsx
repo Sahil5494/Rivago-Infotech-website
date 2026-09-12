@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { routes } from "@/lib/routes";
 
 const Check = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 12l5 5 8-10" stroke="#3DFF87" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 12l5 5 8-10" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
 
 export default function SignInCard() {
@@ -22,18 +22,18 @@ export default function SignInCard() {
         .si-wrap{min-height:calc(100vh - 62px);display:flex;align-items:center;justify-content:center;padding:150px 20px 90px;background:var(--bg);position:relative;overflow:hidden}
         .si-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 45% at 50% 0%,rgba(61,255,135,.06) 0%,transparent 65%);pointer-events:none}
         .si-card{position:relative;z-index:1;width:100%;max-width:440px;background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:40px 36px}
-        .si-eyb{display:inline-flex;align-items:center;gap:7px;padding:4px 12px;border:1px solid rgba(61,255,135,.22);background:rgba(61,255,135,.06);border-radius:22px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:18px}
-        .si-eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green)}
+        .si-eyb{display:inline-flex;align-items:center;gap:7px;padding:4px 12px;border:1px solid rgba(61,255,135,.22);background:rgba(61,255,135,.06);border-radius:22px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+        .si-eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
         .si-card h1{font-size:28px;font-weight:400;letter-spacing:-.02em;color:var(--text);line-height:1.15;margin-bottom:8px}
-        .si-card h1 em{font-family:var(--fs);font-style:italic;color:var(--green)}
+        .si-card h1 em{font-family:var(--fs);font-style:italic;color:var(--accent)}
         .si-sub{font-size:13.5px;color:var(--text2);line-height:1.6;margin-bottom:26px}
         .si-seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:26px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:5px}
         .si-seg button{padding:12px 10px;border:none;background:none;border-radius:8px;font-family:var(--ff);font-size:14px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .2s var(--ease)}
-        .si-seg button.on{background:var(--green);color:#030C05}
+        .si-seg button.on{background:var(--accent);color:#030C05}
         .si-forgot{display:block;text-align:right;font-size:12.5px;color:var(--text3);margin:-6px 0 18px}
-        .si-forgot:hover{color:var(--green)}
+        .si-forgot:hover{color:var(--accent)}
         .si-foot{font-size:11.5px;color:var(--text3);text-align:center;margin-top:16px;line-height:1.6}
-        .si-foot a{color:var(--green)}
+        .si-foot a{color:var(--accent)}
       `}</style>
 
       <div className="si-card gs">
@@ -107,7 +107,7 @@ function SignupForm({ done, onSubmit }: { done: boolean; onSubmit: () => void })
         <label>Confirm password</label>
         <input type="password" placeholder="Repeat your password" required minLength={8} value={confirm} onChange={(e) => setConfirm(e.target.value)} />
       </div>
-      {error && <div style={{ fontSize: 12.5, color: "#ffb3b3", background: "rgba(255,107,107,.09)", border: "1px solid rgba(255,107,107,.32)", borderRadius: 9, padding: "10px 13px", marginBottom: 16 }}>{error}</div>}
+      {error && <div style={{ fontSize: "var(--fz2)", color: "var(--alert)", background: "rgba(255,107,107,.09)", border: "1px solid rgba(255,107,107,.32)", borderRadius: 9, padding: "10px 13px", marginBottom: 16 }}>{error}</div>}
       <button type="submit" className="if-submit">Create account</button>
     </form>
   );
@@ -119,8 +119,8 @@ function SuccessState({ heading, body }: { heading: string; body: string }) {
       <div style={{ width: 52, height: 52, borderRadius: "50%", background: "rgba(61,255,135,.12)", border: "1px solid rgba(61,255,135,.3)", display: "grid", placeItems: "center", margin: "0 auto 16px" }}>
         <Check />
       </div>
-      <div style={{ fontSize: 16, fontWeight: 500, color: "var(--text)", marginBottom: 8 }}>{heading}</div>
-      <div style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, maxWidth: 320, margin: "0 auto" }}>{body}</div>
+      <div style={{ fontSize: "var(--fz5)", fontWeight: 500, color: "var(--text)", marginBottom: 8 }}>{heading}</div>
+      <div style={{ fontSize: "var(--fz4)", color: "var(--text2)", lineHeight: 1.6, maxWidth: 320, margin: "0 auto" }}>{body}</div>
     </div>
   );
 }

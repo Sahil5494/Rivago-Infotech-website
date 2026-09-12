@@ -88,10 +88,10 @@ export default function IntakeForm() {
       ) : (
         <div style={{ textAlign: "center", padding: "30px 0" }}>
           <div style={{ width: 56, height: 56, borderRadius: "50%", background: "rgba(61,255,135,.12)", border: "1px solid rgba(61,255,135,.3)", display: "grid", placeItems: "center", margin: "0 auto 18px" }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 12l5 5 8-10" stroke="#3DFF87" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 12l5 5 8-10" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </div>
-          <div style={{ fontSize: 17, fontWeight: 500, color: "var(--text)", marginBottom: 8 }}>Brief received.</div>
-          <div style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, maxWidth: 340, margin: "0 auto" }}>A senior partner is reviewing it now. Expect a calibration-call invite within the hour.</div>
+          <div style={{ fontSize: "var(--fz7)", fontWeight: 500, color: "var(--text)", marginBottom: 8 }}>Brief received.</div>
+          <div style={{ fontSize: "var(--fz4)", color: "var(--text2)", lineHeight: 1.6, maxWidth: 340, margin: "0 auto" }}>A senior partner is reviewing it now. Expect a calibration-call invite within the hour.</div>
         </div>
       )}
     </form>
