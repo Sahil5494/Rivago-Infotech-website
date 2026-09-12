@@ -1,17 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { routes } from "@/lib/routes";
-
-/** Routes whose page is a light/cream canvas from y=0 (no dark hero) — nav must render
- * permanently solid with dark-on-cream colors here, matching the source design. */
-const CREAM_NAV_PREFIXES = ["/resources", "/open-positions", "/view-jobs/role"];
-
-/** Routes that render their own standalone header and must not get the global nav at all.
- * Exact match only — "/view-jobs/role" is a normal cream page and keeps the global nav. */
-const NO_NAV_ROUTES = ["/view-jobs"];
 
 const Chevron = () => (
   <svg className="caret" viewBox="0 0 8 8" fill="none">
@@ -27,7 +18,7 @@ const Arrow = () => (
 
 const CircleIco = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.3" />
+    <circle cx="8" cy="8" r="6" stroke="#3DFF87" strokeWidth="1.3" />
   </svg>
 );
 
@@ -88,6 +79,7 @@ const mobileSections: { title: string; href?: string; links: { href: string; lab
     title: "About",
     links: [
       { href: routes.about, label: "Our story" },
+      { href: routes.about, label: "Leadership team" },
       { href: routes.about, label: "Offices" },
       { href: routes.contactUs, label: "Contact" },
     ],
@@ -102,22 +94,11 @@ const mobileSections: { title: string; href?: string; links: { href: string; lab
 ];
 
 export default function Nav() {
-  const pathname = usePathname();
-  const isCreamPage = CREAM_NAV_PREFIXES.some((p) => pathname === p || pathname.startsWith(p + "/") || pathname.startsWith(p + "?"));
   const [solid, setSolid] = useState(false);
   const [openKey, setOpenKey] = useState<MMKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSectionOpen, setMobileSectionOpen] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const careersTriggerRef = useRef<HTMLAnchorElement>(null);
-  const careersPanelRef = useRef<HTMLDivElement>(null);
-  const [prevPathname, setPrevPathname] = useState(pathname);
-  if (pathname !== prevPathname) {
-    setPrevPathname(pathname);
-    setOpenKey(null);
-    setMobileOpen(false);
-    setMobileSectionOpen(null);
-  }
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 20);
@@ -125,13 +106,6 @@ export default function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    document.body.classList.toggle("theme-cream-nav", isCreamPage);
-    return () => {
-      document.body.classList.remove("theme-cream-nav");
-    };
-  }, [isCreamPage]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -149,19 +123,8 @@ export default function Nav() {
     return () => window.removeEventListener("resize", onResize);
   }, [mobileOpen]);
 
-  if (NO_NAV_ROUTES.some((p) => pathname === p)) return null;
-
   function show(key: MMKey) {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    if (key === "careers" && careersTriggerRef.current && careersPanelRef.current) {
-      const tr = careersTriggerRef.current;
-      const p = careersPanelRef.current;
-      const r = tr.getBoundingClientRect();
-      const half = (p.offsetWidth || 320) / 2;
-      const pad = 16;
-      const x = Math.min(Math.max(r.left + r.width / 2, half + pad), window.innerWidth - half - pad);
-      p.style.setProperty("--mmx", `${x}px`);
-    }
     setOpenKey(key);
   }
   function scheduleHide() {
@@ -172,13 +135,13 @@ export default function Nav() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
   }
 
-  const navSolid = isCreamPage || solid || openKey !== null;
+  const navSolid = solid || openKey !== null;
 
   return (
     <>
       <nav id="nav" className={navSolid ? "solid" : ""}>
         <Link className="logo" href={routes.home}>
-          <div className="logo-mark">R</div>Rivago<span className="logo-sub"> Infotech</span>
+          <div className="logo-mark">R</div>Rivago<span style={{ fontWeight: 300, color: "var(--text2)" }}> Infotech</span>
         </Link>
         <div className="nav-mid" id="navMid" onMouseLeave={scheduleHide}>
           <Link className={`nl${openKey === "services" ? " active-mm" : ""}`} href={routes.services} aria-expanded={openKey === "services"} onMouseEnter={() => show("services")} onFocus={() => show("services")}>
@@ -193,7 +156,7 @@ export default function Nav() {
           <Link className={`nl${openKey === "about" ? " active-mm" : ""}`} href={routes.about} aria-expanded={openKey === "about"} onMouseEnter={() => show("about")} onFocus={() => show("about")}>
             About <Chevron />
           </Link>
-          <Link ref={careersTriggerRef} className={`nl${openKey === "careers" ? " active-mm" : ""}`} href={routes.career} aria-expanded={openKey === "careers"} onMouseEnter={() => show("careers")} onFocus={() => show("careers")}>
+          <Link className={`nl${openKey === "careers" ? " active-mm" : ""}`} href={routes.career} aria-expanded={openKey === "careers"} onMouseEnter={() => show("careers")} onFocus={() => show("careers")}>
             Careers <Chevron />
           </Link>
 
@@ -260,28 +223,31 @@ export default function Nav() {
           {/* ABOUT panel */}
           <div className={`mm mm-about${openKey === "about" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
             <Link className="mm-link" href={routes.about}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.3" /><path d="M8 5v3l2 1.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
+              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#3DFF87" strokeWidth="1.3" /><path d="M8 5v3l2 1.5" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
               <div className="mm-link-body"><div className="mm-link-title">Our story <Arrow /></div><div className="mm-link-desc">Why we built Rivago and what we stand for</div></div>
             </Link>
-
             <Link className="mm-link" href={routes.about}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5 1.5 3 4 3 7c0 4 5 7.5 5 7.5s5-3.5 5-7.5c0-3-2-5.5-5-5.5z" stroke="currentColor" strokeWidth="1.3" /><circle cx="8" cy="7" r="1.8" stroke="currentColor" strokeWidth="1.3" /></svg></div>
-              <div className="mm-link-body"><div className="mm-link-title">Offices</div><div className="mm-link-desc">Wilmington · Pune · Ayr</div></div>
+              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="5" cy="6" r="2" stroke="#3DFF87" strokeWidth="1.3" /><circle cx="11" cy="6" r="2" stroke="#3DFF87" strokeWidth="1.3" /><path d="M2 13c0-1.7 1.3-3 3-3M14 13c0-1.7-1.3-3-3-3" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
+              <div className="mm-link-body"><div className="mm-link-title">Leadership team</div><div className="mm-link-desc">Senior partners who own every search</div></div>
+            </Link>
+            <Link className="mm-link" href={routes.about}>
+              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5 1.5 3 4 3 7c0 4 5 7.5 5 7.5s5-3.5 5-7.5c0-3-2-5.5-5-5.5z" stroke="#3DFF87" strokeWidth="1.3" /><circle cx="8" cy="7" r="1.8" stroke="#3DFF87" strokeWidth="1.3" /></svg></div>
+              <div className="mm-link-body"><div className="mm-link-title">Offices</div><div className="mm-link-desc">US · Canada · UAE · India</div></div>
             </Link>
             <Link className="mm-link" href={routes.contactUs}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="3" width="11" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.3" /><path d="M5 6h6M5 8.5h6M5 11h4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
+              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="3" width="11" height="10" rx="1.5" stroke="#3DFF87" strokeWidth="1.3" /><path d="M5 6h6M5 8.5h6M5 11h4" stroke="#3DFF87" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
               <div className="mm-link-body"><div className="mm-link-title">Contact</div><div className="mm-link-desc">Talk to a partner across our three offices</div></div>
             </Link>
           </div>
 
           {/* CAREERS panel */}
-          <div ref={careersPanelRef} className={`mm mm-anchor mm-careers-1col${openKey === "careers" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
+          <div className={`mm mm-anchor mm-careers-1col${openKey === "careers" ? " open" : ""}`} style={{ "--mmx": "auto" } as React.CSSProperties} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
             <Link className="mm-link" href={routes.searchJobs}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 5.5h11v8h-11z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" /><path d="M6 5.5V4a1 1 0 011-1h2a1 1 0 011 1v1.5M2.5 9h11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
+              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 5.5h11v8h-11z" stroke="#3DFF87" strokeWidth="1.2" strokeLinejoin="round" /><path d="M6 5.5V4a1 1 0 011-1h2a1 1 0 011 1v1.5M2.5 9h11" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
               <div className="mm-link-body"><div className="mm-link-title">Search Jobs <Arrow /></div><div className="mm-link-desc">Browse every open role across our offices</div></div>
             </Link>
             <Link className="mm-link" href={routes.career}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="currentColor" strokeWidth="1.2" /><path d="M3 13.5c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
+              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="#3DFF87" strokeWidth="1.2" /><path d="M3 13.5c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="#3DFF87" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
               <div className="mm-link-body"><div className="mm-link-title">Work at Rivago <Arrow /></div><div className="mm-link-desc">Life, values and how we run a desk</div></div>
             </Link>
           </div>

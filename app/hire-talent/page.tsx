@@ -56,12 +56,12 @@ const stages = [
 ];
 
 const whyCards = [
-  { title: "Fast without cutting corners", desc: "21-day median shortlists, every time. Every candidate is fully screened against your scorecard before reaching your inbox — not keyword-matched and not parsed by a machine.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="var(--accent)" strokeWidth="1.5" /><path d="M11 7v4l3 2" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
-  { title: "One partner, full ownership", desc: "The same senior partner from brief to placement. No handoffs to BD, no relays through account managers, no junior researchers running the candidate calls.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="var(--accent)" strokeWidth="1.5" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
-  { title: "Industry specialists", desc: "Your brief goes to a partner who's recruited in your sector for seven-plus years. They know the comp bands, the unpublished orgs and the people who haven't updated their LinkedIn in two years.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l2 5 5 .7-3.6 3.5.9 5L11 13.5l-4.3 2.5.9-5L4 7.7l5-.7z" stroke="var(--accent)" strokeWidth="1.5" strokeLinejoin="round" /></svg>) },
-  { title: "Documented & auditable", desc: "Every search produces a full audit trail — scorecards, screening notes, reference depth, decision rationale. Ready for board, compliance or DEI review at any point.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l8 4v5c0 5-3.5 8.5-8 9.5C6.5 19.5 3 16 3 11V6z" stroke="var(--accent)" strokeWidth="1.5" strokeLinejoin="round" /></svg>) },
-  { title: "Four markets, one standard", desc: "US, Canada, UAE, India — same partner-owned process everywhere. Visa, right-to-work, relocation and family logistics handled end-to-end with the hiring company.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="var(--accent)" strokeWidth="1.5" /><path d="M2 11h18M11 3a13 13 0 010 16M11 3a13 13 0 000 16" stroke="var(--accent)" strokeWidth="1.5" /></svg>) },
-  { title: "Replacement guarantee", desc: "12-month replacement on retained engagements, 90-day on contingent — no questions asked, no extra fee. If a placement leaves, we restart the search at no charge.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="6" width="16" height="13" rx="2" stroke="var(--accent)" strokeWidth="1.5" /><path d="M7 6V4a2 2 0 012-2h4a2 2 0 012 2v2M7 12l3 3 6-6" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
+  { title: "Fast without cutting corners", desc: "21-day median shortlists, every time. Every candidate is fully screened against your scorecard before reaching your inbox — not keyword-matched and not parsed by a machine.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#3DFF87" strokeWidth="1.5" /><path d="M11 7v4l3 2" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
+  { title: "One partner, full ownership", desc: "The same senior partner from brief to placement. No handoffs to BD, no relays through account managers, no junior researchers running the candidate calls.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="#3DFF87" strokeWidth="1.5" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
+  { title: "Industry specialists", desc: "Your brief goes to a partner who's recruited in your sector for seven-plus years. They know the comp bands, the unpublished orgs and the people who haven't updated their LinkedIn in two years.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l2 5 5 .7-3.6 3.5.9 5L11 13.5l-4.3 2.5.9-5L4 7.7l5-.7z" stroke="#3DFF87" strokeWidth="1.5" strokeLinejoin="round" /></svg>) },
+  { title: "Documented & auditable", desc: "Every search produces a full audit trail — scorecards, screening notes, reference depth, decision rationale. Ready for board, compliance or DEI review at any point.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l8 4v5c0 5-3.5 8.5-8 9.5C6.5 19.5 3 16 3 11V6z" stroke="#3DFF87" strokeWidth="1.5" strokeLinejoin="round" /></svg>) },
+  { title: "Four markets, one standard", desc: "US, Canada, UAE, India — same partner-owned process everywhere. Visa, right-to-work, relocation and family logistics handled end-to-end with the hiring company.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#3DFF87" strokeWidth="1.5" /><path d="M2 11h18M11 3a13 13 0 010 16M11 3a13 13 0 000 16" stroke="#3DFF87" strokeWidth="1.5" /></svg>) },
+  { title: "Replacement guarantee", desc: "12-month replacement on retained engagements, 90-day on contingent — no questions asked, no extra fee. If a placement leaves, we restart the search at no charge.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="6" width="16" height="13" rx="2" stroke="#3DFF87" strokeWidth="1.5" /><path d="M7 6V4a2 2 0 012-2h4a2 2 0 012 2v2M7 12l3 3 6-6" stroke="#3DFF87" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
 ];
 
 const industryTiles = [
@@ -87,7 +87,7 @@ const Arrow = () => (
   <svg className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
 const Check = () => (
-  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="var(--accent)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="#3DFF87" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
 
 export default function HireTalentPage() {
@@ -101,7 +101,7 @@ export default function HireTalentPage() {
           <div className="eyebrow ew-light gs" style={{ marginBottom: 28, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>For clients</div>
           <h1 className="gs">The shortlist<br />that ends the <em>search.</em></h1>
           <p className="lead gs">Senior operators across technology, healthcare, legal, finance, aerospace, telecom and automotive — pre-screened, on-brief, in your inbox in 48 hours. A partner on the line, not a portal.</p>
-          <div className="gs" style={{ marginTop: 32, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+          <div className="gs" style={{ marginTop: 32, display: "flex", gap: 12, justifyContent: "center" }}>
             <a className="btn btn-prim" href="#intake">Book a strategy call <Arrow /></a>
             <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See proof</Link>
           </div>
@@ -120,7 +120,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>How we engage</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Three ways to put a Rivago partner<br />on your <em>next requisition.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Three ways to put a Rivago partner<br />on your <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>next requisition.</em></h2>
           </div>
           <div className="modes">
             {modes.map((m) => (
@@ -140,11 +140,11 @@ export default function HireTalentPage() {
       </section>
 
       {/* PROCESS DEEP */}
-      <section className="section alt lt">
+      <section className="section alt">
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we actually do</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760 }}>A search runs five stages.<br />None of them are <em>a portal.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760 }}>A search runs five stages.<br />None of them are <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>a portal.</em></h2>
           </div>
           <div className="proc-deep">
             {stages.map((s) => (
@@ -167,7 +167,7 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we put in writing</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Four numbers we&apos;ll stand behind<br />on the <em>first call.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Four numbers we&apos;ll stand behind<br />on the <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>first call.</em></h2>
           </div>
           <div className="guarantee">
             <div className="gtee gs"><div className="gtee-val">21<sup>days</sup></div><div className="gtee-title">Median time-to-shortlist</div><div className="gtee-desc">From signed JD to three calibrated finalists in your inbox.</div></div>
@@ -179,11 +179,11 @@ export default function HireTalentPage() {
       </section>
 
       {/* WHY */}
-      <section className="section alt lt">
+      <section className="section alt">
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Why hiring managers choose us</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Built for hiring teams that<br /><em>can&apos;t afford to slow down.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Built for hiring teams that<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>can&apos;t afford to slow down.</em></h2>
           </div>
           <div className="why-grid">
             {whyCards.map((c) => (
@@ -202,8 +202,8 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Practices</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Specialist partners,<br />aligned to <em>your sector.</em></h2>
-            <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: "var(--fz5)", fontWeight: 400, lineHeight: 1.7 }}>Your brief goes straight to the partner who works your sector — not a shared queue. They already know who is good, who is moving, and what it takes to get them to take the call.</p>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Specialist partners,<br />aligned to <em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "var(--green)" }}>your sector.</em></h2>
+            <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: 16, fontWeight: 300, lineHeight: 1.7 }}>Your brief goes straight to the partner who works your sector — not a shared queue. They already know who is good, who is moving, and what it takes to get them to take the call.</p>
           </div>
           <div className="ind-strip">
             {industryTiles.map((t) => (
@@ -222,8 +222,8 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>From hiring managers</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>In their<br /><em>own words.</em></h2>
-            <p style={{ color: "var(--dt2)", fontSize: "var(--fz5)", lineHeight: 1.78, fontWeight: 400, maxWidth: 540, marginTop: 22 }}>Plain English from heads of talent, GCs, CFOs and founders who hired through Rivago in the last eighteen months. No pseudonyms. No doctored quotes.</p>
+            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>In their<br /><em style={{ fontFamily: "var(--fs)", fontStyle: "italic", color: "#0A7040" }}>own words.</em></h2>
+            <p style={{ color: "var(--dt2)", fontSize: 16, lineHeight: 1.78, fontWeight: 300, maxWidth: 540, marginTop: 22 }}>Plain English from heads of talent, GCs, CFOs and founders who hired through Rivago in the last eighteen months. No pseudonyms. No doctored quotes.</p>
           </div>
           <div className="testi-cream">
             {testimonials.map((t) => (
@@ -231,7 +231,7 @@ export default function HireTalentPage() {
                 <span className="tc-tag">{t.tag}</span>
                 <p className="tc-quote-serif">{t.quote}</p>
                 <div className="tc-author2">
-                  <div style={{ width: 40, height: 40, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "var(--grad-brand)", color: "var(--on-accent)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{t.initials}</div>
+                  <div style={{ width: 40, height: 40, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "#030C05", fontWeight: 600, fontSize: 13, letterSpacing: ".02em" }}>{t.initials}</div>
                   <div><div className="tc-author2-name">{t.name}</div><div className="tc-author2-role">{t.role}</div></div>
                 </div>
               </div>
@@ -241,7 +241,7 @@ export default function HireTalentPage() {
       </section>
 
       {/* INTAKE FORM */}
-      <section className="intake-band lt" id="intake">
+      <section className="intake-band" id="intake">
         <div className="intake-grid">
           <div className="intake-l gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 22, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Hire Talent</div>
@@ -262,7 +262,7 @@ export default function HireTalentPage() {
       <section className="clients-cta gs">
         <h2>Tell us who you need.<br /><em>We&apos;ll be back tomorrow.</em></h2>
         <p>Send the brief and a partner comes back with a written plan — timelines, comp read and the shape of the shortlist — within one business day.</p>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
           <a className="btn btn-cream-prim" href="#intake">Book a scoping call <Arrow /></a>
           <Link className="btn btn-cream-ghost" href={`${routes.resources}?view=cs`}>Read case studies</Link>
         </div>

@@ -1,23 +1,14 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { routes, servedMarkets } from "@/lib/routes";
 
-/** Routes that render their own standalone footer and must not get the global one.
- * Exact match only — "/view-jobs/role" is a normal cream page and keeps the global footer. */
-const NO_FOOTER_ROUTES = ["/view-jobs"];
-
 export default function Footer() {
-  const pathname = usePathname();
   const year = new Date().getFullYear();
-  if (NO_FOOTER_ROUTES.some((p) => pathname === p)) return null;
   return (
-    <footer className="inv">
+    <footer>
       <div className="ft-grid">
         <div>
           <Link className="logo" href={routes.home}>
-            <div className="logo-mark">R</div>Rivago<span className="logo-sub"> Infotech</span>
+            <div className="logo-mark">R</div>Rivago<span style={{ fontWeight: 300, color: "var(--text2)" }}> Infotech</span>
           </Link>
           <div className="ft-brand">
             A global staffing firm built to unlimit the search. We map entire markets with AI, then put one senior
@@ -25,10 +16,10 @@ export default function Footer() {
             role. Ten specialist practices across the US, Canada, the UAE and India, since 2019.
           </div>
           <div style={{ marginTop: 18 }}>
-            <div style={{ fontSize: "var(--fz1)", fontWeight: 500, color: "var(--text3)", textTransform: "uppercase", letterSpacing: ".07em", marginBottom: 6 }}>
+            <div style={{ fontSize: 10, fontWeight: 600, color: "var(--text3)", textTransform: "uppercase", letterSpacing: ".07em", marginBottom: 6 }}>
               Get in touch
             </div>
-            <a href="mailto:info@rivagoinfotech.com" style={{ fontSize: "var(--fz2)", color: "var(--text2)" }}>info@rivagoinfotech.com</a>
+            <a href="mailto:info@rivagoinfotech.com" style={{ fontSize: 13, color: "var(--text2)" }}>info@rivagoinfotech.com</a>
           </div>
           <div className="ft-soc">
             <a href="https://www.linkedin.com/company/rivago-infotech-inc/" target="_blank" rel="noopener noreferrer" aria-label="Rivago Infotech on LinkedIn">

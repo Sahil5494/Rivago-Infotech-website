@@ -13,11 +13,11 @@ const LAST_UPDATED = "September 1, 2026";
 
 function LegalLinks() {
   return (
-    <div style={{ marginTop: 64, paddingTop: 32, borderTop: "1px solid var(--border)", display: "flex", flexWrap: "wrap", gap: 24, alignItems: "center", fontSize: "var(--fz3)" }}>
+    <div style={{ marginTop: 64, paddingTop: 32, borderTop: "1px solid var(--border)", display: "flex", flexWrap: "wrap", gap: 24, alignItems: "center", fontSize: 13.5 }}>
       <span style={{ color: "var(--text3)" }}>Related:</span>
-      <Link href={routes.privacy} style={{ color: "var(--accent)" }}>Privacy Policy</Link>
-      <Link href={routes.terms} style={{ color: "var(--accent)" }}>Terms of Service</Link>
-      <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--accent)" }}>legal@rivagoinfotech.com</a>
+      <Link href={routes.privacy} style={{ color: "var(--green)" }}>Privacy Policy</Link>
+      <Link href={routes.terms} style={{ color: "var(--green)" }}>Terms of Service</Link>
+      <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--green)" }}>legal@rivagoinfotech.com</a>
     </div>
   );
 }
@@ -28,7 +28,7 @@ export default function CookiesPage() {
       <header className="page-hero" style={{ padding: "140px 44px 56px" }}>
         <div className="page-hero-inner">
           <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>Cookie Policy</span></div>
-          <h1 style={{ fontSize: "var(--fz13)" }}>Cookie Policy</h1>
+          <h1 style={{ fontSize: "clamp(32px,4vw,48px)" }}>Cookie Policy</h1>
           <p className="lead">Last updated: {LAST_UPDATED}</p>
         </div>
       </header>
@@ -44,14 +44,14 @@ export default function CookiesPage() {
 }
 
 function LegalBody() {
-  const h2: CSSProperties = { fontSize: "var(--fz9)", fontWeight: 500, color: "var(--text)", letterSpacing: "-.01em", marginTop: 44, marginBottom: 14 };
-  const p: CSSProperties = { fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.8, marginBottom: 14, fontWeight: 400 };
-  const ul: CSSProperties = { fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.9, marginBottom: 14, paddingLeft: 22, fontWeight: 400 };
+  const h2: CSSProperties = { fontSize: 22, fontWeight: 500, color: "var(--text)", letterSpacing: "-.01em", marginTop: 44, marginBottom: 14 };
+  const p: CSSProperties = { fontSize: 15, color: "var(--text2)", lineHeight: 1.8, marginBottom: 14, fontWeight: 300 };
+  const ul: CSSProperties = { fontSize: 15, color: "var(--text2)", lineHeight: 1.9, marginBottom: 14, paddingLeft: 22, fontWeight: 300 };
 
   return (
     <div>
       <p style={p}>
-        This Cookie Policy explains how Rivago Infotech (&ldquo;Rivago,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo; or &ldquo;our&rdquo;) uses cookies and similar technologies on rivagoinfotech.com, and the choices available to you. It should be read alongside our <Link href={routes.privacy} style={{ color: "var(--accent)" }}>Privacy Policy</Link>.
+        This Cookie Policy explains how Rivago Infotech (&ldquo;Rivago,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo; or &ldquo;our&rdquo;) uses cookies and similar technologies on rivagoinfotech.com, and the choices available to you. It should be read alongside our <Link href={routes.privacy} style={{ color: "var(--green)" }}>Privacy Policy</Link>.
       </p>
 
       <h2 style={h2}>1. What are cookies</h2>
@@ -75,7 +75,7 @@ function LegalBody() {
       <p style={p}>We may update this Cookie Policy from time to time to reflect changes in the technologies we use or applicable law. The &ldquo;Last updated&rdquo; date at the top of this page will reflect the most recent revision.</p>
 
       <h2 style={h2}>6. Contact us</h2>
-      <p style={p}>Questions about this Cookie Policy can be sent to <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--accent)" }}>legal@rivagoinfotech.com</a>.</p>
+      <p style={p}>Questions about this Cookie Policy can be sent to <a href="mailto:legal@rivagoinfotech.com" style={{ color: "var(--green)" }}>legal@rivagoinfotech.com</a>.</p>
     </div>
   );
 }
