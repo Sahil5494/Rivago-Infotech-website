@@ -35,13 +35,21 @@
      added later lands on white rather than flashing black. Dark is opted
      into with class="inv".                                                */
 
-  --surface-1:#FFFFFF;   /* page ground               */
-  --surface-2:#F2F7F5;   /* pale mint band (measured) */
-  --surface-3:#FFFFFF;   /* card                      */
-  --surface-4:#EDF7F2;   /* second mint tint          */
+  /* The reference's three light values, but NOT in its assignment. Its
+     dominant ground is #FFFFFF and its cards are white too — that works
+     there because photography and product screenshots do the separating.
+     With none of that, white card on white band gives a card no edge at
+     all, and .proc-step was painting --bg2 onto a --bg2 band.
+
+     So the ground takes the pale mint and white is reserved for what sits
+     ON it. Same three colours, a ladder instead of a flat. */
+  --surface-1:#F2F7F5;   /* page ground — pale mint (measured) */
+  --surface-2:#EDF7F2;   /* raised band  — second tint         */
+  --surface-3:#FFFFFF;   /* card — always lifts off the ground */
+  --surface-4:#EDF7F2;
   --surface-inv:#FFFFFF;
   --surface-inv-2:#F2F7F5;
-  --chip:#EDF7F2;
+  --chip:#E3EFE9;
 
   --text-1:#000000;      /* 21.0:1 (measured)  */
   --text-2:#3A3F3D;      /* 11.2:1             */
@@ -222,9 +230,9 @@
 .lt{
   /* The reference's light set, restated so a `.lt` island nested inside a
      dark band resolves correctly. Identical to :root by design. */
-  --surface-1:#FFFFFF; --surface-2:#F2F7F5; --surface-3:#FFFFFF; --surface-4:#EDF7F2;
+  --surface-1:#F2F7F5; --surface-2:#EDF7F2; --surface-3:#FFFFFF; --surface-4:#EDF7F2;
   --surface-inv:#FFFFFF; --surface-inv-2:#F2F7F5;
-  --chip:#EDF7F2;
+  --chip:#E3EFE9;
   --text-1:#000000; --text-2:#3A3F3D; --text-3:#4F5252;
   --text-inv-1:#000000; --text-inv-2:#3A3F3D; --text-inv-3:#4F5252;
   /* the mint is a light colour and cannot carry text on white; on a light
@@ -521,7 +529,7 @@ a{color:inherit;text-decoration:none}
 .proc-inner{max-width:1200px;margin:0 auto}
 .proc-sub{font-size:var(--fz6);color:var(--text2);margin-bottom:52px;max-width:500px;font-weight:400}
 .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
-.proc-step{background:var(--bg2);padding:32px 28px}
+.proc-step{background:var(--surface-3);padding:32px 28px}
 .proc-num{font-size:var(--fz1);font-weight:500;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:6px}
 .proc-num::before{content:'';display:block;width:18px;height:1px;background:var(--text3)}
 .proc-ico{width:44px;height:44px;border-radius:11px;background:var(--tint-1);border:1px solid var(--tint-2);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
