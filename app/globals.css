@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-::selection{background:#7AFFB4;color:#000805}
-::-moz-selection{background:#7AFFB4;color:#000805}
+::selection{background:#3DFF87;color:#030C05}
+::-moz-selection{background:#3DFF87;color:#030C05}
 :root{
   /* ── COLOUR & TYPE · dark by default ──────────────────────────────────
      The site runs dark: near-black ground, mint text, bright green accent.
@@ -18,22 +18,22 @@
      sets are contrast-verified independently; neither borrows a value from
      the other.                                                          */
 
-  /* ── LIGHT BY DEFAULT · matched to the Metaview reference ─────────────
-     Every value below was measured out of the supplied capture with a
-     headless browser — the backgrounds by painted area, the text colours
-     by node count, the borders off the 67 elements that draw one:
+  /* ── LIGHT BY DEFAULT · the Metaview reference's light set ────────────
+     Two palettes, deliberately from different places. The LIGHT side below
+     is measured out of the supplied capture with a headless browser — the
+     backgrounds by painted area, the text colours by node count, the
+     borders off the 67 elements that draw one:
 
-       grounds  #FFFFFF (25.3M px²) · #F2F7F5 · #EDF7F2
-       dark     #000805 (4.6M px²)  · #0A2119 · #0B1B15
-       text     #000000 · #5E6262 on light; #E8FFF4 · #E3FFEF on dark
+       grounds  #FFFFFF (25.3M px² painted) · #F2F7F5 · #EDF7F2
+       text     #000000 · #5E6262  (darkened to #4F5252, see below)
        rules    #D9D9D9
-       greens   #258B66 · #7AFFB4 · #00FFA5 · #204A3B · #1E4C3C
 
-     Roughly six parts light to four parts dark. Light is the DEFAULT, so
-     a gap between bands, overscroll, or a section added later lands on
-     white rather than flashing black. Dark is opted into with class="inv"
-     and carries the statements: hero, the work itself, the differentiators,
-     proof, the close.                                                     */
+     The DARK side is Rivago's own — the forest greens, in `.inv`. The
+     reference's darks (#000805 / #0A2119 / #0B1B15) are NOT used.
+
+     Light is the DEFAULT, so a gap between bands, overscroll, or a section
+     added later lands on white rather than flashing black. Dark is opted
+     into with class="inv".                                                */
 
   --surface-1:#FFFFFF;   /* page ground               */
   --surface-2:#F2F7F5;   /* pale mint band (measured) */
@@ -49,13 +49,16 @@
                             also clears a panel filled with the #D9D9D9 rule */
   --text-inv-1:#000000; --text-inv-2:#3A3F3D; --text-inv-3:#4F5252;
 
-  /* The reference's own mid green, #258B66, measures 4.23:1 on white and
-     cannot carry body text there. #0E5C3C is the same hue family at 8.0:1,
-     so the brand still reads green on a light ground without failing AA. */
+  /* The reference's own mid green is #258B66. It measures 4.23:1 on white,
+     so it cannot carry body text there, and white on it fails too — which
+     matters because the logo mark sets white on a gradient ending in it.
+     Two substitutions follow from that: text takes #0E5C3C at 8.0:1, and
+     the gradient stop takes #238360, the same hue and saturation one step
+     darker, where white clears at 4.68:1. */
   --accent:#0E5C3C; --accent-inv:#0E5C3C; --accent-hover:#0A4A30;
   --on-accent:#FFFFFF;
   /* the reference fills its primary buttons near-black, not green */
-  --ink-fill:#000805; --on-ink-fill:#FFFFFF;
+  --ink-fill:#030C05; --on-ink-fill:#FFFFFF;
 
   --rule-1:#D9D9D9; --rule-2:#C9CDCB;
   --rule-inv-1:#D9D9D9; --rule-inv-2:#C9CDCB;
@@ -75,15 +78,15 @@
   --pill:999px;
 
   /* ── GRADIENTS ── */
-  --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
+  --grad-cta:linear-gradient(135deg,#0A1A0C 0%,#030C05 100%);
   /* A chip filled with --grad-brand carries --on-accent text, which is
      white here, so the fill has to be the DEEP green on this ground. */
-  --grad-brand:linear-gradient(135deg,#0E5C3C,#258B66);
-  --grad-accent-inv:linear-gradient(135deg,#0E5C3C,#258B66);
+  --grad-brand:linear-gradient(135deg,#0E5C3C,#238360);
+  --grad-accent-inv:linear-gradient(135deg,#0E5C3C,#238360);
   --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
   --grad-ink:linear-gradient(180deg,#FFFFFF 0%,#EDF7F2 100%);
   --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
-  --grad-accent:linear-gradient(92deg,#0E5C3C 0%,#258B66 100%);
+  --grad-accent:linear-gradient(92deg,#0E5C3C 0%,#238360 100%);
   --grad-rule:linear-gradient(90deg,transparent,rgba(122,255,180,.5),transparent);
   --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(122,255,180,.12) 0%,transparent 70%);
 
@@ -159,29 +162,38 @@
    Verified as a set: every text/surface pair inside this context clears
    WCAG AA.                                                                */
 .inv{
-  /* the reference's three dark grounds, ranked by painted area */
-  --surface-1:#000805; --surface-2:#0A2119; --surface-3:#0B1B15; --surface-4:#000805;
-  --surface-inv:#0A2119; --surface-inv-2:#000805;
-  --chip:#0A2119;
-  --text-1:#E8FFF4; --text-2:#E3FFEF; --text-3:rgba(232,255,244,.62);
-  --text-inv-1:#E8FFF4; --text-inv-2:#E3FFEF; --text-inv-3:rgba(232,255,244,.62);
-  /* #7AFFB4 is the reference's own bright mint — dark grounds only */
-  --accent:#7AFFB4; --accent-inv:#7AFFB4; --accent-hover:#A9FFD1;
-  --on-accent:#000805;
-  --ink-fill:#FFFFFF; --on-ink-fill:#000805;
-  --rule-1:rgba(232,255,244,.16); --rule-2:rgba(232,255,244,.28);
-  --rule-inv-1:rgba(232,255,244,.16); --rule-inv-2:rgba(232,255,244,.28);
-  --tint-1:rgba(122,255,180,.08); --tint-2:rgba(122,255,180,.18); --tint-3:rgba(122,255,180,.28);
-  --surface:rgba(232,255,244,.04); --surface2:rgba(232,255,244,.07);
+  /* The forest greens — Rivago's own dark ramp, not the reference's. The
+     light side of this file stays on the measured Metaview set; only the
+     dark islands are ours. The two never meet: nothing here is used on a
+     light ground, and nothing from :root is used on a dark one.
+
+     Deep forest / forest / pine sit 1.02:1 to 1.10:1 apart, so they do NOT
+     separate one band from the next — section boundaries are drawn with a
+     hairline rule instead. The depth is the point. */
+  --surface-1:#030C05; --surface-2:#060F07; --surface-3:#0A1A0C; --surface-4:#030C05;
+  --surface-inv:#060F07; --surface-inv-2:#030C05;
+  --chip:#0A1A0C;
+  --text-1:#F0F4F0; --text-2:#BFCBC0; --text-3:#7A9E7D;
+  --text-inv-1:#F0F4F0; --text-inv-2:#BFCBC0; --text-inv-3:#7A9E7D;
+  /* the bright green, for dark grounds only — 1.32:1 on white */
+  --accent:#3DFF87; --accent-inv:#3DFF87; --accent-hover:#5AFFA0;
+  --on-accent:#030C05;
+  --ink-fill:linear-gradient(135deg,#5AFFA0 0%,#3DFF87 55%,#22E0C0 100%); --on-ink-fill:#030C05;
+  --rule-1:rgba(240,244,240,.12); --rule-2:rgba(240,244,240,.22);
+  --rule-inv-1:rgba(240,244,240,.12); --rule-inv-2:rgba(240,244,240,.22);
+  --tint-1:rgba(61,255,135,.08); --tint-2:rgba(61,255,135,.18); --tint-3:rgba(61,255,135,.28);
+  --surface:rgba(240,244,240,.04); --surface2:rgba(240,244,240,.07);
   --info:#BFE3FF; --info-inv:#1C63B8; --warn:#F5CE7A; --alert:#FF9E9E; --info-ink:#DCEEFF;
   --shadow-1:0 6px 20px rgba(0,0,0,.45); --shadow-2:0 16px 44px rgba(0,0,0,.62);
-  --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
-  --grad-surface:linear-gradient(180deg,#0A2119 0%,#000805 100%);
-  --grad-ink:linear-gradient(180deg,#000805 0%,#0A2119 100%);
-  --grad-paper:linear-gradient(180deg,#0A2119 0%,#000805 100%);
-  --grad-accent:linear-gradient(92deg,#7AFFB4 0%,#E8FFF4 100%);
-  --grad-rule:linear-gradient(90deg,transparent,rgba(122,255,180,.5),transparent);
-  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(122,255,180,.12) 0%,transparent 70%);
+  --grad-cta:linear-gradient(135deg,#0A1A0C 0%,#030C05 100%);
+  --grad-brand:linear-gradient(135deg,#3DFF87,#00D4A8);
+  --grad-accent-inv:linear-gradient(135deg,#3DFF87,#00D4A8);
+  --grad-surface:linear-gradient(180deg,#0A1A0C 0%,#030C05 100%);
+  --grad-ink:linear-gradient(180deg,#030C05 0%,#0A1A0C 100%);
+  --grad-paper:linear-gradient(180deg,#0A1A0C 0%,#030C05 100%);
+  --grad-accent:linear-gradient(92deg,#3DFF87 0%,#7DE8C0 100%);
+  --grad-rule:linear-gradient(90deg,transparent,rgba(61,255,135,.5),transparent);
+  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(61,255,135,.12) 0%,transparent 70%);
   --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
   --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
@@ -219,18 +231,18 @@
      ground the brand reads as the deep green instead, at 8.0:1 */
   --accent:#0E5C3C; --accent-inv:#0E5C3C; --accent-hover:#0A4A30;
   --on-accent:#FFFFFF;
-  --ink-fill:#000805; --on-ink-fill:#FFFFFF;
+  --ink-fill:#030C05; --on-ink-fill:#FFFFFF;
   --rule-1:#D9D9D9; --rule-2:#C9CDCB;
   --rule-inv-1:#D9D9D9; --rule-inv-2:#C9CDCB;
   --tint-1:rgba(14,92,60,.06); --tint-2:rgba(14,92,60,.14); --tint-3:rgba(14,92,60,.24);
   --info:#1C63B8; --info-inv:#BFE3FF; --warn:#8A5A12; --alert:#A33A3A; --info-ink:#123472;
   --shadow-1:0 6px 20px rgba(0,8,5,.07);
   --shadow-2:0 16px 44px rgba(0,8,5,.12);
-  --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
+  --grad-cta:linear-gradient(135deg,#0A1A0C 0%,#030C05 100%);
   --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
   --grad-ink:linear-gradient(180deg,#FFFFFF 0%,#EDF7F2 100%);
   --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
-  --grad-accent:linear-gradient(92deg,#0E5C3C 0%,#258B66 100%);
+  --grad-accent:linear-gradient(92deg,#0E5C3C 0%,#238360 100%);
   --grad-rule:linear-gradient(90deg,transparent,#D9D9D9,transparent);
   --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(14,92,60,.05) 0%,transparent 70%);
   --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
@@ -300,7 +312,7 @@ a{color:inherit;text-decoration:none}
 .hero{position:relative;background:var(--surface-1);display:flex;flex-direction:column;justify-content:center;align-items:stretch;overflow:hidden;padding:160px 0 96px}
 .hphoto{position:absolute;inset:0;z-index:0}
 .hphoto img{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:brightness(.28) saturate(1.2)}
-.hphoto::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,8,5,.15) 0%,rgba(0,8,5,.1) 35%,rgba(0,8,5,.65) 72%,#000805 100%)}
+.hphoto::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,12,5,.15) 0%,rgba(3,12,5,.1) 35%,rgba(3,12,5,.65) 72%,#030C05 100%)}
 .hgrain{position:absolute;inset:0;z-index:2;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");opacity:.5;mix-blend-mode:overlay}
 #particles{position:absolute;inset:0;z-index:1;pointer-events:none}
 
@@ -1164,7 +1176,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .bg-card,.cs-card{position:relative;overflow:hidden}
 .bg-card::before,.cs-card::before{content:'';display:block;aspect-ratio:16/10;margin:-26px -26px 18px;border-radius:18px 18px 0 0;background:linear-gradient(135deg,#A6F0CE,#3DFFB8 75%,#1EA05F)}
 .bg-card::after,.cs-card::after{content:'R';position:absolute;left:18px;top:18px;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--rule-2);backdrop-filter:blur(6px);color:var(--text-1);font-weight:700;font-size:var(--fz2);pointer-events:none;z-index:2}
-.bg-card[data-cat="play"]::before{background:linear-gradient(135deg,#A6F0CE,#7AFFB4 80%)}
+.bg-card[data-cat="play"]::before{background:linear-gradient(135deg,#A6F0CE,#3DFF87 80%)}
 .bg-card[data-cat="comp"]::before{background:linear-gradient(135deg,#7DE8C0,#3DFFB8 80%)}
 .bg-card[data-cat="market"]::before{background:linear-gradient(135deg,#9EFFCB,#3DFFB8 90%)}
 .cs-card[data-cat="tech"]::before{background:linear-gradient(135deg,#A6F0CE,#3DFFB8 80%)}
