@@ -327,40 +327,30 @@ a{color:inherit;text-decoration:none}
 
 .hero-content{position:relative;z-index:5;width:100%;max-width:1240px;margin:0 auto;padding:0 44px;text-align:left}
 
-/* ── HERO PANEL ───────────────────────────────────────────────────────────
-   The right half of the hero, where the photograph used to be. Built in the
-   reference's card language: white fill, a single 1px #D9D9D9 rule, 8px
-   radius, no shadow. Content is real service routes and real offices — no
-   metric appears in it. */
+/* ── HERO VISUAL ──────────────────────────────────────────────────────────
+   The right half of the hero. It held a bordered panel of service links,
+   which now live only in the nav and the SERVICES section; this half is the
+   canvas drawing instead. No frame, no border, no card — it sits directly
+   on the hero ground so the eye reads one open space, not two boxes. */
 .hero-grid{position:relative;z-index:5;width:100%;max-width:1240px;margin:0 auto;
   padding:0 44px;display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
 .hero-grid > .hero-content{padding:0;max-width:none}
-.hero-panel{border:1px solid var(--rule-1);border-radius:10px;background:var(--surface-3);
-  overflow:hidden}
-.hp-head{display:flex;align-items:center;justify-content:space-between;gap:14px;
-  padding:14px 18px;border-bottom:1px solid var(--rule-1);background:var(--surface-2)}
-.hp-lab{font-size:var(--fz1);font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--text-3)}
-.hp-all{font-size:var(--fz1);font-weight:500;color:var(--accent);white-space:nowrap}
-.hp-all:hover{text-decoration:underline}
-.hp-list{list-style:none;margin:0;padding:0}
-.hp-list li + li{border-top:1px solid var(--rule-1)}
-.hp-list a{display:grid;gap:3px;padding:15px 18px;transition:background .18s var(--ease)}
-.hp-list a:hover{background:var(--surface-2)}
-.hp-list b{font-size:var(--fz5);font-weight:500;color:var(--text-1);letter-spacing:-.01em}
-.hp-list span{font-size:var(--fz2);color:var(--text-3);line-height:1.5}
-.hp-foot{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
-  gap:8px 14px;padding:14px 18px;border-top:1px solid var(--rule-1);background:var(--surface-2)}
-.hp-cities{font-size:var(--fz2);font-weight:500;color:var(--text-1)}
-.hp-note{font-size:var(--fz1);color:var(--text-3)}
+.hero-vis{position:relative;width:100%;aspect-ratio:6/5;max-height:440px;min-height:280px}
+.hero-vis canvas{display:block;width:100%;height:100%}
 @media (min-width:1000px){
-  .hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px}
+  .hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px}
 }
 @media (max-width:640px){
-  .hero-grid{padding:0 20px;gap:34px}
+  .hero-grid{padding:0 20px;gap:26px}
+  /* Shorter on a phone: the visual is supporting material there, and a
+     square of it pushes the clients strip off the first screen entirely. */
+  .hero-vis{aspect-ratio:16/9;max-height:196px;min-height:0}
 }
 
-.hero-badge{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:var(--surface-2);border:1px solid var(--rule-1);border-radius:var(--pill);font-size:var(--fz1);color:var(--accent);font-weight:500;letter-spacing:.05em;margin-bottom:28px;white-space:nowrap}
+/* --surface-2 is one step off the hero ground in the light palette, so the
+   pill had no fill to speak of. --surface-3 is the card step and lifts in
+   both palettes — white here, pine on the forest ground. */
+.hero-badge{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:var(--surface-3);border:1px solid var(--rule-1);border-radius:var(--pill);font-size:var(--fz1);color:var(--accent);font-weight:500;letter-spacing:.05em;margin-bottom:28px;white-space:nowrap}
 .bdot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:bdot 2.2s ease infinite}
 @keyframes bdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
 /* -.06em is -3.1px at 52px, which closed the counters on "Staffing" and
@@ -376,12 +366,20 @@ a{color:inherit;text-decoration:none}
 .hero-sub{font-size:var(--fz8);color:var(--text-2);max-width:52ch;margin:0 0 34px;line-height:1.55;font-weight:400}
 .hero-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-start;margin-bottom:22px}
 .btn-hp{padding:14px 28px;background:var(--ink-fill);color:var(--on-ink-fill);border-radius:var(--pill);font-size:var(--fz5);font-weight:500;font-family:var(--ff);border:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .22s}
-.btn-hp:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 14px 44px rgba(61,255,135,.32)}
+/* The hover glow was hard-coded neon (#3DFF87 at .32) — correct over the
+   forest ground, wrong under a near-black pill on a pale one. --shadow-2
+   is the palette's own lift and reads on either. */
+.btn-hp:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:var(--shadow-2)}
 /* The ghost CTA was filling itself with --rule-1 — a rule colour used as a
    surface — and its hover set that same value straight back, so hovering
    changed nothing. It now sits on the ground and lifts on hover. */
 .btn-hg{padding:14px 28px;background:transparent;color:var(--text-1);border:1px solid var(--rule-2);border-radius:var(--pill);font-size:var(--fz5);font-weight:500;font-family:var(--ff);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .22s}
 .btn-hg:hover{background:var(--surface2);border-color:var(--text-3);transform:translateY(-2px)}
+/* Tightened so the two CTAs sit on one row at 390px rather than stacking,
+   which cost ~66px of the first screen on its own. This has to live after
+   the base rules, not in the hero-grid media block further up — same
+   specificity, so source order decides it. */
+@media (max-width:640px){.btn-hp,.btn-hg{padding:13px 20px;font-size:var(--fz3)}}
 .hero-proof{display:flex;align-items:center;gap:12px;justify-content:flex-start;margin-bottom:70px}
 .pav:first-child{margin-left:0}
 .ptxt{font-size:var(--fz2);color:var(--text-2)}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import LogoMarquee from "@/components/LogoMarquee";
 import OrbCanvas from "@/components/OrbCanvas";
+import HeroVisual from "@/components/HeroVisual";
 import Faq from "@/components/Faq";
 import Testimonials from "@/components/Testimonials";
 import CardSlider from "@/components/CardSlider";
@@ -172,7 +173,7 @@ export default function Home() {
           pill CTAs — no photograph, no scrim, no particle field. Dropping
           them also removes the hot-linked Unsplash image that was the LCP
           element and lived on someone else's server. */}
-      <section className="hero inv">
+      <section className="hero">
         <div className="hero-grid">
           <div className="hero-content">
             <div className="hero-badge gs"><span className="bdot"></span>Global Staffing · US · Canada · UAE · India</div>
@@ -187,25 +188,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* The space the photograph used to occupy. Every row here is a
-              real service route and every city a real office — there is no
-              figure in it, because the figures are not verified yet. */}
-          <aside className="hero-panel gs" aria-label="How Rivago engages">
-            <div className="hp-head">
-              <span className="hp-lab">How we engage</span>
-              <Link href="/services" className="hp-all">All services</Link>
-            </div>
-            <ul className="hp-list">
-              <li><Link href="/services/contract-staffing"><b>Contract staffing</b><span>Specialist capacity for a defined window</span></Link></li>
-              <li><Link href="/services/direct-hire"><b>Direct hire</b><span>A permanent search, run end to end</span></Link></li>
-              <li><Link href="/services/executive-search"><b>Executive search</b><span>Leadership and board mandates</span></Link></li>
-              <li><Link href="/services/rpo"><b>Recruitment process outsourcing</b><span>Embedded recruiting capacity</span></Link></li>
-            </ul>
-            <div className="hp-foot">
-              <span className="hp-cities">Wilmington · Pune · Ayr</span>
-              <span className="hp-note">Three offices, three countries</span>
-            </div>
-          </aside>
+          {/* Was a bordered panel listing the service routes. Those links
+              live in the nav and in the SERVICES section below, so nothing
+              is lost from the site's navigation by giving this half of the
+              hero to the visual instead. */}
+          <HeroVisual />
         </div>
       </section>
 
