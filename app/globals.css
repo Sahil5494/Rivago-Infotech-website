@@ -48,7 +48,9 @@
   --accent-inv:#3DFF87;
   --accent-hover:#5AFFA0;
   --on-accent:#030C05;       /* text ON an accent fill                */
-  --ink-fill:#FFFFFF;        /* the high-contrast button fill         */
+  /* The primary action carries the brand. This is consumed only as
+     `background` (.btn-cta, .btn-hp), so a gradient is legal here. */
+  --ink-fill:linear-gradient(135deg,#5AFFA0 0%,#3DFF87 55%,#22E0C0 100%);
   --on-ink-fill:#030C05;
 
   /* rules — mint at low alpha, so they read as a lift off the ground
@@ -160,7 +162,8 @@
   --text-1:#F0F4F0; --text-2:#BFCBC0; --text-3:#7A9E7D;
   --text-inv-1:#F0F4F0; --text-inv-2:#BFCBC0; --text-inv-3:#7A9E7D;
   --accent:#3DFF87; --accent-inv:#3DFF87; --accent-hover:#5AFFA0;
-  --on-accent:#030C05; --ink-fill:#FFFFFF; --on-ink-fill:#030C05;
+  --on-accent:#030C05;
+  --ink-fill:linear-gradient(135deg,#5AFFA0 0%,#3DFF87 55%,#22E0C0 100%); --on-ink-fill:#030C05;
   --rule-1:rgba(240,244,240,.12); --rule-2:rgba(240,244,240,.22);
   --rule-inv-1:rgba(240,244,240,.12); --rule-inv-2:rgba(240,244,240,.22);
   --tint-1:rgba(61,255,135,.08); --tint-2:rgba(61,255,135,.18); --tint-3:rgba(61,255,135,.28);
@@ -208,7 +211,8 @@
   /* the mint is a light colour and cannot carry text on white; on a light
      ground the brand reads as the deep green instead, at 8.0:1 */
   --accent:#0A7040; --accent-inv:#0A7040; --accent-hover:#086039;
-  --on-accent:#FFFFFF; --ink-fill:#030C05; --on-ink-fill:#FFFFFF;
+  --on-accent:#FFFFFF;
+  --ink-fill:linear-gradient(135deg,#0A7040,#0D844D); --on-ink-fill:#FFFFFF;
   --rule-1:rgba(11,19,17,.12); --rule-2:rgba(11,19,17,.22);
   --rule-inv-1:rgba(11,19,17,.12); --rule-inv-2:rgba(11,19,17,.22);
   --tint-1:rgba(10,112,64,.06); --tint-2:rgba(10,112,64,.14); --tint-3:rgba(10,112,64,.24);
@@ -1068,7 +1072,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .cs-eyb::before,.bg-eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent-inv)}
 .cs-feat-h,.bg-fh{font-size:var(--fz12);font-weight:500;letter-spacing:-.025em;line-height:1.12;color:var(--text-inv-1);margin-top:6px}
 .cs-feat,.bg-feat{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-inv-1);border:1px solid var(--rule-inv-1);border-radius:24px;overflow:hidden;margin-top:36px}
-.cs-feat-art,.bg-feat-art{background:linear-gradient(150deg,#A6F0CE,#3DA9FF 70%,#1E4FA0);min-height:380px;position:relative;padding:36px;display:flex;flex-direction:column;justify-content:space-between}
+.cs-feat-art,.bg-feat-art{background:linear-gradient(150deg,#A6F0CE,#3DFFB8 70%,#1EA05F);min-height:380px;position:relative;padding:36px;display:flex;flex-direction:column;justify-content:space-between}
 .cs-feat-art .ftag,.bg-feat-art .ftag{align-self:flex-start;padding:6px 14px;background:rgba(8,37,31,.18);backdrop-filter:blur(8px);border:1px solid var(--rule-2);color:var(--text-inv-2);border-radius:9999px;font-size:var(--fz1);font-weight:500;letter-spacing:.04em}
 .cs-feat-art h2,.bg-feat-art h2{font-size:var(--fz11);font-weight:500;color:var(--text-inv-2);letter-spacing:-.02em;line-height:1.15}
 .cs-feat-body{background:var(--surface-inv-2);padding:44px;display:flex;flex-direction:column;gap:22px}
@@ -1151,17 +1155,17 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .bg-news-form button{background:var(--surface-2);color:var(--text-2);border:none;border-radius:9999px;padding:0 22px;font-family:var(--ff);font-weight:500;font-size:var(--fz3);cursor:pointer}
 /* card-art gradient thumbnails for the sub-view grids */
 .bg-card,.cs-card{position:relative;overflow:hidden}
-.bg-card::before,.cs-card::before{content:'';display:block;aspect-ratio:16/10;margin:-26px -26px 18px;border-radius:18px 18px 0 0;background:linear-gradient(135deg,#A6F0CE,#3DA9FF 75%,#1E4FA0)}
+.bg-card::before,.cs-card::before{content:'';display:block;aspect-ratio:16/10;margin:-26px -26px 18px;border-radius:18px 18px 0 0;background:linear-gradient(135deg,#A6F0CE,#3DFFB8 75%,#1EA05F)}
 .bg-card::after,.cs-card::after{content:'R';position:absolute;left:18px;top:18px;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--rule-2);backdrop-filter:blur(6px);color:var(--text-1);font-weight:700;font-size:var(--fz2);pointer-events:none;z-index:2}
 .bg-card[data-cat="play"]::before{background:linear-gradient(135deg,#A6F0CE,#3DFF87 80%)}
-.bg-card[data-cat="comp"]::before{background:linear-gradient(135deg,#7DE8C0,#3DA9FF 80%)}
-.bg-card[data-cat="market"]::before{background:linear-gradient(135deg,#FFD89E,#3DA9FF 90%)}
-.cs-card[data-cat="tech"]::before{background:linear-gradient(135deg,#A6F0CE,#3DA9FF 80%)}
+.bg-card[data-cat="comp"]::before{background:linear-gradient(135deg,#7DE8C0,#3DFFB8 80%)}
+.bg-card[data-cat="market"]::before{background:linear-gradient(135deg,#9EFFCB,#3DFFB8 90%)}
+.cs-card[data-cat="tech"]::before{background:linear-gradient(135deg,#A6F0CE,#3DFFB8 80%)}
 .cs-card[data-cat="health"]::before{background:linear-gradient(135deg,#A6F0CE,#0A7040 90%)}
-.cs-card[data-cat="finance"]::before{background:linear-gradient(135deg,#7DE8C0,#1E4FA0 90%)}
-.cs-card[data-cat="legal"]::before{background:linear-gradient(135deg,#C9D8FF,#1E4FA0 90%)}
-.cs-card[data-cat="aero"]::before{background:linear-gradient(135deg,#BFE3FF,#11254A 95%)}
-.cs-card[data-cat="supply"]::before{background:linear-gradient(135deg,#FFE0B0,#0A7040 95%)}
+.cs-card[data-cat="finance"]::before{background:linear-gradient(135deg,#7DE8C0,#1EA05F 90%)}
+.cs-card[data-cat="legal"]::before{background:linear-gradient(135deg,#C9FFDF,#1EA05F 90%)}
+.cs-card[data-cat="aero"]::before{background:linear-gradient(135deg,#BFFFDB,#114A2B 95%)}
+.cs-card[data-cat="supply"]::before{background:linear-gradient(135deg,#B0FFDA,#0A7040 95%)}
 .cs-card[data-cat="gtm"]::before{background:var(--grad-brand)}
 @media(max-width:920px){.cs-hero,.bg-hero,.cs-feat,.bg-feat{grid-template-columns:1fr;gap:32px}.cs-grid,.bg-grid{grid-template-columns:1fr}.cs-grid .cs-card,.cs-grid .cs-card.wide,.bg-grid .bg-card{grid-column:span 1}}
 
@@ -1173,7 +1177,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .detail-eyebrow{font-size:var(--fz1);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-inv);margin-bottom:16px}
 .detail-title{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.1;color:var(--text-inv-1)}
 .detail-meta{display:flex;align-items:center;gap:12px;font-size:var(--fz3);color:var(--text-inv-2);margin-top:20px}
-.detail-banner{margin-top:36px;border-radius:24px;overflow:hidden;aspect-ratio:21/9;background:linear-gradient(150deg,#A6F0CE,#3DA9FF 70%,#1E4FA0);display:flex;align-items:flex-end;padding:40px}
+.detail-banner{margin-top:36px;border-radius:24px;overflow:hidden;aspect-ratio:21/9;background:linear-gradient(150deg,#A6F0CE,#3DFFB8 70%,#1EA05F);display:flex;align-items:flex-end;padding:40px}
 .detail-banner h2{font-size:var(--fz11);font-weight:500;color:var(--text-inv-2);letter-spacing:-.02em;line-height:1.2;max-width:80%}
 .detail-body{max-width:760px;margin:0 auto;padding:56px 44px 0}
 .detail-body h2{font-size:var(--fz9);font-weight:500;color:var(--text-inv-1);letter-spacing:-.015em;margin:40px 0 16px}
@@ -1787,7 +1791,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .began-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
 .began-photo{border-radius:22px;overflow:hidden;min-height:380px;background:var(--surface-3)}
 .began-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.began-card.lt{border-radius:22px;padding:44px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,#A6F0CE 0%,#9FE8FF 45%,#C9F87E 100%);position:relative;overflow:hidden}
+.began-card.lt{border-radius:22px;padding:44px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,#A6F0CE 0%,#9EFFCB 45%,#5AFFA0 100%);position:relative;overflow:hidden}
 .began-card-h{font-size:var(--fz9);font-weight:500;color:var(--text-inv-1);letter-spacing:-.02em;margin-bottom:16px}
 .began-card-p{font-size:var(--fz6);color:var(--text-inv-2);line-height:1.7;font-weight:400;margin-bottom:28px;max-width:440px}
 .began-card-btn{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:13px 24px;background:var(--surface-inv-2);color:var(--text-inv-1);border-radius:9999px;font-size:var(--fz3);font-weight:500;font-family:var(--ff);text-decoration:none;transition:all .2s var(--ease)}
