@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-::selection{background:#3DFF87;color:#0B0F0C}
-::-moz-selection{background:#3DFF87;color:#0B0F0C}
+::selection{background:#7AFFB4;color:#000805}
+::-moz-selection{background:#7AFFB4;color:#000805}
 :root{
   /* ── COLOUR & TYPE · dark by default ──────────────────────────────────
      The site runs dark: near-black ground, mint text, bright green accent.
@@ -18,86 +18,79 @@
      sets are contrast-verified independently; neither borrows a value from
      the other.                                                          */
 
-  /* ── CREAM BY DEFAULT ─────────────────────────────────────────────────
-     The site runs light: cream ground, near-black text, the deep green as
-     the brand. Roughly two parts light to one part dark.
+  /* ── LIGHT BY DEFAULT · matched to the Metaview reference ─────────────
+     Every value below was measured out of the supplied capture with a
+     headless browser — the backgrounds by painted area, the text colours
+     by node count, the borders off the 67 elements that draw one:
 
-     The DEFAULT is cream on purpose. Anything unmarked — a gap between
-     bands, overscroll rubber-banding, a section added later — lands on the
-     cream rather than flashing black. Dark is the thing you opt into, with
-     class="inv", and it is reserved for the moments that make a statement:
-     the hero, the proof band, the closing CTA, the footer.
+       grounds  #FFFFFF (25.3M px²) · #F2F7F5 · #EDF7F2
+       dark     #000805 (4.6M px²)  · #0A2119 · #0B1B15
+       text     #000000 · #5E6262 on light; #E8FFF4 · #E3FFEF on dark
+       rules    #D9D9D9
+       greens   #258B66 · #7AFFB4 · #00FFA5 · #204A3B · #1E4C3C
 
-     The full dark palette lives in `.inv` below. Both sets are
-     contrast-verified independently; neither borrows a value from the
-     other. */
+     Roughly six parts light to four parts dark. Light is the DEFAULT, so
+     a gap between bands, overscroll, or a section added later lands on
+     white rather than flashing black. Dark is opted into with class="inv"
+     and carries the statements: hero, the work itself, the differentiators,
+     proof, the close.                                                     */
 
-  /* Cream, not white. #F4F3EE against #030C05 is 17.9:1 — a softer flip
-     than white's 20.3:1 — and it is the warm partner the forest greens
-     were chosen with. White stays for the cards that sit ON the cream, so
-     a card still lifts off its band. */
-  --surface-1:#F4F3EE;   /* cream — page ground        */
-  --surface-2:#EDEBE3;   /* deeper cream — raised band */
-  --surface-3:#FFFFFF;   /* white card                 */
-  --surface-4:#EDEBE3;
+  --surface-1:#FFFFFF;   /* page ground               */
+  --surface-2:#F2F7F5;   /* pale mint band (measured) */
+  --surface-3:#FFFFFF;   /* card                      */
+  --surface-4:#EDF7F2;   /* second mint tint          */
   --surface-inv:#FFFFFF;
-  --surface-inv-2:#F4F3EE;
-  --chip:#E7E4DA;
+  --surface-inv-2:#F2F7F5;
+  --chip:#EDF7F2;
 
-  /* text — pitched against the deeper cream, the darkest ground it lands on */
-  --text-1:#0B1311;   /* 16.9:1 */
-  --text-2:#3D5240;   /*  7.6:1 */
-  --text-3:#526257;   /*  5.8:1 */
-  --text-inv-1:#0B1311; --text-inv-2:#3D5240; --text-inv-3:#526257;
+  --text-1:#000000;      /* 21.0:1 (measured)  */
+  --text-2:#3A3F3D;      /* 11.2:1             */
+  --text-3:#4F5252;      /*  7.9:1 — the reference's #5E6262 darkened so it
+                            also clears a panel filled with the #D9D9D9 rule */
+  --text-inv-1:#000000; --text-inv-2:#3A3F3D; --text-inv-3:#4F5252;
 
-  /* brand — the bright #3DFF87 measures 1.32:1 on cream and cannot carry
-     text or an icon on a light ground at all, so here the brand is the deep
-     green. Same ramp, opposite end, chosen by the ground it lands on. */
-  --accent:#0A7040; --accent-inv:#0A7040; --accent-hover:#086039;
+  /* The reference's own mid green, #258B66, measures 4.23:1 on white and
+     cannot carry body text there. #0E5C3C is the same hue family at 8.0:1,
+     so the brand still reads green on a light ground without failing AA. */
+  --accent:#0E5C3C; --accent-inv:#0E5C3C; --accent-hover:#0A4A30;
   --on-accent:#FFFFFF;
-  /* The primary action carries the brand. Consumed only as `background`
-     (.btn-cta, .btn-hp), so a gradient is legal. The lighter stop is
-     #0D844D rather than #0E8A50 because white on the latter is 4.4:1 and a
-     gradient is only as readable as its worst point. */
-  --ink-fill:linear-gradient(135deg,#0A7040,#0D844D);
-  --on-ink-fill:#FFFFFF;
+  /* the reference fills its primary buttons near-black, not green */
+  --ink-fill:#000805; --on-ink-fill:#FFFFFF;
 
-  --rule-1:rgba(11,19,17,.12); --rule-2:rgba(11,19,17,.22);
-  --rule-inv-1:rgba(11,19,17,.12); --rule-inv-2:rgba(11,19,17,.22);
+  --rule-1:#D9D9D9; --rule-2:#C9CDCB;
+  --rule-inv-1:#D9D9D9; --rule-inv-2:#C9CDCB;
 
-  --tint-1:rgba(10,112,64,.06); --tint-2:rgba(10,112,64,.14); --tint-3:rgba(10,112,64,.24);
+  --tint-1:rgba(14,92,60,.06); --tint-2:rgba(14,92,60,.14); --tint-3:rgba(14,92,60,.24);
 
   --info:#1C63B8; --info-inv:#BFE3FF; --warn:#8A5A12; --alert:#A33A3A; --info-ink:#123472;
 
-  --shadow-1:0 6px 20px rgba(11,19,17,.07);
-  --shadow-2:0 16px 44px rgba(11,19,17,.12);
+  --shadow-1:0 6px 20px rgba(0,8,5,.07);
+  --shadow-2:0 16px 44px rgba(0,8,5,.12);
 
-  /* Fixed chrome — the nav, the mega menu, the page side-nav, the practice
-     bar. These float over BOTH grounds as the page scrolls, so they take
-     one colour site-wide rather than the band beneath them. On a
-     light-dominant site that colour is the cream. */
-  --chrome:rgba(244,243,238,.88);
-  --chrome-solid:rgba(237,235,227,.94);
+  /* Fixed chrome floats over both grounds, so it takes one colour
+     site-wide. The reference's nav is white. */
+  --chrome:rgba(255,255,255,.90);
+  --chrome-solid:rgba(242,247,245,.96);
 
   --pill:999px;
 
   /* ── GRADIENTS ── */
-  --grad-cta:linear-gradient(135deg,#0A1A0C 0%,#030C05 100%);
+  --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
   /* A chip filled with --grad-brand carries --on-accent text, which is
      white here, so the fill has to be the DEEP green on this ground. */
-  --grad-brand:linear-gradient(135deg,#0A7040,#0D844D);
-  --grad-accent-inv:linear-gradient(135deg,#0A7040,#0D844D);
-  --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F4F3EE 100%);
-  --grad-ink:linear-gradient(180deg,#F4F3EE 0%,#EDEBE3 100%);
-  --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F4F3EE 100%);
-  --grad-accent:linear-gradient(92deg,#0A7040 0%,#0E8A50 100%);
-  --grad-rule:linear-gradient(90deg,transparent,rgba(61,255,135,.5),transparent);
-  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(61,255,135,.12) 0%,transparent 70%);
+  --grad-brand:linear-gradient(135deg,#0E5C3C,#258B66);
+  --grad-accent-inv:linear-gradient(135deg,#0E5C3C,#258B66);
+  --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
+  --grad-ink:linear-gradient(180deg,#FFFFFF 0%,#EDF7F2 100%);
+  --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
+  --grad-accent:linear-gradient(92deg,#0E5C3C 0%,#258B66 100%);
+  --grad-rule:linear-gradient(90deg,transparent,rgba(122,255,180,.5),transparent);
+  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(122,255,180,.12) 0%,transparent 70%);
 
   /* ── LEGACY ALIASES ── */
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
   --cream:var(--surface-4);
-  --surface:rgba(11,19,17,.03); --surface2:rgba(11,19,17,.06);
+  --surface:rgba(0,8,5,0.03); --surface2:rgba(0,8,5,0.06);
   --border:var(--rule-1); --border2:var(--rule-2);
   --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
   --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
@@ -166,28 +159,29 @@
    Verified as a set: every text/surface pair inside this context clears
    WCAG AA.                                                                */
 .inv{
-  --surface-1:#030C05; --surface-2:#060F07; --surface-3:#0A1A0C; --surface-4:#030C05;
-  --surface-inv:#060F07; --surface-inv-2:#030C05;
-  --chip:#0A1A0C;
-  --text-1:#F0F4F0; --text-2:#BFCBC0; --text-3:#7A9E7D;
-  --text-inv-1:#F0F4F0; --text-inv-2:#BFCBC0; --text-inv-3:#7A9E7D;
-  --accent:#3DFF87; --accent-inv:#3DFF87; --accent-hover:#5AFFA0;
-  --on-accent:#030C05;
-  --ink-fill:linear-gradient(135deg,#5AFFA0 0%,#3DFF87 55%,#22E0C0 100%); --on-ink-fill:#030C05;
-  --rule-1:rgba(240,244,240,.12); --rule-2:rgba(240,244,240,.22);
-  --rule-inv-1:rgba(240,244,240,.12); --rule-inv-2:rgba(240,244,240,.22);
-  --tint-1:rgba(61,255,135,.08); --tint-2:rgba(61,255,135,.18); --tint-3:rgba(61,255,135,.28);
-  /* raised-panel washes: mint on dark, where :root now holds the dark-on-cream pair */
-  --surface:rgba(240,244,240,.04); --surface2:rgba(240,244,240,.07);
+  /* the reference's three dark grounds, ranked by painted area */
+  --surface-1:#000805; --surface-2:#0A2119; --surface-3:#0B1B15; --surface-4:#000805;
+  --surface-inv:#0A2119; --surface-inv-2:#000805;
+  --chip:#0A2119;
+  --text-1:#E8FFF4; --text-2:#E3FFEF; --text-3:rgba(232,255,244,.62);
+  --text-inv-1:#E8FFF4; --text-inv-2:#E3FFEF; --text-inv-3:rgba(232,255,244,.62);
+  /* #7AFFB4 is the reference's own bright mint — dark grounds only */
+  --accent:#7AFFB4; --accent-inv:#7AFFB4; --accent-hover:#A9FFD1;
+  --on-accent:#000805;
+  --ink-fill:#FFFFFF; --on-ink-fill:#000805;
+  --rule-1:rgba(232,255,244,.16); --rule-2:rgba(232,255,244,.28);
+  --rule-inv-1:rgba(232,255,244,.16); --rule-inv-2:rgba(232,255,244,.28);
+  --tint-1:rgba(122,255,180,.08); --tint-2:rgba(122,255,180,.18); --tint-3:rgba(122,255,180,.28);
+  --surface:rgba(232,255,244,.04); --surface2:rgba(232,255,244,.07);
   --info:#BFE3FF; --info-inv:#1C63B8; --warn:#F5CE7A; --alert:#FF9E9E; --info-ink:#DCEEFF;
   --shadow-1:0 6px 20px rgba(0,0,0,.45); --shadow-2:0 16px 44px rgba(0,0,0,.62);
-  --grad-cta:linear-gradient(135deg,#0A1A0C 0%,#030C05 100%);
-  --grad-surface:linear-gradient(180deg,#0A1A0C 0%,#030C05 100%);
-  --grad-ink:linear-gradient(180deg,#030C05 0%,#0A1A0C 100%);
-  --grad-paper:linear-gradient(180deg,#0A1A0C 0%,#030C05 100%);
-  --grad-accent:linear-gradient(92deg,#3DFF87 0%,#7DE8C0 100%);
-  --grad-rule:linear-gradient(90deg,transparent,rgba(61,255,135,.5),transparent);
-  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(61,255,135,.12) 0%,transparent 70%);
+  --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
+  --grad-surface:linear-gradient(180deg,#0A2119 0%,#000805 100%);
+  --grad-ink:linear-gradient(180deg,#000805 0%,#0A2119 100%);
+  --grad-paper:linear-gradient(180deg,#0A2119 0%,#000805 100%);
+  --grad-accent:linear-gradient(92deg,#7AFFB4 0%,#E8FFF4 100%);
+  --grad-rule:linear-gradient(90deg,transparent,rgba(122,255,180,.5),transparent);
+  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(122,255,180,.12) 0%,transparent 70%);
   --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
   --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
@@ -214,33 +208,31 @@
    they were verified as a set: every text/surface pair clears WCAG AA,
    lowest 5.71:1.                                                          */
 .lt{
-  /* Cream, not white. #F4F3EE against #030C05 is 17.9:1 — a softer flip
-     than white's 20.3:1 — and it is the warm partner these forest greens
-     were chosen with. White stays for the cards that sit ON the cream, so
-     a card still lifts off its band. */
-  --surface-1:#F4F3EE; --surface-2:#EDEBE3; --surface-3:#FFFFFF; --surface-4:#EDEBE3;
-  --surface-inv:#FFFFFF; --surface-inv-2:#F4F3EE;
-  --chip:#E7E4DA;
-  --text-1:#0B1311; --text-2:#3D5240; --text-3:#526257;
-  --text-inv-1:#0B1311; --text-inv-2:#3D5240; --text-inv-3:#526257;
+  /* The reference's light set, restated so a `.lt` island nested inside a
+     dark band resolves correctly. Identical to :root by design. */
+  --surface-1:#FFFFFF; --surface-2:#F2F7F5; --surface-3:#FFFFFF; --surface-4:#EDF7F2;
+  --surface-inv:#FFFFFF; --surface-inv-2:#F2F7F5;
+  --chip:#EDF7F2;
+  --text-1:#000000; --text-2:#3A3F3D; --text-3:#4F5252;
+  --text-inv-1:#000000; --text-inv-2:#3A3F3D; --text-inv-3:#4F5252;
   /* the mint is a light colour and cannot carry text on white; on a light
      ground the brand reads as the deep green instead, at 8.0:1 */
-  --accent:#0A7040; --accent-inv:#0A7040; --accent-hover:#086039;
+  --accent:#0E5C3C; --accent-inv:#0E5C3C; --accent-hover:#0A4A30;
   --on-accent:#FFFFFF;
-  --ink-fill:linear-gradient(135deg,#0A7040,#0D844D); --on-ink-fill:#FFFFFF;
-  --rule-1:rgba(11,19,17,.12); --rule-2:rgba(11,19,17,.22);
-  --rule-inv-1:rgba(11,19,17,.12); --rule-inv-2:rgba(11,19,17,.22);
-  --tint-1:rgba(10,112,64,.06); --tint-2:rgba(10,112,64,.14); --tint-3:rgba(10,112,64,.24);
+  --ink-fill:#000805; --on-ink-fill:#FFFFFF;
+  --rule-1:#D9D9D9; --rule-2:#C9CDCB;
+  --rule-inv-1:#D9D9D9; --rule-inv-2:#C9CDCB;
+  --tint-1:rgba(14,92,60,.06); --tint-2:rgba(14,92,60,.14); --tint-3:rgba(14,92,60,.24);
   --info:#1C63B8; --info-inv:#BFE3FF; --warn:#8A5A12; --alert:#A33A3A; --info-ink:#123472;
   --shadow-1:0 6px 20px rgba(0,8,5,.07);
   --shadow-2:0 16px 44px rgba(0,8,5,.12);
-  --grad-cta:linear-gradient(135deg,#0A1A0C 0%,#030C05 100%);
-  --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F4F3EE 100%);
-  --grad-ink:linear-gradient(180deg,#F4F3EE 0%,#EDEBE3 100%);
-  --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F4F3EE 100%);
-  --grad-accent:linear-gradient(92deg,#0A7040 0%,#0E8A50 100%);
-  --grad-rule:linear-gradient(90deg,transparent,rgba(11,19,17,.18),transparent);
-  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(10,112,64,.05) 0%,transparent 70%);
+  --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
+  --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
+  --grad-ink:linear-gradient(180deg,#FFFFFF 0%,#EDF7F2 100%);
+  --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
+  --grad-accent:linear-gradient(92deg,#0E5C3C 0%,#258B66 100%);
+  --grad-rule:linear-gradient(90deg,transparent,#D9D9D9,transparent);
+  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(14,92,60,.05) 0%,transparent 70%);
   --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
   --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
@@ -308,7 +300,7 @@ a{color:inherit;text-decoration:none}
 .hero{position:relative;background:var(--surface-1);display:flex;flex-direction:column;justify-content:center;align-items:stretch;overflow:hidden;padding:160px 0 96px}
 .hphoto{position:absolute;inset:0;z-index:0}
 .hphoto img{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:brightness(.28) saturate(1.2)}
-.hphoto::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,12,5,.15) 0%,rgba(3,12,5,.1) 35%,rgba(3,12,5,.65) 72%,#030C05 100%)}
+.hphoto::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,8,5,.15) 0%,rgba(0,8,5,.1) 35%,rgba(0,8,5,.65) 72%,#000805 100%)}
 .hgrain{position:absolute;inset:0;z-index:2;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");opacity:.5;mix-blend-mode:overlay}
 #particles{position:absolute;inset:0;z-index:1;pointer-events:none}
 
@@ -453,7 +445,7 @@ a{color:inherit;text-decoration:none}
 /* service card visuals */
 .sv-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:12px;font-size:var(--fz1);font-weight:500;margin-bottom:12px}
 .sv-tg{background:var(--chip);color:var(--accent-inv);border:1px solid rgba(10,96,48,.12)}
-.sv-tb{background:var(--info);color:#FFFFFF;border:1px solid rgba(26,74,154,.12)}
+.sv-tb{background:var(--info);color:var(--surface-1);border:1px solid var(--rule-1)}
 .sv-cand{display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface-inv-2);border:1px solid rgba(0,0,0,.07);border-radius:10px;margin-bottom:8px}
 .sv-cand-av{width:34px;height:34px;border-radius:50%;overflow:hidden;flex-shrink:0}
 .sv-cand-av img{width:100%;height:100%;object-fit:cover}
@@ -1172,15 +1164,15 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .bg-card,.cs-card{position:relative;overflow:hidden}
 .bg-card::before,.cs-card::before{content:'';display:block;aspect-ratio:16/10;margin:-26px -26px 18px;border-radius:18px 18px 0 0;background:linear-gradient(135deg,#A6F0CE,#3DFFB8 75%,#1EA05F)}
 .bg-card::after,.cs-card::after{content:'R';position:absolute;left:18px;top:18px;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--rule-2);backdrop-filter:blur(6px);color:var(--text-1);font-weight:700;font-size:var(--fz2);pointer-events:none;z-index:2}
-.bg-card[data-cat="play"]::before{background:linear-gradient(135deg,#A6F0CE,#3DFF87 80%)}
+.bg-card[data-cat="play"]::before{background:linear-gradient(135deg,#A6F0CE,#7AFFB4 80%)}
 .bg-card[data-cat="comp"]::before{background:linear-gradient(135deg,#7DE8C0,#3DFFB8 80%)}
 .bg-card[data-cat="market"]::before{background:linear-gradient(135deg,#9EFFCB,#3DFFB8 90%)}
 .cs-card[data-cat="tech"]::before{background:linear-gradient(135deg,#A6F0CE,#3DFFB8 80%)}
-.cs-card[data-cat="health"]::before{background:linear-gradient(135deg,#A6F0CE,#0A7040 90%)}
+.cs-card[data-cat="health"]::before{background:linear-gradient(135deg,#A6F0CE,#0E5C3C 90%)}
 .cs-card[data-cat="finance"]::before{background:linear-gradient(135deg,#7DE8C0,#1EA05F 90%)}
 .cs-card[data-cat="legal"]::before{background:linear-gradient(135deg,#C9FFDF,#1EA05F 90%)}
 .cs-card[data-cat="aero"]::before{background:linear-gradient(135deg,#BFFFDB,#114A2B 95%)}
-.cs-card[data-cat="supply"]::before{background:linear-gradient(135deg,#B0FFDA,#0A7040 95%)}
+.cs-card[data-cat="supply"]::before{background:linear-gradient(135deg,#B0FFDA,#0E5C3C 95%)}
 .cs-card[data-cat="gtm"]::before{background:var(--grad-brand)}
 @media(max-width:920px){.cs-hero,.bg-hero,.cs-feat,.bg-feat{grid-template-columns:1fr;gap:32px}.cs-grid,.bg-grid{grid-template-columns:1fr}.cs-grid .cs-card,.cs-grid .cs-card.wide,.bg-grid .bg-card{grid-column:span 1}}
 
@@ -2083,3 +2075,16 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 @media(max-width:480px){.pd-steps{grid-template-columns:1fr}.pd{padding-top:100px}}
 
 .inv .logo-chip img{filter:brightness(0) saturate(0) invert(1);opacity:.62}
+
+/* ── OFFICES STRIP ────────────────────────────────────────────────────────
+   A thin credibility band, not a section: one row of cities between the
+   proof band and the close. Deliberately short — it answers "where are
+   you" without spending a screen on it. */
+.off-strip{padding:44px;background:var(--bg2);border-top:1px solid var(--rule-1);border-bottom:1px solid var(--rule-1)}
+.off-strip-inner{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:36px;flex-wrap:wrap}
+.off-strip-row{display:flex;gap:12px;flex-wrap:wrap;flex:1}
+.off-chip{display:flex;flex-direction:column;gap:3px;padding:14px 22px;border:1px solid var(--rule-1);border-radius:14px;background:var(--surface-3);text-decoration:none;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.off-chip:hover{border-color:var(--tint-3);transform:translateY(-2px)}
+.off-city{font-size:var(--fz5);font-weight:500;color:var(--text);letter-spacing:-.01em}
+.off-meta{font-size:var(--fz2);color:var(--text3)}
+@media(max-width:760px){.off-strip{padding:34px 24px}.off-strip-inner{gap:20px}.off-chip{flex:1;min-width:140px}}
