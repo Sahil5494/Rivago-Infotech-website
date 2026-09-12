@@ -4,93 +4,9 @@
 ::selection{background:#3DFF87;color:#0B0F0C}
 ::-moz-selection{background:#3DFF87;color:#0B0F0C}
 :root{
-  /* ── COLOUR & TYPE · dark by default ──────────────────────────────────
-     The site runs dark: near-black ground, mint text, bright green accent.
-     Roughly seven parts dark to three parts light across the whole site.
-
-     The DEFAULT is dark on purpose. Anything unmarked — a gap between
-     bands, overscroll rubber-banding, a section added later — lands on the
-     dark ground rather than flashing white. Light is the thing you opt
-     into, with class="lt", and it is reserved for dense functional
-     reading: long lists, forms, job boards, FAQs.
-
-     The light palette still exists in full, in the `.lt` block below. Both
-     sets are contrast-verified independently; neither borrows a value from
-     the other.                                                          */
-
-  /* surfaces — near-black ground, two raised steps above it */
-  --surface-1:#000805;   /* page ground                    */
-  --surface-2:#0A2119;   /* raised band                    */
-  --surface-3:#0B1B15;   /* card                           */
-  --surface-4:#000805;
-  --surface-inv:#0A2119;
-  --surface-inv-2:#000805;
-  --chip:#0A2119;
-
-  /* text — pitched against #0B1B15, the lightest surface in the family,
-     so every step clears AA on the worst ground it can land on */
-  --text-1:#E8FFF4;                  /* 17.4:1 on the ground */
-  --text-2:#E3FFEF;                  /* 17.0:1               */
-  --text-3:rgba(232,255,244,.62);    /*  7.1:1 composited    */
-  --text-inv-1:#E8FFF4; --text-inv-2:#E3FFEF; --text-inv-3:rgba(232,255,244,.62);
-
-  /* brand — the mint green the site was originally built around. It is a
-     light colour, so on dark it carries text; the fill it sits on flips to
-     near-black via --on-accent. */
-  --accent:#7AFAB2;          /* 13.4:1 on the ground                  */
-  --accent-inv:#7AFAB2;
-  --accent-hover:#A9FFCE;
-  --on-accent:#000805;       /* text ON an accent fill                */
-  --ink-fill:#FFFFFF;        /* the high-contrast button fill         */
-  --on-ink-fill:#000805;
-
-  /* rules — mint at low alpha, so they read as a lift off the ground
-     rather than a drawn line */
-  --rule-1:rgba(232,255,244,.16); --rule-2:rgba(232,255,244,.28);
-  --rule-inv-1:rgba(232,255,244,.16); --rule-inv-2:rgba(232,255,244,.28);
-
-  /* tints */
-  --tint-1:rgba(122,250,178,.08); --tint-2:rgba(122,250,178,.18); --tint-3:rgba(122,250,178,.28);
-
-  /* semantic — the light-ground versions of these are far too dark to read
-     here, so each is the pale end of its hue instead */
-  --info:#BFE3FF; --info-inv:#1C63B8; --warn:#F5CE7A; --alert:#FF9E9E; --info-ink:#DCEEFF;
-
-  /* A black shadow is invisible on a black ground. On dark, depth comes
-     from a harder, darker drop than the light theme uses. */
-  --shadow-1:0 6px 20px rgba(0,0,0,.45);
-  --shadow-2:0 16px 44px rgba(0,0,0,.62);
-
-  /* Fixed chrome — the nav bar and the mobile sheet. These sit OUTSIDE any
-     band, floating over dark and light alike as the page scrolls, so they
-     get one colour site-wide rather than taking it from what happens to be
-     underneath. Translucent, because the blur behind them is the point. */
-  --chrome:rgba(0,8,5,.86);
-  --chrome-solid:rgba(4,16,11,.94);
-
-  --pill:999px;
-
-  /* ── GRADIENTS ── */
-  --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
-  --grad-brand:linear-gradient(135deg,#7AFAB2,#0E5C3C);
-  --grad-accent-inv:linear-gradient(135deg,#7AFAB2,#3DD98C);
-  --grad-surface:linear-gradient(180deg,#0A2119 0%,#000805 100%);
-  --grad-ink:linear-gradient(180deg,#000805 0%,#0A2119 100%);
-  --grad-paper:linear-gradient(180deg,#0A2119 0%,#000805 100%);
-  --grad-accent:linear-gradient(92deg,#7AFAB2 0%,#E8FFF4 100%);
-  --grad-rule:linear-gradient(90deg,transparent,rgba(122,250,178,.5),transparent);
-  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(122,250,178,.12) 0%,transparent 70%);
-
-  /* ── LEGACY ALIASES ── */
-  --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
-  --cream:var(--surface-4);
-  --surface:rgba(232,255,244,.04); --surface2:rgba(232,255,244,.07);
-  --border:var(--rule-1); --border2:var(--rule-2);
-  --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
-  --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
-  --green:var(--accent); --green-ink:var(--accent);
-  --paper:var(--surface-inv); --paper-2:var(--surface-inv-2);
-
+  /* ── TYPE, NOT COLOUR ─────────────────────────────────────────────────
+     Everything here belongs to the document rather than to a theme, so it
+     sits outside the two palette blocks below and is never restated.    */
   --ff:var(--font-sans),'Geist','Helvetica Neue',sans-serif;
   --fs:var(--ff);                       /* the serif is gone — Geist throughout */
   --fm:var(--font-geist-mono),ui-monospace,'SF Mono',Menlo,monospace;
@@ -127,6 +43,101 @@
   --fz15:52px;  /* h1                    (reference)  */
 }
 
+/* ── DARK · the default palette ───────────────────────────────────────────
+   The site runs dark: near-black ground, bright green accent, cream on the
+   light islands. Roughly seven parts dark to three parts light.
+
+   The DEFAULT is dark on purpose. Anything unmarked — a gap between bands,
+   overscroll rubber-banding, a section added later — lands on the dark
+   ground rather than flashing white. Light is opted into, with class="lt".
+
+   `:root` and `.inv` share this one rule rather than restating it twice.
+   They held identical values as two blocks, which is exactly the pair that
+   drifts apart the next time one of them is edited. `.inv` still means
+   "explicitly dark", and it still forces a band back to dark inside a
+   light island, because a rule matching the element itself beats a value
+   inherited from `.lt` on an ancestor.
+
+   Blacks, greens and text ramp are the ones the site ran before the light
+   experiment — the bright #3DFF87 on dark, the deep #0A6C3E on light. The
+   governing rule is a boundary, not a palette: the bright green never
+   touches a light ground (1.32:1 on white) and the deep green never
+   touches a dark one.                                                    */
+:root,.inv{
+  /* surfaces */
+  --surface-1:#030C05;   /* page ground          */
+  --surface-2:#060F07;   /* raised band          */
+  --surface-3:#0A1A0C;   /* card                 */
+  --surface-4:#030C05;
+  --surface-inv:#060F07;
+  --surface-inv-2:#030C05;
+  --chip:#0A1A0C;
+
+  /* text — each step pitched against the LIGHTEST surface it can land on,
+     #0A1A0C, so none of them fails on a raised card */
+  --text-1:#F0F4F0;   /* 17.9:1 */
+  --text-2:#BFCBC0;   /* 11.8:1 */
+  --text-3:#95B398;   /*  8.7:1 — clears even the lightest overlay panel */
+  --text-inv-1:#F0F4F0; --text-inv-2:#BFCBC0; --text-inv-3:#95B398;
+
+  /* brand — the bright green, for dark grounds only */
+  --accent:#3DFF87;          /* 15.0:1 on the ground */
+  --accent-inv:#3DFF87;
+  --accent-hover:#5AFFA0;
+  --on-accent:#030C05;       /* text ON an accent fill */
+  /* The primary button is a green gradient, not a flat fill. --ink-fill is
+     consumed only as `background`, never `background-color`, so a gradient
+     is legal here. */
+  --ink-fill:linear-gradient(135deg,#5AFFA0 0%,#3DFF87 55%,#22E0C0 100%);
+  --on-ink-fill:#030C05;
+
+  /* rules — neutral white at low alpha reads as a lift off the ground
+     rather than a drawn line */
+  --rule-1:rgba(255,255,255,.10); --rule-2:rgba(255,255,255,.20);
+  --rule-inv-1:rgba(255,255,255,.10); --rule-inv-2:rgba(255,255,255,.20);
+
+  /* green washes */
+  --tint-1:rgba(61,255,135,.08); --tint-2:rgba(61,255,135,.20); --tint-3:rgba(61,255,135,.30);
+
+  /* semantic — the light-ground versions are far too dark to read here, so
+     each is the pale end of its hue instead */
+  --info:#BFE3FF; --info-inv:#1C63B8; --warn:#F5CE7A; --alert:#FF9E9E; --info-ink:#DCEEFF;
+
+  /* A black shadow is invisible on a black ground; depth comes from a
+     harder, darker drop than the light palette uses. */
+  --shadow-1:0 6px 20px rgba(0,0,0,.45);
+  --shadow-2:0 16px 44px rgba(0,0,0,.62);
+
+  /* Fixed chrome — the nav, the mega menu, the page side-nav, the practice
+     bar. These float over BOTH grounds as the page scrolls, so they take
+     one colour site-wide rather than the band beneath them. */
+  --chrome:rgba(3,12,5,.86);
+  --chrome-solid:rgba(6,15,7,.94);
+
+  /* ── GRADIENTS ── */
+  --grad-cta:linear-gradient(135deg,#5AFFA0 0%,#3DFF87 55%,#22E0C0 100%);
+  --grad-brand:linear-gradient(135deg,#3DFF87,#00D4A8);
+  --grad-brand-ink:linear-gradient(135deg,#0A7040,#0E8A50);
+  --grad-accent-inv:linear-gradient(135deg,#3DFF87,#00D4A8);
+  --grad-surface:linear-gradient(180deg,#0A1A0C 0%,#030C05 100%);
+  --grad-ink:linear-gradient(180deg,#030C05 0%,#0A1A0C 100%);
+  --grad-paper:linear-gradient(180deg,#0A1A0C 0%,#030C05 100%);
+  --grad-accent:linear-gradient(92deg,#3DFF87 0%,#7DE8C0 100%);
+  --grad-rule:linear-gradient(90deg,transparent,rgba(61,255,135,.55),transparent);
+  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(61,255,135,.14) 0%,transparent 70%);
+
+  /* ── LEGACY ALIASES ── */
+  --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
+  --cream:var(--surface-4);
+  --surface:rgba(255,255,255,0.04); --surface2:rgba(255,255,255,0.07);
+  --border:var(--rule-1); --border2:var(--rule-2);
+  --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
+  --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
+  --green:var(--accent); --green-ink:var(--accent);
+  --paper:var(--surface-inv); --paper-2:var(--surface-inv-2);
+}
+.inv{color:var(--text-1)}
+
 /* Fixed steps rather than a fluid clamp, so the scale stays countable at
    every width. Only the steps that would overflow are restated. */
 @media (max-width:900px){
@@ -137,40 +148,6 @@
     --fz6:16px;--fz7:17px;--fz8:18px;--fz9:21px;--fz10:24px;
     --fz11:26px;--fz12:28px;--fz13:31px;--fz14:34px;--fz15:36px;
   }
-}
-
-/* ── EXPLICIT DARK ────────────────────────────────────────────────────────
-   `.inv` restates the dark palette. Since the page default is now dark it
-   is usually a no-op, and it is kept for two reasons: the markup that
-   already carries it stays correct, and it is what forces a band back to
-   dark when it sits INSIDE a `.lt` island (a dark CTA inside a light FAQ,
-   say). Nesting either way round resolves correctly because both blocks
-   define the whole token set, never a subset.                             */
-.inv{
-  --surface-1:#000805; --surface-2:#0A2119; --surface-3:#0B1B15; --surface-4:#000805;
-  --surface-inv:#0A2119; --surface-inv-2:#000805;
-  --chip:#0A2119;
-  --text-1:#E8FFF4; --text-2:#E3FFEF; --text-3:rgba(232,255,244,.62);
-  --text-inv-1:#E8FFF4; --text-inv-2:#E3FFEF; --text-inv-3:rgba(232,255,244,.62);
-  --accent:#7AFAB2; --accent-inv:#7AFAB2; --accent-hover:#A9FFCE;
-  --on-accent:#000805; --ink-fill:#FFFFFF; --on-ink-fill:#000805;
-  --rule-1:rgba(232,255,244,.16); --rule-2:rgba(232,255,244,.28);
-  --rule-inv-1:rgba(232,255,244,.16); --rule-inv-2:rgba(232,255,244,.28);
-  --tint-1:rgba(122,250,178,.08); --tint-2:rgba(122,250,178,.18); --tint-3:rgba(122,250,178,.28);
-  --grad-cta:linear-gradient(135deg,#FFFFFF 0%,#E8FFF4 100%);
-  --grad-surface:linear-gradient(180deg,#0A2119 0%,#000805 100%);
-  --grad-ink:linear-gradient(180deg,#000805 0%,#0A2119 100%);
-  --grad-paper:linear-gradient(180deg,#0A2119 0%,#000805 100%);
-  --grad-accent:linear-gradient(92deg,#7AFAB2 0%,#E8FFF4 100%);
-  --grad-rule:linear-gradient(90deg,transparent,rgba(122,250,178,.5),transparent);
-  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(122,250,178,.12) 0%,transparent 70%);
-  --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
-  --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
-  --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
-  --cream:var(--surface-4); --border:var(--rule-1); --border2:var(--rule-2);
-  --green:var(--accent); --green-ink:var(--accent);
-  --paper:var(--surface-inv); --paper-2:var(--surface-inv-2);
-  color:var(--text-1);
 }
 
 /* ── LIGHT ISLAND ─────────────────────────────────────────────────────────
@@ -185,37 +162,55 @@
    the light ones carry the work. That split is also what keeps the ratio
    near seven-three without the page looking striped for its own sake.
 
-   These are the values the site ran as its light theme, unchanged, and
-   they were verified as a set: every text/surface pair clears WCAG AA,
-   lowest 5.71:1.                                                          */
+   The island is CREAM, not white. #F4F3EE against #030C05 is a warmer,
+   quieter pairing than white on black, and it is the one this site ran
+   before the light experiment. White is kept for the cards that sit ON the
+   cream, so a card still lifts off its band.
+
+   The green flips here. The bright #3DFF87 measures 1.32:1 on cream — it
+   cannot carry text or an icon on a light ground at all — so the accent
+   becomes the deep #0A6C3E. Same brand, opposite end of the ramp, chosen
+   by which ground it lands on rather than by which component it is.     */
 .lt{
-  --surface-1:#FFFFFF; --surface-2:#F2F7F5; --surface-3:#FFFFFF; --surface-4:#EDF7F2;
-  --surface-inv:#FFFFFF; --surface-inv-2:#F2F7F5;
-  --chip:#EDF7F2;
-  --text-1:#000000; --text-2:#3A3F3D; --text-3:#4F5252;
-  --text-inv-1:#000000; --text-inv-2:#3A3F3D; --text-inv-3:#4F5252;
-  /* the mint is a light colour and cannot carry text on white; on a light
-     ground the brand reads as the deep green instead, at 8.0:1 */
-  --accent:#0E5C3C; --accent-inv:#0E5C3C; --accent-hover:#0A4A30;
-  --on-accent:#FFFFFF; --ink-fill:#000805; --on-ink-fill:#FFFFFF;
-  --rule-1:#D9D9D9; --rule-2:#C9CDCB;
-  --rule-inv-1:#D9D9D9; --rule-inv-2:#C9CDCB;
-  --tint-1:rgba(14,92,60,.06); --tint-2:rgba(14,92,60,.14); --tint-3:rgba(14,92,60,.24);
+  --surface-1:#F4F3EE;   /* cream band  */
+  --surface-2:#EDEBE3;   /* deeper cream */
+  --surface-3:#FFFFFF;   /* card, lifts off the cream */
+  --surface-4:#EDEBE3;
+  --surface-inv:#FFFFFF; --surface-inv-2:#F4F3EE;
+  --chip:#E7E4DA;
+  --text-1:#0B1311;   /* 16.9:1 on cream */
+  --text-2:#3D5240;   /*  7.6:1 */
+  --text-3:#526257;   /*  5.8:1 — clears even the darkest tinted panel */
+  --text-inv-1:#0B1311; --text-inv-2:#3D5240; --text-inv-3:#526257;
+  --accent:#0A6C3E; --accent-inv:#0A6C3E; --accent-hover:#086034;
+  --on-accent:#FFFFFF;
+  /* the deep-green gradient button, so the primary action stays green on
+     both grounds rather than turning into a flat dark pill */
+  --ink-fill:linear-gradient(135deg,#0A7040,#0E8A50); --on-ink-fill:#FFFFFF;
+  --rule-1:rgba(10,20,11,.12); --rule-2:rgba(10,20,11,.22);
+  --rule-inv-1:rgba(10,20,11,.12); --rule-inv-2:rgba(10,20,11,.22);
+  --tint-1:rgba(10,108,62,.07); --tint-2:rgba(10,108,62,.16); --tint-3:rgba(10,108,62,.26);
   --info:#1C63B8; --info-inv:#BFE3FF; --warn:#8A5A12; --alert:#A33A3A; --info-ink:#123472;
-  --shadow-1:0 6px 20px rgba(0,8,5,.07);
-  --shadow-2:0 16px 44px rgba(0,8,5,.12);
-  --grad-cta:linear-gradient(135deg,#0A2119 0%,#000805 100%);
-  --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
-  --grad-ink:linear-gradient(180deg,#FFFFFF 0%,#EDF7F2 100%);
-  --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F2F7F5 100%);
-  --grad-accent:linear-gradient(92deg,#0E5C3C 0%,#116B45 100%);
-  --grad-rule:linear-gradient(90deg,transparent,#D9D9D9,transparent);
-  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(14,92,60,.05) 0%,transparent 70%);
+  --shadow-1:0 6px 20px rgba(10,20,11,.07);
+  --shadow-2:0 16px 44px rgba(10,20,11,.12);
+  --grad-cta:linear-gradient(135deg,#0A7040,#0E8A50);
+  /* A chip filled with --grad-brand carries --on-accent text. On cream that
+     text is white, so the fill has to be the DEEP green here — the bright
+     one would leave white on near-white. */
+  --grad-brand:linear-gradient(135deg,#0A7040,#0E8A50);
+  --grad-brand-ink:linear-gradient(135deg,#0A7040,#0E8A50);
+  --grad-accent-inv:linear-gradient(135deg,#0A7040,#0E8A50);
+  --grad-surface:linear-gradient(180deg,#FFFFFF 0%,#F4F3EE 100%);
+  --grad-ink:linear-gradient(180deg,#F4F3EE 0%,#EDEBE3 100%);
+  --grad-paper:linear-gradient(180deg,#FFFFFF 0%,#F4F3EE 100%);
+  --grad-accent:linear-gradient(92deg,#0A6C3E 0%,#0E8A50 100%);
+  --grad-rule:linear-gradient(90deg,transparent,rgba(10,20,11,.18),transparent);
+  --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(10,108,62,.06) 0%,transparent 70%);
   --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
   --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
   --cream:var(--surface-4); --border:var(--rule-1); --border2:var(--rule-2);
-  --surface:rgba(0,8,5,0.03); --surface2:rgba(0,8,5,0.06);
+  --surface:rgba(10,20,11,0.03); --surface2:rgba(10,20,11,0.06);
   --green:var(--accent); --green-ink:var(--accent);
   --paper:var(--surface-inv); --paper-2:var(--surface-inv-2);
   background:var(--surface-1);
@@ -262,7 +257,7 @@ a{color:inherit;text-decoration:none}
 #nav{position:fixed;inset:0 0 auto;z-index:999;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 44px;background:var(--chrome);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--rule-1);transition:all .4s var(--ease)}
 #nav.solid{background:var(--chrome-solid);backdrop-filter:blur(24px);border-bottom:1px solid var(--rule-1)}
 .logo{display:flex;align-items:center;gap:9px;font-size:var(--fz5);font-weight:500;letter-spacing:-.02em;color:var(--text)}
-.logo-mark{width:27px;height:27px;border-radius:7px;background:var(--grad-brand);display:flex;align-items:center;justify-content:center;font-size:var(--fz1);font-weight:700;color:var(--text-inv-1)}
+.logo-mark{width:27px;height:27px;border-radius:7px;background:var(--grad-brand);display:flex;align-items:center;justify-content:center;font-size:var(--fz1);font-weight:700;color:var(--on-accent)}
 .logo-sub{font-weight:400;color:var(--text2)}
 .nav-mid{display:flex;gap:2px}
 .nl{padding:7px 13px;font-size:var(--fz2);color:var(--text2);border-radius:7px;transition:color .2s;cursor:pointer}
@@ -1217,7 +1212,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .lead-cred span{padding:3px 9px;background:var(--rule-1);border-radius:9999px;font-size:var(--fz1);color:var(--text2)}
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
 .stat-cell{background:var(--bg);padding:20px 22px}
-.industry.lt .stat-cell{background:var(--surface2)}
+.industry.lt .stat-cell{background:var(--surface-3)}
 .stat-v{font-size:var(--fz10);line-height:1;letter-spacing:-.025em;color:var(--text);margin-bottom:8px;font-weight:500}
 .stat-v .unit{font-size:var(--fz3);color:var(--text3);margin-left:4px}
 .stat-l{font-size:var(--fz1);color:var(--text3);line-height:1.45}
@@ -1287,7 +1282,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .rls-ir .ct{color:var(--text3);font-family:var(--fm);font-size:var(--fz2);white-space:nowrap}
 .rls-panelR{display:flex;flex-direction:column;gap:16px}
 .rls-statgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
-.rls-stat{background:var(--surface);padding:22px 24px}
+.rls-stat{background:var(--bg);padding:22px 24px}
 .rls-stat .v{font-size:var(--fz11);line-height:1;letter-spacing:-.025em;color:var(--text);margin-bottom:8px;font-weight:500}
 .rls-stat .v .u{font-size:var(--fz3);color:var(--text3);margin-left:4px}
 .rls-stat .l{font-size:var(--fz1);color:var(--text3);line-height:1.45}
@@ -1300,7 +1295,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .rls-ministory-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .rls-ministory q{display:block;font-family:var(--ff);font-weight:500;font-size:var(--fz7);line-height:1.45;color:var(--text);letter-spacing:-.01em;margin-bottom:16px}
 .rls-ministory-by{display:flex;align-items:center;gap:11px}
-.rls-ministory-av{width:36px;height:36px;border-radius:50%;background:var(--grad-brand);display:flex;align-items:center;justify-content:center;font-weight:500;color:var(--text-inv-1);font-size:var(--fz1);flex-shrink:0}
+.rls-ministory-av{width:36px;height:36px;border-radius:50%;background:var(--grad-brand);display:flex;align-items:center;justify-content:center;font-weight:500;color:var(--on-accent);font-size:var(--fz1);flex-shrink:0}
 .rls-ministory-n{font-size:var(--fz2);font-weight:500;color:var(--text)}
 .rls-ministory-r{font-size:var(--fz1);color:var(--text3);margin-top:1px}
 @media(max-width:900px){.rls-ind{grid-template-columns:1fr;gap:36px}.rls-statgrid{grid-template-columns:1fr}}
@@ -1319,7 +1314,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .proc2-row{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;position:relative;z-index:1}
 .proc2-step{display:flex;flex-direction:column;align-items:center}
 .proc2-node{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:var(--ff);font-weight:500;font-size:var(--fz10);color:var(--accent);background:var(--bg2);border:1.5px solid var(--tint-3);box-shadow:0 0 0 7px var(--bg2);margin-bottom:28px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-.proc2-step.done .proc2-node{background:var(--grad-brand);color:var(--text-inv-1);border-color:transparent;box-shadow:0 0 0 7px var(--bg2),0 12px 32px rgba(61,255,135,.28)}
+.proc2-step.done .proc2-node{background:var(--grad-brand);color:var(--on-accent);border-color:transparent;box-shadow:0 0 0 7px var(--bg2),0 12px 32px rgba(61,255,135,.28)}
 .proc2-card{background:linear-gradient(165deg,rgba(255,255,255,.055),rgba(255,255,255,.012));border:1px solid var(--border);border-radius:16px;padding:24px 22px;width:100%;flex:1;display:flex;flex-direction:column;text-align:left;transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
 .proc2-step:hover .proc2-node{transform:translateY(-4px);box-shadow:0 0 0 7px var(--bg2),0 10px 28px rgba(61,255,135,.34)}
 .proc2-step:hover .proc2-card{border-color:var(--tint-3);transform:translateY(-4px);box-shadow:0 22px 50px rgba(0,0,0,.32)}
@@ -1737,7 +1732,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .perk-t{font-size:var(--fz3);font-weight:500;color:var(--text);margin-bottom:6px}
 .perk-d{font-size:var(--fz1);color:var(--text2);line-height:1.6;font-weight:400}
 .cv-sec{background:var(--cream)!important}
-.cv-sec .eyebrow.light{background:var(--rule-inv-1);border:1px solid var(--rule-inv-2);color:var(--accent-inv)}
+.cv-sec .eyebrow.light{background:var(--tint-1);border:1px solid var(--tint-2);color:var(--accent-inv)}
 .cv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule-inv-1);border:1px solid var(--rule-inv-1);border-radius:20px;overflow:hidden;margin-top:48px}
 .cv-grid .cv{background:var(--surface-inv);padding:38px 34px;transition:background .25s var(--ease)}
 .cv-grid .cv:hover{background:var(--surface-inv-2)}
@@ -1841,7 +1836,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .sj-quote:hover{border-color:var(--tint-3);transform:translateY(-5px);box-shadow:0 22px 54px rgba(0,0,0,.28)}
 .sj-quote q{display:block;font-family:var(--ff);font-weight:500;font-size:var(--fz9);line-height:1.48;color:var(--text);letter-spacing:-.012em;margin-bottom:28px}
 .sj-quote-by{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:20px;border-top:1px solid var(--border)}
-.sj-av{width:42px;height:42px;border-radius:50%;background:var(--grad-brand);display:flex;align-items:center;justify-content:center;font-weight:500;color:var(--bg);font-size:var(--fz2);flex-shrink:0}
+.sj-av{width:42px;height:42px;border-radius:50%;background:var(--grad-brand);display:flex;align-items:center;justify-content:center;font-weight:500;color:var(--on-accent);font-size:var(--fz2);flex-shrink:0}
 .sj-quote-n{font-size:var(--fz5);font-weight:500;color:var(--text)}
 .sj-quote-r{font-size:var(--fz2);color:var(--text3);margin-top:3px}
 @media(max-width:900px){.sj-search{grid-template-columns:1fr}.sj-step-grid,.sj-tst-grid{grid-template-columns:1fr}.sj-val-grid{grid-template-columns:1fr 1fr}}

@@ -377,11 +377,11 @@ export function StorySection({
           <span className="tc-tag">{tag}</span>
           <p className="tc-quote-serif" style={{ fontSize: "var(--fz8)" }}>&ldquo;{quote}&rdquo;</p>
           <div className="tc-author2">
-            <div style={{ width: 42, height: 42, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{initials}</div>
+            <div style={{ width: 42, height: 42, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "var(--grad-brand)", color: "var(--on-accent)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{initials}</div>
             <div><div className="tc-author2-name">{name}</div><div className="tc-author2-role">{role}</div></div>
           </div>
           {metrics && metrics.length > 0 && (
-            <div style={{ display: "flex", gap: 32, marginTop: 28, paddingTop: 24, borderTop: "1px solid rgba(0,0,0,.07)", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: 32, marginTop: 28, paddingTop: 24, borderTop: "1px solid var(--rule-1)", flexWrap: "wrap" }}>
               {metrics.map((m) => (
                 <div key={m.label}>
                   <div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz11)", color: "var(--accent-inv)", lineHeight: 1 }}>{m.val}</div>
@@ -702,7 +702,7 @@ export function TestiCreamSection({ heading, sub, cards }: { heading: ReactNode;
               <span className="tc-tag">{c.tag}</span>
               <p className="tc-quote">{c.quote}</p>
               <div className="tc-author">
-                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{c.initials}</div>
+                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "var(--grad-brand)", color: "var(--on-accent)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{c.initials}</div>
                 <div><div className="tc-author-name">{c.name}</div><div className="tc-author-role">{c.role}</div></div>
               </div>
             </div>

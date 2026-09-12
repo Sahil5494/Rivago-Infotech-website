@@ -306,8 +306,8 @@ export default function Home() {
                     <div style={{ height: 5, background: "var(--surface-inv)", borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: "94%", background: "linear-gradient(90deg,var(--accent),#00D4A8)", borderRadius: 3 }}></div></div>
                   </div>
                   <div style={{ display: "flex", gap: 8 }}>
-                    <div style={{ flex: 1, background: "var(--surface-inv-2)", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz5)", fontWeight: 700, color: "var(--text-inv-1)" }}>48h</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Avg delivery</div></div>
-                    <div style={{ flex: 1, background: "var(--surface-inv-2)", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz5)", fontWeight: 700, color: "var(--text-inv-1)" }}>94%</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Interview rate</div></div>
+                    <div style={{ flex: 1, background: "var(--surface-inv-2)", border: "1px solid var(--rule-1)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz5)", fontWeight: 700, color: "var(--text-inv-1)" }}>48h</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Avg delivery</div></div>
+                    <div style={{ flex: 1, background: "var(--surface-inv-2)", border: "1px solid var(--rule-1)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz5)", fontWeight: 700, color: "var(--text-inv-1)" }}>94%</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Interview rate</div></div>
                   </div>
                 </div>
               </div>
