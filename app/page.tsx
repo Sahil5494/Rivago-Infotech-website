@@ -13,7 +13,7 @@ const faqItems = [
   },
   {
     q: "How quickly can you deliver a shortlist?",
-    a: "Our average shortlist delivery is 48 hours from the moment we receive a complete brief. For niche or senior roles this may extend to 5–7 business days. We will always communicate a realistic timeline upfront — no surprises.",
+    a: "We agree a delivery timeline with you when we take the brief, and it depends on the role — a well-scoped mid-level search moves faster than a niche or senior one. Whatever we commit to, you hear from us early if it is going to move. No surprises.",
   },
   {
     q: "Do you recruit permanent, contract and interim roles?",
@@ -288,7 +288,7 @@ export default function Home() {
                   {[
                     ["Sr. Software Engineer · USA", "$130K · 3–5 candidates shortlisted", "→"],
                     ["DevOps Lead · Canada", "CAD 120K · 2 candidates shortlisted", "→"],
-                    ["Finance Manager · UAE", "Sourcing · expected 48h", "⏳"],
+                    ["Finance Manager · UAE", "Sourcing · in progress", "⏳"],
                     ["HR Director · Canada", "CAD 145K · Offer stage", "★"],
                   ].map(([t, s, icon]) => (
                     <div className="sv-pl-card" key={t}>
@@ -306,7 +306,7 @@ export default function Home() {
                     <div style={{ height: 5, background: "var(--surface-inv)", borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: "94%", background: "linear-gradient(90deg,var(--accent),#00D4A8)", borderRadius: 3 }}></div></div>
                   </div>
                   <div style={{ display: "flex", gap: 8 }}>
-                    <div style={{ flex: 1, background: "var(--surface-inv-2)", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz5)", fontWeight: 700, color: "var(--text-inv-1)" }}>48h</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Avg delivery</div></div>
+                    <div style={{ flex: 1, background: "var(--surface-inv-2)", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz5)", fontWeight: 700, color: "var(--text-inv-1)" }}>3–5</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Candidates per shortlist</div></div>
                     <div style={{ flex: 1, background: "var(--surface-inv-2)", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz5)", fontWeight: 700, color: "var(--text-inv-1)" }}>94%</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Interview rate</div></div>
                   </div>
                 </div>
@@ -384,13 +384,13 @@ export default function Home() {
       <section className="proc-sec">
         <div className="proc-inner">
           <div className="eyebrow ew-light gs">The process</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 18 }}>From brief to shortlist<br /><em>48 hours.</em></h2>
+          <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 18 }}>From brief to shortlist,<br /><em>end to end.</em></h2>
           <p className="proc-sub gs">A simple four-step process — end to end, no surprises.</p>
           <div className="proc-grid">
             {[
               { n: "Step 01", t: "Understand the brief", d: "A 45-minute call with the hiring manager and the named partner. We document must-haves, comp band, right-to-work, and team chemistry — before anything else moves.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="var(--accent)" strokeWidth="1.2" /><path d="M7 10h6M10 7v6" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
               { n: "Step 02", t: "Source and screen", d: "We open the search across referrals, direct headhunting and our active talent pool. Every candidate is screened against the spec, comp band and notice period.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8" cy="8" r="5" stroke="var(--accent)" strokeWidth="1.2" /><path d="M14 14l3 3" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
-              { n: "Step 03", t: "Submit shortlist", d: "Inside 48 hours, you see 3–5 candidates with full scorecards, recorded screenings, and a recommendation from the partner who took the brief.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="var(--accent)" strokeWidth="1.2" /><path d="M7 9h6M7 12h4" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
+              { n: "Step 03", t: "Submit shortlist", d: "You see 3–5 candidates with full scorecards, recorded screenings, and a recommendation from the partner who took the brief.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="var(--accent)" strokeWidth="1.2" /><path d="M7 9h6M7 12h4" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
               { n: "Step 04", t: "Place and support", d: "Offer negotiation, reference checks, onboarding handover. We stay on the line through day 90 and replace, free, if it isn&apos;t the right fit.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
             ].map((s) => (
               <div className="proc-step gs" key={s.n}>
@@ -434,7 +434,7 @@ export default function Home() {
           <div className="why-grid">
             {[
               { n: "01", t: "Quality over quantity — always", d: "We submit fewer, better candidates. Every profile is fully screened before it reaches your inbox. No keyword-matching. No noise. Just people who are genuinely ready.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="var(--accent)" strokeWidth="1.3" /><path d="M7 11l3 3 5-5" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-              { n: "02", t: "48-hour shortlist — every time", d: "Your shortlist arrives within 48 hours of the brief — every time, without exception. Speed and quality, not one or the other.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="var(--accent)" strokeWidth="1.3" /><path d="M11 7v4l3 3" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
+              { n: "02", t: "A timeline agreed before we start", d: "We commit to a delivery date when we take the brief, not after. If it is going to move, you hear it from us early rather than finding out by waiting.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="var(--accent)" strokeWidth="1.3" /><path d="M11 7v4l3 3" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
               { n: "03", t: "Specialist domain knowledge", d: "Every brief goes to a specialist who recruits in your sector. They know the roles, the market rates and what a strong candidate actually looks like in your industry.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11a7 7 0 1014 0A7 7 0 004 11z" stroke="var(--accent)" strokeWidth="1.3" /><path d="M11 8v3l2 2" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" /><circle cx="18" cy="4" r="3" fill="var(--accent)" opacity=".3" /></svg>) },
               { n: "04", t: "One dedicated account manager", d: "Every client gets a single point of contact — someone who learns your business, your culture and your hiring bar. No handoffs, no call centres, no starting over every engagement.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="4" stroke="var(--accent)" strokeWidth="1.3" /><path d="M8 11l2.5 2.5L14 8" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
               { n: "05", t: "Global delivery. US standards.", d: "Rivago is a global staffing and recruitment company with active hiring operations across the United States, Canada, the UAE and India. One firm, four markets, the same standard everywhere.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3l2.5 5 5.5.8-4 3.9.9 5.5L11 15.5l-4.9 2.7.9-5.5L3 8.8l5.5-.8z" stroke="var(--accent)" strokeWidth="1.3" strokeLinejoin="round" /></svg>) },
@@ -617,7 +617,7 @@ export default function Home() {
       <section className="cta-sec inv">
         <div className="cta-orb gs"><div className="cta-halo"></div><OrbCanvas size={200} /></div>
         <h2 className="cta-h2 gs">Your next great hire<br />starts <em>right here.</em></h2>
-        <p className="cta-sub gs">Tell us who you need across any function. Shortlist in your inbox within 48 hours.</p>
+        <p className="cta-sub gs">Tell us who you need across any function. A named partner will come back to you with a plan.</p>
         <div className="cta-btns gs">
           <button className="btn-hp" data-help style={{ fontSize: "var(--fz5)", padding: "15px 32px" }}>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
           <Link className="btn-hg" href={routes.viewJobs} style={{ fontSize: "var(--fz5)", padding: "15px 32px" }}>Browse all jobs</Link>

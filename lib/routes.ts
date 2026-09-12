@@ -28,7 +28,7 @@ export const routes = {
 
 export const servicesList = [
   { n: "01", title: "Staffing Solutions", desc: "Start here — the full overview of how Rivago engages, and which structure fits the role you are filling.", meta: "Overview", href: routes.services },
-  { n: "02", title: "Direct hire", desc: "Permanent placements across every function and level, on a contingent fee you pay only on a hire that sticks.", meta: "48-hour shortlist", href: routes.directHire },
+  { n: "02", title: "Direct hire", desc: "Permanent placements across every function and level, on a contingent fee you pay only on a hire that sticks.", meta: "Permanent, end to end", href: routes.directHire },
   { n: "03", title: "Contract staffing", desc: "Skilled professionals on fixed-term engagements. We run payroll, compliance and worker classification.", meta: "Talent in 5–7 days", href: routes.contractStaffing, tag: "Popular" },
   { n: "04", title: "Temporary staffing", desc: "On-demand cover for peaks, seasonal spikes and leave. Deployed in days, scaled up or down as work changes.", meta: "Boots on site fast", href: routes.temporaryStaffing },
   { n: "05", title: "Executive search", desc: "Confidential retained search for VP- to C-suite roles, with weekly written progress reports.", meta: "Retained", href: routes.executiveSearch, tag: "Retained" },

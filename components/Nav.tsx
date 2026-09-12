@@ -231,11 +231,13 @@ export default function Nav() {
               <div className="mm-promo-eyebrow">Featured</div>
               <div className="mm-promo-title">Book a <em>strategy call.</em></div>
               <div className="mm-promo-desc">30 minutes with a senior partner. We review open roles, propose a delivery plan and quote a realistic timeline — at no cost.</div>
-              <div className="mm-promo-stats">
-                <div className="mm-promo-stat"><div className="mm-promo-stat-val">48h</div><div className="mm-promo-stat-lbl">Shortlist delivery</div></div>
-                <div className="mm-promo-stat"><div className="mm-promo-stat-val">94%</div><div className="mm-promo-stat-lbl">Interview accept</div></div>
-                <div className="mm-promo-stat"><div className="mm-promo-stat-val">1,000+</div><div className="mm-promo-stat-lbl">Placements a year</div></div>
-              </div>
+              {/* A three-stat row stood here — "48h shortlist delivery",
+                  "94% interview accept", "1,000+ placements a year". None was
+                  measured, and this promo renders inside the mega menu on
+                  every page, so it was the most-seen unevidenced claim on the
+                  site. Removed rather than replaced: the promo reads fine on
+                  its offer alone, and any figure put back here should be one
+                  you would be comfortable being asked to prove. */}
               <button className="mm-promo-btn" data-hire>Book your call <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h6M5.5 2.5l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
             </div>
           </div>
