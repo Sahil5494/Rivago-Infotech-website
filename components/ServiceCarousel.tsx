@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { routes } from "@/lib/routes";
 
 /* The services carousel on the home page: media left, one service right.
@@ -9,21 +10,24 @@ import { routes } from "@/lib/routes";
  * Lives in components/ rather than app/services/ because /services was put
  * back to its original layout — this is the home page's services section now.
  *
- * MEDIA SLOT — read this before adding footage.
+ * MEDIA SLOT — read this before swapping in footage.
  * Each entry takes an optional `media`. Drop a file into /public/assets/services
- * and set it, and the panel renders it instead of the fallback; nothing else
- * here needs to change:
+ * and point at it; nothing else here changes:
  *
  *   media: { kind: "video", src: "/assets/services/contract.mp4", poster: "..." }
  *   media: { kind: "image", src: "/assets/services/contract.jpg" }
  *
- * Until then the panel draws a composed fallback rather than a grey box,
- * because public/ holds no photography or footage at all — ten client logos,
- * an OG image and a favicon — and stock imagery of strangers shaking hands in
- * an office would weaken the page rather than fill it.
+ * All eight currently carry stills — Adobe Stock, licensed to the Rivago
+ * account, resized to 1600x1067 and re-encoded (47MB of originals down to
+ * 840KB for the set). They are placeholders for Rivago's own photography:
+ * real people in the Pune, Wilmington and Ayr offices will always beat stock,
+ * because every competitor is drawing from the same library.
  *
- * A video here must be muted, loop, playsInline and carry a poster, or it will
- * not autoplay on iOS and will cost the page its LCP.
+ * Video was asked for and is not available here — the Stock search returns
+ * zero results for contentType "Video" whatever the query, and the sandbox
+ * proxy refuses every other host. Swap `kind` to "video" when footage exists.
+ * It must be muted, loop, playsInline and carry a poster, or it will not
+ * autoplay on iOS and will cost the section its LCP.
  */
 
 type Media = { kind: "video"; src: string; poster?: string } | { kind: "image"; src: string };
@@ -57,6 +61,7 @@ const SERVICES: Service[] = [
      still render "7 Ways to engage" off the same data. */
   {
     href: routes.services,
+    media: { kind: "image", src: "/assets/services/overview.jpg" },
     title: "Staffing Solutions",
     desc: "Start here. The full picture of how Rivago engages — which structure fits the role you are filling, what each one costs, and how a search runs from the brief through to a start date.",
     list: ["Direct hire", "Contract staffing", "Temporary staffing", "Executive search", "RPO", "Interim & fractional", "Employer of Record"],
@@ -64,42 +69,49 @@ const SERVICES: Service[] = [
   },
   {
     href: routes.directHire,
+    media: { kind: "image", src: "/assets/services/direct.jpg" },
     title: "Direct hire",
     desc: "For a permanent role you want filled once, properly. We run the search on a contingent fee — you pay on a hire that sticks, not on activity — and the placement carries a replacement guarantee.",
     facts: [["Who employs them", "You do, from day one"], ["How you pay", "Contingent fee"], ["How long it runs", "Until the hire sticks"]],
   },
   {
     href: routes.contractStaffing,
+    media: { kind: "image", src: "/assets/services/contract.jpg" },
     title: "Contract staffing",
     desc: "For a defined piece of work rather than a headcount line. The professional sits on our payroll for the term — we handle tax, compliance and worker classification, and carry that risk rather than passing it to you.",
     facts: [["Who employs them", "We do — payroll, tax, classification"], ["How you pay", "Hourly markup"], ["How long it runs", "Fixed term, extendable"]],
   },
   {
     href: routes.temporaryStaffing,
+    media: { kind: "image", src: "/assets/services/temporary.jpg" },
     title: "Temporary staffing",
     desc: "For cover when someone is on leave, or when the work has spiked and will subside again. Deployed quickly, scaled up or down as the workload changes, and off your payroll throughout.",
     facts: [["Who employs them", "We do — payroll, tax, classification"], ["How you pay", "Hourly markup"], ["How long it runs", "Days to months"]],
   },
   {
     href: routes.executiveSearch,
+    media: { kind: "image", src: "/assets/services/executive.jpg" },
     title: "Executive search",
     desc: "For VP- to C-suite hires, including the ones that cannot be advertised — a sensitive replacement, or a role the incumbent does not know about yet. Retained, confidential, with written progress in between.",
     facts: [["Who employs them", "You do, from day one"], ["How you pay", "Retained"], ["How long it runs", "A mandate, not a requisition"]],
   },
   {
     href: routes.rpo,
+    media: { kind: "image", src: "/assets/services/rpo.jpg" },
     title: "Recruitment Process Outsourcing",
     desc: "For hiring at volume, where what you need is capacity rather than another vendor. We embed recruiters into your team, under your brand and in your workflow, priced as a programme instead of per placement.",
     facts: [["Who employs them", "You employ the hires; we embed the recruiters"], ["How you pay", "Monthly programme"], ["How long it runs", "Ongoing, reviewed quarterly"]],
   },
   {
     href: routes.interimLeadership,
+    media: { kind: "image", src: "/assets/services/interim.jpg" },
     title: "Interim & fractional leadership",
     desc: "For a gap at the top where the work cannot wait for a full search — a transition to bridge, a turnaround to lead, or a function that needs a senior hand two days a week rather than five.",
     facts: [["Who employs them", "Engaged as a contractor"], ["How you pay", "Day rate, month to month"], ["How long it runs", "Weeks to a few quarters"]],
   },
   {
     href: routes.employerOfRecord,
+    media: { kind: "image", src: "/assets/services/eor.jpg" },
     title: "Employer of Record",
     desc: "For when you have found the right person in a country where you have no legal entity. We become their employer — contracts, payroll, tax and benefits in-country — and you direct the work.",
     facts: [["Who employs them", "We do — we are the legal employer"], ["How you pay", "Per employee, monthly"], ["How long it runs", "As long as they are employed"]],
@@ -134,9 +146,11 @@ export default function ServiceCarousel() {
           {s.media?.kind === "video" ? (
             <video src={s.media.src} poster={s.media.poster} muted loop playsInline autoPlay preload="metadata" />
           ) : s.media?.kind === "image" ? (
-            /* eslint-disable-next-line @next/next/no-img-element -- swapped for
-               next/image once real assets exist and their dimensions are known */
-            <img src={s.media.src} alt="" />
+            /* Decorative: the service is named in the heading beside it, so an
+               alt here would just be read twice. priority on the first panel —
+               it is the section's LCP element once images are in. */
+            <Image src={s.media.src} alt="" fill sizes="(max-width: 980px) 100vw, 50vw"
+              priority={i === 0} style={{ objectFit: "cover" }} />
           ) : (
             <div className="sc-fallback" aria-hidden="true">
               <span className="sc-fb-n">{s.overview ? "—" : String(i).padStart(2, "0")}</span>
