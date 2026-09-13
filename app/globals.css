@@ -784,8 +784,11 @@ a{color:inherit;text-decoration:none}
 .why-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(61,255,135,.04) 0%,transparent 70%);opacity:0;transition:opacity .3s}
 .why-card:hover{background:var(--surface2);border-color:var(--tint-2);transform:translateY(-4px)}
 .why-card:hover::before{opacity:1}
-.why-icon{width:48px;height:48px;border-radius:13px;background:var(--tint-1);border:1px solid var(--tint-2);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.why-num{font-size:var(--fz12);font-weight:700;font-family:var(--fs);color:var(--text-3);line-height:1;margin-bottom:12px;letter-spacing:-.03em}
+.why-icon{width:48px;height:48px;border-radius:13px;background:var(--tint-1);border:1px solid var(--tint-2);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+/* .why-num deleted with the 01-06 numerals. It set the number at --fz12
+   weight 700, which made it larger and heavier than the card title under
+   it — the loudest element in the section, carrying no information, on six
+   cards that have no order. */
 .why-title{font-size:var(--fz7);font-weight:500;color:var(--text);margin-bottom:10px;letter-spacing:-.01em}
 .why-desc{font-size:var(--fz6);color:var(--text2);line-height:1.72}
 

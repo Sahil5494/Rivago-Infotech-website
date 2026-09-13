@@ -11,7 +11,7 @@ import InsightsGrid from "@/components/InsightsGrid";
    carousel and the industry rail each read the data themselves. lib/routes.ts
    still exports both — /about counts them and the nav mega-menu reads them.
    CardSlider went with them; nothing on this page uses it now. */
-import { routes, offices } from "@/lib/routes";
+import { routes, offices, servedMarkets } from "@/lib/routes";
 /* Counted, not typed, so the support card cannot promise a library bigger
    than the one /resources actually renders. Build-time only — this is a
    server component, so the article bodies never reach the browser.
@@ -125,6 +125,15 @@ const faqJsonLd = {
   })),
 };
 
+/* Counts in prose read as words, not digits — "Three offices" rather than
+   "3 offices" — but they still have to come from the data so they cannot
+   drift away from the footer and the contact page. */
+const WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+const spell = (n: number) => WORDS[n] ?? String(n);
+/* spell() returns lowercase, which is right mid-sentence; a count opening a
+   card title needs the capital. */
+const Spell = (n: number) => spell(n).replace(/^./, (c) => c.toUpperCase());
+
 const Arrow = () => (
   <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
@@ -237,10 +246,22 @@ export default function Home() {
           RIVAGO below, which is now the single "why us" section. */}
 
       {/* WHY RIVAGO */}
+      {/* The 01-06 numerals are gone. They were var(--fz12) at weight 700 —
+          larger and heavier than the card titles beneath them — so the first
+          thing the eye read on every card was a number that encoded nothing.
+          These six are not a sequence and have no order; numbering them also
+          rhymed with the approach tabs' 01-05 directly above, which IS one.
+          The icon already marks each card. The heading still says "six".
+
+          Descriptions render as text now. They were going through
+          dangerouslySetInnerHTML for one reason: card six had an &apos;
+          entity baked into a JS string. An apostrophe is an apostrophe. */}
       <section className="why-sec">
         <div className="why-inner">
           <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Why Rivago</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 560, marginBottom: 20 }}>Six reasons clients<br /><em>stay with us.</em></h2>
+          {/* Was "Six reasons clients stay with us" — a claim about client
+              retention, which is the one thing here nobody has measured. */}
+          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 600, marginBottom: 20 }}>Six things that are true<br /><em>of every search we run.</em></h2>
           <div className="why-grid">
             {[
               /* Was "Quality over quantity — always", which restated both the
@@ -248,21 +269,36 @@ export default function Home() {
                  fifty that don't") and the Screen tab word for word, down to
                  "no keyword-matching". Replaced with the one idea worth
                  rescuing from the deleted SECURITY section. */
-              { n: "01", t: "Searches you can't advertise", d: "A senior hire, a replacement the incumbent doesn't know about yet, a role that can't be posted. Handled under NDA, with the brief shown only to candidates who need to see it to decide.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="4" y="9" width="14" height="10" rx="2.5" stroke="var(--accent)" strokeWidth="1.3" /><path d="M7.5 9V6.5a3.5 3.5 0 017 0V9" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" /></svg>) },
-              { n: "02", t: "A timeline agreed before we start", d: "We commit to a delivery date when we take the brief, not after. If it is going to move, you hear it from us early rather than finding out by waiting.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="var(--accent)" strokeWidth="1.3" /><path d="M11 7v4l3 3" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-              { n: "03", t: "Specialist domain knowledge", d: "Every brief goes to a specialist who recruits in your sector. They know the roles, the market rates and what a strong candidate actually looks like in your industry.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11a7 7 0 1014 0A7 7 0 004 11z" stroke="var(--accent)" strokeWidth="1.3" /><path d="M11 8v3l2 2" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" /><circle cx="18" cy="4" r="3" fill="var(--accent)" opacity=".3" /></svg>) },
-              /* "No handoffs" was already the approach section's lead line, so
-                 this now says the thing that one IS NOT: continuity ACROSS
-                 searches rather than within one. */
-              { n: "04", t: "The second brief takes half the time", d: "Your point of contact doesn't change between searches. They already know your hiring bar, your interview loop, and who you turned down last time and why — so you brief them once, not every time.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="4" stroke="var(--accent)" strokeWidth="1.3" /><path d="M8 11l2.5 2.5L14 8" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-              { n: "05", t: "Global delivery. US standards.", d: "Rivago is a global staffing and recruitment company with active hiring operations across the United States, Canada, the UAE and India. One firm, four markets, the same standard everywhere.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3l2.5 5 5.5.8-4 3.9.9 5.5L11 15.5l-4.9 2.7.9-5.5L3 8.8l5.5-.8z" stroke="var(--accent)" strokeWidth="1.3" strokeLinejoin="round" /></svg>) },
-              { n: "06", t: "Replacement guarantee included", d: "90-day replacement guarantee, no questions asked. If the hire doesn&apos;t work out, we start again at no cost.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2v4M11 16v4M4.22 4.22l2.83 2.83M14.95 14.95l2.83 2.83M2 11h4M16 11h4M4.22 17.78l2.83-2.83M14.95 7.05l2.83-2.83" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" /></svg>) },
+              { t: "Searches you can't advertise", d: "A senior hire, a replacement the incumbent doesn't know about yet, a role that can't be posted. Handled under NDA, with the brief shown only to candidates who need to see it to decide.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="4" y="9" width="14" height="10" rx="2.5" stroke="var(--accent)" strokeWidth="1.3" /><path d="M7.5 9V6.5a3.5 3.5 0 017 0V9" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" /></svg>) },
+              /* Reworded off the FAQ answer 1,400px below, which said "you
+                 hear from us early if it is going to move" almost to the
+                 word. Same commitment, stated from the other end. */
+              { t: "A date agreed before sourcing starts", d: "The delivery date is set on the intake call and written into the brief — not offered after the first week has already slipped.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="var(--accent)" strokeWidth="1.3" /><path d="M11 7v4l3 3" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
+              /* "Specialist domain knowledge" was the one abstract-noun title
+                 among six concrete ones, and it named a quality rather than a
+                 thing that happens to your brief. */
+              { t: "A partner who already works your sector", d: "Your brief goes to whoever recruits in that market, not to whoever is free this week. They know the titles, the going rate and what a strong candidate looks like in your industry.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11a7 7 0 1014 0A7 7 0 004 11z" stroke="var(--accent)" strokeWidth="1.3" /><path d="M11 8v3l2 2" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" /><circle cx="18" cy="4" r="3" fill="var(--accent)" opacity=".3" /></svg>) },
+              /* Was "The second brief takes half the time". Half is a measured
+                 figure and nobody measured it. The body already made the point
+                 without putting a number on it. */
+              { t: "You brief us once, not every time", d: "Your point of contact doesn't change between searches. They already know your hiring bar, your interview loop, and who you turned down last time and why.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="4" stroke="var(--accent)" strokeWidth="1.3" /><path d="M8 11l2.5 2.5L14 8" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
+              /* Was "Global delivery. US standards." — an empty phrase over a
+                 sentence lifted verbatim from FAQ answer five on this same
+                 page. The cities and markets are read from lib/routes.ts so
+                 they cannot drift from the footer and the contact page. */
+              { t: `${Spell(offices.length)} offices, ${spell(servedMarkets.length)} markets, one firm`, d: `${offices.map((o) => o.city).join(", ")} — hiring into ${servedMarkets.slice(0, -1).join(", ")} and ${servedMarkets[servedMarkets.length - 1]}. One point of contact across every one of them, rather than a different agency in each market.`, icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8.5" stroke="var(--accent)" strokeWidth="1.3" /><path d="M2.5 11h17M11 2.5c2.2 2.3 3.4 5.3 3.4 8.5s-1.2 6.2-3.4 8.5c-2.2-2.3-3.4-5.3-3.4-8.5S8.8 4.8 11 2.5z" stroke="var(--accent)" strokeWidth="1.3" strokeLinejoin="round" /></svg>) },
+              /* Was "90-day replacement guarantee, no questions asked", which
+                 contradicted two other places on this site: /industries states
+                 what the guarantee does and does not cover, and the FAQ four
+                 sections below says terms are agreed upfront. It also left out
+                 the twelve-month retained window, which is the stronger and
+                 equally true half. */
+              { t: "A guarantee with its terms on show", d: "90 days on contingent direct hires, up to twelve months on retained search. Resignation and performance are covered; redundancy and a cancelled role are not — and that sits in the agreement rather than the small print.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2.6l7 2.6v5.4c0 4-2.9 7.5-7 8.8-4.1-1.3-7-4.8-7-8.8V5.2z" stroke="var(--accent)" strokeWidth="1.3" strokeLinejoin="round" /><path d="M8 11l2.2 2.2L14.5 9" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
             ].map((c) => (
-              <div className="why-card gs" key={c.n}>
+              <div className="why-card gs" key={c.t}>
                 <div className="why-icon">{c.icon}</div>
-                <div className="why-num">{c.n}</div>
                 <div className="why-title">{c.t}</div>
-                <div className="why-desc" dangerouslySetInnerHTML={{ __html: c.d }} />
+                <div className="why-desc">{c.d}</div>
               </div>
             ))}
           </div>
