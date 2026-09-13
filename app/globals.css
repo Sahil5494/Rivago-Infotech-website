@@ -427,8 +427,13 @@ a{color:inherit;text-decoration:none}
 .clients-label{text-align:center;font-size:var(--fz1);color:var(--text-3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:32px;font-weight:400}
 .mq-outer{overflow:hidden;mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent)}
 .mq-inner{display:flex;white-space:nowrap;animation:mq 32s linear infinite;width:max-content}
+.mq-set{display:flex}
 .mq-inner:hover{animation-play-state:paused}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* A 32-second infinite scroll is exactly what this setting exists to stop.
+   Halting it leaves the first set in place and legible — the marks are the
+   point, the movement is not. */
+@media(prefers-reduced-motion:reduce){.mq-inner{animation:none}}
 .logo-chip{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:190px;height:58px}
 
 /* The client marks are white-on-transparent PNGs, drawn for a dark ground.
