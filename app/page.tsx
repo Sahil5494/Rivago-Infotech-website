@@ -328,7 +328,9 @@ export default function Home() {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="ind-sec">
+      {/* .inv redefines the whole token set, so the cards, icons, chips and
+          rail arrows follow without a single component change. */}
+      <section className="ind-sec inv">
         <div className="ind-inner">
           <div className="ind-head" style={{ marginBottom: 52 }}>
             <div>
