@@ -440,9 +440,18 @@ a{color:inherit;text-decoration:none}
    On a light page they all but vanish, so they are knocked down to a dark
    silhouette. Inside .inv they go back to being white. A contrast audit
    cannot catch this — images carry no text nodes — so it is set explicitly. */
-.logo-chip img{max-width:150px;width:auto;height:auto;object-fit:contain;display:block;filter:brightness(0) saturate(0);opacity:.55;transition:opacity .25s}
+.logo-chip img{max-width:150px;width:auto;height:auto;object-fit:contain;display:block;filter:brightness(0) saturate(0);opacity:.62;transition:opacity .25s}
 .inv .logo-chip img{filter:brightness(0) saturate(0) invert(1);opacity:.62}
-.logo-chip:hover img{opacity:.85}
+.logo-chip:hover img{opacity:1}
+/* At 390px a 190px chip plus a 10%/90% edge fade left barely two marks
+   legible at once, which reads as an empty strip rather than a client
+   list. Narrower chips and a shallower fade put three in view. */
+@media(max-width:640px){
+  .logo-chip{width:126px;height:48px}
+  .logo-chip img{max-width:100px}
+  .mq-outer{mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent);
+    -webkit-mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent)}
+}
 
 .ind-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .ind-all{display:inline-flex;align-items:center;gap:8px;flex-shrink:0;padding:11px 20px;border:1px solid var(--tint-3);border-radius:9999px;background:var(--tint-1);color:var(--accent);font-size:var(--fz3);font-weight:500;text-decoration:none;white-space:nowrap;transition:all .22s var(--ease)}

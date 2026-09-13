@@ -197,8 +197,13 @@ export default function Home() {
       </section>
 
       {/* CLIENTS */}
-      <section className="clients-sec inv">
-        <div className="clients-label">Where world-class teams build their talent bench</div>
+      {/* Confirmed by the client: all ten are real clients and their marks
+          are approved for display. The heading can therefore say plainly
+          what they are, rather than reaching for "world-class teams build
+          their talent bench" — which asserted the same thing in words that
+          sound like they are covering for not being able to. */}
+      <section className="clients-sec">
+        <div className="clients-label">Teams we recruit for</div>
         <LogoMarquee />
       </section>
 
