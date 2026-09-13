@@ -64,9 +64,27 @@ const STAGES = [
     ),
   },
   {
-    tab: "Source and screen",
+    tab: "Source",
     title: "We go where the candidates are.",
-    sub: "Referrals, direct headhunting and our own talent pool — not job boards. Everyone is screened against the brief before you hear about them.",
+    sub: "Referrals, direct headhunting and a talent pool we already know — not job boards. Most of the people we place were not actively looking when we found them.",
+    art: (
+      <div className="apr-art">
+        <div className="sv-nl">Where the shortlist comes from</div>
+        <Rows
+          items={[
+            ["Referral network", "Placed candidates, and the people they vouch for"],
+            ["Direct headhunting", "Approached for this role specifically"],
+            ["Active talent pool", "People we have already met and screened"],
+            ["Market mapping", "Who is out there, whether or not they are looking"],
+          ]}
+        />
+      </div>
+    ),
+  },
+  {
+    tab: "Screen",
+    title: "Screened before you see them.",
+    sub: "Competency against the brief, right to work, availability and compensation expectations — all checked and written down before a CV reaches your inbox.",
     art: (
       <div className="apr-art">
         <div className="sv-tag sv-tg">
@@ -88,8 +106,9 @@ const STAGES = [
         <Rows
           items={[
             ["Screened against the brief", "Scope, seniority and technical bar"],
-            ["Right to work verified", "Checked before submission"],
+            ["Right to work verified", "Checked before submission, not at offer"],
             ["Availability confirmed", "Notice period and competing offers"],
+            ["Compensation expectations", "Asked and agreed, never assumed"],
           ]}
         />
       </div>
