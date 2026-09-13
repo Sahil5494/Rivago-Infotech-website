@@ -2,33 +2,42 @@
 
 import { useEffect, useRef } from "react";
 
-/* The hero's right-hand column.
+/* The hero's right-hand column: a shortlist forming.
  *
- * It draws the one thing this company actually does: a pool of candidates,
- * a search passing through it, and a handful resolving into a shortlist.
- * Abstract on purpose — there is no name, no figure and no claim in it,
- * because none of those are verified. It is a shape, not a statistic.
+ * A field of candidates on the left, a search passing through it, and one
+ * resolving into each discipline on the right. It illustrates the sentence
+ * the lede actually makes — "across every industry, every function" — using
+ * the same eight verticals the INDUSTRIES section carries. There is no name,
+ * no figure and no claim in it, because none of those are verified.
  *
- * Canvas rather than SVG or a video: it is a few KB in the bundle, it is
- * sharp at any DPR, it costs no licence, and it does not drop a dark
- * rectangle into a light hero the way a photograph or a screen recording
- * would.
+ * Split deliberately between two technologies:
+ *   - the labels are real HTML, so they are selectable, crawlable, screen-
+ *     readable and crisp at every DPR;
+ *   - the canvas behind draws only the pool, the sweep and the travel arcs.
+ * The handoff is at the moment of landing: the canvas stops drawing a
+ * candidate and the corresponding list row switches on.
  *
- * Colours are read from the CSS custom properties at mount, so the drawing
- * follows whichever palette the surrounding context carries — swap the
- * hero between .lt and .inv and this follows without edits here.
+ * Colours come from the CSS custom properties at mount, so the drawing
+ * follows whichever palette its context carries.
  */
 
-type Dot = { x: number; y: number; r: number; phase: number };
+const DISCIPLINES = [
+  "Technology",
+  "Finance & Banking",
+  "Healthcare",
+  "Legal",
+  "Operations",
+  "Engineering",
+];
+
+type Dot = { x: number; y: number; r: number };
 type Pick = { dot: number; slot: number; departAt: number };
 
-const POOL = 140;
-const SHORTLIST = 5;
-
-const SCAN_MS = 5200; // the sweep crossing the pool
-const TRAVEL_MS = 1500; // one candidate moving to its slot
-const HOLD_MS = 2000; // the completed shortlist, at rest
-const FADE_MS = 900; // clearing, before the next pass
+const POOL = 150;
+const SCAN_MS = 5600;
+const TRAVEL_MS = 1500;
+const HOLD_MS = 2600;
+const FADE_MS = 900;
 const CYCLE = SCAN_MS + TRAVEL_MS + HOLD_MS + FADE_MS;
 
 const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
@@ -37,38 +46,38 @@ const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 export default function HeroVisual() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const wrap = wrapRef.current;
     const canvas = canvasRef.current;
-    if (!wrap || !canvas) return;
+    const list = listRef.current;
+    if (!wrap || !canvas || !list) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const cs = getComputedStyle(canvas);
-    const read = (name: string, fallback: string) => cs.getPropertyValue(name).trim() || fallback;
+    const read = (n: string, f: string) => cs.getPropertyValue(n).trim() || f;
     const ACCENT = read("--accent", "#0E5C3C");
     const MUTED = read("--text-3", "#4F5252");
-    const RULE = read("--rule-2", "#C9CDCB");
-    const GROUND = read("--surface-1", "#F2F7F5");
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const rows = Array.from(list.querySelectorAll<HTMLLIElement>("li"));
 
     let w = 0;
     let h = 0;
     let dots: Dot[] = [];
     let picks: Pick[] = [];
-    let slots: { x: number; y: number }[] = [];
+    let targets: { x: number; y: number }[] = [];
     let poolRight = 0;
     let cycleStart = performance.now();
     let raf = 0;
+    const lit = new Set<number>();
 
-    /* The pool is a jittered grid rather than pure noise: a random scatter
-       clumps and reads as static, a strict grid reads as a spreadsheet. */
     function layout() {
       const rect = wrap!.getBoundingClientRect();
       w = Math.max(280, rect.width);
-      h = Math.max(260, rect.height);
+      h = Math.max(240, rect.height);
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas!.width = Math.round(w * dpr);
@@ -77,80 +86,104 @@ export default function HeroVisual() {
       canvas!.style.height = h + "px";
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      poolRight = w * 0.62;
-      const padX = w * 0.03;
-      const padY = h * 0.08;
-      const cols = Math.round(Math.sqrt(POOL * ((poolRight - padX * 2) / (h - padY * 2))));
-      const rows = Math.ceil(POOL / cols);
-      const gx = (poolRight - padX * 2) / Math.max(cols - 1, 1);
-      const gy = (h - padY * 2) / Math.max(rows - 1, 1);
+      /* The arcs must land exactly on the HTML bullets, so the targets are
+         measured from the live DOM rather than assumed — the list is real
+         text and its rows move with the font and the viewport. */
+      targets = rows.map((li) => {
+        const b = li.querySelector<HTMLElement>(".hv-dot")!.getBoundingClientRect();
+        return { x: b.left + b.width / 2 - rect.left, y: b.top + b.height / 2 - rect.top };
+      });
 
-      dots = [];
-      for (let i = 0; i < POOL; i++) {
+      poolRight = Math.max(60, (targets[0]?.x ?? w * 0.6) - 74);
+
+      const padX = w * 0.02;
+      const padY = h * 0.05;
+      const cols = Math.max(4, Math.round(Math.sqrt(POOL * ((poolRight - padX * 2) / (h - padY * 2)))));
+      const rowsN = Math.ceil(POOL / cols);
+      const gx = (poolRight - padX * 2) / Math.max(cols - 1, 1);
+      const gy = (h - padY * 2) / Math.max(rowsN - 1, 1);
+
+      // deterministic jitter, so a resize does not reshuffle the field
+      dots = Array.from({ length: POOL }, (_, i) => {
         const c = i % cols;
         const r = Math.floor(i / cols);
-        // deterministic jitter, so a resize does not reshuffle the field
         const jx = (Math.sin(i * 12.9898) * 43758.5453) % 1;
         const jy = (Math.sin(i * 78.233) * 12345.6789) % 1;
-        dots.push({
+        return {
           x: padX + c * gx + jx * gx * 0.55,
           y: padY + r * gy + jy * gy * 0.55 + (c % 2) * gy * 0.3,
-          r: 1.6 + Math.abs(jx) * 1.5,
-          phase: Math.abs(jy) * Math.PI * 2,
-        });
-      }
-
-      const slotX = w * 0.84;
-      const slotGap = Math.min(52, (h * 0.62) / (SHORTLIST - 1));
-      const slotTop = h / 2 - (slotGap * (SHORTLIST - 1)) / 2;
-      slots = Array.from({ length: SHORTLIST }, (_, i) => ({ x: slotX, y: slotTop + i * slotGap }));
+          r: 1.5 + Math.abs(jx) * 1.4,
+        };
+      });
     }
 
-    /* A fresh selection each pass. Picks are sorted by x so they leave the
-       pool in the order the sweep reaches them — the movement has to agree
-       with the thing causing it. */
     function reselect() {
       const chosen = new Set<number>();
-      while (chosen.size < SHORTLIST) chosen.add(Math.floor(Math.random() * dots.length));
+      while (chosen.size < targets.length) chosen.add(Math.floor(Math.random() * dots.length));
       picks = [...chosen]
         .sort((a, b) => dots[a].x - dots[b].x)
         .map((dot, slot) => ({ dot, slot, departAt: (dots[dot].x / poolRight) * SCAN_MS }));
+      lit.clear();
+      rows.forEach((li) => li.classList.remove("on"));
+    }
+
+    function setLit(slot: number, on: boolean) {
+      if (on === lit.has(slot)) return;
+      if (on) lit.add(slot);
+      else lit.delete(slot);
+      rows[slot]?.classList.toggle("on", on);
     }
 
     function draw(now: number) {
-      const t = reduced ? CYCLE - HOLD_MS - FADE_MS : (now - cycleStart) % CYCLE;
       if (!reduced && now - cycleStart > CYCLE) {
         cycleStart = now;
         reselect();
       }
+      const t = reduced ? SCAN_MS + TRAVEL_MS : now - cycleStart;
 
       ctx!.clearRect(0, 0, w, h);
 
       const scanX = easeInOut(Math.min(t / SCAN_MS, 1)) * poolRight;
-      const settled = t > SCAN_MS + TRAVEL_MS;
-      const fade = settled ? 1 - Math.max(0, (t - SCAN_MS - TRAVEL_MS - HOLD_MS) / FADE_MS) : 1;
+      const clearing = Math.max(0, (t - SCAN_MS - TRAVEL_MS - HOLD_MS) / FADE_MS);
+      const fade = 1 - clearing;
 
-      /* The sweep. Both ends of the gradient must be transparent — a band
+      /* The sweep. Both ends of the gradient have to be transparent — a band
          that ends on a colour stop paints a hard edge down the canvas and
          reads as a grey rectangle rather than a pass of light. */
       if (!reduced && t < SCAN_MS) {
         const x0 = scanX - 150;
         const x1 = scanX + 90;
-        const band = ctx!.createLinearGradient(x0, 0, x1, 0);
-        band.addColorStop(0, "transparent");
-        band.addColorStop(0.62, ACCENT);
-        band.addColorStop(1, "transparent");
+        const g = ctx!.createLinearGradient(x0, 0, x1, 0);
+        g.addColorStop(0, "transparent");
+        g.addColorStop(0.62, ACCENT);
+        g.addColorStop(1, "transparent");
+        ctx!.fillStyle = g;
         ctx!.globalAlpha = 0.14;
-        ctx!.fillStyle = band;
         ctx!.fillRect(x0, 0, x1 - x0, h);
         ctx!.globalAlpha = 1;
+
+        /* The gradient tapers left-to-right but stops dead at the canvas top
+           and bottom, drawing a faint rectangle against the hero ground. The
+           band has to fade on all four sides. Erasing through a vertical
+           mask does that in one pass; painting it as horizontal strips of
+           varying alpha leaves a visible seam at every strip boundary.
+           Safe here because the sweep is the first thing drawn each frame,
+           so destination-out can only reach the band itself. */
+        const mask = ctx!.createLinearGradient(0, 0, 0, h);
+        mask.addColorStop(0, "rgba(0,0,0,1)");
+        mask.addColorStop(0.28, "rgba(0,0,0,0)");
+        mask.addColorStop(0.72, "rgba(0,0,0,0)");
+        mask.addColorStop(1, "rgba(0,0,0,1)");
+        ctx!.globalCompositeOperation = "destination-out";
+        ctx!.fillStyle = mask;
+        ctx!.fillRect(x0, 0, x1 - x0, h);
+        ctx!.globalCompositeOperation = "source-over";
       }
 
-      // ── the pool
-      const departed = new Set(picks.filter((p) => t > p.departAt).map((p) => p.dot));
+      const gone = new Set(picks.filter((p) => t > p.departAt).map((p) => p.dot));
       for (let i = 0; i < dots.length; i++) {
+        if (gone.has(i)) continue;
         const d = dots[i];
-        if (departed.has(i)) continue;
         const near = !reduced && t < SCAN_MS ? Math.max(0, 1 - Math.abs(d.x - scanX) / 70) : 0;
         ctx!.beginPath();
         ctx!.arc(d.x, d.y, d.r + near * 1.1, 0, Math.PI * 2);
@@ -160,68 +193,37 @@ export default function HeroVisual() {
       }
       ctx!.globalAlpha = 1;
 
-      /* A hairline down the slot column. Five loose circles read as five
-         unrelated dots; strung on a rule they read as one list. */
-      ctx!.beginPath();
-      ctx!.moveTo(slots[0].x, slots[0].y);
-      ctx!.lineTo(slots[SHORTLIST - 1].x, slots[SHORTLIST - 1].y);
-      ctx!.strokeStyle = RULE;
-      ctx!.globalAlpha = 0.55 * fade;
-      ctx!.lineWidth = 1;
-      ctx!.stroke();
-      ctx!.globalAlpha = 1;
-
-      // ── the empty slots
-      for (const s of slots) {
-        // filled with the page ground so the hairline does not run through
-        ctx!.beginPath();
-        ctx!.arc(s.x, s.y, 5, 0, Math.PI * 2);
-        ctx!.fillStyle = GROUND;
-        ctx!.globalAlpha = fade;
-        ctx!.fill();
-        ctx!.strokeStyle = RULE;
-        ctx!.globalAlpha = 0.85 * fade;
-        ctx!.lineWidth = 1;
-        ctx!.stroke();
-      }
-      ctx!.globalAlpha = 1;
-
-      // ── candidates in transit, and those already placed
       for (const p of picks) {
-        if (t <= p.departAt) continue;
+        const to = targets[p.slot];
+        if (!to || t <= p.departAt) {
+          setLit(p.slot, false);
+          continue;
+        }
         const prog = Math.min((t - p.departAt) / TRAVEL_MS, 1);
+        setLit(p.slot, prog === 1 && fade > 0.5);
+        if (prog === 1) continue; // the HTML bullet takes over from here
+
         const e = easeOut(prog);
         const from = dots[p.dot];
-        const to = slots[p.slot];
         // a shallow arc reads as a decision rather than a conveyor belt
         const mx = (from.x + to.x) / 2;
         const my = (from.y + to.y) / 2 - (to.x - from.x) * 0.12;
         const x = (1 - e) * (1 - e) * from.x + 2 * (1 - e) * e * mx + e * e * to.x;
         const y = (1 - e) * (1 - e) * from.y + 2 * (1 - e) * e * my + e * e * to.y;
 
-        if (prog < 1) {
-          ctx!.beginPath();
-          ctx!.moveTo(from.x, from.y);
-          ctx!.quadraticCurveTo(mx, my, x, y);
-          ctx!.strokeStyle = ACCENT;
-          ctx!.globalAlpha = 0.3 * (1 - prog);
-          ctx!.lineWidth = 1;
-          ctx!.stroke();
-        }
+        ctx!.beginPath();
+        ctx!.moveTo(from.x, from.y);
+        ctx!.quadraticCurveTo(mx, my, x, y);
+        ctx!.strokeStyle = ACCENT;
+        ctx!.globalAlpha = 0.32 * (1 - prog) * fade;
+        ctx!.lineWidth = 1;
+        ctx!.stroke();
 
         ctx!.beginPath();
-        ctx!.arc(x, y, prog < 1 ? 4 : 5, 0, Math.PI * 2);
+        ctx!.arc(x, y, 4, 0, Math.PI * 2);
         ctx!.fillStyle = ACCENT;
         ctx!.globalAlpha = fade;
         ctx!.fill();
-
-        if (prog === 1) {
-          ctx!.beginPath();
-          ctx!.arc(x, y, 10, 0, Math.PI * 2);
-          ctx!.strokeStyle = ACCENT;
-          ctx!.globalAlpha = 0.28 * fade;
-          ctx!.stroke();
-        }
       }
       ctx!.globalAlpha = 1;
 
@@ -230,13 +232,17 @@ export default function HeroVisual() {
 
     layout();
     reselect();
-    if (reduced) draw(performance.now());
-    else raf = requestAnimationFrame(draw);
+    if (reduced) {
+      rows.forEach((li) => li.classList.add("on"));
+      draw(performance.now());
+    } else {
+      raf = requestAnimationFrame(draw);
+    }
 
     const ro = new ResizeObserver(() => {
       layout();
-      reselect();
-      if (reduced) draw(performance.now());
+      if (!reduced) reselect();
+      else draw(performance.now());
     });
     ro.observe(wrap);
 
@@ -248,11 +254,18 @@ export default function HeroVisual() {
 
   return (
     <div className="hero-vis gs" ref={wrapRef}>
-      <canvas
-        ref={canvasRef}
-        role="img"
-        aria-label="A field of candidates, with a search passing through it and five resolving into a shortlist."
-      />
+      <canvas ref={canvasRef} aria-hidden="true" />
+      <div className="hv-panel">
+        <div className="hv-eyebrow">Placing across</div>
+        <ul className="hv-list" ref={listRef}>
+          {DISCIPLINES.map((d) => (
+            <li key={d}>
+              <span className="hv-dot" aria-hidden="true" />
+              {d}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
