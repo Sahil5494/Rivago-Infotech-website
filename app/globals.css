@@ -779,18 +779,62 @@ a{color:inherit;text-decoration:none}
 /* ── WHY RIVAGO ── */
 .why-sec{padding:110px 44px;background:var(--bg)}
 .why-inner{max-width:1200px;margin:0 auto}
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
-.why-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;transition:all .28s var(--ease);position:relative;overflow:hidden}
-.why-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(61,255,135,.04) 0%,transparent 70%);opacity:0;transition:opacity .3s}
+.why-lede{font-size:var(--fz7);color:var(--text2);line-height:1.72;font-weight:400;max-width:560px}
+
+/* Two columns, the right one pushed down so the cards never line up across
+   the gutter. That offset IS the layout — without it this is a plain 2xN
+   grid. Columns are real elements rather than grid auto-placement because
+   the cards differ in height and auto-placement would re-align them at
+   every row boundary. */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px;align-items:start}
+.why-col{display:flex;flex-direction:column;gap:24px}
+/* The offset goes on the SHORTER column. The right column carries four
+   cells to the left's three, so offsetting the right one made it both
+   lower and longer — about 400px of dead space under the left column.
+   Offsetting the left instead stays true to the reference and brings the
+   two columns down to within a card of each other. */
+.why-col:nth-child(1){margin-top:72px}
+
+.why-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;transition:border-color .28s var(--ease),transform .28s var(--ease),background .28s var(--ease);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start}
+.why-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(61,255,135,.04) 0%,transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none}
 .why-card:hover{background:var(--surface2);border-color:var(--tint-2);transform:translateY(-4px)}
 .why-card:hover::before{opacity:1}
-.why-icon{width:48px;height:48px;border-radius:13px;background:var(--tint-1);border:1px solid var(--tint-2);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+.why-icon{width:48px;height:48px;border-radius:13px;background:var(--tint-1);border:1px solid var(--tint-2);display:flex;align-items:center;justify-content:center;margin-bottom:22px;flex-shrink:0}
 /* .why-num deleted with the 01-06 numerals. It set the number at --fz12
    weight 700, which made it larger and heavier than the card title under
    it — the loudest element in the section, carrying no information, on six
    cards that have no order. */
-.why-title{font-size:var(--fz7);font-weight:500;color:var(--text);margin-bottom:10px;letter-spacing:-.01em}
-.why-desc{font-size:var(--fz6);color:var(--text2);line-height:1.72}
+.why-title{font-size:var(--fz9);font-weight:500;color:var(--text);margin:0 0 12px;letter-spacing:-.018em;line-height:1.24;text-wrap:balance}
+/* Clamped to three lines when closed, which is what makes Read more mean
+   something. -webkit-line-clamp is the only cross-browser line clamp; it
+   needs the -webkit- display and box-orient alongside it even in Firefox,
+   which supports the property under those exact prefixes. */
+.why-desc{font-size:var(--fz5);color:var(--text2);line-height:1.7;margin:0;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.why-desc.open{display:block;-webkit-line-clamp:none;overflow:visible}
+.why-extra{margin-top:12px}
+.why-extra p{font-size:var(--fz5);color:var(--text2);line-height:1.7;margin:0}
+.why-more{margin-top:18px;display:inline-flex;align-items:center;gap:8px;background:none;border:0;padding:0;cursor:pointer;
+  font-family:var(--fm);font-size:var(--fz1);letter-spacing:.07em;text-transform:uppercase;color:var(--accent);transition:gap .2s}
+.why-more:hover{gap:12px}
+.why-more-ico{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;border:1px solid var(--tint-3);background:var(--tint-1)}
+
+/* The closing cell. Reads as a card of the same family — same radius, same
+   gutter — but filled, so it is plainly the thing to act on rather than a
+   seventh reason. */
+.why-cta{background:var(--accent);color:var(--bg);border-radius:20px;padding:34px 32px 32px;display:flex;flex-direction:column;align-items:flex-start}
+.why-cta-ico{width:44px;height:44px;border-radius:12px;background:rgba(3,12,5,.12);display:flex;align-items:center;justify-content:center;color:var(--bg);margin-bottom:22px}
+.why-cta h3{font-size:var(--fz9);font-weight:500;letter-spacing:-.018em;line-height:1.24;margin:0 0 10px}
+.why-cta p{font-size:var(--fz5);line-height:1.7;font-weight:400;margin:0 0 24px;opacity:.82}
+.why-cta-btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border:0;border-radius:11px;cursor:pointer;
+  background:var(--bg);color:var(--accent);font-family:var(--ff);font-size:var(--fz5);font-weight:500;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.why-cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.18)}
+
+@media(max-width:900px){
+  /* The offset only reads as an offset beside a second column. Stacked, it
+     is just a gap. */
+  .why-col:nth-child(1){margin-top:0}
+}
 
 /* ── SERVICES ── */
 .svc-sec{padding:110px 44px;background:var(--bg3)}
@@ -1058,7 +1102,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 .faq-a-inner{padding:0 26px 22px;font-size:var(--fz6);color:var(--text2);line-height:1.78;font-weight:400}
 
 @media(max-width:900px){
-  .ft-grid,.why-grid,.supp-grid{grid-template-columns:1fr!important}
+  .ft-grid,.supp-grid{grid-template-columns:1fr!important}
+  .why-grid{grid-template-columns:1fr!important;gap:24px}
   /* .cs-grid and .cs-wide were collapsed here for the deleted home-page case
      study cards. .cs-wide no longer exists, and the /resources grid — the
      only .cs-grid left — already stacks to one column in its own 920px
