@@ -867,16 +867,23 @@ a{color:inherit;text-decoration:none}
   scroll-padding-left:0;padding-right:76px}
 .ind-rail::-webkit-scrollbar{display:none}
 .ind-rail:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:20px}
-.ind-rail > .ind-card{flex:0 0 clamp(268px,27.5%,344px);scroll-snap-align:start;
-  display:flex;flex-direction:column}
+/* Two cards in view with the third peeking. 42% of the rail leaves roughly a
+   third of the next card showing at 1200px — enough to read as "there is more"
+   without looking like a fourth column that got cut off. */
+.ind-rail > .ind-card{flex:0 0 clamp(320px,42%,520px);scroll-snap-align:start;
+  display:flex;flex-direction:column;padding:32px}
 /* Fades the peeking card out, so the rail reads as continuing rather than as
    a card that happens to be clipped. Dropped at the end of the scroll, where
    there is nothing more to suggest. */
 .ind-rail:not(.at-end){
-  mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 92px),transparent 100%);
-  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 92px),transparent 100%)}
-.ind-desc{flex:1}
-.ind-more{display:inline-flex;align-items:center;gap:7px;margin-top:18px;
+  mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 120px),transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 120px),transparent 100%)}
+/* Wider cards make the description short, so every card is stretched to the
+   tallest sibling and the extra height pooled under the text. The tags and the
+   link are pinned to the base instead, which uses that space on purpose:
+   description at the top, metadata at the bottom, on every card. */
+.ind-rail .ind-tags{margin-top:auto;padding-top:20px}
+.ind-more{display:inline-flex;align-items:center;gap:7px;margin-top:14px;
   font-size:var(--fz1);font-weight:500;color:var(--accent);
   opacity:0;transform:translateY(4px);transition:opacity .25s var(--ease),transform .25s var(--ease)}
 .ind-card:hover .ind-more,.ind-card:focus-visible .ind-more{opacity:1;transform:none}
@@ -898,7 +905,10 @@ a{color:inherit;text-decoration:none}
 .ind-railbtn:disabled{opacity:.32;cursor:default;box-shadow:none}
 
 @media(max-width:900px){
-  .ind-rail > .ind-card{flex:0 0 78%}
+  /* Sized off the viewport, not the rail. A percentage resolves against the
+     rail's inner width, which the section padding had already cut to ~282px
+     at 390px wide — 78% of that gave a 220px card and eight-line paragraphs. */
+  .ind-rail > .ind-card{flex:0 0 min(84vw,400px);padding:26px}
   .ind-rail{padding-right:20px}
   /* The arrows would sit on top of the cards at this width; the rail is
      swipeable here and the fade already says there is more. */
