@@ -12,6 +12,10 @@ import Testimonials from "@/components/Testimonials";
    still exports both — /about counts them and the nav mega-menu reads them.
    CardSlider went with them; nothing on this page uses it now. */
 import { routes, offices } from "@/lib/routes";
+/* Counted, not typed, so the support card cannot promise a library that is
+   bigger than the one /resources actually renders. Build-time only — this is
+   a server component, so the article bodies never reach the browser. */
+import { articles, caseStudies } from "@/app/resources/data";
 
 const faqItems = [
   {
@@ -349,38 +353,50 @@ export default function Home() {
       </section>
 
       {/* SUPPORT */}
+      {/* The first card used to be "Live chat — talk to a recruiter now",
+          with "connect instantly" and "we're online and ready", and its
+          button went to the contact form. There is no chat widget on this
+          site and no plan for one, so the card promised a channel that does
+          not exist and then handed the visitor a form. It is the phone now:
+          (888) 508-5703 is real, it is already published on /contact-us, and
+          it is the only channel here that genuinely answers in the moment.
+
+          The three cards are now three different things — talk now, book
+          time, read first — rather than two routes to the same enquiry form.
+          Card two no longer says "your dedicated account manager": a first
+          time visitor does not have one. */}
       <section className="supp-sec">
         <div className="supp-inner">
           <div style={{ textAlign: "center" }}>
-            <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>Support</div>
-            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 12 }}>We&apos;re with you<br /><em>every step of the way.</em></h2>
-            <p className="orb-desc gs" style={{ marginBottom: 0 }}>Whether you&apos;re hiring for the first time or managing a 50-role pipeline — our team is always available to help.</p>
+            <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>Talk to us</div>
+            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 12 }}>Three ways in.<br /><em>All of them reach a partner.</em></h2>
+            <p className="orb-desc gs" style={{ marginBottom: 0 }}>A first hire or a fiftieth, a live brief or a question you want a straight answer to. Pick whichever suits the morning you are having.</p>
           </div>
           <div className="supp-grid">
             <div className="supp-card gs">
-              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 3H3a1 1 0 00-1 1v10a1 1 0 001 1h3v2.5l3-2.5h8a1 1 0 001-1V4a1 1 0 00-1-1z" stroke="var(--accent)" strokeWidth="1.2" /><path d="M6 8h8M6 11h5" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
-              <div><div className="supp-tag">Live chat</div><div className="supp-title" style={{ marginTop: 10 }}>Talk to a recruiter now</div></div>
-              <div className="supp-desc">Connect instantly with one of our specialist recruiters. Whether you have a brief to share or just want to explore options — we&apos;re online and ready.</div>
+              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.2 3.4 8.6 6.6a1 1 0 0 1-.24 1.15l-1.2 1.1a10.5 10.5 0 0 0 4 4l1.1-1.2a1 1 0 0 1 1.15-.24l3.2 1.4a1 1 0 0 1 .58 1.05l-.35 2.2a1.2 1.2 0 0 1-1.32 1A13.6 13.6 0 0 1 3.1 4.5a1.2 1.2 0 0 1 1-1.32l2.2-.35a1 1 0 0 1 1.05.58Z" stroke="var(--accent)" strokeWidth="1.2" strokeLinejoin="round" /></svg></div>
+              <div><div className="supp-tag">Call</div><div className="supp-title" style={{ marginTop: 10 }}>Speak to a partner today</div></div>
+              <div className="supp-desc">One number, answered by the people who run the searches. Bring a role you are struggling to fill, or a market you want read honestly. No form first, no qualifying script.</div>
               <div>
                 <div className="supp-hours"><div className="supp-dot-live"></div>Mon–Fri · US, Canada &amp; India business hours</div>
-                <Link className="supp-link" href={routes.contactUs}>Start a conversation <SmallArrow /></Link>
+                <a className="supp-link" href="tel:+18885085703">(888) 508-5703 <SmallArrow /></a>
               </div>
             </div>
             <div className="supp-card featured gs">
-              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="14" rx="2" stroke="var(--accent)" strokeWidth="1.2" /><path d="M2 7h16" stroke="var(--accent)" strokeWidth="1.2" /><path d="M6 11h8M6 14h5" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
-              <div><div className="supp-tag">Recommended</div><div className="supp-title" style={{ marginTop: 10 }}>Book a strategy call</div></div>
-              <div className="supp-desc">Schedule a 30-minute call with your dedicated account manager. We&apos;ll review your open roles, build a hiring plan and set a realistic timeline — completely free, no commitment required.</div>
+              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2.5" y="4" width="15" height="13" rx="2.5" stroke="var(--accent)" strokeWidth="1.2" /><path d="M2.5 8h15M6.5 2.5v3M13.5 2.5v3" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /><path d="m7.4 12.4 1.7 1.7 3.5-3.5" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
+              <div><div className="supp-tag">Recommended</div><div className="supp-title" style={{ marginTop: 10 }}>Book a scoping call</div></div>
+              <div className="supp-desc">Thirty minutes with the partner who would take the brief. We go through the open roles, what the market will bear on each, and where the timeline realistically lands. You leave with a plan whether or not you engage us.</div>
               <div>
-                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" strokeWidth="1.1" /><path d="M6 3.5v2.5l1.5 1.5" stroke="var(--accent)" strokeWidth="1.1" strokeLinecap="round" /></svg>30 minutes · Free · No obligation</div>
+                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" strokeWidth="1.1" /><path d="M6 3.5v2.5l1.5 1.5" stroke="var(--accent)" strokeWidth="1.1" strokeLinecap="round" /></svg>30 minutes · No charge · No obligation</div>
                 <button className="supp-link" data-hire>Book your call <SmallArrow /></button>
               </div>
             </div>
             <div className="supp-card gs">
-              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="var(--accent)" strokeWidth="1.2" /><path d="M10 6a2 2 0 011.73 3c-.34.58-1.73 1-1.73 2M10 14v.5" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
-              <div><div className="supp-tag">Self-serve</div><div className="supp-title" style={{ marginTop: 10 }}>Help centre &amp; resources</div></div>
-              <div className="supp-desc">Explore our hiring guides, salary benchmarks and market reports. Everything you need to make smarter hiring decisions — available anytime, no sign-up needed.</div>
+              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 5.6C8.8 4.5 7.2 4 5 4H2.8v11H5c2.2 0 3.8.5 5 1.6 1.2-1.1 2.8-1.6 5-1.6h2.2V4H15c-2.2 0-3.8.5-5 1.6Z" stroke="var(--accent)" strokeWidth="1.2" strokeLinejoin="round" /><path d="M10 5.6v11" stroke="var(--accent)" strokeWidth="1.2" /></svg></div>
+              <div><div className="supp-tag">Read first</div><div className="supp-title" style={{ marginTop: 10 }}>Do your own homework</div></div>
+              <div className="supp-desc">Salary benchmarks, market reads and hiring playbooks, plus the case studies behind them. Nothing is gated — no email address, no download form, no follow-up call you did not ask for.</div>
               <div>
-                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" strokeWidth="1.1" /><path d="M4 6h4M6 4v4" stroke="var(--accent)" strokeWidth="1.1" strokeLinecap="round" /></svg>Free to access · No sign-up needed</div>
+                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" strokeWidth="1.1" /><path d="M4 6h4M6 4v4" stroke="var(--accent)" strokeWidth="1.1" strokeLinecap="round" /></svg>{articles.length} articles · {caseStudies.length} case studies · No sign-up</div>
                 <Link className="supp-link" href={routes.resources}>Browse resources <SmallArrow /></Link>
               </div>
             </div>
