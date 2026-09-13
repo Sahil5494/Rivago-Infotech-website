@@ -2,154 +2,206 @@
 
 import { useRef, useState } from "react";
 
-/* "Our approach", as a vertical tab list against one illustrated panel.
+/* "Our approach" — five stages of a real search.
  *
- * The tabs are Rivago's real four-step process — the same steps the PROCESS
- * section already sets out — not a list of product features, because Rivago
- * is a staffing firm and has no product surface to show. Each panel is an
- * artefact from that stage, built in the card language the rest of the page
- * already uses.
+ * Two rules shaped this content.
  *
- * Nothing in here is a measurement. The previous version of this section
- * carried a "live pipeline" with salaries, a 94% client acceptance rate, a
- * 94% interview rate and a placements-by-industry split, none of which were
- * real — and it described the same invented candidate as having 8 years'
- * experience in one card and 7 in another. Every figure is gone; what is
- * left describes what happens at each stage, which is true and needs no
- * number to carry it.
+ * First, every panel takes a DIFFERENT form: an intake document, a channel
+ * grid, a submission packet, a written assessment, a timeline. Five tabs
+ * carrying five identical four-row checklists is the thing that makes a
+ * page read as generated — the structure repeats, so the eye stops finding
+ * anything new and the words underneath stop mattering.
+ *
+ * Second, the detail is the trade's own. "Right to represent, signed" and
+ * "counter-offer risk" are artefacts nobody outside staffing writes down;
+ * "we screen thoroughly" is a sentence anyone could produce about anything.
+ * The assessment panel carries a reservation about the candidate, because a
+ * real recruiter summary names what is weak as well as what is strong — a
+ * summary with no caveat in it is a sales document, and hiring managers can
+ * tell the difference at a glance.
+ *
+ * No figure in here is a measurement. The example role is labelled as an
+ * example. Process details — the RTR, the check-in cadence, the two-referee
+ * rule — are standard practice and need confirming against how Rivago
+ * actually runs a search before this ships.
  */
 
-const Check = () => (
-  <div className="sv-ci">
-    <svg width="8" height="6" viewBox="0 0 8 6" fill="none" aria-hidden="true">
-      <path d="M1 3l2 2 4-4" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  </div>
-);
-
-const Rows = ({ items }: { items: [string, string][] }) => (
-  <>
-    {items.map(([t, s]) => (
-      <div className="sv-check" key={t}>
-        <Check />
-        <div>
-          <div className="sv-ct">{t}</div>
-          <div className="sv-cs">{s}</div>
-        </div>
-      </div>
-    ))}
-  </>
+const Doc = () => (
+  <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+    <path d="M3.5 1.5h4.5l2.5 2.5v8.5h-7z" stroke="var(--accent)" strokeWidth="1.1" strokeLinejoin="round" />
+    <path d="M8 1.5V4h2.5" stroke="var(--accent)" strokeWidth="1.1" strokeLinejoin="round" />
+  </svg>
 );
 
 const STAGES = [
+  /* ── 01 ── an intake document. Must-have against nice-to-have is what an
+     intake call actually produces, and it is the split that decides who gets
+     submitted. */
   {
     tab: "Understand the brief",
     title: "We take the brief properly.",
-    sub: "A call with the hiring manager and the named partner before anything else moves — so the search starts from what the role actually needs.",
+    sub: "One call with the hiring manager and the partner who will run the search. We leave it knowing what the role needs, what it only wants, and who signs off.",
     art: (
       <div className="apr-art">
-        <div className="sv-nl">Role brief</div>
+        <div className="apr-art-h">
+          <span className="sv-nl">Role brief</span>
+          <span className="apr-stamp">Example</span>
+        </div>
         <div className="apr-brief">
           <div className="apr-brief-h">Senior Cloud Architect</div>
           <div className="apr-brief-m">Technology · Contract · United States</div>
         </div>
-        <Rows
-          items={[
-            ["Must-haves agreed", "Scope, seniority and technical bar"],
-            ["Compensation band set", "Package structure and flexibility"],
-            ["Right to work and notice", "Confirmed up front, not at offer"],
-          ]}
-        />
-      </div>
-    ),
-  },
-  {
-    tab: "Source",
-    title: "We go where the candidates are.",
-    sub: "Referrals, direct headhunting and a talent pool we already know — not job boards. Most of the people we place were not actively looking when we found them.",
-    art: (
-      <div className="apr-art">
-        <div className="sv-nl">Where the shortlist comes from</div>
-        <Rows
-          items={[
-            ["Referral network", "Placed candidates, and the people they vouch for"],
-            ["Direct headhunting", "Approached for this role specifically"],
-            ["Active talent pool", "People we have already met and screened"],
-            ["Market mapping", "Who is out there, whether or not they are looking"],
-          ]}
-        />
-      </div>
-    ),
-  },
-  {
-    tab: "Screen",
-    title: "Screened before you see them.",
-    sub: "Competency against the brief, right to work, availability and compensation expectations — all checked and written down before a CV reaches your inbox.",
-    art: (
-      <div className="apr-art">
-        <div className="sv-tag sv-tg">
-          <span className="apr-dot" aria-hidden="true" />
-          Example submission
-        </div>
-        <div className="sv-cand">
-          <div className="sv-cand-av apr-av" aria-hidden="true">SC</div>
+        <div className="apr-cols">
           <div>
-            <div className="sv-cand-name">Senior Cloud Architect</div>
-            <div className="sv-cand-role">Technology · Contract</div>
-            <div className="sv-skills">
-              <span className="sv-sk">AWS</span>
-              <span className="sv-sk">Kubernetes</span>
-              <span className="sv-sk">Terraform</span>
-            </div>
+            <div className="apr-col-h">Must have</div>
+            <ul className="apr-ul">
+              <li>AWS at production scale</li>
+              <li>Terraform, not click-ops</li>
+              <li>Work authorisation in place</li>
+            </ul>
+          </div>
+          <div>
+            <div className="apr-col-h">Nice to have</div>
+            <ul className="apr-ul apr-ul-soft">
+              <li>Azure exposure</li>
+              <li>Regulated-industry background</li>
+              <li>Client-facing experience</li>
+            </ul>
           </div>
         </div>
-        <Rows
-          items={[
-            ["Screened against the brief", "Scope, seniority and technical bar"],
-            ["Right to work verified", "Checked before submission, not at offer"],
-            ["Availability confirmed", "Notice period and competing offers"],
-            ["Compensation expectations", "Asked and agreed, never assumed"],
-          ]}
-        />
+        <div className="apr-kv">
+          <div><span>Interview process</span><b>Two stages, panel on the second</b></div>
+          <div><span>Sign-off</span><b>Engineering Director</b></div>
+          <div><span>Rate band</span><b>Agreed on the call, in writing</b></div>
+        </div>
       </div>
     ),
   },
+
+  /* ── 02 ── a channel grid. The point of this stage is where people come
+     from, so the panel shows sources, not steps. */
+  {
+    tab: "Source",
+    title: "Most people we place weren't looking.",
+    sub: "Job boards reach the people already on the market. The ones worth hiring usually aren't — so we go and find them, and we keep the ones we've already met.",
+    art: (
+      <div className="apr-art">
+        <div className="sv-nl">Where a shortlist comes from</div>
+        <div className="apr-grid">
+          <div className="apr-cell">
+            <div className="apr-cell-h">Referrals</div>
+            <p>People we placed before, and the ones they vouch for.</p>
+          </div>
+          <div className="apr-cell">
+            <div className="apr-cell-h">Direct approach</div>
+            <p>Named, mapped and contacted for this role specifically.</p>
+          </div>
+          <div className="apr-cell">
+            <div className="apr-cell-h">Known pool</div>
+            <p>Screened by us already — often available sooner.</p>
+          </div>
+          <div className="apr-cell">
+            <div className="apr-cell-h">Market map</div>
+            <p>Who is out there, and what it would take to move them.</p>
+          </div>
+        </div>
+        <p className="apr-foot">
+          If a search needs a channel we don&apos;t have, we say so at the brief
+          rather than six weeks in.
+        </p>
+      </div>
+    ),
+  },
+
+  /* ── 03 ── the packet. Naming what physically travels with a submission is
+     more convincing than any adjective about rigour. */
+  {
+    tab: "Screen",
+    title: "What arrives with every candidate.",
+    sub: "A CV on its own puts the work back on you. Everything here is done before a name reaches your inbox — so the first question you ask is about the person, not the paperwork.",
+    art: (
+      <div className="apr-art">
+        <div className="apr-art-h">
+          <span className="sv-nl">Submission packet</span>
+          <span className="apr-stamp">Example</span>
+        </div>
+        <ul className="apr-packet">
+          {[
+            ["CV, with our notes on it", "What the CV doesn't say, and why they're moving"],
+            ["Right to represent, signed", "So you're not seeing them from three agencies"],
+            ["Work authorisation, evidenced", "Checked at screen, not discovered at offer"],
+            ["Rate expectation, agreed", "In writing, before you spend an interview slot"],
+            ["Notice and competing offers", "Including anything else they're in process for"],
+            ["Two referees identified", "Named up front, taken up on offer"],
+          ].map(([t, s]) => (
+            <li key={t}>
+              <Doc />
+              <div>
+                <b>{t}</b>
+                <span>{s}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ),
+  },
+
+  /* ── 04 ── the written assessment, reservation included. */
   {
     tab: "Submit shortlist",
-    title: "Every shortlist comes with context.",
-    sub: "A written summary from the partner who took the brief — background, motivations, strengths and an honest recommendation. No guesswork on your side.",
+    title: "An honest read, in writing.",
+    sub: "Every shortlist comes with a written view from the partner who took the brief — including what isn't a perfect fit. You can disagree with it, but you won't be guessing.",
     art: (
       <div className="apr-art">
-        <div className="sv-nl">Recruiter assessment summary</div>
-        <div className="sv-note">
-          Cloud architecture background across AWS and Azure, with prior work in
-          fintech and enterprise SaaS. Strong communicator, comfortable
-          client-facing. Available at short notice, US Eastern hours, no visa
-          restrictions. Panel interview recommended.
+        <div className="apr-art-h">
+          <span className="sv-nl">Recruiter assessment</span>
+          <span className="apr-stamp">Example</span>
         </div>
-        <div className="apr-tags">
-          <span className="apr-tag">AWS</span>
-          <span className="apr-tag">Azure</span>
-          <span className="apr-tag">Fintech</span>
-        </div>
+        <blockquote className="apr-memo">
+          <p>
+            Eight years across AWS and Azure, most recently running platform
+            for a payments business — so the cost-governance and IaC side of
+            the brief is well covered.
+          </p>
+          <p className="apr-memo-flag">
+            Less regulated-industry exposure than you ideally wanted. I&apos;d
+            probe that in the panel rather than screen him out on it.
+          </p>
+          <p>
+            Moving because the platform team is being absorbed into a wider
+            group. Four weeks&apos; notice. No competing offers as of today.
+            Worth your time.
+          </p>
+        </blockquote>
+        <div className="apr-sign">— The partner who took your brief</div>
       </div>
     ),
   },
+
+  /* ── 05 ── a timeline. The stage is about elapsed time, so it is drawn as
+     elapsed time. */
   {
     tab: "Place and support",
-    title: "We stay on it after the offer.",
-    sub: "Offer negotiation, references and onboarding handover — then we stay on the line. If a placement does not work out, the replacement terms are the ones agreed when we took the brief.",
+    title: "The offer isn't the finish line.",
+    sub: "Most placements that fail, fail in the first month — and usually for reasons someone could see coming. We stay close enough to catch them.",
     art: (
       <div className="apr-art">
-        <div className="sv-nl">After the offer</div>
-        <Rows
-          items={[
-            ["Offer negotiated", "Package, start date and counter-offer risk"],
-            ["References completed", "Taken up and written down"],
-            ["Onboarding handover", "Briefed in before day one"],
-            ["Replacement cover", "On the terms agreed at brief stage"],
-          ]}
-        />
+        <div className="sv-nl">After you say yes</div>
+        <ol className="apr-time">
+          {[
+            ["Offer", "Package, start date, and an honest read on counter-offer risk"],
+            ["Pre-start", "Checks and paperwork run in parallel, not in sequence"],
+            ["Day one", "Handover to the hiring manager, so nothing is re-explained"],
+            ["First weeks", "We check in with both sides separately — people tell us things they won't tell each other"],
+            ["Thereafter", "If it doesn't work out, the replacement terms are the ones agreed at brief stage"],
+          ].map(([t, s]) => (
+            <li key={t}>
+              <div className="apr-time-t">{t}</div>
+              <div className="apr-time-s">{s}</div>
+            </li>
+          ))}
+        </ol>
       </div>
     ),
   },

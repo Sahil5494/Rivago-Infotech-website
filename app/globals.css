@@ -498,17 +498,74 @@ a{color:inherit;text-decoration:none}
 .apr-tab.on .apr-tab-n{color:var(--accent)}
 .apr-tab:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:4px}
 
-/* Pinned to the tallest panel — Screen, at 559px, which carries the
-   candidate card plus four checks. Without a floor the whole section jumps
-   on tab change and the control moves out from under the cursor. Re-measure
-   this if a panel gains a row. */
-.apr-panel{border:1px solid var(--rule-1);border-radius:18px;padding:36px;min-height:560px;
+/* Pinned to the tallest panel — Screen, at 618px, which carries the
+   six-row submission packet. Without a floor the whole section jumps on tab
+   change and the control moves out from under the cursor. Re-measure this
+   if any panel gains a row. */
+.apr-panel{border:1px solid var(--rule-1);border-radius:18px;padding:36px;min-height:620px;
   background:var(--grad-panel)}
 .apr-panel:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .apr-h{font-size:var(--fz10);font-weight:500;letter-spacing:-.025em;color:var(--text-1);line-height:1.25;margin:0 0 10px}
 .apr-sub{font-size:var(--fz4);color:var(--text-2);line-height:1.6;max-width:54ch;margin:0 0 26px}
-.apr-art{background:var(--surface-3);border:1px solid var(--rule-1);border-radius:12px;padding:18px;max-width:440px}
-.apr-brief{padding:10px 12px;background:var(--surface-2);border:1px solid var(--rule-1);border-radius:9px;margin-bottom:10px}
+.apr-art{background:var(--surface-3);border:1px solid var(--rule-1);border-radius:12px;padding:18px;max-width:470px}
+.apr-art-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.apr-art-h .sv-nl{margin-bottom:0}
+.apr-stamp{font-size:var(--fz1);font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--text-3);border:1px solid var(--rule-2);border-radius:var(--pill);padding:2px 9px}
+.apr-brief{padding:10px 12px;background:var(--surface-2);border:1px solid var(--rule-1);border-radius:9px;margin-bottom:12px}
+
+/* 01 — must-have against nice-to-have. The two columns are the point: it is
+   the split that decides who gets submitted. */
+.apr-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-bottom:14px;
+  border-bottom:1px solid var(--rule-1);margin-bottom:12px}
+.apr-col-h{font-size:var(--fz1);font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:7px}
+.apr-ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.apr-ul li{font-size:var(--fz2);color:var(--text-2);line-height:1.45;padding-left:12px;position:relative}
+.apr-ul li::before{content:'';position:absolute;left:0;top:.55em;width:4px;height:4px;
+  border-radius:50%;background:var(--accent)}
+.apr-ul-soft li{color:var(--text-3)}
+.apr-ul-soft li::before{background:var(--rule-2)}
+.apr-kv{display:grid;gap:7px}
+.apr-kv > div{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:var(--fz1)}
+.apr-kv span{color:var(--text-3);white-space:nowrap}
+.apr-kv b{font-weight:500;color:var(--text-1);text-align:right}
+
+/* 02 — channels, not steps. */
+.apr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.apr-cell{background:var(--surface-2);border:1px solid var(--rule-1);border-radius:9px;padding:11px 12px}
+.apr-cell-h{font-size:var(--fz2);font-weight:500;color:var(--text-1);margin-bottom:3px;letter-spacing:-.01em}
+.apr-cell p{font-size:var(--fz1);color:var(--text-3);line-height:1.5;margin:0}
+.apr-foot{font-size:var(--fz1);color:var(--text-3);line-height:1.55;margin:12px 0 0;
+  padding-top:11px;border-top:1px solid var(--rule-1)}
+
+/* 03 — what physically travels with a submission. */
+.apr-packet{list-style:none;margin:10px 0 0;padding:0;display:grid}
+.apr-packet li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;
+  border-bottom:1px solid var(--rule-1)}
+.apr-packet li:last-child{border-bottom:none;padding-bottom:0}
+.apr-packet li > svg{flex:0 0 auto;margin-top:2px}
+.apr-packet b{display:block;font-size:var(--fz2);font-weight:500;color:var(--text-1);letter-spacing:-.01em}
+.apr-packet span{display:block;font-size:var(--fz1);color:var(--text-3);line-height:1.45;margin-top:1px}
+
+/* 04 — the written assessment. The flagged paragraph is the reservation;
+   it is tinted because it is the part a hiring manager actually needs. */
+.apr-memo{margin:10px 0 0;padding:14px 16px;background:var(--surface-2);
+  border-left:2px solid var(--accent);border-radius:0 9px 9px 0}
+.apr-memo p{font-size:var(--fz2);color:var(--text-2);line-height:1.6;margin:0 0 9px}
+.apr-memo p:last-child{margin-bottom:0}
+.apr-memo-flag{color:var(--text-1)!important;font-weight:500}
+.apr-sign{font-size:var(--fz1);color:var(--text-3);margin-top:10px;text-align:right}
+
+/* 05 — drawn as elapsed time, because the stage is about elapsed time. */
+.apr-time{list-style:none;margin:12px 0 0;padding:0 0 0 20px;display:grid;gap:14px;
+  position:relative}
+.apr-time::before{content:'';position:absolute;left:4px;top:5px;bottom:5px;width:1px;background:var(--rule-2)}
+.apr-time li{position:relative}
+.apr-time li::before{content:'';position:absolute;left:-20px;top:4px;width:9px;height:9px;
+  border-radius:50%;background:var(--surface-3);border:1.5px solid var(--accent)}
+.apr-time-t{font-size:var(--fz2);font-weight:500;color:var(--text-1);letter-spacing:-.01em}
+.apr-time-s{font-size:var(--fz1);color:var(--text-3);line-height:1.5;margin-top:2px}
 .apr-brief-h{font-size:var(--fz3);font-weight:500;color:var(--text-1);letter-spacing:-.01em}
 .apr-brief-m{font-size:var(--fz1);color:var(--text-3);margin-top:2px}
 /* The avatar was a photo slot for an invented person. It is now the role's
@@ -534,6 +591,11 @@ a{color:inherit;text-decoration:none}
   .apr-tab.on{border-left-color:transparent;border-bottom-color:var(--accent)}
   .apr-panel{padding:24px 20px;min-height:0}
   .apr-art{max-width:none}
+  /* Both two-column artefacts stack: at 350px a must/nice split gives each
+     side about 18 characters a line. */
+  .apr-cols,.apr-grid{grid-template-columns:1fr}
+  .apr-kv > div{flex-direction:column;gap:1px}
+  .apr-kv b{text-align:left}
 }
 .eyebrow{display:inline-flex;padding:4px 13px;border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;white-space:nowrap}
 @media(max-width:480px){.eyebrow{white-space:normal;text-align:center}}
