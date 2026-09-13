@@ -861,7 +861,7 @@ a{color:inherit;text-decoration:none}
    the arrows sit against that edge. The lede above stays on the LEFT, which
    is where this site has always put it. */
 .ind-rail-wrap{position:relative}
-.ind-rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
+.ind-rail{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;
   padding:4px 0 8px;scrollbar-width:none;-ms-overflow-style:none;
   /* room at the right so the last card clears the arrow cluster */
   scroll-padding-left:0;padding-right:76px}
@@ -870,8 +870,19 @@ a{color:inherit;text-decoration:none}
 /* Two cards in view with the third peeking. 42% of the rail leaves roughly a
    third of the next card showing at 1200px — enough to read as "there is more"
    without looking like a fourth column that got cut off. */
-.ind-rail > .ind-card{flex:0 0 clamp(320px,42%,520px);scroll-snap-align:start;
-  display:flex;flex-direction:column;padding:32px}
+.ind-rail > .ind-card{flex:0 0 clamp(330px,45%,540px);scroll-snap-align:start;
+  display:flex;flex-direction:column;padding:36px}
+/* No min-height. The reference's cards are tall because its titles run to
+   three lines and its descriptions to four; ours are a single word and three.
+   Forcing the same height just opened a 200px void between the description
+   and the tags — the card has to be sized by what is in it. */
+/* The reference's cards read as much larger mainly because the title carries
+   them — measured off the screenshot it runs around 30px against the 16px
+   this card used, so the heading was doing none of the work. Everything else
+   in the card steps back to let it. */
+.ind-rail .ind-title{font-size:var(--fz10);font-weight:500;letter-spacing:-.025em;
+  line-height:1.18;margin-bottom:14px;max-width:15ch}
+.ind-rail .ind-desc{font-size:var(--fz4);line-height:1.65}
 /* Fades the peeking card out, so the rail reads as continuing rather than as
    a card that happens to be clipped. Dropped at the end of the scroll, where
    there is nothing more to suggest. */
@@ -882,7 +893,7 @@ a{color:inherit;text-decoration:none}
    tallest sibling and the extra height pooled under the text. The tags and the
    link are pinned to the base instead, which uses that space on purpose:
    description at the top, metadata at the bottom, on every card. */
-.ind-rail .ind-tags{margin-top:auto;padding-top:20px}
+.ind-rail .ind-tags{margin-top:auto;padding-top:24px}
 .ind-more{display:inline-flex;align-items:center;gap:7px;margin-top:14px;
   font-size:var(--fz1);font-weight:500;color:var(--accent);
   opacity:0;transform:translateY(4px);transition:opacity .25s var(--ease),transform .25s var(--ease)}

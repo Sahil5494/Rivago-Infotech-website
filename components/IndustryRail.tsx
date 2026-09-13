@@ -21,7 +21,7 @@ import { routes, industriesList } from "@/lib/routes";
  * no equivalent of. Same mechanic, different page.
  */
 
-const GAP = 18;
+const GAP = 24;
 
 export default function IndustryRail() {
   const railRef = useRef<HTMLDivElement>(null);
