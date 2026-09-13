@@ -404,51 +404,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CASE STUDIES */}
-      <section className="cs-sec">
-        <div className="cs-inner">
-          <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Client Results</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--dt)", maxWidth: 560 }}>Real results for <em>real teams.</em></h2>
-          <div className="cs-grid">
-            <div className="cs-card cs-wide gs">
-              <div className="cs-card-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&h=400&fit=crop&auto=format" alt="team" loading="lazy" decoding="async" />
-              </div>
-              <div className="cs-card-content">
-                <span className="cs-tag">Technology · US</span>
-                <div className="cs-title">Scaling a fintech company across five functions — 28 hires in 90 days</div>
-                <div className="cs-meta"><span>US Fintech Company</span><span>·</span><span>Q1 2025</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>28 placements · 100% retention at 6 months · avg 38h delivery</div>
-              </div>
-            </div>
-            <div className="cs-card gs">
-              <div className="cs-card-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&h=300&fit=crop&auto=format" alt="office" loading="lazy" decoding="async" />
-              </div>
-              <div className="cs-card-content">
-                <span className="cs-tag">Finance · Canada</span>
-                <div className="cs-title">Building a risk &amp; compliance team for a Ontario bank in 60 days</div>
-                <div className="cs-meta"><span>Canadian Financial Group</span><span>·</span><span>Q4 2024</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>12 placements · $0 replacement cost</div>
-              </div>
-            </div>
-            <div className="cs-card gs">
-              <div className="cs-card-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&h=300&fit=crop&auto=format" alt="healthcare" loading="lazy" decoding="async" />
-              </div>
-              <div className="cs-card-content">
-                <span className="cs-tag">Healthcare · UAE</span>
-                <div className="cs-title">Staffing a UAE hospital expansion across 5 specialist roles</div>
-                <div className="cs-meta"><span>Dubai Healthcare Group</span><span>·</span><span>Q3 2024</span></div>
-                <div className="cs-result"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>5 placements · All placed within 30 days · Zero compliance issues</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* CASE STUDIES removed.
+
+          Three cards under the heading "Real results for real teams", and no
+          real team behind any of them. "28 hires in 90 days", "100% retention
+          at 6 months", "avg 38h delivery", "12 placements · $0 replacement
+          cost", and a Dubai hospital card claiming "Zero compliance issues" —
+          the same claim already removed from this page once and from
+          /industries a second time. The clients ("US Fintech Company",
+          "Canadian Financial Group", "Dubai Healthcare Group") were invented
+          along with the numbers.
+
+          The three photographs were also hotlinked from images.unsplash.com,
+          so the section's only images were a live dependency on a third-party
+          host with no licence record — unlike the service carousel, whose
+          eight frames are licensed and logged in
+          public/assets/services/LICENCES.md.
+
+          The page does not lose its proof. The client logo strip near the top
+          is ten real clients with their marks approved, and the testimonials
+          immediately below are anonymised to a role and a market with no
+          figures attached, which is the normal and defensible form.
+
+          This slot is the right home for the first real case study. It needs
+          one client's written sign-off on a sector, a rough timeframe and
+          what the engagement covered; placements and timings are only
+          publishable if they were actually recorded. */}
 
       {/* TESTIMONIALS */}
       <section className="testi-sec inv">
