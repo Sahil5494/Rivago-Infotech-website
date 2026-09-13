@@ -228,79 +228,27 @@ export default function Home() {
         <div className="feat-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our approach</div>
           <div className="apr-head">
-            <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 580 }}>How we work — and why <em>it actually works.</em></h2>
-            <p className="apr-lead gs">Every search runs the same four steps, with the same partner from brief to placement. No handoffs and no black box — you know where the search stands at every stage.</p>
+            {/* Rescued from the deleted PRECISION section, which said this
+                better than "How we work — and why it actually works." */}
+            <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 580 }}>A shortlist that fits, instead of <em>fifty that don&apos;t.</em></h2>
+            <p className="apr-lead gs">Every search runs the same five stages, with the same partner from brief to placement. No handoffs and no black box — you know where the search stands at every one of them.</p>
           </div>
           <ApproachTabs />
         </div>
       </section>
 
-      {/* PRECISION */}
-      <section className="prec-sec">
-        <div className="prec-inner">
-          <div>
-            <div className="eyebrow ew-light gs">Our standard</div>
-            <h2 className="prec-h2 gs">A shortlist that fits,<br />instead of <em>fifty that don&apos;t.</em></h2>
-            <p className="prec-p gs">Every search begins with a calibration — us, your hiring manager, and the brief. We screen against the spec before anything reaches your inbox. That&apos;s why our shortlists move.</p>
-            <div className="prec-list">
-              {[
-                "Calibration call with the hiring manager before sourcing begins",
-                "Pre-screened against role spec, comp band and right-to-work",
-                "One named partner from intake to placement — no handoffs",
-                "90-day replacement guarantee — no questions asked",
-              ].map((t) => (
-                <div className="prec-item gs" key={t}>
-                  <div className="prec-ico"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
-                  {t}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="prec-panel gs">
-            {/* Was "Performance metrics · Last 90 days": 48h average delivery,
-                94% interview acceptance, 500+ total placements, 87% client
-                retention. None of it was measured — the figures were literals
-                in the counter animation. This describes what a submission
-                contains instead, which is checkable against the next one we
-                send rather than being a claim about the past. */}
-            <div className="pp-head"><div className="pp-title">What arrives with every candidate</div><div className="pp-sub">On each submission</div></div>
-            {[
-              ["Screened against the spec", "Not against keywords — a recruiter who has read the role"],
-              ["Comp expectations, confirmed", "Asked and agreed before the CV reaches you"],
-              ["Right to work, checked", "Status and any restrictions stated upfront"],
-              ["Notice period and availability", "So the start date in your plan is a real one"],
-            ].map(([label, desc]) => (
-              <div className="pp-stat" key={label}>
-                <div><div className="pp-label">{label}</div><div className="pp-desc">{desc}</div></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* PRECISION and PROCESS removed here.
 
-      {/* PROCESS */}
-      <section className="proc-sec">
-        <div className="proc-inner">
-          <div className="eyebrow ew-light gs">The process</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 18 }}>From brief to shortlist,<br /><em>end to end.</em></h2>
-          <p className="proc-sub gs">A simple four-step process — end to end, no surprises.</p>
-          <div className="proc-grid">
-            {[
-              { n: "Step 01", t: "Understand the brief", d: "A 45-minute call with the hiring manager and the named partner. We document must-haves, comp band, right-to-work, and team chemistry — before anything else moves.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="var(--accent)" strokeWidth="1.2" /><path d="M7 10h6M10 7v6" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
-              { n: "Step 02", t: "Source and screen", d: "We open the search across referrals, direct headhunting and our active talent pool. Every candidate is screened against the spec, comp band and notice period.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8" cy="8" r="5" stroke="var(--accent)" strokeWidth="1.2" /><path d="M14 14l3 3" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
-              { n: "Step 03", t: "Submit shortlist", d: "You see 3–5 candidates with full scorecards, recorded screenings, and a recommendation from the partner who took the brief.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="var(--accent)" strokeWidth="1.2" /><path d="M7 9h6M7 12h4" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg>) },
-              { n: "Step 04", t: "Place and support", d: "Offer negotiation, reference checks, onboarding handover. We stay on the line through day 90 and replace, free, if it isn&apos;t the right fit.", icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-            ].map((s) => (
-              <div className="proc-step gs" key={s.n}>
-                <div className="proc-num">{s.n}</div>
-                <div className="proc-ico">{s.icon}</div>
-                <div className="proc-title">{s.t}</div>
-                <div className="proc-desc" dangerouslySetInnerHTML={{ __html: s.d }} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+          Both described the same journey as the approach tabs above. The
+          PRECISION panel was even titled "What arrives with every
+          candidate" -- the exact title of the Screen tab -- and its four
+          rows mapped one-to-one onto that tab's. PROCESS was a four-step
+          grid of the same stages with no artefacts, and its Step 01-04
+          numbering read against the tabs' 01-05 directly above it.
+
+          Three sections, 2,532px, one message. The headline worth keeping
+          -- "A shortlist that fits, instead of fifty that don't" -- moved
+          up to head the tabs. */}
 
       {/* SECURITY */}
       <section className="sec-outer">

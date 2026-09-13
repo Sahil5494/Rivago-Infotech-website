@@ -292,7 +292,7 @@ h1 em,h1 i,h1 b,h1 strong,h2 em,h2 i,h2 b,h2 strong,h3 em,h3 i,h3 b,h3 strong,
 em,i,cite,address,var,dfn,strong,b{font:inherit;color:inherit;letter-spacing:inherit;font-style:normal}
 
 .hero-h1 em,.orb-quote em,.orb-quote strong,.orb-quote b,
-.section-h2 em,.section-h2 strong,.prec-h2 em,.sec-h2 em,.feat-h2 em,.cta-h2 em{
+.section-h2 em,.section-h2 strong,.sec-h2 em,.feat-h2 em,.cta-h2 em{
   font:inherit;color:inherit;letter-spacing:inherit
 }
 /* Not emphasis: these use <b>/<strong> as block-level titles, so they keep
@@ -687,38 +687,14 @@ a{color:inherit;text-decoration:none}
    as one near-black, so a change of fill does not announce a new section.
    These hairlines are what actually draw the band boundaries; without them
    the dark stretches merge into a single block. */
-.prec-sec,.proc-sec,.svc-sec,.ind-sec,.supp-sec,.testi-sec,.faq-sec,.cta-sec,.orb-sec{
+.svc-sec,.ind-sec,.supp-sec,.testi-sec,.faq-sec,.cta-sec,.orb-sec{
   border-top:1px solid var(--rule-1)
 }
-.prec-sec{padding:110px 44px;background:var(--bg)}
-.prec-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center}
-.prec-h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;margin-bottom:20px;line-height:1.13}
-.prec-p{font-size:var(--fz6);color:var(--text2);line-height:1.78;margin-bottom:30px;font-weight:400}
-.prec-list{display:flex;flex-direction:column;gap:13px}
-.prec-item{display:flex;align-items:center;gap:12px;font-size:var(--fz5);color:var(--text2)}
-.prec-ico{width:22px;height:22px;border-radius:50%;background:var(--tint-1);border:1px solid var(--tint-2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.prec-panel{background:var(--bg3);border:1px solid var(--border);border-radius:20px;overflow:hidden}
-.pp-head{padding:20px 26px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.pp-title{font-size:var(--fz2);font-weight:500;color:var(--text)}
-.pp-sub{font-size:var(--fz1);color:var(--text3)}
-.pp-stat{padding:20px 26px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:16px}
-.pp-stat:last-child{border-bottom:none}
-.pp-label{font-size:var(--fz2);color:var(--text2)}
-.pp-desc{font-size:var(--fz1);color:var(--text3);margin-top:3px}
-.pp-val{font-size:var(--fz11);font-weight:500;letter-spacing:-.03em}
+/* PRECISION and PROCESS rules removed with their sections; the panel
+   duplicated the Screen tab and the step grid duplicated the tab list.
+   .proc-deep is a different class and stays -- /hire-talent and the
+   services pages still use it. */
 .vg{color:var(--accent)}.vw{color:var(--text)}
-
-/* ── PROCESS ── */
-.proc-sec{padding:110px 44px;background:var(--bg2)}
-.proc-inner{max-width:1200px;margin:0 auto}
-.proc-sub{font-size:var(--fz6);color:var(--text2);margin-bottom:52px;max-width:500px;font-weight:400}
-.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
-.proc-step{background:var(--surface-3);padding:32px 28px}
-.proc-num{font-size:var(--fz1);font-weight:500;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:6px}
-.proc-num::before{content:'';display:block;width:18px;height:1px;background:var(--text3)}
-.proc-ico{width:44px;height:44px;border-radius:11px;background:var(--tint-1);border:1px solid var(--tint-2);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-.proc-title{font-size:var(--fz5);font-weight:500;color:var(--text);margin-bottom:10px}
-.proc-desc{font-size:var(--fz4);color:var(--text2);line-height:1.7}
 
 /* ── SECURITY ── */
 .sec-outer{padding:110px 44px;background:var(--bg);border-top:1px solid var(--border)}
@@ -884,7 +860,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 .faq-a-inner{padding:0 26px 22px;font-size:var(--fz6);color:var(--text2);line-height:1.78;font-weight:400}
 
 @media(max-width:900px){
-  .prec-inner,.sec-grid,.ft-grid,.proc-grid,.why-grid,.supp-grid{grid-template-columns:1fr!important}
+  .sec-grid,.ft-grid,.why-grid,.supp-grid{grid-template-columns:1fr!important}
 
   .cs-grid{grid-template-columns:1fr!important}
   .cs-wide{grid-column:span 1!important}
@@ -1087,7 +1063,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
    whole sections blank. Same guard for reduced-motion users. */
 @media print{
   .pgnav-side{display:none!important}
-  .gs,.fc,.proc-step,.hero-badge,.hero-h1,.hero-sub,.hero-btns,.hero-proof{opacity:1!important;transform:none!important}
+  .gs,.fc,.hero-badge,.hero-h1,.hero-sub,.hero-btns,.hero-proof{opacity:1!important;transform:none!important}
 }
 @media(max-width:560px){.pgnav-side{height:42px;padding:0 11px}.pgnav-side-lbl{display:none}}
 

@@ -74,9 +74,10 @@ export default function ScrollReveals() {
       });
 
       // Staggered grids
+      // .proc-grid dropped with the landing PROCESS section. Both entries are
+      // guarded by the trigger check below, so this list only shrinks.
       ([
         [".fc", ".feat-grid"],
-        [".proc-step", ".proc-grid"],
       ] as const).forEach(([sel, trig]) => {
         if (!document.querySelector(trig)) return;
         gsap.fromTo(
