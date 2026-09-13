@@ -69,7 +69,7 @@ const SERVICES: Service[] = [
   },
   {
     href: routes.directHire,
-    media: { kind: "image", src: "/assets/services/direct.jpg" },
+    media: { kind: "image", src: "/assets/services/direct-office.jpg" },
     title: "Direct hire",
     desc: "For a permanent role you want filled once, properly. We run the search on a contingent fee — you pay on a hire that sticks, not on activity — and the placement carries a replacement guarantee.",
     facts: [["Who employs them", "You do, from day one"], ["How you pay", "Contingent fee"], ["How long it runs", "Until the hire sticks"]],
