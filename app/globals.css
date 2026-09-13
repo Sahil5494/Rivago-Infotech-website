@@ -292,7 +292,7 @@ h1 em,h1 i,h1 b,h1 strong,h2 em,h2 i,h2 b,h2 strong,h3 em,h3 i,h3 b,h3 strong,
 em,i,cite,address,var,dfn,strong,b{font:inherit;color:inherit;letter-spacing:inherit;font-style:normal}
 
 .hero-h1 em,.orb-quote em,.orb-quote strong,.orb-quote b,
-.section-h2 em,.section-h2 strong,.sec-h2 em,.feat-h2 em,.cta-h2 em{
+.section-h2 em,.section-h2 strong,.feat-h2 em,.cta-h2 em{
   font:inherit;color:inherit;letter-spacing:inherit
 }
 /* Not emphasis: these use <b>/<strong> as block-level titles, so they keep
@@ -696,21 +696,12 @@ a{color:inherit;text-decoration:none}
    services pages still use it. */
 .vg{color:var(--accent)}.vw{color:var(--text)}
 
-/* ── SECURITY ── */
-.sec-outer{padding:110px 44px;background:var(--bg);border-top:1px solid var(--border)}
-@media(max-width:900px){.sec-outer,.why-sec{display:none}}
-.sec-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.sec-h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;margin-bottom:20px;line-height:1.13}
-.sec-p{font-size:var(--fz6);color:var(--text2);line-height:1.78;margin-bottom:32px;font-weight:400}
-.sec-badges{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:0}
-.sec-bdg{padding:7px 14px;background:var(--rule-1);border:1px solid var(--rule-1);border-radius:9px;font-size:var(--fz1);font-weight:500;color:var(--text2);display:flex;align-items:center;gap:6px}
-.sec-dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.sec-items{display:flex;flex-direction:column;gap:14px}
-.sec-item{display:flex;gap:14px;padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:all .2s}
-.sec-item:hover{background:var(--surface2);border-color:var(--border2)}
-.sec-ico{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--tint-1);border:1px solid var(--tint-2)}
-.sec-title{font-size:var(--fz3);font-weight:500;color:var(--text);margin-bottom:4px}
-.sec-desc{font-size:var(--fz4);color:var(--text2);line-height:1.6}
+/* SECURITY rules removed with the section.
+
+   The block also carried @media(max-width:900px){.sec-outer,.why-sec
+   {display:none}}, which hid WHY RIVAGO outright on every phone. That is
+   now the page's only "why us" section, so it stays visible; .why-grid
+   already collapses to one column at 900px. */
 
 /* ── TESTIMONIALS ── */
 .testi-sec{padding:110px 0;background:var(--bg2);overflow:hidden}
@@ -860,7 +851,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 .faq-a-inner{padding:0 26px 22px;font-size:var(--fz6);color:var(--text2);line-height:1.78;font-weight:400}
 
 @media(max-width:900px){
-  .sec-grid,.ft-grid,.why-grid,.supp-grid{grid-template-columns:1fr!important}
+  .ft-grid,.why-grid,.supp-grid{grid-template-columns:1fr!important}
 
   .cs-grid{grid-template-columns:1fr!important}
   .cs-wide{grid-column:span 1!important}

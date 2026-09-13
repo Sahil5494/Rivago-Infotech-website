@@ -250,27 +250,19 @@ export default function Home() {
           -- "A shortlist that fits, instead of fifty that don't" -- moved
           up to head the tabs. */}
 
-      {/* SECURITY */}
-      <section className="sec-outer">
-        <div className="sec-grid">
-          <div>
-            <div className="eyebrow ew-light gs">Our commitment</div>
-            <h2 className="sec-h2 gs">Built for enterprises that<br />can&apos;t afford <em>the wrong hire.</em></h2>
-            <p className="sec-p gs">When you&apos;re hiring for a bank or a Fortune 500, a bad placement isn&apos;t just inconvenient — it&apos;s costly. Every engagement with Rivago is structured, documented and held to the same standard, every time.</p>
-            <div className="sec-badges gs">
-              <div className="sec-bdg"><div className="sec-dot"></div>NDA as Standard</div>
-              <div className="sec-bdg"><div className="sec-dot"></div>Fully Documented</div>
-              <div className="sec-bdg"><div className="sec-dot"></div>Senior Partners Only</div>
-              <div className="sec-bdg"><div className="sec-dot"></div>Confidential Search</div>
-            </div>
-          </div>
-          <div className="sec-items">
-            <div className="sec-item gs"><div className="sec-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="7" width="12" height="9" rx="2" stroke="var(--accent)" strokeWidth="1.2" /><path d="M6 7V5a3 3 0 016 0v2" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /></svg></div><div><div className="sec-title">One named partner. Full accountability.</div><div className="sec-desc">A senior partner owns your search from brief to placement — no junior handoffs, no account managers in between. They took the brief, they screen the candidates, they stand behind the recommendation.</div></div></div>
-            <div className="sec-item gs"><div className="sec-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2l5.5 2.5v5c0 3.2-2.3 5.5-5.5 6.5C3.8 15 1.5 12.7 1.5 9.5v-5L9 2z" stroke="var(--accent)" strokeWidth="1.2" fill="none" /><path d="M6.5 9l2 2 4-4" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div><div><div className="sec-title">Process that holds up to scrutiny.</div><div className="sec-desc">Every search is fully documented — candidate assessments, screening notes, decision rationale. If your internal team or compliance function ever needs to audit a hiring decision, everything is on record.</div></div></div>
-            <div className="sec-item gs"><div className="sec-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="var(--accent)" strokeWidth="1.2" /><path d="M9 6v3l2 2" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div><div><div className="sec-title">Discretion as standard.</div><div className="sec-desc">We work with organisations where confidentiality isn&apos;t optional. Senior hires, sensitive replacements, confidential searches — handled under NDA, shared only with the people who need to know.</div></div></div>
-          </div>
-        </div>
-      </section>
+      {/* SECURITY removed. It promised enterprise assurance and delivered
+          adjectives -- "NDA as Standard", "Fully Documented", "Senior
+          Partners Only" -- with nothing behind them, and the compliance
+          substance that would have earned the headline (worker
+          classification, insurance, a written data-protection policy across
+          four jurisdictions) is not confirmed, so it cannot be claimed.
+
+          It also said "no account managers in between" 400px above WHY
+          RIVAGO saying "One dedicated account manager", and made the
+          named-partner point for the third time on this page.
+
+          Its one distinct idea -- confidential search -- moves into WHY
+          RIVAGO below, which is now the single "why us" section. */}
 
       {/* WHY RIVAGO */}
       <section className="why-sec">
@@ -279,10 +271,18 @@ export default function Home() {
           <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 560, marginBottom: 20 }}>Six reasons clients<br /><em>stay with us.</em></h2>
           <div className="why-grid">
             {[
-              { n: "01", t: "Quality over quantity — always", d: "We submit fewer, better candidates. Every profile is fully screened before it reaches your inbox. No keyword-matching. No noise. Just people who are genuinely ready.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="var(--accent)" strokeWidth="1.3" /><path d="M7 11l3 3 5-5" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
+              /* Was "Quality over quantity — always", which restated both the
+                 section headline above it ("A shortlist that fits, instead of
+                 fifty that don't") and the Screen tab word for word, down to
+                 "no keyword-matching". Replaced with the one idea worth
+                 rescuing from the deleted SECURITY section. */
+              { n: "01", t: "Searches you can't advertise", d: "A senior hire, a replacement the incumbent doesn't know about yet, a role that can't be posted. Handled under NDA, with the brief shown only to candidates who need to see it to decide.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="4" y="9" width="14" height="10" rx="2.5" stroke="var(--accent)" strokeWidth="1.3" /><path d="M7.5 9V6.5a3.5 3.5 0 017 0V9" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" /></svg>) },
               { n: "02", t: "A timeline agreed before we start", d: "We commit to a delivery date when we take the brief, not after. If it is going to move, you hear it from us early rather than finding out by waiting.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="var(--accent)" strokeWidth="1.3" /><path d="M11 7v4l3 3" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
               { n: "03", t: "Specialist domain knowledge", d: "Every brief goes to a specialist who recruits in your sector. They know the roles, the market rates and what a strong candidate actually looks like in your industry.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11a7 7 0 1014 0A7 7 0 004 11z" stroke="var(--accent)" strokeWidth="1.3" /><path d="M11 8v3l2 2" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" /><circle cx="18" cy="4" r="3" fill="var(--accent)" opacity=".3" /></svg>) },
-              { n: "04", t: "One dedicated account manager", d: "Every client gets a single point of contact — someone who learns your business, your culture and your hiring bar. No handoffs, no call centres, no starting over every engagement.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="4" stroke="var(--accent)" strokeWidth="1.3" /><path d="M8 11l2.5 2.5L14 8" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
+              /* "No handoffs" was already the approach section's lead line, so
+                 this now says the thing that one IS NOT: continuity ACROSS
+                 searches rather than within one. */
+              { n: "04", t: "The second brief takes half the time", d: "Your point of contact doesn't change between searches. They already know your hiring bar, your interview loop, and who you turned down last time and why — so you brief them once, not every time.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="4" stroke="var(--accent)" strokeWidth="1.3" /><path d="M8 11l2.5 2.5L14 8" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
               { n: "05", t: "Global delivery. US standards.", d: "Rivago is a global staffing and recruitment company with active hiring operations across the United States, Canada, the UAE and India. One firm, four markets, the same standard everywhere.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3l2.5 5 5.5.8-4 3.9.9 5.5L11 15.5l-4.9 2.7.9-5.5L3 8.8l5.5-.8z" stroke="var(--accent)" strokeWidth="1.3" strokeLinejoin="round" /></svg>) },
               { n: "06", t: "Replacement guarantee included", d: "90-day replacement guarantee, no questions asked. If the hire doesn&apos;t work out, we start again at no cost.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2v4M11 16v4M4.22 4.22l2.83 2.83M14.95 14.95l2.83 2.83M2 11h4M16 11h4M4.22 17.78l2.83-2.83M14.95 7.05l2.83-2.83" stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" /></svg>) },
             ].map((c) => (
