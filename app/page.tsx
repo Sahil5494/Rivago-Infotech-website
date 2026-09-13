@@ -208,15 +208,18 @@ export default function Home() {
       </section>
 
       {/* ORB */}
+      {/* The sphere is gone. It was 360px fixed with no responsive rule, so
+          at 390px it overflowed a 302px content box, sat off-centre and got
+          clipped — with overflow:hidden on the section hiding the damage
+          rather than fixing it. It also said nothing about recruitment, and
+          cost a second always-on rAF loop now that the hero has a canvas.
+
+          The two paragraphs made the same claim 72px apart. The headline now
+          states the positioning and the body says what "full context" means,
+          so neither is repeating the other. Section: 1011px -> ~420px. */}
       <section className="orb-sec inv">
-        <p className="orb-quote gs">The recruitment partner with <em>full context,</em><br />helping you at every step of the <strong>hiring process.</strong></p>
-        <div className="orb-wrap gs">
-          <div className="orb-halo"></div>
-          <div className="orb-r1"></div><div className="orb-r2"></div><div className="orb-r3"></div>
-          <OrbCanvas size={360} />
-          <div className="orb-shadow"></div>
-        </div>
-        <p className="orb-desc gs">We don&apos;t just fill roles. We understand your business, your culture and what genuinely good looks like in your sector — then find the people who are ready to perform from day one.</p>
+        <p className="orb-quote gs">The recruitment partner with <em>full context.</em></p>
+        <p className="orb-desc gs">We don&apos;t just fill roles. We learn your business, your culture and what genuinely good looks like in your sector — then find the people ready to perform from day one.</p>
       </section>
 
       {/* FEATURES */}

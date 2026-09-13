@@ -52,10 +52,7 @@ export default function ScrollReveals() {
         });
       }
 
-      // Orb float
-      if (document.querySelector(".orb-wrap")) {
-        gsap.to(".orb-wrap", { y: -18, duration: 3.6, ease: "sine.inOut", yoyo: true, repeat: -1 });
-      }
+      // Orb float. The landing page's .orb-wrap is gone; .cta-orb remains.
       if (document.querySelector(".cta-orb")) {
         gsap.to(".cta-orb", { y: -10, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: -1 });
       }
