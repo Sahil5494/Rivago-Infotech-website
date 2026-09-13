@@ -2,49 +2,73 @@ import Link from "next/link";
 import { routes } from "@/lib/routes";
 import { articles } from "@/app/resources/data";
 
-/* The insights grid.
+/* The insights mosaic.
  *
- * Follows the Coditas Insights and Insight Global News pattern the client
- * picked — a staggered grid of written pieces — with two deliberate
- * departures.
+ * Same grid mechanic as the proof wall this section replaced — four columns
+ * filled COLUMN-FIRST, tall tiles spanning two rows and compact tiles one —
+ * carrying articles instead of marks and quotes.
  *
- * No author. Both references put a name and a face on every card, and that
- * is the strongest part of the pattern; it is also the part Rivago cannot
- * honestly fill, because the eight bylines in the repo were invented people.
- * The slot is removed rather than filled with a house name and a stock
- * portrait — an avatar is the element on a card a reader is least likely to
- * question.
+ * The mosaic needs two tile sizes to read as a mosaic rather than a grid.
+ * The wall got that from its content being genuinely different in kind (a
+ * quote is tall, a logo is not). Eight articles are all the same kind of
+ * thing, so the split is made deliberately: four run tall and carry their
+ * dek, four run compact and lead on the headline alone. That is also how
+ * the section earns its stagger without any tile being padded out.
  *
- * No images. Insight Global gives every story a masked photograph. The
- * article records here carry an `image`, but every one is a hotlink to
- * images.unsplash.com — an uncredited third-party dependency, on a host this
- * page otherwise never touches. The cards are typographic instead, which is
- * also what Coditas does.
+ * Four tall at two rows plus four compact at one is twelve row-units across
+ * four columns — three each, so the grid closes as a perfect rectangle with
+ * no holes, and all eight articles are shown rather than six.
  *
- * Real masonry via CSS columns rather than a grid: the cards are different
- * heights because the deks are different lengths, and columns is the one
- * layout mode that packs that without either stretching cards to a row
- * height or leaving holes.
+ *     col 1      col 2      col 3      col 4
+ *   ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐
+ *   │        │ │compact │ │        │ │compact │
+ *   │  tall  │ ├────────┤ │  tall  │ ├────────┤
+ *   │        │ │        │ │        │ │        │
+ *   ├────────┤ │  tall  │ ├────────┤ │  tall  │
+ *   │compact │ │        │ │compact │ │        │
+ *   └────────┘ └────────┘ └────────┘ └────────┘
+ *
+ * No author, and no images — the same two departures from the Coditas and
+ * Insight Global references as before. The eight bylines in the data were
+ * invented people, and every article `image` is a hotlink to
+ * images.unsplash.com, which this page does not load.
  */
 
-const SHOWN = 6;
+/* Column-major order: each column is one tall and one compact, with the tall
+   one alternating between the top and the bottom slot so the wall staggers
+   instead of banding. */
+const ORDER: { i: number; tall: boolean }[] = [
+  { i: 0, tall: true }, { i: 4, tall: false },
+  { i: 5, tall: false }, { i: 1, tall: true },
+  { i: 2, tall: true }, { i: 6, tall: false },
+  { i: 7, tall: false }, { i: 3, tall: true },
+];
 
 export default function InsightsGrid() {
   return (
     <div className="hins-grid">
-      {articles.slice(0, SHOWN).map((a) => (
-        <Link className="hins-card" data-cat={a.category} key={a.id} href={`${routes.article}?id=${a.id}`}>
-          <span className="hins-cat">{a.categoryLabel}</span>
-          <h3 className="hins-ti">{a.title}</h3>
-          <p className="hins-dek">{a.dek}</p>
-          <span className="hins-meta">
-            {a.readTime}
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
-        </Link>
-      ))}
+      {ORDER.map(({ i, tall }) => {
+        const a = articles[i];
+        if (!a) return null;
+        return (
+          <Link
+            className={`hins-card${tall ? " tall" : ""}`}
+            data-cat={a.category}
+            key={a.id}
+            href={`${routes.article}?id=${a.id}`}
+          >
+            <span className="hins-cat">{a.categoryLabel}</span>
+            <h3 className="hins-ti">{a.title}</h3>
+            {tall && <p className="hins-dek">{a.dek}</p>}
+            <span className="hins-meta">
+              {a.readTime}
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </Link>
+        );
+      })}
     </div>
   );
 }

@@ -415,7 +415,10 @@ export default function Home() {
               <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Insights</div>
               <h2 className="hins-h2 gs">What we have learned,<br />written <em>down.</em></h2>
             </div>
-            <Link className="hins-all gs" href={routes.resources}>All {articles.length} articles <Arrow /></Link>
+            {/* The grid shows all {articles.length} of them, so this cannot say
+                "all N articles" — it goes to the library, where they can be
+                filtered by category. */}
+            <Link className="hins-all gs" href={routes.resources}>Browse the library <Arrow /></Link>
           </div>
           <div className="gs">
             <InsightsGrid />

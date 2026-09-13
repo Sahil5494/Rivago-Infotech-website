@@ -732,30 +732,49 @@ a{color:inherit;text-decoration:none}
 .hins-all{display:inline-flex;align-items:center;gap:7px;font-size:var(--fz3);color:var(--text2);white-space:nowrap;flex-shrink:0;transition:color .2s,gap .2s}
 .hins-all:hover{color:var(--accent);gap:11px}
 
-/* Real masonry, not a grid. The cards differ in height because the deks
-   differ in length, and multi-column is the one layout mode that packs that
-   without stretching cards to a shared row height or leaving holes at the
-   end. break-inside:avoid is what stops a card splitting across a column,
-   and the cards must stay display:block — a flex card fragments badly in
-   column layout in both Safari and Firefox. */
-.hins-grid{columns:3;column-gap:20px}
-.hins-card{break-inside:avoid;display:block;margin:0 0 20px;padding:28px 26px 24px;
+/* The mosaic mechanic, inherited from the proof wall that stood in this
+   band: four columns filled COLUMN-FIRST, tall cards spanning two rows and
+   compact cards one, so each column is a tall plus a compact and the grid
+   closes as a perfect rectangle. grid-auto-flow:column is what makes the
+   ordering in InsightsGrid.tsx read down each column in turn.
+
+   minmax rather than a fixed row height so a long headline grows its row
+   instead of clipping. */
+.hins-grid{display:grid;grid-template-rows:repeat(3,minmax(150px,auto));grid-auto-flow:column;grid-auto-columns:1fr;gap:16px}
+/* The three forest greens sit within 1.10:1 of each other, so a card cannot
+   separate from the band by fill. The hairline is what draws it. */
+.hins-card{display:flex;flex-direction:column;padding:26px 24px 22px;
   border:1px solid var(--rule-1);border-radius:18px;background:var(--surface-3);
   transition:border-color .25s var(--ease),transform .25s var(--ease)}
 .hins-card:hover{border-color:var(--tint-3);transform:translateY(-3px)}
-.hins-cat{display:inline-flex;padding:4px 11px;margin-bottom:16px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:10px;
+.hins-card.tall{grid-row:span 2}
+.hins-cat{align-self:flex-start;display:inline-flex;padding:4px 11px;margin-bottom:16px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:10px;
   font-family:var(--fm);font-size:var(--fz1);letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
-.hins-ti{font-size:var(--fz7);font-weight:500;color:var(--text);line-height:1.34;letter-spacing:-.012em;margin:0 0 10px;transition:color .2s}
+/* The compact card leads on its headline with no dek under it, so it takes
+   the larger size — it is carrying the tile on its own. */
+.hins-ti{font-size:var(--fz6);font-weight:500;color:var(--text);line-height:1.34;letter-spacing:-.012em;margin:0 0 10px;transition:color .2s}
+.hins-card.tall .hins-ti{font-size:var(--fz7)}
 .hins-card:hover .hins-ti{color:var(--accent)}
 .hins-dek{font-size:var(--fz4);color:var(--text2);line-height:1.66;font-weight:400;margin:0 0 18px}
-.hins-meta{display:flex;align-items:center;gap:7px;font-size:var(--fz2);color:var(--text3);
+/* margin-top:auto pins the meta line to the bottom of every card, so the
+   read-time rules sit on one baseline across a row whatever the title does. */
+.hins-meta{display:flex;align-items:center;gap:7px;margin-top:auto;font-size:var(--fz2);color:var(--text3);
   padding-top:14px;border-top:1px solid var(--rule-1)}
 
-@media(max-width:1000px){
-  .hins-grid{columns:2}
+/* A two-column mosaic with row spans leaves a hole wherever a tall card
+   lands last, so below this width the spans are dropped and the cards size
+   to their own content in normal row flow. */
+@media(max-width:1080px){
+  /* align-items:start matters as much as dropping the spans. In row flow a
+     stretched compact card inherits the height of whichever tall card shares
+     its row, and since .hins-meta is pinned to the bottom that opens a band
+     of dead space under the headline. Sizing each card to its own content
+     keeps the rows ragged, which is what this layout wants anyway. */
+  .hins-grid{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:repeat(2,1fr);align-items:start}
+  .hins-card.tall{grid-row:auto}
   .hins-head{flex-direction:column;align-items:flex-start;gap:18px}
 }
-@media(max-width:640px){.hins-grid{columns:1}}
+@media(max-width:620px){.hins-grid{grid-template-columns:1fr}}
 
 /* ── WHY RIVAGO ── */
 .why-sec{padding:110px 44px;background:var(--bg)}
