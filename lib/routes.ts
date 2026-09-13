@@ -49,15 +49,27 @@ export const servicesList = [
   { n: "08", title: "Employer of Record", desc: "Hire anywhere, compliantly. We become the legal employer — payroll, tax, benefits and contracts in-country.", meta: "Per employee, monthly", href: routes.employerOfRecord },
 ] as const;
 
+/* The `anchor` on each entry is the id of that practice's section on
+   /industries, and the cards link to it — so an anchor with no matching
+   section is a link that silently lands at the top of the page.
+
+   "Engineering" was exactly that: /industries has no engineering practice,
+   and neither the FAQ nor the service pages claim one. It is replaced with
+   Aerospace & Defence, which /industries does document, so all eight anchors
+   now resolve. Telecom and Automotive are also on /industries and not shown
+   here — this is a subset, and the "View all industries" link covers them.
+
+   The emoji `icon` field is gone; components/IndustryIcon.tsx draws these
+   from the anchor instead. */
 export const industriesList = [
-  { icon: "💻", title: "Technology", desc: "Software engineering, cloud infrastructure, data, cybersecurity, product management and digital transformation from startup to enterprise.", tags: ["Engineering", "Cloud", "Data", "Product"], anchor: "technology" },
-  { icon: "🏦", title: "Finance & Banking", desc: "Investment banking, risk, compliance, financial planning, treasury and accounting across global financial institutions and fintech firms.", tags: ["Risk", "Compliance", "FP&A", "Treasury"], anchor: "finance" },
-  { icon: "🏥", title: "Healthcare", desc: "Clinical, nursing, allied health, pharmaceutical and healthcare administration across hospitals, clinics and life sciences organisations.", tags: ["Clinical", "Pharma", "Allied Health"], anchor: "healthcare" },
-  { icon: "⚖️", title: "Legal", desc: "In-house counsel, solicitors, paralegals, compliance officers and legal operations professionals across corporate and private practice.", tags: ["In-house", "Contracts", "Compliance"], anchor: "legal" },
-  { icon: "📈", title: "Sales & Marketing", desc: "B2B and B2C sales, digital marketing, brand, growth, customer success and revenue operations across all markets and company sizes.", tags: ["Sales", "Growth", "Brand", "CX"], anchor: "sales" },
-  { icon: "🏭", title: "Operations", desc: "Supply chain, procurement, logistics and operations management for companies scaling their physical or digital operations globally.", tags: ["Supply Chain", "Procurement", "Logistics"], anchor: "supply" },
-  { icon: "👥", title: "Human Resources", desc: "HR business partners, talent acquisition, L&D, reward and employee relations from coordinator to CHRO across every industry.", tags: ["HR BP", "TA", "L&D", "Reward"], anchor: "people" },
-  { icon: "🏗️", title: "Engineering", desc: "Civil, mechanical, electrical and structural engineering across construction, infrastructure, energy and industrial sectors worldwide.", tags: ["Civil", "Mechanical", "Energy"], anchor: "engineering" },
+  { title: "Technology", desc: "Software engineering, cloud infrastructure, data, cybersecurity, product management and digital transformation from startup to enterprise.", tags: ["Engineering", "Cloud", "Data", "Product"], anchor: "technology" },
+  { title: "Finance & Banking", desc: "Investment banking, risk, compliance, financial planning, treasury and accounting across global financial institutions and fintech firms.", tags: ["Risk", "Compliance", "FP&A", "Treasury"], anchor: "finance" },
+  { title: "Healthcare", desc: "Clinical, nursing, allied health, pharmaceutical and healthcare administration across hospitals, clinics and life sciences organisations.", tags: ["Clinical", "Pharma", "Allied Health"], anchor: "healthcare" },
+  { title: "Legal", desc: "In-house counsel, solicitors, paralegals, compliance officers and legal operations professionals across corporate and private practice.", tags: ["In-house", "Contracts", "Compliance"], anchor: "legal" },
+  { title: "Sales & Marketing", desc: "B2B and B2C sales, digital marketing, brand, growth, customer success and revenue operations across all markets and company sizes.", tags: ["Sales", "Growth", "Brand", "CX"], anchor: "sales" },
+  { title: "Supply & Operations", desc: "Supply chain, procurement, logistics and operations management for companies scaling their physical or digital operations globally.", tags: ["Supply Chain", "Procurement", "Logistics"], anchor: "supply" },
+  { title: "Human Resources", desc: "HR business partners, talent acquisition, L&D, reward and employee relations from coordinator to CHRO across every industry.", tags: ["HR BP", "TA", "L&D", "Reward"], anchor: "people" },
+  { title: "Aerospace & Defence", desc: "Engineering, programme management, manufacturing and cleared roles across aerospace, defence primes and their supply chains.", tags: ["Programme", "Manufacturing", "Cleared"], anchor: "aerospace" },
 ] as const;
 
 export const clientLogos = [

@@ -4,6 +4,7 @@ import OrbCanvas from "@/components/OrbCanvas";
 import HeroVisual from "@/components/HeroVisual";
 import ApproachTabs from "@/components/ApproachTabs";
 import ServiceCarousel from "@/components/ServiceCarousel";
+import IndustryIcon from "@/components/IndustryIcon";
 import Faq from "@/components/Faq";
 import Testimonials from "@/components/Testimonials";
 import CardSlider from "@/components/CardSlider";
@@ -339,13 +340,16 @@ export default function Home() {
           </div>
           <div className="gs">
             <CardSlider trackClassName="ind-grid" nav="dots">
+              {/* These were plain divs. Eight cards that look interactive, each
+                  with an `anchor` sitting unused in the data, and the only way
+                  onward was the "View all industries" link in the corner. */}
               {industriesList.map((ind) => (
-                <div className="ind-card" key={ind.title}>
-                  <div className="ind-icon">{ind.icon}</div>
+                <Link className="ind-card" href={`${routes.industries}#${ind.anchor}`} key={ind.title}>
+                  <div className="ind-icon"><IndustryIcon name={ind.anchor} /></div>
                   <div className="ind-title">{ind.title}</div>
                   <div className="ind-desc">{ind.desc}</div>
                   <div className="ind-tags">{ind.tags.map((t) => <span className="ind-tag" key={t}>{t}</span>)}</div>
-                </div>
+                </Link>
               ))}
             </CardSlider>
           </div>

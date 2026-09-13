@@ -850,9 +850,14 @@ a{color:inherit;text-decoration:none}
 .ind-inner{max-width:1200px;margin:0 auto}
 .ind-sub{font-size:var(--fz7);color:var(--text2);max-width:560px;line-height:1.72;font-weight:400}
 .ind-grid{grid-template-columns:repeat(4,1fr)}
-.ind-card{background:var(--surface-3);border:1px solid var(--border);border-radius:18px;padding:26px;transition:all .28s var(--ease);cursor:default}
+/* cursor:default was correct while these were divs. They are links now, so
+   the pointer has to say so — and the card needs a visible focus ring, since
+   it is a keyboard stop that the eight tag chips inside do not provide. */
+.ind-card{display:block;text-decoration:none;background:var(--surface-3);border:1px solid var(--border);border-radius:18px;padding:26px;transition:all .28s var(--ease);cursor:pointer}
+.ind-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .ind-card:hover{background:var(--surface2);border-color:var(--tint-2);transform:translateY(-4px)}
-.ind-icon{font-size:var(--fz10);margin-bottom:14px;display:block}
+/* was font-size:var(--fz10) to size an emoji glyph; it holds an SVG now */
+.ind-icon{display:flex;align-items:center;margin-bottom:14px}
 .ind-title{font-size:var(--fz5);font-weight:500;color:var(--text);margin-bottom:8px;letter-spacing:-.01em}
 .ind-desc{font-size:var(--fz4);color:var(--text2);line-height:1.68;margin-bottom:14px}
 .ind-tags{display:flex;flex-wrap:wrap;gap:5px}

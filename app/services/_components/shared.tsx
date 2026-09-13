@@ -1,4 +1,5 @@
 import Link from "next/link";
+import IndustryIcon from "@/components/IndustryIcon";
 import { Fragment, type ReactNode } from "react";
 import Faq, { type FaqItem } from "@/components/Faq";
 import IntakeForm from "@/components/IntakeForm";
@@ -325,12 +326,12 @@ export function IndustriesSection({
         </div>
         <div className="ind-grid gs" style={{ marginTop: 44 }}>
           {industriesList.map((ind) => (
-            <div className="ind-card" key={ind.title}>
-              <div className="ind-icon">{ind.icon}</div>
+            <Link className="ind-card" href={`${routes.industries}#${ind.anchor}`} key={ind.title}>
+              <div className="ind-icon"><IndustryIcon name={ind.anchor} /></div>
               <div className="ind-title">{ind.title}</div>
               <div className="ind-desc">{ind.desc}</div>
               <div className="ind-tags">{ind.tags.map((t) => <span className="ind-tag" key={t}>{t}</span>)}</div>
-            </div>
+            </Link>
           ))}
         </div>
         {showAllLink && (
