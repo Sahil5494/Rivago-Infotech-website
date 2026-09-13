@@ -97,6 +97,9 @@
   --grad-accent:linear-gradient(92deg,#0E5C3C 0%,#238360 100%);
   --grad-rule:linear-gradient(90deg,transparent,rgba(122,255,180,.5),transparent);
   --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(122,255,180,.12) 0%,transparent 70%);
+  /* The approach panel's ground. Soft enough that the white artefact card
+     sitting on it still reads as lifted. */
+  --grad-panel:linear-gradient(135deg,#F4F9F6 0%,#DDF1E6 55%,#CDE9DB 100%);
 
   /* ── LEGACY ALIASES ── */
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
@@ -202,6 +205,7 @@
   --grad-accent:linear-gradient(92deg,#3DFF87 0%,#7DE8C0 100%);
   --grad-rule:linear-gradient(90deg,transparent,rgba(61,255,135,.5),transparent);
   --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(61,255,135,.12) 0%,transparent 70%);
+  --grad-panel:linear-gradient(135deg,#0A1A0C 0%,#08170A 55%,#060F07 100%);
   --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
   --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
@@ -475,6 +479,61 @@ a{color:inherit;text-decoration:none}
 /* ── FEATURES ── */
 .feat-sec{padding:110px 44px;background:var(--bg)}
 .feat-inner{max-width:1200px;margin:0 auto}
+
+/* ── OUR APPROACH (tabs) ──────────────────────────────────────────────────
+   A vertical tab list against one illustrated panel. The tabs are the real
+   four-step process; the panel carries an artefact from each stage in the
+   card language the rest of the page already uses. */
+.apr-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.apr-lead{font-size:var(--fz4);color:var(--text-2);line-height:1.65;max-width:46ch;margin:0;padding-top:6px}
+.apr{display:grid;grid-template-columns:minmax(0,270px) minmax(0,1fr);gap:48px;margin-top:44px;align-items:start}
+.apr-tabs{display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--rule-1)}
+.apr-tab{display:flex;align-items:baseline;gap:12px;width:100%;padding:15px 18px;margin-left:-1px;
+  background:none;border:0;border-left:2px solid transparent;cursor:pointer;text-align:left;
+  font-family:var(--ff);font-size:var(--fz5);font-weight:500;color:var(--text-3);
+  letter-spacing:-.01em;transition:color .25s var(--ease),border-color .25s var(--ease)}
+.apr-tab:hover{color:var(--text-2)}
+.apr-tab.on{color:var(--text-1);border-left-color:var(--accent)}
+.apr-tab-n{font-size:var(--fz1);font-weight:500;color:var(--text-3);font-variant-numeric:tabular-nums}
+.apr-tab.on .apr-tab-n{color:var(--accent)}
+.apr-tab:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:4px}
+
+/* Pinned to the tallest panel (measured: 457-511px across the four). Without
+   a floor the whole section jumps by ~54px when the tab changes, and the
+   thing you just clicked moves under the cursor. */
+.apr-panel{border:1px solid var(--rule-1);border-radius:18px;padding:36px;min-height:512px;
+  background:var(--grad-panel)}
+.apr-panel:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.apr-h{font-size:var(--fz10);font-weight:500;letter-spacing:-.025em;color:var(--text-1);line-height:1.25;margin:0 0 10px}
+.apr-sub{font-size:var(--fz4);color:var(--text-2);line-height:1.6;max-width:54ch;margin:0 0 26px}
+.apr-art{background:var(--surface-3);border:1px solid var(--rule-1);border-radius:12px;padding:18px;max-width:440px}
+.apr-brief{padding:10px 12px;background:var(--surface-2);border:1px solid var(--rule-1);border-radius:9px;margin-bottom:10px}
+.apr-brief-h{font-size:var(--fz3);font-weight:500;color:var(--text-1);letter-spacing:-.01em}
+.apr-brief-m{font-size:var(--fz1);color:var(--text-3);margin-top:2px}
+/* The avatar was a photo slot for an invented person. It is now the role's
+   initials on the brand fill — a placeholder that is not pretending to be
+   somebody. */
+.apr-av{display:flex;align-items:center;justify-content:center;background:var(--grad-brand);
+  color:var(--on-accent);font-size:var(--fz1);font-weight:600;letter-spacing:.02em}
+.apr-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block}
+.apr-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.apr-tag{padding:3px 10px;background:var(--chip);border-radius:6px;font-size:var(--fz1);
+  font-weight:500;color:var(--accent)}
+@media(max-width:900px){
+  .apr-head{grid-template-columns:1fr;gap:14px}
+  .apr-lead{padding-top:0}
+  .apr{grid-template-columns:1fr;gap:26px}
+  /* The list turns horizontal on a phone: a vertical rail eats the screen
+     before the panel that it controls ever comes into view. */
+  .apr-tabs{flex-direction:row;overflow-x:auto;border-left:0;border-bottom:1px solid var(--rule-1);
+    gap:0;scrollbar-width:none}
+  .apr-tabs::-webkit-scrollbar{display:none}
+  .apr-tab{width:auto;white-space:nowrap;margin-left:0;margin-bottom:-1px;padding:12px 14px;
+    border-left:0;border-bottom:2px solid transparent;font-size:var(--fz3)}
+  .apr-tab.on{border-left-color:transparent;border-bottom-color:var(--accent)}
+  .apr-panel{padding:24px 20px;min-height:0}
+  .apr-art{max-width:none}
+}
 .eyebrow{display:inline-flex;padding:4px 13px;border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;white-space:nowrap}
 @media(max-width:480px){.eyebrow{white-space:normal;text-align:center}}
 .ew-dark{background:rgba(0,0,0,.05);border:1px solid rgba(10,19,17,.18);color:var(--text-inv-2)}

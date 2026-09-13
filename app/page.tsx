@@ -2,6 +2,7 @@ import Link from "next/link";
 import LogoMarquee from "@/components/LogoMarquee";
 import OrbCanvas from "@/components/OrbCanvas";
 import HeroVisual from "@/components/HeroVisual";
+import ApproachTabs from "@/components/ApproachTabs";
 import Faq from "@/components/Faq";
 import Testimonials from "@/components/Testimonials";
 import CardSlider from "@/components/CardSlider";
@@ -226,113 +227,11 @@ export default function Home() {
       <section className="feat-sec">
         <div className="feat-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our approach</div>
-          <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 580 }}>How we work — and why <em>it actually works.</em></h2>
-          <CardSlider trackClassName="feat-track" nav="dots">
-
-            <div className="fc gs">
-              <div className="fc-vis">
-                <div className="sv-tag sv-tg"><span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent-inv)", display: "inline-block" }}></span>Example submission</div>
-                <div className="sv-cand">
-                  <div className="sv-cand-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,var(--accent),#00A882)", color: "var(--bg)", fontWeight: 500, fontSize: "var(--fz5)", letterSpacing: ".02em" }}>AK</div>
-                  <div><div className="sv-cand-name">Anil Kumar</div><div className="sv-cand-role">Senior Cloud Architect · 8 yrs exp</div><div className="sv-skills"><span className="sv-sk">AWS</span><span className="sv-sk">Kubernetes</span><span className="sv-sk">Terraform</span></div></div>
-                </div>
-                <div className="sv-bar-row"><div className="sv-bar-label">Role fit</div><div className="sv-bar"><div className="sv-bar-fill" style={{ width: "96%" }}></div></div><div className="sv-bar-val">96%</div></div>
-                <div className="sv-bar-row"><div className="sv-bar-label">Culture fit</div><div className="sv-bar"><div className="sv-bar-fill" style={{ width: "91%" }}></div></div><div className="sv-bar-val">91%</div></div>
-                <div className="sv-bar-row"><div className="sv-bar-label">Availability</div><div className="sv-bar"><div className="sv-bar-fill" style={{ width: "100%" }}></div></div><div className="sv-bar-val">2 wks</div></div>
-              </div>
-              <div className="fc-body"><div className="fc-title">We find people others miss</div><div className="fc-desc">Our recruiters go beyond job boards — accessing passive talent, referral networks and direct headhunting across every sector to surface candidates you won&apos;t find yourself.</div></div>
-            </div>
-
-            <div className="fc gs">
-              <div className="fc-vis" style={{ paddingBottom: 16 }}>
-                <div className="sv-tag sv-tb">Candidate screened</div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 2, flex: 1 }}>
-                  {[
-                    ["Role competency — confirmed", "9 yrs finance leadership · cross-sector background"],
-                    ["Communication — excellent", "Articulate · confident · client-facing ready"],
-                    ["Availability — 2 weeks notice", "No competing offers · ready to start"],
-                    ["Salary expectation — within budget", "Flexible · open to package structure"],
-                  ].map(([t, s]) => (
-                    <div className="sv-check" key={t}>
-                      <div className="sv-ci"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
-                      <div><div className="sv-ct">{t}</div><div className="sv-cs">{s}</div></div>
-                    </div>
-                  ))}
-                </div>
-                <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
-                  <div style={{ flex: 1, padding: 7, background: "var(--chip)", borderRadius: 7, fontSize: "var(--fz1)", color: "var(--accent-inv)", textAlign: "center", fontWeight: 500 }}>Accept →</div>
-                  <div style={{ flex: 1, padding: 7, background: "var(--surface-inv)", borderRadius: 7, fontSize: "var(--fz1)", color: "var(--accent-inv)", textAlign: "center" }}>Defer</div>
-                </div>
-              </div>
-              <div className="fc-body"><div className="fc-title">Screened before you see them</div><div className="fc-desc">Every candidate is fully assessed before reaching your inbox — competency, culture fit, availability and salary expectations all checked. You only meet people who are genuinely ready.</div></div>
-            </div>
-
-            <div className="fc gs">
-              <div className="fc-vis">
-                <div className="sv-nl">Recruiter assessment summary</div>
-                <div className="sv-note">Anil brings 7 years of cloud architecture experience across AWS and Azure. Strong communicator, available immediately. US EST hours, no visa restrictions. Prior work spans fintech and enterprise SaaS. Panel interview strongly recommended.</div>
-                <div style={{ marginTop: 10, display: "flex", gap: 5, flexWrap: "wrap" }}>
-                  <span style={{ padding: "3px 9px", background: "var(--chip)", borderRadius: 6, fontSize: "var(--fz1)", color: "var(--accent-inv)", fontWeight: 500 }}>AWS</span>
-                  <span style={{ padding: "3px 9px", background: "var(--info)", borderRadius: 6, fontSize: "var(--fz1)", color: "var(--on-accent)", fontWeight: 500 }}>Azure</span>
-                  <span style={{ padding: "3px 9px", background: "var(--warn)", borderRadius: 6, fontSize: "var(--fz1)", color: "var(--on-accent)", fontWeight: 500 }}>Fintech exp</span>
-                </div>
-              </div>
-              <div className="fc-body"><div className="fc-title">Full context, every time</div><div className="fc-desc">Every shortlisted candidate comes with a written recruiter summary — background, motivations, strengths and an honest recommendation. No guesswork on your side.</div></div>
-            </div>
-
-            <div className="fc wide gs">
-              <div className="fc-vis wide-vis">
-                <div className="sv-pl-col">
-                  <div className="sv-pl-title">Live pipeline — active searches</div>
-                  {[
-                    ["Sr. Software Engineer · USA", "$130K · 3–5 candidates shortlisted", "→"],
-                    ["DevOps Lead · Canada", "CAD 120K · 2 candidates shortlisted", "→"],
-                    ["Finance Manager · UAE", "Sourcing · in progress", "⏳"],
-                    ["HR Director · Canada", "CAD 145K · Offer stage", "★"],
-                  ].map(([t, s, icon]) => (
-                    <div className="sv-pl-card" key={t}>
-                      <div className="sv-pl-dot" style={{ background: "var(--accent)" }}></div>
-                      <div><div className="sv-pl-name">{t}</div><div className="sv-pl-sub">{s}</div></div>
-                      <div className="sv-pl-val" style={{ color: "var(--accent-inv)" }}>{icon}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="sv-pl-col">
-                  <div className="sv-pl-title">This week</div>
-                  <div style={{ marginBottom: 14 }}><div style={{ fontSize: "var(--fz10)", fontWeight: 700, color: "var(--text-inv-1)", letterSpacing: "-.02em", lineHeight: 1 }}>14</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>New submissions sent</div></div>
-                  <div style={{ marginBottom: 14 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}><span style={{ fontSize: "var(--fz1)", color: "var(--dt3)" }}>Client acceptance rate</span><span style={{ fontSize: "var(--fz1)", fontWeight: 500, color: "var(--accent-inv)" }}>94%</span></div>
-                    <div style={{ height: 5, background: "var(--surface-inv)", borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: "94%", background: "linear-gradient(90deg,var(--accent),#00D4A8)", borderRadius: 3 }}></div></div>
-                  </div>
-                  <div style={{ display: "flex", gap: 8 }}>
-                    <div style={{ flex: 1, background: "var(--surface-inv-2)", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz5)", fontWeight: 700, color: "var(--text-inv-1)" }}>3–5</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Candidates per shortlist</div></div>
-                    <div style={{ flex: 1, background: "var(--surface-inv-2)", border: "1px solid rgba(0,0,0,.07)", borderRadius: 8, padding: 10, textAlign: "center" }}><div style={{ fontSize: "var(--fz5)", fontWeight: 700, color: "var(--text-inv-1)" }}>94%</div><div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 2 }}>Interview rate</div></div>
-                  </div>
-                </div>
-              </div>
-              <div className="fc-body"><div className="fc-title">Your search, actively managed</div><div className="fc-desc">We don&apos;t wait for candidates to apply. We actively track your open roles across every sector, monitor the market and bring you the right people — often before they&apos;re even looking.</div></div>
-            </div>
-
-            <div className="fc gs">
-              <div className="fc-vis" style={{ paddingBottom: 14 }}>
-                <div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", fontWeight: 500, textTransform: "uppercase", letterSpacing: ".06em", marginBottom: 12 }}>Placements by industry</div>
-                {[
-                  ["Tech", 48],
-                  ["Finance", 28],
-                  ["Health", 14],
-                  ["Other", 10],
-                ].map(([name, val]) => (
-                  <div className="sv-mkt" key={name}>
-                    <div className="sv-mkt-name">{name}</div>
-                    <div className="sv-mkt-bar"><div className="sv-mkt-fill" style={{ width: `${val}%` }}></div></div>
-                    <div className="sv-mkt-val">{val}%</div>
-                  </div>
-                ))}
-              </div>
-              <div className="fc-body"><div className="fc-title">Every sector. Every function.</div><div className="fc-desc">Active hiring pipelines across finance, technology, healthcare, legal, operations and beyond — in every market we serve.</div></div>
-            </div>
-
-          </CardSlider>
+          <div className="apr-head">
+            <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 580 }}>How we work — and why <em>it actually works.</em></h2>
+            <p className="apr-lead gs">Every search runs the same four steps, with the same partner from brief to placement. No handoffs and no black box — you know where the search stands at every stage.</p>
+          </div>
+          <ApproachTabs />
         </div>
       </section>
 
