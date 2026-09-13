@@ -97,9 +97,16 @@
   --grad-accent:linear-gradient(92deg,#0E5C3C 0%,#238360 100%);
   --grad-rule:linear-gradient(90deg,transparent,rgba(122,255,180,.5),transparent);
   --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(122,255,180,.12) 0%,transparent 70%);
-  /* The approach panel's ground. Soft enough that the white artefact card
-     sitting on it still reads as lifted. */
-  --grad-panel:linear-gradient(135deg,#F4F9F6 0%,#DDF1E6 55%,#CDE9DB 100%);
+  /* The approach panel's ground. A single linear wash read as flat printer
+     output and left the artefact card stranded on an empty field; three
+     offset radials give the area actual movement, so the card sits in a
+     composition rather than on a background. Soft enough that a white card
+     on top still reads as lifted. */
+  --grad-panel:
+    radial-gradient(58% 52% at 76% 24%,rgba(46,200,130,.30) 0%,transparent 64%),
+    radial-gradient(46% 58% at 95% 74%,rgba(0,170,140,.24) 0%,transparent 62%),
+    radial-gradient(64% 62% at 30% 96%,rgba(120,220,180,.26) 0%,transparent 66%),
+    linear-gradient(135deg,#F6FAF8 0%,#E9F5EF 100%);
 
   /* ── LEGACY ALIASES ── */
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
@@ -205,7 +212,11 @@
   --grad-accent:linear-gradient(92deg,#3DFF87 0%,#7DE8C0 100%);
   --grad-rule:linear-gradient(90deg,transparent,rgba(61,255,135,.5),transparent);
   --grad-glow:radial-gradient(60% 60% at 50% 0%,rgba(61,255,135,.12) 0%,transparent 70%);
-  --grad-panel:linear-gradient(135deg,#0A1A0C 0%,#08170A 55%,#060F07 100%);
+  --grad-panel:
+    radial-gradient(58% 52% at 76% 24%,rgba(61,255,135,.13) 0%,transparent 64%),
+    radial-gradient(46% 58% at 95% 74%,rgba(0,212,168,.10) 0%,transparent 62%),
+    radial-gradient(64% 62% at 30% 96%,rgba(61,255,135,.07) 0%,transparent 66%),
+    linear-gradient(135deg,#0A1A0C 0%,#060F07 100%);
   --dt:var(--text-1); --dt2:var(--text-2); --dt3:var(--text-3);
   --text:var(--text-1); --text2:var(--text-2); --text3:var(--text-3);
   --bg:var(--surface-1); --bg2:var(--surface-2); --bg3:var(--surface-3);
@@ -502,12 +513,16 @@ a{color:inherit;text-decoration:none}
    six-row submission packet. Without a floor the whole section jumps on tab
    change and the control moves out from under the cursor. Re-measure this
    if any panel gains a row. */
-.apr-panel{border:1px solid var(--rule-1);border-radius:18px;padding:36px;min-height:620px;
-  background:var(--grad-panel)}
+.apr-panel{display:flex;flex-direction:column;border:1px solid var(--rule-1);border-radius:18px;
+  padding:36px;min-height:620px;background:var(--grad-panel)}
 .apr-panel:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .apr-h{font-size:var(--fz10);font-weight:500;letter-spacing:-.025em;color:var(--text-1);line-height:1.25;margin:0 0 10px}
 .apr-sub{font-size:var(--fz4);color:var(--text-2);line-height:1.6;max-width:54ch;margin:0 0 26px}
-.apr-art{background:var(--surface-3);border:1px solid var(--rule-1);border-radius:12px;padding:18px;max-width:470px}
+/* margin-block:auto inside the flex column centres the card in whatever
+   space the heading leaves. Parked at the top, a short panel left a bank of
+   empty gradient under it that read as unfinished rather than as air. */
+.apr-art{margin-block:auto;background:var(--surface-3);border:1px solid var(--rule-1);
+  border-radius:12px;padding:20px;max-width:500px;box-shadow:var(--shadow-1)}
 .apr-art-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
 .apr-art-h .sv-nl{margin-bottom:0}
 .apr-stamp{font-size:var(--fz1);font-weight:500;letter-spacing:.06em;text-transform:uppercase;
