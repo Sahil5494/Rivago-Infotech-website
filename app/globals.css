@@ -1552,9 +1552,6 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .ind-guarantee-grid{display:grid;grid-template-columns:repeat(4,1fr)}
 @media(max-width:900px){.ind-guarantee-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:500px){.ind-guarantee-grid{grid-template-columns:1fr}}
-.ind-testi-grid{display:grid;grid-template-columns:repeat(3,1fr)}
-@media(max-width:900px){.ind-testi-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.ind-testi-grid{grid-template-columns:1fr}}
 
 .industry{padding:120px 44px;border-bottom:1px solid var(--border);position:relative}
 .industry.inv{background:var(--surface-1)}
@@ -1563,21 +1560,19 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .industry-h2{font-size:var(--fz13);line-height:1.04;letter-spacing:-.028em;font-weight:500;margin-bottom:22px}
 .industry-lede{font-size:var(--fz8);color:var(--text2);line-height:1.7;font-weight:400;margin-bottom:36px;max-width:480px}
 .industry-roles-label{font-size:var(--fz1);text-transform:uppercase;letter-spacing:.08em;color:var(--text3);font-weight:500}
-.industry-roles{margin-top:16px;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border)}
-.ir-row{display:grid;grid-template-columns:1fr auto;gap:18px;padding:14px 0;border-bottom:1px solid var(--border);align-items:center;font-size:var(--fz3)}
+/* The roles list used to be a two-column grid — title on the left, a
+   placement count on the right. The counts were invented and are gone, so
+   the row is a single column now and the `.ct` rule that styled the count
+   has gone with them. */
+.industry-roles{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border)}
+.ir-row{padding:14px 0;border-bottom:1px solid var(--border);font-size:var(--fz3)}
 .ir-row .nm{color:var(--text)}
-.ir-row .ct{color:var(--text3);font-family:var(--fm);font-size:var(--fz2)}
-.industry-panel{display:flex;flex-direction:column;gap:20px}
-.lead-card{background:var(--surface2);color:var(--text);border-radius:28px;padding:32px;display:grid;grid-template-columns:64px 1fr;gap:20px;align-items:center;border:1px solid var(--border)}
-.industry.inv .lead-card{background:var(--bg3)}
-.lead-av{width:64px;height:64px;border-radius:50%;flex-shrink:0}
-.lead-name{font-size:var(--fz5);font-weight:500}
-.lead-title{font-size:var(--fz2);color:var(--text3);margin-top:2px;line-height:1.4}
-.lead-cred{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
-.lead-cred span{padding:3px 9px;background:var(--rule-1);border-radius:9999px;font-size:var(--fz1);color:var(--text2)}
-.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
-.stat-cell{background:var(--bg);padding:20px 22px}
-.industry.inv .stat-cell{background:var(--surface-3)}
+.industry-panel{display:flex;flex-direction:column;gap:18px}
+/* Gone with the invented content on /industries: `.lead-*` styled the
+   practice-partner card (name, avatar, credential chips), `.stat-*` the
+   four-metric grid beside it, and `.cross-stats-*` / `.cs-*` the site-wide
+   figures strip under the hero. `.stat-v` and `.stat-l` below stay — the
+   resources and career pages use those two on their own. */
 .stat-v{font-size:var(--fz10);line-height:1;letter-spacing:-.025em;color:var(--text);margin-bottom:8px;font-weight:500}
 .stat-v .unit{font-size:var(--fz3);color:var(--text3);margin-left:4px}
 .stat-l{font-size:var(--fz1);color:var(--text3);line-height:1.45}
@@ -1585,12 +1580,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .sample-h{font-size:var(--fz1);color:var(--accent);font-family:var(--fm);letter-spacing:.05em;margin-bottom:6px;text-transform:uppercase}
 .sample-line{font-size:var(--fz3);color:var(--text);font-weight:500}
 .sample-sub{font-size:var(--fz4);color:var(--text3);margin-top:3px}
-.cross-stats-inner{max-width:1240px;margin:64px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:24px;overflow:hidden}
-.cs-c{background:var(--bg);padding:36px}
-.cs-v{font-size:var(--fz13);line-height:1;letter-spacing:-.035em;font-weight:500;color:var(--accent);margin-bottom:14px}
-.cs-v .unit{font-size:var(--fz7);color:var(--text3);margin-left:2px}
-.cs-l{font-size:var(--fz2);color:var(--text2);line-height:1.55}
-@media(max-width:960px){.industry-inner{grid-template-columns:1fr;gap:40px}.cross-stats-inner{grid-template-columns:1fr 1fr}.stat-grid{grid-template-columns:1fr}}
+@media(max-width:960px){.industry-inner{grid-template-columns:1fr;gap:40px}}
 
 /* ============ SERVICES — ported from the real Claude Design export ============ */
 

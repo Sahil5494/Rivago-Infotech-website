@@ -1,8 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { routes } from "@/lib/routes";
+import { routes, offices, servicesList } from "@/lib/routes";
 import IndustriesNav from "./IndustriesNav";
-import { practices, spine, writtenGuarantees, practiceTestimonials } from "./data";
+import { practices, spine, writtenGuarantees } from "./data";
 
 export const metadata: Metadata = {
   title: "Industries — Rivago Infotech",
@@ -36,24 +36,25 @@ export default function IndustriesPage() {
       <header className="page-hero inv">
         <div className="page-hero-inner">
           <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>Industries</span></div>
-          <div className="eyebrow ew-light gs" style={{ marginBottom: 28, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Industries · 10 practices</div>
+          <div className="eyebrow ew-light gs" style={{ marginBottom: 28, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Industries · {practices.length} practices</div>
           <h1 className="gs">Specialist partners,<br />aligned to the <em>sector you hire in.</em></h1>
-          <p className="lead gs" style={{ marginTop: 24 }}>Every Rivago partner runs one practice and has placed inside it for seven or more years. They know the comp bands, the unpublished orgs, and the people whose LinkedIn still says &ldquo;Director&rdquo; three years after they made VP.</p>
+          <p className="lead gs" style={{ marginTop: 24 }}>Every brief goes to a partner who recruits in that sector, not to whoever is free. They know the titles, the org shapes and the people who never apply through a portal.</p>
 
+          {/* Was: 1,486 active mandates, 34 senior partners, 11 years average
+              partner tenure — none of them measured. These four are counted
+              from the data on this site, so they cannot drift out of true. */}
           <div className="page-hero-meta gs">
-            <div className="page-hero-meta-row"><span>Active mandates</span><strong>1,486</strong></div>
-            <div className="page-hero-meta-row"><span>Practices</span><strong>10</strong></div>
-            <div className="page-hero-meta-row"><span>Senior partners</span><strong>34</strong></div>
-            <div className="page-hero-meta-row"><span>Avg. partner tenure in-practice</span><strong>11 years</strong></div>
+            <div className="page-hero-meta-row"><span>Practices</span><strong>{practices.length}</strong></div>
+            <div className="page-hero-meta-row"><span>Markets</span><strong>US · Canada · UAE · India</strong></div>
+            <div className="page-hero-meta-row"><span>Offices</span><strong>{offices.length}</strong></div>
+            <div className="page-hero-meta-row"><span>Ways to engage</span><strong>{servicesList.filter((x) => x.href !== routes.services).length}</strong></div>
           </div>
         </div>
 
-        <div className="cross-stats-inner gs">
-          <div className="cs-c"><div className="cs-v">21<span className="unit">days</span></div><div className="cs-l">Median time-to-shortlist across all practices, last 12 months.</div></div>
-          <div className="cs-c"><div className="cs-v">94<span className="unit">%</span></div><div className="cs-l">Offer-acceptance rate. Cross-practice. Cross-seniority.</div></div>
-          <div className="cs-c"><div className="cs-v">62k<span className="unit">+</span></div><div className="cs-l">Senior operators in the Rivago private network.</div></div>
-          <div className="cs-c"><div className="cs-v">91<span className="unit">%</span></div><div className="cs-l">12-month retention of every retained placement.</div></div>
-        </div>
+        {/* Removed: "21 days median time-to-shortlist", "94% offer-acceptance
+            rate", "62k+ senior operators in the Rivago private network" and
+            "91% 12-month retention of every retained placement". None were
+            measured, and the meta row above already carries what is true. */}
       </header>
 
       <IndustriesNav />
@@ -64,41 +65,27 @@ export default function IndustriesPage() {
         <section className={`industry${i % 2 === 1 ? " inv" : ""}`} id={p.id} key={p.id}>
           <div className="industry-inner">
             <div className="gs">
-              <div className="industry-label">{p.practiceNum} · {p.estYear}</div>
+              <div className="industry-label">{p.practiceNum}</div>
               <h2 className="industry-h2">
                 {p.titleTop}<br />
                 {"titleMid" in p && p.titleMid ? `${p.titleMid} ` : ""}
                 <em>{p.titleEm}</em>
               </h2>
               <p className="industry-lede">{p.lede}</p>
-              <div className="industry-roles-label">Typical roles · last 90 days</div>
-              <div className="industry-roles">
-                {p.roles.map(([nm, ct]) => (
-                  <div className="ir-row" key={nm}><span className="nm">{nm}</span><span className="ct">{ct}</span></div>
-                ))}
-              </div>
             </div>
+
+            {/* The panel held an invented practice partner, four invented
+                metrics and a sample placement with a salary on it. The roles
+                move here from the left column — they are the one thing in this
+                section that was always true, once the placement counts beside
+                them came off. */}
             <div className="industry-panel gs">
-              <div className="lead-card">
-                <div className="lead-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz5)", letterSpacing: ".02em" }}>{p.partner.initials}</div>
-                <div>
-                  <div className="lead-name">{p.partner.name}</div>
-                  <div className="lead-title">{p.partner.title}</div>
-                  <div className="lead-cred">{p.partner.creds.map((c) => <span key={c}>{c}</span>)}</div>
-                </div>
-              </div>
-              <div className="stat-grid">
-                {p.stats.map(([v, unit, l]) => (
-                  <div className="stat-cell" key={l}><div className="stat-v">{v}{unit && <span className="unit">{unit}</span>}</div><div className="stat-l">{l}</div></div>
+              <div className="industry-roles-label">Roles we recruit in this practice</div>
+              <div className="industry-roles">
+                {p.roles.map((nm) => (
+                  <div className="ir-row" key={nm}><span className="nm">{nm}</span></div>
                 ))}
               </div>
-              {"sample" in p && p.sample && (
-                <div className="sample">
-                  <div className="sample-h">Recent placement</div>
-                  <div className="sample-line">{p.sample.line}</div>
-                  <div className="sample-sub">{p.sample.sub}</div>
-                </div>
-              )}
             </div>
           </div>
         </section>
@@ -128,14 +115,14 @@ export default function IndustriesPage() {
           <div className="ind-writing-head" style={{ gap: 80, alignItems: "end", marginBottom: 56 }}>
             <div>
               <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>What we put in writing</div>
-              <h2 className="section-h2" style={{ color: "var(--text-inv-1)" }}>Four numbers we&apos;ll stand behind<br /><em>on the first call.</em></h2>
+              <h2 className="section-h2" style={{ color: "var(--text-inv-1)" }}>Four things we commit to<br /><em>on the first call.</em></h2>
             </div>
             <p style={{ color: "var(--text-inv-2)", fontSize: "var(--fz5)", lineHeight: 1.78, fontWeight: 400, maxWidth: 460 }}>Same in technology as in healthcare. Same in finance as in defence. The practice lead changes; the bar doesn&apos;t.</p>
           </div>
           <div className="ind-guarantee-grid" style={{ gap: 16 }}>
-            {writtenGuarantees.map(([v, unit, title, desc]) => (
-              <div key={title} style={{ background: "var(--surface-inv-2)", borderRadius: 24, padding: "40px 32px", border: "1px solid rgba(11,19,17,.06)" }}>
-                <div style={{ fontSize: "var(--fz15)", lineHeight: 1, letterSpacing: "-.035em", color: "var(--accent-inv)", fontWeight: 400, marginBottom: 20 }}>{v}{unit && <span style={{ fontSize: "var(--fz7)", color: "var(--text-inv-3)", marginLeft: 4 }}>{unit}</span>}</div>
+            {writtenGuarantees.map(([when, title, desc]) => (
+              <div key={title} style={{ background: "var(--surface-inv-2)", borderRadius: 24, padding: "36px 32px 40px", border: "1px solid rgba(11,19,17,.06)" }}>
+                <div style={{ fontFamily: "var(--fm)", fontSize: "var(--fz1)", letterSpacing: ".06em", textTransform: "uppercase", color: "var(--accent-inv)", paddingBottom: 16, marginBottom: 22, borderBottom: "1px solid rgba(11,19,17,.1)" }}>{when}</div>
                 <div style={{ fontSize: "var(--fz5)", fontWeight: 500, color: "var(--text-inv-1)", marginBottom: 8 }}>{title}</div>
                 <div style={{ fontSize: "var(--fz4)", color: "var(--text-inv-2)", lineHeight: 1.65, fontWeight: 400 }}>{desc}</div>
               </div>
@@ -144,26 +131,12 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* PRACTICE-LEVEL TESTIMONIALS */}
-      <section className="section">
-        <div className="wrap gs">
-          <div className="eyebrow ew-light" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>From hiring managers</div>
-          <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 22 }}>Notes from the<br /><em>other side of the table.</em></h2>
-          <p style={{ color: "var(--text2)", fontSize: "var(--fz7)", fontWeight: 400, lineHeight: 1.7, maxWidth: 540, marginBottom: 64 }}>Plain English from heads of talent, GCs, and CFOs who hired through a Rivago practice in the last eighteen months.</p>
-          <div className="ind-testi-grid" style={{ gap: 18 }}>
-            {practiceTestimonials.map((t) => (
-              <div key={t.name} style={{ padding: "32px 30px", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, display: "flex", flexDirection: "column" }}>
-                <div style={{ fontFamily: "var(--fm)", fontSize: "var(--fz1)", color: "var(--accent)", letterSpacing: ".05em", textTransform: "uppercase", marginBottom: 18 }}>{t.practice}</div>
-                <p style={{ fontSize: "var(--fz5)", color: "var(--text)", lineHeight: 1.72, fontWeight: 400, marginBottom: 24, flex: 1 }}>&ldquo;{t.quote}&rdquo;</p>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, paddingTop: 18, borderTop: "1px solid var(--border)" }}>
-                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg,var(--accent),#0A7040)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 500, color: "var(--text-inv-1)", fontSize: "var(--fz1)" }}>{t.initials}</div>
-                  <div><div style={{ fontSize: "var(--fz2)", fontWeight: 500, color: "var(--text)" }}>{t.name}</div><div style={{ fontSize: "var(--fz1)", color: "var(--text3)" }}>{t.role}</div></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* The practice-level testimonials section stood here: three quotes from
+          named heads of talent, GCs and CFOs, each thanking one of the invented
+          practice partners by first name. Section removed rather than left
+          empty — see the note on practiceTestimonials in ./data.ts. Real
+          quotes, even anonymised to a sector and a country, can bring it back.
+          The markup is in git history at the commit that removed it. */}
 
       {/* CTA */}
       <section className="clients-cta gs inv">
