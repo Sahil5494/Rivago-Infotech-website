@@ -6,7 +6,7 @@ import ApproachTabs from "@/components/ApproachTabs";
 import ServiceCarousel from "@/components/ServiceCarousel";
 import IndustryRail from "@/components/IndustryRail";
 import Faq from "@/components/Faq";
-import Testimonials from "@/components/Testimonials";
+import ProofWall from "@/components/ProofWall";
 /* servicesList and industriesList both dropped from this import: the services
    carousel and the industry rail each read the data themselves. lib/routes.ts
    still exports both — /about counts them and the nav mega-menu reads them.
@@ -431,16 +431,27 @@ export default function Home() {
           what the engagement covered; placements and timings are only
           publishable if they were actually recorded. */}
 
-      {/* TESTIMONIALS */}
-      <section className="testi-sec inv">
-        <div className="testi-head">
-          <div>
-            <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>What our clients say</div>
-            <h2 className="testi-h2 gs">Trusted by companies who care<br />about <em>hiring right.</em></h2>
+      {/* PROOF WALL */}
+      {/* One wall in place of two sections: the case-study slot above it and
+          the testimonial carousel that used to sit here. The heading says
+          exactly what the wall holds — marks and words — rather than
+          promising results it does not carry.
+
+          The "Read all stories" link is gone with it. It pointed at
+          /resources?view=cs, which is still the invented case-study library. */}
+      <section className="pw-sec inv">
+        <div className="pw-inner">
+          <div className="pw-head">
+            <div>
+              <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Clients</div>
+              <h2 className="pw-h2 gs">Who we hire for, and what<br />they say <em>about the hiring.</em></h2>
+            </div>
+            <p className="pw-lede gs">Every mark here is a client. Every quote is from someone who ran a search with us and agreed to be quoted — by role and market, not by name, which is the form most hiring teams will actually sign off on.</p>
           </div>
-          <Link style={{ fontSize: "var(--fz2)", color: "var(--text2)", display: "flex", alignItems: "center", gap: 5, flexShrink: 0 }} href={`${routes.resources}?view=cs`}>Read all stories <SmallArrow /></Link>
+          <div className="gs">
+            <ProofWall quotes={testimonials} />
+          </div>
         </div>
-        <Testimonials items={testimonials} />
       </section>
 
       {/* FAQ */}

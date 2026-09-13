@@ -687,7 +687,7 @@ a{color:inherit;text-decoration:none}
    as one near-black, so a change of fill does not announce a new section.
    These hairlines are what actually draw the band boundaries; without them
    the dark stretches merge into a single block. */
-.svc-sec,.ind-sec,.supp-sec,.testi-sec,.faq-sec,.cta-sec,.orb-sec{
+.svc-sec,.ind-sec,.supp-sec,.pw-sec,.faq-sec,.cta-sec,.orb-sec{
   border-top:1px solid var(--rule-1)
 }
 /* PRECISION and PROCESS rules removed with their sections; the panel
@@ -703,27 +703,55 @@ a{color:inherit;text-decoration:none}
    now the page's only "why us" section, so it stays visible; .why-grid
    already collapses to one column at 900px. */
 
-/* ── TESTIMONIALS ── */
-.testi-sec{padding:110px 0;background:var(--bg2);overflow:hidden}
-.testi-head{padding:0 44px;max-width:1200px;margin:0 auto 52px;display:flex;align-items:flex-end;justify-content:space-between}
-.testi-h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;line-height:1.13}
-.testi-carousel{display:flex;gap:20px;padding:0 44px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;cursor:grab}
-.testi-carousel::-webkit-scrollbar{display:none}
-.testi-carousel:active{cursor:grabbing}
-.tc{flex:0 0 380px;scroll-snap-align:start;background:var(--rule-1);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:border-color .28s;display:flex;flex-direction:column}
-.tc:hover{border-color:var(--rule-1)}
-.tc-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,12,5,.6) 0%,transparent 50%)}
-.tc-body{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1}
-.tc-co-badge{display:inline-flex;padding:3px 10px;background:var(--tint-1);border:1px solid var(--tint-2);border-radius:10px;font-size:var(--fz1);color:var(--accent);font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px;align-self:flex-start}
-.tc-stars{display:flex;gap:3px;margin-bottom:12px}
-.tc-star{width:13px;height:13px}
+/* ── PROOF WALL ──
+   Replaces the testimonial carousel (.testi-*, .tc, .tc-body, .tc-co-badge,
+   .tc-stars, .tc-name, .tc-role and the dots), which had exactly one
+   consumer: components/Testimonials.tsx on the home page. Both are gone.
+
+   .tc-quote and .tc-author below are NOT part of that and survive —
+   /services/rpo renders both, and .testi-cream re-skins them on the service
+   pages. Deleting them with the carousel would have broken a page this
+   change never touched. */
 .tc-quote{font-size:var(--fz6);color:var(--text2);line-height:1.78;font-weight:400;margin-bottom:20px;flex:1}
 .tc-author{display:flex;align-items:center;gap:10px;border-top:1px solid var(--border);padding-top:16px;margin-top:auto}
-.tc-name{font-size:var(--fz2);font-weight:500;color:var(--text)}
-.tc-role{font-size:var(--fz1);color:var(--text3);margin-top:2px}
-.testi-dots{display:flex;gap:6px;justify-content:center;margin-top:32px;padding:0 44px}
-.testi-dot{width:6px;height:6px;border-radius:50%;background:var(--rule-2);transition:all .2s;cursor:pointer}
-.testi-dot.active{background:var(--accent);width:20px;border-radius:3px}
+
+.pw-sec{padding:110px 44px;background:var(--bg2)}
+.pw-inner{max-width:1240px;margin:0 auto}
+.pw-head{display:flex;align-items:flex-end;justify-content:space-between;gap:64px;margin-bottom:48px}
+.pw-h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;line-height:1.13;color:var(--text);text-wrap:balance}
+.pw-lede{font-size:var(--fz5);color:var(--text2);line-height:1.75;font-weight:400;max-width:430px;flex-shrink:0}
+
+/* Four columns filled COLUMN-FIRST, four rows deep. Quote tiles take two
+   rows, marks take one, so every column closes at four and the wall has no
+   holes. minmax rather than a fixed row height: if a quote ever runs longer
+   than the space, the row grows instead of the text clipping. */
+.pw-grid{display:grid;grid-template-rows:repeat(4,minmax(138px,auto));grid-auto-flow:column;grid-auto-columns:1fr;gap:16px}
+/* The three forest greens are within 1.10:1 of each other, so a tile cannot
+   separate from the band by fill. The hairline is what draws it. */
+.pw-tile{border:1px solid var(--rule-1);border-radius:18px;background:var(--surface-3);transition:border-color .25s var(--ease),transform .25s var(--ease)}
+.pw-tile:hover{border-color:var(--tint-3);transform:translateY(-3px)}
+.pw-quote{grid-row:span 2;display:flex;flex-direction:column;padding:26px 24px 22px;margin:0}
+.pw-badge{font-family:var(--fm);font-size:var(--fz1);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.pw-text{font-size:var(--fz4);color:var(--text);line-height:1.68;font-weight:400;margin:16px 0 0;flex:1}
+.pw-who{font-size:var(--fz2);color:var(--text3);margin-top:18px;padding-top:14px;border-top:1px solid var(--rule-1)}
+.pw-logotile{display:flex;align-items:center;justify-content:center}
+/* .62 and a 150px cap are tuned for a marquee: small marks, moving, read as
+   a texture. These sit still in a 298px tile and ARE the evidence, so they
+   go to full strength and take the extra width. */
+.pw-logotile .logo-chip{width:auto}
+.pw-logotile .logo-chip img{opacity:1;max-width:172px}
+
+/* A two-column mosaic with row spans leaves holes wherever a quote lands on
+   the last row, so below this width the wall stops being a mosaic: normal
+   row flow, no spans, tiles sized by their own content. */
+@media(max-width:1080px){
+  .pw-grid{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:repeat(2,1fr)}
+  .pw-quote{grid-row:auto}
+  .pw-logotile{min-height:132px}
+  .pw-head{flex-direction:column;align-items:flex-start;gap:20px}
+  .pw-lede{max-width:none}
+}
+@media(max-width:600px){.pw-grid{grid-template-columns:1fr}}
 
 /* ── WHY RIVAGO ── */
 .why-sec{padding:110px 44px;background:var(--bg)}
@@ -2393,7 +2421,11 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 @media(max-width:760px){.pd-steps{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.pd-steps{grid-template-columns:1fr}.pd{padding-top:100px}}
 
-.inv .logo-chip img{filter:brightness(0) saturate(0) invert(1);opacity:.62}
+/* A byte-identical duplicate of `.inv .logo-chip img` stood here, 1,700
+   lines after the original in the CLIENTS block. Same specificity, later in
+   the file, so it silently won — and it beat the proof wall's own rule for
+   the marks, which is how it was found. Nothing sits between the two copies
+   that touches these properties, so the first one carries on alone. */
 
 /* ── OFFICES STRIP ────────────────────────────────────────────────────────
    A thin credibility band, not a section: one row of cities between the
