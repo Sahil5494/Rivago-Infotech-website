@@ -26,15 +26,27 @@ export const routes = {
   cookies: "/cookies",
 } as const;
 
+/* The `meta` slot sits in the same place on every card, in the same mono
+   type, which promises the reader these values are comparable. They were not:
+   "Overview" was a category, "Permanent, end to end" a description, "Talent in
+   5-7 days" and "7-14 days" delivery claims, "Boots on site fast" a boast,
+   "Retained" a fee model, "Monthly programme" a billing model and "No entity
+   needed" a benefit. Eight cards, seven different kinds of thing.
+
+   It now carries one axis throughout: how the commercials work, which is what
+   a buyer actually compares services on. Five are taken from the service's own
+   page -- contingent fee, hourly markup, retained, day rate month to month.
+   CONFIRM: temporary staffing and Employer of Record are the standard models
+   for those services, not ones Rivago has stated anywhere. */
 export const servicesList = [
   { n: "01", title: "Staffing Solutions", desc: "Start here — the full overview of how Rivago engages, and which structure fits the role you are filling.", meta: "Overview", href: routes.services },
-  { n: "02", title: "Direct hire", desc: "Permanent placements across every function and level, on a contingent fee you pay only on a hire that sticks.", meta: "Permanent, end to end", href: routes.directHire },
-  { n: "03", title: "Contract staffing", desc: "Skilled professionals on fixed-term engagements. We run payroll, compliance and worker classification.", meta: "Talent in 5–7 days", href: routes.contractStaffing, tag: "Popular" },
-  { n: "04", title: "Temporary staffing", desc: "On-demand cover for peaks, seasonal spikes and leave. Deployed in days, scaled up or down as work changes.", meta: "Boots on site fast", href: routes.temporaryStaffing },
-  { n: "05", title: "Executive search", desc: "Confidential retained search for VP- to C-suite roles, with weekly written progress reports.", meta: "Retained", href: routes.executiveSearch, tag: "Retained" },
+  { n: "02", title: "Direct hire", desc: "Permanent placements across every function and level, on a contingent fee you pay only on a hire that sticks.", meta: "Contingent fee", href: routes.directHire },
+  { n: "03", title: "Contract staffing", desc: "Skilled professionals on fixed-term engagements. We run payroll, compliance and worker classification.", meta: "Hourly markup", href: routes.contractStaffing, tag: "Popular" },
+  { n: "04", title: "Temporary staffing", desc: "On-demand cover for peaks, seasonal spikes and leave. Deployed in days, scaled up or down as work changes.", meta: "Hourly markup", href: routes.temporaryStaffing },
+  { n: "05", title: "Executive search", desc: "Confidential retained search for VP- to C-suite roles, with weekly written progress reports.", meta: "Retained", href: routes.executiveSearch },
   { n: "06", title: "Recruitment Process Outsourcing", desc: "We run all or part of your talent function as an embedded team — your brand, your workflow, our capacity.", meta: "Monthly programme", href: routes.rpo },
-  { n: "07", title: "Interim & fractional leadership", desc: "Day-one operators to bridge a transition, lead a turnaround or fill a leadership gap.", meta: "7–14 days", href: routes.interimLeadership },
-  { n: "08", title: "Employer of Record", desc: "Hire anywhere, compliantly. We become the legal employer — payroll, tax, benefits and contracts in-country.", meta: "No entity needed", href: routes.employerOfRecord },
+  { n: "07", title: "Interim & fractional leadership", desc: "Day-one operators to bridge a transition, lead a turnaround or fill a leadership gap.", meta: "Day rate, month to month", href: routes.interimLeadership },
+  { n: "08", title: "Employer of Record", desc: "Hire anywhere, compliantly. We become the legal employer — payroll, tax, benefits and contracts in-country.", meta: "Per employee, monthly", href: routes.employerOfRecord },
 ] as const;
 
 export const industriesList = [

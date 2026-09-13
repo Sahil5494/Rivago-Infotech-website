@@ -303,17 +303,25 @@ export default function Home() {
           <div className="svc-head">
             <div>
               <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Services</div>
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Eight ways to put the <em>right people in seat.</em></h2>
-              <p className="svc-sub gs">Permanent, contract, temporary or embedded — one senior partner owns the search end to end, whichever way you engage us.</p>
+              {/* "Eight" counted the Staffing Solutions overview card as a
+                  service. It is an index page — the same destination as the
+                  "View all services" link beside this heading — and About
+                  already filters it out to render "7 Ways to engage". The two
+                  pages disagreed; About was the one that was right. */}
+              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Seven ways to put the <em>right people in seat.</em></h2>
+              <p className="svc-sub gs">Permanent, contract, temporary or embedded. The commitment and the commercials differ — the way we run the search does not.</p>
             </div>
             <Link className="svc-all gs" href={routes.services}>View all services <Arrow /></Link>
           </div>
           <div className="gs">
             <CardSlider trackClassName="svc-grid" nav="dots">
-              {servicesList.map((s) => (
+              {servicesList.filter((s) => s.href !== routes.services).map((s, i) => (
                 <Link className="svc-card" href={s.href} key={s.n}>
                   {"tag" in s && s.tag && <span className="svc-tag">{s.tag}</span>}
-                  <div className="svc-n">{s.n}</div>
+                  {/* Numbered off the rendered position, not the data's own n,
+                      so dropping the overview card does not leave the grid
+                      starting at 02. */}
+                  <div className="svc-n">{String(i + 1).padStart(2, "0")}</div>
                   <div className="svc-title">{s.title}</div>
                   <div className="svc-desc">{s.desc}</div>
                   <div className="svc-foot"><span className="svc-meta">{s.meta}</span><CardArrow /></div>
