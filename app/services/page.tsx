@@ -38,7 +38,7 @@ export default function ServicesPage() {
             <p className="rv rv3">Contract, contract-to-hire and direct hire across four countries. A specialist partner runs the search end to end — and stays on the line for every role after it.</p>
             <div className="svh-cta rv rv4">
               <a className="btn btn--primary btn--lg" href="/hire-talent#intake" data-hire>Hire Talent <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
-              <a className="btn btn--secondary btn--lg" href="/resources/case-study">See the proof</a>
+              <a className="btn btn--secondary btn--lg" href="/resources">Read our hiring guides</a>
             </div>
           </div>
         </section>
@@ -594,36 +594,17 @@ export default function ServicesPage() {
         </section>
 
 
-        <section className="cstory inv">
-          <div className="cstory-inner">
-            <div className="cstory-head">
-              <div>
-                <div className="cstory-eyb rv">Customer story</div>
-                <h2 className="rv">Proof, not <em>promises.</em></h2>
-              </div>
-              <a className="cstory-link rv rv2" href="/resources/case-study">Read all case studies <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
-            </div>
-            <div className="cstory-card rv rv2">
-              <div className="cstory-media" style={{background: "linear-gradient(150deg,#0F2A1B,#0A7040 60%,#00A882)"}}>
-                <span className="cstory-badge">Healthcare · United States</span>
-                <span className="cstory-logo"><span className="tick"><svg width="11" height="9" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.2 3.2L11 1" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Second-hospital launch</span>
-              </div>
-              <div className="cstory-body">
-                <div className="cstory-mark">&ldquo;</div>
-                <p className="cstory-q">We were opening a second hospital with beds coming online in ninety days and no clinical leaders in post. Rivago filled every seat — <em>credentialed, compliant, and still here a year on.</em></p>
-                <div className="cstory-by">
-                  <div className="cstory-av">DN</div>
-                  <div><div className="cstory-n">Chief Nursing Officer</div><div className="cstory-r">Healthcare provider · United States</div></div>
-                </div>
-                <div className="cstory-metrics">
-                  <div className="cstory-metric"><div className="v">16</div><div className="l">Clinical leaders placed in one quarter</div></div>
-                  <div className="cstory-metric"><div className="v">90 days</div><div className="l">Brief to a fully-staffed unit</div></div>
-                  <div className="cstory-metric"><div className="v">100%</div><div className="l">Retained at 12 months (this cohort)</div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* The CUSTOMER STORY section stood here, headed "Proof, not
+            promises." It was one: a US healthcare provider opening a second
+            hospital, a Chief Nursing Officer quote, and three metrics — 16
+            clinical leaders placed in a quarter, 90 days brief-to-staffed,
+            100% retained at 12 months. No such engagement took place and none
+            of the figures were measured.
+
+            Removed with the nine case studies on /resources, for the same
+            reason: Rivago has written work to show, and does not yet have a
+            client who has signed off on a published engagement. */}
+
 
         <section className="persp">
           <div className="persp-inner">

@@ -6,16 +6,19 @@ import ApproachTabs from "@/components/ApproachTabs";
 import ServiceCarousel from "@/components/ServiceCarousel";
 import IndustryRail from "@/components/IndustryRail";
 import Faq from "@/components/Faq";
-import ProofWall from "@/components/ProofWall";
+import InsightsGrid from "@/components/InsightsGrid";
 /* servicesList and industriesList both dropped from this import: the services
    carousel and the industry rail each read the data themselves. lib/routes.ts
    still exports both — /about counts them and the nav mega-menu reads them.
    CardSlider went with them; nothing on this page uses it now. */
 import { routes, offices } from "@/lib/routes";
-/* Counted, not typed, so the support card cannot promise a library that is
-   bigger than the one /resources actually renders. Build-time only — this is
-   a server component, so the article bodies never reach the browser. */
-import { articles, caseStudies } from "@/app/resources/data";
+/* Counted, not typed, so the support card cannot promise a library bigger
+   than the one /resources actually renders. Build-time only — this is a
+   server component, so the article bodies never reach the browser.
+
+   It used to count case studies too. There are none; see the note at the
+   foot of app/resources/data.ts. */
+import { articles } from "@/app/resources/data";
 
 const faqItems = [
   {
@@ -41,45 +44,6 @@ const faqItems = [
   {
     q: "Is there a replacement guarantee if a placement doesn't work out?",
     a: "Yes. For all direct hire placements we offer a replacement guarantee period. If a placed candidate leaves or is let go within the agreed window, we restart the search at no additional fee. Terms are agreed upfront as part of our engagement.",
-  },
-];
-
-/* Rewritten to carry no checkable claim. Every figure and every regulatory
-   reference is gone, and the attributions are broadened to a sector and a
-   country so they do not point at an identifiable organisation.
-
-   The Dubai Hospital Group entry was removed outright: it named the DHA,
-   claimed "zero compliance issues" on healthcare licensing, described a UAE
-   engagement the firm has no office for, and carried a badge reading
-   "Delaware · Professional Services" that contradicted its own text.
-
-   These remain endorsements that have not been given. Replace each one as a
-   real client agrees to a quote — anonymised to this level is normal in
-   recruitment and needs only their say-so, not their logo. */
-const testimonials = [
-  {
-    badge: "Banking · US",
-    quote: "We've worked with a lot of recruiters. Rivago is the first that came back with candidates who actually matched the brief — not just the keywords.",
-    name: "Head of Talent Acquisition",
-    role: "Banking · United States",
-  },
-  {
-    badge: "Financial services · Canada",
-    quote: "Every candidate had been properly screened before they reached us — comp expectations, notice period, right to work. We didn't have to go back and ask.",
-    name: "HR Director",
-    role: "Financial services · Canada",
-  },
-  {
-    badge: "Professional services · US",
-    quote: "We needed a Finance Director at short notice. The candidates we saw were credible and the process didn't stall — which is not how these usually go.",
-    name: "Chief Executive",
-    role: "Professional services · United States",
-  },
-  {
-    badge: "Technology · US",
-    quote: "What sets Rivago apart is that they push back. If the brief is unclear, they say so. If a candidate isn't right, they won't send them. That honesty saves everyone time.",
-    name: "VP of People",
-    role: "Technology · United States",
   },
 ];
 
@@ -396,7 +360,7 @@ export default function Home() {
               <div><div className="supp-tag">Read first</div><div className="supp-title" style={{ marginTop: 10 }}>Do your own homework</div></div>
               <div className="supp-desc">Salary benchmarks, market reads and hiring playbooks, plus the case studies behind them. Nothing is gated — no email address, no download form, no follow-up call you did not ask for.</div>
               <div>
-                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" strokeWidth="1.1" /><path d="M4 6h4M6 4v4" stroke="var(--accent)" strokeWidth="1.1" strokeLinecap="round" /></svg>{articles.length} articles · {caseStudies.length} case studies · No sign-up</div>
+                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" strokeWidth="1.1" /><path d="M4 6h4M6 4v4" stroke="var(--accent)" strokeWidth="1.1" strokeLinecap="round" /></svg>{articles.length} articles · Free to read · No sign-up</div>
                 <Link className="supp-link" href={routes.resources}>Browse resources <SmallArrow /></Link>
               </div>
             </div>
@@ -431,25 +395,30 @@ export default function Home() {
           what the engagement covered; placements and timings are only
           publishable if they were actually recorded. */}
 
-      {/* PROOF WALL */}
-      {/* One wall in place of two sections: the case-study slot above it and
-          the testimonial carousel that used to sit here. The heading says
-          exactly what the wall holds — marks and words — rather than
-          promising results it does not carry.
+      {/* INSIGHTS */}
+      {/* This slot has now held three things. It was three invented client
+          results; then a proof wall of client marks and quotes; now the
+          written work, which is the only long-form content Rivago actually
+          has. The client's call, and the reason is sound: the case studies
+          were never real, and the articles are.
 
-          The "Read all stories" link is gone with it. It pointed at
-          /resources?view=cs, which is still the invented case-study library. */}
-      <section className="pw-sec inv">
-        <div className="pw-inner">
-          <div className="pw-head">
+          What the page gives up in exchange is worth stating. The quotes
+          that were on the wall are no longer anywhere on this page, and the
+          client marks now appear only in the strip near the top. This
+          section builds authority; it does not carry client proof. The
+          moment a client signs off on an engagement, proof belongs back on
+          this page — beside this, not instead of it. */}
+      <section className="hins-sec inv">
+        <div className="hins-inner">
+          <div className="hins-head">
             <div>
-              <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Clients</div>
-              <h2 className="pw-h2 gs">Who we hire for, and what<br />they say <em>about the hiring.</em></h2>
+              <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Insights</div>
+              <h2 className="hins-h2 gs">What we have learned,<br />written <em>down.</em></h2>
             </div>
-            <p className="pw-lede gs">Every mark here is a client. Every quote is from someone who ran a search with us and agreed to be quoted — by role and market, not by name, which is the form most hiring teams will actually sign off on.</p>
+            <Link className="hins-all gs" href={routes.resources}>All {articles.length} articles <Arrow /></Link>
           </div>
           <div className="gs">
-            <ProofWall quotes={testimonials} />
+            <InsightsGrid />
           </div>
         </div>
       </section>

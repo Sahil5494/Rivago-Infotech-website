@@ -4,7 +4,6 @@ export type Article = {
   kind: "article";
   title: string;
   dek: string;
-  byline: string;
   date: string;
   displayDate: string;
   readTime: string;
@@ -15,45 +14,12 @@ export type Article = {
   sections: ArticleSection[];
 };
 
-export type CaseStudy = {
-  id: string;
-  kind: "case-study";
-  title: string;
-  tag: string;
-  quarter: string;
-  category: "tech" | "health" | "finance" | "legal" | "aero" | "supply" | "gtm";
-  categoryLabel: string;
-  image: string;
-  stats: [string, string][];
-  challenge: string[];
-  whatWeDid: string[];
-  outcome: string[];
-  quote: string;
-  quoteAttribution: string;
-  atGlance: [string, string][];
-};
-
 export const featuredArticle = {
   category: "Blog",
   readTime: "6 min read",
   title: "How we deliver five screened candidates in two days — without lowering the bar.",
   dek: "Speed and quality are not a trade-off if the process is built right. Here is exactly how a Rivago partner runs the first 48 hours of a search — from calibrated brief to a shortlist you can actually act on.",
-  byline: "Anjali Rao",
   date: "1 Jun 2026",
-};
-
-export const featuredCaseStudy = {
-  tag: "Technology · United States",
-  quarter: "Featured · Q1 2026",
-  title: "A Series-C fintech needed forty hires across five departments before their next board meeting.",
-  eyebrow: "Engagement type · Embedded talent partner",
-  lede: "In January 2026, a $90M-ARR fintech client closed a Series C and committed to 40 hires across engineering, finance, ops, marketing and risk in 90 days. We embedded two partners and a research analyst on-site three days a week, ran a single weekly scorecard meeting with the CEO, and project-managed every loop from intake to offer.",
-  ledeBottom: "By day 89, 38 of 40 offers were accepted. The remaining two — both VP-of-Engineering candidates — accepted in the second week of Q2 after a structural change to the role. Zero replacements invoked in the six months since.",
-  stats: [
-    ["38", "/40", "Offers accepted by day 89"],
-    ["90", "days", "Kick-off to substantially complete"],
-    ["100", "%", "Six-month retention as of writing"],
-  ] as [string, string, string][],
 };
 
 export const articles: Article[] = [
@@ -62,7 +28,6 @@ export const articles: Article[] = [
     kind: "article",
     title: "What VP Engineering really pays in 2026 — across four markets",
     dek: "Base, bonus and equity benchmarks for VP Eng roles in the US, Canada, the UAE and India — and why the gap is widening.",
-    byline: "Anjali Rao",
     date: "2026-06-04",
     displayDate: "4 Jun 2026",
     readTime: "5 min read",
@@ -99,7 +64,6 @@ export const articles: Article[] = [
     kind: "article",
     title: "Why your last senior offer was declined — and the fix",
     dek: "The four reasons strong candidates walk at the offer stage, and how to close the gap before it costs you the hire.",
-    byline: "Priya Bhatt",
     date: "2026-05-20",
     displayDate: "20 May 2026",
     readTime: "5 min read",
@@ -135,7 +99,6 @@ export const articles: Article[] = [
     kind: "article",
     title: "How to write a job brief that attracts senior talent",
     dek: "Most briefs repel the exact people you want. Here is the structure that pulls passive candidates into the room.",
-    byline: "Neha Kapoor",
     date: "2026-05-14",
     displayDate: "14 May 2026",
     readTime: "7 min read",
@@ -171,7 +134,6 @@ export const articles: Article[] = [
     kind: "article",
     title: "Equity, explained: reading a senior offer before you sign",
     dek: "Options vs RSUs, strike prices, cliffs and refreshers — a plain-English guide for candidates weighing an offer.",
-    byline: "Rivago Research",
     date: "2026-05-06",
     displayDate: "6 May 2026",
     readTime: "9 min read",
@@ -206,7 +168,6 @@ export const articles: Article[] = [
     kind: "article",
     title: "Hiring across the UAE: the licensing maze, simplified",
     dek: "DHA, DOH and MOH registration, visa timelines and relocation — what a US or Canadian company needs to know before hiring in the Gulf.",
-    byline: "Saurabh Mehta",
     date: "2026-04-28",
     displayDate: "28 Apr 2026",
     readTime: "5 min read",
@@ -241,7 +202,6 @@ export const articles: Article[] = [
     kind: "article",
     title: "Structured interviews that actually predict performance",
     dek: "Why the unstructured \"culture chat\" fails, and the scorecard model we run on every Rivago search.",
-    byline: "Marcus Whelan",
     date: "2026-04-19",
     displayDate: "19 Apr 2026",
     readTime: "6 min read",
@@ -275,7 +235,6 @@ export const articles: Article[] = [
     kind: "article",
     title: "The anti-portal manifesto: why partner-led search wins",
     dek: "Job boards optimise for volume. Senior hiring rewards judgement. Here is the case for a named partner over a platform.",
-    byline: "Anjali Rao",
     date: "2026-04-08",
     displayDate: "8 Apr 2026",
     readTime: "4 min read",
@@ -310,7 +269,6 @@ export const articles: Article[] = [
     kind: "article",
     title: "The real cost of a bad senior hire",
     dek: "Salary is the smallest line item. We break down the true cost — ramp, morale, opportunity — of getting a leadership hire wrong.",
-    byline: "Priya Bhatt",
     date: "2026-04-01",
     displayDate: "1 Apr 2026",
     readTime: "8 min read",
@@ -341,283 +299,21 @@ export const articles: Article[] = [
   },
 ];
 
-export const caseStudies: CaseStudy[] = [
-  {
-    id: "toronto-bank",
-    kind: "case-study",
-    title: "Building a risk, compliance & legal team for a Ontario Tier-1 bank in 60 days",
-    tag: "Finance · Canada",
-    quarter: "Retained · Q4 2025",
-    category: "finance",
-    categoryLabel: "Finance",
-    image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=800&q=80&auto=format",
-    stats: [["14", "Placements"], ["60d", "Cycle"], ["0", "Replacements"]],
-    challenge: [
-      "A Tier-1 Ontario bank needed to stand up a risk, compliance and legal function ahead of a regulatory deadline, running three concurrent retained searches at once — Head of Risk, Deputy General Counsel and Director of Compliance — with no internal recruiting bandwidth to run them in parallel.",
-      "Each of the three roles required a different specialist background, and the bank could not afford a search that treated them as interchangeable finance hires. It had tried a national staffing portal for a similar build the year before and received volume without the licensing or regulatory fit it actually needed.",
-    ],
-    whatWeDid: [
-      "Rivago assigned one partner as the single point of contact across all three searches, with dedicated finance and legal practice specialists doing the sourcing for each. All three briefs were calibrated in a single joint intake session with the bank's CRO, so the scorecards stayed consistent even though the roles didn't.",
-      "Direct outreach — not postings — generated the entire pipeline across all three searches. References were checked two levels deep on every finalist, not just the most recent manager.",
-      "Once the three anchor hires were in place, the engagement expanded into a broader build-out: eleven additional placements across the function over the following months, each search run against a brief the new leadership team helped write.",
-    ],
-    outcome: [
-      "All three anchor roles were filled inside the 60-day cycle, ahead of the bank's regulatory deadline, and the full 14-person build-out has a zero-replacement record to date. The bank has since returned to Rivago for two additional confidential searches at the VP level.",
-    ],
-    quote: "They didn't just fill three seats — they helped us figure out the shape of the team we actually needed, then built it with us one hire at a time.",
-    quoteAttribution: "Chief Risk Officer, Ontario Tier-1 bank",
-    atGlance: [
-      ["Client type", "Tier-1 regional bank"],
-      ["Industry", "Financial services"],
-      ["Engagement", "Retained, expanded to embedded build-out"],
-      ["Team size delivered", "14 hires across risk, compliance & legal"],
-    ],
-  },
-  {
-    id: "uae-health",
-    kind: "case-study",
-    title: "Supporting a UAE hospital group expansion across clinical, admin & operations",
-    tag: "Healthcare · UAE",
-    quarter: "Contingent · Q3 2025",
-    category: "health",
-    categoryLabel: "Healthcare",
-    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80&auto=format",
-    stats: [["11", "Placements"], ["48h", "First list"], ["100%", "Cleared"]],
-    challenge: [
-      "A Dubai-based hospital group was opening a second facility with a hard opening date set by the licensing authority — miss the staffing threshold and the opening slips, with real financial and reputational cost. The group needed eleven roles filled across nursing leadership, clinical pharmacy and administration, every one of them subject to DHA licensing verification before a start date could even be scheduled.",
-      "Clinical staffing in the UAE carries a compliance layer most staffing firms are not built to handle well — DHA registration transfers, Emirates ID and visa timelines, and credential verification that has to be airtight before day one.",
-    ],
-    whatWeDid: [
-      "Rivago's healthcare practice partner, who has run UAE clinical searches for over seven years, built parallel pipelines for all eleven roles simultaneously rather than sequentially — coordinating with the hospital group's own credentialing office from week one so licensing transfers were already in motion before offers went out.",
-      "Every candidate's DHA eligibility was verified prior to submission, eliminating the single most common cause of clinical hiring delays in the market. The first shortlist landed inside 48 hours of kickoff, with weekly written status updates to the hospital group's CEO after that.",
-    ],
-    outcome: [
-      "All eleven roles were filled and fully licensed ahead of the facility's opening date, with zero compliance issues flagged during the licensing authority's final inspection. The hospital group has since engaged Rivago for ongoing clinical recruitment across both facilities.",
-    ],
-    quote: "Clinical staffing in the UAE is brutal — licensing, DHA registration, the works. Rivago handled all of it without being told twice.",
-    quoteAttribution: "Chief People Officer, Dubai hospital group",
-    atGlance: [
-      ["Client type", "Hospital group, second-facility launch"],
-      ["Industry", "Healthcare"],
-      ["Engagement", "Contingent, multi-role parallel search"],
-      ["Timeline", "11 roles fully licensed ahead of a fixed opening date"],
-    ],
-  },
-  {
-    id: "london-cto",
-    kind: "case-study",
-    title: "CTO succession at an Ontario-based vertical SaaS at $40M ARR",
-    tag: "Technology · Canada",
-    quarter: "Retained · Q1 2026",
-    category: "tech",
-    categoryLabel: "Technology",
-    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80&auto=format",
-    stats: [["1", "CTO hire"], ["42d", "Brief-to-offer"], ["$420K", "Total comp"]],
-    challenge: [
-      "A vertical SaaS company at $40M ARR needed to replace a founding CTO who had signaled an exit within the next two quarters, without disrupting the engineering org or tipping off competitors that a transition was coming. An internal candidate was a plausible successor but hadn't been formally evaluated against the external market.",
-      "The board wanted a genuine build-vs-buy comparison — a real external shortlist run in parallel with a structured internal evaluation, not an external search used to rubber-stamp a decision already made.",
-    ],
-    whatWeDid: [
-      "Rivago ran a confidential retained search in parallel with the board's internal evaluation process, briefed directly by the CEO and board chair. An eighteen-month off-limits agreement was negotiated with the client before sourcing began, given the sensitivity of approaching competitor CTOs.",
-      "Seven external candidates were mapped, screened and calibrated against the same scorecard used to evaluate the internal candidate, giving the board a genuinely comparable shortlist rather than two different evaluation standards.",
-    ],
-    outcome: [
-      "The board extended an offer to the strongest candidate from the combined pool 42 days after the brief was signed, at $420K total comp. The transition was announced on the company's own timeline with no leak to the market beforehand.",
-    ],
-    quote: "We got a real comparison, not a search designed to confirm what we already thought. That changed the decision we actually made.",
-    quoteAttribution: "Board Chair, Ontario vertical SaaS",
-    atGlance: [
-      ["Client type", "Vertical SaaS, $40M ARR"],
-      ["Industry", "Technology"],
-      ["Engagement", "Retained, confidential succession"],
-      ["Off-limits agreement", "18 months"],
-    ],
-  },
-  {
-    id: "aero-cleared",
-    kind: "case-study",
-    title: "Cleared-talent build-out for a Tier-1 defence prime in northern Virginia",
-    tag: "Aerospace · US",
-    quarter: "Retained · Q4 2025",
-    category: "aero",
-    categoryLabel: "Aerospace",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80&auto=format",
-    stats: [["6", "Cleared hires"], ["42d", "Cycle"], ["100%", "Pre-cleared"]],
-    challenge: [
-      "A Tier-1 defence prime needed six roles filled requiring active TS/SCI clearance for a program with a fixed government milestone date. The clearance requirement alone eliminates the vast majority of the available talent pool, and a candidate whose clearance lapses mid-process can stall a search by months.",
-      "The client had run a previous search through a generalist staffing vendor that surfaced candidates who claimed clearance eligibility but weren't actually pre-cleared — a costly discovery late in the process.",
-    ],
-    whatWeDid: [
-      "Rivago sourced exclusively through its cleared-talent program, verifying active clearance status before any candidate was submitted rather than after an offer was extended. Average verification cycle across the six roles ran 12 days from first contact.",
-      "The aerospace practice partner coordinated directly with the client's facility security officer to confirm clearance transfer timelines before offers went out, avoiding the gap-in-coverage risk that stalls cleared-talent placements industry-wide.",
-    ],
-    outcome: [
-      "All six roles were filled with candidates who were 100% pre-cleared at submission, closing the full search in 42 days against a program milestone the client could not move.",
-    ],
-    quote: "Every candidate they sent us was already cleared. That alone saved us months against a deadline we didn't control.",
-    quoteAttribution: "Program Director, Tier-1 defence prime",
-    atGlance: [
-      ["Client type", "Defence prime contractor"],
-      ["Industry", "Aerospace & Defense"],
-      ["Engagement", "Retained, cleared-talent program"],
-      ["Clearance level", "Active TS/SCI, verified pre-submission"],
-    ],
-  },
-  {
-    id: "ny-gc",
-    kind: "case-study",
-    title: "First-GC search for a pre-IPO Delaware fintech ahead of S-1 filing",
-    tag: "Legal · US",
-    quarter: "Retained · Q1 2026",
-    category: "legal",
-    categoryLabel: "Legal",
-    image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&q=80&auto=format",
-    stats: [["1", "GC hire"], ["38d", "Cycle"], ["$420K", "Base"]],
-    challenge: [
-      "A pre-IPO Delaware fintech needed its first General Counsel ahead of an S-1 filing, with securities-litigation experience as a hard requirement and pre-IPO operating experience strongly preferred — a narrow combination that ruled out most in-house counsel candidates and most law-firm partners equally.",
-      "The board wanted the hire closed before the S-1 drafting process began in earnest, which put real time pressure on an already narrow search.",
-    ],
-    whatWeDid: [
-      "Rivago's legal practice partner mapped candidates who had specifically taken a company through an S-1 process before, rather than general securities counsel — a filter that produced a short but highly qualified list. Five finalists were screened against a scorecard built with the CEO and board's lead independent director.",
-      "Reference checks focused specifically on how each candidate had handled the S-1 drafting relationship with outside counsel and underwriters, since that working relationship was the single highest-risk part of the role.",
-    ],
-    outcome: [
-      "The board extended an offer to the first-choice candidate 38 days after the brief was signed, at a base of $420K. The new GC was in seat before S-1 drafting began.",
-    ],
-    quote: "We needed someone who had actually done this before, not someone who could learn on the job during our own IPO. Rivago found exactly that.",
-    quoteAttribution: "CEO, pre-IPO Delaware fintech",
-    atGlance: [
-      ["Client type", "Pre-IPO fintech"],
-      ["Industry", "Legal / Financial services"],
-      ["Engagement", "Retained, single search"],
-      ["Requirement", "Prior S-1 experience, non-negotiable"],
-    ],
-  },
-  {
-    id: "interim-coo",
-    kind: "case-study",
-    title: "COO succession plus full supply-chain leadership build at a $1.2B distributor",
-    tag: "Supply · US",
-    quarter: "Embedded · Q3 2025",
-    category: "supply",
-    categoryLabel: "Supply Chain",
-    image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80&auto=format",
-    stats: [["4", "Senior hires"], ["11w", "Cycle"], ["100%", "12-mo stick"]],
-    challenge: [
-      "A $1.2B distributor needed to replace a retiring COO while simultaneously rebuilding the supply-chain leadership layer beneath the role — VP Supply, Head of Distribution and Director of S&OP — rather than filling one seat and leaving the rest of the org to absorb the gap.",
-      "The four roles were interdependent enough that hiring them sequentially risked each new leader inheriting a still-forming team beneath them.",
-    ],
-    whatWeDid: [
-      "Rivago embedded a partner and research analyst on-site for the engagement, running all four searches in parallel against a leadership structure agreed with the CEO upfront rather than four independent briefs. The incoming COO, once identified, was looped into the remaining three searches before their own start date.",
-      "Relocation was handled end-to-end for two of the four finalists, coordinated directly with the client's HR team to keep start dates aligned across the new leadership group.",
-    ],
-    outcome: [
-      "All four roles were filled within an 11-week cycle, with the full leadership group starting within weeks of each other. All four hires remain in place past the twelve-month mark.",
-    ],
-    quote: "They didn't just replace our COO — they rebuilt the whole layer underneath, as one coordinated team instead of four separate searches.",
-    quoteAttribution: "CEO, $1.2B distributor",
-    atGlance: [
-      ["Client type", "National distributor"],
-      ["Industry", "Supply chain & operations"],
-      ["Engagement", "Embedded, coordinated leadership build"],
-      ["Team size delivered", "4 senior hires in 11 weeks"],
-    ],
-  },
-  {
-    id: "series-a-gtm",
-    kind: "case-study",
-    title: "CRO succession for a $80M ARR vertical SaaS off plan for two quarters",
-    tag: "GTM · US",
-    quarter: "Retained · Q2 2025",
-    category: "gtm",
-    categoryLabel: "GTM",
-    image: "https://images.unsplash.com/photo-1554774853-b415df9eeb92?w=800&q=80&auto=format",
-    stats: [["1", "CRO hire"], ["31d", "Cycle"], ["+38%", "QoQ pipeline"]],
-    challenge: [
-      "An $80M ARR vertical SaaS company had missed plan for two consecutive quarters and needed a new CRO who could diagnose whether the problem was pipeline, execution or the market itself — and be trusted with the answer even if it was uncomfortable for the board.",
-      "Candidates who talk well about a 'beat plan' history are common. Candidates who can independently verify that history is real are much harder to find.",
-    ],
-    whatWeDid: [
-      "Rivago's GTM practice partner built a shortlist filtered specifically for verifiable beat-plan history — confirmed through five backchannel references per finalist, not the candidate's own account of their record.",
-      "The final offer was structured collaboratively with the board's compensation committee once the finalist was identified, balancing base, OTE and equity against the urgency of the hire.",
-    ],
-    outcome: [
-      "The offer was signed 31 days after the brief, at $320K base plus $230K OTE and 0.4% equity. Pipeline was up 38% quarter-over-quarter within the new CRO's first two quarters in seat.",
-    ],
-    quote: "We needed someone who could tell us the truth about our pipeline, not someone who'd tell the board what it wanted to hear. That's who we got.",
-    quoteAttribution: "Board Member, vertical SaaS company",
-    atGlance: [
-      ["Client type", "Vertical SaaS, $80M ARR"],
-      ["Industry", "Go-to-market / Sales leadership"],
-      ["Engagement", "Retained, single search"],
-      ["Verification", "Beat-plan history confirmed via backchannel references"],
-    ],
-  },
-  {
-    id: "cmo-meddevice",
-    kind: "case-study",
-    title: "CMO appointment for a $200M-revenue Series-D medical-device company",
-    tag: "Healthcare · US",
-    quarter: "Retained · Q4 2025",
-    category: "health",
-    categoryLabel: "Healthcare",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80&auto=format",
-    stats: [["1", "CMO hire"], ["52d", "Cycle"], ["$580K", "Comp"]],
-    challenge: [
-      "A $200M-revenue Series-D medical-device company needed a Chief Medical Officer with direct 510(k) and PMA regulatory-submission experience — a hard requirement that immediately narrowed the field to physicians with both clinical credibility and regulatory-affairs depth, a genuinely rare combination.",
-      "The board wanted internal advisory input on the final decision without slowing the external search down, which meant running both tracks in parallel rather than sequentially.",
-    ],
-    whatWeDid: [
-      "Rivago's healthcare practice partner mapped candidates specifically by 510(k)/PMA submission history, verified through public FDA filings before outreach — a step that eliminated candidates who overstated their regulatory role on paper.",
-      "Three internal clinical advisors were interviewed alongside the external shortlist, with their feedback folded into the same scorecard used for external candidates, keeping the evaluation standard consistent across both groups.",
-    ],
-    outcome: [
-      "The board extended an offer 52 days after the brief was signed, at $580K total comp. The new CMO's first PMA submission under the role cleared FDA review on schedule.",
-    ],
-    quote: "The regulatory-submission requirement alone made this feel impossible. Rivago found someone who had actually done exactly this, twice.",
-    quoteAttribution: "CEO, Series-D medical-device company",
-    atGlance: [
-      ["Client type", "Series-D medical-device company"],
-      ["Industry", "Healthcare / Medical devices"],
-      ["Engagement", "Retained, single search"],
-      ["Requirement", "Verified 510(k) and PMA submission history"],
-    ],
-  },
-  {
-    id: "dubai-quant",
-    kind: "case-study",
-    title: "Quant team build for a Dubai-based fund with $400M AUM",
-    tag: "Finance · UAE",
-    quarter: "Contingent · Q3 2025",
-    category: "finance",
-    categoryLabel: "Finance",
-    image: "https://images.unsplash.com/photo-1642790551116-18e150f248e3?w=800&q=80&auto=format",
-    stats: [["5", "Quant hires"], ["9w", "Cycle"], ["100%", "Relocated"]],
-    challenge: [
-      "A Dubai-based fund with $400M AUM needed to build a five-person quant desk spanning systematic, fundamental and execution strategies — a specialist talent pool that barely exists inside the UAE, meaning the search had to run internationally from day one with relocation built into every offer.",
-      "None of the five roles could be filled from the local market at the seniority the fund needed, and relocation logistics for quant talent from outside the GCC add real complexity on top of an already narrow technical search.",
-    ],
-    whatWeDid: [
-      "Rivago's finance practice partner ran the search internationally, sourcing candidates from major quant hubs and screening each against strategy-specific technical assessments built with the fund's CIO. Every offer included relocation handled in-house by Rivago — visas, housing search support and onboarding logistics — rather than left to the candidate to self-manage.",
-    ],
-    outcome: [
-      "All five roles were filled within nine weeks, and all five hires relocated to Dubai with Rivago managing the full process. The desk was fully staffed and trading within the fund's target window.",
-    ],
-    quote: "Building a quant desk from outside the region sounded impossible on our timeline. Rivago handled the search and the relocation as one process, not two.",
-    quoteAttribution: "Chief Investment Officer, Dubai-based fund",
-    atGlance: [
-      ["Client type", "Investment fund, $400M AUM"],
-      ["Industry", "Finance / Quantitative trading"],
-      ["Engagement", "Contingent, international search"],
-      ["Relocation", "100% of hires relocated from outside the GCC"],
-    ],
-  },
-];
+/* The nine case studies stood here, plus featuredCaseStudy above and the
+   CaseStudy type and findCaseStudy below.
+
+   Removed because none of the engagements happened. They carried invented
+   clients ("Ontario Tier-1 bank", "Dubai hospital group", "$1.2B
+   distributor"), invented figures (14 placements, 60-day cycles, $420K and
+   $580K comp, "0 Replacements", "100% 12-mo stick") and quotes attributed
+   to officers of companies that do not exist. The featured one claimed 38
+   of 40 offers accepted by day 89 and 100% six-month retention.
+
+   /resources is an articles library now. Rivago has written work; it does
+   not yet have a client who has signed off on a published engagement. When
+   one does, a case study belongs here again — with figures only if they
+   were actually recorded. */
 
 export function findArticle(id: string | null | undefined): Article {
   return articles.find((a) => a.id === id) ?? articles[0];
-}
-
-export function findCaseStudy(id: string | null | undefined): CaseStudy {
-  return caseStudies.find((c) => c.id === id) ?? caseStudies[0];
 }

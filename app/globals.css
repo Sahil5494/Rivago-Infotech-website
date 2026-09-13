@@ -687,7 +687,7 @@ a{color:inherit;text-decoration:none}
    as one near-black, so a change of fill does not announce a new section.
    These hairlines are what actually draw the band boundaries; without them
    the dark stretches merge into a single block. */
-.svc-sec,.ind-sec,.supp-sec,.pw-sec,.faq-sec,.cta-sec,.orb-sec{
+.svc-sec,.ind-sec,.supp-sec,.hins-sec,.faq-sec,.cta-sec,.orb-sec{
   border-top:1px solid var(--rule-1)
 }
 /* PRECISION and PROCESS rules removed with their sections; the panel
@@ -703,55 +703,59 @@ a{color:inherit;text-decoration:none}
    now the page's only "why us" section, so it stays visible; .why-grid
    already collapses to one column at 900px. */
 
-/* ── PROOF WALL ──
-   Replaces the testimonial carousel (.testi-*, .tc, .tc-body, .tc-co-badge,
-   .tc-stars, .tc-name, .tc-role and the dots), which had exactly one
-   consumer: components/Testimonials.tsx on the home page. Both are gone.
+/* ── INSIGHTS ──
+   This band has held three sections. The testimonial carousel (.testi-*,
+   .tc, .tc-body, .tc-co-badge, .tc-stars, .tc-name, .tc-role, the dots) went
+   with components/Testimonials.tsx; the proof wall (.pw-*) went with
+   components/ProofWall.tsx. Both had exactly one consumer, the home page.
 
-   .tc-quote and .tc-author below are NOT part of that and survive —
+   .tc-quote and .tc-author below were never part of either and survive —
    /services/rpo renders both, and .testi-cream re-skins them on the service
-   pages. Deleting them with the carousel would have broken a page this
-   change never touched. */
+   pages. Deleting them alongside would break a page this change never
+   touched. */
 .tc-quote{font-size:var(--fz6);color:var(--text2);line-height:1.78;font-weight:400;margin-bottom:20px;flex:1}
 .tc-author{display:flex;align-items:center;gap:10px;border-top:1px solid var(--border);padding-top:16px;margin-top:auto}
 
-.pw-sec{padding:110px 44px;background:var(--bg2)}
-.pw-inner{max-width:1240px;margin:0 auto}
-.pw-head{display:flex;align-items:flex-end;justify-content:space-between;gap:64px;margin-bottom:48px}
-.pw-h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;line-height:1.13;color:var(--text);text-wrap:balance}
-.pw-lede{font-size:var(--fz5);color:var(--text2);line-height:1.75;font-weight:400;max-width:430px;flex-shrink:0}
+/* Prefixed `hins-`, not `ins-`. A full set of .ins-grid / .ins-card /
+   .ins-cat / .ins-meta rules already exists ~1,150 lines below this, serving
+   the insights blocks on /services/rpo and /services/employer-of-record.
+   Sharing the names cost both directions: their .ins-card (display:flex,
+   no positioning) beat this one on every property both declare, so the chips
+   here stacked at a single absolute position and the masonry never applied —
+   and this rule's padding and margin, which theirs never sets, leaked onto
+   their cards. Verified unused before choosing: zero hits for `hins-` in
+   this file and across every component. */
+.hins-sec{padding:110px 44px;background:var(--bg2)}
+.hins-inner{max-width:1240px;margin:0 auto}
+.hins-head{display:flex;align-items:flex-end;justify-content:space-between;gap:64px;margin-bottom:48px}
+.hins-h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;line-height:1.13;color:var(--text);text-wrap:balance}
+.hins-all{display:inline-flex;align-items:center;gap:7px;font-size:var(--fz3);color:var(--text2);white-space:nowrap;flex-shrink:0;transition:color .2s,gap .2s}
+.hins-all:hover{color:var(--accent);gap:11px}
 
-/* Four columns filled COLUMN-FIRST, four rows deep. Quote tiles take two
-   rows, marks take one, so every column closes at four and the wall has no
-   holes. minmax rather than a fixed row height: if a quote ever runs longer
-   than the space, the row grows instead of the text clipping. */
-.pw-grid{display:grid;grid-template-rows:repeat(4,minmax(138px,auto));grid-auto-flow:column;grid-auto-columns:1fr;gap:16px}
-/* The three forest greens are within 1.10:1 of each other, so a tile cannot
-   separate from the band by fill. The hairline is what draws it. */
-.pw-tile{border:1px solid var(--rule-1);border-radius:18px;background:var(--surface-3);transition:border-color .25s var(--ease),transform .25s var(--ease)}
-.pw-tile:hover{border-color:var(--tint-3);transform:translateY(-3px)}
-.pw-quote{grid-row:span 2;display:flex;flex-direction:column;padding:26px 24px 22px;margin:0}
-.pw-badge{font-family:var(--fm);font-size:var(--fz1);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
-.pw-text{font-size:var(--fz4);color:var(--text);line-height:1.68;font-weight:400;margin:16px 0 0;flex:1}
-.pw-who{font-size:var(--fz2);color:var(--text3);margin-top:18px;padding-top:14px;border-top:1px solid var(--rule-1)}
-.pw-logotile{display:flex;align-items:center;justify-content:center}
-/* .62 and a 150px cap are tuned for a marquee: small marks, moving, read as
-   a texture. These sit still in a 298px tile and ARE the evidence, so they
-   go to full strength and take the extra width. */
-.pw-logotile .logo-chip{width:auto}
-.pw-logotile .logo-chip img{opacity:1;max-width:172px}
+/* Real masonry, not a grid. The cards differ in height because the deks
+   differ in length, and multi-column is the one layout mode that packs that
+   without stretching cards to a shared row height or leaving holes at the
+   end. break-inside:avoid is what stops a card splitting across a column,
+   and the cards must stay display:block — a flex card fragments badly in
+   column layout in both Safari and Firefox. */
+.hins-grid{columns:3;column-gap:20px}
+.hins-card{break-inside:avoid;display:block;margin:0 0 20px;padding:28px 26px 24px;
+  border:1px solid var(--rule-1);border-radius:18px;background:var(--surface-3);
+  transition:border-color .25s var(--ease),transform .25s var(--ease)}
+.hins-card:hover{border-color:var(--tint-3);transform:translateY(-3px)}
+.hins-cat{display:inline-flex;padding:4px 11px;margin-bottom:16px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:10px;
+  font-family:var(--fm);font-size:var(--fz1);letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.hins-ti{font-size:var(--fz7);font-weight:500;color:var(--text);line-height:1.34;letter-spacing:-.012em;margin:0 0 10px;transition:color .2s}
+.hins-card:hover .hins-ti{color:var(--accent)}
+.hins-dek{font-size:var(--fz4);color:var(--text2);line-height:1.66;font-weight:400;margin:0 0 18px}
+.hins-meta{display:flex;align-items:center;gap:7px;font-size:var(--fz2);color:var(--text3);
+  padding-top:14px;border-top:1px solid var(--rule-1)}
 
-/* A two-column mosaic with row spans leaves holes wherever a quote lands on
-   the last row, so below this width the wall stops being a mosaic: normal
-   row flow, no spans, tiles sized by their own content. */
-@media(max-width:1080px){
-  .pw-grid{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:repeat(2,1fr)}
-  .pw-quote{grid-row:auto}
-  .pw-logotile{min-height:132px}
-  .pw-head{flex-direction:column;align-items:flex-start;gap:20px}
-  .pw-lede{max-width:none}
+@media(max-width:1000px){
+  .hins-grid{columns:2}
+  .hins-head{flex-direction:column;align-items:flex-start;gap:18px}
 }
-@media(max-width:600px){.pw-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.hins-grid{columns:1}}
 
 /* ── WHY RIVAGO ── */
 .why-sec{padding:110px 44px;background:var(--bg)}

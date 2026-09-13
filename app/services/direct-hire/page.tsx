@@ -46,7 +46,7 @@ export default function DirectHirePage() {
           <p className="gs">Permanent placements across every function and level. Five fully-screened candidates in 48 hours, a 90-day replacement guarantee, and a contingent fee — you pay on a hire that sticks, not on activity.</p>
           <div className="svh-cta gs">
             <Link className="btn btn-prim" href="#intake">Start a search <Arrow /></Link>
-            <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
+            <Link className="btn btn-ghost" href={routes.resources}>Read our hiring guides</Link>
           </div>
         </div>
       </header>
@@ -142,7 +142,7 @@ export default function DirectHirePage() {
         heading={<>Tell us who you need.<br /><em>We&apos;ll be back tomorrow.</em></>}
         sub="A 30-minute scoping call with a partner — not a portal — and a written shortlist plan in your inbox within one business day."
         primary={{ label: "Book a scoping call", href: "#intake" }}
-        secondary={{ label: "Read case studies", href: `${routes.resources}?view=cs` }}
+        secondary={{ label: "Read our hiring guides", href: routes.resources }}
       />
     </>
   );

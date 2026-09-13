@@ -57,7 +57,7 @@ export default function EmployerOfRecordPage() {
           <p className="gs">Hire anywhere without opening a local entity. We become the legal employer — payroll, tax, benefits and contracts handled in-country — so you can onboard the person you found, wherever they are.</p>
           <div className="svh-cta gs">
             <Link className="btn btn-prim" href="#intake">Make the hire <Arrow /></Link>
-            <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
+            <Link className="btn btn-ghost" href={routes.resources}>Read our hiring guides</Link>
           </div>
         </div>
       </header>
@@ -170,7 +170,7 @@ export default function EmployerOfRecordPage() {
         heading={<>Tell us who you found.<br /><em>We&apos;ll make it legal.</em></>}
         sub="A 30-minute scoping call with a partner — not a portal — and a compliance summary for your market in your inbox within one business day."
         primary={{ label: "Book a scoping call", href: "#intake" }}
-        secondary={{ label: "Read case studies", href: `${routes.resources}?view=cs` }}
+        secondary={{ label: "Read our hiring guides", href: routes.resources }}
       />
     </>
   );

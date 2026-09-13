@@ -50,7 +50,7 @@ export default function RpoPage() {
           <p className="gs">We embed a dedicated recruiting team inside your business — owning strategy, sourcing, screening, onboarding and reporting. Enterprise hiring power, measurable results, none of the overhead.</p>
           <div className="svh-cta gs">
             <Link className="btn btn-prim" href="#intake">Book a strategy call <Arrow /></Link>
-            <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
+            <Link className="btn btn-ghost" href={routes.resources}>Read our hiring guides</Link>
           </div>
         </div>
       </header>
@@ -195,7 +195,7 @@ export default function RpoPage() {
         heading={<>Bring us the program.<br /><em>We&apos;ll bring the team that owns it.</em></>}
         sub="A 30-minute strategy call with a senior partner — we review your hiring plan, propose an RPO model and quote a realistic ramp. No cost, no obligation."
         primary={{ label: "Book a strategy call", hire: true }}
-        secondary={{ label: "Read case studies", href: `${routes.resources}?view=cs` }}
+        secondary={{ label: "Read our hiring guides", href: routes.resources }}
       />
     </>
   );

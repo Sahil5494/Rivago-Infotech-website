@@ -144,7 +144,7 @@ export default function IndustriesPage() {
         <p>We&apos;ll put the practice lead on the line for a 30-minute scoping call. Tell us which sector to bring.</p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
           <button className="btn btn-cream-prim" data-hire>Book a scoping call <Arrow /></button>
-          <Link className="btn btn-cream-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
+          <Link className="btn btn-cream-ghost" href={routes.resources}>Read our hiring guides</Link>
         </div>
       </section>
     </>

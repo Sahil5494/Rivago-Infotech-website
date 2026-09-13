@@ -44,7 +44,7 @@ export default function TemporaryStaffingPage() {
           <p className="gs">On-demand professionals for peaks, seasonal spikes and leave cover. Vetted, compliant and deployed in 24–72 hours — scale your team up or down as the work changes, with zero long-term commitment.</p>
           <div className="svh-cta gs">
             <Link className="btn btn-prim" href="#intake">Staff up now <Arrow /></Link>
-            <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
+            <Link className="btn btn-ghost" href={routes.resources}>Read our hiring guides</Link>
           </div>
         </div>
       </header>
@@ -130,7 +130,7 @@ export default function TemporaryStaffingPage() {
         heading={<>Tell us who you need.<br /><em>We&apos;ll be back tomorrow.</em></>}
         sub="A 30-minute call with a partner — not a portal — and a staffing plan with confirmed availability in your inbox the same day."
         primary={{ label: "Book a scoping call", href: "#intake" }}
-        secondary={{ label: "Read case studies", href: `${routes.resources}?view=cs` }}
+        secondary={{ label: "Read our hiring guides", href: routes.resources }}
       />
     </>
   );

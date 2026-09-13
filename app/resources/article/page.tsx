@@ -39,7 +39,11 @@ export default async function ArticlePage({
     "@type": "Article",
     headline: article.title,
     description: article.dek,
-    author: { "@type": "Person", name: article.byline },
+    /* Was a Person carrying the article's byline. Those eight names were
+       invented, and publishing one as a schema.org Person hands a search
+       engine a fabricated author to attribute and index. The publisher is
+       the honest answer and the one Rivago can stand behind. */
+    author: { "@type": "Organization", name: "Rivago Infotech" },
     datePublished: article.date,
   };
 
@@ -49,11 +53,11 @@ export default async function ArticlePage({
 
       <header className="detail-hero">
         <div className="detail-wrap">
-          <Link className="detail-back" href={`${routes.resources}?view=blog`}><BackArrow /> Back to all resources</Link>
+          <Link className="detail-back" href={routes.resources}><BackArrow /> Back to all resources</Link>
           <div className="detail-eyebrow">{article.categoryLabel}</div>
           <h1 className="detail-title">{article.title}</h1>
           <div className="detail-meta">
-            <span>{article.byline}</span><span>·</span><span>{article.displayDate}</span><span>·</span><span>{article.readTime}</span>
+            <span>{article.displayDate}</span><span>·</span><span>{article.readTime}</span>
           </div>
           <div className="detail-banner">
             <h2>{article.dek}</h2>

@@ -45,7 +45,7 @@ export default function InterimLeadershipPage() {
           <p className="gs">Vetted interim and fractional executives for a transition, a turnaround or a gap you can&apos;t leave open. Drawn from our bench and ready to start in as little as seven days — with a clean handover plan built in from the start.</p>
           <div className="svh-cta gs">
             <Link className="btn btn-prim" href="#intake">Request an interim leader <Arrow /></Link>
-            <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
+            <Link className="btn btn-ghost" href={routes.resources}>Read our hiring guides</Link>
           </div>
         </div>
       </header>
@@ -141,7 +141,7 @@ export default function InterimLeadershipPage() {
         heading={<>Tell us the gap.<br /><em>We&apos;ll close it fast.</em></>}
         sub="A 30-minute scoping call with a partner — not a portal — and a bench-availability update in your inbox within one business day."
         primary={{ label: "Book a scoping call", href: "#intake" }}
-        secondary={{ label: "Read case studies", href: `${routes.resources}?view=cs` }}
+        secondary={{ label: "Read our hiring guides", href: routes.resources }}
       />
     </>
   );

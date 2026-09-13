@@ -63,7 +63,7 @@ export default function ExecutiveSearchPage() {
           <p className="gs">Confidential, retained search for VP- to C-suite roles. A dedicated partner and researcher map the market off-market, brief you in writing every week, and stand behind the result for twelve months.</p>
           <div className="svh-cta gs">
             <Link className="btn btn-prim" href="#intake">Begin your executive search <Arrow /></Link>
-            <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
+            <Link className="btn btn-ghost" href={routes.resources}>Read our hiring guides</Link>
           </div>
         </div>
       </header>
@@ -186,7 +186,7 @@ export default function ExecutiveSearchPage() {
         heading={<>Tell us who you need.<br /><em>We&apos;ll keep it confidential.</em></>}
         sub="A 30-minute scoping call with a partner — not a portal — and a written search plan in your inbox within one business day."
         primary={{ label: "Book a confidential call", href: "#intake" }}
-        secondary={{ label: "Read case studies", href: `${routes.resources}?view=cs` }}
+        secondary={{ label: "Read our hiring guides", href: routes.resources }}
       />
     </>
   );

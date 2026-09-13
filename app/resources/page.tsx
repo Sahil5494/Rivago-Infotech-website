@@ -3,11 +3,11 @@ import ResourcesView from "./ResourcesView";
 
 export const metadata: Metadata = {
   title: "Resources · Rivago Infotech",
-  description: "Hiring intelligence from Rivago Infotech — blog, case studies and data reports written by the senior partners running the searches.",
+  description: "Hiring intelligence from Rivago Infotech — compensation benchmarks, market reads and hiring playbooks, free to read with no sign-up.",
   alternates: { canonical: "https://rivagoinfotech.com/resources" },
   openGraph: {
     title: "Resources · Rivago Infotech",
-    description: "Hiring intelligence from Rivago Infotech — blog, case studies and data reports written by the senior partners running the searches.",
+    description: "Hiring intelligence from Rivago Infotech — compensation benchmarks, market reads and hiring playbooks, free to read with no sign-up.",
     url: "https://rivagoinfotech.com/resources",
   },
 };
@@ -21,18 +21,14 @@ const breadcrumbJsonLd = {
   ],
 };
 
-export default async function ResourcesPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-  const { view } = await searchParams;
-  const initialView = view === "cs" ? "cs" : view === "blog" ? "blog" : "all";
-
+/* No longer reads searchParams. ?view= selected between All, Blog and Case
+   Studies; there is one library now, so any ?view=... still in the wild — a
+   bookmark, an old inbound link — lands on it rather than breaking. */
+export default function ResourcesPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-      <ResourcesView initialView={initialView} />
+      <ResourcesView />
     </>
   );
 }

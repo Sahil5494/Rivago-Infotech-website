@@ -44,7 +44,7 @@ export default function ContractStaffingPage() {
           <p className="gs">Skilled professionals on flexible terms — pure contract, contract-to-hire, or a managed team. We run payroll, compliance and worker classification; you get productive people in days, not weeks.</p>
           <div className="svh-cta gs">
             <Link className="btn btn-prim" href="#intake">Request contractors <Arrow /></Link>
-            <Link className="btn btn-ghost" href={`${routes.resources}?view=cs`}>See case studies</Link>
+            <Link className="btn btn-ghost" href={routes.resources}>Read our hiring guides</Link>
           </div>
         </div>
       </header>
@@ -130,7 +130,7 @@ export default function ContractStaffingPage() {
         heading={<>Tell us who you need.<br /><em>We&apos;ll be back tomorrow.</em></>}
         sub="A 30-minute scoping call with a partner — not a portal — and available contractors with day rates in your inbox within one business day."
         primary={{ label: "Book a scoping call", href: "#intake" }}
-        secondary={{ label: "Read case studies", href: `${routes.resources}?view=cs` }}
+        secondary={{ label: "Read our hiring guides", href: routes.resources }}
       />
     </>
   );
