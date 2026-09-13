@@ -856,6 +856,55 @@ a{color:inherit;text-decoration:none}
 .ind-card{display:block;text-decoration:none;background:var(--surface-3);border:1px solid var(--border);border-radius:18px;padding:26px;transition:all .28s var(--ease);cursor:pointer}
 .ind-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .ind-card:hover{background:var(--surface2);border-color:var(--tint-2);transform:translateY(-4px)}
+/* ── INDUSTRY RAIL ────────────────────────────────────────────────────────
+   Cards scroll sideways with the next one peeking in at the right edge, and
+   the arrows sit against that edge. The lede above stays on the LEFT, which
+   is where this site has always put it. */
+.ind-rail-wrap{position:relative}
+.ind-rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:4px 0 8px;scrollbar-width:none;-ms-overflow-style:none;
+  /* room at the right so the last card clears the arrow cluster */
+  scroll-padding-left:0;padding-right:76px}
+.ind-rail::-webkit-scrollbar{display:none}
+.ind-rail:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:20px}
+.ind-rail > .ind-card{flex:0 0 clamp(268px,27.5%,344px);scroll-snap-align:start;
+  display:flex;flex-direction:column}
+/* Fades the peeking card out, so the rail reads as continuing rather than as
+   a card that happens to be clipped. Dropped at the end of the scroll, where
+   there is nothing more to suggest. */
+.ind-rail:not(.at-end){
+  mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 92px),transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 92px),transparent 100%)}
+.ind-desc{flex:1}
+.ind-more{display:inline-flex;align-items:center;gap:7px;margin-top:18px;
+  font-size:var(--fz1);font-weight:500;color:var(--accent);
+  opacity:0;transform:translateY(4px);transition:opacity .25s var(--ease),transform .25s var(--ease)}
+.ind-card:hover .ind-more,.ind-card:focus-visible .ind-more{opacity:1;transform:none}
+/* Touch has no hover, so the affordance would never appear there. */
+@media(hover:none){.ind-more{opacity:1;transform:none}}
+
+/* .ind-railnav / .ind-railbtn, not .ind-nav / .ind-btn: /industries already
+   owns .ind-nav for its sticky sub-nav, and being defined later in this
+   file its position:sticky beat this rule — the arrows landed bottom-left
+   inside a white bar instead of against the right edge. */
+.ind-railnav{position:absolute;right:-8px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:10px;z-index:2}
+.ind-railbtn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;cursor:pointer;color:var(--text-1);
+  background:var(--surface-3);border:1px solid var(--rule-2);
+  box-shadow:var(--shadow-1);transition:all .2s var(--ease)}
+.ind-railbtn:hover:not(:disabled){border-color:var(--accent);transform:translateX(2px)}
+.ind-railbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ind-railbtn:disabled{opacity:.32;cursor:default;box-shadow:none}
+
+@media(max-width:900px){
+  .ind-rail > .ind-card{flex:0 0 78%}
+  .ind-rail{padding-right:20px}
+  /* The arrows would sit on top of the cards at this width; the rail is
+     swipeable here and the fade already says there is more. */
+  .ind-railnav{display:none}
+}
+
 /* was font-size:var(--fz10) to size an emoji glyph; it holds an SVG now */
 .ind-icon{display:flex;align-items:center;margin-bottom:14px}
 .ind-title{font-size:var(--fz5);font-weight:500;color:var(--text);margin-bottom:8px;letter-spacing:-.01em}

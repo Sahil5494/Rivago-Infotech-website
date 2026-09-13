@@ -4,14 +4,14 @@ import OrbCanvas from "@/components/OrbCanvas";
 import HeroVisual from "@/components/HeroVisual";
 import ApproachTabs from "@/components/ApproachTabs";
 import ServiceCarousel from "@/components/ServiceCarousel";
-import IndustryIcon from "@/components/IndustryIcon";
+import IndustryRail from "@/components/IndustryRail";
 import Faq from "@/components/Faq";
 import Testimonials from "@/components/Testimonials";
-import CardSlider from "@/components/CardSlider";
-/* servicesList dropped from this import with the card grid; the carousel
-   carries its own copy with the per-service facts. lib/routes.ts still exports
-   it — /about counts it, and the nav mega-menu reads it. */
-import { routes, industriesList, offices } from "@/lib/routes";
+/* servicesList and industriesList both dropped from this import: the services
+   carousel and the industry rail each read the data themselves. lib/routes.ts
+   still exports both — /about counts them and the nav mega-menu reads them.
+   CardSlider went with them; nothing on this page uses it now. */
+import { routes, offices } from "@/lib/routes";
 
 const faqItems = [
   {
@@ -338,21 +338,11 @@ export default function Home() {
             </div>
             <Link className="ind-all gs" href={routes.industries}>View all industries <Arrow /></Link>
           </div>
-          <div className="gs">
-            <CardSlider trackClassName="ind-grid" nav="dots">
-              {/* These were plain divs. Eight cards that look interactive, each
-                  with an `anchor` sitting unused in the data, and the only way
-                  onward was the "View all industries" link in the corner. */}
-              {industriesList.map((ind) => (
-                <Link className="ind-card" href={`${routes.industries}#${ind.anchor}`} key={ind.title}>
-                  <div className="ind-icon"><IndustryIcon name={ind.anchor} /></div>
-                  <div className="ind-title">{ind.title}</div>
-                  <div className="ind-desc">{ind.desc}</div>
-                  <div className="ind-tags">{ind.tags.map((t) => <span className="ind-tag" key={t}>{t}</span>)}</div>
-                </Link>
-              ))}
-            </CardSlider>
-          </div>
+          {/* Was a static four-column grid — CardSlider only becomes a
+              slider under 900px, so on desktop all eight sat there at once and
+              the section ran to 1,184px. It is a scroll rail now: the next
+              card peeks in at the right edge and the arrows sit against it. */}
+          <IndustryRail />
         </div>
       </section>
 
