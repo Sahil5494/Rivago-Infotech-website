@@ -4,7 +4,10 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { routes } from "@/lib/routes";
 
-/* The services carousel: media on the left, one service on the right.
+/* The services carousel on the home page: media left, one service right.
+ *
+ * Lives in components/ rather than app/services/ because /services was put
+ * back to its original layout — this is the home page's services section now.
  *
  * MEDIA SLOT — read this before adding footage.
  * Each entry takes an optional `media`. Drop a file into /public/assets/services

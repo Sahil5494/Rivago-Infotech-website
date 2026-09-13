@@ -760,6 +760,84 @@ a{color:inherit;text-decoration:none}
 .svc-grid{grid-template-columns:repeat(4,1fr)}
 @media(max-width:900px){.svc-head{flex-direction:column;align-items:flex-start}}
 
+
+/* ── SERVICES CAROUSEL ────────────────────────────────────────────────────
+   The home page's services section: media on the left, one service on the
+   right, per the reference. Lives here rather than in app/services/
+   services.css because /services was put back to its original layout.
+
+   It reads role tokens throughout, so it follows whichever palette the
+   surrounding band carries — the section it sits in is .inv. */
+.sc-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  border:1px solid var(--rule-1);border-radius:20px;overflow:hidden;
+  background:var(--grad-panel);align-items:stretch}
+
+.sc-media{position:relative;min-height:460px;background:var(--surface-2)}
+.sc-media video,.sc-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* Drawn, not a grey box. public/ holds no photography or footage — ten client
+   logos, an OG image and a favicon — and stock imagery of strangers in an
+   office would weaken the panel rather than fill it. Replaced automatically
+   the moment a `media` entry is set on a service. */
+.sc-fallback{position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:flex-end;gap:6px;padding:36px;
+  background:
+    radial-gradient(64% 56% at 22% 18%,rgba(46,200,130,.26) 0%,transparent 66%),
+    radial-gradient(52% 62% at 88% 82%,rgba(0,170,140,.22) 0%,transparent 64%),
+    linear-gradient(150deg,var(--surface-3) 0%,var(--surface-2) 100%)}
+.sc-fb-n{font-family:var(--fm);font-size:var(--fz13);font-weight:500;color:var(--accent);letter-spacing:-.04em;line-height:1}
+.sc-fb-t{font-size:var(--fz9);font-weight:500;color:var(--text-1);letter-spacing:-.02em;line-height:1.2;max-width:14ch}
+
+.sc-body{padding:44px;display:flex;flex-direction:column}
+.sc-count{display:flex;align-items:baseline;gap:5px;margin-bottom:18px;font-family:var(--fm);font-size:var(--fz2)}
+.sc-count b{font-weight:500;color:var(--text-1)}
+.sc-count span{color:var(--text-3)}
+.sc-title{font-size:var(--fz11);font-weight:500;letter-spacing:-.028em;line-height:1.15;color:var(--text-1);margin:0 0 14px}
+.sc-desc{font-size:var(--fz4);color:var(--text-2);line-height:1.65;margin:0 0 24px;max-width:46ch}
+
+.sc-facts{display:grid;gap:10px;margin:0 0 28px;padding:18px 0 0;border-top:1px solid var(--rule-1)}
+.sc-facts > div{display:flex;justify-content:space-between;align-items:baseline;gap:18px}
+.sc-facts dt{font-size:var(--fz1);color:var(--text-3);white-space:nowrap}
+.sc-facts dd{font-size:var(--fz2);font-weight:500;color:var(--text-1);margin:0;text-align:right}
+
+.sc-foot{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px}
+/* The reference's pill: label, then the arrow in a filled disc on the end. */
+.sc-know{display:inline-flex;align-items:center;gap:12px;padding:5px 5px 5px 20px;
+  border:1px solid var(--rule-2);border-radius:var(--pill);
+  font-size:var(--fz3);font-weight:500;color:var(--text-1);
+  transition:border-color .22s var(--ease),background .22s var(--ease)}
+.sc-know:hover{border-color:var(--accent);background:var(--surface-3)}
+.sc-know-i{display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:50%;
+  background:var(--ink-fill);color:var(--on-ink-fill);transition:transform .22s var(--ease)}
+.sc-know:hover .sc-know-i{transform:translateX(2px)}
+
+.sc-nav{display:flex;align-items:center;gap:12px}
+.sc-btn{width:38px;height:38px;border-radius:50%;flex:0 0 auto;
+  border:1px solid var(--rule-2);background:transparent;color:var(--text-2);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s var(--ease)}
+.sc-btn:hover{border-color:var(--accent);color:var(--text-1);background:var(--surface-3)}
+.sc-btn:focus-visible,.sc-know:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sc-prog{width:66px;height:3px;border-radius:2px;background:var(--rule-2);overflow:hidden}
+.sc-prog span{display:block;height:100%;background:var(--accent);border-radius:2px;transition:width .3s var(--ease)}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+@media(max-width:980px){
+  .sc-stage{grid-template-columns:1fr}
+  /* 16:9 rather than a fixed height — a 460px block of media above the text
+     pushes the service itself off a phone screen entirely. */
+  .sc-media{min-height:0;aspect-ratio:16/9}
+  .sc-body{padding:28px 22px}
+}
+@media(max-width:640px){
+  .sc-facts > div{flex-direction:column;gap:1px}
+  .sc-facts dd{text-align:left}
+  .sc-foot{flex-direction:column;align-items:stretch;gap:20px}
+  .sc-nav{justify-content:space-between}
+  .sc-prog{flex:1;width:auto}
+}
+
 /* ── INDUSTRIES ── */
 .ind-sec{padding:110px 44px;background:var(--bg2)}
 .ind-inner{max-width:1200px;margin:0 auto}

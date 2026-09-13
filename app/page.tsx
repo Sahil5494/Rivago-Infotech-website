@@ -3,10 +3,14 @@ import LogoMarquee from "@/components/LogoMarquee";
 import OrbCanvas from "@/components/OrbCanvas";
 import HeroVisual from "@/components/HeroVisual";
 import ApproachTabs from "@/components/ApproachTabs";
+import ServiceCarousel from "@/components/ServiceCarousel";
 import Faq from "@/components/Faq";
 import Testimonials from "@/components/Testimonials";
 import CardSlider from "@/components/CardSlider";
-import { routes, servicesList, industriesList, offices } from "@/lib/routes";
+/* servicesList dropped from this import with the card grid; the carousel
+   carries its own copy with the per-service facts. lib/routes.ts still exports
+   it — /about counts it, and the nav mega-menu reads it. */
+import { routes, industriesList, offices } from "@/lib/routes";
 
 const faqItems = [
   {
@@ -158,9 +162,8 @@ const Arrow = () => (
 const SmallArrow = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
-const CardArrow = () => (
-  <svg className="svc-arr" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-);
+/* CardArrow removed with the services card grid — it was only ever used on
+   .svc-card's footer, which the carousel replaced. */
 
 export default function Home() {
   return (
@@ -313,21 +316,12 @@ export default function Home() {
             </div>
             <Link className="svc-all gs" href={routes.services}>View all services <Arrow /></Link>
           </div>
+          {/* The seven-card grid became a carousel: media on the left, one
+              service on the right with a counter, a Know more pill and
+              prev/next. The grid's per-card meta line moves inside each panel
+              as the three facts a buyer compares on. */}
           <div className="gs">
-            <CardSlider trackClassName="svc-grid" nav="dots">
-              {servicesList.filter((s) => s.href !== routes.services).map((s, i) => (
-                <Link className="svc-card" href={s.href} key={s.n}>
-                  {"tag" in s && s.tag && <span className="svc-tag">{s.tag}</span>}
-                  {/* Numbered off the rendered position, not the data's own n,
-                      so dropping the overview card does not leave the grid
-                      starting at 02. */}
-                  <div className="svc-n">{String(i + 1).padStart(2, "0")}</div>
-                  <div className="svc-title">{s.title}</div>
-                  <div className="svc-desc">{s.desc}</div>
-                  <div className="svc-foot"><span className="svc-meta">{s.meta}</span><CardArrow /></div>
-                </Link>
-              ))}
-            </CardSlider>
+            <ServiceCarousel />
           </div>
         </div>
       </section>
