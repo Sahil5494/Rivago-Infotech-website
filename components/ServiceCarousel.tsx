@@ -32,8 +32,13 @@ type Service = {
   href: string;
   title: string;
   desc: string;
-  facts: [string, string][];
   media?: Media;
+  /* The seven engagement models carry facts on one axis. The overview slide
+     carries a list instead, because "who employs them" has no answer for an
+     index page — it depends on which of the seven you pick. */
+  facts?: [string, string][];
+  list?: string[];
+  overview?: true;
 };
 
 /* Facts come from each service's own page: contract and temporary run on
@@ -46,6 +51,17 @@ type Service = {
    per-employee monthly fee are the standard models for those services rather
    than ones Rivago has published. */
 const SERVICES: Service[] = [
+  /* The index page, kept first. It is not one of the seven ways to staff a
+     role, so it is labelled "Overview" rather than numbered — otherwise the
+     counter runs to 08 under a heading that says seven, and /about would
+     still render "7 Ways to engage" off the same data. */
+  {
+    href: routes.services,
+    title: "Staffing Solutions",
+    desc: "Start here. The full picture of how Rivago engages — which structure fits the role you are filling, what each one costs, and how a search runs from the brief through to a start date.",
+    list: ["Direct hire", "Contract staffing", "Temporary staffing", "Executive search", "RPO", "Interim & fractional", "Employer of Record"],
+    overview: true,
+  },
   {
     href: routes.directHire,
     title: "Direct hire",
@@ -123,7 +139,7 @@ export default function ServiceCarousel() {
             <img src={s.media.src} alt="" />
           ) : (
             <div className="sc-fallback" aria-hidden="true">
-              <span className="sc-fb-n">{String(i + 1).padStart(2, "0")}</span>
+              <span className="sc-fb-n">{s.overview ? "—" : String(i).padStart(2, "0")}</span>
               <span className="sc-fb-t">{s.title}</span>
             </div>
           )}
@@ -131,20 +147,37 @@ export default function ServiceCarousel() {
 
         {/* ── service */}
         <div className="sc-body">
+          {/* The overview is not one of the seven, so it is not counted as one.
+              The models then number 01–07, which agrees with the section
+              heading and with the count /about renders. */}
           <div className="sc-count">
-            <b>{String(i + 1).padStart(2, "0")}</b>
-            <span>/ {String(n).padStart(2, "0")}</span>
+            {s.overview ? (
+              <b>Overview</b>
+            ) : (
+              <>
+                <b>{String(i).padStart(2, "0")}</b>
+                <span>/ {String(n - 1).padStart(2, "0")}</span>
+              </>
+            )}
           </div>
           <h3 className="sc-title">{s.title}</h3>
           <p className="sc-desc">{s.desc}</p>
 
-          {/* The three facts a buyer compares services on. They are what the
-              old page buried in prose and the reference leaves to the video. */}
-          <dl className="sc-facts">
-            {s.facts.map(([k, v]) => (
-              <div key={k}><dt>{k}</dt><dd>{v}</dd></div>
-            ))}
-          </dl>
+          {/* The three facts a buyer compares services on — what the old card
+              grid squeezed into a single meta line. The overview shows what is
+              behind the link instead. */}
+          {s.facts && (
+            <dl className="sc-facts">
+              {s.facts.map(([k, v]) => (
+                <div key={k}><dt>{k}</dt><dd>{v}</dd></div>
+              ))}
+            </dl>
+          )}
+          {s.list && (
+            <ul className="sc-list">
+              {s.list.map((t) => <li key={t}>{t}</li>)}
+            </ul>
+          )}
 
           <div className="sc-foot">
             <Link className="sc-know" href={s.href}>
@@ -166,7 +199,7 @@ export default function ServiceCarousel() {
       {/* The visible panel is one of seven, so the change has to be announced
           or a screen-reader user hears nothing when the arrows are pressed. */}
       <div className="sr-only" aria-live="polite" ref={liveRef}>
-        {s.title}, {i + 1} of {n}
+        {s.overview ? `${s.title}, overview` : `${s.title}, ${i} of ${n - 1}`}
       </div>
     </div>
   );
