@@ -279,8 +279,11 @@ export default function Home() {
           <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>What changes</div>
           {/* Was "Six reasons clients stay with us" — a claim about client
               retention, which is the one thing here nobody has measured. */}
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 600, marginBottom: 18 }}>Six things that change<br /><em>the moment we take the brief.</em></h2>
-          <p className="why-lede gs">Not a list of adjectives. Each one is either done on your search or it isn&rsquo;t, and you can hold us to it on the first call.</p>
+          {/* 700, not the 600 the old two-line headline used: this one
+              measures 640 on a single line and was breaking to leave
+              "search." on its own. */}
+          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 700, marginBottom: 18 }}>Six things we do on <em>every search.</em></h2>
+          <p className="why-lede gs">Each one is either done on your search or it isn&rsquo;t. You can hold us to any of them on the first call.</p>
           <WhyCards />
         </div>
       </section>
@@ -335,10 +338,10 @@ export default function Home() {
                   "View all services" link beside this heading — and About
                   already filters it out to render "7 Ways to engage". The two
                   pages disagreed; About was the one that was right. */}
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Seven ways to put the <em>right people in seat.</em></h2>
-              {/* Was "Permanent, contract, temporary or embedded." — the WHAT WE DO
-                  section above now owns that grouping, and having both do it was
-                  the page saying the same thing twice. */}
+              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Seven ways we <em>staff your teams.</em></h2>
+              {/* Not a list of the seven modes — the carousel below names each
+                  one with its own commercials, and the subhead would only be
+                  reading the list out ahead of it. */}
               <p className="svc-sub gs">The commitment and the commercials differ from one to the next. The way we run the search behind them does not.</p>
             </div>
             <Link className="svc-all gs" href={routes.services}>View all services <Arrow /></Link>
@@ -391,7 +394,7 @@ export default function Home() {
         <div className="supp-inner">
           <div style={{ textAlign: "center" }}>
             <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>Talk to us</div>
-            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 12 }}>Three ways in.<br /><em>All of them reach a partner.</em></h2>
+            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 12 }}>Three ways to <em>reach us.</em></h2>
             <p className="orb-desc gs" style={{ marginBottom: 0 }}>A first hire or a fiftieth, a live brief or a question you want a straight answer to. Pick whichever suits the morning you are having.</p>
           </div>
           <div className="supp-grid">
@@ -471,7 +474,7 @@ export default function Home() {
           <div className="hins-head">
             <div>
               <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Insights</div>
-              <h2 className="hins-h2 gs">What we have learned,<br />written <em>down.</em></h2>
+              <h2 className="hins-h2 gs">What we write <em>about hiring.</em></h2>
             </div>
             {/* The grid shows all {articles.length} of them, so this cannot say
                 "all N articles" — it goes to the library, where they can be
@@ -498,7 +501,7 @@ export default function Home() {
           <div className="prf-head">
             <div>
               <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Clients</div>
-              <h2 className="prf-h2 gs">Who we hire for, and what<br />they say <em>about the hiring.</em></h2>
+              <h2 className="prf-h2 gs">Who we <em>hire for.</em></h2>
             </div>
             <p className="prf-lede gs">Every mark below is a client. Every quote is from someone who ran a search with us and agreed to be quoted — by role and market, not by name.</p>
           </div>

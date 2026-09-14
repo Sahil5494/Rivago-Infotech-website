@@ -742,7 +742,14 @@ a{color:inherit;text-decoration:none}
 @media(max-width:480px){.eyebrow{white-space:normal;text-align:center}}
 .ew-dark{background:rgba(0,0,0,.05);border:1px solid rgba(10,19,17,.18);color:var(--text-inv-2)}
 .ew-light,.eyebrow.light{background:var(--tint-1);border:1px solid var(--tint-2);color:var(--accent)}
-.section-h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;margin-bottom:52px;line-height:1.12}
+/* Balanced because these headlines are now short enough to wrap on their
+   own rather than at a hand-placed <br>, and an unbalanced wrap strands the
+   last word — "Three ways to reach us." broke to leave "us." at 38px on a
+   phone. Chrome balances within the line count it would have used anyway,
+   so this evens the lines without making any heading taller. The headings
+   that still carry a forced <br> are unaffected: balance does nothing
+   across one. */
+.section-h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;margin-bottom:52px;line-height:1.12;text-wrap:balance}
 .fc-slider{position:relative}
 .fc-track{display:grid;gap:16px}
 .feat-track{grid-template-columns:repeat(3,1fr)}
