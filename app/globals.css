@@ -637,6 +637,11 @@ a{color:inherit;text-decoration:none}
    whose subject is what goes wrong. .inv in the markup flips the whole token
    set, so the accordion, the hairlines, the caption and the image frame all
    follow without a rule changing here. */
+/* The sticky scope — see the note in page.tsx. isolation:isolate keeps the
+   hero's z-index from meaning anything outside these two sections, so no
+   later band can be painted over by it. */
+.ov-scope{position:relative;isolation:isolate}
+
 /* Rides over the pinned hero. z-index above it, an opaque ground of its
    own, and a shadow cast upward so the leading edge reads as a panel
    sliding over rather than a section that happens to be adjacent. */

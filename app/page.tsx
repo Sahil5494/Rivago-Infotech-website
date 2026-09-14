@@ -162,6 +162,18 @@ export default function Home() {
           pill CTAs — no photograph, no scrim, no particle field. Dropping
           them also removes the hot-linked Unsplash image that was the LCP
           element and lived on someone else's server. */}
+      {/* The sticky scope. A sticky element pins for as long as its
+          containing block is in view, so with the hero as a direct child of
+          the page it stayed pinned for all 12,000px — and because z-index
+          makes it a positioned element, it painted OVER every later section
+          that was not itself positioned. Measured: at 5,000px and 9,000px
+          down, the topmost element under the cursor was the hero's headline.
+
+          Wrapping the hero and the band that covers it gives the pin an end.
+          The hero holds while THE PROBLEM rides over it, then releases and
+          scrolls away like anything else, and the rest of the page is
+          untouched. */}
+      <div className="ov-scope">
       {/* HERO — centred over the client strip, dark.
           Built on the shape the client supplied as reference: a centred
           column, a staggered word-by-word entrance on one easing curve, a
@@ -291,6 +303,8 @@ export default function Home() {
           Its one line worth keeping, the old ORB positioning statement,
           had nowhere better to go and is not reinstated — the hero and the
           approach section already make that claim between them. */}
+
+      </div>{/* /.ov-scope */}
 
       {/* WHAT WE BRING */}
       {/* Eyebrow was "The reframe" — the editorial name for what this
