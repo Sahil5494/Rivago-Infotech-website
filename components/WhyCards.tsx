@@ -129,10 +129,17 @@ export default function WhyCards() {
           <div className="why-cta-ico" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24"><path d="M5 19L19 5M19 5h-8M19 5v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
           </div>
+          {/* This tile ran the same two sentences as the scoping-call card in
+              the support section — "Thirty minutes with the partner who would
+              take the brief. You leave with a plan whether or not you engage
+              us." — word for word, twelve consecutive four-word phrases in
+              common. The contact pitch belongs in the support section, whose
+              whole job it is. This tile closes the six cards above it, so it
+              says what those six are for instead. */}
           <h3>Tell us the role.<br />We&rsquo;ll take it from there.</h3>
-          <p>Thirty minutes with the partner who would take the brief. You leave with a plan whether or not you engage us.</p>
+          <p>One open role is enough to start. Everything above applies to it.</p>
           <button type="button" className="why-cta-btn" data-hire>
-            Book a scoping call
+            Send us a role
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </button>
         </div>

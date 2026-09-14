@@ -813,7 +813,16 @@ a{color:inherit;text-decoration:none}
    as one near-black, so a change of fill does not announce a new section.
    These hairlines are what actually draw the band boundaries; without them
    the dark stretches merge into a single block. */
-.svc-sec,.ind-sec,.supp-sec,.hins-sec,.faq-sec,.cta-sec,.prob-sec,.prf-sec{
+/* .why-sec and .feat-sec added. Every other band on the page draws its top
+   edge with a hairline — the dark ramp is compressed to 1.00-1.08:1 on
+   purpose, so fill never separates bands and the rule always does. These
+   two were the exception, and between them sat the only boundary on the
+   page with neither a rule nor a change of colour.
+   .rfm-sec is deliberately not in this list: it follows a black band, and
+   a light rule along that edge draws a line where there is already a
+   17.78:1 step. */
+.svc-sec,.ind-sec,.supp-sec,.hins-sec,.faq-sec,.cta-sec,.prob-sec,.prf-sec,
+.why-sec,.feat-sec{
   border-top:1px solid var(--rule-1)
 }
 /* PRECISION and PROCESS rules removed with their sections; the panel
@@ -856,7 +865,10 @@ a{color:inherit;text-decoration:none}
    the same 120px gutter as every other band at 1440. */
 .hins-inner{max-width:1200px;margin:0 auto}
 .hins-head{display:flex;align-items:flex-end;justify-content:space-between;gap:64px;margin-bottom:48px}
-.hins-h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;line-height:1.13;color:var(--text);text-wrap:balance}
+/* fz13, not fz12: this sits in the same structural slot as every other
+   section heading, eight of which render at 44px. At 36 it read as a
+   sub-heading of the section above it. */
+.hins-h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.13;color:var(--text);text-wrap:balance}
 .hins-all{display:inline-flex;align-items:center;gap:7px;font-size:var(--fz3);color:var(--text2);white-space:nowrap;flex-shrink:0;transition:color .2s,gap .2s}
 .hins-all:hover{color:var(--accent);gap:11px}
 
@@ -905,7 +917,13 @@ a{color:inherit;text-decoration:none}
 @media(max-width:620px){.hins-grid{grid-template-columns:1fr}}
 
 /* ── WHY RIVAGO ── */
-.why-sec{padding:110px 44px;background:var(--bg)}
+/* --bg3 (white), not --bg. This band and the approach band below it were
+   painted the identical rgb(242,247,245) — 2,738px of one colour — and the
+   cream reframe above differs from them by 5/0/3 in RGB, about 1.01:1,
+   which is no boundary at all. Three sections read as one long pale
+   stretch. Giving the tallest of the three its own ground separates both
+   of its edges without moving anything. */
+.why-sec{padding:110px 44px;background:var(--bg3)}
 .why-inner{max-width:1200px;margin:0 auto}
 .why-lede{font-size:var(--fz7);color:var(--text2);line-height:1.72;font-weight:400;max-width:560px}
 
@@ -982,7 +1000,10 @@ a{color:inherit;text-decoration:none}
 .rfm-inner{max-width:1200px;margin:0 auto}
 .rfm-head{margin-bottom:52px}
 .rfm-h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.14;color:var(--text-inv-1);margin:0 0 22px;text-wrap:balance;max-width:880px}
-.rfm-d{font-size:var(--fz7);color:var(--text-inv-2);line-height:1.76;font-weight:400;margin:0;max-width:64ch}
+/* 48ch, not 64. The ch unit is the width of "0", which is wider than the
+   average character in running text, so 64ch measured out at 94 actual
+   characters a line — well past the 65-75 a reading measure wants. */
+.rfm-d{font-size:var(--fz7);color:var(--text-inv-2);line-height:1.76;font-weight:400;margin:0;max-width:48ch}
 /* The handoff into the rail. Set apart from the paragraph that earns it. */
 .rfm-turn{font-size:var(--fz7);line-height:1.76;font-weight:500;color:var(--text-inv-1);margin:26px 0 0}
 
@@ -1059,13 +1080,19 @@ a{color:inherit;text-decoration:none}
 .prf-sec{padding:110px 44px;background:var(--bg2)}
 .prf-inner{max-width:1200px;margin:0 auto}
 .prf-head{display:flex;align-items:flex-end;justify-content:space-between;gap:64px;margin-bottom:44px}
-.prf-h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;line-height:1.13;color:var(--text);text-wrap:balance}
+/* fz13 — see the note on .hins-h2. These two were the only section
+   headings on the page a step below their peers. */
+.prf-h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.13;color:var(--text);text-wrap:balance}
 .prf-lede{font-size:var(--fz5);color:var(--text2);line-height:1.75;font-weight:400;max-width:430px;flex-shrink:0}
 /* .prf-marks went with the logo strip, which is back in .clients-sec under
    the hero. Its opacity lift went too — that raised the marks above the .62
    the strip normally uses, because inside this band they were the evidence
    the section led with. Under the hero they are the strip again. */
-.prf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+/* Two across, not four. At four the quote column was about 240px of text
+   and the lines broke at 27-37 characters — short enough to read as a
+   list of fragments rather than as quotes. Two gives a real measure and
+   sets four quotes as a balanced 2x2. */
+.prf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .prf-card{margin:0;display:flex;flex-direction:column;padding:26px 24px 22px;
   border:1px solid var(--rule-1);border-radius:18px;background:var(--surface-3);
   transition:border-color .25s var(--ease),transform .25s var(--ease)}
@@ -1076,7 +1103,8 @@ a{color:inherit;text-decoration:none}
    beside an anonymous quote invents the one thing the anonymity protects. */
 .prf-who{font-size:var(--fz2);color:var(--text3);margin-top:18px;padding-top:14px;border-top:1px solid var(--rule-1)}
 @media(max-width:1080px){
-  .prf-grid{grid-template-columns:1fr 1fr}
+  /* The override that dropped this grid from four columns to two has nothing
+     left to do — two is the default now. */
   .prf-head{flex-direction:column;align-items:flex-start;gap:18px}
   .prf-lede{max-width:none}
 }

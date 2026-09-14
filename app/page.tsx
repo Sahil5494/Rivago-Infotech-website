@@ -161,10 +161,15 @@ export default function Home() {
         <div className="hero-grid">
           <div className="hero-content">
             <div className="hero-badge gs"><span className="bdot"></span>Global Staffing · US · Canada · UAE · India</div>
-            <h1 className="hero-h1 gs">Staffing for getting the <em>right people</em> in seat.</h1>
+            {/* Was "Staffing for getting the right people in seat." — the same
+                ungrammatical phrasing already rewritten out of the Services
+                headline, and it was the first line on the page. "Staffing for
+                getting" was the clumsy half; the badge above already says this
+                is a staffing firm, so the headline does not have to. */}
+            <h1 className="hero-h1 gs">The <em>right people</em>, in the right roles.</h1>
             <p className="hero-sub gs">We connect outstanding companies with exceptional talent — across every industry, every function and every corner of the globe.</p>
             <div className="hero-btns gs">
-              <button className="btn-hp" data-help>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+              <button type="button" className="btn-hp" data-help>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
               {/* A staffing firm has two audiences and the hero offered one
                   door. The second is the candidate's, and it goes to the job
                   search rather than the contact form. */}
@@ -444,7 +449,7 @@ export default function Home() {
               <div className="supp-desc">Thirty minutes with the partner who would take the brief. We go through the open roles, what the market will bear on each, and where the timeline realistically lands. You leave with a plan whether or not you engage us.</div>
               <div>
                 <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" strokeWidth="1.1" /><path d="M6 3.5v2.5l1.5 1.5" stroke="var(--accent)" strokeWidth="1.1" strokeLinecap="round" /></svg>30 minutes · No charge · No obligation</div>
-                <button className="supp-link" data-hire>Book your call <SmallArrow /></button>
+                <button type="button" className="supp-link" data-hire>Book your call <SmallArrow /></button>
               </div>
             </div>
             <div className="supp-card gs">
@@ -576,7 +581,7 @@ export default function Home() {
         <div className="cta-btns gs">
           {/* data-help, at the client's call: the chooser, not the brief
               form. It is the same door the hero opens. */}
-          <button className="btn-hp" data-help style={{ fontSize: "var(--fz5)", padding: "15px 32px" }}>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+          <button type="button" className="btn-hp" data-help style={{ fontSize: "var(--fz5)", padding: "15px 32px" }}>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
           {/* routes.viewJobs is the filtered jobs LIST — ten cards and
               twenty-one filter chips, with a detail pane for whichever role
               is selected. I previously called it a detail page on the

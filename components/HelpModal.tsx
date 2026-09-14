@@ -49,7 +49,7 @@ export default function HelpModal() {
       onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}
     >
       <div className="hlp-modal">
-        <button className="hlp-x" aria-label="Close menu" onClick={() => setOpen(false)}>
+        <button type="button" className="hlp-x" aria-label="Close menu" onClick={() => setOpen(false)}>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
         </button>
         <div className="hlp-eyb">Get started</div>

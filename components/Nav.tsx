@@ -34,7 +34,7 @@ const CircleIco = () => (
 type MMKey = "services" | "industries" | "about" | "careers";
 
 const serviceLinks = [
-  { href: routes.services, title: "Staffing Solutions", desc: "Every way we put the right people in seat — start here" },
+  { href: routes.services, title: "Staffing Solutions", desc: "Every way we put the right people in place — start here" },
   { href: routes.directHire, title: "Direct Hire", desc: "Permanent placements with a 90-day replacement guarantee" },
   { href: routes.contractStaffing, title: "Contract Staffing", desc: "Flexible contract and contract-to-hire, compliance handled", tag: "Popular" },
   { href: routes.temporaryStaffing, title: "Temporary Staffing", desc: "On-demand professionals for peaks, seasons and leave cover" },
@@ -238,7 +238,7 @@ export default function Nav() {
                   site. Removed rather than replaced: the promo reads fine on
                   its offer alone, and any figure put back here should be one
                   you would be comfortable being asked to prove. */}
-              <button className="mm-promo-btn" data-hire>Book your call <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h6M5.5 2.5l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+              <button type="button" className="mm-promo-btn" data-hire>Book your call <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h6M5.5 2.5l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
             </div>
           </div>
 
@@ -289,11 +289,11 @@ export default function Nav() {
           </div>
         </div>
         <div className="nav-r">
-          <button className="nav-burger" id="navBurger" aria-expanded={mobileOpen} aria-controls="mnav" aria-label={mobileOpen ? "Close menu" : "Open menu"} onClick={() => setMobileOpen((v) => !v)}>
+          <button type="button" className="nav-burger" id="navBurger" aria-expanded={mobileOpen} aria-controls="mnav" aria-label={mobileOpen ? "Close menu" : "Open menu"} onClick={() => setMobileOpen((v) => !v)}>
             <span></span><span></span><span></span>
           </button>
           <Link className="btn-si" href={routes.signIn}>Sign in</Link>
-          <button className="btn-cta" data-hire>Hire Talent</button>
+          <button type="button" className="btn-cta" data-hire>Hire Talent</button>
         </div>
       </nav>
 
@@ -323,7 +323,7 @@ export default function Nav() {
             </div>
           ))}
           <Link className="mnav-cta" href={routes.signIn} style={{ background: "transparent", border: "1px solid var(--border)", color: "var(--text)" }} onClick={() => setMobileOpen(false)}>Sign in</Link>
-          <button className="mnav-cta" data-hire onClick={() => setMobileOpen(false)}>Hire Talent</button>
+          <button type="button" className="mnav-cta" data-hire onClick={() => setMobileOpen(false)}>Hire Talent</button>
         </div>
       </div>
     </>

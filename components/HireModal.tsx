@@ -137,7 +137,7 @@ export default function HireModal() {
       onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}
     >
       <div className="hire-modal">
-        <button className="hire-x" aria-label="Close" onClick={() => setOpen(false)}>
+        <button type="button" className="hire-x" aria-label="Close" onClick={() => setOpen(false)}>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
         </button>
         {!showOk ? (
@@ -146,8 +146,8 @@ export default function HireModal() {
             <h2 id="hireTitle">Tell us what you <em>need.</em></h2>
             <div className="hire-q">Just to confirm, are you:</div>
             <div className="hire-seg" role="tablist">
-              <button className={seg === "employer" ? "on" : ""} role="tab" aria-selected={seg === "employer"} onClick={() => setSeg("employer")}>An employer</button>
-              <button className={seg === "seeker" ? "on" : ""} role="tab" aria-selected={seg === "seeker"} onClick={() => setSeg("seeker")}>Looking for a job</button>
+              <button type="button" className={seg === "employer" ? "on" : ""} role="tab" aria-selected={seg === "employer"} onClick={() => setSeg("employer")}>An employer</button>
+              <button type="button" className={seg === "seeker" ? "on" : ""} role="tab" aria-selected={seg === "seeker"} onClick={() => setSeg("seeker")}>Looking for a job</button>
             </div>
 
             <form className="hire-form" ref={empFormRef} hidden={seg !== "employer"} noValidate onSubmit={(e) => submit(e, "employer")}>
