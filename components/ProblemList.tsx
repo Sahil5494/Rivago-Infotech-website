@@ -9,7 +9,7 @@ import { useState } from "react";
  * I argued against collapsing these twice and was wrong about the size of
  * the cost. The objection holds for feature labels ("Extreme flexibility"),
  * where the body carries the argument and hiding it hides the point. These
- * headlines are not labels: each one states its whole problem in two lines.
+ * headlines are not labels: each one states its whole problem on its own.
  * All five stay visible and scannable at rest; what collapses is detail.
  *
  * The FAQ four sections down is also a plus accordion, so two things keep
@@ -92,10 +92,12 @@ export default function ProblemList() {
                   {!isOpen && <path d="M5.5 1v9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />}
                 </svg>
               </span>
-              {/* Two lines, always — the second reverses the first, and the
-                  pair only works as a pair. The break is forced rather than
-                  left to wrapping so it never lands mid-clause. */}
-              <span className="prob-t">{r.t}<br />{r.t2}</span>
+              {/* One line. The two sentences are still a pair — the second
+                  reverses the first — but they are set as running text and
+                  only break when the column is too narrow to hold them.
+                  .prob-t is balanced, so when that happens on a phone the
+                  two lines come out even instead of stranding a word. */}
+              <span className="prob-t">{r.t} {r.t2}</span>
             </button>
             {/* grid-template-rows 0fr to 1fr animates height without any
                 JavaScript measurement. The inner div hides with visibility
