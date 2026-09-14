@@ -599,11 +599,12 @@ a{color:inherit;text-decoration:none}
    A vertical tab list against one illustrated panel. The tabs are the real
    four-step process; the panel carries an artefact from each stage in the
    card language the rest of the page already uses. */
-/* Not two equal halves: an even split gives the headline 576px, and both of
-   its lines measure about 690 at 44px, so each one broke and orphaned its
-   last word. The headline track is sized to the longer line instead, and
-   the lede takes what is left — still well above its own 46ch measure. */
-.apr-head{display:grid;grid-template-columns:minmax(0,700px) minmax(0,1fr);gap:48px;align-items:start}
+/* Not two equal halves: an even split gave the headline 576px against a
+   line that measures 620 at 44px, so it broke and orphaned its last word.
+   The headline track is sized to that line plus 40px of slack — enough that
+   a slightly wider font render elsewhere does not wrap it — and the lede
+   takes the rest. */
+.apr-head{display:grid;grid-template-columns:minmax(0,660px) minmax(0,1fr);gap:48px;align-items:start}
 .apr-lead{font-size:var(--fz4);color:var(--text-2);line-height:1.65;max-width:46ch;margin:0;padding-top:6px}
 /* The headline holds a fixed 700px, so as the container narrows it is the
    lede that pays — at a 960px viewport it was down to 124px, about ten
@@ -614,15 +615,10 @@ a{color:inherit;text-decoration:none}
   .apr-head{grid-template-columns:1fr;gap:14px}
   .apr-lead{padding-top:0}
 }
-/* Two <br>-separated lines, each free to wrap again on a phone, where the
-   second one broke to leave "offer." on a line by itself. Chrome will not
-   balance across a forced break — the property computes but does nothing —
-   so on a narrow screen the break is dropped and the two sentences flow as
-   one run that balance can even out. */
+/* One line now, so it wraps on its own rather than at a hand-placed break —
+   which is the case balance exists for. The phone rule that used to drop a
+   forced <br> here went with the <br>. */
 .feat-h2{text-wrap:balance}
-@media(max-width:560px){
-  .feat-h2 br{display:none}
-}
 .apr{display:grid;grid-template-columns:minmax(0,270px) minmax(0,1fr);gap:48px;margin-top:44px;align-items:start}
 .apr-tabs{display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--rule-1)}
 .apr-tab{display:flex;align-items:baseline;gap:12px;width:100%;padding:15px 18px;margin-left:-1px;

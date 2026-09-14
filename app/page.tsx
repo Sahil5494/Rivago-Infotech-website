@@ -305,8 +305,15 @@ export default function Home() {
         <div className="feat-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our approach</div>
           <div className="apr-head">
-            <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 700 }}>How Rivago drives enterprise hiring.<br /><em>From initial sourcing to final offer.</em></h2>
-            <p className="apr-lead gs">Every search runs the same five stages, with the same partner on it throughout. You know where the search stands at each one.</p>
+            {/* Was "How Rivago drives enterprise hiring. / From initial
+                sourcing to final offer." That named a span the section does
+                not run: the five stages start at the brief, not at sourcing,
+                and end at Place and support, not at the offer. */}
+            <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 660 }}>From the brief to <em>the placement.</em></h2>
+            {/* Deliberately not "every search" — the section immediately
+                above this one is headed "Six things we do on every search",
+                and the two are read in one scroll. */}
+            <p className="apr-lead gs">Five stages, run the same way each time, with one partner on the search throughout. You know where it stands at each of them.</p>
           </div>
           <ApproachTabs />
         </div>
