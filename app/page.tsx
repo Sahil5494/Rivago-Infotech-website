@@ -134,18 +134,6 @@ const faqJsonLd = {
    servicesList rather than retyped, so renaming a service renames it here
    too. The Staffing Solutions overview is not a mode — it is the index page
    these all sit on. */
-/* The three modes say WHEN each shape is right. They deliberately do not
-   name the seven services or quote their commercials — the carousel four
-   sections down does both, and listing them here was most of why this
-   section read as a second services page.
-
-   svcTitle and the per-mode route lists went with the names. */
-const MODES = [
-  { k: "Permanent", d: "The work is ongoing and the role belongs on your headcount. You want someone still here in two years, and you would rather pay once than keep paying." },
-  { k: "Flexible", d: "The work has an end date, a peak, or an unknown in it. You want the capacity now and the room to change your mind later without a redundancy conversation." },
-  { k: "Run for you", d: "The gap is not one person. A function to stand up, a leader in the chair while you search, or an entity you do not have in a country you are hiring into." },
-];
-
 const Arrow = () => (
   <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
@@ -218,7 +206,7 @@ export default function Home() {
 
           Nothing here is a measured claim. These are failure modes common to
           the industry, not statistics about Rivago's clients. */}
-      <section className="prob-sec">
+      <section className="prob-sec inv">
         <div className="prob-inner">
           {/* The heading block sits full width above both columns, on the
               left, because that is where the eyebrow and headline sit in
@@ -255,41 +243,26 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="prob-turn inv gs">
+          <div className="prob-turn lt gs">
             <div className="prob-turn-k">The reason underneath</div>
             <p className="prob-turn-d">None of this is bad luck. It is what happens when a search sits on a panel of four agencies and is owned by none of them. We take one brief, put one partner on it, and write down what was agreed on the intake call — the delivery date, the scorecard, and the part of the role we think will be hard to fill. The rest of this page is that, in detail.</p>
           </div>
         </div>
       </section>
 
-      {/* WHAT WE DO */}
-      {/* Takes the ORB band's slot, and its positioning line with it. The orb
-          section said "We don't just fill roles. We learn your business..." —
-          a claim about what Rivago does, sitting 400px from a section that
-          would now say the same thing. One statement, in the section whose
-          job it is to make it.
+      {/* WHAT WE DO removed.
 
-          Three modes, and deliberately not the seven service names. Listing
-          them here was most of why this section read as a second services
-          page — the carousel four sections down already names all seven with
-          their commercials. These three say WHEN each shape is right, which
-          the carousel does not do for any of them. */}
-      <section className="wwd-sec inv">
-        <div className="wwd-inner">
-          <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>What we do</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 620, marginBottom: 18 }}>Permanent, flexible,<br /><em>or run for you.</em></h2>
-          <p className="wwd-lede gs">We don&apos;t just fill roles. We learn your business, your culture and what genuinely good looks like in your sector — then find the people ready to perform from day one.</p>
-          <div className="wwd-grid">
-            {MODES.map((m) => (
-              <div className="wwd-mode gs" key={m.k}>
-                <div className="wwd-k">{m.k}</div>
-                <p className="wwd-d">{m.d}</p>
-              </div>
-            ))}
-          </div>
-          <Link className="wwd-all gs" href={routes.services}>See the seven services <Arrow /></Link>
-        </div>
-      </section>
+          It named the offer's three shapes — permanent, flexible, run for
+          you — two thousand pixels above the services carousel, which names
+          all seven services with their commercials. Stripping the service
+          names out of it stopped the two sections repeating each other's
+          words, but not the underlying problem: the page still introduced
+          what Rivago sells twice. The carousel does that job with more in
+          its hands.
+
+          Its one line worth keeping, the old ORB positioning statement,
+          had nowhere better to go and is not reinstated — the hero and the
+          approach section already make that claim between them. */}
 
       {/* FEATURES */}
       <section className="feat-sec">
