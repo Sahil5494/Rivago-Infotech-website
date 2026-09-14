@@ -141,6 +141,19 @@ export default function HeroVisual({ ambient = false }: { ambient?: boolean } = 
     }
 
     function draw(now: number) {
+      /* In ambient mode the hero is pinned and the next band scrolls over it,
+         so once it is fully covered this canvas is painting 150 dots and a
+         set of arcs at 60fps behind an opaque section. The frame is skipped
+         while that is true — the loop stays alive so it picks straight back
+         up on the way up.
+
+         The test is the NEXT section's top, not this one's bottom: a pinned
+         element's rect never goes negative, which is what pinning means, so
+         "have I scrolled past it" cannot be asked of the hero itself. */
+      if (ambient && (wrap!.closest("section")?.nextElementSibling?.getBoundingClientRect().top ?? 1) <= 0) {
+        raf = requestAnimationFrame(draw);
+        return;
+      }
       if (!reduced && now - cycleStart > CYCLE) {
         cycleStart = now;
         reselect();
@@ -256,7 +269,9 @@ export default function HeroVisual({ ambient = false }: { ambient?: boolean } = 
       cancelAnimationFrame(raf);
       ro.disconnect();
     };
-  }, []);
+    /* ambient decides whether the loop skips frames once the pinned hero is
+       covered, so the effect has to be rebuilt if it ever changes. */
+  }, [ambient]);
 
   return (
     <div className={ambient ? "hero-vis hv-ambient" : "hero-vis gs"} ref={wrapRef} aria-hidden={ambient || undefined}>

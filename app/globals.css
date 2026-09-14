@@ -305,7 +305,11 @@ em,i,cite,address,var,dfn,strong,b{font:inherit;color:inherit;letter-spacing:inh
    rubber-banding at either end of the page stays on the page's own ground
    rather than exposing the browser's default white. */
 html{scroll-behavior:smooth;background:var(--surface-1)}
-body{background:var(--bg);color:var(--text);font-family:var(--ff);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+/* overflow-x:clip, not hidden. `hidden` on one axis computes the other to
+   `auto`, which makes body a scroll container and breaks position:sticky
+   for everything inside it. `clip` clips without creating one, so the
+   hero can pin. */
+body{background:var(--bg);color:var(--text);font-family:var(--ff);-webkit-font-smoothing:antialiased;overflow-x:clip;line-height:1.6}
 a{color:inherit;text-decoration:none}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--surface-4);border-radius:2px}
 
@@ -449,8 +453,11 @@ a{color:inherit;text-decoration:none}
    runs violet #7C3AED to blue #3D7BF7 on near-black; every value below is
    the forest ramp and the mint accent this site already owns. Nothing is
    ported but the structure. */
+/* The hero pins and the band below scrolls up over it, covering it —
+   the effect the client asked for. Nothing moves that is not already
+   moving: the hero simply stops, and the page continues past it. */
 .hero-c{
-  position:relative;overflow:clip;isolation:isolate;
+  position:sticky;top:0;z-index:0;overflow:clip;isolation:isolate;
   min-height:0;                 /* NOT 100svh — see the note in page.tsx */
   padding:150px 24px 0;
   display:flex;flex-direction:column;align-items:center;text-align:center;
@@ -630,6 +637,10 @@ a{color:inherit;text-decoration:none}
    whose subject is what goes wrong. .inv in the markup flips the whole token
    set, so the accordion, the hairlines, the caption and the image frame all
    follow without a rule changing here. */
+/* Rides over the pinned hero. z-index above it, an opaque ground of its
+   own, and a shadow cast upward so the leading edge reads as a panel
+   sliding over rather than a section that happens to be adjacent. */
+.prob-sec{position:relative;z-index:1;box-shadow:0 -34px 64px rgba(0,0,0,.5)}
 .prob-sec{padding:110px 44px;background:var(--bg2)}
 .prob-inner{max-width:1200px;margin:0 auto}
 /* No align-items:start. The visual column has to stretch to the row height
