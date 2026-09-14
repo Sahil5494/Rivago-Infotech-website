@@ -180,6 +180,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CLIENT STRIP */}
+      {/* Back under the hero, where it was before the reorder folded it into
+          the quotes band at position 10. The reasoning for folding it in —
+          that marks and words are one argument made twice — was sound about
+          the argument and wrong about the job: straight under the hero these
+          marks are the first evidence on the page, and that is work no
+          quote 9,000px down can do. */}
+      <section className="clients-sec">
+        <div className="clients-label">Teams we recruit for</div>
+        <LogoMarquee />
+      </section>
+
       {/* THE PROBLEM */}
       {/* Four failure modes, then the band turns: one dark panel naming the
           reason underneath all four and what Rivago does instead. One answer
@@ -511,10 +523,10 @@ export default function Home() {
       </section>
 
       {/* WHAT OUR CLIENTS SAY */}
-      {/* The client logo strip used to be its own band at position 2. It is
-          here now, with the quotes — marks and words are the same argument
-          and the page was making it twice. The trade: the logos no longer
-          sit straight under the hero as early credibility. Reversible.
+      {/* Quotes only. The logo strip was folded in here during the reorder
+          and has gone back to its own band under the hero, so this section
+          no longer carries the marks — the heading and the lede both moved
+          off them accordingly.
 
           Four quotes is what exists. Anonymised to a role and a market, no
           figures, no client named — the form a hiring team will actually
@@ -524,11 +536,15 @@ export default function Home() {
           <div className="prf-head">
             <div>
               <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Clients</div>
-              <h2 className="prf-h2 gs">Who we <em>hire for.</em></h2>
+              {/* Was "Who we hire for" — which named the logo strip. That
+                  has gone back under the hero, so the heading names what is
+                  actually left in this band. */}
+              <h2 className="prf-h2 gs">What clients <em>say.</em></h2>
             </div>
-            <p className="prf-lede gs">Every mark below is a client. Every quote is from someone who ran a search with us and agreed to be quoted — by role and market, not by name.</p>
+            {/* Opened "Every mark below is a client." There are no marks
+                below it any more. */}
+            <p className="prf-lede gs">Every quote is from someone who ran a search with us and agreed to be quoted — by role and market, not by name.</p>
           </div>
-          <div className="prf-marks gs"><LogoMarquee /></div>
           <div className="prf-grid">
             {testimonials.map((t) => (
               <figure className="prf-card gs" key={t.name}>
