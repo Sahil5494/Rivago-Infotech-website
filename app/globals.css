@@ -477,38 +477,59 @@ a{color:inherit;text-decoration:none}
 /* A statement band. The sphere, its halo, its three pulse rings and its
    drop shadow are gone with it — see the note in page.tsx. */
 /* ── THE PROBLEM ──
-   Rows rather than cards: the title sits in a fixed left track and the
-   description in a fluid right one, so the reading measure stays around 70
-   characters at 1200px instead of running the full width. Nothing else on
-   this page uses a two-track row, which is most of why this section reads as
-   its own thing rather than a fifth set of cards. */
+   Two panels: a diagram on the left, the argument on the right, with the
+   turn full width beneath both. The rows are a plain hairline-divided list —
+   title then body, no icons, no cards, no fills — which is the whole of the
+   reference's typographic system and the reason the section reads quickly.
+
+   The two-track row (title left, description right) is gone with the
+   single-column layout: at roughly 620px there is no room for two tracks,
+   and stacking is what the reference does anyway. */
 .prob-sec{padding:110px 44px;background:var(--bg)}
 .prob-inner{max-width:1200px;margin:0 auto}
-.prob-lede{font-size:var(--fz7);color:var(--text2);line-height:1.72;font-weight:400;max-width:560px}
-/* 88, not 48. The reference leaves roughly 228px between its headline block
-   and the first row; 48 put the list almost against the lede and lost the
-   pause the layout depends on. */
-.prob-list{list-style:none;margin:88px 0 0;padding:0;border-bottom:1px solid var(--border)}
-/* 440, not 340. Three of the four headlines measured 356-425px natural and
-   wrapped to two lines in a 340 track, which makes a headline read as bold
-   body copy. The description track loses nothing by it — .prob-d is capped
-   at 64ch and was never using its full width. */
-.prob-row{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:48px;
-  padding:30px 0;border-top:1px solid var(--border);align-items:start}
-.prob-t{font-size:var(--fz8);font-weight:500;color:var(--text);letter-spacing:-.015em;line-height:1.32;margin:0;text-wrap:balance}
-.prob-d{font-size:var(--fz5);color:var(--text2);line-height:1.75;font-weight:400;margin:0;max-width:64ch}
-/* The turn. Same two-track grid as the rows, so the shape carries over,
-   but inverted: .inv redefines the token set, so --text and --rule-1 resolve
-   to their dark-ground values and every child follows without a change. The
-   background has to be set here because .inv only redefines tokens; it does
-   not paint. */
-.prob-turn{margin-top:52px;background:var(--surface-2);border:1px solid var(--rule-1);border-radius:22px;
+/* No align-items:start. The visual column has to stretch to the row height
+   or the sticky figure inside it has no distance to travel. */
+.prob-grid{display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);gap:76px}
+
+/* Sticky so the diagram stays beside the list instead of scrolling away from
+   the argument it illustrates. 112px clears the fixed header. */
+.prob-vis{min-width:0}
+.prob-vis-stick{margin:0;position:sticky;top:112px}
+/* Square, and sharp-cornered on purpose — every other block on this page is
+   a rounded card, so the one technical drawing reads as a different kind of
+   object. */
+.prob-vis-frame{aspect-ratio:1;border:1px solid var(--border);background:var(--surface);display:flex;padding:26px}
+.prob-vis figcaption{margin-top:16px;font-family:var(--fm);font-size:var(--fz1);letter-spacing:.05em;color:var(--text3)}
+
+/* Scoped to .prob-sec so it outranks .section-h2, which is a single class
+   defined later in this file and was winning on source order — the headline
+   rendered at 44px with a 52px bottom margin instead of these. At 44px in a
+   607px column it ran to three lines. */
+.prob-sec .prob-h2{font-size:var(--fz12);color:var(--text);letter-spacing:-.028em;line-height:1.14;margin:0 0 16px;text-wrap:balance}
+.prob-lede{font-size:var(--fz7);color:var(--text2);line-height:1.72;font-weight:400}
+
+.prob-list{list-style:none;margin:52px 0 0;padding:0;border-bottom:1px solid var(--border)}
+.prob-row{padding:26px 0;border-top:1px solid var(--border)}
+.prob-t{font-size:var(--fz7);font-weight:500;color:var(--text);letter-spacing:-.012em;line-height:1.34;margin:0 0 8px;text-wrap:balance}
+.prob-d{font-size:var(--fz4);color:var(--text2);line-height:1.72;font-weight:400;margin:0}
+
+/* The turn. Full width under both panels, and inverted: .inv redefines the
+   token set, so --text and --rule-1 resolve to their dark-ground values and
+   every child follows. The background has to be set here because .inv only
+   redefines tokens; it does not paint. */
+.prob-turn{margin-top:56px;background:var(--surface-2);border:1px solid var(--rule-1);border-radius:22px;
   padding:42px 46px;display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:48px;align-items:start}
 .prob-turn-k{font-family:var(--fm);font-size:var(--fz1);letter-spacing:.07em;text-transform:uppercase;color:var(--accent);padding-top:5px}
 .prob-turn-d{font-size:var(--fz6);color:var(--text);line-height:1.75;font-weight:400;margin:0;max-width:68ch}
-@media(max-width:820px){
-  .prob-row{grid-template-columns:1fr;gap:10px;padding:26px 0}
-  .prob-turn{grid-template-columns:1fr;gap:18px;padding:32px 26px;margin-top:40px}
+
+@media(max-width:900px){
+  /* The diagram is a supporting illustration, not content: the section makes
+     its whole argument in text. Stacked, a square frame costs ~350px of
+     scroll before the reader reaches a single word, so it comes out below
+     this width rather than being shrunk into illegibility. */
+  .prob-grid{grid-template-columns:1fr;gap:0}
+  .prob-vis{display:none}
+  .prob-turn{grid-template-columns:1fr;gap:18px;padding:32px 26px;margin-top:44px}
 }
 
 /* ── WHAT WE DO ──

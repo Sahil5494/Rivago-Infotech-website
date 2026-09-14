@@ -8,6 +8,7 @@ import IndustryRail from "@/components/IndustryRail";
 import Faq from "@/components/Faq";
 import WhyCards from "@/components/WhyCards";
 import InsightsGrid from "@/components/InsightsGrid";
+import ProblemDiagram from "@/components/ProblemDiagram";
 /* servicesList and industriesList both dropped from this import: the services
    carousel and the industry rail each read the data themselves. lib/routes.ts
    still exports both — /about counts them and the nav mega-menu reads them.
@@ -212,26 +213,45 @@ export default function Home() {
           the industry, not statistics about Rivago's clients. */}
       <section className="prob-sec">
         <div className="prob-inner">
-          <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>The problem</div>
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 700, marginBottom: 16 }}>Four ways a search goes wrong,<br /><em>and the one reason underneath.</em></h2>
-          <p className="prob-lede gs">Not one of them is about the candidates.</p>
-          <ul className="prob-list">
-            {[
-              { t: "The scorecard came after the first shortlist", d: "Sourcing starts from the job description, because that is the document that exists. Nobody has agreed yet whether a VP Engineering hire needs to have scaled a platform team or built one from nothing. The first shortlist is how you find out." },
-              { t: "Pitched senior, staffed junior", d: "You are handed to a delivery team after signature. By week three you are explaining your hiring bar again, to someone who was not on the intake call." },
-              { t: "Four agencies, the same six candidates", d: "Four firms working the same role on contingency all submit fast, and the same names reach you from three directions. Screening properly means one conversation per candidate — comp expectations, notice period, right to work, whether they would genuinely move for this role. Nobody in a race makes that call." },
-              { t: "Three weeks, no written update", d: "A search that is genuinely hard and a search nobody has touched since kickoff look the same from your side of it." },
-            ].map((r) => (
-              <li className="prob-row gs" key={r.t}>
-                <h3 className="prob-t">{r.t}</h3>
-                <p className="prob-d">{r.d}</p>
-              </li>
-            ))}
-          </ul>
+          {/* Two panels: the diagram on the left, the argument on the right.
+              The turn sits below both, full width, so it still reads as the
+              section changing sides rather than as a fifth item in the
+              right-hand column. */}
+          <div className="prob-grid">
+            {/* The grid item stretches to the row height; the figure inside
+                it is what sticks. Sticky on the item itself does nothing —
+                an item that is already as tall as its container has nowhere
+                to travel. */}
+            <div className="prob-vis">
+              <figure className="prob-vis-stick">
+                <div className="prob-vis-frame"><ProblemDiagram /></div>
+                <figcaption>Four agencies, one brief, no owner.</figcaption>
+              </figure>
+            </div>
 
-          {/* The turn. Same two-track rhythm as the rows above, inverted —
-              dark is the page's language for the offer, so flipping here is
-              what marks the section changing sides. */}
+            <div className="prob-main">
+              <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>The problem</div>
+              {/* No <br /> here any more. In a half-width column a forced
+                  break turned two lines into four; the headline wraps on its
+                  own now, balanced. */}
+              <h2 className="section-h2 prob-h2 gs">Four ways a search goes wrong, and the one reason underneath.</h2>
+              <p className="prob-lede gs">Not one of them is about the candidates.</p>
+              <ul className="prob-list">
+                {[
+                  { t: "The scorecard came after the first shortlist", d: "Sourcing starts from the job description, because that is the document that exists. Nobody has agreed yet whether a VP Engineering hire needs to have scaled a platform team or built one from nothing. The first shortlist is how you find out." },
+                  { t: "Pitched senior, staffed junior", d: "You are handed to a delivery team after signature. By week three you are explaining your hiring bar again, to someone who was not on the intake call." },
+                  { t: "Four agencies, the same six candidates", d: "Four firms working the same role on contingency all submit fast, and the same names reach you from three directions. Screening properly means one conversation per candidate — comp expectations, notice period, right to work, whether they would genuinely move for this role. Nobody in a race makes that call." },
+                  { t: "Three weeks, no written update", d: "A search that is genuinely hard and a search nobody has touched since kickoff look the same from your side of it." },
+                ].map((r) => (
+                  <li className="prob-row gs" key={r.t}>
+                    <h3 className="prob-t">{r.t}</h3>
+                    <p className="prob-d">{r.d}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
           <div className="prob-turn inv gs">
             <div className="prob-turn-k">The reason underneath</div>
             <p className="prob-turn-d">None of this is bad luck. It is what happens when a search sits on a panel of four agencies and is owned by none of them. We take one brief, put one partner on it, and write down what was agreed on the intake call — the delivery date, the scorecard, and the part of the role we think will be hard to fill. The rest of this page is that, in detail.</p>
