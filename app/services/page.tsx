@@ -66,9 +66,14 @@ export default function ServicesPage() {
                 <p className="why-lead rv rv2">Most agencies sell volume and hand your role to a junior. We do the opposite — one senior partner owns the search end to end, sources the people who never apply, and puts the commitments that matter in writing before you sign.</p>
               </div>
               <div className="why-numsr rv rv2">
-                <div className="why-numr"><div className="v">48<sup>h</sup></div><h3>Median shortlist</h3><p>Signed brief to three calibrated finalists.</p></div>
-                <div className="why-numr"><div className="v">94<sup>%</sup></div><h3>Offer-accept rate</h3><p>Last 12 months, every level.</p></div>
-                <div className="why-numr"><div className="v">10</div><h3>Specialist practices</h3><p>Deep benches across every sector.</p></div>
+                {/* Was 48h median shortlist and a 94% offer-accept rate over
+                    "the last 12 months" — neither measured. The third read
+                    "10 specialist practices" and matched nothing on the site:
+                    this page carries nine sector rails and industriesList has
+                    eight. It is no longer a count. */}
+                <div className="why-numr"><div className="v t">A date in writing</div><h3>Agreed on the intake call</h3><p>Not a range, and not revised quietly if it slips.</p></div>
+                <div className="why-numr"><div className="v t">One partner</div><h3>Brief to placement</h3><p>Whoever takes the brief runs the search.</p></div>
+                <div className="why-numr"><div className="v t">Every sector</div><h3>Specialist practices</h3><p>A named lead in each market we cover.</p></div>
                 <div className="why-numr"><div className="v">4</div><h3>Countries covered</h3><p>US, Canada, the UAE and India.</p></div>
               </div>
             </div>
@@ -91,14 +96,14 @@ export default function ServicesPage() {
                 <div className="eng-num">01</div>
                 <h3>Direct hire</h3>
                 <p>Permanent placements across every function and level. Pay only on a hire that sticks past the guarantee window — fast, low-risk, no retainer.</p>
-                <ul className="eng-list"><li><svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6l4 4L13 1" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>48-hour median shortlist</li><li><svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6l4 4L13 1" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>90-day replacement guarantee</li><li><svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6l4 4L13 1" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>No upfront fee</li></ul>
+                <ul className="eng-list"><li><svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6l4 4L13 1" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>Delivery date agreed in writing</li><li><svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6l4 4L13 1" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>90-day replacement guarantee</li><li><svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6l4 4L13 1" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>No upfront fee</li></ul>
               </div>
               <div className="eng-card feat lt rv rv2">
                 <span className="eng-tag">Most popular</span>
                 <div className="eng-num">02</div>
                 <h3>Contract &amp; contract-to-hire</h3>
                 <p>Skilled professionals on flexible terms — scale up, trial before you commit, or convert to permanent. We run payroll and compliance.</p>
-                <ul className="eng-list"><li><svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6l4 4L13 1" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>Talent in 5–7 days</li><li><svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6l4 4L13 1" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>Payroll &amp; compliance handled</li><li><svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6l4 4L13 1" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>Convert to permanent anytime</li></ul>
+                <ul className="eng-list"><li><svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6l4 4L13 1" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>A date agreed upfront</li><li><svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6l4 4L13 1" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>Payroll &amp; compliance handled</li><li><svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6l4 4L13 1" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>Convert to permanent anytime</li></ul>
               </div>
               <div className="eng-card rv rv3">
                 <div className="eng-num">03</div>
@@ -117,22 +122,22 @@ export default function ServicesPage() {
             <p className="rls-lead rv rv2">Pick a domain. Every partner runs one practice and has placed inside it for years — so they know the titles, the org charts and the people who never apply through a portal. Here is a sample of the roles we fill, and what it looks like when we do.</p>
             <div className="rls-tabs rv rv2"><button className="rls-tab on" data-rls="tech">Technology</button><button className="rls-tab" data-rls="health">Healthcare</button><button className="rls-tab" data-rls="legal">Legal</button><button className="rls-tab" data-rls="fin">Finance</button><button className="rls-tab" data-rls="aero">Aerospace & Defence</button><button className="rls-tab" data-rls="telecom">Telecom</button><button className="rls-tab" data-rls="auto">Automotive</button><button className="rls-tab" data-rls="supply">Supply & Operations</button><button className="rls-tab" data-rls="sales">Sales & Marketing</button></div>
             <div className="rls-panel on" data-rls-panel="tech">
-              <div className="rls-head"><h3>Technology</h3><span className="cnt">Typical roles · last 90 days</span></div>
+              <div className="rls-head"><h3>Technology</h3><span className="cnt">Roles we fill in this sector</span></div>
               <p style={{fontSize: "var(--fz6)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>AI, data and platform engineering talent — from ML and LLM engineers to the leaders who build the teams around them — across cloud-native and enterprise stacks.</p>
               <div className="rls-ind">
                 <div>
-                  <div className="rls-illabel">Typical roles · last 90 days</div>
+                  <div className="rls-illabel">Roles we fill in this sector</div>
                   <div className="rls-irlist">
-                    <div className="rls-ir"><span className="nm">VP of AI / ML Engineering</span><span className="ct">8 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Principal Software Architect</span><span className="ct">11 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Senior Data Engineer</span><span className="ct">28 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Senior Java Engineer</span><span className="ct">26 placements</span></div>
-                    <div className="rls-ir"><span className="nm">AI / LLM Engineer</span><span className="ct">22 placements</span></div>
-                    <div className="rls-ir"><span className="nm">MLOps / Platform Engineer</span><span className="ct">19 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Data Scientist</span><span className="ct">31 placements</span></div>
-                    <div className="rls-ir"><span className="nm">GCP AI Engineer</span><span className="ct">20 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Java Microservices Engineer</span><span className="ct">34 placements</span></div>
-                    <div className="rls-ir"><span className="nm">React / Frontend Engineer</span><span className="ct">38 placements</span></div>
+                    <div className="rls-ir"><span className="nm">VP of AI / ML Engineering</span></div>
+                    <div className="rls-ir"><span className="nm">Principal Software Architect</span></div>
+                    <div className="rls-ir"><span className="nm">Senior Data Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">Senior Java Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">AI / LLM Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">MLOps / Platform Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">Data Scientist</span></div>
+                    <div className="rls-ir"><span className="nm">GCP AI Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">Java Microservices Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">React / Frontend Engineer</span></div>
                   </div>
                 </div>
                 <div className="rls-panelR">
@@ -142,38 +147,31 @@ export default function ServicesPage() {
                     <div className="rls-ministory-by"><div className="rls-ministory-av">RP</div><div><div className="rls-ministory-n">VP of AI / ML Engineering</div><div className="rls-ministory-r">Series-C SaaS · United States</div></div></div>
                   </div>
                   <div className="rls-statgrid">
-                    <div className="rls-stat"><div className="v">312</div><div className="l">Active technology mandates this quarter</div></div>
-                    <div className="rls-stat"><div className="v">38<span className="u">%</span></div><div className="l">Outreach reply rate (versus 9% industry baseline)</div></div>
-                    <div className="rls-stat"><div className="v">18<span className="u">days</span></div><div className="l">Median time-to-shortlist for VP-level engineering</div></div>
-                    <div className="rls-stat"><div className="v">97<span className="u">%</span></div><div className="l">90-day retention on technology placements</div></div>
-                  </div>
-                  <div className="rls-sample">
-                    <div>
-                      <div className="rls-sample-h">Recent placement</div>
-                      <div className="rls-sample-line">VP of AI / ML Engineering at a Series C SaaS</div>
-                      <div className="rls-sample-sub">Delaware · 22 days brief-to-offer · $345K base + 0.3% equity</div>
-                    </div>
+                    <div className="rls-stat"><div className="v t">Scorecard first</div><div className="l">Agreed before a single approach is made</div></div>
+                    <div className="rls-stat"><div className="v t">Passive-first</div><div className="l">Most of this market is not on a job board</div></div>
+                    <div className="rls-stat"><div className="v t">Screened on the stack</div><div className="l">Not on the keywords in a CV</div></div>
+                    <div className="rls-stat"><div className="v t">One partner</div><div className="l">Whoever took the brief runs the search</div></div>
                   </div>
                 </div>
               </div>
             </div>
               <div className="rls-panel" data-rls-panel="health">
-              <div className="rls-head"><h3>Healthcare</h3><span className="cnt">Typical roles · last 90 days</span></div>
+              <div className="rls-head"><h3>Healthcare</h3><span className="cnt">Roles we fill in this sector</span></div>
               <p style={{fontSize: "var(--fz6)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>Provider, payer and life-sciences senior hires — clinical, regulatory and quality leaders, held to the highest credential bar in the firm.</p>
               <div className="rls-ind">
                 <div>
-                  <div className="rls-illabel">Typical roles · last 90 days</div>
+                  <div className="rls-illabel">Roles we fill in this sector</div>
                   <div className="rls-irlist">
-                    <div className="rls-ir"><span className="nm">Chief Medical Officer</span><span className="ct">6 placements</span></div>
-                    <div className="rls-ir"><span className="nm">VP of Clinical Development</span><span className="ct">5 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Director of Clinical Operations</span><span className="ct">18 placements</span></div>
-                    <div className="rls-ir"><span className="nm">VP of Regulatory Affairs</span><span className="ct">11 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Director of Medical Affairs</span><span className="ct">10 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Head of Quality & 510(k)</span><span className="ct">9 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Clinical Research Associate</span><span className="ct">34 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Pharmacovigilance Manager</span><span className="ct">14 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Biostatistician</span><span className="ct">16 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Medical Science Liaison</span><span className="ct">21 placements</span></div>
+                    <div className="rls-ir"><span className="nm">Chief Medical Officer</span></div>
+                    <div className="rls-ir"><span className="nm">VP of Clinical Development</span></div>
+                    <div className="rls-ir"><span className="nm">Director of Clinical Operations</span></div>
+                    <div className="rls-ir"><span className="nm">VP of Regulatory Affairs</span></div>
+                    <div className="rls-ir"><span className="nm">Director of Medical Affairs</span></div>
+                    <div className="rls-ir"><span className="nm">Head of Quality & 510(k)</span></div>
+                    <div className="rls-ir"><span className="nm">Clinical Research Associate</span></div>
+                    <div className="rls-ir"><span className="nm">Pharmacovigilance Manager</span></div>
+                    <div className="rls-ir"><span className="nm">Biostatistician</span></div>
+                    <div className="rls-ir"><span className="nm">Medical Science Liaison</span></div>
                   </div>
                 </div>
                 <div className="rls-panelR">
@@ -183,38 +181,31 @@ export default function ServicesPage() {
                     <div className="rls-ministory-by"><div className="rls-ministory-av">AL</div><div><div className="rls-ministory-n">Chief Medical Officer</div><div className="rls-ministory-r">Clinical-stage biotech · US</div></div></div>
                   </div>
                   <div className="rls-statgrid">
-                    <div className="rls-stat"><div className="v">184</div><div className="l">Active healthcare mandates this quarter</div></div>
-                    <div className="rls-stat"><div className="v">24<span className="u">days</span></div><div className="l">Median time-to-shortlist for clinical leadership</div></div>
-                    <div className="rls-stat"><div className="v">100<span className="u">%</span></div><div className="l">Of clinical placements pre-credentialed at submission</div></div>
-                    <div className="rls-stat"><div className="v">94<span className="u">%</span></div><div className="l">12-month retention on physician-leader placements</div></div>
-                  </div>
-                  <div className="rls-sample">
-                    <div>
-                      <div className="rls-sample-h">Recent placement</div>
-                      <div className="rls-sample-line">Director of Clinical Operations · UAE hospital network</div>
-                      <div className="rls-sample-sub">Dubai · 31 days · pre-cleared for DHA licensure</div>
-                    </div>
+                    <div className="rls-stat"><div className="v t">Licensure verified</div><div className="l">Checked before a candidate reaches you</div></div>
+                    <div className="rls-stat"><div className="v t">Scope confirmed</div><div className="l">Clinical remit agreed, never assumed</div></div>
+                    <div className="rls-stat"><div className="v t">Scorecard first</div><div className="l">Signed off by the hiring panel</div></div>
+                    <div className="rls-stat"><div className="v t">Replacement guarantee</div><div className="l">Terms agreed upfront, in writing</div></div>
                   </div>
                 </div>
               </div>
             </div>
               <div className="rls-panel" data-rls-panel="legal">
-              <div className="rls-head"><h3>Legal</h3><span className="cnt">Typical roles · last 90 days</span></div>
+              <div className="rls-head"><h3>Legal</h3><span className="cnt">Roles we fill in this sector</span></div>
               <p style={{fontSize: "var(--fz6)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>First-GC searches, deputy succession and lateral hires for in-house teams scaling across jurisdictions.</p>
               <div className="rls-ind">
                 <div>
-                  <div className="rls-illabel">Typical roles · last 90 days</div>
+                  <div className="rls-illabel">Roles we fill in this sector</div>
                   <div className="rls-irlist">
-                    <div className="rls-ir"><span className="nm">General Counsel</span><span className="ct">8 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Deputy General Counsel</span><span className="ct">6 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Compliance Director</span><span className="ct">12 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Head of Commercial / Privacy</span><span className="ct">15 placements</span></div>
-                    <div className="rls-ir"><span className="nm">IP / Patent Counsel</span><span className="ct">6 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Regulatory Counsel</span><span className="ct">8 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Corporate Counsel</span><span className="ct">24 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Contracts Manager</span><span className="ct">22 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Data Privacy Counsel</span><span className="ct">13 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Employment Counsel</span><span className="ct">11 placements</span></div>
+                    <div className="rls-ir"><span className="nm">General Counsel</span></div>
+                    <div className="rls-ir"><span className="nm">Deputy General Counsel</span></div>
+                    <div className="rls-ir"><span className="nm">Compliance Director</span></div>
+                    <div className="rls-ir"><span className="nm">Head of Commercial / Privacy</span></div>
+                    <div className="rls-ir"><span className="nm">IP / Patent Counsel</span></div>
+                    <div className="rls-ir"><span className="nm">Regulatory Counsel</span></div>
+                    <div className="rls-ir"><span className="nm">Corporate Counsel</span></div>
+                    <div className="rls-ir"><span className="nm">Contracts Manager</span></div>
+                    <div className="rls-ir"><span className="nm">Data Privacy Counsel</span></div>
+                    <div className="rls-ir"><span className="nm">Employment Counsel</span></div>
                   </div>
                 </div>
                 <div className="rls-panelR">
@@ -224,38 +215,31 @@ export default function ServicesPage() {
                     <div className="rls-ministory-by"><div className="rls-ministory-av">SV</div><div><div className="rls-ministory-n">General Counsel</div><div className="rls-ministory-r">Fintech · US & UAE</div></div></div>
                   </div>
                   <div className="rls-statgrid">
-                    <div className="rls-stat"><div className="v">92</div><div className="l">Active legal mandates this quarter</div></div>
-                    <div className="rls-stat"><div className="v">100<span className="u">%</span></div><div className="l">Of finalists licensed in the operating jurisdiction</div></div>
-                    <div className="rls-stat"><div className="v">29<span className="u">days</span></div><div className="l">Median time-to-shortlist for GC searches</div></div>
-                    <div className="rls-stat"><div className="v">96<span className="u">%</span></div><div className="l">12-month retention on GC placements</div></div>
-                  </div>
-                  <div className="rls-sample">
-                    <div>
-                      <div className="rls-sample-h">Recent placement</div>
-                      <div className="rls-sample-line">General Counsel · pre-IPO fintech</div>
-                      <div className="rls-sample-sub">Delaware · 38 days · $420K base + 0.5% equity</div>
-                    </div>
+                    <div className="rls-stat"><div className="v t">Jurisdiction checked</div><div className="l">Admission confirmed where the role sits</div></div>
+                    <div className="rls-stat"><div className="v t">Conflicts raised early</div><div className="l">Before an approach, not after an offer</div></div>
+                    <div className="rls-stat"><div className="v t">Board-level brief</div><div className="l">Taken with the GC or the board itself</div></div>
+                    <div className="rls-stat"><div className="v t">One partner</div><div className="l">No handoff after signature</div></div>
                   </div>
                 </div>
               </div>
             </div>
               <div className="rls-panel" data-rls-panel="fin">
-              <div className="rls-head"><h3>Finance</h3><span className="cnt">Typical roles · last 90 days</span></div>
+              <div className="rls-head"><h3>Finance</h3><span className="cnt">Roles we fill in this sector</span></div>
               <p style={{fontSize: "var(--fz6)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>CFO succession, treasury, FP&A and the long bench beneath — in markets where we know the comp committees by name.</p>
               <div className="rls-ind">
                 <div>
-                  <div className="rls-illabel">Typical roles · last 90 days</div>
+                  <div className="rls-illabel">Roles we fill in this sector</div>
                   <div className="rls-irlist">
-                    <div className="rls-ir"><span className="nm">Chief Financial Officer</span><span className="ct">9 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Head of Treasury</span><span className="ct">7 placements</span></div>
-                    <div className="rls-ir"><span className="nm">VP of FP&A</span><span className="ct">20 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Head of Risk & Compliance</span><span className="ct">18 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Tax Director</span><span className="ct">11 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Director of Internal Audit</span><span className="ct">12 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Financial Controller</span><span className="ct">28 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Head of Financial Reporting</span><span className="ct">15 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Fund / Portfolio Accountant</span><span className="ct">30 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Quant Analyst</span><span className="ct">16 placements</span></div>
+                    <div className="rls-ir"><span className="nm">Chief Financial Officer</span></div>
+                    <div className="rls-ir"><span className="nm">Head of Treasury</span></div>
+                    <div className="rls-ir"><span className="nm">VP of FP&A</span></div>
+                    <div className="rls-ir"><span className="nm">Head of Risk & Compliance</span></div>
+                    <div className="rls-ir"><span className="nm">Tax Director</span></div>
+                    <div className="rls-ir"><span className="nm">Director of Internal Audit</span></div>
+                    <div className="rls-ir"><span className="nm">Financial Controller</span></div>
+                    <div className="rls-ir"><span className="nm">Head of Financial Reporting</span></div>
+                    <div className="rls-ir"><span className="nm">Fund / Portfolio Accountant</span></div>
+                    <div className="rls-ir"><span className="nm">Quant Analyst</span></div>
                   </div>
                 </div>
                 <div className="rls-panelR">
@@ -265,38 +249,31 @@ export default function ServicesPage() {
                     <div className="rls-ministory-by"><div className="rls-ministory-av">MS</div><div><div className="rls-ministory-n">Head of Talent</div><div className="rls-ministory-r">Global bank · Delaware</div></div></div>
                   </div>
                   <div className="rls-statgrid">
-                    <div className="rls-stat"><div className="v">228</div><div className="l">Active finance mandates this quarter</div></div>
-                    <div className="rls-stat"><div className="v">19<span className="u">days</span></div><div className="l">Median time-to-shortlist for finance leadership</div></div>
-                    <div className="rls-stat"><div className="v">11<span className="u">%</span></div><div className="l">Counter-offer recovery rate (vs. 28% baseline)</div></div>
-                    <div className="rls-stat"><div className="v">92<span className="u">%</span></div><div className="l">12-month retention on CFO placements</div></div>
-                  </div>
-                  <div className="rls-sample">
-                    <div>
-                      <div className="rls-sample-h">Recent placement</div>
-                      <div className="rls-sample-line">Head of Risk & Compliance · Tier-1 Canadian bank</div>
-                      <div className="rls-sample-sub">Ontario · 27 days · CAD 295K + deferred</div>
-                    </div>
+                    <div className="rls-stat"><div className="v t">Regulator-ready</div><div className="l">Screened for the approvals the role needs</div></div>
+                    <div className="rls-stat"><div className="v t">Counter-offer planned</div><div className="l">Discussed before the offer goes out</div></div>
+                    <div className="rls-stat"><div className="v t">Committee-aligned</div><div className="l">The brief agreed with everyone who signs off</div></div>
+                    <div className="rls-stat"><div className="v t">A date in writing</div><div className="l">Agreed on the intake call</div></div>
                   </div>
                 </div>
               </div>
             </div>
               <div className="rls-panel" data-rls-panel="aero">
-              <div className="rls-head"><h3>Aerospace & Defence</h3><span className="cnt">Typical roles · last 90 days</span></div>
+              <div className="rls-head"><h3>Aerospace & Defence</h3><span className="cnt">Roles we fill in this sector</span></div>
               <p style={{fontSize: "var(--fz6)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>Tier-1 OEMs, defence primes and the supplier ecosystem beneath — cleared talent pre-vetted through Rivago’s cleared-talent program.</p>
               <div className="rls-ind">
                 <div>
-                  <div className="rls-illabel">Typical roles · last 90 days</div>
+                  <div className="rls-illabel">Roles we fill in this sector</div>
                   <div className="rls-irlist">
-                    <div className="rls-ir"><span className="nm">Director of Manufacturing</span><span className="ct">5 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Director, Cleared Cybersecurity</span><span className="ct">6 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Principal Systems Engineer</span><span className="ct">11 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Programme Manager (Cleared)</span><span className="ct">9 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Quality / AS9100 Manager</span><span className="ct">10 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Head of FAR/AR & Compliance</span><span className="ct">4 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Avionics Engineer</span><span className="ct">16 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Stress / Structures Engineer</span><span className="ct">14 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Propulsion Engineer</span><span className="ct">8 placements</span></div>
-                    <div className="rls-ir"><span className="nm">RF / Radar Systems Engineer</span><span className="ct">9 placements</span></div>
+                    <div className="rls-ir"><span className="nm">Director of Manufacturing</span></div>
+                    <div className="rls-ir"><span className="nm">Director, Cleared Cybersecurity</span></div>
+                    <div className="rls-ir"><span className="nm">Principal Systems Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">Programme Manager (Cleared)</span></div>
+                    <div className="rls-ir"><span className="nm">Quality / AS9100 Manager</span></div>
+                    <div className="rls-ir"><span className="nm">Head of FAR/AR & Compliance</span></div>
+                    <div className="rls-ir"><span className="nm">Avionics Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">Stress / Structures Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">Propulsion Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">RF / Radar Systems Engineer</span></div>
                   </div>
                 </div>
                 <div className="rls-panelR">
@@ -306,38 +283,31 @@ export default function ServicesPage() {
                     <div className="rls-ministory-by"><div className="rls-ministory-av">JT</div><div><div className="rls-ministory-n">Programme Director</div><div className="rls-ministory-r">Defence prime · US</div></div></div>
                   </div>
                   <div className="rls-statgrid">
-                    <div className="rls-stat"><div className="v">74</div><div className="l">Active aerospace mandates this quarter</div></div>
-                    <div className="rls-stat"><div className="v">80<span className="u">%</span></div><div className="l">Of finalists with active TS/SCI at submission</div></div>
-                    <div className="rls-stat"><div className="v">42<span className="u">days</span></div><div className="l">Median time-to-shortlist (clearance constraints)</div></div>
-                    <div className="rls-stat"><div className="v">100<span className="u">%</span></div><div className="l">Of placements pre-vetted via cleared program</div></div>
-                  </div>
-                  <div className="rls-sample">
-                    <div>
-                      <div className="rls-sample-h">Recent placement</div>
-                      <div className="rls-sample-line">Director of Aerospace Manufacturing · tier-1 supplier</div>
-                      <div className="rls-sample-sub">Delaware · 49 days · $260K + relocation</div>
-                    </div>
+                    <div className="rls-stat"><div className="v t">Clearance confirmed</div><div className="l">Status verified before submission</div></div>
+                    <div className="rls-stat"><div className="v t">Export control</div><div className="l">ITAR and EAR eligibility checked upfront</div></div>
+                    <div className="rls-stat"><div className="v t">Programme context</div><div className="l">Screened on the programme, not the title</div></div>
+                    <div className="rls-stat"><div className="v t">A date in writing</div><div className="l">With clearance realities built into it</div></div>
                   </div>
                 </div>
               </div>
             </div>
               <div className="rls-panel" data-rls-panel="telecom">
-              <div className="rls-head"><h3>Telecom</h3><span className="cnt">Typical roles · last 90 days</span></div>
+              <div className="rls-head"><h3>Telecom</h3><span className="cnt">Roles we fill in this sector</span></div>
               <p style={{fontSize: "var(--fz6)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>5G core, fibre rollout and MSO leadership — staffed on both the operator and supplier side, with pricing intelligence across the table.</p>
               <div className="rls-ind">
                 <div>
-                  <div className="rls-illabel">Typical roles · last 90 days</div>
+                  <div className="rls-illabel">Roles we fill in this sector</div>
                   <div className="rls-irlist">
-                    <div className="rls-ir"><span className="nm">VP of Network Operations</span><span className="ct">5 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Head of 5G Core Engineering</span><span className="ct">4 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Principal Network Architect</span><span className="ct">9 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Director, Field Operations</span><span className="ct">11 placements</span></div>
-                    <div className="rls-ir"><span className="nm">SDN / NFV Engineer</span><span className="ct">8 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Telecom Product Manager</span><span className="ct">9 placements</span></div>
-                    <div className="rls-ir"><span className="nm">RF Engineer</span><span className="ct">22 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Core Network Engineer</span><span className="ct">16 placements</span></div>
-                    <div className="rls-ir"><span className="nm">OSS / BSS Specialist</span><span className="ct">13 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Transport / Backhaul Engineer</span><span className="ct">12 placements</span></div>
+                    <div className="rls-ir"><span className="nm">VP of Network Operations</span></div>
+                    <div className="rls-ir"><span className="nm">Head of 5G Core Engineering</span></div>
+                    <div className="rls-ir"><span className="nm">Principal Network Architect</span></div>
+                    <div className="rls-ir"><span className="nm">Director, Field Operations</span></div>
+                    <div className="rls-ir"><span className="nm">SDN / NFV Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">Telecom Product Manager</span></div>
+                    <div className="rls-ir"><span className="nm">RF Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">Core Network Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">OSS / BSS Specialist</span></div>
+                    <div className="rls-ir"><span className="nm">Transport / Backhaul Engineer</span></div>
                   </div>
                 </div>
                 <div className="rls-panelR">
@@ -347,38 +317,31 @@ export default function ServicesPage() {
                     <div className="rls-ministory-by"><div className="rls-ministory-av">RN</div><div><div className="rls-ministory-n">VP Network</div><div className="rls-ministory-r">Telecom operator · UAE</div></div></div>
                   </div>
                   <div className="rls-statgrid">
-                    <div className="rls-stat"><div className="v">86</div><div className="l">Active telecom mandates this quarter</div></div>
-                    <div className="rls-stat"><div className="v">23<span className="u">days</span></div><div className="l">Median time-to-shortlist for network leadership</div></div>
-                    <div className="rls-stat"><div className="v">14</div><div className="l">Active mandates across operator + supplier sides</div></div>
-                    <div className="rls-stat"><div className="v">88<span className="u">%</span></div><div className="l">12-month retention on telecom placements</div></div>
-                  </div>
-                  <div className="rls-sample">
-                    <div>
-                      <div className="rls-sample-h">Recent placement</div>
-                      <div className="rls-sample-line">Head of 5G Core Engineering · national operator</div>
-                      <div className="rls-sample-sub">Dubai · 34 days · $310K + relocation</div>
-                    </div>
+                    <div className="rls-stat"><div className="v t">Operator and vendor</div><div className="l">Both sides of the market covered</div></div>
+                    <div className="rls-stat"><div className="v t">Passive-first</div><div className="l">The strongest network leaders are not looking</div></div>
+                    <div className="rls-stat"><div className="v t">Scorecard first</div><div className="l">Agreed before sourcing starts</div></div>
+                    <div className="rls-stat"><div className="v t">One partner</div><div className="l">From brief to placement</div></div>
                   </div>
                 </div>
               </div>
             </div>
               <div className="rls-panel" data-rls-panel="auto">
-              <div className="rls-head"><h3>Automotive</h3><span className="cnt">Typical roles · last 90 days</span></div>
+              <div className="rls-head"><h3>Automotive</h3><span className="cnt">Roles we fill in this sector</span></div>
               <p style={{fontSize: "var(--fz6)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>OEM, tier-1 supplier and the new mobility entrants — battery, ADAS and software-defined vehicle talent, sourced before it hits the market.</p>
               <div className="rls-ind">
                 <div>
-                  <div className="rls-illabel">Typical roles · last 90 days</div>
+                  <div className="rls-illabel">Roles we fill in this sector</div>
                   <div className="rls-irlist">
-                    <div className="rls-ir"><span className="nm">VP of Software (SDV)</span><span className="ct">4 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Head of Battery Engineering</span><span className="ct">4 placements</span></div>
-                    <div className="rls-ir"><span className="nm">ADAS / Autonomy Engineer</span><span className="ct">12 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Functional Safety (ISO 26262) Lead</span><span className="ct">6 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Head of Supply Quality</span><span className="ct">8 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Plant / Production Manager</span><span className="ct">9 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Powertrain Engineer</span><span className="ct">15 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Embedded Systems Engineer</span><span className="ct">17 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Manufacturing Process Engineer</span><span className="ct">14 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Vehicle Integration Engineer</span><span className="ct">10 placements</span></div>
+                    <div className="rls-ir"><span className="nm">VP of Software (SDV)</span></div>
+                    <div className="rls-ir"><span className="nm">Head of Battery Engineering</span></div>
+                    <div className="rls-ir"><span className="nm">ADAS / Autonomy Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">Functional Safety (ISO 26262) Lead</span></div>
+                    <div className="rls-ir"><span className="nm">Head of Supply Quality</span></div>
+                    <div className="rls-ir"><span className="nm">Plant / Production Manager</span></div>
+                    <div className="rls-ir"><span className="nm">Powertrain Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">Embedded Systems Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">Manufacturing Process Engineer</span></div>
+                    <div className="rls-ir"><span className="nm">Vehicle Integration Engineer</span></div>
                   </div>
                 </div>
                 <div className="rls-panelR">
@@ -388,38 +351,31 @@ export default function ServicesPage() {
                     <div className="rls-ministory-by"><div className="rls-ministory-av">DM</div><div><div className="rls-ministory-n">Director of Ops</div><div className="rls-ministory-r">EV manufacturer · US</div></div></div>
                   </div>
                   <div className="rls-statgrid">
-                    <div className="rls-stat"><div className="v">62</div><div className="l">Active automotive mandates this quarter</div></div>
-                    <div className="rls-stat"><div className="v">28<span className="u">days</span></div><div className="l">Median time-to-shortlist (relocation-heavy)</div></div>
-                    <div className="rls-stat"><div className="v">3.4<span className="u">×</span></div><div className="l">Inbound interest per OEM mandate, last 90 days</div></div>
-                    <div className="rls-stat"><div className="v">89<span className="u">%</span></div><div className="l">12-month retention on automotive placements</div></div>
-                  </div>
-                  <div className="rls-sample">
-                    <div>
-                      <div className="rls-sample-h">Recent placement</div>
-                      <div className="rls-sample-line">Head of Battery Engineering · EV manufacturer</div>
-                      <div className="rls-sample-sub">Ontario · 41 days · CAD 320K + equity</div>
-                    </div>
+                    <div className="rls-stat"><div className="v t">Relocation handled</div><div className="l">Raised on the first call, not at offer</div></div>
+                    <div className="rls-stat"><div className="v t">OEM and supplier</div><div className="l">Both sides of the market covered</div></div>
+                    <div className="rls-stat"><div className="v t">Scorecard first</div><div className="l">Agreed before a single approach</div></div>
+                    <div className="rls-stat"><div className="v t">Replacement guarantee</div><div className="l">Terms agreed upfront, in writing</div></div>
                   </div>
                 </div>
               </div>
             </div>
               <div className="rls-panel" data-rls-panel="supply">
-              <div className="rls-head"><h3>Supply & Operations</h3><span className="cnt">Typical roles · last 90 days</span></div>
+              <div className="rls-head"><h3>Supply & Operations</h3><span className="cnt">Roles we fill in this sector</span></div>
               <p style={{fontSize: "var(--fz6)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>From distribution-centre leadership to global head-of-supply roles — the people who keep the operation moving when everything else is on fire.</p>
               <div className="rls-ind">
                 <div>
-                  <div className="rls-illabel">Typical roles · last 90 days</div>
+                  <div className="rls-illabel">Roles we fill in this sector</div>
                   <div className="rls-irlist">
-                    <div className="rls-ir"><span className="nm">Chief Operating Officer</span><span className="ct">6 placements</span></div>
-                    <div className="rls-ir"><span className="nm">VP of Supply Chain</span><span className="ct">11 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Director, S&OP</span><span className="ct">15 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Procurement Director</span><span className="ct">13 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Head of Distribution</span><span className="ct">11 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Continuous Improvement Lead</span><span className="ct">14 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Logistics Manager</span><span className="ct">24 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Demand Planning Analyst</span><span className="ct">18 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Warehouse / DC Manager</span><span className="ct">20 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Inventory / Materials Manager</span><span className="ct">17 placements</span></div>
+                    <div className="rls-ir"><span className="nm">Chief Operating Officer</span></div>
+                    <div className="rls-ir"><span className="nm">VP of Supply Chain</span></div>
+                    <div className="rls-ir"><span className="nm">Director, S&OP</span></div>
+                    <div className="rls-ir"><span className="nm">Procurement Director</span></div>
+                    <div className="rls-ir"><span className="nm">Head of Distribution</span></div>
+                    <div className="rls-ir"><span className="nm">Continuous Improvement Lead</span></div>
+                    <div className="rls-ir"><span className="nm">Logistics Manager</span></div>
+                    <div className="rls-ir"><span className="nm">Demand Planning Analyst</span></div>
+                    <div className="rls-ir"><span className="nm">Warehouse / DC Manager</span></div>
+                    <div className="rls-ir"><span className="nm">Inventory / Materials Manager</span></div>
                   </div>
                 </div>
                 <div className="rls-panelR">
@@ -429,38 +385,31 @@ export default function ServicesPage() {
                     <div className="rls-ministory-by"><div className="rls-ministory-av">HK</div><div><div className="rls-ministory-n">VP Operations</div><div className="rls-ministory-r">Manufacturer · UAE</div></div></div>
                   </div>
                   <div className="rls-statgrid">
-                    <div className="rls-stat"><div className="v">128</div><div className="l">Active supply & ops mandates this quarter</div></div>
-                    <div className="rls-stat"><div className="v">22<span className="u">days</span></div><div className="l">Median time-to-shortlist for VP-level supply</div></div>
-                    <div className="rls-stat"><div className="v">62<span className="u">%</span></div><div className="l">Of supply placements involve relocation</div></div>
-                    <div className="rls-stat"><div className="v">90<span className="u">%</span></div><div className="l">12-month retention on supply placements</div></div>
-                  </div>
-                  <div className="rls-sample">
-                    <div>
-                      <div className="rls-sample-h">Recent placement</div>
-                      <div className="rls-sample-line">VP of Supply Chain · industrial manufacturer</div>
-                      <div className="rls-sample-sub">Dubai · 26 days · $285K + bonus</div>
-                    </div>
+                    <div className="rls-stat"><div className="v t">Site-level detail</div><div className="l">Screened on the operation, not the org chart</div></div>
+                    <div className="rls-stat"><div className="v t">Relocation handled</div><div className="l">Raised before a shortlist is built</div></div>
+                    <div className="rls-stat"><div className="v t">Scorecard first</div><div className="l">Agreed with the operating lead</div></div>
+                    <div className="rls-stat"><div className="v t">A date in writing</div><div className="l">Agreed on the intake call</div></div>
                   </div>
                 </div>
               </div>
             </div>
               <div className="rls-panel" data-rls-panel="sales">
-              <div className="rls-head"><h3>Sales & Marketing</h3><span className="cnt">Typical roles · last 90 days</span></div>
+              <div className="rls-head"><h3>Sales & Marketing</h3><span className="cnt">Roles we fill in this sector</span></div>
               <p style={{fontSize: "var(--fz6)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400, maxWidth: "680px", marginBottom: "26px"}}>CRO succession, first-VP-of-marketing hires and demand-gen leadership — we know the OTE patterns and which “100% to plan” résumé actually beat the number.</p>
               <div className="rls-ind">
                 <div>
-                  <div className="rls-illabel">Typical roles · last 90 days</div>
+                  <div className="rls-illabel">Roles we fill in this sector</div>
                   <div className="rls-irlist">
-                    <div className="rls-ir"><span className="nm">Chief Revenue Officer</span><span className="ct">6 placements</span></div>
-                    <div className="rls-ir"><span className="nm">VP of Marketing</span><span className="ct">12 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Sales Director</span><span className="ct">17 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Head of Demand Gen</span><span className="ct">15 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Product Marketing Lead</span><span className="ct">15 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Head of Growth</span><span className="ct">9 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Enterprise Account Executive</span><span className="ct">38 placements</span></div>
-                    <div className="rls-ir"><span className="nm">RevOps Manager</span><span className="ct">16 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Brand / Content Manager</span><span className="ct">14 placements</span></div>
-                    <div className="rls-ir"><span className="nm">Field Marketing Manager</span><span className="ct">13 placements</span></div>
+                    <div className="rls-ir"><span className="nm">Chief Revenue Officer</span></div>
+                    <div className="rls-ir"><span className="nm">VP of Marketing</span></div>
+                    <div className="rls-ir"><span className="nm">Sales Director</span></div>
+                    <div className="rls-ir"><span className="nm">Head of Demand Gen</span></div>
+                    <div className="rls-ir"><span className="nm">Product Marketing Lead</span></div>
+                    <div className="rls-ir"><span className="nm">Head of Growth</span></div>
+                    <div className="rls-ir"><span className="nm">Enterprise Account Executive</span></div>
+                    <div className="rls-ir"><span className="nm">RevOps Manager</span></div>
+                    <div className="rls-ir"><span className="nm">Brand / Content Manager</span></div>
+                    <div className="rls-ir"><span className="nm">Field Marketing Manager</span></div>
                   </div>
                 </div>
                 <div className="rls-panelR">
@@ -470,17 +419,10 @@ export default function ServicesPage() {
                     <div className="rls-ministory-by"><div className="rls-ministory-av">DK</div><div><div className="rls-ministory-n">Chief Revenue Officer</div><div className="rls-ministory-r">Growth-stage scale-up · Canada</div></div></div>
                   </div>
                   <div className="rls-statgrid">
-                    <div className="rls-stat"><div className="v">204</div><div className="l">Active GTM mandates this quarter</div></div>
-                    <div className="rls-stat"><div className="v">17<span className="u">days</span></div><div className="l">Median time-to-shortlist for VP+ GTM roles</div></div>
-                    <div className="rls-stat"><div className="v">68<span className="u">%</span></div><div className="l">Of CRO finalists beat-plan in their last role</div></div>
-                    <div className="rls-stat"><div className="v">89<span className="u">%</span></div><div className="l">12-month retention on CRO placements</div></div>
-                  </div>
-                  <div className="rls-sample">
-                    <div>
-                      <div className="rls-sample-h">Recent placement</div>
-                      <div className="rls-sample-line">VP of Marketing · growth-stage SaaS</div>
-                      <div className="rls-sample-sub">Ontario · 24 days · CAD 265K + equity</div>
-                    </div>
+                    <div className="rls-stat"><div className="v t">Quota history checked</div><div className="l">In the conversation, not just the CV</div></div>
+                    <div className="rls-stat"><div className="v t">Passive-first</div><div className="l">The strongest sellers are not applying</div></div>
+                    <div className="rls-stat"><div className="v t">Board-level brief</div><div className="l">Taken with the CEO or the board</div></div>
+                    <div className="rls-stat"><div className="v t">One partner</div><div className="l">From brief to placement</div></div>
                   </div>
                 </div>
               </div>
@@ -638,7 +580,7 @@ export default function ServicesPage() {
             <h2 className="rv">The questions we get on<br />the <em>first call.</em></h2>
             <div className="faq-list">
               <div className="faq-item"><button className="faq-q">What’s the difference between contract, contract-to-hire, and direct hire staffing?<span className="faq-ico"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg></span></button><div className="faq-a"><div className="faq-a-inner">Contract staffing places a professional on our payroll for a fixed term — you get the skills without the headcount commitment, and we handle payroll, compliance and classification. Contract-to-hire is the same, with the option to convert the person to a permanent employee once they’ve proven the fit. Direct hire is a permanent placement from day one, sourced on a contingent fee and backed by a replacement guarantee. Not sure which fits? Your partner will recommend the right structure on the first call — no pressure to over-buy.</div></div></div>
-              <div className="faq-item"><button className="faq-q">How quickly can you get us qualified candidates?<span className="faq-ico"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg></span></button><div className="faq-a"><div className="faq-a-inner">For contract and temporary roles, we can put vetted professionals in front of you in 5–7 days. For direct-hire searches, three to five calibrated finalists typically land within 48 hours of a signed brief. Executive and cleared roles run longer because the bar is higher — but you’ll get a realistic date in writing on the first call, not a vague promise.</div></div></div>
+              <div className="faq-item"><button className="faq-q">How quickly can you get us qualified candidates?<span className="faq-ico"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg></span></button><div className="faq-a"><div className="faq-a-inner">It depends on the role, and we will not pretend otherwise — a well-scoped contract requirement moves faster than a cleared or executive search. What is the same on every brief: you get a realistic delivery date in writing on the first call, and you hear from us early if it is going to move. A date we can hold is worth more than a fast one we cannot.</div></div></div>
               <div className="faq-item"><button className="faq-q">We already have a staffing partner. Do we have to replace them to work with you?<span className="faq-ico"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg></span></button><div className="faq-a"><div className="faq-a-inner">No. Plenty of our clients bring us in alongside an incumbent — often on the roles they’re struggling to fill, or in a market where we have deeper reach. We’re happy to prove ourselves on a single hard requisition before you consolidate anything. If we earn more of your work, great; if not, you’ve lost nothing.</div></div></div>
               <div className="faq-item"><button className="faq-q">What happens if a placement doesn’t work out?<span className="faq-ico"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg></span></button><div className="faq-a"><div className="faq-a-inner">Every permanent placement carries a replacement guarantee — 90 days on contingent direct hires, up to 12 months on retained searches. If someone leaves inside the window, we restart the search at no additional fee. On contract, we replace a poor-fit worker fast and you only pay for time worked.</div></div></div>
               <div className="faq-item"><button className="faq-q">We don’t just need bodies. We need a team to own a project. Can you do that?<span className="faq-ico"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg></span></button><div className="faq-a"><div className="faq-a-inner">Yes — that’s our Recruitment Process Outsourcing and team build-out work. Rather than filling one seat, we stand up an entire function or project pod — engineering, clinical, operations — with one partner owning the outcome end to end. We’ve built plant leadership teams, AI platform teams and 40-person cohorts on a single contract, and stayed accountable for retention long after.</div></div></div>

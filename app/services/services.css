@@ -149,6 +149,10 @@
 .svc2 .rls-stat{background:var(--bg);padding:22px 24px}
 .svc2 .rls-stat .v{font-size:var(--fz11);line-height:1;letter-spacing:-.025em;color:var(--text);margin-bottom:8px;font-weight:500}
 .svc2 .rls-stat .v .u{font-size:var(--fz3);color:var(--text3);margin-left:4px}
+/* Text variant. These tiles carried invented metrics; they now carry a
+   short statement, which cannot sit at the 32px display size a number
+   needs without wrapping in a half-width tile. */
+.svc2 .rls-stat .v.t{font-size:var(--fz7);line-height:1.3;letter-spacing:-.015em;margin-bottom:6px}
 .svc2 .rls-stat .l{font-size:var(--fz1);color:var(--text3);line-height:1.45}
 .svc2 .rls-sample{padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:16px;border-left:2px solid var(--tint-3)}
 .svc2 .rls-sample-av{width:44px;height:44px;border-radius:50%;overflow:hidden;border:2px solid var(--tint-2);flex-shrink:0}
@@ -172,6 +176,10 @@
 .svc2 .why-numsr{display:grid;grid-template-columns:1fr 1fr;gap:36px 30px;padding-top:6px}
 .svc2 .why-numr .v{font-size:var(--fz14);font-weight:500;color:var(--accent);letter-spacing:-.04em;line-height:1;font-family:var(--ff);font-weight:500}
 .svc2 .why-numr .v sup{font-size:var(--fz7);vertical-align:super;color:var(--text3);font-style:normal;font-family:var(--ff)}
+/* Text variant. Three of these four tiles carried unmeasured figures and
+   now carry a short phrase, which cannot sit at the fz14 display size a
+   numeral needs. */
+.svc2 .why-numr .v.t{font-size:var(--fz9);line-height:1.25;letter-spacing:-.02em}
 .svc2 .why-numr h3,.svc2 .why-numr h4{font-size:var(--fz3);font-weight:500;color:var(--text);margin:12px 0 4px}
 .svc2 .why-numr p{font-size:var(--fz4);color:var(--text2);line-height:1.6;font-weight:400}
 .svc2 .why-eyb{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}

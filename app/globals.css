@@ -2002,6 +2002,8 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .rls-stat{background:var(--bg);padding:22px 24px}
 .rls-stat .v{font-size:var(--fz11);line-height:1;letter-spacing:-.025em;color:var(--text);margin-bottom:8px;font-weight:500}
 .rls-stat .v .u{font-size:var(--fz3);color:var(--text3);margin-left:4px}
+/* See the note on this rule in app/services/services.css. */
+.rls-stat .v.t{font-size:var(--fz7);line-height:1.3;letter-spacing:-.015em;margin-bottom:6px}
 .rls-stat .l{font-size:var(--fz1);color:var(--text3);line-height:1.45}
 .rls-sample{padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:16px;border-left:2px solid var(--tint-3)}
 .rls-sample-h{font-size:var(--fz1);color:var(--accent);font-family:var(--fm);letter-spacing:.05em;margin-bottom:6px;text-transform:uppercase}
