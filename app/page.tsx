@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import LogoMarquee from "@/components/LogoMarquee";
 import OrbCanvas from "@/components/OrbCanvas";
 import HeroVisual from "@/components/HeroVisual";
@@ -8,7 +9,7 @@ import IndustryRail from "@/components/IndustryRail";
 import Faq from "@/components/Faq";
 import WhyCards from "@/components/WhyCards";
 import InsightsGrid from "@/components/InsightsGrid";
-import ProblemDiagram from "@/components/ProblemDiagram";
+import ProblemList from "@/components/ProblemList";
 /* servicesList and industriesList both dropped from this import: the services
    carousel and the industry rail each read the data themselves. lib/routes.ts
    still exports both — /about counts them and the nav mega-menu reads them.
@@ -224,8 +225,16 @@ export default function Home() {
                 to travel. */}
             <div className="prob-vis">
               <figure className="prob-vis-stick">
-                <div className="prob-vis-frame"><ProblemDiagram /></div>
-                <figcaption>Four agencies, one brief, no owner.</figcaption>
+                <div className="prob-vis-frame">
+                  <Image
+                    src="/assets/problem-panel.jpg"
+                    alt="A panel room set for interviews — blank paper and pens laid out along the table, every chair empty."
+                    width={1000}
+                    height={1250}
+                    sizes="(max-width: 900px) 0px, 46vw"
+                  />
+                </div>
+                <figcaption>Set for a panel. Still waiting on a shortlist.</figcaption>
               </figure>
             </div>
 
@@ -236,19 +245,7 @@ export default function Home() {
                   own now, balanced. */}
               <h2 className="section-h2 prob-h2 gs">Four ways a search goes wrong, and the one reason underneath.</h2>
               <p className="prob-lede gs">Not one of them is about the candidates.</p>
-              <ul className="prob-list">
-                {[
-                  { t: "The scorecard came after the first shortlist", d: "Sourcing starts from the job description, because that is the document that exists. Nobody has agreed yet whether a VP Engineering hire needs to have scaled a platform team or built one from nothing. The first shortlist is how you find out." },
-                  { t: "Pitched senior, staffed junior", d: "You are handed to a delivery team after signature. By week three you are explaining your hiring bar again, to someone who was not on the intake call." },
-                  { t: "Four agencies, the same six candidates", d: "Four firms working the same role on contingency all submit fast, and the same names reach you from three directions. Screening properly means one conversation per candidate — comp expectations, notice period, right to work, whether they would genuinely move for this role. Nobody in a race makes that call." },
-                  { t: "Three weeks, no written update", d: "A search that is genuinely hard and a search nobody has touched since kickoff look the same from your side of it." },
-                ].map((r) => (
-                  <li className="prob-row gs" key={r.t}>
-                    <h3 className="prob-t">{r.t}</h3>
-                    <p className="prob-d">{r.d}</p>
-                  </li>
-                ))}
-              </ul>
+              <ProblemList />
             </div>
           </div>
 

@@ -44,3 +44,14 @@ Video was requested and is not obtainable from here: the Adobe Stock search
 returns zero results for `contentType: "Video"` on every query tried, and the
 sandbox proxy refuses every other host. The carousel already accepts video —
 see the MEDIA SLOT note at the top of `components/ServiceCarousel.tsx`.
+
+## Outside this folder
+
+| File | Stock ID | Title as listed on Adobe Stock |
+|---|---|---|
+| `../problem-panel.jpg` | 219773576 | Conference room interior with empty chairs |
+
+Licensed 14 September 2026 for THE PROBLEM section on the home page. The
+5472×3648 original is cropped to 4:5 biased right of centre (the table and
+the empty chairs sit right of the frame's middle) and saved at 1000×1250,
+93 KB. It replaced a drawn SVG diagram at the client's request.

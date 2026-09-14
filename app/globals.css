@@ -498,7 +498,12 @@ a{color:inherit;text-decoration:none}
 /* Square, and sharp-cornered on purpose — every other block on this page is
    a rounded card, so the one technical drawing reads as a different kind of
    object. */
-.prob-vis-frame{aspect-ratio:1;border:1px solid var(--border);background:var(--surface);display:flex;padding:26px}
+/* 4:5, not square. A square frame left about 300px of the left column
+   unused beside a much taller list; the portrait crop closes most of that.
+   The image fills it — object-fit:cover on a next/image needs the intrinsic
+   width/height overridden here. */
+.prob-vis-frame{aspect-ratio:4/5;border:1px solid var(--border);background:var(--surface);overflow:hidden}
+.prob-vis-frame img{width:100%;height:100%;object-fit:cover;display:block}
 .prob-vis figcaption{margin-top:16px;font-family:var(--fm);font-size:var(--fz1);letter-spacing:.05em;color:var(--text3)}
 
 /* Scoped to .prob-sec so it outranks .section-h2, which is a single class
@@ -509,9 +514,27 @@ a{color:inherit;text-decoration:none}
 .prob-lede{font-size:var(--fz7);color:var(--text2);line-height:1.72;font-weight:400}
 
 .prob-list{list-style:none;margin:52px 0 0;padding:0;border-bottom:1px solid var(--border)}
-.prob-row{padding:26px 0;border-top:1px solid var(--border)}
-.prob-t{font-size:var(--fz7);font-weight:500;color:var(--text);letter-spacing:-.012em;line-height:1.34;margin:0 0 8px;text-wrap:balance}
-.prob-d{font-size:var(--fz4);color:var(--text2);line-height:1.72;font-weight:400;margin:0}
+.prob-row{border-top:1px solid var(--border)}
+/* The whole row is the control. Icon on the LEFT — the FAQ accordion four
+   sections down puts its plus on the right, and that is most of what keeps
+   the two reading as different components. */
+.prob-q{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;width:100%;
+  background:none;border:0;padding:22px 0;cursor:pointer;text-align:left;font-family:var(--ff)}
+.prob-ico{width:26px;height:26px;border-radius:50%;border:1px solid var(--border);color:var(--text3);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:color .22s,border-color .22s}
+.prob-q:hover .prob-ico,.prob-row.open .prob-ico{color:var(--accent);border-color:var(--tint-3)}
+.prob-t{font-size:var(--fz7);font-weight:500;color:var(--text);letter-spacing:-.012em;line-height:1.34;margin:0;text-wrap:balance;transition:color .22s}
+.prob-q:hover .prob-t{color:var(--accent)}
+
+/* 0fr to 1fr animates the height with no JavaScript measurement. The inner
+   div also toggles visibility, so collapsed copy leaves the accessibility
+   tree instead of being silently readable. */
+.prob-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s var(--ease);padding-left:42px}
+.prob-row.open .prob-a{grid-template-rows:1fr}
+.prob-a > div{overflow:hidden;visibility:hidden;transition:visibility 0s .32s}
+.prob-row.open .prob-a > div{visibility:visible;transition:visibility 0s}
+.prob-d{font-size:var(--fz4);color:var(--text2);line-height:1.72;font-weight:400;margin:0;padding-bottom:24px;max-width:60ch}
+@media(prefers-reduced-motion:reduce){.prob-a{transition:none}}
 
 /* The turn. Full width under both panels, and inverted: .inv redefines the
    token set, so --text and --rule-1 resolve to their dark-ground values and
