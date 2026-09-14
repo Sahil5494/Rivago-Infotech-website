@@ -791,7 +791,7 @@ a{color:inherit;text-decoration:none}
    as one near-black, so a change of fill does not announce a new section.
    These hairlines are what actually draw the band boundaries; without them
    the dark stretches merge into a single block. */
-.svc-sec,.ind-sec,.supp-sec,.hins-sec,.faq-sec,.cta-sec,.prob-sec{
+.svc-sec,.ind-sec,.supp-sec,.hins-sec,.faq-sec,.cta-sec,.prob-sec,.prf-sec{
   border-top:1px solid var(--rule-1)
 }
 /* PRECISION and PROCESS rules removed with their sections; the panel
@@ -830,7 +830,9 @@ a{color:inherit;text-decoration:none}
    their cards. Verified unused before choosing: zero hits for `hins-` in
    this file and across every component. */
 .hins-sec{padding:110px 44px;background:var(--bg2)}
-.hins-inner{max-width:1240px;margin:0 auto}
+/* 1200, not 1240: with the section's 44px padding this puts the eyebrow on
+   the same 120px gutter as every other band at 1440. */
+.hins-inner{max-width:1200px;margin:0 auto}
 .hins-head{display:flex;align-items:flex-end;justify-content:space-between;gap:64px;margin-bottom:48px}
 .hins-h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;line-height:1.13;color:var(--text);text-wrap:balance}
 .hins-all{display:inline-flex;align-items:center;gap:7px;font-size:var(--fz3);color:var(--text2);white-space:nowrap;flex-shrink:0;transition:color .2s,gap .2s}
@@ -939,6 +941,60 @@ a{color:inherit;text-decoration:none}
      is just a gap. */
   .why-col:nth-child(1){margin-top:0}
 }
+
+/* ── THE REFRAME ──
+   The turn panel from THE PROBLEM, at section weight.
+
+   The container matches every other section at 1200px so the eyebrow and
+   headline start on the page's 120px gutter. The measure is held narrow on
+   the text itself instead — this is one idea and should read in a single
+   pass — rather than by centring a narrow block, which would have put this
+   headline somewhere no other headline on the page sits. */
+.rfm-sec{padding:104px 44px}
+.rfm-inner{max-width:1200px;margin:0 auto}
+.rfm-h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.14;color:var(--text-inv-1);margin:0 0 26px;text-wrap:balance;max-width:880px}
+.rfm-d{font-size:var(--fz7);color:var(--text-inv-2);line-height:1.76;font-weight:400;margin:0;max-width:64ch}
+/* The closing line is the handoff to the rest of the page, so it is set
+   apart from the paragraph that earns it rather than trailing it. */
+.rfm-d2{margin-top:22px;color:var(--text-inv-1)}
+@media(max-width:760px){.rfm-sec{padding:76px 22px}}
+
+/* ── WHAT OUR CLIENTS SAY ──
+   Logo marquee and quotes in one band. The marks are white-on-transparent
+   PNGs drawn for a dark ground, which is most of why this section is .inv —
+   on a light band they have to be knocked down to silhouettes. */
+/* Same 44px gutter and 1200px measure as every other section — at 1240 with
+   its own inner padding this band started 24px right of the rest of the
+   page. The marquee masks its own edges, so it does not need to break out
+   of the container to fade cleanly. */
+.prf-sec{padding:110px 44px;background:var(--bg2)}
+.prf-inner{max-width:1200px;margin:0 auto}
+.prf-head{display:flex;align-items:flex-end;justify-content:space-between;gap:64px;margin-bottom:44px}
+.prf-h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;line-height:1.13;color:var(--text);text-wrap:balance}
+.prf-lede{font-size:var(--fz5);color:var(--text2);line-height:1.75;font-weight:400;max-width:430px;flex-shrink:0}
+/* Full bleed: the marquee masks its own edges, so page padding would cut the
+   fade off and leave a hard stop. */
+/* .62 is tuned for a strip that keeps moving and reads as texture. Here the
+   marks are the evidence the section leads with, so they carry more. */
+.prf-marks{margin-bottom:52px}
+.prf-marks .logo-chip img{opacity:.85}
+.prf-marks .logo-chip:hover img{opacity:1}
+.prf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.prf-card{margin:0;display:flex;flex-direction:column;padding:26px 24px 22px;
+  border:1px solid var(--rule-1);border-radius:18px;background:var(--surface-3);
+  transition:border-color .25s var(--ease),transform .25s var(--ease)}
+.prf-card:hover{border-color:var(--tint-3);transform:translateY(-3px)}
+.prf-badge{font-family:var(--fm);font-size:var(--fz1);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.prf-q{font-size:var(--fz4);color:var(--text);line-height:1.68;font-weight:400;margin:16px 0 0;flex:1}
+/* No avatar. These are anonymised by agreement, and a generated portrait
+   beside an anonymous quote invents the one thing the anonymity protects. */
+.prf-who{font-size:var(--fz2);color:var(--text3);margin-top:18px;padding-top:14px;border-top:1px solid var(--rule-1)}
+@media(max-width:1080px){
+  .prf-grid{grid-template-columns:1fr 1fr}
+  .prf-head{flex-direction:column;align-items:flex-start;gap:18px}
+  .prf-lede{max-width:none}
+}
+@media(max-width:600px){.prf-grid{grid-template-columns:1fr}}
 
 /* ── SERVICES ── */
 .svc-sec{padding:110px 44px;background:var(--bg3)}

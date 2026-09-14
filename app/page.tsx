@@ -23,6 +23,7 @@ import { routes, offices } from "@/lib/routes";
    It used to count case studies too. There are none; see the note at the
    foot of app/resources/data.ts. */
 import { articles } from "@/app/resources/data";
+import { testimonials } from "@/lib/testimonials";
 
 const faqItems = [
   {
@@ -178,17 +179,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CLIENTS */}
-      {/* Confirmed by the client: all ten are real clients and their marks
-          are approved for display. The heading can therefore say plainly
-          what they are, rather than reaching for "world-class teams build
-          their talent bench" — which asserted the same thing in words that
-          sound like they are covering for not being able to. */}
-      <section className="clients-sec">
-        <div className="clients-label">Teams we recruit for</div>
-        <LogoMarquee />
-      </section>
-
       {/* THE PROBLEM */}
       {/* Four failure modes, then the band turns: one dark panel naming the
           reason underneath all four and what Rivago does instead. One answer
@@ -243,10 +233,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="prob-turn lt gs">
-            <div className="prob-turn-k">The reason underneath</div>
-            <p className="prob-turn-d">None of this is bad luck. It is what happens when a search sits on a panel of four agencies and is owned by none of them. We take one brief, put one partner on it, and write down what was agreed on the intake call — the delivery date, the scorecard, and the part of the role we think will be hard to fill. The rest of this page is that, in detail.</p>
-          </div>
         </div>
       </section>
 
@@ -263,6 +249,41 @@ export default function Home() {
           Its one line worth keeping, the old ORB positioning statement,
           had nowhere better to go and is not reinstated — the hero and the
           approach section already make that claim between them. */}
+
+      {/* THE REFRAME */}
+      {/* The turn panel promoted out of THE PROBLEM. Cream rather than plain
+          light: it lands between a dark band and two light ones, and without
+          a ground of its own the page would run reframe, what changes and
+          how we work as one continuous pale stretch. Cream also keeps the
+          meaning the panel had as light-inside-dark — the answer coming out
+          of the dark. */}
+      <section className="section cream lt rfm-sec">
+        <div className="rfm-inner gs">
+          <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>The reframe</div>
+          <h2 className="rfm-h2">None of this is bad luck.<br /><em>It is a question of who owns the search.</em></h2>
+          <p className="rfm-d">It is what happens when a search sits on a panel of four agencies and is owned by none of them. We take one brief, put one partner on it, and write down what was agreed on the intake call — the delivery date, the scorecard, and the part of the role we think will be hard to fill.</p>
+          <p className="rfm-d rfm-d2">The rest of this page is that, in detail.</p>
+        </div>
+      </section>
+
+      {/* WHAT CHANGES */}
+      {/* Two vertically offset columns of cards with a call to action as the
+          last cell. The six cards and their copy live in the component, the
+          way the carousel, the rail and the tabs each own theirs.
+
+          The lede stays under the heading on the left. The reference runs
+          its body copy down the right-hand edge, which is the single most
+          recognisable thing about that page. */}
+      <section className="why-sec">
+        <div className="why-inner">
+          <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>What changes</div>
+          {/* Was "Six reasons clients stay with us" — a claim about client
+              retention, which is the one thing here nobody has measured. */}
+          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 600, marginBottom: 18 }}>Six things that change<br /><em>the moment we take the brief.</em></h2>
+          <p className="why-lede gs">Not a list of adjectives. Each one is either done on your search or it isn&rsquo;t, and you can hold us to it on the first call.</p>
+          <WhyCards />
+        </div>
+      </section>
 
       {/* FEATURES */}
       <section className="feat-sec">
@@ -304,25 +325,6 @@ export default function Home() {
 
           Its one distinct idea -- confidential search -- moves into WHY
           RIVAGO below, which is now the single "why us" section. */}
-
-      {/* WHY RIVAGO */}
-      {/* Two vertically offset columns of cards with a call to action as the
-          last cell. The six cards and their copy live in the component, the
-          way the carousel, the rail and the tabs each own theirs.
-
-          The lede stays under the heading on the left. The reference runs
-          its body copy down the right-hand edge, which is the single most
-          recognisable thing about that page. */}
-      <section className="why-sec">
-        <div className="why-inner">
-          <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Why Rivago</div>
-          {/* Was "Six reasons clients stay with us" — a claim about client
-              retention, which is the one thing here nobody has measured. */}
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 600, marginBottom: 18 }}>Six things that are true<br /><em>of every search we run.</em></h2>
-          <p className="why-lede gs">Not a list of adjectives. Each one is either done on your search or it isn&rsquo;t, and you can hold us to it on the first call.</p>
-          <WhyCards />
-        </div>
-      </section>
 
       {/* SERVICES */}
       <section className="svc-sec inv">
@@ -480,6 +482,37 @@ export default function Home() {
           </div>
           <div className="gs">
             <InsightsGrid />
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT OUR CLIENTS SAY */}
+      {/* The client logo strip used to be its own band at position 2. It is
+          here now, with the quotes — marks and words are the same argument
+          and the page was making it twice. The trade: the logos no longer
+          sit straight under the hero as early credibility. Reversible.
+
+          Four quotes is what exists. Anonymised to a role and a market, no
+          figures, no client named — the form a hiring team will actually
+          sign off on. See lib/testimonials.ts. */}
+      <section className="prf-sec inv">
+        <div className="prf-inner">
+          <div className="prf-head">
+            <div>
+              <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Clients</div>
+              <h2 className="prf-h2 gs">Who we hire for, and what<br />they say <em>about the hiring.</em></h2>
+            </div>
+            <p className="prf-lede gs">Every mark below is a client. Every quote is from someone who ran a search with us and agreed to be quoted — by role and market, not by name.</p>
+          </div>
+          <div className="prf-marks gs"><LogoMarquee /></div>
+          <div className="prf-grid">
+            {testimonials.map((t) => (
+              <figure className="prf-card gs" key={t.name}>
+                <span className="prf-badge">{t.badge}</span>
+                <blockquote className="prf-q">{t.quote}</blockquote>
+                <figcaption className="prf-who">{t.name}</figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
