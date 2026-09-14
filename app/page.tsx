@@ -411,10 +411,10 @@ export default function Home() {
           time visitor does not have one. */}
       <section className="supp-sec">
         <div className="supp-inner">
-          <div style={{ textAlign: "center" }}>
-            <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>Talk to us</div>
+          <div className="supp-head">
+            <div className="eyebrow ew-light gs" style={{ marginBottom: 16 }}>Talk to us</div>
             <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 12 }}>Three ways to <em>reach us.</em></h2>
-            <p className="orb-desc gs" style={{ marginBottom: 0 }}>A first hire or a fiftieth, a live brief or a question you want a straight answer to. Pick whichever suits the morning you are having.</p>
+            <p className="supp-lede gs">A first hire or a fiftieth, a live brief or a question you want a straight answer to. Pick whichever suits the morning you are having.</p>
           </div>
           <div className="supp-grid">
             <div className="supp-card gs">
@@ -438,7 +438,11 @@ export default function Home() {
             <div className="supp-card gs">
               <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 5.6C8.8 4.5 7.2 4 5 4H2.8v11H5c2.2 0 3.8.5 5 1.6 1.2-1.1 2.8-1.6 5-1.6h2.2V4H15c-2.2 0-3.8.5-5 1.6Z" stroke="var(--accent)" strokeWidth="1.2" strokeLinejoin="round" /><path d="M10 5.6v11" stroke="var(--accent)" strokeWidth="1.2" /></svg></div>
               <div><div className="supp-tag">Read first</div><div className="supp-title" style={{ marginTop: 10 }}>Do your own homework</div></div>
-              <div className="supp-desc">Salary benchmarks, market reads and hiring playbooks, plus the case studies behind them. Nothing is gated — no email address, no download form, no follow-up call you did not ask for.</div>
+              {/* No longer "plus the case studies behind them" — there are
+                  none, and have not been since they came off /resources.
+                  The card was promising a category the library does not
+                  have. */}
+              <div className="supp-desc">Salary benchmarks, market reads and hiring playbooks, written by the people running the searches. Nothing is gated — no email address, no download form, no follow-up call you did not ask for.</div>
               <div>
                 <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" strokeWidth="1.1" /><path d="M4 6h4M6 4v4" stroke="var(--accent)" strokeWidth="1.1" strokeLinecap="round" /></svg>{articles.length} articles · Free to read · No sign-up</div>
                 <Link className="supp-link" href={routes.resources}>Browse resources <SmallArrow /></Link>

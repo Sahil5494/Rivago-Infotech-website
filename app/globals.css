@@ -581,15 +581,12 @@ a{color:inherit;text-decoration:none}
    five light sections in a row from the hero down to WHY RIVAGO. THE
    PROBLEM takes that slot instead — it is .inv in the markup now. */
 
-/* .orb-sec and .orb-quote deleted with the ORB band, which the WHAT WE DO
-   section below replaced along with its positioning line.
-
-   .orb-desc survives and is NOT dead: the support section renders its lede
-   with it. Left under the old name rather than renamed, because renaming it
-   would touch a section this change has no business in. */
-.orb-desc{position:relative;z-index:1;font-size:var(--fz8);color:var(--text2);max-width:620px;margin:0 auto;line-height:1.6;font-weight:400}
-@media(max-width:640px){
-}
+/* .orb-sec and .orb-quote went with the ORB band. Its lede outlived it as
+   .orb-desc, on loan to the support section — renamed now that this change
+   is in that section anyway, and it was the last thing carrying the orb's
+   name. position/z-index went too: they existed to lift the copy off the
+   orb canvas, and there is no canvas behind it any more. */
+.supp-lede{font-size:var(--fz8);color:var(--text2);max-width:640px;line-height:1.6;font-weight:400;margin:0}
 
 /* ── FEATURES ── */
 .feat-sec{padding:110px 44px;background:var(--bg)}
@@ -975,7 +972,13 @@ a{color:inherit;text-decoration:none}
    the text itself instead — rather than by centring a narrow block, which
    would have put this headline somewhere no other headline on the page
    sits. */
-.rfm-sec{padding:104px 44px}
+/* .section.rfm-sec, not .rfm-sec: this is the only band on the page that
+   also carries .section, whose own padding is declared 600 lines further
+   down at the same specificity and therefore won every time. The rule here
+   was dead — at 900 and below the section was taking .section's 20px
+   gutter while every neighbour used 44, so its eyebrow and headline sat
+   24px left of everything else on a phone. */
+.section.rfm-sec{padding:104px 44px}
 .rfm-inner{max-width:1200px;margin:0 auto}
 .rfm-head{margin-bottom:52px}
 .rfm-h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.14;color:var(--text-inv-1);margin:0 0 22px;text-wrap:balance;max-width:880px}
@@ -1040,7 +1043,8 @@ a{color:inherit;text-decoration:none}
   .rfr-nav{display:none}
 }
 @media(max-width:760px){
-  .rfm-sec{padding:76px 22px}
+  /* No side-padding override: no other band on this page narrows its
+     gutter below 44, and this one doing so was what put it out of line. */
   .rfm-head{margin-bottom:38px}
 }
 
