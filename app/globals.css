@@ -486,7 +486,11 @@ a{color:inherit;text-decoration:none}
 .prob-inner{max-width:1200px;margin:0 auto}
 .prob-lede{font-size:var(--fz7);color:var(--text2);line-height:1.72;font-weight:400;max-width:560px}
 .prob-list{list-style:none;margin:48px 0 0;padding:0;border-bottom:1px solid var(--border)}
-.prob-row{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:48px;
+/* 440, not 340. Three of the four headlines measured 356-425px natural and
+   wrapped to two lines in a 340 track, which makes a headline read as bold
+   body copy. The description track loses nothing by it — .prob-d is capped
+   at 64ch and was never using its full width. */
+.prob-row{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:48px;
   padding:30px 0;border-top:1px solid var(--border);align-items:start}
 .prob-t{font-size:var(--fz8);font-weight:500;color:var(--text);letter-spacing:-.015em;line-height:1.32;margin:0;text-wrap:balance}
 .prob-d{font-size:var(--fz5);color:var(--text2);line-height:1.75;font-weight:400;margin:0;max-width:64ch}

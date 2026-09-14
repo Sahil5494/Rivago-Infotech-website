@@ -218,7 +218,7 @@ export default function Home() {
           <ul className="prob-list">
             {[
               { t: "The scorecard came after the first shortlist", d: "Sourcing starts from the job description, because that is the document that exists. Nobody has agreed yet whether a VP Engineering hire needs to have scaled a platform team or built one from nothing. The first shortlist is how you find out." },
-              { t: "The person who pitched isn't the person calling", d: "You are handed to a delivery team after signature. By week three you are explaining your hiring bar again, to someone who was not on the intake call." },
+              { t: "Pitched senior, staffed junior", d: "You are handed to a delivery team after signature. By week three you are explaining your hiring bar again, to someone who was not on the intake call." },
               { t: "Four agencies, the same six candidates", d: "Four firms working the same role on contingency all submit fast, and the same names reach you from three directions. Screening properly means one conversation per candidate — comp expectations, notice period, right to work, whether they would genuinely move for this role. Nobody in a race makes that call." },
               { t: "Three weeks, no written update", d: "A search that is genuinely hard and a search nobody has touched since kickoff look the same from your side of it." },
             ].map((r) => (
