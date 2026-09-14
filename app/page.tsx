@@ -214,24 +214,30 @@ export default function Home() {
           the industry, not statistics about Rivago's clients. */}
       <section className="prob-sec">
         <div className="prob-inner">
-          {/* Two panels: the diagram on the left, the argument on the right.
-              The turn sits below both, full width, so it still reads as the
-              section changing sides rather than as a fifth item in the
-              right-hand column. */}
+          {/* The heading block sits full width above both columns, on the
+              left, because that is where the eyebrow and headline sit in
+              every other section on this page. It was inside the right-hand
+              column — faithful to the reference, inconsistent with the site.
+
+              It also fixes the stacking order on a phone: heading, then
+              image, then list, which is why the image no longer has to be
+              hidden below 900px. */}
+          <div className="prob-head">
+            <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>The problem</div>
+            <h2 className="section-h2 prob-h2 gs">Four ways a search goes wrong, and the one reason underneath.</h2>
+            <p className="prob-lede gs">Not one of them is about the candidates.</p>
+          </div>
+
           <div className="prob-grid">
-            {/* The grid item stretches to the row height; the figure inside
-                it is what sticks. Sticky on the item itself does nothing —
-                an item that is already as tall as its container has nowhere
-                to travel. */}
             <div className="prob-vis">
               <figure className="prob-vis-stick">
                 <div className="prob-vis-frame">
                   <Image
                     src="/assets/problem-panel.jpg"
                     alt="A panel room set for interviews — blank paper and pens laid out along the table, every chair empty."
-                    width={1000}
-                    height={1250}
-                    sizes="(max-width: 900px) 0px, 46vw"
+                    width={1100}
+                    height={1100}
+                    sizes="(max-width: 900px) 92vw, 46vw"
                   />
                 </div>
                 <figcaption>Set for a panel. Still waiting on a shortlist.</figcaption>
@@ -239,12 +245,6 @@ export default function Home() {
             </div>
 
             <div className="prob-main">
-              <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>The problem</div>
-              {/* No <br /> here any more. In a half-width column a forced
-                  break turned two lines into four; the headline wraps on its
-                  own now, balanced. */}
-              <h2 className="section-h2 prob-h2 gs">Four ways a search goes wrong, and the one reason underneath.</h2>
-              <p className="prob-lede gs">Not one of them is about the candidates.</p>
               <ProblemList />
             </div>
           </div>

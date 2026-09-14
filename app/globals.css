@@ -489,6 +489,7 @@ a{color:inherit;text-decoration:none}
 .prob-inner{max-width:1200px;margin:0 auto}
 /* No align-items:start. The visual column has to stretch to the row height
    or the sticky figure inside it has no distance to travel. */
+.prob-head{max-width:760px;margin-bottom:56px}
 .prob-grid{display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);gap:76px}
 
 /* Sticky so the diagram stays beside the list instead of scrolling away from
@@ -498,11 +499,12 @@ a{color:inherit;text-decoration:none}
 /* Square, and sharp-cornered on purpose — every other block on this page is
    a rounded card, so the one technical drawing reads as a different kind of
    object. */
-/* 4:5, not square. A square frame left about 300px of the left column
-   unused beside a much taller list; the portrait crop closes most of that.
-   The image fills it — object-fit:cover on a next/image needs the intrinsic
-   width/height overridden here. */
-.prob-vis-frame{aspect-ratio:4/5;border:1px solid var(--border);background:var(--surface);overflow:hidden}
+/* Square. The 4:5 portrait was cut from a 3:2 original, which meant keeping
+   only 53% of the frame's width — the scene came out crowded, with the
+   chairs sliced. Square keeps 67%, and now that the heading has moved out of
+   the right-hand column the list beside it is shorter, so a tall image would
+   overhang it anyway. */
+.prob-vis-frame{aspect-ratio:1;border:1px solid var(--border);background:var(--surface);overflow:hidden}
 .prob-vis-frame img{width:100%;height:100%;object-fit:cover;display:block}
 .prob-vis figcaption{margin-top:16px;font-family:var(--fm);font-size:var(--fz1);letter-spacing:.05em;color:var(--text3)}
 
@@ -510,10 +512,14 @@ a{color:inherit;text-decoration:none}
    defined later in this file and was winning on source order — the headline
    rendered at 44px with a 52px bottom margin instead of these. At 44px in a
    607px column it ran to three lines. */
-.prob-sec .prob-h2{font-size:var(--fz12);color:var(--text);letter-spacing:-.028em;line-height:1.14;margin:0 0 16px;text-wrap:balance}
+.prob-sec .prob-h2{font-size:var(--fz13);color:var(--text);letter-spacing:-.028em;line-height:1.14;margin:0 0 16px;text-wrap:balance}
 .prob-lede{font-size:var(--fz7);color:var(--text2);line-height:1.72;font-weight:400}
 
-.prob-list{list-style:none;margin:52px 0 0;padding:0;border-bottom:1px solid var(--border)}
+/* margin:0, not 52px on top. That margin spaced the list below the lede
+   when the lede sat directly above it; with the heading block moved out to
+   full width, it only pushed the list 52px below the top of the image
+   beside it. They start on the same line now. */
+.prob-list{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--border)}
 .prob-row{border-top:1px solid var(--border)}
 /* The whole row is the control. Icon on the LEFT — the FAQ accordion four
    sections down puts its plus on the right, and that is most of what keeps
@@ -550,8 +556,13 @@ a{color:inherit;text-decoration:none}
      its whole argument in text. Stacked, a square frame costs ~350px of
      scroll before the reader reaches a single word, so it comes out below
      this width rather than being shrunk into illegibility. */
-  .prob-grid{grid-template-columns:1fr;gap:0}
-  .prob-vis{display:none}
+  /* The image stays on a phone now. It used to be hidden because the
+     heading lived in the right-hand column, so stacking put a square frame
+     above the first word; with the heading above both columns the order
+     reads heading, image, list. */
+  .prob-grid{grid-template-columns:1fr;gap:32px}
+  .prob-vis-stick{position:static}
+  .prob-head{margin-bottom:36px}
   .prob-turn{grid-template-columns:1fr;gap:18px;padding:32px 26px;margin-top:44px}
 }
 
