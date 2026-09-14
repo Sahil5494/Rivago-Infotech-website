@@ -3,6 +3,7 @@ import Image from "next/image";
 import LogoMarquee from "@/components/LogoMarquee";
 import OrbCanvas from "@/components/OrbCanvas";
 import HeroVisual from "@/components/HeroVisual";
+import RotatingWord from "@/components/RotatingWord";
 import ApproachTabs from "@/components/ApproachTabs";
 import ServiceCarousel from "@/components/ServiceCarousel";
 import IndustryRail from "@/components/IndustryRail";
@@ -25,6 +26,10 @@ import { routes, offices } from "@/lib/routes";
    foot of app/resources/data.ts. */
 import { articles } from "@/app/resources/data";
 import { testimonials } from "@/lib/testimonials";
+
+/* The same six the hero canvas places into, so the cycling word and the
+   drawing behind it never disagree. */
+const DISCIPLINES = ["technology", "finance", "healthcare", "legal", "operations", "engineering"] as const;
 
 const faqItems = [
   {
@@ -157,44 +162,57 @@ export default function Home() {
           pill CTAs — no photograph, no scrim, no particle field. Dropping
           them also removes the hot-linked Unsplash image that was the LCP
           element and lived on someone else's server. */}
-      <section className="hero">
-        <div className="hero-grid">
-          <div className="hero-content">
-            <div className="hero-badge gs"><span className="bdot"></span>Global Staffing · US · Canada · UAE · India</div>
-            {/* Was "Staffing for getting the right people in seat." — the same
-                ungrammatical phrasing already rewritten out of the Services
-                headline, and it was the first line on the page. "Staffing for
-                getting" was the clumsy half; the badge above already says this
-                is a staffing firm, so the headline does not have to. */}
-            <h1 className="hero-h1 gs">The <em>right people</em>, in the right roles.</h1>
-            <p className="hero-sub gs">We connect outstanding companies with exceptional talent — across every industry, every function and every corner of the globe.</p>
-            <div className="hero-btns gs">
-              <button type="button" className="btn-hp" data-help>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
-              {/* A staffing firm has two audiences and the hero offered one
-                  door. The second is the candidate's, and it goes to the job
-                  search rather than the contact form. */}
-              <Link href="/search-jobs" className="btn-hg">Browse open roles</Link>
-            </div>
-          </div>
+      {/* HERO — centred over the client strip, dark.
+          Built on the shape the client supplied as reference: a centred
+          column, a staggered word-by-word entrance on one easing curve, a
+          cycling last word, and the trust marks closing the same band.
 
-          {/* Was a bordered panel listing the service routes. Those links
-              live in the nav and in the SERVICES section below, so nothing
-              is lost from the site's navigation by giving this half of the
-              hero to the visual instead. */}
-          <HeroVisual />
+          Two things from that reference are deliberately NOT here. Its
+          palette is violet-to-blue and ours is forest green, so every
+          gradient below is rebuilt rather than ported. And its atmosphere is
+          a planet rim and shooting stars — a space metaphor it has committed
+          to. Ours is the drawing this site already had: a pool of candidates
+          with a search passing through it, promoted from the hero's right
+          column to the whole band. It is the same job, in our own language.
+
+          The hero is NOT 100svh. The reference fills the viewport, which
+          pushes the page's own content out of the first frame. */}
+      <section className="hero hero-c">
+        <div className="hero-atmos" aria-hidden="true">
+          <div className="hero-grain" />
+          <div className="hero-bloom" />
+          <HeroVisual ambient />
+          <div className="hero-veil" />
         </div>
 
-        {/* CLIENT STRIP — inside the hero, not a band of its own.
-            It was a separate section directly below, which meant the page
-            opened with two bands whose fills differ by 1.011:1 and which only
-            read as separate because the strip drew a rule. Folding it in
-            makes the marks part of the first thing a visitor sees, which is
-            the job they were moved up here to do in the first place.
+        <div className="hero-c-inner">
+          <div className="hero-badge hr-1"><span className="bdot"></span>Global Staffing · US · Canada · UAE · India</div>
+          {/* Word-by-word, 90ms apart, all on one curve. The last word cycles
+              through the disciplines the canvas behind is placing into. */}
+          <h1 className="hero-h1">
+            <span className="hr-2">The</span>{" "}
+            <span className="hr-3"><em>right people</em>,</span>{" "}
+            <span className="hr-4">in</span>{" "}
+            <span className="hr-5"><RotatingWord words={DISCIPLINES} /></span>
+          </h1>
+          <p className="hero-sub hr-6">We connect outstanding companies with exceptional talent — across every industry, every function and every corner of the globe.</p>
+          <div className="hero-btns hr-7">
+            <button type="button" className="btn-hp btn-sheen" data-help>
+              Talk to an expert
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              <span className="sheen" aria-hidden="true" />
+            </button>
+            {/* A staffing firm has two audiences and the hero offered one
+                door. The second is the candidate's, and it goes to the job
+                search rather than the contact form. */}
+            <Link href="/search-jobs" className="btn-hg">Browse open roles</Link>
+          </div>
+        </div>
 
-            The reference centres its whole hero over the strip; this hero is
-            two-column, so the strip sits full-width beneath the grid rather
-            than under a centred column. */}
-        <div className="hero-trust">
+        {/* CLIENT STRIP — inside the hero, closing the band, as the reference
+            does. Folding it in also removed a boundary that was doing no
+            work: as its own section its fill sat 1.011:1 from the hero's. */}
+        <div className="hero-trust hr-8">
           <div className="clients-label">Teams we recruit for</div>
           <LogoMarquee />
         </div>

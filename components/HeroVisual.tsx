@@ -43,7 +43,13 @@ const CYCLE = SCAN_MS + TRAVEL_MS + HOLD_MS + FADE_MS;
 const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 
-export default function HeroVisual() {
+/* `ambient` renders the same drawing as the hero's background rather than
+ * its right-hand column. The discipline panel stays in the DOM and keeps
+ * its layout — layout() measures the live .hv-dot rects to aim the arcs,
+ * so removing it would leave the travel arcs with nowhere to land — but it
+ * is hidden and taken out of the accessibility tree. What is left visible
+ * is the candidate pool, the search passing through it and the arcs. */
+export default function HeroVisual({ ambient = false }: { ambient?: boolean } = {}) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
@@ -253,7 +259,7 @@ export default function HeroVisual() {
   }, []);
 
   return (
-    <div className="hero-vis gs" ref={wrapRef}>
+    <div className={ambient ? "hero-vis hv-ambient" : "hero-vis gs"} ref={wrapRef} aria-hidden={ambient || undefined}>
       <canvas ref={canvasRef} aria-hidden="true" />
       <div className="hv-panel">
         <div className="hv-eyebrow">Placing across</div>

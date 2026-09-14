@@ -104,6 +104,9 @@ const mobileSections: { title: string; href?: string; links: { href: string; lab
 export default function Nav() {
   const pathname = usePathname();
   const isCreamPage = CREAM_NAV_PREFIXES.some((p) => pathname === p || pathname.startsWith(p + "/") || pathname.startsWith(p + "?"));
+  /* The home hero is a dark band running under the fixed nav, so the nav
+     has to invert there. Same mechanism as the cream pages below. */
+  const isDarkHeroPage = pathname === routes.home;
   const [solid, setSolid] = useState(false);
   const [openKey, setOpenKey] = useState<MMKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -132,6 +135,13 @@ export default function Nav() {
       document.body.classList.remove("theme-cream-nav");
     };
   }, [isCreamPage]);
+
+  useEffect(() => {
+    document.body.classList.toggle("theme-dark-nav", isDarkHeroPage);
+    return () => {
+      document.body.classList.remove("theme-dark-nav");
+    };
+  }, [isDarkHeroPage]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -172,6 +182,9 @@ export default function Nav() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
   }
 
+  /* On the dark-hero page the bar starts transparent and only fills once
+     scrolled — that morph is the point. Opening a mega-menu still fills
+     it, because a menu panel needs a ground to sit on. */
   const navSolid = isCreamPage || solid || openKey !== null;
 
   return (
