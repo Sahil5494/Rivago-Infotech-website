@@ -659,8 +659,12 @@ a{color:inherit;text-decoration:none}
 
 /* Sticky so the diagram stays beside the list instead of scrolling away from
    the argument it illustrates. 112px clears the fixed header. */
+/* The figure fills its column so the two halves of the grid end level.
+   It used to be a fixed square, which meant its height was whatever the
+   column happened to be wide: 517 beside a 483 list at 1440, but only 385
+   beside a 509 list at 1000, leaving 89px of dead column under it. */
 .prob-vis{min-width:0}
-.prob-vis-stick{margin:0;position:sticky;top:112px}
+.prob-vis-stick{margin:0;height:100%;display:flex;flex-direction:column}
 /* Square, and sharp-cornered on purpose — every other block on this page is
    a rounded card, so the one technical drawing reads as a different kind of
    object. */
@@ -669,8 +673,19 @@ a{color:inherit;text-decoration:none}
    chairs sliced. Square keeps 67%, and now that the heading has moved out of
    the right-hand column the list beside it is shorter, so a tall image would
    overhang it anyway. */
-.prob-vis-frame{aspect-ratio:1;border:1px solid var(--border);background:var(--surface);overflow:hidden}
+/* No aspect-ratio: the frame takes the height the column gives it, less
+   the caption. object-fit:cover on the image handles the crop. */
+.prob-vis-frame{flex:1;min-height:280px;border:1px solid var(--border);background:var(--surface);overflow:hidden}
 .prob-vis-frame img{width:100%;height:100%;object-fit:cover;display:block}
+/* Stacked, the column is the full width of the band, so a frame that takes
+   its height from the column is a wall — measured 812px tall at a 900px
+   viewport, taller than the screen, with the list pushed off below it.
+   Landscape and capped instead, so it reads as a band across the top of
+   the section rather than a page of its own. */
+@media(max-width:900px){
+  .prob-vis-stick{height:auto}
+  .prob-vis-frame{flex:none;aspect-ratio:3/2;max-height:320px;min-height:0}
+}
 .prob-vis figcaption{margin-top:16px;font-family:var(--fm);font-size:var(--fz1);letter-spacing:.05em;color:var(--text3)}
 
 /* Scoped to .prob-sec so it outranks .section-h2, which is a single class
