@@ -271,10 +271,12 @@ export default function Home() {
           had nowhere better to go and is not reinstated — the hero and the
           approach section already make that claim between them. */}
 
-      {/* THE REFRAME */}
+      {/* WHAT WE BRING */}
+      {/* Eyebrow was "The reframe" — the editorial name for what this
+          section does, not a word a visitor arrives with. */}
       {/* Cream rather than plain light: it lands between a dark band and two
           light ones, and without a ground of its own the page would run
-          reframe, what changes and how we work as one continuous pale
+          this band, why Rivago and how we work as one continuous pale
           stretch. Cream also keeps the meaning this had as a light panel
           inside the dark band it came out of.
 
@@ -283,7 +285,7 @@ export default function Home() {
       <section className="section cream lt rfm-sec">
         <div className="rfm-inner">
           <div className="rfm-head gs">
-            <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>The reframe</div>
+            <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>What we bring</div>
             <h2 className="rfm-h2">Hiring doesn&rsquo;t need more candidates.<br /><em>It needs better decisions.</em></h2>
             <p className="rfm-d">Hiring isn&rsquo;t simply about reaching more candidates. It&rsquo;s about knowing where to look, what to look for, and which candidates are genuinely worth your team&rsquo;s time.</p>
             <p className="rfm-turn">That&rsquo;s where we work differently.</p>
@@ -295,7 +297,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHAT CHANGES */}
+      {/* WHY RIVAGO */}
       {/* Two vertically offset columns of cards with a call to action as the
           last cell. The six cards and their copy live in the component, the
           way the carousel, the rail and the tabs each own theirs.
@@ -305,7 +307,7 @@ export default function Home() {
           recognisable thing about that page. */}
       <section className="why-sec">
         <div className="why-inner">
-          <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>What changes</div>
+          <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Why Rivago</div>
           {/* Was "Six reasons clients stay with us" — a claim about client
               retention, which is the one thing here nobody has measured. */}
           {/* 700, not the 600 the old two-line headline used: this one

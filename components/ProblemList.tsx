@@ -36,9 +36,9 @@ const ROWS: Row[] = [
   },
   {
     /* Opened "A job description lists what the role needs. The market rarely
-       packages all of it in one person..." — which is the reframe's first
-       card one section down, in different words: that one reads "beyond the
-       job description to understand what the role actually requires, the
+       packages all of it in one person..." — which is the first card of WHAT
+       WE BRING one section down, in different words: that one reads "beyond
+       the job description to understand what the role actually requires, the
        market around it". The card is the client's copy, so this is the side
        that moves. The example stays; it was never the part that echoed. */
     t: "The right skills.",
@@ -56,7 +56,7 @@ const ROWS: Row[] = [
   },
   {
     /* Stays on the problem. The draft ended on what enterprises need from a
-       partner, which is the answer THE REFRAME gives one section below; a
+       partner, which is the answer WHAT WE BRING gives one section below; a
        problem that answers itself leaves that section restating it. */
     t: "More vendors.",
     t2: "Less accountability.",
