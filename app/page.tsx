@@ -209,7 +209,10 @@ export default function Home() {
           <div className="prob-head">
             <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>The problem</div>
             <h2 className="section-h2 prob-h2 gs">Enterprises have a <em>hiring problem.</em></h2>
-            <p className="prob-lede gs">None of it is about the candidates.</p>
+            {/* Was "None of it is about the candidates", which stopped being
+                true once the second row became skills scarcity — that one is
+                squarely about who is out there. */}
+            <p className="prob-lede gs">None of them is solved by more candidates.</p>
           </div>
 
           <div className="prob-grid">

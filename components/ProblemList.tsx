@@ -2,40 +2,69 @@
 
 import { useState } from "react";
 
-/* The four problems, as a plus-toggle list.
+/* The five problems, as a plus-toggle list.
  *
  * One open at a time, the first open on load — the reference's behaviour.
  *
  * I argued against collapsing these twice and was wrong about the size of
  * the cost. The objection holds for feature labels ("Extreme flexibility"),
  * where the body carries the argument and hiding it hides the point. These
- * headlines are not labels: "Four agencies, the same six candidates" states
- * the whole problem on its own. All four stay visible and scannable at rest;
- * what collapses is supporting detail.
+ * headlines are not labels: each one states its whole problem in two lines.
+ * All five stay visible and scannable at rest; what collapses is detail.
  *
  * The FAQ four sections down is also a plus accordion, so two things keep
  * these apart: the icon sits on the LEFT here and on the right there, and
  * these rows carry no fill or box of any kind.
+ *
+ * These replace an earlier four that were all ways an AGENCY fails you —
+ * the scorecard written late, the pitch team swapped out, no written
+ * update. The section heading promises something wider than that, so these
+ * are the buyer's problems instead, and only the fourth is about vendors.
+ *
+ * Nothing here is a measured claim. These are failure modes common to the
+ * industry, not statistics about Rivago's clients or anyone else's, and no
+ * row cites research — see the note on the fifth row.
  */
 
-type Row = { t: string; d: string };
+type Row = { t: string; t2: string; d: string };
 
 const ROWS: Row[] = [
   {
-    t: "The scorecard came after the first shortlist",
-    d: "Sourcing starts from the job description, because that is the document that exists. Nobody has agreed yet whether a VP Engineering hire needs to have scaled a platform team or built one from nothing. The first shortlist is how you find out.",
+    t: "Too much volume.",
+    t2: "Not enough signal.",
+    d: "An open req collects applications from job boards, referrals and whichever agencies are on the panel. Most of those people applied to every company hiring the same title that month. The hard part is not finding candidates — it is working out which of them is worth a call.",
   },
   {
-    t: "Pitched senior, staffed junior",
-    d: "You are handed to a delivery team after signature. By week three you are explaining your hiring bar again, to someone who was not on the intake call.",
+    t: "The right skills.",
+    t2: "Harder to find.",
+    d: "A job description lists what the role needs. The market rarely packages all of it in one person — the finance lead who has closed books through an acquisition has usually not also built the reporting stack, and the one who built it has never closed an audit. Titles and keywords stop helping at that point.",
   },
   {
-    t: "Four agencies, the same six candidates",
-    d: "Four firms working the same role on contingency all submit fast, and the same names reach you from three directions. Screening properly means one conversation per candidate — comp expectations, notice period, right to work, whether they would genuinely move for this role. Nobody in a race makes that call.",
+    /* Deliberately not "hiring teams are still dealing with widespread
+       difficulty filling roles", which gestures at survey data without
+       producing any. The cost to the team either side of the vacancy is
+       observable without citing a study. */
+    t: "Critical roles.",
+    t2: "Open for too long.",
+    d: "Every week a senior role stays open, the work is absorbed by the people either side of it — who did not ask for it, and will not say so for a while.",
   },
   {
-    t: "Three weeks, no written update",
-    d: "A search that is genuinely hard and a search nobody has touched since kickoff look the same from your side of it.",
+    /* Stays on the problem. The draft ended on what enterprises need from a
+       partner, which is the answer THE REFRAME gives one section below; a
+       problem that answers itself leaves that section restating it. */
+    t: "More vendors.",
+    t2: "Less accountability.",
+    d: "Adding a fourth agency to a struggling search adds a fourth inbox, not a fourth strategy. Each is paid only on placement, so each submits fast and wide, and the same names reach you from three directions. Nobody on the panel owns the result.",
+  },
+  {
+    /* The draft closed on LinkedIn research naming skills assessment as
+       critical to quality of hire. Dropped: it could not be verified from
+       here, and an unverifiable citation is the same problem as an invented
+       metric. It also pointed at the CV a second time, which the first row
+       already covers — this one moves to what a CV cannot tell you. */
+    t: "Better CVs.",
+    t2: "Not necessarily better hires.",
+    d: "A CV records where someone has been. It is a weak guide to how they will do in a role that does not exist yet, at a company they have not worked in.",
   },
 ];
 
@@ -63,7 +92,10 @@ export default function ProblemList() {
                   {!isOpen && <path d="M5.5 1v9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />}
                 </svg>
               </span>
-              <span className="prob-t">{r.t}</span>
+              {/* Two lines, always — the second reverses the first, and the
+                  pair only works as a pair. The break is forced rather than
+                  left to wrapping so it never lands mid-clause. */}
+              <span className="prob-t">{r.t}<br />{r.t2}</span>
             </button>
             {/* grid-template-rows 0fr to 1fr animates height without any
                 JavaScript measurement. The inner div hides with visibility
