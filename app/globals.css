@@ -1333,8 +1333,18 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 
 /* ── FAQ ── */
 .faq-sec{padding:110px 44px;background:var(--bg)}
-.faq-inner{max-width:800px;margin:0 auto}
-.faq-list{margin-top:36px;display:flex;flex-direction:column;gap:2px}
+/* 1200 and two columns, not a centred 800. The centred header was the last
+   thing on this page not starting on the 120px gutter, and an 800px column
+   in a 1200px band left the section looking unrelated to the ones around
+   it. The heading block takes the left track; the list takes the right, so
+   the width is used without the answers running to a 95-character line. */
+.faq-inner{max-width:1200px;margin:0 auto}
+.faq-grid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:72px;align-items:start}
+.faq-aside p{font-size:var(--fz5);color:var(--text2);line-height:1.72;margin:16px 0 0}
+.faq-ask{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:var(--fz5);
+  font-weight:500;color:var(--accent);text-decoration:none;transition:gap .2s}
+.faq-ask:hover{gap:12px}
+.faq-list{display:flex;flex-direction:column;gap:2px}
 .faq-item{border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
 .faq-item.open{border-color:var(--tint-2)}
 .faq-q{padding:22px 26px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:16px;transition:background .2s;background:none;border:none;width:100%;text-align:left;font-family:var(--ff);color:inherit}
@@ -1342,9 +1352,22 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 .faq-q-txt{font-size:var(--fz5);font-weight:500;color:var(--text);letter-spacing:-.01em}
 .faq-icon{width:22px;height:22px;border-radius:50%;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;color:var(--text2)}
 .faq-item.open .faq-icon{background:var(--tint-1);border-color:var(--tint-3);color:var(--accent);transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease),padding .3s}
-.faq-item.open .faq-a{max-height:300px}
-.faq-a-inner{padding:0 26px 22px;font-size:var(--fz6);color:var(--text2);line-height:1.78;font-weight:400}
+/* Was max-height 0 to 300px, which clipped any answer taller than 300 —
+   35px of the longest one was gone at 360px wide, and 7px at 400. 0fr to
+   1fr animates to the content's own height, so there is no cap to exceed
+   however long an answer gets or however narrow the screen. */
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .36s var(--ease)}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a > div{overflow:hidden;visibility:hidden;transition:visibility 0s .36s}
+.faq-item.open .faq-a > div{visibility:visible;transition:visibility 0s}
+/* Capped in characters, not pixels: the right track is about 790px at
+   1440, which would run these answers to roughly 95 characters a line. */
+.faq-a-inner{padding:0 26px 22px;font-size:var(--fz6);color:var(--text2);line-height:1.78;font-weight:400;max-width:68ch}
+@media(prefers-reduced-motion:reduce){.faq-a{transition:none}}
+
+@media(max-width:900px){
+  .faq-grid{grid-template-columns:1fr;gap:34px}
+}
 
 @media(max-width:900px){
   .ft-grid,.supp-grid{grid-template-columns:1fr!important}
