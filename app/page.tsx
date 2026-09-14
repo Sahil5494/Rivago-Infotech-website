@@ -12,7 +12,7 @@ import InsightsGrid from "@/components/InsightsGrid";
    carousel and the industry rail each read the data themselves. lib/routes.ts
    still exports both — /about counts them and the nav mega-menu reads them.
    CardSlider went with them; nothing on this page uses it now. */
-import { routes, offices } from "@/lib/routes";
+import { routes, offices, servicesList } from "@/lib/routes";
 /* Counted, not typed, so the support card cannot promise a library bigger
    than the one /resources actually renders. Build-time only — this is a
    server component, so the article bodies never reach the browser.
@@ -126,6 +126,18 @@ const faqJsonLd = {
   })),
 };
 
+/* The three modes group the seven services by what the client is actually
+   buying: a hire, capacity, or the function itself. Titles are looked up in
+   servicesList rather than retyped, so renaming a service renames it here
+   too. The Staffing Solutions overview is not a mode — it is the index page
+   these all sit on. */
+const svcTitle = (href: string) => servicesList.find((s) => s.href === href)?.title ?? "";
+const MODES = [
+  { k: "Permanent", d: "You need the role filled, and kept filled.", items: [routes.directHire, routes.executiveSearch] },
+  { k: "Flexible", d: "You need capacity now, on terms you can change later.", items: [routes.contractStaffing, routes.temporaryStaffing] },
+  { k: "Run for you", d: "You need the function itself, not one more hire.", items: [routes.rpo, routes.interimLeadership, routes.employerOfRecord] },
+];
+
 const Arrow = () => (
   <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
@@ -181,19 +193,71 @@ export default function Home() {
         <LogoMarquee />
       </section>
 
-      {/* ORB */}
-      {/* The sphere is gone. It was 360px fixed with no responsive rule, so
-          at 390px it overflowed a 302px content box, sat off-centre and got
-          clipped — with overflow:hidden on the section hiding the damage
-          rather than fixing it. It also said nothing about recruitment, and
-          cost a second always-on rAF loop now that the hero has a canvas.
+      {/* THE PROBLEM */}
+      {/* The page had no problem statement. It opened with what Rivago does,
+          showed who trusts them, and went straight into how the work runs —
+          so a reader who did not already feel a hiring problem was never
+          given a reason to keep going.
 
-          The two paragraphs made the same claim 72px apart. The headline now
-          states the positioning and the body says what "full context" means,
-          so neither is repeating the other. Section: 1011px -> ~420px. */}
-      <section className="orb-sec inv">
-        <p className="orb-quote gs">The recruitment partner with <em>full context.</em></p>
-        <p className="orb-desc gs">We don&apos;t just fill roles. We learn your business, your culture and what genuinely good looks like in your sector — then find the people ready to perform from day one.</p>
+          Nothing here is a measured claim. These are four descriptions of a
+          common experience, not statistics about Rivago's clients or anyone
+          else's. The third deliberately does not say "fifty CVs" — the
+          approach section two bands down answers with "instead of fifty that
+          don't", and the setup works better when it isn't the same word. */}
+      <section className="prob-sec">
+        <div className="prob-inner">
+          <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>The problem</div>
+          <h2 className="section-h2 gs" /* 727px is the natural width of the first line at 44px; 640 forced
+              "offer." onto a line of its own. */
+            style={{ color: "var(--text)", maxWidth: 760, marginBottom: 18 }}>Senior searches rarely fail at the offer.<br /><em>They fail at the brief.</em></h2>
+          <p className="prob-lede gs">Four things go wrong in almost every search that stalls, and none of them are about the candidates.</p>
+          <ul className="prob-list">
+            {[
+              { t: "The brief was never really taken", d: "A job description is not a brief. If nobody agreed what strong actually looks like before sourcing started, every shortlist after that is a guess in a tidy format." },
+              { t: "You met the pitch team, then got the junior", d: "The person who won your business is rarely the person running your search. You tend to find that out somewhere around week three, when the questions stop being good ones." },
+              { t: "A stack of near-misses", d: "Volume is cheap to produce and easy to invoice. Fit costs a real conversation with every candidate before they reach your inbox, and that conversation is the part most agencies skip." },
+              { t: "Then nothing", d: "No update until there is something to sell you — so you cannot tell a search that is moving slowly from one that has quietly stopped." },
+            ].map((r) => (
+              <li className="prob-row gs" key={r.t}>
+                <h3 className="prob-t">{r.t}</h3>
+                <p className="prob-d">{r.d}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* WHAT WE DO */}
+      {/* Takes the ORB band's slot, and its positioning line with it. The orb
+          section said "We don't just fill roles. We learn your business..." —
+          a claim about what Rivago does, sitting 400px from a section that
+          would now say the same thing. One statement, in the section whose
+          job it is to make it.
+
+          Three modes, not seven services. The carousel further down names all
+          seven with their commercials; repeating that list here would be the
+          same page telling you twice. This says what SHAPE the offer takes,
+          and the names are read from servicesList so they cannot drift from
+          the carousel or the nav. */}
+      <section className="wwd-sec inv">
+        <div className="wwd-inner">
+          <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>What we do</div>
+          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 620, marginBottom: 18 }}>Permanent, flexible,<br /><em>or run for you.</em></h2>
+          <p className="wwd-lede gs">We don&apos;t just fill roles. We learn your business, your culture and what genuinely good looks like in your sector — then find the people ready to perform from day one.</p>
+          <div className="wwd-grid">
+            {MODES.map((m) => (
+              <div className="wwd-mode gs" key={m.k}>
+                <div className="wwd-k">{m.k}</div>
+                <p className="wwd-d">{m.d}</p>
+                <ul className="wwd-items">
+                  {m.items.map((href) => (
+                    <li key={href}><Link href={href}>{svcTitle(href)}</Link></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* FEATURES */}
