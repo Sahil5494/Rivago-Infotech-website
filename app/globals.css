@@ -1337,18 +1337,12 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 
 /* ── FAQ ── */
 .faq-sec{padding:110px 44px;background:var(--bg)}
-/* 1200 and two columns, not a centred 800. The centred header was the last
-   thing on this page not starting on the 120px gutter, and an 800px column
-   in a 1200px band left the section looking unrelated to the ones around
-   it. The heading block takes the left track; the list takes the right, so
-   the width is used without the answers running to a 95-character line. */
-.faq-inner{max-width:1200px;margin:0 auto}
-.faq-grid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:72px;align-items:start}
-.faq-aside p{font-size:var(--fz5);color:var(--text2);line-height:1.72;margin:16px 0 0}
-.faq-ask{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:var(--fz5);
-  font-weight:500;color:var(--accent);text-decoration:none;transition:gap .2s}
-.faq-ask:hover{gap:12px}
-.faq-list{display:flex;flex-direction:column;gap:2px}
+/* A centred 800px column, at the client's call. It is the one header on the
+   page that does not start on the 120px gutter — deliberately: the section
+   is a single narrow list, and the narrow measure is the reason to centre
+   it rather than leave 400px of nothing down one side. */
+.faq-inner{max-width:800px;margin:0 auto}
+.faq-list{margin-top:36px;display:flex;flex-direction:column;gap:2px}
 .faq-item{border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
 .faq-item.open{border-color:var(--tint-2)}
 .faq-q{padding:22px 26px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:16px;transition:background .2s;background:none;border:none;width:100%;text-align:left;font-family:var(--ff);color:inherit}
@@ -1364,14 +1358,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 .faq-item.open .faq-a{grid-template-rows:1fr}
 .faq-a > div{overflow:hidden;visibility:hidden;transition:visibility 0s .36s}
 .faq-item.open .faq-a > div{visibility:visible;transition:visibility 0s}
-/* Capped in characters, not pixels: the right track is about 790px at
-   1440, which would run these answers to roughly 95 characters a line. */
-.faq-a-inner{padding:0 26px 22px;font-size:var(--fz6);color:var(--text2);line-height:1.78;font-weight:400;max-width:68ch}
+/* Uncapped, as it was. Counted rather than estimated: inside the 800px
+   column the lines run 92 to 98 characters, which is long against the 65
+   to 75 a reading measure wants. Left alone because the client asked for
+   this layout back, and a max-width here would wrap the text narrower than
+   the card it sits in. Worth revisiting on its own. */
+.faq-a-inner{padding:0 26px 22px;font-size:var(--fz6);color:var(--text2);line-height:1.78;font-weight:400}
 @media(prefers-reduced-motion:reduce){.faq-a{transition:none}}
-
-@media(max-width:900px){
-  .faq-grid{grid-template-columns:1fr;gap:34px}
-}
 
 @media(max-width:900px){
   .ft-grid,.supp-grid{grid-template-columns:1fr!important}

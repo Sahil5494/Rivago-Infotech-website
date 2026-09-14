@@ -544,15 +544,11 @@ export default function Home() {
       {/* FAQ */}
       <section className="faq-sec">
         <div className="faq-inner">
-          <div className="faq-grid">
-            <div className="faq-aside">
-              <div className="eyebrow ew-light gs" style={{ marginBottom: 16 }}>FAQ</div>
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 0 }}>Questions we <em>hear most often.</em></h2>
-              <p className="gs">If yours is not here, send it over and we will answer it.</p>
-              <Link className="faq-ask gs" href={routes.contactUs}>Ask us directly <Arrow /></Link>
-            </div>
-            <Faq items={faqItems} />
+          <div style={{ textAlign: "center" }}>
+            <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>FAQ</div>
+            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 0 }}>Questions we <em>hear most often.</em></h2>
           </div>
+          <Faq items={faqItems} />
         </div>
       </section>
 
