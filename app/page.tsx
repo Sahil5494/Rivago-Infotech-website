@@ -10,11 +10,12 @@ import Faq from "@/components/Faq";
 import WhyCards from "@/components/WhyCards";
 import InsightsGrid from "@/components/InsightsGrid";
 import ProblemList from "@/components/ProblemList";
-/* servicesList and industriesList both dropped from this import: the services
-   carousel and the industry rail each read the data themselves. lib/routes.ts
-   still exports both — /about counts them and the nav mega-menu reads them.
-   CardSlider went with them; nothing on this page uses it now. */
-import { routes, offices, servicesList } from "@/lib/routes";
+/* servicesList and industriesList are both read by their own components now
+   — the services carousel and the industry rail — and the WHAT WE DO modes
+   no longer name individual services, so nothing on this page needs the
+   list. lib/routes.ts still exports it: /about counts it and the nav
+   mega-menu reads it. */
+import { routes, offices } from "@/lib/routes";
 /* Counted, not typed, so the support card cannot promise a library bigger
    than the one /resources actually renders. Build-time only — this is a
    server component, so the article bodies never reach the browser.
@@ -133,11 +134,16 @@ const faqJsonLd = {
    servicesList rather than retyped, so renaming a service renames it here
    too. The Staffing Solutions overview is not a mode — it is the index page
    these all sit on. */
-const svcTitle = (href: string) => servicesList.find((s) => s.href === href)?.title ?? "";
+/* The three modes say WHEN each shape is right. They deliberately do not
+   name the seven services or quote their commercials — the carousel four
+   sections down does both, and listing them here was most of why this
+   section read as a second services page.
+
+   svcTitle and the per-mode route lists went with the names. */
 const MODES = [
-  { k: "Permanent", d: "You need the role filled, and kept filled.", items: [routes.directHire, routes.executiveSearch] },
-  { k: "Flexible", d: "You need capacity now, on terms you can change later.", items: [routes.contractStaffing, routes.temporaryStaffing] },
-  { k: "Run for you", d: "You need the function itself, not one more hire.", items: [routes.rpo, routes.interimLeadership, routes.employerOfRecord] },
+  { k: "Permanent", d: "The work is ongoing and the role belongs on your headcount. You want someone still here in two years, and you would rather pay once than keep paying." },
+  { k: "Flexible", d: "The work has an end date, a peak, or an unknown in it. You want the capacity now and the room to change your mind later without a redundancy conversation." },
+  { k: "Run for you", d: "The gap is not one person. A function to stand up, a leader in the chair while you search, or an entity you do not have in a country you are hiring into." },
 ];
 
 const Arrow = () => (
@@ -263,11 +269,11 @@ export default function Home() {
           would now say the same thing. One statement, in the section whose
           job it is to make it.
 
-          Three modes, not seven services. The carousel further down names all
-          seven with their commercials; repeating that list here would be the
-          same page telling you twice. This says what SHAPE the offer takes,
-          and the names are read from servicesList so they cannot drift from
-          the carousel or the nav. */}
+          Three modes, and deliberately not the seven service names. Listing
+          them here was most of why this section read as a second services
+          page — the carousel four sections down already names all seven with
+          their commercials. These three say WHEN each shape is right, which
+          the carousel does not do for any of them. */}
       <section className="wwd-sec inv">
         <div className="wwd-inner">
           <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>What we do</div>
@@ -278,14 +284,10 @@ export default function Home() {
               <div className="wwd-mode gs" key={m.k}>
                 <div className="wwd-k">{m.k}</div>
                 <p className="wwd-d">{m.d}</p>
-                <ul className="wwd-items">
-                  {m.items.map((href) => (
-                    <li key={href}><Link href={href}>{svcTitle(href)}</Link></li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>
+          <Link className="wwd-all gs" href={routes.services}>See the seven services <Arrow /></Link>
         </div>
       </section>
 
@@ -361,7 +363,10 @@ export default function Home() {
                   already filters it out to render "7 Ways to engage". The two
                   pages disagreed; About was the one that was right. */}
               <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Seven ways to put the <em>right people in seat.</em></h2>
-              <p className="svc-sub gs">Permanent, contract, temporary or embedded. The commitment and the commercials differ — the way we run the search does not.</p>
+              {/* Was "Permanent, contract, temporary or embedded." — the WHAT WE DO
+                  section above now owns that grouping, and having both do it was
+                  the page saying the same thing twice. */}
+              <p className="svc-sub gs">The commitment and the commercials differ from one to the next. The way we run the search behind them does not.</p>
             </div>
             <Link className="svc-all gs" href={routes.services}>View all services <Arrow /></Link>
           </div>
