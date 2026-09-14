@@ -321,9 +321,19 @@ export default function Home() {
         <div className="rfm-inner">
           <div className="rfm-head gs">
             <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>What we bring</div>
-            <h2 className="rfm-h2">Hiring doesn&rsquo;t need more candidates.<br /><em>It needs better decisions.</em></h2>
-            <p className="rfm-d">Hiring isn&rsquo;t simply about reaching more candidates. It&rsquo;s about knowing where to look, what to look for, and which candidates are genuinely worth your team&rsquo;s time.</p>
-            <p className="rfm-turn">That&rsquo;s where we work differently.</p>
+            {/* The headline was "Hiring doesn't need more candidates. It needs
+                better decisions." and the paragraph opened "Hiring isn't
+                simply about reaching more candidates. It's about knowing where
+                to look..." — the same sentence twice, forty pixels apart, and
+                both of them built on the not-X-but-Y antithesis this site has
+                now overused. The headline states one thing plainly; the
+                paragraph spends its words on the four decisions themselves,
+                which is what the rail below is made of. No <br />: the line is
+                short enough to set itself, and text-wrap:balance on .rfm-h2 is
+                inert across a forced break anyway. */}
+            <h2 className="rfm-h2">The work happens <em>before the shortlist.</em></h2>
+            <p className="rfm-d">By the time a name reaches you, four decisions have already been made: what the role really requires, where people with that experience are working now, which applications were worth an hour of someone&rsquo;s time, and how far out to go when the answer isn&rsquo;t in the obvious places.</p>
+            <p className="rfm-turn">Get those wrong early and the rest of the process can&rsquo;t recover it.</p>
           </div>
 
           <div className="gs">
