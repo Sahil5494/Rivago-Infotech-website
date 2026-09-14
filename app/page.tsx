@@ -10,6 +10,7 @@ import Faq from "@/components/Faq";
 import WhyCards from "@/components/WhyCards";
 import InsightsGrid from "@/components/InsightsGrid";
 import ProblemList from "@/components/ProblemList";
+import ReframeRail from "@/components/ReframeRail";
 /* servicesList and industriesList are both read by their own components now
    — the services carousel and the industry rail — and the WHAT WE DO modes
    no longer name individual services, so nothing on this page needs the
@@ -254,18 +255,31 @@ export default function Home() {
           approach section already make that claim between them. */}
 
       {/* THE REFRAME */}
-      {/* The turn panel promoted out of THE PROBLEM. Cream rather than plain
-          light: it lands between a dark band and two light ones, and without
-          a ground of its own the page would run reframe, what changes and
-          how we work as one continuous pale stretch. Cream also keeps the
-          meaning the panel had as light-inside-dark — the answer coming out
-          of the dark. */}
+      {/* Cream rather than plain light: it lands between a dark band and two
+          light ones, and without a ground of its own the page would run
+          reframe, what changes and how we work as one continuous pale
+          stretch. Cream also keeps the meaning this had as a light panel
+          inside the dark band it came out of.
+
+          The four cards are dark on that cream, where the reference has them
+          dark on dark — see the note in ReframeRail. */}
       <section className="section cream lt rfm-sec">
-        <div className="rfm-inner gs">
-          <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>The reframe</div>
-          <h2 className="rfm-h2">No one owns <em>the search.</em></h2>
-          <p className="rfm-d">Put a role on a panel of four agencies and it belongs to none of them. Every problem above follows from that. We take one brief, put one partner on it, and write down what was agreed on the intake call — the delivery date, the scorecard, and the part of the role we think will be hard to fill.</p>
-          <p className="rfm-d rfm-d2">The rest of this page is that, in detail.</p>
+        <div className="rfm-inner">
+          <div className="rfm-head gs">
+            <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>The reframe</div>
+            <h2 className="rfm-h2">Hiring doesn&rsquo;t need more candidates.<br /><em>It needs better decisions.</em></h2>
+            <p className="rfm-sub">A better search starts with better intelligence.</p>
+            <p className="rfm-d">Hiring isn&rsquo;t simply about reaching more candidates. It&rsquo;s about knowing where to look, what to look for, and which candidates are genuinely worth your team&rsquo;s time.</p>
+            <p className="rfm-turn">That&rsquo;s where we work differently.</p>
+          </div>
+
+          <div className="gs">
+            <ReframeRail />
+          </div>
+
+          {/* Left, not centred: every headline and eyebrow on this page
+              starts on the same gutter and this one does too. */}
+          <p className="rfm-close gs">Technology can narrow the search.<br /><em>Experience makes the call.</em></p>
         </div>
       </section>
 

@@ -972,21 +972,87 @@ a{color:inherit;text-decoration:none}
 }
 
 /* ── THE REFRAME ──
-   The turn panel from THE PROBLEM, at section weight.
+   Headline block, a four-card rail, then a closing statement.
 
    The container matches every other section at 1200px so the eyebrow and
    headline start on the page's 120px gutter. The measure is held narrow on
-   the text itself instead — this is one idea and should read in a single
-   pass — rather than by centring a narrow block, which would have put this
-   headline somewhere no other headline on the page sits. */
+   the text itself instead — rather than by centring a narrow block, which
+   would have put this headline somewhere no other headline on the page
+   sits. */
 .rfm-sec{padding:104px 44px}
 .rfm-inner{max-width:1200px;margin:0 auto}
-.rfm-h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.14;color:var(--text-inv-1);margin:0 0 26px;text-wrap:balance;max-width:880px}
+.rfm-head{margin-bottom:52px}
+.rfm-h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.14;color:var(--text-inv-1);margin:0 0 20px;text-wrap:balance;max-width:880px}
+/* The one line the section turns on. Between the headline and the body in
+   size, so it reads as a second-level statement rather than as the first
+   line of the paragraph under it. */
+.rfm-sub{font-size:var(--fz9);font-weight:500;letter-spacing:-.018em;line-height:1.3;color:var(--text-inv-1);margin:0 0 18px;max-width:34ch}
 .rfm-d{font-size:var(--fz7);color:var(--text-inv-2);line-height:1.76;font-weight:400;margin:0;max-width:64ch}
-/* The closing line is the handoff to the rest of the page, so it is set
-   apart from the paragraph that earns it rather than trailing it. */
-.rfm-d2{margin-top:22px;color:var(--text-inv-1)}
-@media(max-width:760px){.rfm-sec{padding:76px 22px}}
+/* The handoff into the rail. Set apart from the paragraph that earns it. */
+.rfm-turn{font-size:var(--fz7);line-height:1.76;font-weight:500;color:var(--text-inv-1);margin:26px 0 0}
+/* The closing statement, after the cards. Same weight as the sub so the
+   section opens and closes on the same note, and left on the page's gutter
+   rather than centred. */
+.rfm-close{font-size:var(--fz10);font-weight:500;letter-spacing:-.022em;line-height:1.28;
+  color:var(--text-inv-1);margin:56px 0 0;max-width:36ch;text-wrap:balance}
+.rfm-close em{color:var(--accent-inv)}
+
+/* The four-card rail. Same mechanic as the industries rail — scroll-snap,
+   two cards in view, the third peeking, arrows against the right edge — in
+   its own namespace, because .ind-* is already shared with /industries and
+   this file has collided on that six times.
+
+   Cards are dark on the cream band: the section above is a full dark band,
+   and a second one under it reads as one long stretch instead of two
+   sections. .inv redefines the token set without painting, so each card
+   sets its own ground and its children follow. */
+.rfr-wrap{position:relative}
+.rfr-rail{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:4px 0 8px;scrollbar-width:none;-ms-overflow-style:none;padding-right:76px}
+.rfr-rail::-webkit-scrollbar{display:none}
+.rfr-rail:focus-visible{outline:2px solid var(--accent-inv);outline-offset:6px;border-radius:20px}
+/* 46% leaves two cards in view with roughly a third of the third showing at
+   1200px — enough to read as "there is more" without looking like a column
+   that got cut off. */
+.rfr-card{flex:0 0 clamp(320px,46%,560px);scroll-snap-align:start;
+  display:flex;flex-direction:column;background:var(--surface-3);
+  border:1px solid var(--rule-1);border-radius:20px;padding:38px 36px 34px}
+.rfr-ico{color:var(--accent);margin-bottom:30px}
+.rfr-label{display:flex;align-items:center;gap:9px;font-family:var(--fm);font-size:var(--fz1);
+  letter-spacing:.09em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px}
+.rfr-n{color:var(--accent)}
+.rfr-dash{opacity:.5}
+.rfr-t{font-size:var(--fz10);font-weight:500;letter-spacing:-.025em;line-height:1.18;
+  color:var(--text-1);margin:0 0 14px;max-width:16ch;text-wrap:balance}
+.rfr-d{font-size:var(--fz4);color:var(--text-2);line-height:1.68;font-weight:400;margin:0}
+/* Fades the peeking card, so the rail reads as continuing rather than as a
+   card that happens to be clipped. Dropped at the end, where there is
+   nothing more to suggest. */
+.rfr-rail:not(.at-end){
+  mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 120px),transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 120px),transparent 100%)}
+.rfr-nav{position:absolute;right:-8px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:10px;z-index:2}
+.rfr-btn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;cursor:pointer;background:var(--surface-inv);
+  border:1px solid var(--rule-inv-2);color:var(--text-inv-1);
+  box-shadow:var(--shadow-1);transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.rfr-btn:hover:not(:disabled){border-color:var(--accent-inv);transform:translateX(2px)}
+.rfr-btn:focus-visible{outline:2px solid var(--accent-inv);outline-offset:2px}
+.rfr-btn:disabled{opacity:.32;cursor:default;box-shadow:none}
+
+@media(max-width:900px){
+  .rfr-card{flex:0 0 min(84vw,420px);padding:32px 28px 30px}
+  .rfr-rail{padding-right:20px}
+  /* Below this the peek and the swipe carry it; two 44px buttons over a
+     card that is already most of the screen do not earn their space. */
+  .rfr-nav{display:none}
+}
+@media(max-width:760px){
+  .rfm-sec{padding:76px 22px}
+  .rfm-head{margin-bottom:38px}
+  .rfm-close{margin-top:40px}
+}
 
 /* ── WHAT OUR CLIENTS SAY ──
    Logo marquee and quotes in one band. The marks are white-on-transparent
