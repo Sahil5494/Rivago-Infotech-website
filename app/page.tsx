@@ -247,7 +247,7 @@ export default function Home() {
 
           Nothing here is a measured claim. These are failure modes common to
           the industry, not statistics about Rivago's clients. */}
-      <section className="prob-sec inv">
+      <section className="prob-sec">
         <div className="prob-inner">
           {/* The heading block sits full width above both columns, on the
               left, because that is where the eyebrow and headline sit in

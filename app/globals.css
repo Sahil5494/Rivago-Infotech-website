@@ -646,7 +646,11 @@ a{color:inherit;text-decoration:none}
    own, and a shadow cast upward so the leading edge reads as a panel
    sliding over rather than a section that happens to be adjacent. */
 .prob-sec{position:relative;z-index:1;box-shadow:0 -34px 64px rgba(0,0,0,.5)}
-.prob-sec{padding:110px 44px;background:var(--bg2)}
+/* --bg3 (white), not --bg2. This band slides up over a near-black hero,
+   and the brighter it is the more that reads as a panel arriving rather
+   than the page continuing — which is what the reference does with a
+   bright band over a dark hero. */
+.prob-sec{padding:110px 44px;background:var(--bg3)}
 .prob-inner{max-width:1200px;margin:0 auto}
 /* No align-items:start. The visual column has to stretch to the row height
    or the sticky figure inside it has no distance to travel. */
@@ -975,11 +979,12 @@ a{color:inherit;text-decoration:none}
    purpose, so fill never separates bands and the rule always does. These
    two were the exception, and between them sat the only boundary on the
    page with neither a rule nor a change of colour.
-   .rfm-sec is deliberately not in this list: it follows a black band, and
-   a light rule along that edge draws a line where there is already a
-   17.78:1 step. */
+   .rfm-sec was excluded while it followed a black band — a light rule
+   across a 17.78:1 step draws a line where the eye already sees one. THE
+   PROBLEM above it is light now, so that edge is light-on-light and needs
+   the rule like every other one. */
 .svc-sec,.ind-sec,.supp-sec,.hins-sec,.faq-sec,.cta-sec,.prob-sec,.prf-sec,
-.why-sec,.feat-sec{
+.why-sec,.feat-sec,.rfm-sec{
   border-top:1px solid var(--rule-1)
 }
 /* PRECISION and PROCESS rules removed with their sections; the panel
