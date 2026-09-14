@@ -208,8 +208,8 @@ export default function Home() {
               hidden below 900px. */}
           <div className="prob-head">
             <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>The problem</div>
-            <h2 className="section-h2 prob-h2 gs">Four ways a search goes wrong, and the one reason underneath.</h2>
-            <p className="prob-lede gs">Not one of them is about the candidates.</p>
+            <h2 className="section-h2 prob-h2 gs">Enterprises have a <em>hiring problem.</em></h2>
+            <p className="prob-lede gs">None of it is about the candidates.</p>
           </div>
 
           <div className="prob-grid">
@@ -260,8 +260,8 @@ export default function Home() {
       <section className="section cream lt rfm-sec">
         <div className="rfm-inner gs">
           <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>The reframe</div>
-          <h2 className="rfm-h2">None of this is bad luck.<br /><em>It is a question of who owns the search.</em></h2>
-          <p className="rfm-d">It is what happens when a search sits on a panel of four agencies and is owned by none of them. We take one brief, put one partner on it, and write down what was agreed on the intake call — the delivery date, the scorecard, and the part of the role we think will be hard to fill.</p>
+          <h2 className="rfm-h2">No one owns <em>the search.</em></h2>
+          <p className="rfm-d">Put a role on a panel of four agencies and it belongs to none of them. Every problem above follows from that. We take one brief, put one partner on it, and write down what was agreed on the intake call — the delivery date, the scorecard, and the part of the role we think will be hard to fill.</p>
           <p className="rfm-d rfm-d2">The rest of this page is that, in detail.</p>
         </div>
       </section>
@@ -290,10 +290,8 @@ export default function Home() {
         <div className="feat-inner">
           <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our approach</div>
           <div className="apr-head">
-            {/* Rescued from the deleted PRECISION section, which said this
-                better than "How we work — and why it actually works." */}
-            <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 580 }}>A shortlist that fits, instead of <em>fifty that don&apos;t.</em></h2>
-            <p className="apr-lead gs">Every search runs the same five stages, with the same partner from brief to placement. No handoffs and no black box — you know where the search stands at every one of them.</p>
+            <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 700 }}>How Rivago drives enterprise hiring.<br /><em>From initial sourcing to final offer.</em></h2>
+            <p className="apr-lead gs">Every search runs the same five stages, with the same partner on it throughout. You know where the search stands at each one.</p>
           </div>
           <ApproachTabs />
         </div>
