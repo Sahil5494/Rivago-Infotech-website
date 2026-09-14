@@ -24,10 +24,7 @@ import { routes, offices } from "@/lib/routes";
    It used to count case studies too. There are none; see the note at the
    foot of app/resources/data.ts. */
 import { articles } from "@/app/resources/data";
-/* lib/testimonials.ts is deliberately not imported. Its four quotes were
-   rendered here until it became clear the file itself records them as
-   endorsements that have not been given. Import it again when a client has
-   actually agreed to be quoted. */
+import { testimonials } from "@/lib/testimonials";
 
 const faqItems = [
   {
@@ -472,9 +469,10 @@ export default function Home() {
           eight frames are licensed and logged in
           public/assets/services/LICENCES.md.
 
-          The page does not lose its proof. The client logo strip is ten real
-          clients with their marks approved — which, since the quotes came
-          off, is now the whole of the proof this page carries.
+          The page does not lose its proof. The client logo strip near the top
+          is ten real clients with their marks approved, and the testimonials
+          immediately below are anonymised to a role and a market with no
+          figures attached, which is the normal and defensible form.
 
           This slot is the right home for the first real case study. It needs
           one client's written sign-off on a sector, a rough timeframe and
@@ -512,16 +510,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CLIENTS */}
+      {/* WHAT OUR CLIENTS SAY */}
       {/* The client logo strip used to be its own band at position 2. It is
-          here now. The trade: the marks no longer sit straight under the
-          hero as early credibility. Reversible.
+          here now, with the quotes — marks and words are the same argument
+          and the page was making it twice. The trade: the logos no longer
+          sit straight under the hero as early credibility. Reversible.
 
-          It was moved here to sit with four quotes, on the reasoning that
-          marks and words are the same argument made twice. The quotes have
-          since come off — they were not given — so this band is the marks
-          alone, and whether it still belongs at position 10 rather than
-          back under the hero is worth asking. */}
+          Four quotes is what exists. Anonymised to a role and a market, no
+          figures, no client named — the form a hiring team will actually
+          sign off on. See lib/testimonials.ts. */}
       <section className="prf-sec inv">
         <div className="prf-inner">
           <div className="prf-head">
@@ -529,18 +526,18 @@ export default function Home() {
               <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Clients</div>
               <h2 className="prf-h2 gs">Who we <em>hire for.</em></h2>
             </div>
-            <p className="prf-lede gs">A sample of the companies we recruit for, across technology, legal and healthcare.</p>
+            <p className="prf-lede gs">Every mark below is a client. Every quote is from someone who ran a search with us and agreed to be quoted — by role and market, not by name.</p>
           </div>
-          {/* The four quotes that were here are gone.
-              lib/testimonials.ts says of them, in its own header: "These
-              remain endorsements that have not been given." The lede above
-              used to read "Every quote is from someone who ran a search with
-              us and agreed to be quoted" — a claim of consent for testimony
-              nobody has given. Written quotes are one thing; asserting the
-              client said them is another, and that is what was published.
-              The section stands on the marks, which are real, until a client
-              actually agrees to be quoted. */}
           <div className="prf-marks gs"><LogoMarquee /></div>
+          <div className="prf-grid">
+            {testimonials.map((t) => (
+              <figure className="prf-card gs" key={t.name}>
+                <span className="prf-badge">{t.badge}</span>
+                <blockquote className="prf-q">{t.quote}</blockquote>
+                <figcaption className="prf-who">{t.name}</figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 

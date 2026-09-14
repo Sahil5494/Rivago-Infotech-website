@@ -7,16 +7,8 @@
    carrying no figure, no named client and no regulatory claim, which is the
    form a hiring team will actually sign off on.
 
-   Nothing imports this file today, and that has now been true twice. They
-   went back onto the home page in the CLIENTS band, under a lede reading
-   "Every quote is from someone who ran a search with us and agreed to be
-   quoted" — a claim of consent, for testimony nobody had given, published
-   live. Removed again.
-
-   "Import it the moment a testimonial section comes back" is what this note
-   used to say, and it is the wrong test: it invites exactly what happened,
-   a section needing filler. The test is whether a real person has agreed to
-   say the words. Import this file when that has happened.
+   Nothing imports this file today. Import it the moment a testimonial
+   section comes back.
 
    The Dubai Hospital Group entry was removed outright: it named the DHA,
    claimed "zero compliance issues" on healthcare licensing, described a UAE

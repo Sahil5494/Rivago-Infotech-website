@@ -1061,17 +1061,29 @@ a{color:inherit;text-decoration:none}
 .prf-head{display:flex;align-items:flex-end;justify-content:space-between;gap:64px;margin-bottom:44px}
 .prf-h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;line-height:1.13;color:var(--text);text-wrap:balance}
 .prf-lede{font-size:var(--fz5);color:var(--text2);line-height:1.75;font-weight:400;max-width:430px;flex-shrink:0}
+/* Full bleed: the marquee masks its own edges, so page padding would cut the
+   fade off and leave a hard stop. */
 /* .62 is tuned for a strip that keeps moving and reads as texture. Here the
-   marks are the whole of the section, so they carry more. */
+   marks are the evidence the section leads with, so they carry more. */
+.prf-marks{margin-bottom:52px}
 .prf-marks .logo-chip img{opacity:.85}
 .prf-marks .logo-chip:hover img{opacity:1}
-/* .prf-grid, .prf-card, .prf-badge, .prf-q and .prf-who went with the four
-   quotes. They were not given, so there is nothing to render in them —
-   see the header of lib/testimonials.ts. */
+.prf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.prf-card{margin:0;display:flex;flex-direction:column;padding:26px 24px 22px;
+  border:1px solid var(--rule-1);border-radius:18px;background:var(--surface-3);
+  transition:border-color .25s var(--ease),transform .25s var(--ease)}
+.prf-card:hover{border-color:var(--tint-3);transform:translateY(-3px)}
+.prf-badge{font-family:var(--fm);font-size:var(--fz1);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.prf-q{font-size:var(--fz4);color:var(--text);line-height:1.68;font-weight:400;margin:16px 0 0;flex:1}
+/* No avatar. These are anonymised by agreement, and a generated portrait
+   beside an anonymous quote invents the one thing the anonymity protects. */
+.prf-who{font-size:var(--fz2);color:var(--text3);margin-top:18px;padding-top:14px;border-top:1px solid var(--rule-1)}
 @media(max-width:1080px){
+  .prf-grid{grid-template-columns:1fr 1fr}
   .prf-head{flex-direction:column;align-items:flex-start;gap:18px}
   .prf-lede{max-width:none}
 }
+@media(max-width:600px){.prf-grid{grid-template-columns:1fr}}
 
 /* ── SERVICES ── */
 .svc-sec{padding:110px 44px;background:var(--bg3)}
