@@ -183,18 +183,21 @@ export default function Home() {
               hero to the visual instead. */}
           <HeroVisual />
         </div>
-      </section>
 
-      {/* CLIENT STRIP */}
-      {/* Back under the hero, where it was before the reorder folded it into
-          the quotes band at position 10. The reasoning for folding it in —
-          that marks and words are one argument made twice — was sound about
-          the argument and wrong about the job: straight under the hero these
-          marks are the first evidence on the page, and that is work no
-          quote 9,000px down can do. */}
-      <section className="clients-sec">
-        <div className="clients-label">Teams we recruit for</div>
-        <LogoMarquee />
+        {/* CLIENT STRIP — inside the hero, not a band of its own.
+            It was a separate section directly below, which meant the page
+            opened with two bands whose fills differ by 1.011:1 and which only
+            read as separate because the strip drew a rule. Folding it in
+            makes the marks part of the first thing a visitor sees, which is
+            the job they were moved up here to do in the first place.
+
+            The reference centres its whole hero over the strip; this hero is
+            two-column, so the strip sits full-width beneath the grid rather
+            than under a centred column. */}
+        <div className="hero-trust">
+          <div className="clients-label">Teams we recruit for</div>
+          <LogoMarquee />
+        </div>
       </section>
 
       {/* THE PROBLEM */}
