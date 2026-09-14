@@ -555,11 +555,26 @@ export default function Home() {
       {/* CTA */}
       <section className="cta-sec inv">
         <div className="cta-orb gs"><div className="cta-halo"></div><OrbCanvas size={200} /></div>
-        <h2 className="cta-h2 gs">Your next great hire<br />starts <em>right here.</em></h2>
+        {/* Was "Your next great hire starts right here" — the one headline
+            left on the page that could sit on any staffing site. This one
+            names the ask, and it is the page's own argument: one brief, one
+            partner, one role at a time. */}
+        <h2 className="cta-h2 gs">Start with <em>one role.</em></h2>
         <p className="cta-sub gs">Tell us who you need across any function. A named partner will come back to you with a plan.</p>
         <div className="cta-btns gs">
-          <button className="btn-hp" data-help style={{ fontSize: "var(--fz5)", padding: "15px 32px" }}>Talk to an expert <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
-          <Link className="btn-hg" href={routes.viewJobs} style={{ fontSize: "var(--fz5)", padding: "15px 32px" }}>Browse all jobs</Link>
+          {/* data-hire, not data-help. data-help opens the chooser — hire a
+              role, reach your recruiter, explore, or look for a job — which
+              is the right question in the hero, where the visitor has just
+              arrived and declared nothing. By here the page has spent eleven
+              thousand pixels on one audience, and the line above this button
+              already asks for the brief. Asking "how can we help?" instead
+              throws that away. */}
+          <button className="btn-hp" data-hire style={{ fontSize: "var(--fz5)", padding: "15px 32px" }}>Submit a brief <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+          {/* The candidate door, pointed where the hero points it.
+              routes.viewJobs is the job DETAIL view — it renders a single
+              role's title as its h1 — so "Browse all jobs" was landing
+              people on one job rather than the list. */}
+          <Link className="btn-hg" href={routes.searchJobs} style={{ fontSize: "var(--fz5)", padding: "15px 32px" }}>Browse open roles</Link>
         </div>
       </section>
     </>
