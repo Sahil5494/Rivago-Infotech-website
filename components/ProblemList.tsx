@@ -35,9 +35,15 @@ const ROWS: Row[] = [
     d: "An open req collects applications from job boards, referrals and whichever agencies are on the panel. Most of those people applied to every company hiring the same title that month. The hard part is not finding candidates — it is working out which of them is worth a call.",
   },
   {
+    /* Opened "A job description lists what the role needs. The market rarely
+       packages all of it in one person..." — which is the reframe's first
+       card one section down, in different words: that one reads "beyond the
+       job description to understand what the role actually requires, the
+       market around it". The card is the client's copy, so this is the side
+       that moves. The example stays; it was never the part that echoed. */
     t: "The right skills.",
     t2: "Harder to find.",
-    d: "A job description lists what the role needs. The market rarely packages all of it in one person — the finance lead who has closed books through an acquisition has usually not also built the reporting stack, and the one who built it has never closed an audit. Titles and keywords stop helping at that point.",
+    d: "The requirement is one list, and it assumes one person holds every item on it. The finance lead who has closed books through an acquisition has usually not also built the reporting stack, and the one who built it has never closed an audit. Titles and keywords stop helping at that point.",
   },
   {
     /* Deliberately not "hiring teams are still dealing with widespread
