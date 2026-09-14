@@ -194,29 +194,33 @@ export default function Home() {
       </section>
 
       {/* THE PROBLEM */}
-      {/* The page had no problem statement. It opened with what Rivago does,
-          showed who trusts them, and went straight into how the work runs —
-          so a reader who did not already feel a hiring problem was never
-          given a reason to keep going.
+      {/* Four failure modes, then the band turns: one dark panel naming the
+          reason underneath all four and what Rivago does instead. One answer
+          rather than four paired fixes — four fixes here would restate Why
+          Rivago's six cards in miniature, 2,000px above them.
 
-          Nothing here is a measured claim. These are four descriptions of a
-          common experience, not statistics about Rivago's clients or anyone
-          else's. The third deliberately does not say "fifty CVs" — the
-          approach section two bands down answers with "instead of fifty that
-          don't", and the setup works better when it isn't the same word. */}
+          The first draft of this copy read as generated, and the tells were
+          measurable: four of four bodies were built on an antithesis, four of
+          four closed on an aphorism, every body ran 25-30 words, and the
+          section contained no concrete noun anywhere. Rewritten with the
+          rhythm broken on purpose — bodies now run 22 / 28 / 42 / 50 words,
+          one closer survives instead of four, and every row names something
+          real: a scorecard, a VP Engineering brief, week three, notice
+          period, right to work.
+
+          Nothing here is a measured claim. These are failure modes common to
+          the industry, not statistics about Rivago's clients. */}
       <section className="prob-sec">
         <div className="prob-inner">
           <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>The problem</div>
-          <h2 className="section-h2 gs" /* 727px is the natural width of the first line at 44px; 640 forced
-              "offer." onto a line of its own. */
-            style={{ color: "var(--text)", maxWidth: 760, marginBottom: 18 }}>Senior searches rarely fail at the offer.<br /><em>They fail at the brief.</em></h2>
-          <p className="prob-lede gs">Four things go wrong in almost every search that stalls, and none of them are about the candidates.</p>
+          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 700, marginBottom: 16 }}>Four ways a search goes wrong,<br /><em>and the one reason underneath.</em></h2>
+          <p className="prob-lede gs">Not one of them is about the candidates.</p>
           <ul className="prob-list">
             {[
-              { t: "The brief was never really taken", d: "A job description is not a brief. If nobody agreed what strong actually looks like before sourcing started, every shortlist after that is a guess in a tidy format." },
-              { t: "You met the pitch team, then got the junior", d: "The person who won your business is rarely the person running your search. You tend to find that out somewhere around week three, when the questions stop being good ones." },
-              { t: "A stack of near-misses", d: "Volume is cheap to produce and easy to invoice. Fit costs a real conversation with every candidate before they reach your inbox, and that conversation is the part most agencies skip." },
-              { t: "Then nothing", d: "No update until there is something to sell you — so you cannot tell a search that is moving slowly from one that has quietly stopped." },
+              { t: "The scorecard came after the first shortlist", d: "Sourcing starts from the job description, because that is the document that exists. Nobody has agreed yet whether a VP Engineering hire needs to have scaled a platform team or built one from nothing. The first shortlist is how you find out." },
+              { t: "The person who pitched isn't the person calling", d: "You are handed to a delivery team after signature. By week three you are explaining your hiring bar again, to someone who was not on the intake call." },
+              { t: "Four agencies, the same six candidates", d: "Four firms working the same role on contingency all submit fast, and the same names reach you from three directions. Screening properly means one conversation per candidate — comp expectations, notice period, right to work, whether they would genuinely move for this role. Nobody in a race makes that call." },
+              { t: "Three weeks, no written update", d: "A search that is genuinely hard and a search nobody has touched since kickoff look the same from your side of it." },
             ].map((r) => (
               <li className="prob-row gs" key={r.t}>
                 <h3 className="prob-t">{r.t}</h3>
@@ -224,6 +228,14 @@ export default function Home() {
               </li>
             ))}
           </ul>
+
+          {/* The turn. Same two-track rhythm as the rows above, inverted —
+              dark is the page's language for the offer, so flipping here is
+              what marks the section changing sides. */}
+          <div className="prob-turn inv gs">
+            <div className="prob-turn-k">The reason underneath</div>
+            <p className="prob-turn-d">None of this is bad luck. It is what happens when a search sits on a panel of four agencies and is owned by none of them. We take one brief, put one partner on it, and write down what was agreed on the intake call — the delivery date, the scorecard, and the part of the role we think will be hard to fill. The rest of this page is that, in detail.</p>
+          </div>
         </div>
       </section>
 
