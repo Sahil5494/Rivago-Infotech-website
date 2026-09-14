@@ -268,7 +268,6 @@ export default function Home() {
           <div className="rfm-head gs">
             <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>The reframe</div>
             <h2 className="rfm-h2">Hiring doesn&rsquo;t need more candidates.<br /><em>It needs better decisions.</em></h2>
-            <p className="rfm-sub">A better search starts with better intelligence.</p>
             <p className="rfm-d">Hiring isn&rsquo;t simply about reaching more candidates. It&rsquo;s about knowing where to look, what to look for, and which candidates are genuinely worth your team&rsquo;s time.</p>
             <p className="rfm-turn">That&rsquo;s where we work differently.</p>
           </div>
@@ -276,10 +275,6 @@ export default function Home() {
           <div className="gs">
             <ReframeRail />
           </div>
-
-          {/* Left, not centred: every headline and eyebrow on this page
-              starts on the same gutter and this one does too. */}
-          <p className="rfm-close gs">Technology can narrow the search.<br /><em>Experience makes the call.</em></p>
         </div>
       </section>
 
