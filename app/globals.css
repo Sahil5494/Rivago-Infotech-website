@@ -757,12 +757,9 @@ a{color:inherit;text-decoration:none}
    five light sections in a row from the hero down to WHY RIVAGO. THE
    PROBLEM takes that slot instead — it is .inv in the markup now. */
 
-/* .orb-sec and .orb-quote went with the ORB band. Its lede outlived it as
-   .orb-desc, on loan to the support section — renamed now that this change
-   is in that section anyway, and it was the last thing carrying the orb's
-   name. position/z-index went too: they existed to lift the copy off the
-   orb canvas, and there is no canvas behind it any more. */
-.supp-lede{font-size:var(--fz8);color:var(--text2);max-width:640px;line-height:1.6;font-weight:400;margin:0}
+/* .orb-sec and .orb-quote went with the ORB band, and .orb-desc — its lede,
+   which had outlived it on loan to the support section as .supp-lede — went
+   with the support section. Nothing carries the orb's name now. */
 
 /* ── FEATURES ── */
 .feat-sec{padding:110px 44px;background:var(--bg)}
@@ -972,7 +969,7 @@ a{color:inherit;text-decoration:none}
    across a 17.78:1 step draws a line where the eye already sees one. THE
    PROBLEM above it is light now, so that edge is light-on-light and needs
    the rule like every other one. */
-.svc-sec,.ind-sec,.supp-sec,.hins-sec,.faq-sec,.cta-sec,.prob-sec,.prf-sec,
+.svc-sec,.ind-sec,.hins-sec,.faq-sec,.cta-sec,.prob-sec,.prf-sec,
 .why-sec,.feat-sec,.rfm-sec{
   border-top:1px solid var(--rule-1)
 }
@@ -1530,22 +1527,9 @@ a{color:inherit;text-decoration:none}
 .ind-tags{display:flex;flex-wrap:wrap;gap:5px}
 .ind-tag{padding:3px 9px;background:var(--tint-1);border:1px solid var(--tint-2);border-radius:6px;font-size:var(--fz1);color:var(--accent);font-weight:500}
 
-/* ── SUPPORT ── */
-.supp-sec{padding:110px 44px;background:var(--bg3)}
-.supp-inner{max-width:1200px;margin:0 auto}
-.supp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
-.supp-card{border-radius:20px;padding:32px;border:1px solid var(--border);transition:all .28s var(--ease);display:flex;flex-direction:column;gap:16px;min-height:320px}
-.supp-card:hover{border-color:var(--tint-2);transform:translateY(-4px)}
-.supp-card.featured{background:var(--tint-1);border-color:var(--tint-2)}
-.supp-card.featured:hover{background:var(--tint-1)}
-.supp-icon{width:44px;height:44px;border-radius:12px;background:var(--tint-1);border:1px solid var(--tint-2);display:flex;align-items:center;justify-content:center}
-.supp-tag{display:inline-flex;padding:3px 10px;background:var(--tint-1);border:1px solid var(--tint-2);border-radius:10px;font-size:var(--fz1);color:var(--accent);font-weight:500;letter-spacing:.05em;text-transform:uppercase}
-.supp-title{font-size:var(--fz7);font-weight:500;color:var(--text);letter-spacing:-.01em}
-.supp-desc{font-size:var(--fz6);color:var(--text2);line-height:1.7;flex:1}
-.supp-link{display:inline-flex;align-items:center;gap:6px;font-size:var(--fz2);color:var(--accent);font-weight:500;margin-top:4px;transition:gap .2s}
-.supp-link:hover{gap:10px}
-.supp-hours{display:flex;align-items:center;gap:6px;font-size:var(--fz1);color:var(--text3);margin-top:4px}
-.supp-dot-live{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:bdot 2s ease infinite}
+/* ── SUPPORT: removed with the TALK TO US section it styled. The three
+   cards, the phone link and the scoping-call pitch all went with it; see
+   the note where the section used to sit in app/page.tsx. ── */
 
 /* ── FINAL CTA ── */
 .cta-sec{padding:120px 44px;text-align:center;background:var(--bg2);position:relative;overflow:hidden}
@@ -1620,7 +1604,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 @media(prefers-reduced-motion:reduce){.faq-a{transition:none}}
 
 @media(max-width:900px){
-  .ft-grid,.supp-grid{grid-template-columns:1fr!important}
+  .ft-grid{grid-template-columns:1fr!important}
   .why-grid{grid-template-columns:1fr!important;gap:24px}
   /* .cs-grid and .cs-wide were collapsed here for the deleted home-page case
      study cards. .cs-wide no longer exists, and the /resources grid — the

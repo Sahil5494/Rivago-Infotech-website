@@ -19,13 +19,6 @@ import ReframeRail from "@/components/ReframeRail";
    mega-menu reads it. */
 import { routes, offices, marketsSentence, numberWord } from "@/lib/routes";
 import { STAGES } from "@/lib/process";
-/* Counted, not typed, so the support card cannot promise a library bigger
-   than the one /resources actually renders. Build-time only — this is a
-   server component, so the article bodies never reach the browser.
-
-   It used to count case studies too. There are none; see the note at the
-   foot of app/resources/data.ts. */
-import { articles } from "@/app/resources/data";
 import { testimonials } from "@/lib/testimonials";
 
 /* The same six the hero canvas places into, so the cycling word and the
@@ -144,9 +137,6 @@ const faqJsonLd = {
    these all sit on. */
 const Arrow = () => (
   <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-);
-const SmallArrow = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
 /* CardArrow removed with the services card grid — it was only ever used on
    .svc-card's footer, which the carousel replaced. */
@@ -554,61 +544,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SUPPORT */}
-      {/* The first card used to be "Live chat — talk to a recruiter now",
-          with "connect instantly" and "we're online and ready", and its
-          button went to the contact form. There is no chat widget on this
-          site and no plan for one, so the card promised a channel that does
-          not exist and then handed the visitor a form. It is the phone now:
-          (888) 508-5703 is real, it is already published on /contact-us, and
-          it is the only channel here that genuinely answers in the moment.
+      {/* TALK TO US removed, at the client's request.
 
-          The three cards are now three different things — talk now, book
-          time, read first — rather than two routes to the same enquiry form.
-          Card two no longer says "your dedicated account manager": a first
-          time visitor does not have one. */}
-      <section className="supp-sec">
-        <div className="supp-inner">
-          <div className="supp-head">
-            <div className="eyebrow ew-light gs" style={{ marginBottom: 16 }}>Talk to us</div>
-            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 12 }}>Three ways to <em>reach us.</em></h2>
-            <p className="supp-lede gs">A first hire or a fiftieth, a live brief or a question you want a straight answer to. Pick whichever suits the morning you are having.</p>
-          </div>
-          <div className="supp-grid">
-            <div className="supp-card gs">
-              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.2 3.4 8.6 6.6a1 1 0 0 1-.24 1.15l-1.2 1.1a10.5 10.5 0 0 0 4 4l1.1-1.2a1 1 0 0 1 1.15-.24l3.2 1.4a1 1 0 0 1 .58 1.05l-.35 2.2a1.2 1.2 0 0 1-1.32 1A13.6 13.6 0 0 1 3.1 4.5a1.2 1.2 0 0 1 1-1.32l2.2-.35a1 1 0 0 1 1.05.58Z" stroke="var(--accent)" strokeWidth="1.2" strokeLinejoin="round" /></svg></div>
-              <div><div className="supp-tag">Call</div><div className="supp-title" style={{ marginTop: 10 }}>Speak to a partner today</div></div>
-              <div className="supp-desc">One number, answered by the people who run the searches. Bring a role you are struggling to fill, or a market you want read honestly. No form first, no qualifying script.</div>
-              <div>
-                <div className="supp-hours"><div className="supp-dot-live"></div>Mon–Fri · US, Canada &amp; India business hours</div>
-                <a className="supp-link" href="tel:+18885085703">(888) 508-5703 <SmallArrow /></a>
-              </div>
-            </div>
-            <div className="supp-card featured gs">
-              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2.5" y="4" width="15" height="13" rx="2.5" stroke="var(--accent)" strokeWidth="1.2" /><path d="M2.5 8h15M6.5 2.5v3M13.5 2.5v3" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" /><path d="m7.4 12.4 1.7 1.7 3.5-3.5" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
-              <div><div className="supp-tag">Recommended</div><div className="supp-title" style={{ marginTop: 10 }}>Book a scoping call</div></div>
-              <div className="supp-desc">Thirty minutes with the partner who would take the brief. We go through the open roles, what the market will bear on each, and where the timeline realistically lands. You leave with a plan whether or not you engage us.</div>
-              <div>
-                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" strokeWidth="1.1" /><path d="M6 3.5v2.5l1.5 1.5" stroke="var(--accent)" strokeWidth="1.1" strokeLinecap="round" /></svg>30 minutes · No charge · No obligation</div>
-                <button type="button" className="supp-link" data-hire>Book your call <SmallArrow /></button>
-              </div>
-            </div>
-            <div className="supp-card gs">
-              <div className="supp-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 5.6C8.8 4.5 7.2 4 5 4H2.8v11H5c2.2 0 3.8.5 5 1.6 1.2-1.1 2.8-1.6 5-1.6h2.2V4H15c-2.2 0-3.8.5-5 1.6Z" stroke="var(--accent)" strokeWidth="1.2" strokeLinejoin="round" /><path d="M10 5.6v11" stroke="var(--accent)" strokeWidth="1.2" /></svg></div>
-              <div><div className="supp-tag">Read first</div><div className="supp-title" style={{ marginTop: 10 }}>Do your own homework</div></div>
-              {/* No longer "plus the case studies behind them" — there are
-                  none, and have not been since they came off /resources.
-                  The card was promising a category the library does not
-                  have. */}
-              <div className="supp-desc">Salary benchmarks, market reads and hiring playbooks, written by the people running the searches. Nothing is gated — no email address, no download form, no follow-up call you did not ask for.</div>
-              <div>
-                <div className="supp-hours"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" strokeWidth="1.1" /><path d="M4 6h4M6 4v4" stroke="var(--accent)" strokeWidth="1.1" strokeLinecap="round" /></svg>{articles.length} articles · Free to read · No sign-up</div>
-                <Link className="supp-link" href={routes.resources}>Browse resources <SmallArrow /></Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          It was the phone card, the scoping-call card and a "do your own
+          homework" card, under "Three ways to reach us."
+
+          Two things left the homepage with it and are not anywhere else on
+          this page, so if they should come back, this is what to bring:
+
+            The phone number. tel:+18885085703 was the only tel: link in the
+            page body. It is still on /contact-us and in the footer, but a
+            visitor who wants to call now has to leave the homepage to find
+            it.
+
+            The scoping call. "Thirty minutes with the partner who would take
+            the brief... You leave with a plan whether or not you engage us."
+            That offer has no other home — WhyCards used to run the same two
+            sentences and they were cut from it precisely because this
+            section owned the pitch. The only remaining conversion routes on
+            the page are the hero, the WhyCards tile, the closing CTA and the
+            nav button, and all four go to the same hire modal.
+
+          Two of the audit findings are resolved by the removal rather than
+          fixed: the third card was not a way to reach anyone, and its
+          "Browse resources" link sat immediately above INSIGHTS, which links
+          to the same place.
+
+          One consequence to watch: this was the only white band between
+          INDUSTRIES and INSIGHTS, which are both rgb(6,15,7). They now abut
+          at 1.00:1, with the 1px hairline the page uses everywhere else as
+          the only boundary. */}
 
       {/* CASE STUDIES removed.
 
