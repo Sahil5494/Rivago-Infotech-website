@@ -518,39 +518,30 @@ export default function Home() {
           <div className="ind-head" style={{ marginBottom: 52 }}>
             <div>
               <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Industries</div>
-              {/* Was "Every sector. Every function." — two absolute claims
-                  over eight practices, and the lede underneath immediately
-                  walked the first one back to "every MAJOR industry". The
-                  headline and the line below it disagreed about the size of
-                  the claim.
+              {/* "Every sector. Every function." — the client's, kept.
 
-                  It was also papering over a real mix. Technology, Finance &
-                  Banking, Healthcare, Legal and Aerospace & Defence are
-                  sectors; Human Resources, Sales & Marketing and Supply &
-                  Operations are functions you hire into any sector — the HR
-                  card's own description ends "across every industry", which
-                  contradicts listing it as one. Naming both is accurate
-                  rather than apologetic.
+                  Two things were wrong with it and only one of them was the
+                  headline. The lede underneath used to read "We recruit
+                  across every major industry", which walked the first claim
+                  back one line later: the two disagreed about the size of
+                  what was being promised. That lede is gone.
 
-                  And it carried no recruitment term at all, in the section
-                  whose whole job is to rank for sector hiring.
+                  What is left is a rhetorical absolute over eight practices.
+                  Raised, and the client's call — and it earns its place on
+                  the thing that actually needed saying: five of the eight are
+                  sectors (Technology, Finance & Banking, Healthcare, Legal,
+                  Aerospace & Defence) and three are functions you hire into
+                  any sector (Human Resources, Sales & Marketing, Supply &
+                  Operations), which is why the HR card's own description ends
+                  "across every industry". Naming both in four words says that
+                  more plainly than a paraphrase does.
 
-                  "Practice" rather than "sector" for the same reason. The
-                  client's draft ran "Hiring Expertise Across ten Sectors":
-                  there are eight, not ten; three of the eight are functions
-                  rather than sectors; and "Hiring Expertise" is "Recruiting
-                  Expertise", the first card of WHAT WE BRING two sections up.
-                  A practice can be either a sector or a function, so the word
-                  carries the set honestly — and /about already uses it,
-                  "Industry practices, each with its own specialists".
-
-                  "every practice we run" is bounded by its own clause, so it
-                  claims nothing beyond the eight on the page. */}
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Specialist recruiters in <em>every practice we run.</em></h2>
+                  The cost is search: no recruitment term in the h2. The lede
+                  carries "recruiters" and the cards carry the role keywords,
+                  so it is a cost rather than a hole. */}
+              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Every sector. <em>Every function.</em></h2>
               {/* Names Rivago — the section had the entity zero times in its
-                  own copy, so nothing here could be attributed to anyone.
-                  "Dedicated", not "specialist", which is now in the headline
-                  forty pixels above. */}
+                  own copy, so nothing here could be attributed to anyone. */}
               <p className="ind-sub gs">Rivago runs a dedicated team for each one. They know the roles, the regulations and what a strong hire looks like in it.</p>
             </div>
             <Link className="ind-all gs" href={routes.industries}>View all industries <Arrow /></Link>
