@@ -59,11 +59,10 @@ const CARDS: Card[] = [
   {
     n: "01",
     label: "Recruiting Expertise",
-    /* The old body ended "...the market around it and what makes someone
-       successful in it." — "the market around it" is now word-for-word in
-       the section lede two hundred pixels above, and "the market" belongs to
-       card 02 anyway. This stays on the brief itself. */
-    d: "Before anyone is sourced, we work out what the job is actually asking for: which parts of the spec are load-bearing, which are wishlist, and what a strong first year in it would look like. That comes from the people who will run the interviews, not from the req alone.",
+    /* Two sentences, as with all four. The 50-word version carried a third
+       specific — what a strong first year looks like — which is the one of
+       the three that the panel sentence already implies. */
+    d: "Before anyone is sourced, we work out which parts of the spec are load-bearing and which are wishlist. That comes from the people who will run the interviews, not from the req alone.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <circle cx="11" cy="9" r="4" {...S} />
@@ -75,12 +74,12 @@ const CARDS: Card[] = [
   {
     n: "02",
     label: "Market Intelligence",
-    /* Three named things a market read actually produces, then what a
-       client does with it. The claims here are the ones the site already
-       makes elsewhere — /services/direct-hire says "Salary benchmarking
-       included" and executive-search "Compensation benchmarking included" —
-       so this asserts no capability that isn't already sold. No figure. */
-    d: "We track which companies are actually building the function you’re hiring into, what that experience is being paid now, and how long the people in it have been sitting still. When a brief is not landing, that is what tells you whether to move on comp, on seniority or on location.",
+    /* The comp claim is one the site already sells — /services/direct-hire
+       says "Salary benchmarking included", executive-search "Compensation
+       benchmarking included" — so this asserts no new capability, and no
+       figure. Dropped from the longer version: tenure, and location as a
+       third lever. */
+    d: "We track which companies are building the function you’re hiring into and what that experience is paid now. When a brief stalls, that is what tells you whether to move on comp or on seniority.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <path d="M14 24.5s6.8-6.2 6.8-11.2a6.8 6.8 0 1 0-13.6 0C7.2 18.3 14 24.5 14 24.5Z" {...S} strokeLinejoin="round" />
@@ -100,7 +99,7 @@ const CARDS: Card[] = [
        stays: the body covers search, screening and prioritisation, so
        narrowing the title to "Screening Technology" for the sake of a
        matched set would describe less than the card does. */
-    d: "It searches, dedupes and ranks — the part of a search that used to be done by hand, one browser tab at a time. Deciding is not on that list. Every profile that reaches you has been read by the recruiter who will be on the call when you discuss it.",
+    d: "It searches, dedupes and ranks — the work that used to be done by hand, one tab at a time. Deciding is not on that list; a recruiter reads every profile that reaches you before you do.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <path d="M5 17.5v4M11 12v9.5M17 7.5v14M23 14.5v7" {...S} />
@@ -114,17 +113,20 @@ const CARDS: Card[] = [
        four labels are read as a set down the rail, so the odd grammar shows.
        "Sourcing Reach" is the same register as the other three and does not
        collide with "Market Intelligence" the way "Market Reach" would. */
-    label: "Sourcing Reach",
-    /* Says why passive candidates need a different approach rather than
-       just naming them. Deliberately avoids "job boards" and "referrals":
-       ProblemList's first row two sections up already uses both, in a
-       sentence about where an open req's applications come from.
+    label: "Exclusive Talent Access",
+    /* Title Case to match the other three; the client wrote it lowercase
+       because that is how the site it was taken from sets its labels.
 
-       Nothing here claims candidates who exist nowhere else — the
-       reference copy this was modelled on ended "talent you won't find
-       anywhere else", which is not checkable. The last sentence is the
-       opposite kind of claim and the one worth making. */
-    d: "The best person for a role is usually employed, not looking, and has no reason to reply to a stranger. So they get approached directly: through our own database, through people who have worked with them, and into the companies doing that work today. When a market is genuinely tapped out, we say so.",
+       "Exclusive" is the only label here that makes a claim, so the body
+       has to earn the honest reading of it: people who are not on the open
+       market. It does not claim candidates no other firm can reach, which
+       is what the reference copy asserted ("talent you won't find anywhere
+       else") and is not checkable.
+
+       Avoids "job boards" and "referrals" — ProblemList's first row, two
+       sections up, already uses both in a sentence about where an open
+       req's applications come from. */
+    d: "The people worth hiring are usually employed, not looking, and not on any list you can buy. We reach them through our own network and by approaching the companies where that work is being done.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <circle cx="14" cy="14" r="2.8" {...S} />

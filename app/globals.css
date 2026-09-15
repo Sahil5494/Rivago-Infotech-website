@@ -1212,14 +1212,19 @@ a{color:inherit;text-decoration:none}
    own; now it shares a row with the accent icon, and two accents 400px
    apart on one line reads as a mistake rather than a pair. */
 .rfr-n{font-family:var(--fm);font-size:var(--fz1);letter-spacing:.09em;color:var(--text-3)}
-/* No min-height. I added one on the theory that the labels-as-titles would
-   wrap unevenly inside 16ch — Recruiting Expertise and Market Intelligence
-   to two lines, Technology and Sourcing Reach to one — and that the cards,
-   being flex children of equal height, would then start their bodies at
-   different heights. Measured: 16ch resolves to 345px at this font size and
-   all four titles set to one line at 1440, 1100, 900, 600 and 390. There is
-   nothing to equalise, and the floor was adding a blank line under every
-   title. */
+/* No min-height, and it is worth writing down why, because the obvious
+   reading of the measurements argues for one.
+
+   16ch resolves to 345px at the wide type step, where all four titles set
+   to one line. At the narrow step the cap is 280px, and there "Exclusive
+   Talent Access" takes two lines while the other three still take one — so
+   that card starts its body 30px lower than its neighbours.
+
+   A floor of two lines would square that up, at the cost of a blank line
+   under the other three titles on every phone. Not worth it: the narrow
+   step only applies below about 600px, where a card is 335px wide in a
+   390px viewport and the rail shows one card at a time. There is no second
+   card beside it to be out of line with. */
 .rfr-t{font-size:var(--fz11);font-weight:500;letter-spacing:-.027em;line-height:1.16;
   color:var(--text-1);margin:0 0 18px;max-width:16ch;text-wrap:balance}
 /* The body sits at the small-body step rather than the dense-card one: at
