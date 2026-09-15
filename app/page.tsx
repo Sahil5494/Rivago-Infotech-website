@@ -186,6 +186,40 @@ const Arrow = () => (
 /* CardArrow removed with the services card grid — it was only ever used on
    .svc-card's footer, which the carousel replaced. */
 
+/* THE ORDER OF THE SECTIONS, and why it is this one.
+ *
+ *   hero          who we are, and where
+ *   The problem   why hiring fails
+ *   What we bring the answer to it, as capabilities
+ *   Our process   how those capabilities actually run
+ *   Why Rivago    what you can hold us to
+ *   Services      how to buy it
+ *   Industries    where we do it
+ *   Clients       proof
+ *   Insights      depth
+ *   FAQ           objections
+ *   CTA           act
+ *
+ * Two pairs were swapped to get here.
+ *
+ * OUR PROCESS moved above WHY RIVAGO. They used to run WHAT WE BRING then
+ * WHY RIVAGO back to back — capabilities, then commitments. The two are
+ * genuinely different things, but a reader does not feel that: they feel
+ * 2,607px of consecutive self-advocacy before any mechanism appears. Putting
+ * the process between them means the page says what it has, then how that
+ * runs, then what you can hold it to — and the commitments land harder once
+ * the mechanism is known.
+ *
+ * CLIENTS moved above INSIGHTS. Insights is the one section here that does
+ * not advance a purchase decision, and it was sitting inside the closing
+ * run. Proof now follows the offer directly, and CLIENTS -> FAQ -> CTA
+ * closes without an interruption.
+ *
+ * Still open on the story: INDUSTRIES, CLIENTS and INSIGHTS all carry
+ * rgb(6,15,7) — three consecutive bands at 1.00:1 over about 2,500px, with
+ * only the 1px hairline between them. The reader gets no signal that a new
+ * beat has started. That needs a ground for one of the three, which is a
+ * design decision rather than a copy one. */
 export default function Home() {
   return (
     <>
@@ -243,7 +277,21 @@ export default function Home() {
             <span className="hr-4">in</span>{" "}
             <span className="hr-5"><RotatingWord words={DISCIPLINES} /></span>
           </h1>
-          <p className="hero-sub hr-6">We connect outstanding companies with exceptional talent — across every industry, every function and every corner of the globe.</p>
+          {/* Was "...across every industry, every function and every corner
+              of the globe." Two problems, both about the story rather than
+              the sentence.
+
+              "Every industry, every function" is the INDUSTRIES headline,
+              spent four sections early — the hero was giving away a line the
+              page had not earned yet.
+
+              "Every corner of the globe" is contradicted twice below: WHY
+              RIVAGO's lede and the FAQ both name four markets. The opening
+              over-promised and the rest of the scroll walked it back.
+
+              Markets are read from lib/routes so the hero cannot drift from
+              the two places that already state them. */}
+          <p className="hero-sub hr-6">We connect outstanding companies with exceptional talent — permanent, contract and interim, across {marketsSentence()}.</p>
           <div className="hero-btns hr-7">
             <button type="button" className="btn-hp btn-sheen" data-help>
               Talk to an expert
@@ -299,7 +347,11 @@ export default function Home() {
             {/* Was "None of it is about the candidates", which stopped being
                 true once the second row became skills scarcity — that one is
                 squarely about who is out there. */}
-            <p className="prob-lede gs">None of them is solved by more candidates.</p>
+            {/* Was "None of them is solved by more candidates." — plural
+                "them" under a headline that says "a hiring problem",
+                singular. Read as a pair, the two disagreed before the list
+                below had introduced anything for "them" to refer to. */}
+            <p className="prob-lede gs">It is not a shortage of candidates.</p>
           </div>
 
           <div className="prob-grid">
@@ -399,6 +451,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FEATURES */}
+      <section className="feat-sec">
+        <div className="feat-inner">
+          {/* "Our approach" said nothing. This section is the process, and
+              /services already owns "What we actually do", so the two do not
+              collide. */}
+          <div className="apr-head">
+            <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our process</div>
+            {/* Literally what the timeline now shows: it opens on Calibrate,
+                which is the brief, and closes on Placed & guaranteed. */}
+            <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)" }}>From the brief to <em>the placement.</em></h2>
+            {/* Deliberately not "every search" — the section immediately
+                above this one is headed "What you get when you hire through
+                us" and used to carry that phrase; the note survives because
+                the two sections are still read in one scroll.
+
+                The stage count is read from the data rather than typed, like
+                the office count on the card above. */}
+            <p className="apr-lead gs">{numberWord(STAGES.length).replace(/^./, (c) => c.toUpperCase())} stages, run the same way each time, with one partner on the search throughout. You know where it stands at each of them.</p>
+          </div>
+          <ProcessTimeline />
+        </div>
+      </section>
+
       {/* WHY RIVAGO */}
       {/* Two vertically offset columns of cards with a call to action as the
           last cell. The six cards and their copy live in the component, the
@@ -444,38 +520,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURES */}
-      <section className="feat-sec">
-        <div className="feat-inner">
-          {/* "Our approach" said nothing. This section is the process, and
-              /services already owns "What we actually do", so the two do not
-              collide. */}
-          <div className="apr-head">
-            <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our process</div>
-            {/* Literally what the timeline now shows: it opens on Calibrate,
-                which is the brief, and closes on Placed & guaranteed. */}
-            <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)" }}>From the brief to <em>the placement.</em></h2>
-            {/* Deliberately not "every search" — the section immediately
-                above this one is headed "What you get when you hire through
-                us" and used to carry that phrase; the note survives because
-                the two sections are still read in one scroll.
-
-                The stage count is read from the data rather than typed, like
-                the office count on the card above. */}
-            <p className="apr-lead gs">{numberWord(STAGES.length).replace(/^./, (c) => c.toUpperCase())} stages, run the same way each time, with one partner on the search throughout. You know where it stands at each of them.</p>
-          </div>
-          <ProcessTimeline />
-        </div>
-      </section>
-
       {/* PRECISION and PROCESS removed here.
 
-          Both described the same journey as the approach tabs above. The
-          PRECISION panel was even titled "What arrives with every
-          candidate" -- the exact title of the Screen tab -- and its four
-          rows mapped one-to-one onto that tab's. PROCESS was a four-step
-          grid of the same stages with no artefacts, and its Step 01-04
-          numbering read against the tabs' 01-05 directly above it.
+          Both described the same journey as OUR PROCESS, which was the
+          approach tabs at the time and sat directly above this slot; it is
+          two sections up now, above WHY RIVAGO. The PRECISION panel was even
+          titled "What arrives with every candidate" -- the exact title of
+          the Screen tab -- and its four rows mapped one-to-one onto that
+          tab's. PROCESS was a four-step grid of the same stages with no
+          artefacts, and its Step 01-04 numbering read against the tabs'
+          01-05.
 
           Three sections, 2,532px, one message. The headline worth keeping
           -- "A shortlist that fits, instead of fifty that don't" -- moved
@@ -655,37 +709,6 @@ export default function Home() {
           what the engagement covered; placements and timings are only
           publishable if they were actually recorded. */}
 
-      {/* INSIGHTS */}
-      {/* This slot has now held three things. It was three invented client
-          results; then a proof wall of client marks and quotes; now the
-          written work, which is the only long-form content Rivago actually
-          has. The client's call, and the reason is sound: the case studies
-          were never real, and the articles are.
-
-          What the page gives up in exchange is worth stating. The quotes
-          that were on the wall are no longer anywhere on this page, and the
-          client marks now appear only in the strip near the top. This
-          section builds authority; it does not carry client proof. The
-          moment a client signs off on an engagement, proof belongs back on
-          this page — beside this, not instead of it. */}
-      <section className="hins-sec inv">
-        <div className="hins-inner">
-          <div className="hins-head">
-            <div>
-              <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Insights</div>
-              <h2 className="hins-h2 gs">What we write <em>about hiring.</em></h2>
-            </div>
-            {/* The grid shows all {articles.length} of them, so this cannot say
-                "all N articles" — it goes to the library, where they can be
-                filtered by category. */}
-            <Link className="hins-all gs" href={routes.resources}>Browse the library <Arrow /></Link>
-          </div>
-          <div className="gs">
-            <InsightsGrid />
-          </div>
-        </div>
-      </section>
-
       {/* WHAT OUR CLIENTS SAY */}
       {/* Quotes only. The logo strip was folded in here during the reorder
           and has gone back to its own band under the hero, so this section
@@ -743,6 +766,37 @@ export default function Home() {
           </div>
           <div className="gs">
             <ClientQuotes />
+          </div>
+        </div>
+      </section>
+
+      {/* INSIGHTS */}
+      {/* This slot has now held three things. It was three invented client
+          results; then a proof wall of client marks and quotes; now the
+          written work, which is the only long-form content Rivago actually
+          has. The client's call, and the reason is sound: the case studies
+          were never real, and the articles are.
+
+          What the page gives up in exchange is worth stating. The quotes
+          that were on the wall are no longer anywhere on this page, and the
+          client marks now appear only in the strip near the top. This
+          section builds authority; it does not carry client proof. The
+          moment a client signs off on an engagement, proof belongs back on
+          this page — beside this, not instead of it. */}
+      <section className="hins-sec inv">
+        <div className="hins-inner">
+          <div className="hins-head">
+            <div>
+              <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Insights</div>
+              <h2 className="hins-h2 gs">What we write <em>about hiring.</em></h2>
+            </div>
+            {/* The grid shows all {articles.length} of them, so this cannot say
+                "all N articles" — it goes to the library, where they can be
+                filtered by category. */}
+            <Link className="hins-all gs" href={routes.resources}>Browse the library <Arrow /></Link>
+          </div>
+          <div className="gs">
+            <InsightsGrid />
           </div>
         </div>
       </section>
