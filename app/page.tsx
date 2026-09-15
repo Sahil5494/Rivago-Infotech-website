@@ -645,14 +645,24 @@ export default function Home() {
       <section className="prf-sec inv">
         <div className="prf-inner">
           <div className="prf-head">
-            <div>
-              <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Clients</div>
-              {/* Was "Who we hire for" — which named the logo strip. That
-                  has gone back under the hero, so the heading names what is
-                  actually left in this band. */}
-              <h2 className="prf-h2 gs">What clients <em>say.</em></h2>
-            </div>
-            {/* This line claimed consent that has not been obtained. It read
+            <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Clients</div>
+            {/* Was "Who we hire for" — which named the logo strip. That has
+                gone back under the hero, so the heading names what is
+                actually left in this band. */}
+            <h2 className="prf-h2 gs">What clients <em>say.</em></h2>
+            {/* Under the headline, not beside it. It sat in the right-hand
+                half of a flex row, which put a quiet sentence at the same
+                optical weight as the h2 and left the two reading as a pair of
+                columns rather than a heading and its lede. Every other head
+                on this page stacks.
+
+                It also takes the overflow bug out at the root: that row
+                needed a flex-shrink:0 and a media query to release a 430px
+                cap on a phone, and losing the media query is what put 238px
+                of horizontal scroll on the page two commits ago. A block in
+                normal flow cannot do that.
+
+                This line claimed consent that has not been obtained. It read
                 "Every quote is from someone who ran a search with us AND
                 AGREED TO BE QUOTED" — while the header of lib/testimonials.ts
                 records, in its own words, that these four "remain

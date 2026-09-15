@@ -1291,20 +1291,24 @@ a{color:inherit;text-decoration:none}
    of the container to fade cleanly. */
 .prf-sec{padding:110px 44px;background:var(--bg2)}
 .prf-inner{max-width:1200px;margin:0 auto}
-.prf-head{display:flex;align-items:flex-end;justify-content:space-between;gap:64px;margin-bottom:44px}
+/* Block, not a flex row. The lede used to sit in the right-hand half of
+   this row, which gave a quiet sentence the same optical weight as the h2
+   and left the two reading as two columns rather than a heading and its
+   lede. Every other head on this page stacks; this one now does too.
+
+   It also removes the overflow trap at the root. The row needed
+   flex-shrink:0 on the lede plus a media query to release its 430px cap on
+   a phone, and when that media query was deleted with the old card grid the
+   page picked up 238px of horizontal scroll. A block in normal flow shrinks
+   to its container and cannot do that. */
+.prf-head{margin-bottom:44px}
 /* fz13 — see the note on .hins-h2. These two were the only section
    headings on the page a step below their peers. */
 .prf-h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.13;color:var(--text);text-wrap:balance}
-.prf-lede{font-size:var(--fz5);color:var(--text2);line-height:1.75;font-weight:400;max-width:430px;flex-shrink:0}
-/* Restored. Replacing the .prf-grid block took this media query out with it,
-   and the result was 238px of horizontal scroll on a phone: .prf-head is a
-   flex row and .prf-lede carries flex-shrink:0, so without the release the
-   lede held its 430px inside a 302px column and pushed the document wider
-   than the viewport. */
-@media(max-width:1080px){
-  .prf-head{flex-direction:column;align-items:flex-start;gap:18px}
-  .prf-lede{max-width:none}
-}
+/* 54ch rather than 430px: a measure, not a column width, now that nothing
+   is dividing the row. No flex-shrink and no media query to release it —
+   see the note on .prf-head. */
+.prf-lede{font-size:var(--fz5);color:var(--text2);line-height:1.75;font-weight:400;max-width:54ch;margin:14px 0 0}
 /* .prf-marks went with the logo strip, which is back in .clients-sec under
 /* ── CLIENT QUOTES: one full-width card ──────────────────────────────────
    Replaces a 2x2 grid of four small cards. The note that used to sit here
