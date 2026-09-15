@@ -215,11 +215,45 @@ const Arrow = () => (
  * run. Proof now follows the offer directly, and CLIENTS -> FAQ -> CTA
  * closes without an interruption.
  *
- * Still open on the story: INDUSTRIES, CLIENTS and INSIGHTS all carry
- * rgb(6,15,7) — three consecutive bands at 1.00:1 over about 2,500px, with
- * only the 1px hairline between them. The reader gets no signal that a new
- * beat has started. That needs a ground for one of the three, which is a
- * design decision rather than a copy one. */
+ * ── THE BANDING ──────────────────────────────────────────────────────────
+ *
+ * Mapping every band's fill turned up a bigger problem than the three
+ * identical darks that were noted here before. The page was two slabs:
+ *
+ *    1 hero    #030C05      7 ind    #060F07
+ *    2 prob    #FFFFFF  ┐   8 prf    #060F07  ┐ three of these
+ *    3 rfm     #EDF7F2  │   9 hins   #060F07  ┘ byte-identical
+ *    4 feat    #F2F7F5  │  10 faq    #F2F7F5
+ *    5 why     #FFFFFF  ┘  11 cta    #060F07
+ *    6 svc     #0A1A0C
+ *
+ * Bands 2-5 are four consecutive lights measuring 1.02-1.09:1 against each
+ * other; bands 6-9 are four consecutive darks. Nine of the eleven bands sat
+ * in one slab or the other.
+ *
+ * Fill cannot fix that, and it is worth being explicit about why so nobody
+ * tries. The next dark step below #060F07 is #030C05, which measures
+ * 1.017:1 — LESS separation than the problem. The light ramp is the same.
+ * That compression is deliberate: see the token block at the top of
+ * globals.css, where the hairline is named as the separator and the
+ * flatness as the point. So the only lever with any range in it is the
+ * light/dark mode itself.
+ *
+ * One band was flipped inside each slab, each chosen on content grounds
+ * rather than to make the stripes alternate:
+ *
+ *   OUR PROCESS (4) went dark. Its rail, node and stage eyebrows are drawn
+ *   in var(--accent), which is #0E5C3C on light and #3DFF87 on dark — the
+ *   section's one real flourish was being drawn in the dull green.
+ *
+ *   CLIENTS (8) went light. It is the middle of the three identical darks,
+ *   so lighting it splits that run without touching the FAQ boundary, and
+ *   it is the only band in the stretch that asks to be read slowly.
+ *
+ * Longest same-mode run is now two, down from four. The two pairs that
+ * remain — prob/rfm at 1.09:1 and svc/ind at 1.07:1 — are left alone: a
+ * pair separated by a hairline is what the stylesheet is arguing for, and
+ * both pairs are content that belongs together. */
 export default function Home() {
   return (
     <>
@@ -452,16 +486,37 @@ export default function Home() {
       </section>
 
       {/* FEATURES */}
-      <section className="feat-sec">
+      {/* .inv — this band is dark now. It was the fourth consecutive light
+          band, and the flip is as much about the accent as the cadence: the
+          timeline's rail, its active node and its stage eyebrows are all
+          drawn in var(--accent), which resolves to #0E5C3C on a light ground
+          and #3DFF87 on a dark one. A scroll-drawn rail is the whole idea of
+          this section and it was being drawn in the dull green.
+
+          Nothing in the .pt-* block needed editing — every colour in it is a
+          role token, so the timeline simply re-reads them from the inverted
+          set. That is the token system paying for itself.
+
+          A tell that this band belonged dark all along: the h2 below carried
+          an inline color:var(--dt) — a dark-context token — on a light
+          ground. */}
+      <section className="feat-sec inv">
         <div className="feat-inner">
           {/* "Our approach" said nothing. This section is the process, and
               /services already owns "What we actually do", so the two do not
               collide. */}
           <div className="apr-head">
-            <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our process</div>
+            {/* ew-light, not ew-dark. ew-dark fills with rgba(0,0,0,.05) over
+                a rgba(10,19,17,.18) border — both invisible on this ground.
+                It was also the only eyebrow on the page that was not the
+                green pill; all eight match now. */}
+            <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Our process</div>
             {/* Literally what the timeline now shows: it opens on Calibrate,
                 which is the brief, and closes on Placed & guaranteed. */}
-            <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)" }}>From the brief to <em>the placement.</em></h2>
+            {/* The inline colour and the `dark` class are both gone: .inv sets
+                the section's colour, and `dark` has no rule anywhere in the
+                stylesheet — it has been a no-op class this whole time. */}
+            <h2 className="section-h2 feat-h2 gs">From the brief to <em>the placement.</em></h2>
             {/* Deliberately not "every search" — the section immediately
                 above this one is headed "What you get when you hire through
                 us" and used to carry that phrase; the note survives because
@@ -718,7 +773,20 @@ export default function Home() {
           Four quotes is what exists. Anonymised to a role and a market, no
           figures, no client named — the form a hiring team will actually
           sign off on. See lib/testimonials.ts. */}
-      <section className="prf-sec inv">
+      {/* No .inv — this band is light. It sat in the middle of three
+          consecutive rgb(6,15,7) bands, and the dark ramp has no step left to
+          separate them with: the next value down measures 1.017:1, less
+          separation than the problem it would be solving. Only a mode change
+          could split that run, and this is the band to spend it on. It is the
+          one section in the stretch that asks to be read slowly rather than
+          scanned, and .prf-sec already fills with --bg2 — #EDF7F2 here —
+          while .cq-card fills with --surface-3, which is white. So the quote
+          card lifts off its ground instead of sitting flush on it, exactly
+          the ladder the token block at the top of globals.css describes.
+
+          Like the timeline above, .cq-* needed no edits: every colour in it
+          is a role token. */}
+      <section className="prf-sec">
         <div className="prf-inner">
           <div className="prf-head">
             <div className="eyebrow ew-light gs" style={{ marginBottom: 14 }}>Clients</div>
