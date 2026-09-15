@@ -145,9 +145,19 @@ export const servedMarkets = ["United States", "Canada", "UAE", "India"] as cons
 const NUMBER_WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"] as const;
 export const numberWord = (n: number): string => NUMBER_WORDS[n] ?? String(n);
 
-/** "a, b and c" — a list set as prose rather than joined with commas. */
-export const sentenceList = (items: readonly string[]): string =>
-  items.length < 2 ? (items[0] ?? "") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+/** "a, b and c" — a list set as prose rather than joined with commas.
+ *
+ * Takes a serial comma when any item contains its own "and", because
+ * without one the tail runs together: the industries list ends "...human
+ * resources and aerospace and defence", where the reader cannot tell which
+ * "and" joins the list and which belongs to a name. With it, ", and
+ * aerospace and defence" is unambiguous. Lists whose items carry no internal
+ * conjunction — the markets, the office cities — are unaffected. */
+export const sentenceList = (items: readonly string[]): string => {
+  if (items.length < 2) return items[0] ?? "";
+  const serial = items.some((i) => / and /.test(i)) ? "," : "";
+  return `${items.slice(0, -1).join(", ")}${serial} and ${items[items.length - 1]}`;
+};
 
 const NEEDS_ARTICLE = new Set<string>(["United States", "UAE", "United Kingdom", "Netherlands", "Philippines"]);
 export const marketsSentence = (): string =>

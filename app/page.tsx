@@ -12,12 +12,10 @@ import WhyCards from "@/components/WhyCards";
 import InsightsGrid from "@/components/InsightsGrid";
 import ProblemList from "@/components/ProblemList";
 import ReframeRail from "@/components/ReframeRail";
-/* servicesList and industriesList are both read by their own components now
-   — the services carousel and the industry rail — and the WHAT WE DO modes
-   no longer name individual services, so nothing on this page needs the
-   list. lib/routes.ts still exports it: /about counts it and the nav
-   mega-menu reads it. */
-import { routes, offices, marketsSentence, numberWord } from "@/lib/routes";
+/* servicesList is read by the services carousel; industriesList comes back
+   here because the FAQ's sector answer is built from it rather than typed —
+   the hand-written version had dropped Aerospace & Defence. */
+import { routes, offices, marketsSentence, numberWord, sentenceList, industriesList } from "@/lib/routes";
 import { STAGES } from "@/lib/process";
 import ClientQuotes from "@/components/ClientQuotes";
 
@@ -25,30 +23,77 @@ import ClientQuotes from "@/components/ClientQuotes";
    drawing behind it never disagree. */
 const DISCIPLINES = ["technology", "finance", "healthcare", "legal", "operations", "engineering"] as const;
 
+/* Seven questions, split between the two audiences that reach this page.
+   The six before these were all client-side, on a site with a jobs board.
+
+   Every answer is checked against what the rest of the site actually says.
+   Two that were not: the old set answered the guarantee question with "a
+   replacement guarantee period" and "the agreed window" while WHY RIVAGO,
+   three sections up the same page, gave the exact terms — and the vague one
+   was the version in the FAQPage schema, so it was the version an answer
+   engine would quote. And nothing anywhere asked how Rivago charges, on a
+   page whose services section is headed "Hiring, on your terms".
+
+   Two questions merged into one: the old Q1 and Q3 shared three four-grams
+   and both stated the graduate-to-C-suite range, and the old Q1 and Q5 both
+   opened "Rivago is a global staffing and recruitment company" — seven
+   consecutive four-grams of overlap between two Answer objects in the same
+   schema block.
+
+   The sector list is built from industriesList rather than typed. The old
+   one named eight of the nine practices and dropped Aerospace & Defence,
+   which is the one carrying cleared roles. Markets come from
+   marketsSentence() for the same reason. */
 const faqItems = [
   {
-    q: "What types of roles does Rivago specialise in?",
-    a: "Rivago is a global staffing and recruitment company. We recruit across technology, finance, banking, healthcare, legal, operations, sales, marketing and HR — at every level from graduate to C-suite. We place candidates on a permanent, contract or interim basis across the US, Canada, the UAE and India.",
+    q: "What roles and sectors does Rivago recruit for?",
+    a: `We recruit across ${sentenceList(industriesList.map((i) => i.title.toLowerCase().replace(/ & /g, " and ")))}. Roles run from graduate entry to C-suite, on a permanent, contract, temporary or interim basis, in ${marketsSentence()}.`,
   },
   {
-    q: "How quickly can you deliver a shortlist?",
-    a: "We agree a delivery timeline with you when we take the brief, and it depends on the role — a well-scoped mid-level search moves faster than a niche or senior one. Whatever we commit to, you hear from us early if it is going to move. No surprises.",
+    /* No rate card is quoted. Direct hire contingent, executive search
+       retained and RPO as a monthly programme are stated on their own
+       service pages; contract, temporary and interim are generalised to
+       "billed for the time worked" because ServiceCarousel.tsx still carries
+       an unresolved CONFIRM on the temporary-staffing markup and the
+       Employer of Record per-employee fee. This answer does not repeat
+       either of those. */
+    q: "How does Rivago charge?",
+    a: "There is no single rate card, because the engagement models are priced differently. Direct hire is a contingent fee — you pay when someone starts. Executive search is retained. Contract, temporary and interim work is billed for the time worked, and RPO as a monthly programme fee. Each service page states its own structure, and the number is agreed before any work begins.",
   },
   {
-    q: "Do you recruit permanent, contract and interim roles?",
-    a: "Yes — Rivago recruits across all engagement types. We place candidates on a permanent basis, fixed-term or project contracts, and interim arrangements. This applies across all sectors and seniority levels, from graduate entry roles to C-suite leadership.",
+    /* The real terms, matching /services/direct-hire's FAQ and the guarantee
+       card in WHY RIVAGO. All four exclusions, not two. */
+    q: "What happens if a hire doesn't work out?",
+    a: "Direct hire placements carry a 90-day replacement guarantee, and retained executive search up to twelve months. It covers resignation and performance-based termination. It does not cover redundancy, a cancelled role, restructuring, or a material change to the job the candidate accepted — and those exclusions are written into the agreement rather than held back until you are signing.",
   },
   {
-    q: "Do you work with small companies or only enterprises?",
-    a: "We work with companies of all sizes — from fast-growing startups placing their first hires to large enterprises scaling entire departments. Our process is the same for every client: thorough brief, fast delivery, quality-first shortlist.",
+    /* Still no number, deliberately. The honest answer is the one WHY RIVAGO
+       gives: a date agreed on the intake call and written into the brief.
+       Note that /hire-talent contradicts this AND itself — it claims a
+       "48-hour median shortlist" in three places and "21-day median
+       shortlists, every time" in a fourth. */
+    q: "How quickly will we see candidates?",
+    a: "We agree a delivery date on the intake call and write it into the brief, so what you have is a commitment rather than an estimate. It varies by role — a well-scoped mid-level search moves faster than a niche or senior one — and if that date is going to move, you hear it early rather than on the day.",
   },
   {
-    q: "Which markets do you operate in?",
-    a: "Rivago is a global staffing and recruitment company with active operations across the United States, Canada, the UAE and India. Our global delivery teams give us a wide sourcing reach and the ability to move fast in every market we serve.",
+    /* Was "Do you work with small companies or only enterprises?", answered
+       with "thorough brief, fast delivery, quality-first shortlist" — a
+       marketing triplet whose middle term is the unquantified speed claim
+       the question above it had just declined to make. */
+    q: "Do you work with smaller companies, or only large employers?",
+    a: "Both. One open role is enough to start, and the way a search is run does not change with the size of the client. What changes is the engagement model: a single search and an embedded hiring team are priced and staffed differently.",
   },
   {
-    q: "Is there a replacement guarantee if a placement doesn't work out?",
-    a: "Yes. For all direct hire placements we offer a replacement guarantee period. If a placed candidate leaves or is let go within the agreed window, we restart the search at no additional fee. Terms are agreed upfront as part of our engagement.",
+    q: "Does it cost a candidate anything?",
+    a: "No. Rivago is paid by the employer in every engagement type, so there is no fee to a candidate at any stage — not to be represented, not to interview, and not on placement.",
+  },
+  {
+    /* Checked against JobsBoard.tsx rather than assumed: browsing and
+       filtering are open, and the apply button opens a gate reading "Please
+       log in to apply — create an account to track your applications and
+       save your progress." Saying both were open would have been wrong. */
+    q: "How do I find and apply for a role?",
+    a: "Open roles are on the jobs board, and you can browse and filter them without an account. Applying asks you to create one, which is what lets you track your applications and pick up where you left off.",
   },
 ];
 

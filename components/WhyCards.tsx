@@ -88,13 +88,24 @@ const CARDS: Card[] = [
        drift away from the footer and the contact page, and the office count
        in the title is derived for the same reason.
 
-       The markets count came out of the title deliberately. "Three offices,
-       four markets" invites the reader to pair them, and they do not pair:
-       the offices are Wilmington, Pune and Ayr, while the markets are the
-       US, Canada, the UAE and India — Ayr is in Scotland and the UK is not
-       a served market, while Canada and the UAE have no office. All of that
-       is normal for a staffing firm, so the body now says it outright
-       instead of leaving a reader to work out why the two lists disagree. */
+       CORRECTION. This comment used to say the offices and the markets "do
+       not pair", on the grounds that "Ayr is in Scotland and the UK is not a
+       served market". That was wrong. lib/routes.ts has that office as
+       region "ON", country "CA", postcode N0B 1E0, at 43.29/-80.38, named
+       "Ontario" and described as "Canadian market coverage and cross-border
+       placements". It is Ayr, Ontario — not Ayr, Scotland.
+
+       So the lists pair almost exactly: Wilmington covers the United States,
+       Ayr covers Canada, Pune covers India, and only the UAE is served
+       without an office. That is unremarkable.
+
+       The markets count still stays out of the title, on the weaker but
+       still sound ground that counting two different things beside each
+       other invites arithmetic the reader does not need — and the office
+       count is derived rather than typed, which is the point that mattered.
+       The body's "an office is where we sit" line survives on its own
+       merits; it is no longer explaining away a mismatch that is not
+       there. */
     t: `${numberWord(offices.length).replace(/^./, (c) => c.toUpperCase())} offices, one firm`,
     /* Also opened on a fragment — a bare list of three city names. Named
        subject, so the sentence stands on its own if it is quoted anywhere. */
