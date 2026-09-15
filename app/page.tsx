@@ -533,11 +533,25 @@ export default function Home() {
                   rather than apologetic.
 
                   And it carried no recruitment term at all, in the section
-                  whose whole job is to rank for sector hiring. */}
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>The sectors and functions <em>we recruit into.</em></h2>
+                  whose whole job is to rank for sector hiring.
+
+                  "Practice" rather than "sector" for the same reason. The
+                  client's draft ran "Hiring Expertise Across ten Sectors":
+                  there are eight, not ten; three of the eight are functions
+                  rather than sectors; and "Hiring Expertise" is "Recruiting
+                  Expertise", the first card of WHAT WE BRING two sections up.
+                  A practice can be either a sector or a function, so the word
+                  carries the set honestly — and /about already uses it,
+                  "Industry practices, each with its own specialists".
+
+                  "every practice we run" is bounded by its own clause, so it
+                  claims nothing beyond the eight on the page. */}
+              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Specialist recruiters in <em>every practice we run.</em></h2>
               {/* Names Rivago — the section had the entity zero times in its
-                  own copy, so nothing here could be attributed to anyone. */}
-              <p className="ind-sub gs">Rivago runs a specialist team for each one: recruiters who understand the roles, the regulations and what a strong hire looks like in it.</p>
+                  own copy, so nothing here could be attributed to anyone.
+                  "Dedicated", not "specialist", which is now in the headline
+                  forty pixels above. */}
+              <p className="ind-sub gs">Rivago runs a dedicated team for each one. They know the roles, the regulations and what a strong hire looks like in it.</p>
             </div>
             <Link className="ind-all gs" href={routes.industries}>View all industries <Arrow /></Link>
           </div>
