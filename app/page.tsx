@@ -466,12 +466,33 @@ export default function Home() {
           <div className="svc-head">
             <div>
               <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Services</div>
-              {/* "Eight" counted the Staffing Solutions overview card as a
-                  service. It is an index page — the same destination as the
-                  "View all services" link beside this heading — and About
-                  already filters it out to render "7 Ways to engage". The two
-                  pages disagreed; About was the one that was right. */}
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Seven ways we <em>staff your teams.</em></h2>
+              {/* "staff your teams" was not true of three of the seven.
+                  Employer of Record begins "for when you have found the right
+                  person" — the client found them and Rivago staffs nobody;
+                  executive search is one VP-to-C-suite hire; interim is one
+                  person two days a week. The reverse fails too: "a role",
+                  singular, breaks RPO, which is hiring at volume across a
+                  function. These seven span one-role and many-role services,
+                  so the only label true of all of them is the one /about
+                  already uses off this same data — ways to engage.
+
+                  Two collisions steered the wording. "Seven ways to engage
+                  us" rhymed with the support section's "Three ways to reach
+                  us" four down — "[Number] ways to [verb] us" twice on one
+                  page is the same sentence wearing a different verb. Then
+                  "Every way to engage Rivago" ran straight into INDUSTRIES
+                  immediately below, which is headed "Every sector. Every
+                  function." Naming Rivago also puts the entity into a section
+                  whose panels are mostly not in the HTML.
+
+                  No count at all now. It said "Seven", and "Eight" before
+                  that when it counted the Staffing Solutions overview as a
+                  service — the overview is an index page, the same
+                  destination as the "View all services" link beside this
+                  heading. A headline that counts its own panels is one edit
+                  away from lying, and the carousel's own 01/07 counter says
+                  the number anyway, correctly, from the data. */}
+              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Choose how you <em>engage Rivago.</em></h2>
               {/* Not a list of the seven modes — the carousel below names each
                   one with its own commercials, and the subhead would only be
                   reading the list out ahead of it. */}
