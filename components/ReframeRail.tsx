@@ -31,10 +31,24 @@ import { useCallback, useEffect, useRef, useState } from "react";
  * would make it the only bare option set on the site without one.
  */
 
+/* The label IS the title now. There used to be both — a small uppercase
+   category line ("Recruiting Expertise") above a claim ("People who
+   understand the role."), with the claim set at fz11 and the label at fz1.
+   The claims are gone.
+
+   The reason is division of labour. The section header argues: "Don't just
+   fill the role. Get it right." followed by a lede that makes the case.
+   Four cards each making a second argument under that one left the section
+   with two persuasive layers and no inventory. Scanning four nouns —
+   Recruiting Expertise, Market Intelligence, Technology, Sourcing Reach —
+   answers the eyebrow directly: this is what we bring.
+
+   What went with them is voice: those four claims carried it, and it now
+   lives entirely in the bodies. Worth knowing before adding a third layer
+   back. */
 type Card = {
   n: string;
   label: string;
-  t: string;
   d: string;
   icon: React.ReactNode;
 };
@@ -45,7 +59,6 @@ const CARDS: Card[] = [
   {
     n: "01",
     label: "Recruiting Expertise",
-    t: "People who understand the role.",
     d: "We look beyond the job description to understand what the role actually requires, the market around it and what makes someone successful in it.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -58,8 +71,11 @@ const CARDS: Card[] = [
   {
     n: "02",
     label: "Market Intelligence",
-    t: "Know where the talent is.",
-    d: "We bring a clearer view of the talent market — where the right skills are, what’s realistic and where the search needs to move next.",
+    /* "...a clearer view of the talent market — where the right skills are"
+       stuttered against the title directly above it once the title became
+       "Market Intelligence". Same three things, without saying market
+       twice in eight words. */
+    d: "We bring a clearer view of where the right skills sit, what’s realistic and where the search needs to move next.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <path d="M14 24.5s6.8-6.2 6.8-11.2a6.8 6.8 0 1 0-13.6 0C7.2 18.3 14 24.5 14 24.5Z" {...S} strokeLinejoin="round" />
@@ -70,24 +86,16 @@ const CARDS: Card[] = [
   {
     n: "03",
     label: "Technology",
-    /* Was "More signal. Less noise." — which collided with ProblemList's
-       first row, "Too much volume. Not enough signal.", two sections up the
-       same page, and with three other uses of the same metaphor on the site
-       (/career's "Quality over noise", the Resources newsletter's "No
-       noise.", and a Resources article body).
+    /* "We use technology to..." directly under a title reading "Technology"
+       is the one real stutter this change creates. The pronoun fixes it and
+       reads naturally — a screen reader hits the h3 first, so "it" has its
+       antecedent in reading order.
 
-       This says the card's actual claim instead. A reader who sees a card
-       labelled "Technology" on a recruitment site assumes a machine is
-       picking people; the body spends its last clause correcting that, so
-       the title may as well lead with it.
-
-       Length matters here: .rfr-t is max-width:16ch with text-wrap:balance,
-       and the cards are flex children that stretch to equal height. A title
-       that runs to three lines on one card pushes that card's body down
-       while the other three stay put. At 25 characters this sets to two
-       lines, the same as the other three titles. */
-    t: "The decision stays human.",
-    d: "We use technology to search, screen and prioritize talent faster, while keeping human judgment at the center of the decision.",
+       "Technology" is the only single word among four two-word labels. It
+       stays: the body covers search, screening and prioritisation, so
+       narrowing the title to "Screening Technology" for the sake of a
+       matched set would describe less than the card does. */
+    d: "We use it to search, screen and prioritize talent faster, while keeping human judgment at the center of the decision.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <path d="M5 17.5v4M11 12v9.5M17 7.5v14M23 14.5v7" {...S} />
@@ -102,8 +110,11 @@ const CARDS: Card[] = [
        "Sourcing Reach" is the same register as the other three and does not
        collide with "Market Intelligence" the way "Market Reach" would. */
     label: "Sourcing Reach",
-    t: "Beyond the usual talent pools.",
-    d: "We search across multiple sources to reach active and passive candidates, expanding the search when the right talent isn’t where you expected it to be.",
+    /* Double stutter once the label became the title: "across multiple
+       sources to reach" against "Sourcing Reach". Channels instead of
+       sources, work instead of reach, widen instead of expanding — the
+       claim is unchanged. */
+    d: "We work active and passive candidates across multiple channels, and widen the search when the right talent isn’t where you expected it to be.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <circle cx="14" cy="14" r="2.8" {...S} />
@@ -162,13 +173,15 @@ export default function ReframeRail() {
       >
         {CARDS.map((c) => (
           <article className="rfr-card inv" key={c.n}>
-            <div className="rfr-ico">{c.icon}</div>
-            <div className="rfr-label">
+            {/* The number moves up beside the icon rather than sitting on
+                its own line above the title. Stacking icon / number / title
+                / body gives the card four levels where three will do, and
+                the icon row had 40px of empty space to its right. */}
+            <div className="rfr-top">
+              <div className="rfr-ico">{c.icon}</div>
               <span className="rfr-n">{c.n}</span>
-              <span className="rfr-dash" aria-hidden="true">—</span>
-              {c.label}
             </div>
-            <h3 className="rfr-t">{c.t}</h3>
+            <h3 className="rfr-t">{c.label}</h3>
             <p className="rfr-d">{c.d}</p>
           </article>
         ))}
