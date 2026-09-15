@@ -466,14 +466,22 @@ export default function Home() {
                   so the only label true of all of them is the one /about
                   already uses off this same data — ways to engage.
 
-                  Two collisions steered the wording. "Seven ways to engage
-                  us" rhymed with the support section's "Three ways to reach
-                  us" four down — "[Number] ways to [verb] us" twice on one
-                  page is the same sentence wearing a different verb. Then
-                  "Every way to engage Rivago" ran straight into INDUSTRIES
-                  immediately below, which is headed "Every sector. Every
-                  function." Naming Rivago also puts the entity into a section
-                  whose panels are mostly not in the HTML.
+                  Four drafts and three collisions got here. "Seven ways to
+                  engage us" rhymed with the support section's "Three ways to
+                  reach us" — "[Number] ways to [verb] us" twice on one page
+                  is the same sentence wearing a different verb. "Every way to
+                  engage Rivago" ran straight into INDUSTRIES immediately
+                  below, which is headed "Every sector. Every function." And
+                  the client's "Your Hiring. Your Terms." hits that same
+                  neighbour: two adjacent sections both built on a two-beat
+                  "X. Y." Starting on "Your" would also have echoed the
+                  closing CTA, "Your next great hire starts right here."
+
+                  One clause, sentence case, first word unique across the
+                  page's ten headings. It keeps "hiring", which carries more
+                  weight in this section than most: seven of the eight panels
+                  are still absent from the served HTML, so the h2 is close to
+                  the only indexable copy the section has.
 
                   No count at all now. It said "Seven", and "Eight" before
                   that when it counted the Staffing Solutions overview as a
@@ -482,7 +490,7 @@ export default function Home() {
                   heading. A headline that counts its own panels is one edit
                   away from lying, and the carousel's own 01/07 counter says
                   the number anyway, correctly, from the data. */}
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Choose how you <em>engage Rivago.</em></h2>
+              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Hiring, <em>on your terms.</em></h2>
               {/* Not a list of the seven modes — the carousel below names each
                   one with its own commercials, and the subhead would only be
                   reading the list out ahead of it. */}
