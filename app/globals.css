@@ -1440,7 +1440,13 @@ a{color:inherit;text-decoration:none}
 /* cursor:default was correct while these were divs. They are links now, so
    the pointer has to say so — and the card needs a visible focus ring, since
    it is a keyboard stop that the eight tag chips inside do not provide. */
-.ind-card{display:block;text-decoration:none;background:var(--surface-3);border:1px solid var(--border);border-radius:18px;padding:26px;transition:all .28s var(--ease);cursor:pointer}
+/* Named properties, not `all`. With `all`, the :focus-visible outline was
+   one of the things being transitioned — the ring faded in over 280ms
+   instead of appearing when the key was pressed, which is late for the one
+   indicator a keyboard user is waiting on. (It also made the ring measure
+   1px mid-flight, which reads as a broken rule until you sample it later.) */
+.ind-card{display:block;text-decoration:none;background:var(--surface-3);border:1px solid var(--border);border-radius:18px;padding:26px;cursor:pointer;
+  transition:background .28s var(--ease),border-color .28s var(--ease),transform .28s var(--ease)}
 .ind-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .ind-card:hover{background:var(--surface2);border-color:var(--tint-2);transform:translateY(-4px)}
 /* ── INDUSTRY RAIL ────────────────────────────────────────────────────────
@@ -1481,10 +1487,14 @@ a{color:inherit;text-decoration:none}
    link are pinned to the base instead, which uses that space on purpose:
    description at the top, metadata at the bottom, on every card. */
 .ind-rail .ind-tags{margin-top:auto;padding-top:24px}
+/* Always visible. This was opacity:0 until :hover or :focus-visible, with
+   no (hover: hover) guard anywhere in this file — so on every touch device
+   the one element telling a reader the card is a link never rendered. The
+   arrow still slides on hover, which is the part that wanted animating. */
 .ind-more{display:inline-flex;align-items:center;gap:7px;margin-top:14px;
   font-size:var(--fz1);font-weight:500;color:var(--accent);
-  opacity:0;transform:translateY(4px);transition:opacity .25s var(--ease),transform .25s var(--ease)}
-.ind-card:hover .ind-more,.ind-card:focus-visible .ind-more{opacity:1;transform:none}
+  transition:gap .25s var(--ease)}
+.ind-card:hover .ind-more,.ind-card:focus-visible .ind-more{gap:11px}
 /* Touch has no hover, so the affordance would never appear there. */
 @media(hover:none){.ind-more{opacity:1;transform:none}}
 

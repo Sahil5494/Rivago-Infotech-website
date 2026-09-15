@@ -75,8 +75,13 @@ export default function IndustryRail() {
             <div className="ind-tags">
               {ind.tags.map((t) => <span className="ind-tag" key={t}>{t}</span>)}
             </div>
+            {/* The only thing on the card that says it is a link, so it is
+                on show at rest. It used to be opacity:0 until :hover or
+                :focus-visible, with no (hover: hover) guard — on a phone or
+                tablet there is no hover, so it never appeared at all and the
+                card gave no sign it went anywhere. */}
             <span className="ind-more">
-              Explore the practice
+              Learn more
               <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

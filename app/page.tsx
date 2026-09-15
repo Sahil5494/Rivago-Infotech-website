@@ -518,8 +518,26 @@ export default function Home() {
           <div className="ind-head" style={{ marginBottom: 52 }}>
             <div>
               <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Industries</div>
-              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>Every sector. <em>Every function.</em></h2>
-              <p className="ind-sub gs">We recruit across every major industry — with specialist teams who understand the roles, the regulations and what a strong hire looks like in each sector.</p>
+              {/* Was "Every sector. Every function." — two absolute claims
+                  over eight practices, and the lede underneath immediately
+                  walked the first one back to "every MAJOR industry". The
+                  headline and the line below it disagreed about the size of
+                  the claim.
+
+                  It was also papering over a real mix. Technology, Finance &
+                  Banking, Healthcare, Legal and Aerospace & Defence are
+                  sectors; Human Resources, Sales & Marketing and Supply &
+                  Operations are functions you hire into any sector — the HR
+                  card's own description ends "across every industry", which
+                  contradicts listing it as one. Naming both is accurate
+                  rather than apologetic.
+
+                  And it carried no recruitment term at all, in the section
+                  whose whole job is to rank for sector hiring. */}
+              <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 14 }}>The sectors and functions <em>we recruit into.</em></h2>
+              {/* Names Rivago — the section had the entity zero times in its
+                  own copy, so nothing here could be attributed to anyone. */}
+              <p className="ind-sub gs">Rivago runs a specialist team for each one: recruiters who understand the roles, the regulations and what a strong hire looks like in it.</p>
             </div>
             <Link className="ind-all gs" href={routes.industries}>View all industries <Arrow /></Link>
           </div>

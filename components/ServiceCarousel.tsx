@@ -137,9 +137,22 @@ export default function ServiceCarousel() {
     <div className="sc">
       <div
         className="sc-stage"
+        /* tabIndex, so the arrow keys can be reached at all: this div had a
+           keydown handler and nothing to focus it with, so the only way in
+           was a bubble from one of the buttons.
+
+           stopPropagation, so they work. PageNavSide used to carry a
+           document-level ArrowLeft/ArrowRight listener that navigated the
+           site, and preventDefault does not stop a bubble — pressing an
+           arrow here left the page instead of changing the panel, every
+           time. That listener is gone now, but the stop stays: nothing
+           above should act on an arrow this carousel has handled. */
+        tabIndex={0}
+        role="group"
+        aria-label="Services — use the arrow keys to change"
         onKeyDown={(e) => {
-          if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
-          if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
+          if (e.key === "ArrowLeft") { e.preventDefault(); e.stopPropagation(); go(-1); }
+          if (e.key === "ArrowRight") { e.preventDefault(); e.stopPropagation(); go(1); }
         }}
       >
         {/* ── media */}
