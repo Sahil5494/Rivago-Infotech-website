@@ -659,17 +659,24 @@ export default function Home() {
                 endorsements that have not been given". The page was asserting
                 the one fact the data file says is missing.
 
-                What is true is the form: anonymised to a role and a market,
-                no figure, no named client, no regulatory claim — which is the
-                shape a hiring team will actually sign off on. So the lede
-                describes the form and makes no claim about attribution.
+                The replacement went too far the other way: "nothing a
+                hiring team would need legal sign-off to repeat" is a
+                compliance note, not a line for a section headed "What clients
+                say". It described the paperwork around the quotes instead of
+                the quotes.
 
-                Restore the consent sentence the moment the quotes are real.
-                It is the better line; it just has to be earned first.
+                This says what the reader is about to get and how it is
+                attributed, in the register of the rest of the page.
+
+                Note where the real claim lives: the heading asserts these are
+                clients. No lede can contain that, and none should try to. The
+                sentence to restore when the quotes are real is the original
+                one — "everyone who ran a search with us and agreed to be
+                quoted" — which is the better line and only has to be earned.
 
                 Opened "Every mark below is a client" before that. There are
                 no marks below it any more. */}
-            <p className="prf-lede gs">Anonymised to a role and a market — no named client, no figures, nothing a hiring team would need legal sign-off to repeat.</p>
+            <p className="prf-lede gs">Hiring teams in their own words, anonymised to a role and a market rather than a name.</p>
           </div>
           <div className="gs">
             <ClientQuotes />

@@ -1341,11 +1341,24 @@ a{color:inherit;text-decoration:none}
   font-family:var(--fm);font-size:var(--fz1);letter-spacing:.07em;text-transform:uppercase;
   white-space:nowrap}
 
-/* fz10. At the grid's fz4 a quote read as body copy in a box; at this size
-   it reads as something someone said. 34ch keeps it to three or four lines
-   at this width rather than one long band. */
-.cq-q{font-size:var(--fz10);line-height:1.4;letter-spacing:-.018em;font-weight:400;
-  color:var(--text-1);margin:0;max-width:34ch;text-wrap:pretty}
+/* fz11 and 60ch. At the grid's fz4 a quote read as body copy in a box; at
+   this size it reads as something someone said.
+
+   The first attempt capped this at 34ch, which is a good measure for running
+   text and the wrong one here: inside a 1200px card it left the whole right
+   half of the panel empty, and the card read as broken rather than spacious.
+   Both of the references the client sent run their quote nearly edge to
+   edge. 60ch fills the panel: measured, the four quotes set to 2, 2, 2 and 3
+   lines at 73-76, 76, 74 and 56 real characters.
+
+   Three quarters of that is wide for running text, and deliberate here — a
+   display quote read in two or three lines is not sustained reading, and
+   both references run edge to edge. ch is the width of "0" and wider than
+   the average character, so 60ch buys about 75 characters rather than 60;
+   see the note on .rfm-d, where the same unit caught me out in the other
+   direction. Drop to about 52ch if the measure should win over the fill. */
+.cq-q{font-size:var(--fz11);line-height:1.34;letter-spacing:-.02em;font-weight:400;
+  color:var(--text-1);margin:0;max-width:60ch;text-wrap:pretty}
 
 .cq-who{display:flex;flex-direction:column;gap:3px;margin-top:32px}
 .cq-name{font-size:var(--fz5);font-weight:500;color:var(--text-1)}
