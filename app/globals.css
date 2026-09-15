@@ -1181,8 +1181,9 @@ a{color:inherit;text-decoration:none}
    average character in running text, so 64ch measured out at 94 actual
    characters a line — well past the 65-75 a reading measure wants. */
 .rfm-d{font-size:var(--fz7);color:var(--text-inv-2);line-height:1.76;font-weight:400;margin:0;max-width:48ch}
-/* The handoff into the rail. Set apart from the paragraph that earns it. */
-.rfm-turn{font-size:var(--fz7);line-height:1.76;font-weight:500;color:var(--text-inv-1);margin:26px 0 0}
+/* .rfm-turn is gone with the third line it styled. The lede now ends on the
+   four capabilities, which is the handoff — a separate line announcing one
+   was the weakest sentence in the section. */
 
 /* The four-card rail. Same mechanic as the industries rail — scroll-snap,
    two cards in view, the third peeking, arrows against the right edge — in

@@ -321,19 +321,28 @@ export default function Home() {
         <div className="rfm-inner">
           <div className="rfm-head gs">
             <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>What we bring</div>
-            {/* The headline was "Hiring doesn't need more candidates. It needs
-                better decisions." and the paragraph opened "Hiring isn't
-                simply about reaching more candidates. It's about knowing where
-                to look..." — the same sentence twice, forty pixels apart, and
-                both of them built on the not-X-but-Y antithesis this site has
-                now overused. The headline states one thing plainly; the
-                paragraph spends its words on the four decisions themselves,
-                which is what the rail below is made of. No <br />: the line is
-                short enough to set itself, and text-wrap:balance on .rfm-h2 is
-                inert across a forced break anyway. */}
-            <h2 className="rfm-h2">The work happens <em>before the shortlist.</em></h2>
-            <p className="rfm-d">By the time a name reaches you, four decisions have already been made: what the role really requires, where people with that experience are working now, which applications were worth an hour of someone&rsquo;s time, and how far out to go when the answer isn&rsquo;t in the obvious places.</p>
-            <p className="rfm-turn">Get those wrong early and the rest of the process can&rsquo;t recover it.</p>
+            {/* Client's copy, with three mechanical corrections.
+
+                "Don't fill the role" instructs the buyer not to do the thing
+                they came here to do; "don't just fill the role" is the same
+                line without the misread.
+
+                The draft second sentence read "we combine recruiting
+                expertise, market intelligence and technology throughout the
+                search" — three of the four card labels, verbatim, forty pixels
+                above the cards that carry them, and the fourth (Reach Further)
+                left out. It now names what those capabilities do instead, and
+                covers all four: hired the role before (01), the market around
+                it (02), the tools (03), the reach outside your market (04).
+                No phrase here appears in ReframeRail.
+
+                Résumé became CV. ProblemList two sections up says "Better
+                CVs.", and this is the same page and the same reader.
+
+                No <br />: the line sets itself, and text-wrap:balance on
+                .rfm-h2 is inert across a forced break anyway. */}
+            <h2 className="rfm-h2">Don&rsquo;t just fill the role. <em>Get it right.</em></h2>
+            <p className="rfm-d">The right hire starts with understanding the role, the market around it and the person behind the CV. So every search gets someone who has hired that role before, the tools to work a long list fast, and the reach to look outside your market when the answer isn&rsquo;t in it.</p>
           </div>
 
           <div className="gs">
