@@ -19,7 +19,7 @@ import ReframeRail from "@/components/ReframeRail";
    mega-menu reads it. */
 import { routes, offices, marketsSentence, numberWord } from "@/lib/routes";
 import { STAGES } from "@/lib/process";
-import { testimonials } from "@/lib/testimonials";
+import ClientQuotes from "@/components/ClientQuotes";
 
 /* The same six the hero canvas places into, so the cycling word and the
    drawing behind it never disagree. */
@@ -652,18 +652,27 @@ export default function Home() {
                   actually left in this band. */}
               <h2 className="prf-h2 gs">What clients <em>say.</em></h2>
             </div>
-            {/* Opened "Every mark below is a client." There are no marks
-                below it any more. */}
-            <p className="prf-lede gs">Every quote is from someone who ran a search with us and agreed to be quoted — by role and market, not by name.</p>
+            {/* This line claimed consent that has not been obtained. It read
+                "Every quote is from someone who ran a search with us AND
+                AGREED TO BE QUOTED" — while the header of lib/testimonials.ts
+                records, in its own words, that these four "remain
+                endorsements that have not been given". The page was asserting
+                the one fact the data file says is missing.
+
+                What is true is the form: anonymised to a role and a market,
+                no figure, no named client, no regulatory claim — which is the
+                shape a hiring team will actually sign off on. So the lede
+                describes the form and makes no claim about attribution.
+
+                Restore the consent sentence the moment the quotes are real.
+                It is the better line; it just has to be earned first.
+
+                Opened "Every mark below is a client" before that. There are
+                no marks below it any more. */}
+            <p className="prf-lede gs">Anonymised to a role and a market — no named client, no figures, nothing a hiring team would need legal sign-off to repeat.</p>
           </div>
-          <div className="prf-grid">
-            {testimonials.map((t) => (
-              <figure className="prf-card gs" key={t.name}>
-                <span className="prf-badge">{t.badge}</span>
-                <blockquote className="prf-q">{t.quote}</blockquote>
-                <figcaption className="prf-who">{t.name}</figcaption>
-              </figure>
-            ))}
+          <div className="gs">
+            <ClientQuotes />
           </div>
         </div>
       </section>
