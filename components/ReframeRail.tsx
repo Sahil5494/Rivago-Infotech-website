@@ -20,6 +20,15 @@ import { useCallback, useEffect, useRef, useState } from "react";
  *
  * .inv redefines the token set but does not paint, so each card sets its
  * own background and everything inside it follows.
+ *
+ * The 01-04 numbers stay, and this has been argued once already. These four
+ * run at the same time rather than in order, so on its own the numbering
+ * claims a sequence that isn't there. But numbering an unordered set is the
+ * house convention — the option cards on every /services page, /hire-talent
+ * and /career all do it — and the site marks its real sequences by labelling
+ * them instead ("Stage 03 · Day 10-18", "03 · Screen"). Bare numbers mean
+ * options here; labelled numbers mean stages. Unnumbering this one rail
+ * would make it the only bare option set on the site without one.
  */
 
 type Card = {
@@ -61,7 +70,23 @@ const CARDS: Card[] = [
   {
     n: "03",
     label: "Technology",
-    t: "More signal. Less noise.",
+    /* Was "More signal. Less noise." — which collided with ProblemList's
+       first row, "Too much volume. Not enough signal.", two sections up the
+       same page, and with three other uses of the same metaphor on the site
+       (/career's "Quality over noise", the Resources newsletter's "No
+       noise.", and a Resources article body).
+
+       This says the card's actual claim instead. A reader who sees a card
+       labelled "Technology" on a recruitment site assumes a machine is
+       picking people; the body spends its last clause correcting that, so
+       the title may as well lead with it.
+
+       Length matters here: .rfr-t is max-width:16ch with text-wrap:balance,
+       and the cards are flex children that stretch to equal height. A title
+       that runs to three lines on one card pushes that card's body down
+       while the other three stay put. At 25 characters this sets to two
+       lines, the same as the other three titles. */
+    t: "The decision stays human.",
     d: "We use technology to search, screen and prioritize talent faster, while keeping human judgment at the center of the decision.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -71,7 +96,12 @@ const CARDS: Card[] = [
   },
   {
     n: "04",
-    label: "Reach Further",
+    /* Was "Reach Further" — a verb phrase sitting in a row of three noun
+       phrases (Recruiting Expertise, Market Intelligence, Technology). The
+       four labels are read as a set down the rail, so the odd grammar shows.
+       "Sourcing Reach" is the same register as the other three and does not
+       collide with "Market Intelligence" the way "Market Reach" would. */
+    label: "Sourcing Reach",
     t: "Beyond the usual talent pools.",
     d: "We search across multiple sources to reach active and passive candidates, expanding the search when the right talent isn’t where you expected it to be.",
     icon: (
