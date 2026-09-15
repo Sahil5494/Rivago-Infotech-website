@@ -59,7 +59,11 @@ const CARDS: Card[] = [
   {
     n: "01",
     label: "Recruiting Expertise",
-    d: "We look beyond the job description to understand what the role actually requires, the market around it and what makes someone successful in it.",
+    /* The old body ended "...the market around it and what makes someone
+       successful in it." — "the market around it" is now word-for-word in
+       the section lede two hundred pixels above, and "the market" belongs to
+       card 02 anyway. This stays on the brief itself. */
+    d: "Before anyone is sourced, we work out what the job is actually asking for: which parts of the spec are load-bearing, which are wishlist, and what a strong first year in it would look like. That comes from the people who will run the interviews, not from the req alone.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <circle cx="11" cy="9" r="4" {...S} />
@@ -71,11 +75,12 @@ const CARDS: Card[] = [
   {
     n: "02",
     label: "Market Intelligence",
-    /* "...a clearer view of the talent market — where the right skills are"
-       stuttered against the title directly above it once the title became
-       "Market Intelligence". Same three things, without saying market
-       twice in eight words. */
-    d: "We bring a clearer view of where the right skills sit, what’s realistic and where the search needs to move next.",
+    /* Three named things a market read actually produces, then what a
+       client does with it. The claims here are the ones the site already
+       makes elsewhere — /services/direct-hire says "Salary benchmarking
+       included" and executive-search "Compensation benchmarking included" —
+       so this asserts no capability that isn't already sold. No figure. */
+    d: "We track which companies are actually building the function you’re hiring into, what that experience is being paid now, and how long the people in it have been sitting still. When a brief is not landing, that is what tells you whether to move on comp, on seniority or on location.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <path d="M14 24.5s6.8-6.2 6.8-11.2a6.8 6.8 0 1 0-13.6 0C7.2 18.3 14 24.5 14 24.5Z" {...S} strokeLinejoin="round" />
@@ -95,7 +100,7 @@ const CARDS: Card[] = [
        stays: the body covers search, screening and prioritisation, so
        narrowing the title to "Screening Technology" for the sake of a
        matched set would describe less than the card does. */
-    d: "We use it to search, screen and prioritize talent faster, while keeping human judgment at the center of the decision.",
+    d: "It searches, dedupes and ranks — the part of a search that used to be done by hand, one browser tab at a time. Deciding is not on that list. Every profile that reaches you has been read by the recruiter who will be on the call when you discuss it.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <path d="M5 17.5v4M11 12v9.5M17 7.5v14M23 14.5v7" {...S} />
@@ -110,11 +115,16 @@ const CARDS: Card[] = [
        "Sourcing Reach" is the same register as the other three and does not
        collide with "Market Intelligence" the way "Market Reach" would. */
     label: "Sourcing Reach",
-    /* Double stutter once the label became the title: "across multiple
-       sources to reach" against "Sourcing Reach". Channels instead of
-       sources, work instead of reach, widen instead of expanding — the
-       claim is unchanged. */
-    d: "We work active and passive candidates across multiple channels, and widen the search when the right talent isn’t where you expected it to be.",
+    /* Says why passive candidates need a different approach rather than
+       just naming them. Deliberately avoids "job boards" and "referrals":
+       ProblemList's first row two sections up already uses both, in a
+       sentence about where an open req's applications come from.
+
+       Nothing here claims candidates who exist nowhere else — the
+       reference copy this was modelled on ended "talent you won't find
+       anywhere else", which is not checkable. The last sentence is the
+       opposite kind of claim and the one worth making. */
+    d: "The best person for a role is usually employed, not looking, and has no reason to reply to a stranger. So they get approached directly: through our own database, through people who have worked with them, and into the companies doing that work today. When a market is genuinely tapped out, we say so.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <circle cx="14" cy="14" r="2.8" {...S} />
