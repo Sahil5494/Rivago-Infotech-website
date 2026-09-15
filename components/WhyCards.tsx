@@ -26,6 +26,12 @@ import { offices, servedMarkets } from "@/lib/routes";
  * set directly below a real one made the page look like it had two.
  */
 
+/* The offices card hard-coded "Three offices, four markets" in its title
+   while deriving the cities and markets themselves from lib/routes. Add a
+   fourth office and the title would have gone on saying three. */
+const WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"] as const;
+const count = (n: number) => (WORDS[n] ?? String(n));
+
 const P = {
   fill: "none" as const,
   stroke: "var(--accent)",
@@ -45,43 +51,73 @@ const CARDS: Card[] = [
   },
   {
     t: "A date agreed before sourcing starts",
-    d: "The delivery date is set on the intake call and written into the brief — not offered after the first week has already slipped.",
-    more: "It sits beside the scorecard in the same document, so there is one page both sides are working from rather than two versions of the plan.",
+    d: "The delivery date is agreed on the intake call and written into the brief. From that point it is a commitment, and every update you get is measured against it.",
+    more: "It sits beside the scorecard in the same document, so both sides are working from one page.",
     icon: (<svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" {...P} /><path d="M11 7v4l3 3" {...P} /></svg>),
   },
   {
     t: "A partner who already works your sector",
-    d: "Your brief goes to whoever recruits in that market, not to whoever is free this week. They know the titles, the going rate and what a strong candidate looks like in your industry.",
-    more: "And if we don't have a real bench in your sector, you'll hear that on the first call — rather than have us take the brief and learn on it.",
+    /* "They know the titles, the going rate and..." — the going rate is
+       WHAT WE BRING's second card, one section up, which says "what that
+       experience is paid now". Comp knowledge is claimed once, there. */
+    d: "Your brief goes to the desk that already recruits in that market. They know the titles that exist, how the sector talks about seniority, and what a strong candidate looks like in it.",
+    more: "And if we don't have a real bench in your sector, you will hear that on the first call, before anyone takes the brief.",
     icon: (<svg width="22" height="22" viewBox="0 0 22 22"><path d="M4 11a7 7 0 1014 0 7 7 0 00-14 0z" {...P} /><path d="M11 8v3l2 2" {...P} /><circle cx="18" cy="4" r="3" fill="var(--accent)" opacity=".3" /></svg>),
   },
   {
-    t: "You brief us once, not every time",
-    d: "Your point of contact doesn't change between searches. They already know your hiring bar, your interview loop, and who you turned down last time and why.",
-    more: "That continuity is the whole point of a named partner. The alternative is explaining your bar again to a new coordinator every quarter.",
+    /* Title was "You brief us once, not every time", and the body then
+       opened by restating it. The title now names the thing you only do
+       once; the body says what that buys. */
+    t: "You explain your hiring bar once",
+    d: "Your point of contact stays the same between searches. They already know your interview loop, and who you turned down last time and why.",
+    more: "That continuity is the whole point of a named partner, and it is why your bar holds steady from one search to the next.",
     icon: (<svg width="22" height="22" viewBox="0 0 22 22"><rect x="3" y="3" width="16" height="16" rx="4" {...P} /><path d="M8 11l2.5 2.5L14 8" {...P} /></svg>),
   },
   {
     /* Cities and markets are read from lib/routes.ts so this card cannot
-       drift away from the footer and the contact page. */
-    t: "Three offices, four markets, one firm",
-    d: `${offices.map((o) => o.city).join(", ")} — hiring into ${servedMarkets.slice(0, -1).join(", ")} and ${servedMarkets[servedMarkets.length - 1]}. One point of contact across every one of them, rather than a different agency in each market.`,
+       drift away from the footer and the contact page, and the office count
+       in the title is derived for the same reason.
+
+       The markets count came out of the title deliberately. "Three offices,
+       four markets" invites the reader to pair them, and they do not pair:
+       the offices are Wilmington, Pune and Ayr, while the markets are the
+       US, Canada, the UAE and India — Ayr is in Scotland and the UK is not
+       a served market, while Canada and the UAE have no office. All of that
+       is normal for a staffing firm, so the body now says it outright
+       instead of leaving a reader to work out why the two lists disagree. */
+    t: `${count(offices.length).replace(/^./, (c) => c.toUpperCase())} offices, one firm`,
+    d: `${offices.map((o) => o.city).join(", ")} — covering ${servedMarkets.slice(0, -1).join(", ")} and ${servedMarkets[servedMarkets.length - 1]}. An office is where we sit. Where we hire is that whole list, from one brief.`,
     more: "Where you need to hire somewhere we don't hold an entity, Employer of Record covers it — we become the legal employer for payroll, tax and contracts in-country.",
     icon: (<svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="8.5" {...P} /><path d="M2.5 11h17M11 2.5c2.2 2.3 3.4 5.3 3.4 8.5s-1.2 6.2-3.4 8.5c-2.2-2.3-3.4-5.3-3.4-8.5S8.8 4.8 11 2.5z" {...P} /></svg>),
   },
   {
     t: "A guarantee with its terms on show",
-    d: "90 days on contingent direct hires, up to twelve months on retained search. Resignation and performance are covered; redundancy and a cancelled role are not.",
-    more: "All of it — including what voids the guarantee — is written on the direct hire page, rather than held back until you are reading a contract.",
+    /* The title claims the terms are on show, so all four exclusions are
+       named. It listed two; /services/direct-hire's FAQ lists four —
+       redundancy, a cancelled role, restructuring, and a material change to
+       the job the candidate accepted. A card that says "on show" while
+       showing half of them is the one thing this card cannot do.
+
+       The negation here stays. It is a legal distinction between what is
+       covered and what is not, which is the information, rather than the
+       deny-then-assert figure of speech the rest of the section was using. */
+    d: "90 days on contingent direct hires, up to twelve months on retained search. It covers resignation and performance; it does not cover redundancy, a cancelled role, restructuring, or a material change to the job the candidate accepted.",
+    more: "Those terms are in the agreement and on the direct hire page, in the same words, before you are asked to sign anything.",
     icon: (<svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 2.6l7 2.6v5.4c0 4-2.9 7.5-7 8.8-4.1-1.3-7-4.8-7-8.8V5.2z" {...P} /><path d="M8 11l2.2 2.2L14.5 9" {...P} /></svg>),
   },
 ];
 
-/* Left column takes the odd cards, right column the even ones and the call
-   to action. The right column is pushed down so the two do not line up —
-   that offset is the layout. On a narrow screen the columns stack and the
-   offset is removed; the order reads 1,3,5 then 2,4,6, which is fine
-   because these six have no sequence to disturb. */
+/* Left column takes the odd cards, right column the even ones. The LEFT
+   column is pushed down so the two do not line up — that offset is the
+   layout. (This comment said "right" for a while; the stylesheet has always
+   pushed nth-child(1), and explains there why the offset belongs on the
+   shorter column.)
+
+   Because the left column starts lower, the first card a reader's eye meets
+   is the right column's, not CARDS[0]. That is fine: these six have no
+   sequence, which is also why they carry no numbers.
+
+   On a narrow screen the columns stack and the offset is removed. */
 const LEFT = [0, 2, 4];
 const RIGHT = [1, 3, 5];
 
@@ -116,34 +152,51 @@ function WhyCard({ c, id }: { c: Card; id: string }) {
 
 export default function WhyCards() {
   return (
-    <div className="why-grid">
-      <div className="why-col">
-        {LEFT.map((i) => <WhyCard c={CARDS[i]} id={`why-x-${i}`} key={CARDS[i].t} />)}
-      </div>
-      <div className="why-col">
-        {RIGHT.map((i) => <WhyCard c={CARDS[i]} id={`why-x-${i}`} key={CARDS[i].t} />)}
-        {/* The reference closes its grid with a call to action rather than a
-            seventh card. Worth keeping: the next one on this page is about
-            three thousand pixels further down. */}
-        <div className="why-cta">
-          <div className="why-cta-ico" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M5 19L19 5M19 5h-8M19 5v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
-          </div>
-          {/* This tile ran the same two sentences as the scoping-call card in
-              the support section — "Thirty minutes with the partner who would
-              take the brief. You leave with a plan whether or not you engage
-              us." — word for word, twelve consecutive four-word phrases in
-              common. The contact pitch belongs in the support section, whose
-              whole job it is. This tile closes the six cards above it, so it
-              says what those six are for instead. */}
-          <h3>Tell us the role.<br />We&rsquo;ll take it from there.</h3>
-          <p>One open role is enough to start. Everything above applies to it.</p>
-          <button type="button" className="why-cta-btn" data-hire>
-            Send us a role
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-          </button>
+    <>
+      <div className="why-grid">
+        <div className="why-col">
+          {LEFT.map((i) => <WhyCard c={CARDS[i]} id={`why-x-${i}`} key={CARDS[i].t} />)}
+        </div>
+        <div className="why-col">
+          {RIGHT.map((i) => <WhyCard c={CARDS[i]} id={`why-x-${i}`} key={CARDS[i].t} />)}
         </div>
       </div>
-    </div>
+
+      {/* The call to action sits below the grid rather than as the last cell
+          of the right column. It was the seventh cell in a set of seven, so
+          one column carried four and the other three, and the right column
+          ran 229px past the bottom of the left — a card-sized hole in the
+          bottom-left corner, exactly where the section closes. Three and
+          three now, with the tile spanning the full width as the closing
+          band.
+
+          Worth keeping at all: the next call to action on this page is about
+          three thousand pixels further down.
+
+          It ran the same two sentences as the scoping-call card in the
+          support section — "Thirty minutes with the partner who would take
+          the brief. You leave with a plan whether or not you engage us." —
+          word for word, twelve consecutive four-word phrases in common. The
+          contact pitch belongs in the support section, whose whole job it
+          is. This tile closes the six cards above it, so it says what those
+          six are for instead. */}
+      <div className="why-cta">
+        <div className="why-cta-ico" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M5 19L19 5M19 5h-8M19 5v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
+        </div>
+        <div className="why-cta-txt">
+          {/* Not an h3. The section heading promises six things and the six
+              cards each supply one; this tile is the call to action, so as a
+              seventh h3 it made the section announce seven headings under an
+              h2 that says six. */}
+          <p className="why-cta-h">Tell us the role. We&rsquo;ll take it from there.</p>
+          <p>One open role is enough to start. Everything above applies to it.</p>
+        </div>
+        <button type="button" className="why-cta-btn" data-hire>
+          Send us a role
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        </button>
+      </div>
+    </>
   );
 }

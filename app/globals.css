@@ -1095,11 +1095,22 @@ a{color:inherit;text-decoration:none}
 
 /* ── WHY RIVAGO ── */
 /* --bg3 (white), not --bg. This band and the approach band below it were
-   painted the identical rgb(242,247,245) — 2,738px of one colour — and the
-   cream band above differs from them by 5/0/3 in RGB, about 1.01:1,
-   which is no boundary at all. Three sections read as one long pale
-   stretch. Giving the tallest of the three its own ground separates both
-   of its edges without moving anything. */
+   painted the identical rgb(242,247,245) — 2,738px of one colour — so at
+   least the two are no longer the same value.
+
+   What it does not do is separate them. Measured against its neighbours,
+   white sits 1.09:1 from the cream band above and 1.08:1 from the band
+   below; the earlier claim here that this "separates both of its edges"
+   does not survive a contrast check. The 1px rgb(217,217,217) border-top
+   at 1.41:1 is what actually divides these sections, exactly as on the
+   dark ramp, where fill never separated the bands and a hairline always
+   did. Same story inside the section: .why-card's rgba(0,8,5,.03) over
+   white composites to 1.06:1, so the cards read as cards because of their
+   border, not their fill.
+
+   Giving this band a ground that genuinely separates is a page-level
+   decision — there are four pale bands in a row through the middle of the
+   page — so it is not made here. */
 .why-sec{padding:110px 44px;background:var(--bg3)}
 .why-inner{max-width:1200px;margin:0 auto}
 .why-lede{font-size:var(--fz7);color:var(--text2);line-height:1.72;font-weight:400;max-width:560px}
@@ -1128,28 +1139,59 @@ a{color:inherit;text-decoration:none}
    it — the loudest element in the section, carrying no information, on six
    cards that have no order. */
 .why-title{font-size:var(--fz9);font-weight:500;color:var(--text);margin:0 0 12px;letter-spacing:-.018em;line-height:1.24;text-wrap:balance}
-/* Clamped to three lines when closed, which is what makes Read more mean
-   something. -webkit-line-clamp is the only cross-browser line clamp; it
-   needs the -webkit- display and box-orient alongside it even in Firefox,
-   which supports the property under those exact prefixes. */
+/* A guard, not a mechanism — and set to 4, not 3.
+
+   The comment here used to say the clamp "is what makes Read more mean
+   something". It never did: the descriptions set to 3, 3, 3, 2, 3 and 3
+   lines, so nothing was truncated and Read more only ever revealed
+   .why-extra. Then the guarantee card grew to carry all four of its
+   exclusions and came out at four lines, and a ceiling of 3 clipped it
+   mid-word — on the one card whose title claims its terms are on show,
+   with the missing words in neither the visible copy nor the disclosure.
+
+   So the ceiling is 4 and the copy is intact. It still exists to stop a
+   runaway description blowing a card out. When it does fire, the hidden
+   text stays in the accessibility tree, so a screen reader reads copy a
+   sighted user cannot see — which is a reason to fix the copy rather than
+   to lean on the clamp.
+
+   -webkit-line-clamp is the only cross-browser line clamp and needs the
+   -webkit- display and box-orient alongside it even in Firefox, which
+   supports the property under those exact prefixes. */
 .why-desc{font-size:var(--fz5);color:var(--text2);line-height:1.7;margin:0;
-  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
 .why-desc.open{display:block;-webkit-line-clamp:none;overflow:visible}
 .why-extra{margin-top:12px}
 .why-extra p{font-size:var(--fz5);color:var(--text2);line-height:1.7;margin:0}
-.why-more{margin-top:18px;display:inline-flex;align-items:center;gap:8px;background:none;border:0;padding:0;cursor:pointer;
+/* padding, and margin-top reduced to match, so the hit area clears the 24px
+   WCAG 2.2 target minimum. The label is 12px uppercase and measured 19px
+   tall with padding:0 — under the minimum at every width including 390,
+   where it is the only way to open a card. The padding is invisible: the
+   button has no background or border. */
+.why-more{margin-top:11px;display:inline-flex;align-items:center;gap:8px;background:none;border:0;padding:7px 0;cursor:pointer;
   font-family:var(--fm);font-size:var(--fz1);letter-spacing:.07em;text-transform:uppercase;color:var(--accent);transition:gap .2s}
 .why-more:hover{gap:12px}
 .why-more-ico{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;border:1px solid var(--tint-3);background:var(--tint-1)}
 
-/* The closing cell. Reads as a card of the same family — same radius, same
-   gutter — but filled, so it is plainly the thing to act on rather than a
-   seventh reason. */
-.why-cta{background:var(--accent);color:var(--bg);border-radius:20px;padding:34px 32px 32px;display:flex;flex-direction:column;align-items:flex-start}
-.why-cta-ico{width:44px;height:44px;border-radius:12px;background:rgba(3,12,5,.12);display:flex;align-items:center;justify-content:center;color:var(--bg);margin-bottom:22px}
-.why-cta h3{font-size:var(--fz9);font-weight:500;letter-spacing:-.018em;line-height:1.24;margin:0 0 10px}
-.why-cta p{font-size:var(--fz5);line-height:1.7;font-weight:400;margin:0 0 24px;opacity:.82}
-.why-cta-btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border:0;border-radius:11px;cursor:pointer;
+/* The closing band. Reads as a card of the same family — same radius — but
+   filled, so it is plainly the thing to act on rather than a seventh
+   reason. It sits below the grid now instead of inside the right column;
+   see the note in WhyCards.tsx for the 229px of dead space that caused.
+   Full width, so it lays out as a row: mark, words, button. */
+.why-cta{background:var(--accent);color:var(--bg);border-radius:20px;padding:32px;margin-top:24px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.why-cta-ico{width:44px;height:44px;border-radius:12px;background:rgba(3,12,5,.12);display:flex;align-items:center;justify-content:center;color:var(--bg);flex-shrink:0}
+.why-cta-txt{flex:1;min-width:0}
+/* The heading is a <p>, so it is matched by .why-cta p as well. That
+   selector is (0,1,1) and a bare .why-cta-h is (0,1,0), which would lose —
+   silently flattening the heading to 16px body copy. Qualified to (0,2,0)
+   so it wins, and declared after for good measure. */
+.why-cta p{font-size:var(--fz5);line-height:1.7;font-weight:400;margin:0;opacity:.82}
+.why-cta .why-cta-h{font-size:var(--fz9);font-weight:500;letter-spacing:-.018em;line-height:1.24;margin:0 0 8px;opacity:1}
+@media(min-width:901px){
+  .why-cta{flex-direction:row;align-items:center;gap:28px;padding:30px 34px}
+}
+.why-cta-btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border:0;border-radius:11px;cursor:pointer;flex-shrink:0;
   background:var(--bg);color:var(--accent);font-family:var(--ff);font-size:var(--fz5);font-weight:500;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
 .why-cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.18)}
 

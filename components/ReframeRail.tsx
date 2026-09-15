@@ -62,7 +62,10 @@ const CARDS: Card[] = [
     /* Two sentences, as with all four. The 50-word version carried a third
        specific — what a strong first year looks like — which is the one of
        the three that the panel sentence already implies. */
-    d: "Before anyone is sourced, we work out which parts of the spec are load-bearing and which are wishlist. That comes from the people who will run the interviews, not from the req alone.",
+    /* Opened "Before anyone is sourced" until WHY RIVAGO's second card was
+       read alongside it — that one is titled "A date agreed before sourcing
+       starts", two sections down the same page. */
+    d: "We start by working out which parts of the spec are load-bearing and which are wishlist. That comes from the people who will run the interviews, not from the req alone.",
     icon: (
       <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <circle cx="11" cy="9" r="4" {...S} />

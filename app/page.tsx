@@ -342,7 +342,19 @@ export default function Home() {
                 No <br />: the line sets itself, and text-wrap:balance on
                 .rfm-h2 is inert across a forced break anyway. */}
             <h2 className="rfm-h2">Don&rsquo;t just fill the role. <em>Get it right.</em></h2>
-            <p className="rfm-d">The right hire starts with understanding the role, the market around it and the person behind the CV. So every search gets someone who has hired that role before, the tools to work a long list fast, and the reach to look outside your market when the answer isn&rsquo;t in it.</p>
+            {/* Second sentence ran "So every search gets someone who has
+                hired that role before, the tools to..." — two collisions with
+                WHY RIVAGO, one section down. Its h2 is "Six things we do on
+                every search", and there is a note at .feat-sec below saying
+                that phrase is spoken for; this broke the same rule. And "someone
+                who has hired that role before" is the claim its second card
+                already makes as a title, "A partner who already works your
+                sector".
+
+                The four items now track the four cards in the rail rather
+                than the cards two sections away: read the brief, read the
+                market, the tooling, the reach. */}
+            <p className="rfm-d">The right hire starts with understanding the role, the market around it and the person behind the CV. So a brief goes out with four things attached: a proper read of what the job needs, a current picture of who is hiring in it, tools that work a long list fast, and the reach to look further when the answer isn&rsquo;t close.</p>
           </div>
 
           <div className="gs">
@@ -368,7 +380,10 @@ export default function Home() {
               measures 640 on a single line and was breaking to leave
               "search." on its own. */}
           <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 700, marginBottom: 18 }}>Six things we do on <em>every search.</em></h2>
-          <p className="why-lede gs">Each one is either done on your search or it isn&rsquo;t. You can hold us to any of them on the first call.</p>
+          {/* Was "Each one is either done on your search or it isn't." —
+              one of five deny-then-assert constructions this section was
+              running, the pattern already stripped out of WHAT WE BRING. */}
+          <p className="why-lede gs">Every one of these is something you can hold us to. Ask about any of them on the first call.</p>
           <WhyCards />
         </div>
       </section>
