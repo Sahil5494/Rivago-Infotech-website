@@ -127,6 +127,23 @@ export const offices = [
 /** Markets served without a physical office — do not attach addresses or LocalBusiness schema. */
 export const servedMarkets = ["United States", "Canada", "UAE", "India"] as const;
 
+/** The same markets, set into a sentence: "the United States, Canada, the UAE and India".
+ *
+ * The array holds labels — right for the footer's column and for schema, but
+ * two of the four need a definite article before they can sit in running
+ * text. Joining it raw produced "searches in United States, Canada, UAE and
+ * India" in two places on the homepage, while the FAQ on the same page, hand
+ * written, said "across the United States, Canada, the UAE and India".
+ * Anything setting these markets in prose should call this, so the page
+ * agrees with itself and a market added later reads correctly everywhere. */
+/** "a, b and c" — a list set as prose rather than joined with commas. */
+export const sentenceList = (items: readonly string[]): string =>
+  items.length < 2 ? (items[0] ?? "") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+
+const NEEDS_ARTICLE = new Set<string>(["United States", "UAE", "United Kingdom", "Netherlands", "Philippines"]);
+export const marketsSentence = (): string =>
+  sentenceList(servedMarkets.map((x) => (NEEDS_ARTICLE.has(x) ? `the ${x}` : x)));
+
 /** Order used for the prev/next side page nav — mirrors the original site's page order. */
 export const pageOrder: { name: string; href: string }[] = [
   { name: "Home", href: routes.home },

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { offices, servedMarkets } from "@/lib/routes";
+import Link from "next/link";
+import { routes, offices, marketsSentence, sentenceList } from "@/lib/routes";
 
 /* The six "why us" cards, in two vertically offset columns with a call to
  * action as the last cell — the reference layout, with three departures.
@@ -40,12 +41,21 @@ const P = {
   strokeLinejoin: "round" as const,
 };
 
-type Card = { t: string; d: string; more: string; icon: React.ReactNode };
+/* `more` takes nodes, not just text: two of these disclosures name a service
+   page in prose — the direct hire page and Employer of Record — and named
+   them without linking. Those are the two highest-intent commercial pages on
+   the site, referenced from the homepage, which is the strongest page there
+   is to link from. */
+type Card = { t: string; d: React.ReactNode; more: React.ReactNode; icon: React.ReactNode };
 
 const CARDS: Card[] = [
   {
     t: "Searches you can't advertise",
-    d: "A senior hire, a replacement the incumbent doesn't know about yet, a role that can't be posted. Handled under NDA, with the brief shown only to candidates who need to see it to decide.",
+    /* Opened on a fragment — "A senior hire, a replacement the incumbent
+       doesn't know about yet, a role that can't be posted." No subject, so
+       the sentence cannot be lifted out and quoted by anything. Named
+       subject now, and the term someone would actually search for. */
+    d: "Rivago runs confidential search for roles that cannot be posted: a senior hire, or a replacement the incumbent doesn't know about yet. It runs under NDA, with the brief shown only to candidates who need to see it to decide.",
     more: "Nothing goes on a job board, and your company name stays out of the first conversation until a candidate is serious enough to need it.",
     icon: (<svg width="22" height="22" viewBox="0 0 22 22"><rect x="4" y="9" width="14" height="10" rx="2.5" {...P} /><path d="M7.5 9V6.5a3.5 3.5 0 017 0V9" {...P} /></svg>),
   },
@@ -60,8 +70,14 @@ const CARDS: Card[] = [
     /* "They know the titles, the going rate and..." — the going rate is
        WHAT WE BRING's second card, one section up, which says "what that
        experience is paid now". Comp knowledge is claimed once, there. */
-    d: "Your brief goes to the desk that already recruits in that market. They know the titles that exist, how the sector talks about seniority, and what a strong candidate looks like in it.",
-    more: "And if we don't have a real bench in your sector, you will hear that on the first call, before anyone takes the brief.",
+    /* The two sentences swapped places. "If we don't have a real bench in
+       your sector, you will hear that on the first call" is the most
+       differentiating line in the section — an agency volunteering the brief
+       it should not take — and it was sitting in the disclosure, which is
+       display:none until someone clicks. 43% of this section's words are
+       behind that button; this one should not have been among them. */
+    d: "Your brief goes to the desk that already recruits in that market. And if we don't have a real bench in your sector, you will hear that on the first call, before anyone takes the brief.",
+    more: "The desk that takes it knows the titles that exist, how the sector talks about seniority, and what a strong candidate looks like in it.",
     icon: (<svg width="22" height="22" viewBox="0 0 22 22"><path d="M4 11a7 7 0 1014 0 7 7 0 00-14 0z" {...P} /><path d="M11 8v3l2 2" {...P} /><circle cx="18" cy="4" r="3" fill="var(--accent)" opacity=".3" /></svg>),
   },
   {
@@ -86,8 +102,16 @@ const CARDS: Card[] = [
        is normal for a staffing firm, so the body now says it outright
        instead of leaving a reader to work out why the two lists disagree. */
     t: `${count(offices.length).replace(/^./, (c) => c.toUpperCase())} offices, one firm`,
-    d: `${offices.map((o) => o.city).join(", ")} — covering ${servedMarkets.slice(0, -1).join(", ")} and ${servedMarkets[servedMarkets.length - 1]}. An office is where we sit. Where we hire is that whole list, from one brief.`,
-    more: "Where you need to hire somewhere we don't hold an entity, Employer of Record covers it — we become the legal employer for payroll, tax and contracts in-country.",
+    /* Also opened on a fragment — a bare list of three city names. Named
+       subject, so the sentence stands on its own if it is quoted anywhere. */
+    d: `Rivago has offices in ${sentenceList(offices.map((o) => o.city))}, recruiting into ${marketsSentence()}. An office is where we sit. Where we hire is that whole list, from one brief.`,
+    more: (
+      <>
+        Where you need to hire somewhere we don&rsquo;t hold an entity,{" "}
+        <Link href={routes.employerOfRecord}>Employer of Record</Link> covers it — we become the legal
+        employer for payroll, tax and contracts in-country.
+      </>
+    ),
     icon: (<svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="8.5" {...P} /><path d="M2.5 11h17M11 2.5c2.2 2.3 3.4 5.3 3.4 8.5s-1.2 6.2-3.4 8.5c-2.2-2.3-3.4-5.3-3.4-8.5S8.8 4.8 11 2.5z" {...P} /></svg>),
   },
   {
@@ -101,8 +125,14 @@ const CARDS: Card[] = [
        The negation here stays. It is a legal distinction between what is
        covered and what is not, which is the information, rather than the
        deny-then-assert figure of speech the rest of the section was using. */
-    d: "90 days on contingent direct hires, up to twelve months on retained search. It covers resignation and performance; it does not cover redundancy, a cancelled role, restructuring, or a material change to the job the candidate accepted.",
-    more: "Those terms are in the agreement and on the direct hire page, in the same words, before you are asked to sign anything.",
+    d: "The replacement guarantee runs 90 days on contingent direct hires and up to twelve months on retained search. It covers resignation and performance; it does not cover redundancy, a cancelled role, restructuring, or a material change to the job the candidate accepted.",
+    more: (
+      <>
+        Those terms are in the agreement and on the{" "}
+        <Link href={routes.directHire}>direct hire page</Link>, in the same words, before you are asked
+        to sign anything.
+      </>
+    ),
     icon: (<svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 2.6l7 2.6v5.4c0 4-2.9 7.5-7 8.8-4.1-1.3-7-4.8-7-8.8V5.2z" {...P} /><path d="M8 11l2.2 2.2L14.5 9" {...P} /></svg>),
   },
 ];

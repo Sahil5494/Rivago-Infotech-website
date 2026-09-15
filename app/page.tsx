@@ -17,7 +17,7 @@ import ReframeRail from "@/components/ReframeRail";
    no longer name individual services, so nothing on this page needs the
    list. lib/routes.ts still exports it: /about counts it and the nav
    mega-menu reads it. */
-import { routes, offices } from "@/lib/routes";
+import { routes, offices, marketsSentence } from "@/lib/routes";
 /* Counted, not typed, so the support card cannot promise a library bigger
    than the one /resources actually renders. Build-time only — this is a
    server component, so the article bodies never reach the browser.
@@ -374,16 +374,36 @@ export default function Home() {
       <section className="why-sec">
         <div className="why-inner">
           <div className="eyebrow ew-light gs" style={{ marginBottom: 18 }}>Why Rivago</div>
-          {/* Was "Six reasons clients stay with us" — a claim about client
-              retention, which is the one thing here nobody has measured. */}
-          {/* 700, not the 600 the old two-line headline used: this one
-              measures 640 on a single line and was breaking to leave
-              "search." on its own. */}
-          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 700, marginBottom: 18 }}>Six things we do on <em>every search.</em></h2>
-          {/* Was "Each one is either done on your search or it isn't." —
-              one of five deny-then-assert constructions this section was
-              running, the pattern already stripped out of WHAT WE BRING. */}
-          <p className="why-lede gs">Every one of these is something you can hold us to. Ask about any of them on the first call.</p>
+          {/* Was "Six things we do on every search." That was false of four
+              of the six cards below, and the lede underneath it doubled down.
+              Confidential search is a capability for roles that cannot be
+              posted, not something done on every search; "You explain your
+              hiring bar once" needs a second search to mean anything; the
+              offices card is a fact about the firm rather than an act on a
+              search; and the guarantee runs 90 days on contingent against
+              twelve months on retained, so its terms vary by engagement. Two
+              of six survived the claim literally.
+
+              The count is gone with it, for the same reason "Three offices,
+              four markets" lost its numerals — a headline that counts its own
+              cards starts lying the moment someone adds a seventh.
+
+              It also earns its keep now. This is the "why choose us" block on
+              a recruitment company's homepage, and the old h2 carried no
+              commercial term at all: across all 329 words of card copy,
+              "recruitment" appeared zero times and "staffing" zero times.
+
+              Was "Six reasons clients stay with us" before that — a claim
+              about retention, which nobody here has measured. */}
+          <h2 className="section-h2 gs" style={{ color: "var(--text)", maxWidth: 700, marginBottom: 18 }}>What you get when you <em>hire through us.</em></h2>
+          {/* The section named Rivago exactly once, in an eyebrow that is a
+              div and carries no weight — so 329 words of copy were
+              unattributable to anyone. A passage an answer engine cannot
+              attribute is a passage it will not cite. One sentence fixes it,
+              and carries the services and the markets with it. Markets are
+              read from lib/routes so this cannot drift from the footer, the
+              contact page or the offices card below. */}
+          <p className="why-lede gs">Rivago runs permanent, contract and executive searches in {marketsSentence()}. Every one of the six below is something you can hold us to on the first call.</p>
           <WhyCards />
         </div>
       </section>
