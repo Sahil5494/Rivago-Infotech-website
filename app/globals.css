@@ -1298,10 +1298,10 @@ a{color:inherit;text-decoration:none}
 /* The section dropped .inv, so --bg2 resolves to #EDF7F2 here rather than
    #060F07 — this band is light. It was the middle of three byte-identical
    dark bands and the dark ramp has no step left to separate them with; only
-   a mode change could. The value stays --bg2 deliberately: .cq-card fills
-   with --surface-3, which is #FFFFFF on this ground, so the quote card
-   lifts off the band instead of sitting flush on it. Filling this band
-   --bg3 would have put white on white. See the banding note above Home(). */
+   a mode change could. The card on it carries .inv and comes out #0A1A0C —
+   dark card on a light band, the same arrangement as .rfr-card on .rfm-sec,
+   so the band and the card are the two halves of one step rather than two
+   near-identical greys. See the banding note above Home(). */
 .prf-sec{padding:110px 44px;background:var(--bg2)}
 .prf-inner{max-width:1200px;margin:0 auto}
 /* Block, not a flex row. The lede used to sit in the right-hand half of

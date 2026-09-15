@@ -58,7 +58,23 @@ export default function ClientQuotes() {
         if (e.key === "ArrowRight") { e.preventDefault(); e.stopPropagation(); go(1); }
       }}
     >
-      <div className="cq-card">
+      {/* inv on the CARD, not the section — the same mechanism .rfr-card uses
+          one band up in WHAT WE BRING, and the reason that section gives
+          holds here too: .inv redefines the token set but does not paint, so
+          the card's own background:var(--surface-3) resolves to #0A1A0C and
+          every colour inside it follows from the inverted set. The quote goes
+          to #F0F4F0, the role to #7A9E7D at 6.0:1, and the glyph and badge to
+          the bright #3DFF87 instead of the muted #0E5C3C.
+
+          Nothing outside the card inverts: the eyebrow, the h2 and the lede
+          stay in the band's light set, and .cq:focus-visible draws its ring
+          in the light accent because it sits on the band, not on the card.
+
+          It also settles the dead space under the shorter quotes. The card is
+          fixed to the height of the longest one so the dots and arrows never
+          move between slides; on white that surplus read as blank, and on
+          near-black it reads as depth. */}
+      <div className="cq-card inv">
         <div className="cq-stack">
           {testimonials.map((t, k) => (
             <figure className={`cq-slide${k === i ? " on" : ""}`} key={t.name} aria-hidden={k !== i}>

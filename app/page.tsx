@@ -779,13 +779,17 @@ export default function Home() {
           separation than the problem it would be solving. Only a mode change
           could split that run, and this is the band to spend it on. It is the
           one section in the stretch that asks to be read slowly rather than
-          scanned, and .prf-sec already fills with --bg2 — #EDF7F2 here —
-          while .cq-card fills with --surface-3, which is white. So the quote
-          card lifts off its ground instead of sitting flush on it, exactly
-          the ladder the token block at the top of globals.css describes.
+          scanned.
 
-          Like the timeline above, .cq-* needed no edits: every colour in it
-          is a role token. */}
+          The card itself stays dark: .cq-card carries .inv, exactly as
+          .rfr-card does on the cream band in WHAT WE BRING, so a #0A1A0C
+          card sits on a #EDF7F2 ground. That is the house arrangement for an
+          offer card, and it means this band is one real step rather than two
+          near-identical greys.
+
+          Like the timeline above, .cq-* needed no CSS edits: every colour in
+          it is a role token, so the card re-reads them from the inverted
+          set. */}
       <section className="prf-sec">
         <div className="prf-inner">
           <div className="prf-head">
