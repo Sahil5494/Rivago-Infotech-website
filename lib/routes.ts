@@ -136,6 +136,15 @@ export const servedMarkets = ["United States", "Canada", "UAE", "India"] as cons
  * written, said "across the United States, Canada, the UAE and India".
  * Anything setting these markets in prose should call this, so the page
  * agrees with itself and a market added later reads correctly everywhere. */
+/** A small count as a word: numberWord(3) === "three".
+ *
+ * For counts that are derived from data but read in prose — "Three offices",
+ * "Five stages". Typing the word instead means the sentence keeps claiming
+ * three after someone adds a fourth. Falls back to the numeral above nine,
+ * where words stop being the better choice anyway. */
+const NUMBER_WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"] as const;
+export const numberWord = (n: number): string => NUMBER_WORDS[n] ?? String(n);
+
 /** "a, b and c" — a list set as prose rather than joined with commas. */
 export const sentenceList = (items: readonly string[]): string =>
   items.length < 2 ? (items[0] ?? "") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;

@@ -4,7 +4,7 @@ import LogoMarquee from "@/components/LogoMarquee";
 import OrbCanvas from "@/components/OrbCanvas";
 import HeroVisual from "@/components/HeroVisual";
 import RotatingWord from "@/components/RotatingWord";
-import ApproachTabs from "@/components/ApproachTabs";
+import ProcessTimeline from "@/components/ProcessTimeline";
 import ServiceCarousel from "@/components/ServiceCarousel";
 import IndustryRail from "@/components/IndustryRail";
 import Faq from "@/components/Faq";
@@ -17,7 +17,8 @@ import ReframeRail from "@/components/ReframeRail";
    no longer name individual services, so nothing on this page needs the
    list. lib/routes.ts still exports it: /about counts it and the nav
    mega-menu reads it. */
-import { routes, offices, marketsSentence } from "@/lib/routes";
+import { routes, offices, marketsSentence, numberWord } from "@/lib/routes";
+import { STAGES } from "@/lib/process";
 /* Counted, not typed, so the support card cannot promise a library bigger
    than the one /resources actually renders. Build-time only — this is a
    server component, so the article bodies never reach the browser.
@@ -411,19 +412,24 @@ export default function Home() {
       {/* FEATURES */}
       <section className="feat-sec">
         <div className="feat-inner">
-          <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our approach</div>
+          {/* "Our approach" said nothing. This section is the process, and
+              /services already owns "What we actually do", so the two do not
+              collide. */}
           <div className="apr-head">
-            {/* Was "How Rivago drives enterprise hiring. / From initial
-                sourcing to final offer." That named a span the section does
-                not run: the five stages start at the brief, not at sourcing,
-                and end at Place and support, not at the offer. */}
-            <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)", maxWidth: 660 }}>From the brief to <em>the placement.</em></h2>
+            <div className="eyebrow ew-dark gs" style={{ marginBottom: 18 }}>Our process</div>
+            {/* Literally what the timeline now shows: it opens on Calibrate,
+                which is the brief, and closes on Placed & guaranteed. */}
+            <h2 className="section-h2 feat-h2 dark gs" style={{ color: "var(--dt)" }}>From the brief to <em>the placement.</em></h2>
             {/* Deliberately not "every search" — the section immediately
-                above this one is headed "Six things we do on every search",
-                and the two are read in one scroll. */}
-            <p className="apr-lead gs">Five stages, run the same way each time, with one partner on the search throughout. You know where it stands at each of them.</p>
+                above this one is headed "What you get when you hire through
+                us" and used to carry that phrase; the note survives because
+                the two sections are still read in one scroll.
+
+                The stage count is read from the data rather than typed, like
+                the office count on the card above. */}
+            <p className="apr-lead gs">{numberWord(STAGES.length).replace(/^./, (c) => c.toUpperCase())} stages, run the same way each time, with one partner on the search throughout. You know where it stands at each of them.</p>
           </div>
-          <ApproachTabs />
+          <ProcessTimeline />
         </div>
       </section>
 

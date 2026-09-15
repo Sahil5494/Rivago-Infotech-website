@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { routes, offices, marketsSentence, sentenceList } from "@/lib/routes";
+import { routes, offices, marketsSentence, sentenceList, numberWord } from "@/lib/routes";
 
 /* The six "why us" cards, in two vertically offset columns with a call to
  * action as the last cell — the reference layout, with three departures.
@@ -26,12 +26,6 @@ import { routes, offices, marketsSentence, sentenceList } from "@/lib/routes";
  * three sections above are a genuine 01-05 sequence; numbering an unordered
  * set directly below a real one made the page look like it had two.
  */
-
-/* The offices card hard-coded "Three offices, four markets" in its title
-   while deriving the cities and markets themselves from lib/routes. Add a
-   fourth office and the title would have gone on saying three. */
-const WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"] as const;
-const count = (n: number) => (WORDS[n] ?? String(n));
 
 const P = {
   fill: "none" as const,
@@ -101,7 +95,7 @@ const CARDS: Card[] = [
        a served market, while Canada and the UAE have no office. All of that
        is normal for a staffing firm, so the body now says it outright
        instead of leaving a reader to work out why the two lists disagree. */
-    t: `${count(offices.length).replace(/^./, (c) => c.toUpperCase())} offices, one firm`,
+    t: `${numberWord(offices.length).replace(/^./, (c) => c.toUpperCase())} offices, one firm`,
     /* Also opened on a fragment — a bare list of three city names. Named
        subject, so the sentence stands on its own if it is quoted anywhere. */
     d: `Rivago has offices in ${sentenceList(offices.map((o) => o.city))}, recruiting into ${marketsSentence()}. An office is where we sit. Where we hire is that whole list, from one brief.`,

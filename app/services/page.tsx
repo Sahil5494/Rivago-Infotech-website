@@ -5,6 +5,8 @@
 import type { Metadata } from "next";
 import ServicesClient from "./ServicesClient";
 import GlobeCanvas from "./_components/GlobeCanvas";
+import { STAGES } from "@/lib/process";
+import { numberWord } from "@/lib/routes";
 import "./services.css";
 
 /* The Staffing Solutions page, ported from the supplied reference.
@@ -436,15 +438,28 @@ export default function ServicesPage() {
             <div className="proc2-top">
               <div>
                 <div className="proc2-eyb rv">What we actually do</div>
-                <h2 className="rv">Every engagement runs five stages.<br />None of them are <em>a portal.</em></h2>
+                <h2 className="rv">Every engagement runs {numberWord(STAGES.length)} stages.<br />None of them are <em>a portal.</em></h2>
               </div>
               <p className="proc2-lead rv rv2">One partner owns every stage — permanent, contract, temporary or retained. Pace varies by engagement; each service page states its own timeline.</p>
             </div>
             <div className="proc2-tl rv rv2">
               <div className="proc2-line"></div>
-              <div className="proc2-row"><div className="proc2-step rv"><div className="proc2-node">01</div><div className="proc2-card"><span className="proc2-day">Stage 01</span><h3>Calibrate</h3><p>We agree the spec, the bar and the commercials up front, so nothing about the engagement is ambiguous later.</p><div className="proc2-deliver"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="var(--accent)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg><div><span className="proc2-deliver-l">You get</span><span className="proc2-deliver-v">Signed-off scorecard</span></div></div></div></div><div className="proc2-step rv rv2"><div className="proc2-node">02</div><div className="proc2-card"><span className="proc2-day">Stage 02</span><h3>Map</h3><p>Your partner works their own practice network — people approached directly, never a job ad reposted at scale.</p><div className="proc2-deliver"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="var(--accent)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg><div><span className="proc2-deliver-l">You get</span><span className="proc2-deliver-v">Targeted longlist</span></div></div></div></div><div className="proc2-step rv rv3"><div className="proc2-node">03</div><div className="proc2-card"><span className="proc2-day">Stage 03</span><h3>Screen</h3><p>Everyone you meet has been interviewed against the agreed bar, with written evidence behind the recommendation.</p><div className="proc2-deliver"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="var(--accent)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg><div><span className="proc2-deliver-l">You get</span><span className="proc2-deliver-v">Calibrated profiles</span></div></div></div></div><div className="proc2-step rv rv4"><div className="proc2-node">04</div><div className="proc2-card"><span className="proc2-day">Stage 04</span><h3>Panel</h3><p>We carry the admin — scheduling, debriefs, references and compliance — so your team only spends time on decisions.</p><div className="proc2-deliver"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="var(--accent)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg><div><span className="proc2-deliver-l">You get</span><span className="proc2-deliver-v">Debriefs & references</span></div></div></div></div><div className="proc2-step done rv rv4"><div className="proc2-node">05</div><div className="proc2-card"><span className="proc2-day">Stage 05</span><h3>Placed & guaranteed</h3><p>We close the offer, protect it against counters, and stay accountable through the guarantee window.</p><div className="proc2-deliver"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="var(--accent)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg><div><span className="proc2-deliver-l">You get</span><span className="proc2-deliver-v">Signed start · guarantee applies</span></div></div></div></div></div>
+              <div className="proc2-row">{STAGES.map((st, i) => (
+                <div className={`proc2-step${i === STAGES.length - 1 ? " done" : ""} rv${["", " rv2", " rv3", " rv4", " rv4"][i]}`} key={st.n}>
+                  <div className="proc2-node">{st.n}</div>
+                  <div className="proc2-card">
+                    <span className="proc2-day">Stage {st.n}</span>
+                    <h3>{st.name}</h3>
+                    <p>{st.long}</p>
+                    <div className="proc2-deliver">
+                      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="var(--accent)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                      <div><span className="proc2-deliver-l">You get</span><span className="proc2-deliver-v">{st.deliverable}</span></div>
+                    </div>
+                  </div>
+                </div>
+              ))}</div>
             </div>
-            <div className="proc2-foot rv rv3"><span className="dot"></span>Five stages. <strong>One partner runs all of them.</strong></div>
+            <div className="proc2-foot rv rv3"><span className="dot"></span>{numberWord(STAGES.length).replace(/^./, (c) => c.toUpperCase())} stages. <strong>One partner runs all of them.</strong></div>
           </div>
         </section>
 
