@@ -18,11 +18,10 @@ import { articles, featuredArticle, CATEGORIES, type Category } from "./data";
  *    control that mostly returns "no results".
  *
  * 2. CARD ART IS DESIGNED, NOT PHOTOGRAPHIC. So is the reference's — two of
- *    its three visible cards are a gradient panel carrying a lockup or a
- *    line of type, and only the third is a video still. Each card here gets
- *    its category's colourway and its own kicker set into the art, so the
- *    eight read as four visual families. What they used to be was one mint
- *    gradient repeated eight times: the mechanism to vary by category existed
+ *    its three visible cards are a gradient panel rather than an image. Each
+ *    card here takes its category's colourway, so the library reads as four
+ *    visual families. What it used to be was one mint gradient repeated on
+ *    every card: the mechanism to vary by category existed
  *    (.bg-card[data-cat]::before) but the three values were so close that the
  *    grid looked like a loading state.
  *
@@ -152,16 +151,18 @@ const ArrowNE = () => (
   </svg>
 );
 
-/* The art panel. Category colourway from data-cat in the stylesheet, the
-   article's own kicker set into it, and the Rivago mark bottom-right so the
-   panel reads as a published thing rather than a placeholder swatch. */
-function CardArt({ kicker, size }: { kicker: string; size: "lg" | "sm" | "md" }) {
-  return (
-    <div className={`rc-art rc-art-${size}`} aria-hidden="true">
-      <span className="rc-art-k">{kicker}</span>
-      <span className="rc-art-mark">Rivago</span>
-    </div>
-  );
+/* The art panel: the category's colourway and nothing else, at the client's
+   call. It used to carry the article's kicker ("Offer stage", "UAE
+   licensing") and a small RIVAGO wordmark. Both are gone, and the `kicker`
+   field left the Article type with them rather than staying in the data
+   unread — an unused field is exactly how `image`, `tag` and `kind` came to
+   sit in that file for nothing.
+
+   Worth knowing about the result: cards in one row now share a colourway
+   with no text to tell them apart, so a row of five salary guides is five
+   identical panels. The titles underneath do the distinguishing. */
+function CardArt({ size }: { size: "lg" | "sm" | "md" }) {
+  return <div className={`rc-art rc-art-${size}`} aria-hidden="true" />;
 }
 
 type TabId = "all" | Category;
@@ -273,7 +274,7 @@ export default function ResourcesView() {
                   because it described an article that existed nowhere in the
                   library. See the note on FEATURED_ID in ./data.ts. */}
               <Link className="rc rc-lg" data-cat={featuredArticle.category} href={`${routes.article}?id=${featuredArticle.id}`}>
-                <CardArt kicker={featuredArticle.kicker} size="lg" />
+                <CardArt size="lg" />
                 <div className="rc-meta">
                   <span className="rc-cat">{featuredArticle.categoryLabel}</span>
                   <span className="rc-dot" aria-hidden="true">·</span>
@@ -286,7 +287,7 @@ export default function ResourcesView() {
               <div className="rfeat-side">
                 {featuredRest.map((a) => (
                   <Link className="rc rc-sm" data-cat={a.category} key={a.id} href={`${routes.article}?id=${a.id}`}>
-                    <CardArt kicker={a.kicker} size="sm" />
+                    <CardArt size="sm" />
                     <div className="rc-meta">
                       <span className="rc-cat">{a.categoryLabel}</span>
                       <span className="rc-dot" aria-hidden="true">·</span>
@@ -315,7 +316,7 @@ export default function ResourcesView() {
                     {items.map((a) => (
                       <li key={a.id}>
                         <Link className="rc rc-rail" data-cat={a.category} href={`${routes.article}?id=${a.id}`}>
-                          <CardArt kicker={a.kicker} size="md" />
+                          <CardArt size="md" />
                           <h3 className="rc-ti">{a.title}<ArrowNE /></h3>
                         </Link>
                       </li>
@@ -347,7 +348,7 @@ export default function ResourcesView() {
             <div className="rgrid">
               {gridItems.map((a) => (
                 <Link className="rc rc-md" data-cat={a.category} key={a.id} href={`${routes.article}?id=${a.id}`}>
-                  <CardArt kicker={a.kicker} size="md" />
+                  <CardArt size="md" />
                   <div className="rc-meta">
                     <span className="rc-cat">{a.categoryLabel}</span>
                     <span className="rc-dot" aria-hidden="true">·</span>

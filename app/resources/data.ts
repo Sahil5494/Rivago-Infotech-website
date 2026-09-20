@@ -39,10 +39,6 @@ export type Article = {
   readTime: string;
   category: Category;
   categoryLabel: string;
-  /* Two or three words set into the card artwork. The card art used to be a
-     bare gradient repeated on all eight cards; it carries the subject now, so
-     each card is legible as a thing before the title is read. */
-  kicker: string;
   sections: ArticleSection[];
 };
 
@@ -97,7 +93,6 @@ export const articles: Article[] = [
     readTime: "6 min read",
     category: "interview",
     categoryLabel: "Interview guide",
-    kicker: "The debrief",
     sections: [
       {
         h: "The first voice anchors the room",
@@ -131,7 +126,6 @@ export const articles: Article[] = [
     readTime: "6 min read",
     category: "salary",
     categoryLabel: "Salary guide",
-    kicker: "Setting the band",
     sections: [
       {
         h: "Decide before you meet anyone",
@@ -165,7 +159,6 @@ export const articles: Article[] = [
     readTime: "5 min read",
     category: "interview",
     categoryLabel: "Interview guide",
-    kicker: "References",
     sections: [
       {
         h: "The call most people make is worthless",
@@ -199,7 +192,6 @@ export const articles: Article[] = [
     readTime: "7 min read",
     category: "salary",
     categoryLabel: "Salary guide",
-    kicker: "Two offers",
     sections: [
       {
         h: "The headline number is the least of it",
@@ -233,7 +225,6 @@ export const articles: Article[] = [
     readTime: "5 min read",
     category: "interview",
     categoryLabel: "Interview guide",
-    kicker: "The loop",
     sections: [
       {
         h: "Every round should answer a question the last one could not",
@@ -267,7 +258,6 @@ export const articles: Article[] = [
     readTime: "6 min read",
     category: "salary",
     categoryLabel: "Salary guide",
-    kicker: "The negotiation",
     sections: [
       {
         h: "Ask once, clearly, with a number",
@@ -311,7 +301,6 @@ export const articles: Article[] = [
     readTime: "5 min read",
     category: "salary",
     categoryLabel: "Salary guide",
-    kicker: "VP Engineering",
     sections: [
       {
         h: "Stage explains more than city",
@@ -346,7 +335,6 @@ export const articles: Article[] = [
     readTime: "5 min read",
     category: "blog",
     categoryLabel: "Blog",
-    kicker: "Offer stage",
     sections: [
       {
         h: "The decline rarely happens at the offer stage",
@@ -387,7 +375,6 @@ export const articles: Article[] = [
     readTime: "7 min read",
     category: "interview",
     categoryLabel: "Interview guide",
-    kicker: "The intake call",
     sections: [
       {
         h: "The job description is not the brief",
@@ -423,7 +410,6 @@ export const articles: Article[] = [
     readTime: "9 min read",
     category: "salary",
     categoryLabel: "Salary guide",
-    kicker: "Equity at offer",
     sections: [
       {
         h: "The four-year, one-year-cliff standard",
@@ -455,7 +441,6 @@ export const articles: Article[] = [
     readTime: "5 min read",
     category: "blog",
     categoryLabel: "Blog",
-    kicker: "UAE licensing",
     sections: [
       {
         h: "Start with the sector, not the visa",
@@ -487,7 +472,6 @@ export const articles: Article[] = [
     readTime: "6 min read",
     category: "interview",
     categoryLabel: "Interview guide",
-    kicker: "The scorecard",
     sections: [
       {
         h: "What 'structured' actually means",
@@ -522,7 +506,6 @@ export const articles: Article[] = [
     readTime: "4 min read",
     category: "blog",
     categoryLabel: "Blog",
-    kicker: "Partner-led search",
     sections: [
       {
         h: "What a portal actually optimises for",
@@ -562,7 +545,6 @@ export const articles: Article[] = [
     readTime: "8 min read",
     category: "blog",
     categoryLabel: "Blog",
-    kicker: "Cost of a mis-hire",
     sections: [
       {
         h: "The number most companies underestimate",

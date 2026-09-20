@@ -2225,7 +2225,10 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
    a bordered box around an already-bordered art panel reads as two frames.
    The art is the object; the text belongs to it. */
 .rc{display:flex;flex-direction:column;text-decoration:none;min-width:0}
-.rc-art{position:relative;display:flex;align-items:flex-end;padding:22px;border-radius:18px;overflow:hidden;
+/* No flex, no padding: the panel held the kicker at its bottom-left and a
+   wordmark top-right, and both came out at the client's call. It is the
+   colourway and nothing else now. */
+.rc-art{border-radius:18px;overflow:hidden;
   background:linear-gradient(140deg,#C9F7DE,#3DFF87 88%);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
 .rc-art-lg{aspect-ratio:16/10}
 .rc-art-md{aspect-ratio:16/10}
@@ -2233,14 +2236,6 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .rc:hover .rc-art{transform:translateY(-4px);box-shadow:0 20px 44px rgba(10,20,11,.16)}
 .rc:focus-visible{outline:none}
 .rc:focus-visible .rc-art{outline:2px solid var(--accent-inv);outline-offset:3px}
-
-/* The kicker is set in the art, which is what stops the panel being a swatch.
-   It scales with the panel so the large card does not get the small card's
-   type at twice the area. */
-.rc-art-k{font-size:var(--fz9);font-weight:500;letter-spacing:-.022em;line-height:1.1;color:#06231A;text-wrap:balance}
-.rc-art-lg .rc-art-k{font-size:var(--fz12)}
-.rc-art-sm .rc-art-k{font-size:var(--fz6)}
-.rc-art-mark{position:absolute;right:20px;top:18px;font-family:var(--fm);font-size:var(--fz1);letter-spacing:.14em;text-transform:uppercase;color:rgba(6,35,26,.5)}
 
 .rc-meta{display:flex;align-items:center;gap:7px;margin:18px 0 9px;font-size:var(--fz1);font-weight:500}
 .rc-cat{color:var(--accent-inv);letter-spacing:.06em;text-transform:uppercase;font-family:var(--fm)}
