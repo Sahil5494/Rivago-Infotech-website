@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { routes, offices, servicesList, industriesList, marketsSentence, numberWord } from "@/lib/routes";
+import { routes, offices, firm, marketsSentence, sentenceList } from "@/lib/routes";
 import OfficesSection from "@/components/OfficesSection";
 import AboutHeroCanvas from "@/components/AboutHeroCanvas";
 import { testimonials } from "@/lib/testimonials";
@@ -93,17 +93,27 @@ const jsonLd = {
   ],
 };
 
-/* Counts of what the firm offers and where it works — each one derived from
-   lib/routes.ts and checkable against the rest of the site. The figures that
-   were here (a 2017 founding, 50 people, 10 senior partners, "6,400+ placed
-   since founding · 1,847 in the last twelve months") were performance claims
-   with nothing behind them, and the founding year contradicted the
-   foundingDate in this page's own structured data. */
+/* ── BY THE NUMBERS ───────────────────────────────────────────────────────
+   The client's own four figures, supplied 20 September 2026 and held in
+   lib/routes.ts so nothing on the site can state them differently.
+
+   What stood here before was three counts derived from routes.ts — offices,
+   services, practices — which were put in as a stopgap when the original
+   figures came out. The originals were a 2017 founding, 50 people beside an
+   offices strip totalling 86, 10 senior partners and "6,400+ placed since
+   founding · 1,847 in the last twelve months", none of it given by anyone.
+   The derived counts were honest and thin; these are the real thing.
+
+   Two of the four now reconcile with the rest of the repo rather than
+   sitting beside it: `partners` is 10 and app/industries/data.ts holds ten
+   practices, which is what makes "each running one industry practice" true;
+   and `people` is the only headcount on the site, because the per-office
+   counts came out of OfficesSection for totalling 86 against a stated 50. */
 const numbers = [
-  { v: String(offices.length), l: `Offices — ${offices.map((o) => o.city).join(", ")}` },
-  { v: String(servicesList.filter((s) => s.href !== routes.services).length),
-    l: "Ways to engage, from contract cover to executive search" },
-  { v: String(industriesList.length), l: "Industry practices, each with its own specialists" },
+  { v: String(firm.foundedYear), l: "Founded" },
+  { v: String(firm.people), l: `People across ${sentenceList(offices.map((o) => o.city))}` },
+  { v: String(firm.partners), l: "Senior partners, each running one industry practice" },
+  { v: firm.hiresPlaced, l: "Hires placed" },
 ];
 
 /* ── TWO SECTIONS THAT ARE NOT ON THIS PAGE, and must not come back as they
@@ -194,10 +204,13 @@ export default function AboutPage() {
               structured data, and "fifty people" against the 50+/22/14 in the
               offices strip further down, which totals 86.
 
-              What is left is derived and checkable. The founding year and the
-              headcount go back in when the client confirms them — see the
-              note in lib/routes.ts. */}
-          <p className="lede gs">Partner-led search and staffing from {numberWord(offices.length)} offices — {offices.map((o) => o.city).join(", ")} — into {marketsSentence()}. One senior partner owns your mandate from brief to signed offer. No call centres. No automated outreach. No portal.</p>
+              The client supplied the real figures on 20 September 2026 and
+              they are in lib/routes.ts as `firm`, which is the single source
+              this line and "By the numbers" both read. The founding year now
+              agrees with foundingDate in this file's structured data, and
+              the headcount is stated once rather than in two places that
+              disagreed. */}
+          <p className="lede gs">Founded in {firm.foundedYear}. A team of {firm.people} across {sentenceList(offices.map((o) => o.city))}, recruiting into {marketsSentence()}, with {firm.partners} senior partners — each running one industry practice. No call centres. No automated outreach. No portal.</p>
         </div>
       </header>
 

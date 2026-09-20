@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { routes } from "@/lib/routes";
+import { routes, firm } from "@/lib/routes";
 
 export const metadata: Metadata = {
   title: "Work at Rivago — Careers in Recruitment | Rivago Infotech",
@@ -179,12 +179,12 @@ export default function CareerPage() {
         <div className="began-intro">
           <span className="eyebrow light">Where it all began</span>
           <h2>Built by people who&apos;d <em>grown tired of the theatre.</em></h2>
-          <p>Before they founded Rivago in 2017, our three partners spent the prior decade inside the volume agencies and the orgs they hired for. They&apos;d watched good briefs go unfilled while inboxes filled with mediocre résumés — and decided to build the firm they&apos;d always wanted to hire from.</p>
+          <p>Before they founded Rivago in {firm.foundedYear}, our partners spent years inside the volume agencies and the orgs they hired for. They&apos;d watched good briefs go unfilled while inboxes filled with mediocre résumés — and decided to build the firm they&apos;d always wanted to hire from.</p>
         </div>
         <div className="began-grid">
           <div className="began-photo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80&auto=format&fit=crop" alt="Rivago founders and early team" loading="lazy" decoding="async" />
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80&auto=format&fit=crop" alt="Colleagues working together in an office" loading="lazy" decoding="async" />
           </div>
           <div className="began-card lt">
             <div className="began-card-h">Build with us.</div>

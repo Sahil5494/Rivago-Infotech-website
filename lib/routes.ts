@@ -124,6 +124,37 @@ export const offices = [
   },
 ] as const;
 
+/** ── FIRM FACTS, supplied by the client on 20 September 2026 ──────────────
+ *
+ * The client's own figures for their own business, which is the only source
+ * that can settle them. Unlike almost everything else in this file these are
+ * NOT derived and cannot be checked against anything else in the repo, so
+ * they live here once and every page that states them reads from here — the
+ * About page's "By the numbers", the About hero lede, and anything after.
+ *
+ * FOR WHOEVER EDITS THIS NEXT. An earlier version of this site carried a
+ * different set of figures for these same facts: a 2017 founding, "fifty
+ * people" beside an offices strip totalling 86, "6,400+ placed since
+ * founding · 1,847 in the last twelve months", and $740K of first-year
+ * revenue. None of it was given by the client and all of it has been
+ * removed. If a number here changes, change it HERE and nowhere else — the
+ * whole point of this block is that there is one copy to get wrong.
+ *
+ * `partners` is 10 and app/industries/data.ts holds exactly 10 practices,
+ * which is what makes "each running one industry practice" true. If a
+ * practice is added or removed, this number has to move with it or the
+ * sentence stops being accurate. */
+export const firm = {
+  foundedYear: 2019,
+  /** Across all three offices. Deliberately NOT broken down per office:
+   *  components/OfficesSection.tsx used to carry 50+/22/14, which totalled
+   *  86 against a stated fifty. One figure, one place. */
+  people: 50,
+  partners: 10,
+  /** Written with the plus, because that is how the client gave it. */
+  hiresPlaced: "500+",
+} as const;
+
 /** Markets served without a physical office — do not attach addresses or LocalBusiness schema. */
 export const servedMarkets = ["United States", "Canada", "UAE", "India"] as const;
 

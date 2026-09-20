@@ -1,7 +1,13 @@
+/* The per-office headcounts came out. They read 50+ / 22 / 14, which totals
+   86 against the fifty the client states for the whole firm — two numbers
+   for one fact, about 3,000px apart on the About page. Headcount is now
+   stated once, in `firm` in lib/routes.ts, and rendered once, in "By the
+   numbers". Put a per-office split back only with real numbers that add up
+   to that total, and derive the total from them rather than typing both. */
 const officeCards = [
-  { flag: "India · Delivery hub", city: "Pune", addr: ["43 Privet Drive", "E-Commercial", "Pune, Maharashtra 411045"], team: "50+ people" },
-  { flag: "United States · Headquarters", city: "Delaware", addr: ["3524 Silverside Rd, Ste 35B", "Wilmington", "Delaware 19810, USA"], team: "22 people" },
-  { flag: "Canada", city: "Ontario", addr: ["373 Vincent Dr", "Ayr", "Ontario N0B 1E0"], team: "14 people" },
+  { flag: "India · Delivery hub", city: "Pune", addr: ["43 Privet Drive", "E-Commercial", "Pune, Maharashtra 411045"] },
+  { flag: "United States · Headquarters", city: "Delaware", addr: ["3524 Silverside Rd, Ste 35B", "Wilmington", "Delaware 19810, USA"] },
+  { flag: "Canada", city: "Ontario", addr: ["373 Vincent Dr", "Ayr", "Ontario N0B 1E0"] },
   { flag: "United Arab Emirates · market served", city: "Dubai", addr: ["Market served remotely", "from our Delaware and", "Pune teams"], team: "No local office" },
 ];
 
