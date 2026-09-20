@@ -2093,7 +2093,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 /* ══════════════════════════════════════════════════════════
    RESOURCES HUB — ported from the real Claude Design export
    ══════════════════════════════════════════════════════════ */
-.rwrap{max-width:1240px;margin:0 auto;padding:120px 44px 110px}
+.rwrap{max-width:1240px;margin:0 auto;padding:120px 44px 104px}
 .rhead{padding:0 0 8px}
 .reyebrow{display:inline-flex;font-size:var(--fz1);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-inv)}
 .rtitle{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.06;color:var(--text-inv-1);margin-top:12px}
@@ -2319,7 +2319,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .rsub-form button:disabled,.bg-news-form button:disabled{opacity:.6;cursor:default}
 .rsub-done{font-size:var(--fz2);font-weight:500;color:var(--accent-inv);margin:0;padding:8px 0}
 .rsub-err{font-size:var(--fz2);color:var(--alert);margin:6px 0 0;flex-basis:100%}
-.bg-news-done{font-size:var(--fz5);font-weight:500;color:var(--accent-inv);margin:0}
+.bg-news-done{font-size:var(--fz6);font-weight:500;color:#03120A;margin:0}
 .bg-news-err{font-size:var(--fz3);color:var(--alert);margin:12px 0 0}
 
 @media(max-width:1000px){
@@ -2338,38 +2338,55 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
   .rgrid{grid-template-columns:1fr;gap:38px}
   .rbar{flex-direction:column;align-items:flex-start}
   .rempty{padding:36px 24px}
-  .bg-news{padding:48px 22px;margin-top:56px;border-radius:20px}
+  .bg-news{padding:68px 20px}
+  .bg-news-form{flex-direction:column;border-radius:26px;gap:10px}
+  .bg-news-form button{padding:14px 30px}
 }
 
 
-/* ── THE SIGN-UP PANEL ────────────────────────────────────────────────────
-   It was filled --chip (#E3EFE9) on a #F2F7F5 page: a 1.03:1 step, square
-   corners in a column where everything else is rounded, and 24px of air
-   above it. It did not read as a section so much as a faint smudge at the
-   end of the page.
+/* ── THE SIGN-UP BAND ─────────────────────────────────────────────────────
+   To the design the client sent: full bleed, a sage ground, the headline on
+   a bright highlight, a wide white capsule with a dark button.
 
-   White now, which is the ladder the token block at the top of this file
-   describes — the ground takes the pale mint and white is reserved for what
-   sits ON it — with the 24px radius and the hairline the quote card on the
-   home page uses. The sign-up field keeps --surface-inv-2 and so reads as
-   inset into the white rather than floating on it.
+   It went through a white-panel version first. That was a fix for a real
+   measurement — the band was #E3EFE9 on a #F2F7F5 page, a 1.03:1 step with
+   square corners and 0px between its bottom edge and the near-black footer —
+   but the reference solves the same problem better. A full-bleed band with
+   its own ground does not need a radius or a gap to read as a section, and
+   running straight into the dark footer is a deliberate stack rather than a
+   collision once the band is edge to edge.
 
-   It also sat flush against the footer: measured, the gap between its bottom
-   edge and the near-black footer was 0px, which is what made it look cut
-   off. .rwrap gained the bottom padding for that. */
-.bg-news{background:var(--surface-3);color:var(--text-inv-1);border:1px solid var(--rule-inv-1);
-  border-radius:24px;padding:64px 44px;margin-top:76px}
-.bg-news-inner{max-width:600px;margin:0 auto;text-align:center}
-.bg-news h2{font-size:var(--fz11);font-weight:500;letter-spacing:-.03em;line-height:1.14;text-wrap:balance}
-/* The accent half, matching the h1 at the top of the page — without it the
-   <em> renders flat, because the reset at the top of this file clears every
-   em site-wide. */
-.bg-news h2 em{color:var(--accent-inv)}
-.bg-news p{font-size:var(--fz5);color:var(--text-inv-2);font-weight:400;line-height:1.7;max-width:46ch;margin:14px auto 28px}
-.bg-news-form{display:flex;gap:8px;max-width:440px;margin:0 auto;padding:7px;background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:9999px}
-.bg-news-form input{flex:1;min-width:0;border:none;background:none;padding:11px 16px;font-family:var(--ff);font-size:var(--fz3);color:var(--text-inv-1);outline:none}
-.bg-news-form button{background:#A7F0CE;color:#06231A;border:none;border-radius:9999px;padding:0 22px;font-family:var(--ff);font-weight:500;font-size:var(--fz3);cursor:pointer;transition:background .2s}
-.bg-news-form button:hover:not(:disabled){background:#8FE6BE}
+   #CFE8D5 measures 1.16:1 against the #F2F7F5 page. That is a step rather
+   than a separation, which is this site's whole approach to adjacent bands —
+   see the note on the dark ramp at the top of this file. Full bleed and the
+   highlight are what make it a section; the fill only has to support them.
+
+   The section lives outside .rwrap in the markup rather than breaking out of
+   it with 100vw margins, so there is no way for it to put a scrollbar on the
+   page. */
+.bg-news{background:#CFE8D5;color:var(--text-inv-1);padding:104px 44px;margin:0}
+.bg-news-inner{max-width:720px;margin:0 auto;text-align:center}
+.bg-news h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;line-height:1.16;text-wrap:balance;margin:0}
+/* The highlight. box-decoration-break:clone so a wrapped headline gets the
+   block on both lines instead of one long bar with a gap in it — which is
+   what happens at narrow widths, where this wraps. */
+.bg-news-hl{background:#5BFB98;color:#03120A;padding:.04em .2em;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* No green on this em: the highlight is already doing the work the accent
+   colour does elsewhere, and deep green on bright mint is the one pairing in
+   this palette that goes muddy. */
+.bg-news p{font-size:var(--fz5);color:var(--text-inv-2);font-weight:400;line-height:1.72;max-width:52ch;margin:24px auto 34px}
+
+/* Wider and taller than the bar's capsule, on white rather than
+   --surface-inv-2 so it lifts off the sage. */
+.bg-news-form{display:flex;gap:8px;max-width:620px;margin:0 auto;padding:9px;background:#FFFFFF;border:1px solid rgba(3,18,10,.10);border-radius:9999px}
+.bg-news-form input{flex:1;min-width:0;border:none;background:none;padding:14px 20px;font-family:var(--ff);font-size:var(--fz5);color:var(--text-inv-1);outline:none}
+/* Dark, not mint — the reference's, and it is --ink-fill, the same token
+   every primary button on the site already uses. On the sage ground a mint
+   button would have been the third green in one composition. */
+.bg-news-form button{background:var(--ink-fill);color:var(--on-ink-fill);border:none;border-radius:9999px;padding:0 30px;font-family:var(--ff);font-weight:500;font-size:var(--fz5);cursor:pointer;transition:opacity .2s}
+.bg-news-form button:hover:not(:disabled){opacity:.86}
+.bg-news-form button:focus-visible{outline:2px solid #03120A;outline-offset:3px}
 
 /* ── Resources detail pages (article / case study) — cream theme ── */
 .detail-hero{padding:120px 44px 0;background:var(--cream)}

@@ -191,6 +191,7 @@ export default function ResourcesView() {
   ];
 
   return (
+    <>
     <div className="rwrap">
       <div className="rhead">
         <span className="reyebrow">Resources</span>
@@ -385,29 +386,41 @@ export default function ResourcesView() {
       {/* The inline sign-up moved up to the control bar, where the original
           export had it. This band keeps the second one: the bar is above the
           fold and this catches someone who has read to the bottom. */}
-      {/* COPY. The heading was "Hiring intel, every Monday." and the line
-          under it "One short email a week — a comp benchmark, a market read,
-          and the roles worth knowing about."
-
-          Two problems, both of which mattered more once the form started
-          actually collecting addresses. A weekly cadence is a commitment
-          somebody has to keep, and the archive beside it shows nothing like
-          a weekly rhythm — so the first thing a subscriber could check would
-          contradict the promise they signed up to. And "a comp benchmark" is
-          the one thing this library does not have: the invented benchmark
-          figures came out of these articles, which is why vp-eng-pay is now
-          about what moves pay rather than what it is.
-
-          It says what can be delivered instead: something when there is
-          something, and the three kinds of thing it might be. Roles are real
-          — /view-jobs and /open-positions carry them. */}
-      <section className="bg-news">
-        <div className="bg-news-inner">
-          <h2>New guides, <em>as we publish them.</em></h2>
-          <p>A short email when something new goes up — a guide, a market read, or a role worth knowing about. Nothing else.</p>
-          <NewsletterForm id="bg-news-email" variant="band" placeholder="you@company.com" />
-        </div>
-      </section>
     </div>
+
+    {/* THE SIGN-UP BAND, to the design the client sent — full bleed, a sage
+        ground, the headline on a highlight, and a wide capsule with a dark
+        button. It sits OUTSIDE .rwrap rather than breaking out of it with
+        100vw margins: a viewport-width child inside a max-width wrapper is
+        the standard way to get a horizontal scrollbar on a page that is
+        otherwise clean, and there is no reason to risk it when moving one
+        element up a level does the same job exactly.
+
+        THE COPY IS NOT THE REFERENCE'S, and it is worth saying why since the
+        design is. The reference reads "Every benchmark, playbook and case
+        study we publish — distilled into one short brief, twice a month. The
+        evidence behind better senior-hiring decisions."
+
+        Three of those cannot be said here. There are no benchmarks: the
+        invented figures came out of these articles, which is why vp-eng-pay
+        is now about what moves pay rather than what it is. There are no case
+        studies — that tab renders an empty state for exactly this reason.
+        And "twice a month" is the same promise as the "every Monday" that
+        was just removed, only slower; the archive above would contradict it
+        on the reader's first visit.
+
+        The headline is the reference's and is the best thing in it — a
+        proposition about the reader rather than a label. The line under it
+        keeps the reference's shape and closing beat, with the three claims
+        replaced by things that exist. "Thinking" rather than "evidence" for
+        the same reason the h1 at the top of the page stopped saying it. */}
+    <section className="bg-news">
+      <div className="bg-news-inner">
+        <h2><span className="bg-news-hl">Know before <em>you hire.</em></span></h2>
+        <p>Every guide and market read we publish, in one short email when there is one. The thinking behind better senior-hiring decisions, nothing else.</p>
+        <NewsletterForm id="bg-news-email" variant="band" placeholder="you@company.com" />
+      </div>
+    </section>
+    </>
   );
 }
