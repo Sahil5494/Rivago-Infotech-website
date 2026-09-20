@@ -2261,6 +2261,48 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 
 .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 26px}
 
+/* ── CATEGORY ROWS (the All view) ─────────────────────────────────────────
+   Heading with a View all on the right, then a horizontal rail — the
+   reference's arrangement.
+
+   The rail is a plain overflow scroller, not a carousel widget. Every card
+   stays in the document and in the tab order, there is no "current slide"
+   state to get out of sync, and a category holding two cards simply does not
+   scroll rather than showing two thirds of an empty track. Scroll snapping
+   makes the drag land on a card edge.
+
+   scrollbar-width:none hides the bar; the rail is still scrollable by wheel,
+   trackpad, touch and — because the cards are focusable links — by keyboard
+   tabbing, which scrolls the focused card into view. */
+.rrow{padding:56px 0 0}
+.rrow-h{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:22px}
+.rrow-h .rsec-h{margin:0}
+.rrow-all{display:inline-flex;align-items:center;gap:2px;padding:0 0 2px;border:0;background:none;cursor:pointer;
+  font-family:var(--ff);font-size:var(--fz2);font-weight:500;color:var(--text-inv-1);
+  border-bottom:1px solid var(--rule-inv-2);transition:color .2s var(--ease),border-color .2s var(--ease)}
+.rrow-all:hover{color:var(--accent-inv);border-color:var(--accent-inv)}
+.rrow-all:focus-visible{outline:2px solid var(--accent-inv);outline-offset:3px}
+
+.rrail{display:flex;gap:22px;list-style:none;margin:0;padding:0 0 4px;
+  overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rrail::-webkit-scrollbar{display:none}
+/* 27% shows three and a slice of the fourth at 1152, so the row reads as
+   continuing rather than as a grid that happens to be short. */
+.rrail>li{flex:0 0 clamp(250px,27%,340px);min-width:0;scroll-snap-align:start}
+
+/* The rail card is the reference's: art, then the title with its arrow, and
+   nothing else. No dek, no date, no category line — the row heading above
+   has already said the category, and repeating it on every card in the row
+   is the kind of redundancy that makes a rail look padded. */
+.rc-rail .rc-ti{font-size:var(--fz5);line-height:1.34;margin-top:14px}
+
+.rrow-empty{font-size:var(--fz3);color:var(--text-inv-2);line-height:1.7;margin:0;max-width:62ch}
+/* A button that reads as a link — it changes a filter rather than navigating,
+   so it must not be an anchor, but it should look like one. */
+.rlink{border:0;background:none;padding:0;font-family:var(--ff);font-size:inherit;color:var(--accent-inv);
+  text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.rlink:focus-visible{outline:2px solid var(--accent-inv);outline-offset:2px;border-radius:3px}
+
 /* ── CATEGORY COLOURWAYS ──────────────────────────────────────────────────
    Four families, separable at a glance, all within the brand's green world
    and all light enough to carry the same dark ink. */
@@ -2286,6 +2328,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .bg-news-err{font-size:var(--fz3);color:var(--alert);margin:12px 0 0}
 
 @media(max-width:1000px){
+  .rrail>li{flex:0 0 clamp(230px,42%,320px)}
   .rfeat{grid-template-columns:1fr}
   .rfeat-side{flex-direction:row}
   .rfeat-side .rc{flex:1 1 0;min-width:0}
@@ -2294,6 +2337,8 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 }
 @media(max-width:700px){
   .rwrap{padding:96px 20px 0}
+  .rrail>li{flex:0 0 78%}
+  .rrow{padding:44px 0 0}
   .rfeat-side{flex-direction:column}
   .rgrid{grid-template-columns:1fr;gap:38px}
   .rbar{flex-direction:column;align-items:flex-start}

@@ -243,81 +243,143 @@ export default function ResourcesView() {
 
       <p className="sr-only" aria-live="polite">{`Showing ${visible.length} of ${articles.length} resources.`}</p>
 
-      {showFeatured && (
-        <section className="rfeat-sec">
-          <h2 className="rsec-h">Featured</h2>
-          <div className="rfeat">
-            {/* A LINK, not a div. This is the largest element on the page and
-                it used to be inert — no href, no anchor anywhere inside it —
-                because it described an article that existed nowhere in the
-                library. See the note on FEATURED_ID in ./data.ts. */}
-            <Link className="rc rc-lg" data-cat={featuredArticle.category} href={`${routes.article}?id=${featuredArticle.id}`}>
-              <CardArt kicker={featuredArticle.kicker} size="lg" />
-              <div className="rc-meta">
-                <span className="rc-cat">{featuredArticle.categoryLabel}</span>
-                <span className="rc-dot" aria-hidden="true">·</span>
-                <span className="rc-read">{featuredArticle.readTime}</span>
-              </div>
-              <h3 className="rc-ti">{featuredArticle.title}<ArrowNE /></h3>
-              <p className="rc-ex">{featuredArticle.dek}</p>
-            </Link>
+      {/* ── THE "ALL" VIEW ─────────────────────────────────────────────────
+          One row per category — heading, a View all on the right, and a
+          horizontal rail of cards — which is the reference's arrangement and
+          replaces the single flat archive grid that stood here.
 
-            <div className="rfeat-side">
-              {featuredRest.map((a) => (
-                <Link className="rc rc-sm" data-cat={a.category} key={a.id} href={`${routes.article}?id=${a.id}`}>
-                  <CardArt kicker={a.kicker} size="sm" />
+          The rail is a real overflow scroller rather than a carousel with
+          arrows: every card is in the document and reachable by tab, and with
+          two items in a category it simply does not scroll. Nothing here
+          renders only the visible slide, which is the failure the services
+          carousel on the home page still has.
+
+          View all sets the tab rather than navigating. These are client-side
+          filters over one array; sending the reader to a URL would need eight
+          routes for a library that fits on one screen.
+
+          Articles in the Featured block above also appear in their category
+          row. That is the convention in the reference and everywhere else
+          this pattern is used — a featured item is still a member of its
+          category — but with eight articles it is more visible than it would
+          be with eighty. Say the word and Featured comes off the All view. */}
+      {showFeatured && (
+        <>
+          <section className="rfeat-sec">
+            <h2 className="rsec-h">Featured</h2>
+            <div className="rfeat">
+              {/* A LINK, not a div. This is the largest element on the page and
+                  it used to be inert — no href, no anchor anywhere inside it —
+                  because it described an article that existed nowhere in the
+                  library. See the note on FEATURED_ID in ./data.ts. */}
+              <Link className="rc rc-lg" data-cat={featuredArticle.category} href={`${routes.article}?id=${featuredArticle.id}`}>
+                <CardArt kicker={featuredArticle.kicker} size="lg" />
+                <div className="rc-meta">
+                  <span className="rc-cat">{featuredArticle.categoryLabel}</span>
+                  <span className="rc-dot" aria-hidden="true">·</span>
+                  <span className="rc-read">{featuredArticle.readTime}</span>
+                </div>
+                <h3 className="rc-ti">{featuredArticle.title}<ArrowNE /></h3>
+                <p className="rc-ex">{featuredArticle.dek}</p>
+              </Link>
+
+              <div className="rfeat-side">
+                {featuredRest.map((a) => (
+                  <Link className="rc rc-sm" data-cat={a.category} key={a.id} href={`${routes.article}?id=${a.id}`}>
+                    <CardArt kicker={a.kicker} size="sm" />
+                    <div className="rc-meta">
+                      <span className="rc-cat">{a.categoryLabel}</span>
+                      <span className="rc-dot" aria-hidden="true">·</span>
+                      <span className="rc-read">{a.readTime}</span>
+                    </div>
+                    <h3 className="rc-ti">{a.title}<ArrowNE /></h3>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {CATEGORIES.map((c) => {
+            const items = articles.filter((a) => a.category === c.id);
+            return (
+              <section className="rrow" key={c.id}>
+                <div className="rrow-h">
+                  <h2 className="rsec-h">{c.plural}</h2>
+                  <button type="button" className="rrow-all" onClick={() => setTab(c.id)}>
+                    View all<ArrowNE />
+                  </button>
+                </div>
+
+                {items.length > 0 ? (
+                  <ul className="rrail">
+                    {items.map((a) => (
+                      <li key={a.id}>
+                        <Link className="rc rc-rail" data-cat={a.category} href={`${routes.article}?id=${a.id}`}>
+                          <CardArt kicker={a.kicker} size="md" />
+                          <h3 className="rc-ti">{a.title}<ArrowNE /></h3>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  /* The Case studies row. Compact here because it is one row
+                     among four; the full explanation is on its own tab. */
+                  <p className="rrow-empty">
+                    Nothing here yet — we publish an engagement only once the client has signed it
+                    off. <button type="button" className="rlink" onClick={() => setTab("case")}>Why this is empty</button>
+                  </p>
+                )}
+              </section>
+            );
+          })}
+        </>
+      )}
+
+      {/* ── A SINGLE CATEGORY ──────────────────────────────────────────────
+          A grid rather than a rail: the reader has asked for one category, so
+          the whole of it should be on screen at once instead of behind a
+          sideways scroll. */}
+      {!showFeatured && (
+        <section className="rarch">
+          <h2 className="rsec-h">{tabs.find((t) => t.id === tab)?.label}</h2>
+
+          {gridItems.length > 0 ? (
+            <div className="rgrid">
+              {gridItems.map((a) => (
+                <Link className="rc rc-md" data-cat={a.category} key={a.id} href={`${routes.article}?id=${a.id}`}>
+                  <CardArt kicker={a.kicker} size="md" />
                   <div className="rc-meta">
                     <span className="rc-cat">{a.categoryLabel}</span>
                     <span className="rc-dot" aria-hidden="true">·</span>
                     <span className="rc-read">{a.readTime}</span>
                   </div>
                   <h3 className="rc-ti">{a.title}<ArrowNE /></h3>
+                  <p className="rc-ex">{a.dek}</p>
+                  <span className="rc-date">{a.displayDate}</span>
                 </Link>
               ))}
             </div>
-          </div>
+          ) : (
+            /* The Case studies tab lands here. It says what is true rather than
+               rendering an empty grid or a spinner — and rather than being
+               refilled with the fabricated engagements that were deleted from
+               ./data.ts. */
+            <div className="rempty">
+              <p className="rempty-h">No case studies published yet.</p>
+              <p className="rempty-p">
+                We only publish an engagement once the client has signed it off, with figures only
+                where they were actually recorded. Nothing has cleared that bar yet — so rather than
+                fill this page with illustrative examples, we have left it empty.
+              </p>
+              <p className="rempty-p">
+                The guides and market reads in the other tabs are written by the same partners who
+                run the searches. <Link href={routes.contactUs}>Talk to one of them</Link> if you want
+                the detail a case study would have given you.
+              </p>
+            </div>
+          )}
         </section>
       )}
-
-      <section className="rarch">
-        <h2 className="rsec-h">{showFeatured ? "The archive" : tabs.find((t) => t.id === tab)?.label}</h2>
-
-        {gridItems.length > 0 ? (
-          <div className="rgrid">
-            {gridItems.map((a) => (
-              <Link className="rc rc-md" data-cat={a.category} key={a.id} href={`${routes.article}?id=${a.id}`}>
-                <CardArt kicker={a.kicker} size="md" />
-                <div className="rc-meta">
-                  <span className="rc-cat">{a.categoryLabel}</span>
-                  <span className="rc-dot" aria-hidden="true">·</span>
-                  <span className="rc-read">{a.readTime}</span>
-                </div>
-                <h3 className="rc-ti">{a.title}<ArrowNE /></h3>
-                <p className="rc-ex">{a.dek}</p>
-                <span className="rc-date">{a.displayDate}</span>
-              </Link>
-            ))}
-          </div>
-        ) : (
-          /* The Case studies tab lands here. It says what is true rather than
-             rendering an empty grid or a spinner — and rather than being
-             refilled with the fabricated engagements that were deleted from
-             ./data.ts. */
-          <div className="rempty">
-            <p className="rempty-h">No case studies published yet.</p>
-            <p className="rempty-p">
-              We only publish an engagement once the client has signed it off, with figures only
-              where they were actually recorded. Nothing has cleared that bar yet — so rather than
-              fill this page with illustrative examples, we have left it empty.
-            </p>
-            <p className="rempty-p">
-              The guides and market reads in the other tabs are written by the same partners who
-              run the searches. <Link href={routes.contactUs}>Talk to one of them</Link> if you want
-              the detail a case study would have given you.
-            </p>
-          </div>
-        )}
-      </section>
 
       {/* The inline sign-up moved up to the control bar, where the original
           export had it. This band keeps the second one: the bar is above the
