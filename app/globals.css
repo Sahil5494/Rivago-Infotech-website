@@ -2097,18 +2097,67 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .rhead{padding:0 0 8px}
 .reyebrow{display:inline-flex;font-size:var(--fz1);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-inv)}
 .rtitle{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.06;color:var(--text-inv-1);margin-top:12px}
-.rbar{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:14px 0 20px}
-.rtabs{display:flex;gap:8px;flex-wrap:wrap}
-.rtab{padding:9px 18px;border-radius:9999px;border:1px solid var(--rule-inv-1);background:var(--surface-inv-2);font-family:var(--ff);font-size:var(--fz3);font-weight:500;color:var(--text-inv-2);cursor:pointer;transition:all .2s var(--ease);white-space:nowrap}
-.rtab:hover{border-color:var(--accent-inv);color:var(--accent-inv)}
-.rtab.on{background:var(--chip);border-color:var(--rule-inv-2);color:var(--text-inv-1)}
-.rsub{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.rsub-l{font-size:var(--fz3);color:var(--text-inv-2)}
-.rsub-form{display:flex;gap:6px;padding:5px;background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:9999px}
+/* The accent half of the headline, in the deep green — the colour from the
+   original export, which set it in a green serif italic.
+
+   THE ITALIC AND THE SERIF ARE NOT HERE, and that is a decision rather than
+   an omission. app/layout.tsx loads Geist at 400/500/700 with no italic
+   style and no serif at all, and says why: "There is no serif: the italic
+   accent the hero used has been folded into this family." The reset at the
+   top of this file carries the other half — em{font-style:normal} — so every
+   <em> in every heading on the site renders flat. Setting font-style:italic
+   here would synthesise a faux oblique from an upright face, and it would
+   make /resources the only page whose <em> behaves differently from the
+   eleven headings on the home page.
+
+   Restoring it properly means loading a serif and relaxing that reset, which
+   is a site-wide typography change and the client's call. The colour is the
+   part that can be had for nothing. */
+.rtitle em{color:var(--accent-inv)}
+/* ── THE CONTROL BAR ──────────────────────────────────────────────────────
+   Pills left, newsletter right, hairline under — the arrangement from the
+   original Claude Design export, restored at the client's request.
+
+   The pills are the export's, not the rebuild's. The rebuild had the active
+   pill filled with --chip, which is #E3EFE9 on this ground: a pale grey-mint
+   that barely separated from the inactive ones, so the selected filter was
+   nearly as quiet as the rest. The export fills it with a real mint and sets
+   the inactive ones on WHITE rather than the page's own --surface-inv-2, so
+   they lift off the cream instead of dissolving into it.
+
+   The two mints are written as literals with intent rather than pulled from
+   a token: --accent on this ground is #0E5C3C, the deep green that carries
+   body text, and there is no light-ground mint in the token set — the bright
+   #3DFF87 is defined for dark grounds only and is unreadable here. */
+.rbar{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:30px 0 22px}
+.rtabs{display:flex;gap:10px;flex-wrap:wrap}
+.rtab{padding:11px 18px;border-radius:9999px;border:1px solid var(--rule-inv-1);background:#FFFFFF;font-family:var(--ff);font-size:var(--fz3);font-weight:500;color:var(--text-inv-1);cursor:pointer;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);white-space:nowrap}
+.rtab:hover{border-color:#8FE6BE;background:#F2FCF7}
+/* 10.4:1 — the deep ink on the mint, not the mint on white, which is the
+   pairing that fails. */
+.rtab.on{background:#A7F0CE;border-color:#A7F0CE;color:#06231A}
+.rtab.on:hover{background:#9BEAC5;border-color:#9BEAC5}
+.rsub{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.rsub-l{font-size:var(--fz2);color:var(--text-inv-2)}
+/* The export ran this row with three pills; there are five now, and the bar
+   is 1152px. Measured at 1440 the two halves wanted 1309px together, so the
+   row broke in two and the newsletter dropped under the pills. The label is
+   the only part that is a lead-in rather than information, so it is the part
+   that gives: it goes at 1180, where the row would otherwise wrap, and the
+   capsule alone still says what it is. */
+@media(max-width:1180px){.rsub-l{display:none}}
+/* White capsule on the cream ground, as in the export — it was
+   --surface-inv-2, the same family as the band behind it, so the field had
+   no edge. */
+.rsub-form{display:flex;gap:6px;padding:5px;background:#FFFFFF;border:1px solid var(--rule-inv-1);border-radius:9999px}
 .rsub-form input{border:none;background:none;padding:8px 14px;font-family:var(--ff);font-size:var(--fz3);color:var(--text-inv-1);outline:none;width:150px;min-width:0}
 @media(max-width:420px){.rsub-form input{width:100px}}
-.rsub-form button{background:var(--chip);color:var(--text-inv-1);border:none;border-radius:9999px;padding:0 18px;font-family:var(--ff);font-weight:500;font-size:var(--fz2);cursor:pointer;transition:background .2s}
-.rsub-form button:hover{background:var(--chip)}
+/* The mint Subscribe button from the export. It was filled --chip, which
+   made it the same colour as the capsule around it — a button that did not
+   read as one, on the page's only sign-up. */
+.rsub-form button{background:#A7F0CE;color:#06231A;border:none;border-radius:9999px;padding:0 20px;font-family:var(--ff);font-weight:500;font-size:var(--fz2);cursor:pointer;transition:background .2s}
+.rsub-form button:hover:not(:disabled){background:#8FE6BE}
+.rsub-form button:focus-visible,.rtab:focus-visible{outline:2px solid var(--accent-inv);outline-offset:2px}
 /* ══════════════════════════════════════════════════════════════════════════
    RESOURCES LIBRARY — rebuilt to the reference the client sent.
 
@@ -2138,6 +2187,8 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
    four stay light enough to take the same dark ink.
    ══════════════════════════════════════════════════════════════════════════ */
 
+/* The hairline under the control bar, from the export. */
+.rdiv{height:1px;background:var(--rule-inv-1);margin-bottom:8px}
 .rstand{font-size:var(--fz6);color:var(--text-inv-2);line-height:1.7;font-weight:400;max-width:54ch;margin:18px 0 0}
 
 /* .rtabs / .rtab already exist above — they are the original tab bar, which
@@ -2242,7 +2293,8 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .bg-news p{font-size:var(--fz6);color:var(--text-inv-2);font-weight:400;line-height:1.7;max-width:480px;margin:12px auto 24px}
 .bg-news-form{display:flex;gap:8px;max-width:440px;margin:0 auto;padding:7px;background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:9999px}
 .bg-news-form input{flex:1;min-width:0;border:none;background:none;padding:11px 16px;font-family:var(--ff);font-size:var(--fz3);color:var(--text-inv-1);outline:none}
-.bg-news-form button{background:var(--surface-2);color:var(--text-2);border:none;border-radius:9999px;padding:0 22px;font-family:var(--ff);font-weight:500;font-size:var(--fz3);cursor:pointer}
+.bg-news-form button{background:#A7F0CE;color:#06231A;border:none;border-radius:9999px;padding:0 22px;font-family:var(--ff);font-weight:500;font-size:var(--fz3);cursor:pointer;transition:background .2s}
+.bg-news-form button:hover:not(:disabled){background:#8FE6BE}
 
 /* ── Resources detail pages (article / case study) — cream theme ── */
 .detail-hero{padding:120px 44px 0;background:var(--cream)}

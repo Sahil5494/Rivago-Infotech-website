@@ -205,27 +205,41 @@ export default function ResourcesView() {
         </p>
       </div>
 
-      {/* TABS. role=tablist would be a lie — these filter a list that is
+      {/* THE CONTROL BAR, back to the original export's arrangement: filter
+          pills on the left, the newsletter sign-up on the right, one row, a
+          hairline under it. The rebuild had put the newsletter in a band of
+          its own near the foot of the page, which left this row half empty
+          and buried the only sign-up above the fold.
+
+          TABS. role=tablist would be a lie — these filter a list that is
           always in the document rather than swapping panels, so they are
           toggle buttons with aria-pressed, which is what they actually are.
           type="button" because a <button> with no type defaults to submit. */}
-      <div className="rtabs" role="group" aria-label="Filter resources by type">
-        {tabs.map((t) => {
-          const count = t.id === "all" ? articles.length : articles.filter((a) => a.category === t.id).length;
-          return (
-            <button
-              key={t.id}
-              type="button"
-              className={`rtab${tab === t.id ? " on" : ""}`}
-              aria-pressed={tab === t.id}
-              onClick={() => setTab(t.id)}
-            >
-              {t.label}
-              <span className="rtab-ct">{count}</span>
-            </button>
-          );
-        })}
+      <div className="rbar">
+        <div className="rtabs" role="group" aria-label="Filter resources by type">
+          {tabs.map((t) => {
+            const count = t.id === "all" ? articles.length : articles.filter((a) => a.category === t.id).length;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                className={`rtab${tab === t.id ? " on" : ""}`}
+                aria-pressed={tab === t.id}
+                onClick={() => setTab(t.id)}
+              >
+                {t.label}
+                <span className="rtab-ct">{count}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="rsub">
+          <span className="rsub-l">Updates, straight to your inbox.</span>
+          <NewsletterForm id="rsub-email" variant="inline" placeholder="your@email" />
+        </div>
       </div>
+      <div className="rdiv" />
 
       <p className="sr-only" aria-live="polite">{`Showing ${visible.length} of ${articles.length} resources.`}</p>
 
@@ -305,13 +319,9 @@ export default function ResourcesView() {
         )}
       </section>
 
-      <div className="rbar rbar-solo">
-        <div className="rsub">
-          <span className="rsub-l">Get our latest updates sent straight to your inbox.</span>
-          <NewsletterForm id="rsub-email" variant="inline" placeholder="your@email" />
-        </div>
-      </div>
-
+      {/* The inline sign-up moved up to the control bar, where the original
+          export had it. This band keeps the second one: the bar is above the
+          fold and this catches someone who has read to the bottom. */}
       <section className="bg-news">
         <div className="bg-news-inner">
           <h2>Hiring intel, <em>every Monday.</em></h2>
