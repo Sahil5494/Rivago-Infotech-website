@@ -177,7 +177,14 @@ export const pageOrder: { name: string; href: string }[] = [
   { name: "Employer of Record", href: routes.employerOfRecord },
   { name: "Industries", href: routes.industries },
   { name: "Resources", href: routes.resources },
-  { name: "Article", href: routes.article },
+  /* "Article" was here, pointing at routes.article — /resources/article with
+     no ?id. That route is a detail view for one article out of eight; there
+     is no canonical "the article page" to walk to, so PageNavSide was
+     handing Resources a next-page link to a URL that identifies nothing. It
+     only rendered anything at all because findArticle used to fall back to
+     the first article for a missing id. That fallback is gone and the route
+     answers 404 now, which this entry would have walked a reader into.
+     Resources' next is About, which is a real page. */
   { name: "About", href: routes.about },
   { name: "Careers", href: routes.career },
   { name: "Search Jobs", href: routes.searchJobs },

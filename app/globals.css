@@ -2109,121 +2109,133 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 @media(max-width:420px){.rsub-form input{width:100px}}
 .rsub-form button{background:var(--chip);color:var(--text-inv-1);border:none;border-radius:9999px;padding:0 18px;font-family:var(--ff);font-weight:500;font-size:var(--fz2);cursor:pointer;transition:background .2s}
 .rsub-form button:hover{background:var(--chip)}
-.rdiv{height:1px;background:var(--rule-inv-1);margin-bottom:44px}
-.rfeat{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;margin-bottom:64px}
-.rfeat-img{border-radius:20px;overflow:hidden;aspect-ratio:16/10;background:var(--surface-3);position:relative;display:flex;align-items:flex-end;padding:40px}
-.rfeat-img h2{position:relative;z-index:1;font-size:var(--fz12);font-weight:500;color:var(--text-1);letter-spacing:-.02em;line-height:1.12;max-width:90%}
-.rfeat-meta{font-size:var(--fz2);color:var(--text-inv-3);margin-bottom:18px;font-weight:500}
-.rfeat-meta .rcat{color:var(--accent-inv);font-weight:500}
-.rfeat-t{font-size:var(--fz11);font-weight:500;color:var(--text-inv-1);letter-spacing:-.025em;line-height:1.14;margin-bottom:18px}
-.rfeat-x{font-size:var(--fz6);color:var(--text-inv-2);line-height:1.7;font-weight:400;margin-bottom:26px}
-.rfeat-author{display:flex;align-items:center;gap:11px;font-size:var(--fz3);color:var(--text-inv-2)}
-.rfeat-mono{width:38px;height:38px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--grad-accent-inv);color:var(--text-1);font-weight:500;font-size:var(--fz2)}
-.rgrid-h{font-size:var(--fz1);font-weight:500;color:var(--text-inv-1);text-transform:uppercase;letter-spacing:.12em;margin:8px 0 28px;padding-bottom:16px;border-bottom:1px solid var(--rule-inv-1);display:flex;align-items:center;gap:10px}
-.rgrid-h::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent-inv)}
-.rgrid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:auto;gap:30px 26px;padding:34px 30px 40px;border-radius:24px;margin-bottom:56px}
-.rgrid .rcard{grid-column:span 2}
-.rgrid .rcard.wide{grid-column:span 3}
-.rgrid .rcard.wide .rcimg{aspect-ratio:21/9}
-.rgrid .rcard.wide .rcard-t{font-size:var(--fz9);line-height:1.22}
-.rcard{display:flex;flex-direction:column;text-decoration:none;background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:18px;padding:14px 14px 22px;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
-.rcard:hover{transform:translateY(-5px);box-shadow:0 22px 48px rgba(10,20,11,.10);border-color:rgba(10,112,64,.28)}
-.rcard-body{padding:0 8px}
-.rcard:hover .rcard-t{color:var(--accent-inv)}
-.rcimg{aspect-ratio:16/10;border-radius:12px;position:relative;overflow:hidden;margin-bottom:16px;background-size:cover;background-position:center}
-.rcimg-badge{position:absolute;left:16px;bottom:16px;width:30px;height:30px;border-radius:50%;background:var(--rule-2);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;font-size:var(--fz1);font-weight:700;color:var(--text-1)}
-.rcard-meta{font-size:var(--fz1);color:var(--text-inv-3);margin-bottom:9px;font-weight:500}
-.rcard-cat{color:var(--accent-inv);font-weight:500}
-.rcard-t{font-size:var(--fz5);font-weight:500;color:var(--text-inv-1);letter-spacing:-.012em;line-height:1.32;transition:color .2s}
-.rcard.anim{animation:rcardIn .45s var(--ease) both}
-@keyframes rcardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.rcard.hide{display:none}
-@media(max-width:900px){.rwrap{padding:96px 20px 0}.rfeat{grid-template-columns:1fr;gap:24px}.rgrid{grid-template-columns:1fr}.rgrid .rcard,.rgrid .rcard.wide{grid-column:span 1}.rbar{flex-direction:column;align-items:flex-start}}
+/* ══════════════════════════════════════════════════════════════════════════
+   RESOURCES LIBRARY — rebuilt to the reference the client sent.
 
-/* Shared hero pattern for the case-study / blog sub-views */
-.cs-hero,.bg-hero{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:end;padding-bottom:48px;border-bottom:1px solid var(--rule-inv-1)}
-.cs-eyb,.bg-eyb{display:inline-flex;align-items:center;gap:8px;font-size:var(--fz1);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-inv);margin-bottom:18px}
-.cs-eyb::before,.bg-eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent-inv)}
-.cs-feat-h,.bg-fh{font-size:var(--fz12);font-weight:500;letter-spacing:-.025em;line-height:1.12;color:var(--text-inv-1);margin-top:6px}
-.cs-feat,.bg-feat{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-inv-1);border:1px solid var(--rule-inv-1);border-radius:24px;overflow:hidden;margin-top:36px}
-.cs-feat-art,.bg-feat-art{background:linear-gradient(150deg,#A6F0CE,#3DFFB8 70%,#1EA05F);min-height:380px;position:relative;padding:36px;display:flex;flex-direction:column;justify-content:space-between}
-.cs-feat-art .ftag,.bg-feat-art .ftag{align-self:flex-start;padding:6px 14px;background:rgba(8,37,31,.18);backdrop-filter:blur(8px);border:1px solid var(--rule-2);color:var(--text-inv-2);border-radius:9999px;font-size:var(--fz1);font-weight:500;letter-spacing:.04em}
-.cs-feat-art h2,.bg-feat-art h2{font-size:var(--fz11);font-weight:500;color:var(--text-inv-2);letter-spacing:-.02em;line-height:1.15}
-.cs-feat-body{background:var(--surface-inv-2);padding:44px;display:flex;flex-direction:column;gap:22px}
-.bg-feat-body{background:var(--surface-inv-2);padding:44px;display:flex;flex-direction:column;gap:20px;justify-content:center}
-.cs-feat-eyb,.bg-feat-eyb{font-family:var(--ff);font-weight:500;font-size:var(--fz5);color:var(--accent-inv)}
-.cs-feat-lede,.bg-feat-lede{font-size:var(--fz5);color:var(--text-inv-2);line-height:1.72;font-weight:400}
-.cs-feat-lede.bt{border-top:1px solid var(--rule-inv-1);padding-top:20px}
-.cs-feat-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:22px;border-top:1px solid var(--rule-inv-1);margin-top:auto}
-.cs-feat-stat-v{font-size:var(--fz11);font-weight:500;color:var(--text-inv-1);letter-spacing:-.028em;line-height:1}
-.cs-feat-stat-v span{font-size:var(--fz5);color:var(--text-inv-3);margin-left:2px}
-.cs-feat-stat-l{font-size:var(--fz1);color:var(--text-inv-3);margin-top:7px;line-height:1.4}
-.bg-feat-author{display:flex;align-items:center;gap:11px;font-size:var(--fz3);color:var(--text-inv-2);padding-top:18px;border-top:1px solid var(--rule-inv-1)}
-.bg-feat-author .av{width:34px;height:34px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;font-size:var(--fz2)}
-.cs-fbar,.bg-fbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:36px 0 28px;padding-bottom:22px;border-bottom:1px solid var(--rule-inv-1)}
-.cs-fchip,.bg-fchip{padding:8px 15px;background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:9999px;font-size:var(--fz2);color:var(--text-inv-2);cursor:pointer;transition:all .18s var(--ease);display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font-family:var(--ff)}
-.cs-fchip:hover,.bg-fchip:hover{border-color:var(--accent-inv);color:var(--accent-inv)}
-.cs-fchip.on,.bg-fchip.on{background:var(--surface-2);color:var(--text-2);border-color:var(--rule-2)}
-.cs-fchip .ct,.bg-fchip .ct{font-family:var(--fm);font-size:var(--fz1);opacity:.7}
-/* margin-top, and the tag/title declarations below marked "inherited", used
-   to reach this grid from the deleted home-page .cs-* block further up the
-   file. Stated here now so the rules that need them own them. */
-.cs-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:34px 26px;padding-bottom:24px;margin-top:56px}
-.cs-grid .cs-card{grid-column:span 2}
-.cs-grid .cs-card.wide{grid-column:span 3}
-.cs-card{display:flex;flex-direction:column;gap:12px;padding:26px;background:var(--grad-paper);border:1px solid var(--rule-inv-1);border-radius:18px;text-decoration:none;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
-.cs-card:hover{border-color:rgba(10,112,64,.32);box-shadow:0 12px 32px rgba(10,20,11,.07);transform:translateY(-3px)}
-.cs-card.hide{display:none}
-.cs-card.anim{animation:csIn .45s var(--ease) both}
-@keyframes csIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.cs-tagrow{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.cs-tag{font-size:var(--fz1);font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-inv);
-  /* inherited */ display:inline-flex;padding:3px 10px;background:var(--tint-2);border:1px solid var(--tint-3);border-radius:12px;margin-bottom:10px}
-.cs-quarter{font-size:var(--fz1);color:var(--text-inv-3);font-family:var(--fm)}
-.cs-title{font-size:var(--fz5);font-weight:500;color:var(--text-inv-1);letter-spacing:-.012em;line-height:1.32;transition:color .2s;/* inherited */ margin-bottom:8px}
-.cs-card:hover .cs-title{color:var(--accent-inv)}
-.cs-bullets{display:flex;flex-direction:column;gap:8px}
-.cs-bullet{font-size:var(--fz2);color:var(--text-inv-2);line-height:1.5;padding-left:14px;position:relative}
-.cs-bullet::before{content:'';position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:var(--accent-inv)}
-.cs-statrow{display:flex;gap:14px;padding-top:14px;border-top:1px solid var(--rule-inv-1);margin-top:auto}
-.cs-stat{flex:1}
-.cs-stat-v{font-size:var(--fz8);font-weight:500;color:var(--accent-inv);letter-spacing:-.015em;line-height:1}
-.cs-stat-l{font-size:var(--fz1);color:var(--text-inv-3);margin-top:5px;text-transform:uppercase;letter-spacing:.04em}
-.cs-loadwrap{text-align:center;padding:8px 0 64px}
-.cs-load{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:9999px;font-size:var(--fz3);font-weight:500;color:var(--text-inv-1);cursor:pointer;font-family:var(--ff);transition:all .2s}
-.cs-load:hover{border-color:var(--accent-inv);color:var(--accent-inv)}
-.cs-load.done{opacity:.5;pointer-events:none}
-.cs-quote{background:var(--chip);color:var(--text-inv-1);padding:96px 44px;margin-top:24px}
-.cs-quote-inner{max-width:1000px;margin:0 auto}
-.cs-quote .q{font-family:var(--ff);font-weight:500;font-size:var(--fz15);line-height:1;color:var(--accent-inv);letter-spacing:-.04em}
-.cs-quote p{font-size:var(--fz11);line-height:1.34;letter-spacing:-.018em;font-weight:500;margin-top:14px;max-width:880px}
-.cs-qauthor{display:flex;align-items:center;gap:14px;margin-top:40px;padding-top:26px;border-top:1px solid var(--rule-inv-1)}
-.cs-qav{width:52px;height:52px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;font-size:var(--fz5);flex-shrink:0}
-.cs-qname{font-size:var(--fz5);font-weight:500}
-.cs-qrole{font-size:var(--fz2);color:var(--text-inv-2);margin-top:2px}
-.rcs-cta{padding:104px 44px;text-align:center;background:var(--cream)}
-.rcs-cta h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.06;color:var(--text-inv-1);max-width:680px;margin:0 auto 16px}
-.rcs-cta p{font-size:var(--fz6);color:var(--text-inv-2);max-width:480px;margin:0 auto 30px;font-weight:400;line-height:1.7}
-.rcs-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.cs-btn-d{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:var(--surface-2);color:var(--text-2);border-radius:9999px;font-size:var(--fz3);font-weight:500;text-decoration:none;transition:all .2s}
-.cs-btn-d:hover{background:var(--surface-3);transform:translateY(-1px)}
-.cs-btn-g{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:transparent;color:var(--text-inv-1);border:1px solid var(--rule-inv-2);border-radius:9999px;font-size:var(--fz3);font-weight:500;text-decoration:none;transition:all .2s}
-.cs-btn-g:hover{background:var(--rule-inv-1)}
-.bg-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:34px 26px;padding-bottom:24px}
-.bg-grid .bg-card{grid-column:span 2}
-.bg-card{display:flex;flex-direction:column;gap:11px;padding:26px;background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:18px;text-decoration:none;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
-.bg-card:hover{transform:translateY(-5px);box-shadow:0 22px 48px rgba(10,20,11,.10);border-color:rgba(10,112,64,.28)}
-.bg-card.hide{display:none}
-.bg-card.anim{animation:bgIn .45s var(--ease) both}
-@keyframes bgIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.bg-trow{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.bg-tag{font-size:var(--fz1);font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-inv)}
-.bg-meta{font-size:var(--fz1);color:var(--text-inv-3);font-family:var(--fm)}
-.bg-ti{font-size:var(--fz7);font-weight:500;color:var(--text-inv-1);letter-spacing:-.012em;line-height:1.3;transition:color .2s}
-.bg-card:hover .bg-ti{color:var(--accent-inv)}
-.bg-ex{font-size:var(--fz2);color:var(--text-inv-2);line-height:1.6;font-weight:400}
-.bg-foot{display:flex;align-items:center;gap:9px;font-size:var(--fz2);color:var(--text-inv-3);padding-top:13px;border-top:1px solid var(--rule-inv-1);margin-top:auto}
-.bg-av{width:24px;height:24px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:var(--fz1);font-weight:700;flex-shrink:0}
+   WHAT WAS DELETED FROM THIS BLOCK, so nobody goes looking for it:
+
+   .rfeat-img / .rfeat-t / .rfeat-x / .rfeat-author / .rfeat-mono,
+   .rcard / .rcimg / .rcimg-badge / .rcard-* / @keyframes rcardIn,
+   .rgrid-h, .rdiv, and the whole shared ".cs-*, .bg-*" hero/feature/card
+   family — .cs-hero, .cs-eyb, .cs-feat*, .cs-card, .bg-hero, .bg-eyb,
+   .bg-fh, .bg-feat*, .bg-fbar, .bg-fchip, .bg-grid, .bg-card, .bg-trow,
+   .bg-tag, .bg-meta, .bg-ti, .bg-ex, .bg-foot, .ftag.
+
+   Three generations of this page were layered here. The .cs-* half had been
+   dead since the case studies were removed — no .tsx referenced any of it —
+   and the .bg-* half was the grid this rebuild replaces. .bg-news is the one
+   survivor and is kept verbatim at the foot of this block.
+
+   THE CARD ART. Every card in the old grid drew the same thing:
+
+       .bg-card::before { background: linear-gradient(135deg,#A6F0CE,#3DFFB8) }
+
+   with three per-category overrides that were all pale mint within a few
+   points of each other, so eight cards showed eight indistinguishable green
+   rectangles and the grid read as a loading state. The four colourways below
+   are genuinely separable at a glance, and the art carries the article's own
+   kicker, so a card is legible as a subject before its title is read. All
+   four stay light enough to take the same dark ink.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.rstand{font-size:var(--fz6);color:var(--text-inv-2);line-height:1.7;font-weight:400;max-width:54ch;margin:18px 0 0}
+
+/* .rtabs / .rtab already exist above — they are the original tab bar, which
+   outlived the three views it used to switch between. Only the count needed
+   adding. */
+.rtab-ct{margin-left:8px;font-family:var(--fm);font-size:var(--fz1);color:var(--text-inv-3)}
+.rtab.on .rtab-ct{color:var(--text-inv-2)}
+.rtab:focus-visible{outline:2px solid var(--accent-inv);outline-offset:2px}
+
+.rsec-h{font-size:var(--fz9);font-weight:500;letter-spacing:-.022em;color:var(--text-inv-1);margin:0 0 26px}
+.rfeat-sec{padding:52px 0 0}
+.rarch{padding:64px 0 0}
+
+.rfeat{display:grid;grid-template-columns:1.55fr 1fr;gap:26px;align-items:start}
+.rfeat-side{display:flex;flex-direction:column;gap:26px}
+
+/* ── THE CARD ─────────────────────────────────────────────────────────────
+   Art panel, then meta, then title, in normal flow. No border, no fill, no
+   shadow: the reference gives its cards none either, and on this cream ground
+   a bordered box around an already-bordered art panel reads as two frames.
+   The art is the object; the text belongs to it. */
+.rc{display:flex;flex-direction:column;text-decoration:none;min-width:0}
+.rc-art{position:relative;display:flex;align-items:flex-end;padding:22px;border-radius:18px;overflow:hidden;
+  background:linear-gradient(140deg,#C9F7DE,#3DFF87 88%);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.rc-art-lg{aspect-ratio:16/10}
+.rc-art-md{aspect-ratio:16/10}
+.rc-art-sm{aspect-ratio:16/6.5}
+.rc:hover .rc-art{transform:translateY(-4px);box-shadow:0 20px 44px rgba(10,20,11,.16)}
+.rc:focus-visible{outline:none}
+.rc:focus-visible .rc-art{outline:2px solid var(--accent-inv);outline-offset:3px}
+
+/* The kicker is set in the art, which is what stops the panel being a swatch.
+   It scales with the panel so the large card does not get the small card's
+   type at twice the area. */
+.rc-art-k{font-size:var(--fz9);font-weight:500;letter-spacing:-.022em;line-height:1.1;color:#06231A;text-wrap:balance}
+.rc-art-lg .rc-art-k{font-size:var(--fz12)}
+.rc-art-sm .rc-art-k{font-size:var(--fz6)}
+.rc-art-mark{position:absolute;right:20px;top:18px;font-family:var(--fm);font-size:var(--fz1);letter-spacing:.14em;text-transform:uppercase;color:rgba(6,35,26,.5)}
+
+.rc-meta{display:flex;align-items:center;gap:7px;margin:18px 0 9px;font-size:var(--fz1);font-weight:500}
+.rc-cat{color:var(--accent-inv);letter-spacing:.06em;text-transform:uppercase;font-family:var(--fm)}
+.rc-dot,.rc-read{color:var(--text-inv-3)}
+.rc-read{font-family:var(--fm)}
+
+.rc-ti{font-size:var(--fz6);font-weight:500;color:var(--text-inv-1);letter-spacing:-.018em;line-height:1.28;margin:0;text-wrap:balance;transition:color .2s var(--ease)}
+.rc-lg .rc-ti{font-size:var(--fz9);line-height:1.2}
+.rc:hover .rc-ti{color:var(--accent-inv)}
+/* Inline with the last word rather than floated, so it never lands alone on
+   a line of its own under a title that happens to fill its measure. */
+.rc-go{display:inline-block;vertical-align:baseline;margin-left:8px;color:var(--accent-inv);transition:transform .25s var(--ease)}
+.rc:hover .rc-go{transform:translate(3px,-3px)}
+
+.rc-ex{font-size:var(--fz3);color:var(--text-inv-2);line-height:1.66;font-weight:400;margin:10px 0 0;max-width:62ch}
+.rc-lg .rc-ex{font-size:var(--fz5)}
+.rc-date{font-family:var(--fm);font-size:var(--fz1);color:var(--text-inv-3);margin-top:14px}
+
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 26px}
+
+/* ── CATEGORY COLOURWAYS ──────────────────────────────────────────────────
+   Four families, separable at a glance, all within the brand's green world
+   and all light enough to carry the same dark ink. */
+.rc[data-cat="blog"] .rc-art{background:linear-gradient(140deg,#C9F7DE,#3DFF87 88%)}
+.rc[data-cat="case"] .rc-art{background:linear-gradient(140deg,#C3F0EC,#35D9BE 90%)}
+.rc[data-cat="interview"] .rc-art{background:linear-gradient(140deg,#EAF8C8,#A8E25C 88%)}
+.rc[data-cat="salary"] .rc-art{background:linear-gradient(140deg,#CDEBDC,#4FB88A 92%)}
+
+/* ── EMPTY STATE (the Case studies tab) ───────────────────────────────── */
+.rempty{border:1px dashed var(--rule-inv-2);border-radius:20px;padding:52px 44px;max-width:64ch}
+.rempty-h{font-size:var(--fz7);font-weight:500;color:var(--text-inv-1);letter-spacing:-.02em;margin:0 0 14px}
+.rempty-p{font-size:var(--fz3);color:var(--text-inv-2);line-height:1.72;margin:0 0 12px}
+.rempty-p:last-child{margin-bottom:0}
+.rempty-p a{color:var(--accent-inv);text-decoration:underline;text-underline-offset:3px}
+
+/* ── NEWSLETTER STATES ────────────────────────────────────────────────────
+   The forms post for real now, so they have a busy state, a success state and
+   a failure state to render — the fake version had only "Subscribed ✓". */
+.rsub-form button:disabled,.bg-news-form button:disabled{opacity:.6;cursor:default}
+.rsub-done{font-size:var(--fz2);font-weight:500;color:var(--accent-inv);margin:0;padding:8px 0}
+.rsub-err{font-size:var(--fz2);color:var(--alert);margin:6px 0 0;flex-basis:100%}
+.bg-news-done{font-size:var(--fz5);font-weight:500;color:var(--accent-inv);margin:0}
+.bg-news-err{font-size:var(--fz3);color:var(--alert);margin:12px 0 0}
+
+@media(max-width:1000px){
+  .rfeat{grid-template-columns:1fr}
+  .rfeat-side{flex-direction:row}
+  .rfeat-side .rc{flex:1 1 0;min-width:0}
+  .rc-art-sm{aspect-ratio:16/9}
+  .rgrid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .rwrap{padding:96px 20px 0}
+  .rfeat-side{flex-direction:column}
+  .rgrid{grid-template-columns:1fr;gap:38px}
+  .rbar{flex-direction:column;align-items:flex-start}
+  .rempty{padding:36px 24px}
+}
+
+
 .bg-news{background:var(--chip);color:var(--text-inv-1);padding:80px 44px;margin-top:24px}
 .bg-news-inner{max-width:840px;margin:0 auto;text-align:center}
 .bg-news h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;line-height:1.1}
@@ -2231,21 +2243,6 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .bg-news-form{display:flex;gap:8px;max-width:440px;margin:0 auto;padding:7px;background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:9999px}
 .bg-news-form input{flex:1;min-width:0;border:none;background:none;padding:11px 16px;font-family:var(--ff);font-size:var(--fz3);color:var(--text-inv-1);outline:none}
 .bg-news-form button{background:var(--surface-2);color:var(--text-2);border:none;border-radius:9999px;padding:0 22px;font-family:var(--ff);font-weight:500;font-size:var(--fz3);cursor:pointer}
-/* card-art gradient thumbnails for the sub-view grids */
-.bg-card,.cs-card{position:relative;overflow:hidden}
-.bg-card::before,.cs-card::before{content:'';display:block;aspect-ratio:16/10;margin:-26px -26px 18px;border-radius:18px 18px 0 0;background:linear-gradient(135deg,#A6F0CE,#3DFFB8 75%,#1EA05F)}
-.bg-card::after,.cs-card::after{content:'R';position:absolute;left:18px;top:18px;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--rule-2);backdrop-filter:blur(6px);color:var(--text-1);font-weight:700;font-size:var(--fz2);pointer-events:none;z-index:2}
-.bg-card[data-cat="play"]::before{background:linear-gradient(135deg,#A6F0CE,#3DFF87 80%)}
-.bg-card[data-cat="comp"]::before{background:linear-gradient(135deg,#7DE8C0,#3DFFB8 80%)}
-.bg-card[data-cat="market"]::before{background:linear-gradient(135deg,#9EFFCB,#3DFFB8 90%)}
-.cs-card[data-cat="tech"]::before{background:linear-gradient(135deg,#A6F0CE,#3DFFB8 80%)}
-.cs-card[data-cat="health"]::before{background:linear-gradient(135deg,#A6F0CE,#0E5C3C 90%)}
-.cs-card[data-cat="finance"]::before{background:linear-gradient(135deg,#7DE8C0,#1EA05F 90%)}
-.cs-card[data-cat="legal"]::before{background:linear-gradient(135deg,#C9FFDF,#1EA05F 90%)}
-.cs-card[data-cat="aero"]::before{background:linear-gradient(135deg,#BFFFDB,#114A2B 95%)}
-.cs-card[data-cat="supply"]::before{background:linear-gradient(135deg,#B0FFDA,#0E5C3C 95%)}
-.cs-card[data-cat="gtm"]::before{background:var(--grad-brand)}
-@media(max-width:920px){.cs-hero,.bg-hero,.cs-feat,.bg-feat{grid-template-columns:1fr;gap:32px}.cs-grid,.bg-grid{grid-template-columns:1fr}.cs-grid .cs-card,.cs-grid .cs-card.wide,.bg-grid .bg-card{grid-column:span 1}}
 
 /* ── Resources detail pages (article / case study) — cream theme ── */
 .detail-hero{padding:120px 44px 0;background:var(--cream)}

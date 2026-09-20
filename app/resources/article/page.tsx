@@ -1,8 +1,16 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { routes } from "@/lib/routes";
 import { findArticle } from "../data";
 
+/* findArticle returns undefined for an id that is not in the library, and
+   both exports below answer 404 rather than substituting an article.
+   Previously it fell back to articles[0], so every misspelt, stale or
+   invented id — and the bare /resources/article with no query at all —
+   returned HTTP 200 carrying the first article, each one canonical-tagged to
+   its own bogus URL. That is an unbounded set of indexable duplicates, and a
+   reader following a broken link was quietly shown something else. */
 export async function generateMetadata({
   searchParams,
 }: {
@@ -10,6 +18,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await searchParams;
   const article = findArticle(typeof id === "string" ? id : undefined);
+  if (!article) return { title: "Article not found — Rivago Infotech" };
   const url = `https://rivagoinfotech.com/resources/article?id=${article.id}`;
   return {
     title: `${article.title} — Rivago Infotech`,
@@ -33,6 +42,7 @@ export default async function ArticlePage({
 }) {
   const { id } = await searchParams;
   const article = findArticle(typeof id === "string" ? id : undefined);
+  if (!article) notFound();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -76,7 +86,12 @@ export default async function ArticlePage({
 
       <section className="rcs-cta">
         <h2>Want the same process<br /><em>on your next hire?</em></h2>
-        <p>Send the brief and a partner in your sector comes back with a written plan within one business day.</p>
+        {/* Was "comes back with a written plan within one business day". The
+            site's own brief form promises a reply in one business day, not a
+            written plan — this CTA had quietly upgraded the commitment, and a
+            deliverable is a much larger thing to promise than an answer. It
+            now says what the rest of the site says. */}
+        <p>Send the brief and a partner in your sector reads it and replies within one business day.</p>
         <div className="rcs-cta-btns">
           <button className="cs-btn-d" data-hire>Book a strategy call <Arrow /></button>
           <Link className="cs-btn-g" href={routes.resources}>More resources</Link>
