@@ -1,4 +1,13 @@
-export type ArticleSection = { h: string; p: string[] };
+/* A section is paragraphs, optionally with one table and/or one list. The
+   long-form guides need both; the fourteen shorter articles use neither, so
+   they are optional and none of those entries changed. */
+export type ArticleTable = { head: string[]; rows: string[][]; note?: string };
+export type ArticleSection = {
+  h: string;
+  p: string[];
+  table?: ArticleTable;
+  list?: { intro?: string; items: string[] };
+};
 
 /* THE LIBRARY TAXONOMY, at the client's request, replacing play/comp/market.
  *
@@ -39,7 +48,22 @@ export type Article = {
   readTime: string;
   category: Category;
   categoryLabel: string;
+  /* The long-form guides carry the extras; the original fourteen do not, so
+     every one of these is optional.
+
+     `summary` is the standfirst — the answer up front, for a reader who
+     wants it in one paragraph and for an assistant quoting the page.
+     `faqs` render as real text AND as FAQPage structured data, from the same
+     array, so the two cannot drift.
+     `next` is the "Where to go next" row. There is deliberately NO reviewer
+     field: the reference this structure came from carries "Reviewed by
+     <name>, <credential>", and a named reviewer is a real person's
+     professional endorsement. Nobody has given one, so there is nowhere to
+     put an invented one. Add the field when a real reviewer exists. */
+  summary?: string;
   sections: ArticleSection[];
+  faqs?: { q: string; a: string }[];
+  next?: { label: string; href: string }[];
 };
 
 /* THREE FIELDS WERE REMOVED FROM THIS TYPE, all of them unused:
@@ -71,6 +95,552 @@ export type Article = {
  */
 
 export const articles: Article[] = [
+  /* ── SIX LONG-FORM GUIDES ────────────────────────────────────────────────
+     Written to the structure the client sent (a HireGenie guide): a summary
+     that answers the question up front, a table where the content is a
+     comparison, sections a reader can jump to, an FAQ that doubles as
+     FAQPage data, and a "where to go next" row.
+
+     TOPICS were picked against what is actually being searched in
+     recruitment this year — AI in hiring, skills-based hiring, candidate
+     experience and speed, talent mobility — filtered to the ones that (a)
+     map to a service Rivago actually sells, (b) do not duplicate the
+     fourteen articles already here, and (c) can be written without a single
+     figure nobody has measured. That last filter removed the obvious
+     candidates: "average time to hire", "cost per hire" and "what X pays in
+     2026" are the highest-volume queries in this space and all three are
+     answerable only with data this firm does not have.
+
+     NO REVIEWER BYLINE. The reference carries "Reviewed by <name>,
+     <credential>". That is a real person lending professional credibility,
+     and inventing one would be the same act as the invented authors already
+     removed from this file — worse, because a credential is a claim about
+     qualifications. The Article type has no reviewer field for that reason.
+
+     DATES ARE PLACEHOLDERS, as with the six above. Set them at publication. */
+  {
+    id: "engineering-team-by-stage",
+    title: "Building an engineering team by growth stage",
+    dek: "Which engineering hire to make at seed, Series A, B and beyond — and why the sequence matters more than the titles.",
+    date: "2026-09-18",
+    displayDate: "18 Sep 2026",
+    readTime: "9 min read",
+    category: "blog",
+    categoryLabel: "Blog",
+    summary:
+      "An engineering team should be built in sequence, not all at once. At seed you want builders who can ship across the stack, with architectural judgement borrowed rather than employed. At Series A you make your first hire who owns a domain rather than a ticket queue. At Series B you split delivery from platform, and add your first engineering manager — because the span of control, not the headcount, is what breaks first. At Series C you add a leadership layer above the managers. The two failure modes are hiring the senior title before there is anything for it to lead, and leaning on generalists long past the point the system needed an owner.",
+    sections: [
+      {
+        h: "Engineering hiring by stage, at a glance",
+        p: [
+          "This guide is about sequence: which engineering role to add at each stage, and what has to be true before it makes sense. The titles below are the ones most commonly used, but titles travel badly between companies — treat the middle column as the definition and the right-hand column as the label you will probably advertise.",
+        ],
+        table: {
+          head: ["Stage", "What engineering must own", "The hire to make", "Typical title"],
+          rows: [
+            ["Pre-seed / seed", "Shipping the product at all; no specialisation", "Generalists who can carry a feature end to end", "Founding engineer, full-stack"],
+            ["Series A", "A system somebody is accountable for", "First domain owner, and first dedicated QA or infra if the product demands it", "Senior / staff engineer"],
+            ["Series B", "Delivery and platform as separate concerns", "Split the team, and add your first line manager", "Engineering manager + platform lead"],
+            ["Series C+", "Multiple teams, shared standards, technical strategy", "A leadership layer above the managers", "Director / VP Engineering"],
+            ["Growth / pre-exit", "Reliability, security and succession in every critical area", "Depth and redundancy, not new functions", "VP or CTO with a full org beneath"],
+          ],
+          note: "A guide, not a rule. Companies whose product is itself technical infrastructure hit each of these earlier than companies where engineering supports a commercial business.",
+        },
+      },
+      {
+        h: "Seed: builders, and borrowed judgement",
+        p: [
+          "At seed the only thing engineering has to do is ship. There is no platform to own, no team to lead, and the architecture that matters is the one that lets you change your mind next month. What you want is people who can carry a feature from idea to production without a handoff, and who are comfortable with the fact that most of what they write will be replaced.",
+          "The judgement question is real, though, and it is the one founders most often get wrong. Early architectural decisions are expensive to reverse, and a team of capable generalists with nobody who has built the thing before will make some of them badly. The answer at this stage is usually to borrow that judgement rather than employ it — a fractional CTO, an advisor who has shipped in your domain, a technical investor who will take the call. That is much cheaper than hiring a VP Engineering to supervise three people.",
+          "The trap is title inflation. A senior title offered at seed to close a candidate creates a problem at Series B, when the person holding it either has to grow into a job they were never hired for or watch someone be hired above them.",
+        ],
+      },
+      {
+        h: "Series A: the first owner",
+        p: [
+          "Series A is where engineering stops being a group of people shipping and starts being a system somebody is accountable for. There is production traffic, there are customers who notice outages, and there is enough code that nobody holds all of it in their head. This is the point to hire your first real owner: someone whose job is a domain rather than a ticket queue.",
+          "In practice this is a senior or staff engineer, not a manager. The distinction matters commercially as well as organisationally — a staff engineer is paid for technical judgement and an engineering manager is paid for people, and hiring one while briefing for the other is how a search runs for four months and ends with an offer declined.",
+          "This is also where the first specialist hire becomes defensible, but only if the product demands it. A team shipping a regulated product needs someone who owns compliance in the build. A team running significant infrastructure needs someone who owns it. A team doing neither does not need a dedicated platform engineer yet, however much it would like one.",
+        ],
+      },
+      {
+        h: "Series B: split delivery from platform, and add a manager",
+        p: [
+          "By Series B two things have usually broken at once. The first is that product delivery and platform work are competing for the same people, and platform always loses — it has no customer asking for it, so it is deferred until something falls over. The second is span of control: a founder or lead who was informally managing five engineers is now informally managing eleven, badly, on top of their real job.",
+          "Splitting the team is the structural fix, and it is the stage where a dedicated platform or infrastructure owner stops being a luxury. Adding your first engineering manager is the people fix. Both are usually needed within a quarter or two of each other.",
+          "Be deliberate about what the manager is for. An engineering manager hired to write code will resent the job within six months; one hired to run people while a team of four ships will be bored. The honest version of the brief at this stage is usually a hands-on manager with a real team to grow into — and saying that out loud attracts the people who want it.",
+        ],
+        list: {
+          intro: "Three signals that you are at this stage rather than approaching it:",
+          items: [
+            "Platform work is only done during incidents, because it is the only time it gets prioritised.",
+            "Someone senior spends more than half their week on one-to-ones, hiring and unblocking, and calls it the part of the job they do at night.",
+            "Two engineers have solved the same problem differently in the same quarter, and nobody noticed until review.",
+          ],
+        },
+      },
+      {
+        h: "Series C and beyond: the leadership layer",
+        p: [
+          "At Series C there are multiple teams, which means there are managers, which means there is a question about who runs them and who owns the standards between them. This is where a Director or VP of Engineering is genuinely warranted: not to write the code, and not to manage individual engineers, but to own the shape of the organisation and the technical strategy across it.",
+          "The timing argument here is the same as it is for any senior appointment. Hiring a VP Engineering before there is an engineering organisation to lead produces an expensive person doing staff-engineer work, usually badly, because that was never the job they wanted. Build the layer beneath first, then hire the person to lead it.",
+        ],
+      },
+      {
+        h: "Growth and pre-exit: depth, not new functions",
+        p: [
+          "Late-stage engineering hiring is rarely about adding a function nobody was doing. It is about depth and redundancy: a second person who understands each critical system, security and reliability owned rather than assumed, and a succession answer for every role whose departure would be a genuine problem.",
+          "Diligence is the forcing function. An acquirer or a late-stage investor will ask who owns each part of the system and what happens if that person leaves, and the honest answer is much easier to give if you built the redundancy before you were asked.",
+        ],
+      },
+      {
+        h: "The two mistakes that come from hiring out of sequence",
+        p: [
+          "Almost every engineering-org problem at a growing company traces back to one of two errors. The first is hiring the senior title too early — a VP or a Head of brought in before there is an organisation to lead, who ends up doing individual contributor work at a leadership salary and leaves out of boredom within the year. The second is leaning on generalists too long, keeping a seed-stage structure through Series B until the system has no owner, the platform has no advocate, and the people have no manager.",
+          "The fix for both is the same: hire to the stage the business is actually at, and to the stage it will reach in the next twelve to eighteen months, rather than to the title that sounds reassuring in a board meeting.",
+        ],
+      },
+      {
+        h: "How Rivago helps",
+        p: [
+          "A large part of our technology practice is helping founders and engineering leaders hire the role the business is ready for, rather than the one on the original brief. That often means saying that a search should be for a staff engineer rather than a VP, or that the platform hire should come before the third product engineer.",
+          "If you tell us where the company is and where it is going, we will tell you which appointment we would make first — including when the honest answer is that you do not need us yet.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "When should a startup hire its first engineering manager?", a: "Usually around Series B, when informal management has outgrown the person doing it alongside another full-time job — typically somewhere past six or seven engineers reporting loosely to one lead. The trigger is span of control rather than headcount: one person spending most of a week on one-to-ones, hiring and unblocking is the signal, whatever the team size." },
+      { q: "Should we hire a VP Engineering or a staff engineer?", a: "A staff engineer is paid for technical judgement and a VP Engineering is paid for organisation and strategy, and at most Series A companies the gap is only fillable by the former. Hire the VP once there are managers to lead. Briefing for one while advertising the other is a common reason senior technical searches stall." },
+      { q: "When does a platform or infrastructure hire make sense?", a: "When platform work is only being done during incidents, because it has no customer to advocate for it and loses every prioritisation contest to product delivery. That usually arrives around Series B, earlier if the product is itself infrastructure." },
+      { q: "Is it a mistake to give early engineers senior titles?", a: "It creates a problem later rather than immediately. A title given at seed to close a candidate has to be honoured at Series B, when either the person grows into a job they were not hired for or somebody is hired above them. Neither is fatal, but both are easier to avoid than to fix." },
+      { q: "What is the right order to build an engineering team?", a: "Broadly: generalists at seed with architectural judgement borrowed rather than employed, a first domain owner at Series A, a split of delivery and platform plus a first manager at Series B, a leadership layer at Series C, and depth and redundancy at growth stage. Hire to the stage you are at and the one you will reach within twelve to eighteen months." },
+    ],
+    next: [
+      { label: "Technology hiring", href: "/industries#technology" },
+      { label: "Direct hire", href: "/services/direct-hire" },
+      { label: "Executive search", href: "/services/executive-search" },
+    ],
+  },
+  {
+    id: "ai-in-recruitment",
+    title: "AI in recruitment: what it does well, and where it fails",
+    dek: "Screening, sourcing and matching have all been automated. A clear-eyed account of which parts work, which parts are oversold, and what a buyer should ask.",
+    date: "2026-09-11",
+    displayDate: "11 Sep 2026",
+    readTime: "10 min read",
+    category: "blog",
+    categoryLabel: "Blog",
+    summary:
+      "AI is genuinely good at the parts of recruitment that are search and summarisation — finding people who match a pattern, drafting outreach, extracting structure from unstructured CVs, scheduling. It is unreliable at the parts that are judgement: deciding who is actually good, predicting performance, and assessing anything the training data under-represents. The practical line is that AI should widen the top of the funnel and remove administration, while a human owns every decision that eliminates a candidate. Buyers should ask any vendor three things: what the model was trained on, what happens when it is wrong, and who is accountable for the decision.",
+    sections: [
+      {
+        h: "What AI is genuinely good at",
+        p: [
+          "Recruitment contains a great deal of work that is pattern-matching and text handling, and machines have become very good at both. Sourcing is the clearest case: given a description of a person, a model can search a very large index and return candidates who resemble it, far faster and more exhaustively than a human working through a database by keyword. That is a real improvement, because the limiting factor in most searches is how many relevant people you ever saw.",
+          "The same applies to the administrative layer. Parsing a CV into structured fields, scheduling across five calendars, drafting a first outreach message, summarising a call, chasing a reference — these are tasks with a correct answer and a low cost of error, and automating them frees the hours that were never the valuable part of the job.",
+        ],
+        list: {
+          intro: "The uses where the technology is straightforwardly better than the manual alternative:",
+          items: [
+            "Searching a large candidate index for people who resemble a described profile.",
+            "Extracting structured data from CVs, job specs and notes.",
+            "Scheduling, reminders, and the administrative traffic around a loop.",
+            "Drafting — outreach, summaries, debrief notes — with a human editing before it is sent.",
+            "Surfacing inconsistencies for a human to check, rather than resolving them.",
+          ],
+        },
+      },
+      {
+        h: "Where it fails, and why the failure is hard to see",
+        p: [
+          "The difficult cases are the ones that look like pattern-matching and are actually judgement. Whether someone will be good in a role is not a property of their CV; it is a prediction about a person in a context, and the historical data a model learns from records who was hired and who succeeded under a previous set of decisions — including the bad ones. A model trained on past hiring learns past hiring, and that includes whatever was wrong with it.",
+          "This is why automated scoring of candidates deserves more scepticism than automated sourcing. A sourcing model that misses good people costs you reach, which you can notice and correct. A scoring model that eliminates good people produces a shortlist that looks clean and confident, and you never see what it removed. The error is invisible by construction, which is exactly the property you do not want in a system making decisions about people.",
+          "The second failure mode is narrower and more practical: models are weakest where the training data is thinnest. Unusual career paths, non-linear histories, credentials from smaller markets, career breaks, and roles whose titles do not travel between industries are all under-represented, and all of them describe candidates who are often excellent and consistently under-ranked.",
+        ],
+      },
+      {
+        h: "The line we draw",
+        p: [
+          "The rule that survives contact with real searches is this: automation may widen the funnel and carry administration, but a human owns every decision that removes a candidate. Anything that adds people to consideration is low-risk and usually worth doing. Anything that subtracts them needs a person who can be asked why.",
+          "That is not a philosophical position. It is a practical one about where errors become visible. An over-inclusive shortlist wastes a screening call. An over-exclusive one costs you a hire you will never know you missed.",
+        ],
+        table: {
+          head: ["Task", "Sensible to automate?", "Why"],
+          rows: [
+            ["Finding candidates who match a profile", "Yes", "Widens reach; errors cost time, not people"],
+            ["Parsing CVs and specs into structured data", "Yes", "Deterministic, checkable, low stakes"],
+            ["Scheduling and follow-up", "Yes", "No judgement involved"],
+            ["Drafting outreach and summaries", "With editing", "Output is reviewed before it has an effect"],
+            ["Ranking or scoring candidates", "With caution", "Encodes historical decisions; errors are hidden"],
+            ["Rejecting candidates automatically", "No", "Removes people with no human accountable"],
+            ["Assessing culture, potential or motivation", "No", "Not inferable from the available data"],
+          ],
+        },
+      },
+      {
+        h: "What a buyer should ask a vendor",
+        p: [
+          "Most procurement conversations about recruitment AI focus on accuracy claims, which are the least useful thing to compare because nobody discloses the test set. Three other questions tell you more.",
+          "What was the model trained on, and does it include your kind of role in your kind of market? A tool trained largely on one sector's hiring in one country will rank candidates from elsewhere lower, and it will do so quietly. What happens when it is wrong — is there a route by which a candidate or a hiring manager can surface a bad outcome, and does anything change as a result? And who is accountable for a decision the system makes: if a candidate asks why they were rejected, is there a person who can answer, or only a score?",
+          "There is a regulatory dimension to the third question that is moving quickly. Several jurisdictions now place obligations on employers using automated tools in hiring decisions — around disclosure, human oversight, and in some cases independent auditing. The specifics vary by jurisdiction and change often enough that anything written here would date; the practical point is that automated rejection is the highest-risk use both ethically and legally, and it is the one to keep a human in.",
+        ],
+      },
+      {
+        h: "What this means for candidates",
+        p: [
+          "If you are applying rather than hiring, the honest advice is unglamorous. Structure helps: clear titles, explicit technologies and responsibilities, and plain descriptions of what you owned are easier for both a model and a tired human to parse than elegant prose. That is not gaming the system; it is writing clearly.",
+          "The more useful move is to reduce how much of your candidacy depends on automated screening at all. A referral, a direct approach, or a recruiter who has actually spoken to you all route around the part of the process most likely to misread an unusual history. That has always been true. Automation has made it more true.",
+        ],
+      },
+      {
+        h: "How Rivago helps",
+        p: [
+          "We use these tools for what they are good at — mapping a market, surfacing people a keyword search would not reach, and taking administration off a search — and we do not use them to decide who is worth meeting. Every candidate presented to a client has been interviewed by the partner presenting them, and every rejection has a person behind it who can say why.",
+          "If a tool is part of your own process and you want a second opinion on where it sits in the funnel, that is a conversation we are happy to have without a mandate attached.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Can AI replace a recruiter?", a: "It replaces parts of the work — searching, parsing, scheduling, drafting — and not the part that decides who is actually good. Prediction of performance from a CV is not a solved problem, and the errors a scoring model makes are invisible in a way that sourcing errors are not. The useful framing is that automation widens the funnel while a human owns every decision that removes someone." },
+      { q: "Is it safe to use AI to screen out candidates automatically?", a: "It is the highest-risk use, both practically and legally. A model trained on historical hiring reproduces historical decisions, and an over-exclusive shortlist costs you hires you will never see. Several jurisdictions also place obligations on employers using automated tools in hiring decisions — disclosure, human oversight, and in some cases auditing. Keep a person accountable for rejections." },
+      { q: "Does AI make hiring more biased or less?", a: "Either, depending on where it sits. Used to widen reach it can surface people a keyword search would never have found. Used to rank or reject it encodes whatever was in the training data, and is weakest exactly where that data is thinnest — unusual paths, career breaks, credentials from smaller markets." },
+      { q: "What should I ask a recruitment AI vendor?", a: "What the model was trained on and whether it covers your roles and markets; what happens when it is wrong and whether anything changes as a result; and who is accountable for a decision it makes. Accuracy claims are the least comparable thing on offer, because the test set is never disclosed." },
+      { q: "How should a candidate write a CV that AI will read properly?", a: "Plainly. Explicit titles, technologies and responsibilities, and direct descriptions of what you owned, parse better for both software and a tired human than elegant prose. The higher-leverage move is to route around automated screening altogether — a referral or a direct conversation with a recruiter does not depend on it." },
+    ],
+    next: [
+      { label: "How we work", href: "/about" },
+      { label: "Talk to a partner", href: "/contact-us" },
+      { label: "Recruitment Process Outsourcing", href: "/services/rpo" },
+    ],
+  },
+  {
+    id: "skills-based-hiring",
+    title: "Skills-based hiring: how to actually do it",
+    dek: "Dropping the degree requirement is the easy part. What has to change in the brief, the screen and the interview for skills-based hiring to mean anything.",
+    date: "2026-09-08",
+    displayDate: "8 Sep 2026",
+    readTime: "8 min read",
+    category: "interview",
+    categoryLabel: "Interview guide",
+    summary:
+      "Skills-based hiring means assessing what someone can do rather than inferring it from where they have been. Most attempts fail at the second step: the degree requirement comes off the advert, and the screen, the shortlist and the interview carry on using employer prestige and job titles as proxies. Doing it properly means naming the skills that actually predict success in the role, deciding in advance how each one will be evidenced, and replacing CV-pattern screening with something that tests the claim. It widens the pool meaningfully — but only if the assessment work is done, and it is more work, not less.",
+    sections: [
+      {
+        h: "What it actually means",
+        p: [
+          "Skills-based hiring is the practice of assessing a candidate against what the job requires them to do, rather than inferring capability from credentials, employer names or years served. The argument for it is simple: those proxies were never very predictive, and they systematically exclude people who can do the work but took an unusual route to being able to.",
+          "The argument against doing it badly is equally simple. A proxy is a cheap signal, and removing it without replacing it leaves you with nothing — which is why so many skills-based initiatives quietly revert within a year. The degree line comes off the advert, applications rise, the screening team has no new instrument, and they fall back on exactly the same heuristics they used before.",
+        ],
+      },
+      {
+        h: "Start with the brief, not the advert",
+        p: [
+          "The work begins before anything is posted. Name the four or five things a person has to be able to do for this role to go well, in terms specific enough that two people would agree on whether a candidate had demonstrated them. \"Strong communicator\" fails that test. \"Can take an ambiguous request from a non-technical stakeholder and come back with a scoped proposal\" passes it.",
+          "Then, for each one, decide in advance how it will be evidenced — a work sample, a structured question with a known good answer, a portfolio walkthrough, a reference question. Deciding this before you meet anyone is what stops the bar moving candidate by candidate, and it is the same discipline behind a good scorecard.",
+        ],
+        list: {
+          intro: "A usable skill definition has three parts:",
+          items: [
+            "The task, described concretely enough to be observed rather than asserted.",
+            "The standard — what a strong answer looks like, agreed before the first interview.",
+            "The evidence — which stage of the process will test it, and how.",
+          ],
+        },
+      },
+      {
+        h: "The screen is where it usually fails",
+        p: [
+          "If the shortlist is still being built by scanning CVs for recognisable employers and titles, nothing has changed except the wording of the advert. This is the step that takes real effort to replace, because CV-pattern screening is fast and the alternatives are not.",
+          "The workable replacements are a short structured application — three or four questions about relevant work, scored against the standard you agreed — or a brief, genuinely brief, work sample. Both cost more than reading a CV. Both are also the only thing that makes the rest of the exercise meaningful, and a structured application is cheaper than most teams expect once the questions are written.",
+          "One caution on work samples: length is where goodwill is lost. An unpaid exercise that takes a candidate a full day will be completed mainly by people who can afford a spare day, which reintroduces the selection effect you were trying to remove. Keep it under an hour, or pay for it.",
+        ],
+      },
+      {
+        h: "What to keep from the old process",
+        p: [
+          "Skills-based does not mean credential-blind in every case. Where a qualification is a legal or regulatory requirement — clinical registration, a licence to practise, a security clearance — it is not a proxy for capability, it is a condition of doing the job at all, and treating it as a bias to be removed is a category error.",
+          "Domain experience is the more interesting case. It is often a genuine requirement and often a lazy one, and the way to tell is to ask what specifically the experience provides. If the answer is knowledge of a regulatory environment or a technical stack, that is testable and therefore a skill. If the answer is that everyone in the team has it, that is a proxy.",
+        ],
+      },
+      {
+        h: "What changes, and what it costs",
+        p: [
+          "Done properly, the pool widens — that is the point, and it is the return. You will see candidates from adjacent industries, from non-traditional educational routes, and from smaller employers whose names carry no signal, and some of them will be the strongest people in the process.",
+          "The cost is front-loaded work and slower screening. Designing the assessment is real effort, interviewers have to be trained on the standard, and a structured application takes longer to review than a CV. Teams that expect skills-based hiring to be faster are usually disappointed. Teams that expect it to reach people they were not reaching are usually not.",
+        ],
+      },
+      {
+        h: "How Rivago helps",
+        p: [
+          "Every search we run starts with a scorecard agreed in the intake session, and every candidate we present has been interviewed against it — which is the same discipline under a different name. Where a client wants to move to skills-based hiring, the practical help is usually in the first hour: turning a brief full of proxies into a list of things a person has to be able to do, and deciding how each one gets evidenced.",
+          "We will also tell you when a requirement on the brief is doing no work, which is the least popular and most useful part of the conversation.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "What is skills-based hiring?", a: "Assessing candidates against what the role requires them to do, rather than inferring capability from credentials, employer names or years served. In practice it means defining the four or five skills that predict success, deciding in advance how each will be evidenced, and screening against that rather than against CV patterns." },
+      { q: "Why do skills-based hiring initiatives fail?", a: "Almost always at the screen. The degree requirement comes off the advert but the shortlist is still built by scanning CVs for recognisable employers and titles, so nothing has changed except the wording. Removing a proxy without replacing it with an assessment leaves the team with no instrument and they revert to the old heuristics." },
+      { q: "Should we still require a degree?", a: "Only where it is a legal or regulatory condition of doing the job — clinical registration, a licence to practise, a clearance. Elsewhere, ask what specifically the qualification provides. If the answer is a testable body of knowledge, test it. If the answer is that it filters the pile, it is a proxy." },
+      { q: "Are work samples a good idea?", a: "Yes, with one caution: length. An unpaid exercise that takes a full day is completed mainly by candidates who can afford a spare day, which reintroduces the selection effect you were trying to remove. Keep it under an hour, or pay for it." },
+      { q: "Does skills-based hiring make hiring faster?", a: "No, and teams expecting that are usually disappointed. The work is front-loaded — designing assessments, training interviewers, reviewing structured applications — and a structured application takes longer to read than a CV. What it does reliably is widen the pool." },
+    ],
+    next: [
+      { label: "Structured interviews", href: "/resources/article?id=structured-interviews" },
+      { label: "Writing a job brief", href: "/resources/article?id=job-brief" },
+      { label: "Talk to a partner", href: "/contact-us" },
+    ],
+  },
+  {
+    id: "contract-vs-permanent",
+    title: "Contract, temporary, interim or permanent: which one you need",
+    dek: "Four engagement types, four different problems. A decision guide for choosing the structure before you write the brief.",
+    date: "2026-09-04",
+    displayDate: "4 Sep 2026",
+    readTime: "8 min read",
+    category: "blog",
+    categoryLabel: "Blog",
+    summary:
+      "The four common engagement types solve different problems and are not interchangeable. Permanent hiring is for work that continues indefinitely and benefits from accumulated context. Contract is for defined scope with a known end — a project, a migration, a build. Temporary is for capacity: peaks, seasonal volume and cover. Interim is for a leadership gap, where the job is to hold or turn something around rather than to do the work. Choosing the wrong structure is expensive in a specific way: permanent hiring for temporary work produces redundancies, and contracting for permanent work loses the institutional knowledge you were paying to build.",
+    sections: [
+      {
+        h: "The four types, side by side",
+        p: [
+          "Most briefs arrive with the engagement type already decided, and a reasonable share of them have it wrong — usually because the structure was chosen by which budget was available rather than by what the work actually is. It is worth five minutes at the start.",
+        ],
+        table: {
+          head: ["Type", "The problem it solves", "Typical length", "How it is usually charged"],
+          rows: [
+            ["Permanent", "Ongoing work that rewards accumulated context", "Indefinite", "One-off fee on hire"],
+            ["Contract", "Defined scope with a known end", "Weeks to months, fixed term", "Hourly or daily markup"],
+            ["Temporary", "Capacity — peaks, seasonal volume, cover", "Days to weeks", "Hourly markup"],
+            ["Interim", "A leadership gap that cannot wait for a search", "Months", "Day rate, month to month"],
+          ],
+          note: "Commercial models vary by market and by role. Confirm the structure before budgeting.",
+        },
+      },
+      {
+        h: "Permanent: when the context is the point",
+        p: [
+          "Permanent hiring is right when the work continues indefinitely and when someone who has been doing it for two years is materially better at it than someone who started last month. That second condition is the real test, and it is not true of every role. Where institutional knowledge compounds — the systems, the customers, the reasons things are the way they are — a permanent hire is the only structure that captures it.",
+          "The cost of getting this wrong in the other direction is redundancy. Hiring permanently for work that has a foreseeable end means an exit process, notice, possibly a payment, and a person who has to be told. That is worse for everyone than a contract that concludes on the date everyone agreed at the start.",
+        ],
+      },
+      {
+        h: "Contract: defined scope, known end",
+        p: [
+          "Contract engagements suit work with a shape: a migration, a system build, a regulatory programme, a product launch. The end is foreseeable even if the exact date moves, and the value is in the specific capability rather than in the accumulated context.",
+          "Two things make contract work well. The first is genuine scope — a contract brief that says \"help the team\" will run long, cost more than budgeted, and leave nobody able to say whether it succeeded. The second is worker classification, which is where contract engagements most often go wrong administratively. How a contractor is engaged, paid and supervised determines their status, and getting it wrong creates liability that surfaces later. This is one of the main reasons contract hiring runs through an agency payroll rather than direct.",
+        ],
+      },
+      {
+        h: "Temporary: capacity, not capability",
+        p: [
+          "Temporary staffing solves a different problem again: you have more work than people for a known period. A seasonal peak, a site that needs covering, a team down two people to parental leave. The requirement is capacity at a known standard, deployed quickly and scaled back when the peak passes.",
+          "The distinction from contract matters commercially. A contractor is usually engaged for a capability you do not have; a temporary worker for capacity you have run out of. Briefing one as the other produces either an overqualified person doing volume work and leaving, or an underqualified one on a project that needed specialist judgement.",
+        ],
+      },
+      {
+        h: "Interim: holding or turning, not doing",
+        p: [
+          "Interim leadership is for a gap at the top of a function — a departure, a parental leave, an acquisition, a turnaround — where the organisation cannot wait the three to six months a permanent search will take, and where the job is to lead rather than to execute.",
+          "The most common briefing error here is treating interim as a cheaper permanent hire. It is not cheaper: day rates for genuine interim operators are high, precisely because the person is expected to be effective in week one with no ramp. What you are buying is speed and experience, not a discount. The second error is failing to name the mandate. \"Hold the function steady until the permanent hire lands\" and \"restructure the department\" are different jobs requiring different people, and the interim should be told which one it is before they start.",
+        ],
+        list: {
+          intro: "Four questions that usually settle the choice:",
+          items: [
+            "Does the work have a foreseeable end? If yes, it is contract or temporary, not permanent.",
+            "Is someone better at this after two years than after two months? If yes, lean permanent.",
+            "Is the gap at the top of a function, with people reporting into it? If yes, interim rather than contract.",
+            "Are you short of capability or short of capacity? Capability is contract; capacity is temporary.",
+          ],
+        },
+      },
+      {
+        h: "Hiring across borders changes the question",
+        p: [
+          "If the person will work in a country where you have no legal entity, the engagement type is only half the decision — the other half is who employs them. Contracting an individual directly across a border is where worker classification risk is highest, and the consequences land on the client rather than the worker.",
+          "An Employer of Record is the usual answer: a third party becomes the legal employer in-country, handling payroll, tax, benefits and contracts, while the person works for you day to day. That is a separate decision from permanent versus contract, and it applies to both.",
+        ],
+      },
+      {
+        h: "How Rivago helps",
+        p: [
+          "We run all four structures, which means we have no commercial reason to talk you into the one with the largest fee. The most useful conversation is usually at the brief stage, before anything is advertised: what the work actually is, whether it ends, and whether the constraint is capability or capacity.",
+          "Where the answer involves hiring somewhere you hold no entity, we can act as the employer of record for it rather than sending you elsewhere.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "What is the difference between contract and temporary staffing?", a: "Contract solves a capability gap on work with a defined scope and a foreseeable end — a migration, a build, a programme. Temporary solves a capacity gap: more work than people for a known period, such as a seasonal peak or cover for leave. Briefing one as the other tends to produce either an overqualified person doing volume work, or an underqualified one on work that needed specialist judgement." },
+      { q: "When should I hire permanently rather than on contract?", a: "When the work continues indefinitely and when somebody who has done it for two years is materially better at it than someone who started last month. If that second condition is not true, the accumulated context you are paying for does not exist and a contract may fit better. Hiring permanently for work with a foreseeable end means a redundancy process later." },
+      { q: "What is an interim leader, and how is it different from a contractor?", a: "An interim fills a gap at the top of a function, with people reporting into the role, and is expected to be effective in week one without a ramp. A contractor is engaged for a specific capability on defined work. Interim is not a cheaper permanent hire — day rates are high, and what you buy is speed and experience." },
+      { q: "Why does worker classification matter?", a: "How a contractor is engaged, paid and supervised determines their employment status, and getting it wrong creates liability that surfaces later — usually for the client rather than the worker. It is one of the main reasons contract hiring runs through an agency payroll rather than a direct arrangement, and the risk is highest across borders." },
+      { q: "Can I hire a contractor in a country where I have no entity?", a: "Directly, it is the highest-risk version of a classification problem. The usual answer is an Employer of Record: a third party becomes the legal employer in-country for payroll, tax, benefits and contracts while the person works for you day to day. That decision is separate from whether the engagement is permanent or contract." },
+    ],
+    next: [
+      { label: "All staffing services", href: "/services" },
+      { label: "Contract staffing", href: "/services/contract-staffing" },
+      { label: "Interim & fractional leadership", href: "/services/interim-leadership" },
+    ],
+  },
+  {
+    id: "employer-of-record",
+    title: "Employer of Record: when to use one, and when not to",
+    dek: "Hiring someone in a country where you have no entity. What an EOR actually does, what it costs you in control, and the cases where it is the wrong tool.",
+    date: "2026-08-28",
+    displayDate: "28 Aug 2026",
+    readTime: "8 min read",
+    category: "blog",
+    categoryLabel: "Blog",
+    summary:
+      "An Employer of Record is a company that becomes the legal employer of your worker in a country where you have no entity, handling payroll, tax, benefits, contracts and statutory compliance while the person works for you day to day. It is the right tool for hiring one to a handful of people in a market you are testing, for moving quickly, and for removing classification risk. It is the wrong tool once headcount in a country is large enough that per-employee fees exceed the cost of an entity, where the role requires the worker to sign on your behalf, and in the small number of markets where EOR arrangements are legally constrained.",
+    sections: [
+      {
+        h: "What an EOR actually does",
+        p: [
+          "Employment is a legal relationship with a jurisdiction attached. To employ someone in a country, somebody has to be their legal employer there: registered, running compliant payroll, withholding the right taxes, providing statutory benefits, and issuing a contract that satisfies local law. Setting up an entity to do that takes months and carries ongoing cost.",
+          "An Employer of Record short-circuits it. The EOR already has the entity and the registrations. It employs the person formally, and you direct their work. On paper there are two relationships: the worker's employment contract with the EOR, and your service agreement with the EOR. In practice the person joins your team, uses your systems and reports to your manager.",
+        ],
+        list: {
+          intro: "What sits with the EOR:",
+          items: [
+            "The employment contract, compliant with local law.",
+            "Payroll, income tax withholding and social contributions.",
+            "Statutory benefits, leave entitlements and any mandatory insurance.",
+            "Onboarding paperwork, and termination handled to local requirements.",
+            "Liability for getting the above right.",
+          ],
+        },
+      },
+      {
+        h: "When it is the right tool",
+        p: [
+          "The clearest case is testing a market. You want one salesperson in a country, or two engineers, and you do not yet know whether the market justifies an entity. An EOR lets you find out with a person actually working there rather than with a forecast.",
+          "The second case is speed. Entity formation is measured in months and EOR onboarding in days or weeks, so when a strong candidate is available now and the entity is a quarter away, the EOR is the difference between hiring them and losing them.",
+          "The third is classification risk, and it is the one most often underrated. The alternative to an EOR is frequently engaging the person as an independent contractor — which, where they work full-time to your direction on your systems, is the arrangement most likely to be reclassified as employment later, with back taxes and penalties attached. The EOR removes that exposure by making the employment real.",
+        ],
+      },
+      {
+        h: "What it costs, and what you give up",
+        p: [
+          "Commercially, an EOR is usually a per-employee monthly fee on top of salary and statutory costs. That is the number to model against entity formation, and the crossover point depends on the country and on how many people you expect to employ there. A useful way to frame it: an EOR is cheap for a handful of people and expensive for a department.",
+          "The subtler cost is control. You are directing someone's work but you are not their employer, and that shapes things at the edges. Equity participation is more complicated. Some benefits are harder to offer than they would be in your own entity. Termination follows local law and the EOR's process, not yours. None of these are reasons to avoid an EOR; they are reasons to know what you are signing.",
+        ],
+      },
+      {
+        h: "When it is the wrong tool",
+        p: [
+          "Three situations push you toward an entity instead. The first is scale — once headcount in a country is substantial, per-employee fees stop being the cheaper option and you are paying a premium for flexibility you no longer need. The second is any role that requires the person to act for your company in a legal capacity: signing contracts, holding a regulated licence on your behalf, representing the entity to a regulator. They are not employed by you, which is precisely the point, and it becomes a problem here.",
+          "The third is jurisdictional. EOR arrangements are not uniformly straightforward everywhere — some markets constrain the practice, and some treat long-running arrangements differently from short ones. Rules change, and anything specific written here would date. The practical step is to confirm the position in the specific country before committing, rather than assuming EOR is universally available.",
+        ],
+      },
+      {
+        h: "EOR is not a hiring service",
+        p: [
+          "One distinction worth making, because it is a common source of confusion in procurement. An EOR employs a person you have already chosen. It does not find them. Recruitment and employment of record are separate services that are often bought together and sometimes sold as one.",
+          "That matters when comparing providers. A pure EOR platform will onboard whoever you send it and has no view on whether the hire is a good one. A recruiter who also acts as EOR can run the search and then employ the person in-country, which removes a handoff — but the two services should still be priced and judged separately.",
+        ],
+      },
+      {
+        h: "How Rivago helps",
+        p: [
+          "We recruit into the United States, Canada, the UAE and India, and where a client needs to hire somewhere they hold no entity, we can act as the employer of record for that person rather than handing them to a third party. That means one relationship covering the search and the employment.",
+          "If the honest answer is that you should form an entity instead, we will say so — that conversation is quicker than the alternative and it comes up more often than you would expect.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "What is an Employer of Record?", a: "A company that becomes the legal employer of your worker in a country where you have no entity. It holds the employment contract and handles payroll, tax withholding, statutory benefits and compliant termination, while the person works to your direction day to day." },
+      { q: "Is an EOR cheaper than setting up an entity?", a: "For a handful of people, usually yes — entity formation takes months and carries ongoing cost. For a department, usually no: per-employee monthly fees add up and at some headcount you are paying a premium for flexibility you no longer need. The crossover depends on the country and on how many people you expect to employ there." },
+      { q: "What is the difference between an EOR and hiring a contractor?", a: "A contractor is engaged as an independent business; an EOR arrangement is real employment with someone else as the employer. Where a person works full-time to your direction on your systems, the contractor route is the one most likely to be reclassified as employment later, with back taxes and penalties. An EOR removes that exposure." },
+      { q: "When should I not use an EOR?", a: "At scale in one country, where an entity becomes cheaper; for any role that must act for your company in a legal capacity, such as signing contracts or holding a regulated licence, because the person is not employed by you; and in markets where EOR arrangements are legally constrained. Confirm the position in the specific country rather than assuming availability." },
+      { q: "Does an EOR find candidates for me?", a: "No. An EOR employs a person you have already chosen — recruitment and employment of record are separate services, often bought together and sometimes sold as one. A recruiter who also acts as EOR removes a handoff, but the two should still be priced and judged separately." },
+    ],
+    next: [
+      { label: "Employer of Record", href: "/services/employer-of-record" },
+      { label: "All staffing services", href: "/services" },
+      { label: "Talk to a partner", href: "/contact-us" },
+    ],
+  },
+  {
+    id: "salary-benchmarking",
+    title: "How to benchmark a salary without a salary survey",
+    dek: "Published data is stale, generic, or behind a paywall. Five sources you already have access to, and how to combine them into a defensible band.",
+    date: "2026-08-22",
+    displayDate: "22 Aug 2026",
+    readTime: "7 min read",
+    category: "salary",
+    categoryLabel: "Salary guide",
+    summary:
+      "Most salary benchmarking problems come from treating a single published number as the answer. Published surveys are lagging by construction, aggregate across job titles that mean different things at different companies, and rarely segment finely enough to be useful for a specific role in a specific market. A more defensible band comes from triangulating five sources you already have: your own recent offers and declines, what candidates currently tell you they are on, advertised ranges where pay transparency applies, what your recruiter is seeing in live searches, and internal equity. None is sufficient alone; together they produce a range you can explain.",
+    sections: [
+      {
+        h: "Why the published number is not the answer",
+        p: [
+          "A salary survey is a photograph of the past. It reports what was paid during a collection window that closed before publication, which means every number in it lags the market by months at minimum, and by considerably more in a year where the market moved.",
+          "The deeper problem is aggregation. A survey reports a figure for a title, but titles are not standardised — a senior engineer at a forty-person company and one at a multinational are different jobs with the same name, and a single median across both describes neither. The finer the segmentation you need, the thinner the sample supporting it, and most surveys stop segmenting well before the level of detail a specific hiring decision requires.",
+          "None of this makes surveys useless. It makes them one input, best used for direction and structure rather than as the number.",
+        ],
+      },
+      {
+        h: "The five sources you already have",
+        p: [
+          "A defensible band comes from triangulation. Each of these is biased in a known direction, which is what makes combining them work — the biases do not point the same way.",
+        ],
+        table: {
+          head: ["Source", "What it tells you", "How it is biased"],
+          rows: [
+            ["Your own recent offers", "What you have actually been willing to pay", "Reflects your constraints, not the market's"],
+            ["Offers that were declined", "Where your number stopped being competitive", "Only visible if you ask why"],
+            ["What candidates say they earn", "Live market rates at the top of the funnel", "Self-reported; skews high"],
+            ["Advertised ranges", "What competitors will commit to publicly", "Wide by design where disclosure is required"],
+            ["Your recruiter's live searches", "What is closing right now, at your level", "Depends on how honest they are"],
+          ],
+        },
+      },
+      {
+        h: "Declines are the most useful and most wasted signal",
+        p: [
+          "The single most informative data point available to you is an offer a good candidate turned down, and the reason. It is precise — a specific person, a specific role, a specific number, a specific alternative — and it is current in a way no survey can be.",
+          "Most companies throw it away. The candidate declines, the recruiter records \"accepted another offer\", and nothing is learned. Asking one further question — what did the other offer look like, and was it the money — turns a lost candidate into the best benchmarking input you will get all quarter. Not everyone will answer. Enough will.",
+        ],
+      },
+      {
+        h: "Transparency rules have changed what is visible",
+        p: [
+          "In a growing number of jurisdictions employers are required to publish a pay range on job advertisements, and in some, to disclose ranges to candidates or existing employees on request. Where those rules apply, a substantial amount of competitor pay data became publicly readable, which is genuinely new.",
+          "Read it carefully, though. A published range is what a company will commit to publicly, which tends to be wider than what it will actually pay for a specific person — the top of an advertised band is often reserved for a candidate who does not exist. The useful reading is the floor, which is much harder to inflate, and the relative position of competitors against each other.",
+          "The specific obligations vary by jurisdiction and are changing, so confirm what applies where you are hiring rather than assuming.",
+        ],
+      },
+      {
+        h: "Build the band, then write down why",
+        p: [
+          "Combine the sources into a range with a defined bottom and top, and — this is the part usually skipped — write down what moves a candidate from one end to the other, in terms a panel can assess. A band with no articulated progression is a number with decoration, and it will be treated as a single figure by everyone who reads it.",
+          "Then check internal equity before you go to market. A band that is correct externally and wrong internally creates a problem you will meet later, the first time two people doing the same job compare notes. Where the external market has genuinely moved past your existing team, that is a decision to make deliberately rather than to discover.",
+        ],
+      },
+      {
+        h: "How Rivago helps",
+        p: [
+          "Recruiters see the part of the market that is actually transacting — what is being offered, what is being accepted, and what is being turned down, live, at the level you are hiring. That is the input a survey cannot provide, and it is worth asking for specifically rather than accepting a general reassurance that your band is fine.",
+          "We will tell you when a band is below what we are seeing close, including when that is not what you want to hear, because the alternative is a search that runs for months and ends with the band being raised anyway.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Are salary surveys worth buying?", a: "As one input, for direction and structure, yes. As the answer, no. They lag the market by construction, and they aggregate across titles that mean different things at different companies — a senior engineer at a forty-person company and at a multinational are different jobs sharing a name. The finer the segmentation you need, the thinner the sample behind it." },
+      { q: "How do I benchmark a salary with no budget for data?", a: "Triangulate five sources you already have: your own recent offers, offers that were declined and why, what candidates report earning, advertised ranges where pay transparency applies, and what your recruiter is seeing close in live searches. Each is biased in a different direction, which is what makes combining them work." },
+      { q: "Can I trust the salary ranges in job adverts?", a: "Read the floor rather than the ceiling. Where disclosure is required, published ranges are what a company will commit to publicly, which is usually wider than what it will pay a specific person — the top is often reserved for a candidate who does not exist. The bottom is much harder to inflate, and relative positions between competitors are informative." },
+      { q: "What is the most useful salary data a company already has?", a: "Offers that strong candidates declined, and the reason. It is a specific person, a specific number and a specific alternative, and it is current in a way no survey can be. Most companies record \"accepted another offer\" and learn nothing; one follow-up question turns it into the best input of the quarter." },
+      { q: "Should I match the market if it has moved past my existing team?", a: "That is a deliberate decision rather than a discovery, and it should be made before you go to market rather than after. A band that is right externally and wrong internally creates a problem the first time two people doing the same job compare notes." },
+    ],
+    next: [
+      { label: "Setting a salary band", href: "/resources/article?id=salary-band" },
+      { label: "What moves VP Engineering pay", href: "/resources/article?id=vp-eng-pay" },
+      { label: "Talk to a partner", href: "/contact-us" },
+    ],
+  },
   /* ── SIX ARTICLES ADDED, three interview guides and three salary guides,
      to give those two tabs something to hold. Written rather than
      re-categorised: the eight that existed only stretched to 2 and 2.
