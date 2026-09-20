@@ -61,6 +61,10 @@ export type Article = {
      professional endorsement. Nobody has given one, so there is nowhere to
      put an invented one. Add the field when a real reviewer exists. */
   summary?: string;
+  /* Hero image. Optional, and only the six long-form guides carry one —
+     see the note where they are set for why, and for which of them are a
+     genuine fit rather than decoration. */
+  image?: { src: string; alt: string };
   sections: ArticleSection[];
   faqs?: { q: string; a: string }[];
   next?: { label: string; href: string }[];
@@ -117,7 +121,21 @@ export const articles: Article[] = [
      removed from this file — worse, because a credential is a claim about
      qualifications. The Article type has no reviewer field for that reason.
 
-     DATES ARE PLACEHOLDERS, as with the six above. Set them at publication. */
+     DATES ARE PLACEHOLDERS, as with the six above. Set them at publication.
+
+     HERO IMAGES. These six carry one; the fourteen shorter articles do not,
+     because there is nothing honest to give them — public/assets holds eight
+     Adobe Stock frames licensed to the Rivago account and already used on
+     the services carousel, and spreading eight photographs across twenty
+     articles would mean each appearing two or three times.
+
+     Of the six used here, two are a genuine fit: the signed contract on the
+     Employer of Record guide, and the planning session on skills-based
+     hiring. The other four are generic office photography that decorates the
+     page rather than illustrating it. That is worth knowing rather than
+     pretending otherwise, and public/assets/services/LICENCES.md takes the
+     same view of them in its own words: "These are placeholders ... Rivago's
+     own photography beats all of it." Swap them as it is shot. */
   {
     id: "engineering-team-by-stage",
     title: "Building an engineering team by growth stage",
@@ -127,6 +145,7 @@ export const articles: Article[] = [
     readTime: "9 min read",
     category: "blog",
     categoryLabel: "Blog",
+    image: { src: "/assets/services/direct-office.jpg", alt: "An open-plan office floor with people working at desks" },
     summary:
       "An engineering team should be built in sequence, not all at once. At seed you want builders who can ship across the stack, with architectural judgement borrowed rather than employed. At Series A you make your first hire who owns a domain rather than a ticket queue. At Series B you split delivery from platform, and add your first engineering manager — because the span of control, not the headcount, is what breaks first. At Series C you add a leadership layer above the managers. The two failure modes are hiring the senior title before there is anything for it to lead, and leaning on generalists long past the point the system needed an owner.",
     sections: [
@@ -230,6 +249,7 @@ export const articles: Article[] = [
     readTime: "10 min read",
     category: "blog",
     categoryLabel: "Blog",
+    image: { src: "/assets/services/contract.jpg", alt: "A software developer working at a computer in an office" },
     summary:
       "AI is genuinely good at the parts of recruitment that are search and summarisation — finding people who match a pattern, drafting outreach, extracting structure from unstructured CVs, scheduling. It is unreliable at the parts that are judgement: deciding who is actually good, predicting performance, and assessing anything the training data under-represents. The practical line is that AI should widen the top of the funnel and remove administration, while a human owns every decision that eliminates a candidate. Buyers should ask any vendor three things: what the model was trained on, what happens when it is wrong, and who is accountable for the decision.",
     sections: [
@@ -322,6 +342,7 @@ export const articles: Article[] = [
     readTime: "8 min read",
     category: "interview",
     categoryLabel: "Interview guide",
+    image: { src: "/assets/services/rpo.jpg", alt: "A team working through a planning session with sticky notes on a wall" },
     summary:
       "Skills-based hiring means assessing what someone can do rather than inferring it from where they have been. Most attempts fail at the second step: the degree requirement comes off the advert, and the screen, the shortlist and the interview carry on using employer prestige and job titles as proxies. Doing it properly means naming the skills that actually predict success in the role, deciding in advance how each one will be evidenced, and replacing CV-pattern screening with something that tests the claim. It widens the pool meaningfully — but only if the assessment work is done, and it is more work, not less.",
     sections: [
@@ -399,6 +420,7 @@ export const articles: Article[] = [
     readTime: "8 min read",
     category: "blog",
     categoryLabel: "Blog",
+    image: { src: "/assets/services/temporary.jpg", alt: "Warehouse workers scanning boxes on a distribution floor" },
     summary:
       "The four common engagement types solve different problems and are not interchangeable. Permanent hiring is for work that continues indefinitely and benefits from accumulated context. Contract is for defined scope with a known end — a project, a migration, a build. Temporary is for capacity: peaks, seasonal volume and cover. Interim is for a leadership gap, where the job is to hold or turn something around rather than to do the work. Choosing the wrong structure is expensive in a specific way: permanent hiring for temporary work produces redundancies, and contracting for permanent work loses the institutional knowledge you were paying to build.",
     sections: [
@@ -492,6 +514,7 @@ export const articles: Article[] = [
     readTime: "8 min read",
     category: "blog",
     categoryLabel: "Blog",
+    image: { src: "/assets/services/eor.jpg", alt: "A pen resting on a signed contract" },
     summary:
       "An Employer of Record is a company that becomes the legal employer of your worker in a country where you have no entity, handling payroll, tax, benefits, contracts and statutory compliance while the person works for you day to day. It is the right tool for hiring one to a handful of people in a market you are testing, for moving quickly, and for removing classification risk. It is the wrong tool once headcount in a country is large enough that per-employee fees exceed the cost of an entity, where the role requires the worker to sign on your behalf, and in the small number of markets where EOR arrangements are legally constrained.",
     sections: [
@@ -571,6 +594,7 @@ export const articles: Article[] = [
     readTime: "7 min read",
     category: "salary",
     categoryLabel: "Salary guide",
+    image: { src: "/assets/services/executive.jpg", alt: "A microphone on a boardroom table" },
     summary:
       "Most salary benchmarking problems come from treating a single published number as the answer. Published surveys are lagging by construction, aggregate across job titles that mean different things at different companies, and rarely segment finely enough to be useful for a specific role in a specific market. A more defensible band comes from triangulating five sources you already have: your own recent offers and declines, what candidates currently tell you they are on, advertised ranges where pay transparency applies, what your recruiter is seeing in live searches, and internal equity. None is sufficient alone; together they produce a range you can explain.",
     sections: [

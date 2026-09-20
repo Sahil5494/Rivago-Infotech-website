@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { routes } from "@/lib/routes";
 import { findArticle, articles, type Article, type ArticleSection } from "../data";
+import ArticleToc from "@/components/ArticleToc";
 
 /* findArticle returns undefined for an id that is not in the library, and
    both exports below answer 404 rather than substituting an article.
@@ -161,28 +163,50 @@ export default async function ArticlePage({
               lending their credential, and nobody has given one. It belongs
               here the day somebody does. */}
           <p className="ad-by">Written by the Rivago Infotech recruitment team</p>
+
+          {/* next/image rather than a bare <img>: this is the largest element
+              on the page and the one that decides the LCP. priority, because
+              it is above the fold at every width and lazy-loading it would
+              delay the very paint it dominates. */}
+          {article.image && (
+            <figure className="ad-hero">
+              <Image
+                src={article.image.src}
+                alt={article.image.alt}
+                width={1600}
+                height={1067}
+                sizes="(max-width: 1099px) 100vw, 680px"
+                priority
+              />
+            </figure>
+          )}
         </header>
 
         {/* The dek used to be an <h2> inside a 386px gradient panel — a
-            standfirst marked up as a section heading, sitting above the real
-            section headings in the outline. It is a paragraph now, and the
-            long-form guides lead with `summary`, which answers the question
-            outright for a reader who wants it in one go. */}
-        <p className="ad-standfirst">{article.summary ?? article.dek}</p>
+            standfirst marked up as a section heading, above the real section
+            headings in the outline. It is a paragraph now, lifted onto its
+            own ground so a skimming reader catches it, and the long-form
+            guides lead with `summary`, which answers the question outright. */}
+        <div className="ad-standfirst">
+          <p>{article.summary ?? article.dek}</p>
+        </div>
 
-        {article.sections.length > 1 && (
-          <nav className="ad-toc" aria-labelledby="ad-toc-h">
-            <h2 id="ad-toc-h" className="ad-toc-h">Contents</h2>
-            <ol>
-              {article.sections.map((s) => (
-                <li key={s.h}><a href={`#${slug(s.h)}`}>{s.h}</a></li>
-              ))}
-              {article.faqs?.length ? <li><a href="#faq">Frequently asked questions</a></li> : null}
-            </ol>
-          </nav>
-        )}
+        {/* Two columns from 1100px up: Contents in the left margin, article
+            in the right. Below that the stylesheet returns the TOC to a block
+            at the top of the flow. */}
+        <div className="ad-cols">
+          {article.sections.length > 1 && (
+            <div className="ad-aside">
+              <ArticleToc
+                items={[
+                  ...article.sections.map((sec) => ({ id: slug(sec.h), label: sec.h })),
+                  ...(article.faqs?.length ? [{ id: "faq", label: "Frequently asked questions" }] : []),
+                ]}
+              />
+            </div>
+          )}
 
-        <div className="ad-body">
+          <div className="ad-body">
           {article.sections.map((s) => <Section key={s.h} s={s} />)}
 
           {article.faqs?.length ? (
@@ -209,6 +233,7 @@ export default async function ArticlePage({
               </ul>
             </section>
           ) : null}
+          </div>
         </div>
       </article>
 
@@ -219,17 +244,18 @@ export default async function ArticlePage({
               <h2>More in {article.categoryLabel.toLowerCase()}s</h2>
               <Link className="ad-related-all" href={routes.resources}>All resources<Arrow /></Link>
             </div>
-            <ul className="ad-related-grid">
+            {/* A list, not cards. Related is filtered to this article's own
+                category, so every card shared one colourway — and with the
+                kicker removed from the art, that was three identical green
+                rectangles in a row. These are navigation rather than display,
+                so they are rows: title, then category and length. */}
+            <ul className="ad-related-list">
               {related.map((a) => (
                 <li key={a.id}>
-                  <Link className="rc rc-md" data-cat={a.category} href={`${routes.article}?id=${a.id}`}>
-                    <div className="rc-art rc-art-md" aria-hidden="true" />
-                    <div className="rc-meta">
-                      <span className="rc-cat">{a.categoryLabel}</span>
-                      <span className="rc-dot" aria-hidden="true">·</span>
-                      <span className="rc-read">{a.readTime}</span>
-                    </div>
-                    <h3 className="rc-ti">{a.title}</h3>
+                  <Link href={`${routes.article}?id=${a.id}`}>
+                    <span className="ad-rel-ti">{a.title}</span>
+                    <span className="ad-rel-meta">{a.categoryLabel} · {a.readTime}</span>
+                    <Arrow />
                   </Link>
                 </li>
               ))}
