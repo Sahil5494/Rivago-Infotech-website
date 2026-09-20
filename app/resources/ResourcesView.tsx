@@ -385,10 +385,26 @@ export default function ResourcesView() {
       {/* The inline sign-up moved up to the control bar, where the original
           export had it. This band keeps the second one: the bar is above the
           fold and this catches someone who has read to the bottom. */}
+      {/* COPY. The heading was "Hiring intel, every Monday." and the line
+          under it "One short email a week — a comp benchmark, a market read,
+          and the roles worth knowing about."
+
+          Two problems, both of which mattered more once the form started
+          actually collecting addresses. A weekly cadence is a commitment
+          somebody has to keep, and the archive beside it shows nothing like
+          a weekly rhythm — so the first thing a subscriber could check would
+          contradict the promise they signed up to. And "a comp benchmark" is
+          the one thing this library does not have: the invented benchmark
+          figures came out of these articles, which is why vp-eng-pay is now
+          about what moves pay rather than what it is.
+
+          It says what can be delivered instead: something when there is
+          something, and the three kinds of thing it might be. Roles are real
+          — /view-jobs and /open-positions carry them. */}
       <section className="bg-news">
         <div className="bg-news-inner">
-          <h2>Hiring intel, <em>every Monday.</em></h2>
-          <p>One short email a week — a comp benchmark, a market read, and the roles worth knowing about. No noise.</p>
+          <h2>New guides, <em>as we publish them.</em></h2>
+          <p>A short email when something new goes up — a guide, a market read, or a role worth knowing about. Nothing else.</p>
           <NewsletterForm id="bg-news-email" variant="band" placeholder="you@company.com" />
         </div>
       </section>

@@ -2093,7 +2093,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 /* ══════════════════════════════════════════════════════════
    RESOURCES HUB — ported from the real Claude Design export
    ══════════════════════════════════════════════════════════ */
-.rwrap{max-width:1240px;margin:0 auto;padding:120px 44px 0}
+.rwrap{max-width:1240px;margin:0 auto;padding:120px 44px 110px}
 .rhead{padding:0 0 8px}
 .reyebrow{display:inline-flex;font-size:var(--fz1);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-inv)}
 .rtitle{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.06;color:var(--text-inv-1);margin-top:12px}
@@ -2338,13 +2338,34 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
   .rgrid{grid-template-columns:1fr;gap:38px}
   .rbar{flex-direction:column;align-items:flex-start}
   .rempty{padding:36px 24px}
+  .bg-news{padding:48px 22px;margin-top:56px;border-radius:20px}
 }
 
 
-.bg-news{background:var(--chip);color:var(--text-inv-1);padding:80px 44px;margin-top:24px}
-.bg-news-inner{max-width:840px;margin:0 auto;text-align:center}
-.bg-news h2{font-size:var(--fz12);font-weight:500;letter-spacing:-.03em;line-height:1.1}
-.bg-news p{font-size:var(--fz6);color:var(--text-inv-2);font-weight:400;line-height:1.7;max-width:480px;margin:12px auto 24px}
+/* ── THE SIGN-UP PANEL ────────────────────────────────────────────────────
+   It was filled --chip (#E3EFE9) on a #F2F7F5 page: a 1.03:1 step, square
+   corners in a column where everything else is rounded, and 24px of air
+   above it. It did not read as a section so much as a faint smudge at the
+   end of the page.
+
+   White now, which is the ladder the token block at the top of this file
+   describes — the ground takes the pale mint and white is reserved for what
+   sits ON it — with the 24px radius and the hairline the quote card on the
+   home page uses. The sign-up field keeps --surface-inv-2 and so reads as
+   inset into the white rather than floating on it.
+
+   It also sat flush against the footer: measured, the gap between its bottom
+   edge and the near-black footer was 0px, which is what made it look cut
+   off. .rwrap gained the bottom padding for that. */
+.bg-news{background:var(--surface-3);color:var(--text-inv-1);border:1px solid var(--rule-inv-1);
+  border-radius:24px;padding:64px 44px;margin-top:76px}
+.bg-news-inner{max-width:600px;margin:0 auto;text-align:center}
+.bg-news h2{font-size:var(--fz11);font-weight:500;letter-spacing:-.03em;line-height:1.14;text-wrap:balance}
+/* The accent half, matching the h1 at the top of the page — without it the
+   <em> renders flat, because the reset at the top of this file clears every
+   em site-wide. */
+.bg-news h2 em{color:var(--accent-inv)}
+.bg-news p{font-size:var(--fz5);color:var(--text-inv-2);font-weight:400;line-height:1.7;max-width:46ch;margin:14px auto 28px}
 .bg-news-form{display:flex;gap:8px;max-width:440px;margin:0 auto;padding:7px;background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:9999px}
 .bg-news-form input{flex:1;min-width:0;border:none;background:none;padding:11px 16px;font-family:var(--ff);font-size:var(--fz3);color:var(--text-inv-1);outline:none}
 .bg-news-form button{background:#A7F0CE;color:#06231A;border:none;border-radius:9999px;padding:0 22px;font-family:var(--ff);font-weight:500;font-size:var(--fz3);cursor:pointer;transition:background .2s}
