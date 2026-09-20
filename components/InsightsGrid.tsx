@@ -44,11 +44,26 @@ const ORDER: { i: number; tall: boolean }[] = [
   { i: 7, tall: false }, { i: 3, tall: true },
 ];
 
+/* The eight most recent, newest first.
+ *
+ * ORDER indexes 0-7 of whatever this receives, and it used to index the
+ * `articles` array directly — which was exact while the library held exactly
+ * eight. It holds fourteen now, so indexing the array straight would have
+ * pinned this grid to whichever eight happened to sit at the top of the file
+ * and silently changed which ones the moment anybody reordered it.
+ *
+ * Sorting by date here makes the selection mean something — "what we write
+ * about hiring" showing the most recent eight — and it maintains itself: a
+ * new article appears on the home page without anyone editing this file, and
+ * the grid still closes as a perfect rectangle because it is always given
+ * exactly eight. The library at /resources carries all fourteen. */
+const RECENT = [...articles].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 8);
+
 export default function InsightsGrid() {
   return (
     <div className="hins-grid">
       {ORDER.map(({ i, tall }) => {
-        const a = articles[i];
+        const a = RECENT[i];
         if (!a) return null;
         return (
           <Link

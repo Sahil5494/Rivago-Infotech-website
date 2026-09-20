@@ -12,9 +12,12 @@ export type ArticleSection = { h: string; p: string[] };
  * signs off on a real engagement, it belongs here — with figures only if they
  * were actually recorded.
  *
- * The other three are a re-cut of the eight articles that exist, not new
- * writing: two salary guides, two interview guides, four blog posts. Nothing
- * was invented to populate a tab. */
+ * The other three hold fourteen articles: four blogs, five interview guides
+ * and five salary guides. Eight were re-cut from the original library; the
+ * six guides below them were written, because a re-cut of eight only
+ * stretched those two tabs to two apiece. Nothing was invented to populate a
+ * tab — where there is no real content, as with case studies, the tab says
+ * so. */
 export type Category = "blog" | "case" | "interview" | "salary";
 
 export const CATEGORIES: { id: Category; label: string; plural: string }[] = [
@@ -72,6 +75,223 @@ export type Article = {
  */
 
 export const articles: Article[] = [
+  /* ── SIX ARTICLES ADDED, three interview guides and three salary guides,
+     to give those two tabs something to hold. Written rather than
+     re-categorised: the eight that existed only stretched to 2 and 2.
+
+     THE DATES ARE PLACEHOLDERS. They are spread across recent weeks so the
+     library does not show a three-month silence under a masthead promising a
+     weekly email — but nothing was published on these days. Set each to its
+     real publication date before this goes live.
+
+     Every claim in them is either general professional practice or a
+     mechanism anyone can verify. There is no "in our data", no percentage,
+     no count of mandates or partners. That is the constraint the other eight
+     were rewritten to meet and it applies to new writing first. */
+  {
+    id: "panel-debrief",
+    title: "How to run a panel debrief without groupthink",
+    dek: "The first person to speak sets the room. A debrief structure that keeps four independent reads from collapsing into one.",
+    date: "2026-09-15",
+    displayDate: "15 Sep 2026",
+    readTime: "6 min read",
+    category: "interview",
+    categoryLabel: "Interview guide",
+    kicker: "The debrief",
+    sections: [
+      {
+        h: "The first voice anchors the room",
+        p: [
+          "Open a debrief by asking the room what they thought and you will get one opinion, repeated four times with variations. Whoever speaks first — usually the most senior person, or the one who interviewed last — sets a position, and everyone else adjusts toward it rather than away. They are not being spineless. Anchoring is what happens to a group asked to form a view out loud, together, from a standing start.",
+          "The cost is specific: you convened four interviewers to get four reads, and you end up with one. If the panel was going to agree with the hiring manager anyway, the other three rounds were an expensive way to make the candidate feel scrutinised.",
+        ],
+      },
+      {
+        h: "Score before you meet, not during",
+        p: [
+          "Each interviewer submits a written score against the agreed scorecard before the debrief opens, and does not see anyone else's until they have. It takes ten minutes and it is the whole intervention — once a view is written down, the person holding it defends it in the room instead of quietly abandoning it.",
+          "It also changes what the debrief is for. Nobody needs a meeting to discover that four people agree. The meeting exists to examine the places they did not, which you cannot find until the independent reads are on the table.",
+        ],
+      },
+      {
+        h: "A split panel is information, not a problem",
+        p: [
+          "The instinct when scores diverge is to average them and move on, or to defer to whoever feels strongest. Both throw away the most useful thing in the room. A split usually means one interviewer saw something the others had no opportunity to see — a different question, a different part of the role, a moment late in a conversation that never came up elsewhere.",
+          "So ask the divergent scorer what they saw, specifically, before anyone argues. Often it resolves in a sentence: they probed something nobody else did. Sometimes it does not resolve, and that is a genuine finding — a candidate two capable people read completely differently is a risk you now know about rather than one you discover in month four.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "salary-band",
+    title: "How to set a salary band before you open the role",
+    dek: "A band decided after you meet someone is a band decided by that candidate. Settle it first — and know what to do when the market disagrees.",
+    date: "2026-09-02",
+    displayDate: "2 Sep 2026",
+    readTime: "6 min read",
+    category: "salary",
+    categoryLabel: "Salary guide",
+    kicker: "Setting the band",
+    sections: [
+      {
+        h: "Decide before you meet anyone",
+        p: [
+          "A band set after the first strong candidate is not a band. It is that candidate's expectation with a range drawn around it, and it will move again for the next one. The practical damage shows up later: two people doing the same job on numbers that cannot be explained to either of them, and an internal equity problem that surfaces the first time they compare notes.",
+          "Agreeing it up front also forces the conversation nobody wants to have early — what this role is actually worth to the business — at the point where it is still cheap to answer.",
+        ],
+      },
+      {
+        h: "What the band has to cover",
+        p: [
+          "A usable band spans the person you would be delighted to hire and the person you would be content with. If only one of those fits inside it, it is a number with decoration rather than a range, and your recruiter will treat it as a number.",
+          "Write down what moves someone from the bottom of it to the top, in terms a panel can assess. \"More experience\" is not one of those terms. \"Has run this function at this scale before\" is, and it gives the offer a reason a candidate can hear without feeling haggled with.",
+        ],
+      },
+      {
+        h: "When the market disagrees with your band",
+        p: [
+          "Sometimes the band is set honestly and the market still says no. There are three legitimate answers, and they are all fine: pay more, change the spec so the role matches the money, or accept that the search takes longer while you find someone for whom the rest of the offer outweighs the gap.",
+          "The failure is choosing none of them — leaving the band where it is, the spec where it is, and the expectation of speed where it is. That is the search that runs for five months and ends with the band being raised anyway, having burned the candidates who were approached at the old number and cannot be re-approached at the new one.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "reference-checks",
+    title: "Reference checks that tell you something",
+    dek: "Most reference calls confirm employment dates and nothing else. The questions that make the call worth making.",
+    date: "2026-08-19",
+    displayDate: "19 Aug 2026",
+    readTime: "5 min read",
+    category: "interview",
+    categoryLabel: "Interview guide",
+    kicker: "References",
+    sections: [
+      {
+        h: "The call most people make is worthless",
+        p: [
+          "The standard reference call confirms that someone worked somewhere between two dates and was, in the referee's estimation, good. Both facts were already on the CV, and the referee was chosen by the candidate. Run like that it is a formality that costs an hour and tells you nothing you can act on.",
+          "It is worth doing properly or not at all. Done properly it is the only part of a process where you hear about someone from a person who has actually watched them work for a year.",
+        ],
+      },
+      {
+        h: "Ask about the work, not the person",
+        p: [
+          "\"What are they like?\" invites a character reference and gets you adjectives. Ask instead what they were responsible for, what they would hand them again without hesitation, and what they would want to give them support on. The third question is the one that earns the call — phrased that way it is an ordinary management question rather than an invitation to criticise, and most referees will answer it honestly.",
+          "Be concrete about your own role too. A referee who knows you are hiring someone to run a team of twelve through a replatforming will tell you things they would never volunteer to a generic enquiry.",
+        ],
+      },
+      {
+        h: "The question worth saving for last",
+        p: [
+          "Close with: would you hire them again, and into what role? It is hard to answer evasively. The second half is what makes it work — a referee who would take someone back but into a different job has just told you something precise about fit, and has done it without having to say anything negative.",
+          "Listen to the pause as much as the answer. A warm, immediate yes and a considered, qualified yes are different pieces of information, and neither is a reason on its own to stop — they are reasons to go back to the candidate with a better question.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "comparing-offers",
+    title: "What a candidate is really comparing when they weigh two offers",
+    dek: "Two packages with the same headline number can be worth very different things. What actually differs — and why the higher offer often loses.",
+    date: "2026-08-05",
+    displayDate: "5 Aug 2026",
+    readTime: "7 min read",
+    category: "salary",
+    categoryLabel: "Salary guide",
+    kicker: "Two offers",
+    sections: [
+      {
+        h: "The headline number is the least of it",
+        p: [
+          "Two offers at the same total can carry entirely different risk. One might be mostly certain cash; the other might lean on equity whose value depends on an outcome years away and outside anyone's control. Adding those together into a single figure and comparing it to another single figure is the most common mistake made at this stage, and it is usually made by the side doing the offering.",
+          "Split any offer into what is certain, what is likely, and what is a bet, and compare the three columns separately. A candidate who has done that can explain their decision in a sentence. One who has not will keep circling the total and feel vaguely uneasy about it.",
+        ],
+      },
+      {
+        h: "The things that move the comparison",
+        p: [
+          "Notice period and start date decide whether an offer is even available. Company stage decides what the equity column means. The manager decides most of what the next two years feel like, and is the variable candidates underweight most consistently — the role is fixed at signing, the manager is the thing that changes it afterwards.",
+          "Then the unglamorous ones: what the working pattern actually is rather than what the policy says, whether the seat is a backfill or new, and how long the last three people stayed. None of these appear in the package, and all of them are knowable before signing if someone thinks to ask.",
+        ],
+      },
+      {
+        h: "Why the higher offer often loses",
+        p: [
+          "Candidates read process as character. A company that took six weeks and went quiet twice has said something about how it makes decisions, and a bigger number at the end does not undo it — if anything it confirms a suspicion that the money is there to compensate for something.",
+          "The offer that wins is frequently the one where the candidate could tell what the job was, met the people they would work with, and got a clear answer when they asked a hard question. That is not a soft advantage over money. It is what someone falls back on when the two columns are close and they have to choose anyway.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "interview-rounds",
+    title: "How many interview rounds is too many",
+    dek: "Every extra round costs you candidates and buys less signal than the one before it. How to work out what your loop is actually for.",
+    date: "2026-07-22",
+    displayDate: "22 Jul 2026",
+    readTime: "5 min read",
+    category: "interview",
+    categoryLabel: "Interview guide",
+    kicker: "The loop",
+    sections: [
+      {
+        h: "Every round should answer a question the last one could not",
+        p: [
+          "The test for a round is whether you can name, in one sentence, the question it exists to answer and why an earlier round could not answer it. Rounds that fail that test are almost always there for a different reason: a stakeholder who wants to be consulted, a habit inherited from a previous company, or a general sense that senior hires ought to be hard.",
+          "None of those are bad instincts, and none of them require a separate hour of the candidate's time. A stakeholder who wants a say can have the scorecard and the written debrief.",
+        ],
+      },
+      {
+        h: "What a long loop costs you",
+        p: [
+          "The obvious cost is attrition — strong candidates are in more than one process and the longest one loses by default. The less obvious cost is what the loop says about you. A candidate sitting through a sixth conversation is learning that this company finds decisions difficult, and they are right to wonder whether that stops at hiring.",
+          "There is a quality cost too. Signal per round falls quickly: the first two conversations move your estimate a great deal, the fifth barely at all. What extra rounds mostly add is confidence, which feels like information and is not.",
+        ],
+      },
+      {
+        h: "A default worth starting from",
+        p: [
+          "A screen, a craft conversation, a session with the team they would actually work with, and a decision-maker. Four, compressible to three where the decision-maker is in one of the others. Add a fifth only with a named question attached, and be honest about whether a take-home or a paid short engagement would answer it better.",
+          "Then hold the shape across candidates. A loop that expands for the ones you are unsure about is not gathering more evidence — it is giving you more chances to talk yourself into a decision you have already half made.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "negotiating-offer",
+    title: "Negotiating an offer without burning the relationship",
+    dek: "You will be working with these people on Monday. A plain guide to asking for more without making it the first thing they remember about you.",
+    date: "2026-07-08",
+    displayDate: "8 Jul 2026",
+    readTime: "6 min read",
+    category: "salary",
+    categoryLabel: "Salary guide",
+    kicker: "The negotiation",
+    sections: [
+      {
+        h: "Ask once, clearly, with a number",
+        p: [
+          "Vague dissatisfaction gets a vague response. \"I was hoping for a bit more\" puts the work of guessing onto the person who has already told you what they can do, and it usually produces a token increase that satisfies nobody. Name the number and say briefly what it is based on.",
+          "Ask once. A second and third approach after an answer has been given reads as bad faith even when it is not, and it is the part people remember. One clear ask, properly reasoned, is almost never held against anyone — it is a normal thing to do and most employers expect it.",
+        ],
+      },
+      {
+        h: "Negotiate the package, not just the salary",
+        p: [
+          "Base pay is often the most constrained line in an offer, tied to bands and internal comparisons the hiring manager cannot break without a wider problem. Other things are frequently easier to move: the start date, a notice buyout, an equity grant or refresh, title, guaranteed remote days, a signing amount that solves a one-off gap without resetting the band.",
+          "If base genuinely cannot move, ask what can — as a real question. It is often answered generously, because you have given the other side a way to say yes.",
+        ],
+      },
+      {
+        h: "Know what you will do if the answer is no",
+        p: [
+          "Decide before you ask whether you are accepting at the current number if nothing changes. If you are, the ask is free and you should make it. If you are not, you are declining, and that conversation should be held honestly rather than disguised as a negotiation.",
+          "The version that damages a relationship is almost never the ask itself. It is the ask made without a position behind it, repeated, and then accepted anyway at the original number — which teaches your new employer something about you before your first day.",
+        ],
+      },
+    ],
+  },
   {
     /* Was "What VP Engineering really pays in 2026 — across four markets",
        built on invented bands: $220-280k base, "10-15%" bonus, "closer to
