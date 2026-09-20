@@ -3006,7 +3006,10 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 /* Editorial hero (about) */
 .about-hero{padding:168px 44px 80px;position:relative}
 .about-hero-inner{max-width:1240px;margin:0 auto}
-.about-hero h1{font-size:var(--fz15);line-height:.95;letter-spacing:-.05em;font-weight:500;max-width:1100px;color:var(--text)}
+/* text-wrap:balance instead of two hard <br>. The breaks held the intended
+   three lines at 1440 and fought the wrapping at every other width —
+   measured, the headline came out at six lines at 390px. */
+.about-hero h1{font-size:var(--fz15);line-height:.95;letter-spacing:-.05em;font-weight:500;max-width:15ch;color:var(--text);text-wrap:balance}
 .about-hero .lede{max-width:580px;font-size:var(--fz8);line-height:1.55;color:var(--text2);font-weight:400;margin-top:40px}
 
 /* Belief / manifesto (about) */
@@ -3490,3 +3493,92 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 .off-city{font-size:var(--fz5);font-weight:500;color:var(--text);letter-spacing:-.01em}
 .off-meta{font-size:var(--fz2);color:var(--text3)}
 @media(max-width:760px){.off-strip{padding:34px 24px}.off-strip-inner{gap:20px}.off-chip{flex:1;min-width:140px}}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ABOUT — restructured to nine sections, and banded so it stops slabbing.
+
+   Measured before: values -> offices was 1.01:1 and offices -> careers
+   1.00:1, so the bottom third read as one continuous ground with 220px of
+   adjacent padding at a boundary nothing marked. The sequence now alternates
+   the whole way down, every step 17:1 or better:
+
+     hero dark · numbers light · story dark · build light · values dark ·
+     evaluate light · stories dark · offices light · work-with-us dark
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* The motion background sits behind the hero's content and is never in the
+   way of it: absolute, pointer-events none, and the inner content raised. */
+.about-hero{position:relative;overflow:hidden}
+.ah-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0}
+/* A vignette so the headline never sits on top of a bright link. Radial from
+   the left, where the copy is, fading out to the right where the field is
+   most visible. */
+.about-hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(120% 100% at 18% 50%,rgba(3,12,5,.94) 0%,rgba(3,12,5,.78) 42%,rgba(3,12,5,.35) 100%)}
+.about-hero-inner{position:relative;z-index:2}
+
+/* ── 3 · OUR STORY ─────────────────────────────────────────────────────── */
+.story{padding:120px 44px;background:var(--surface-1)}
+.story-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:80px;align-items:start}
+.story-h2{margin-top:18px;font-size:var(--fz12);line-height:1.08;letter-spacing:-.024em;font-weight:500;color:var(--text);text-wrap:balance}
+.story-body{max-width:64ch}
+.story-body p{font-size:var(--fz6);color:var(--text-2);line-height:1.76;font-weight:400;margin:0 0 22px}
+.story-body p:last-child{margin-bottom:0}
+/* The opening statement, set as the firm's own voice rather than dressed as
+   an unattributed quotation — it used to open with a quote mark and name
+   nobody. */
+.story-lead{font-size:var(--fz8) !important;color:var(--text-1) !important;line-height:1.5 !important;
+  font-weight:500;letter-spacing:-.016em;padding-left:22px;border-left:2px solid var(--accent);text-wrap:pretty}
+
+/* ── 4 · HOW WE BUILD DIFFERENTLY ──────────────────────────────────────── */
+.build{padding:120px 44px;background:var(--surface-3)}
+.build-inner{max-width:1240px;margin:0 auto}
+.build-head{margin-bottom:54px}
+.build-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.build-card{background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:20px;padding:34px 36px}
+.build-card h3{font-size:var(--fz7);font-weight:500;color:var(--text-inv-1);letter-spacing:-.02em;line-height:1.24;margin:0 0 14px;text-wrap:balance}
+.build-card p{font-size:var(--fz3);color:var(--text-inv-2);line-height:1.72;margin:0;max-width:52ch}
+
+/* ── 6 · HOW WE EVALUATE ───────────────────────────────────────────────── */
+.evalsec{padding:120px 44px;background:var(--surface-2)}
+.evalsec-inner{max-width:1240px;margin:0 auto}
+.evalsec-head{margin-bottom:54px;max-width:820px}
+.evalsec-lede{font-size:var(--fz6);color:var(--text-2);line-height:1.72;font-weight:400;margin:20px 0 0;max-width:62ch}
+.eval-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border-top:1px solid var(--rule-1)}
+.eval-step{padding:32px 30px 0 0;border-left:1px solid var(--rule-1);padding-left:28px}
+.eval-step:first-child{border-left:none;padding-left:0}
+.eval-n{display:block;font-family:var(--fm);font-size:var(--fz1);letter-spacing:.1em;color:var(--accent);margin-bottom:16px}
+.eval-step h3{font-size:var(--fz5);font-weight:500;color:var(--text-1);letter-spacing:-.015em;line-height:1.3;margin:0 0 12px;text-wrap:balance}
+.eval-step p{font-size:var(--fz3);color:var(--text-2);line-height:1.7;margin:0}
+
+/* ── 7 · HIRING MANAGER STORIES ────────────────────────────────────────── */
+.hms{padding:120px 44px;background:var(--surface-2)}
+.hms-inner{max-width:1240px;margin:0 auto}
+.hms-head{margin-bottom:50px;max-width:820px}
+.hms-lede{font-size:var(--fz5);color:var(--text-2);line-height:1.72;margin:18px 0 0;max-width:60ch}
+.hms-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.hms-card{position:relative;background:var(--surface);border:1px solid var(--rule-1);border-radius:20px;padding:32px 34px;
+  display:flex;flex-direction:column}
+.hms-badge{align-self:flex-start;font-family:var(--fm);font-size:var(--fz1);letter-spacing:.07em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--tint-2);background:var(--tint-1);border-radius:999px;padding:6px 13px;margin-bottom:22px}
+.hms-card blockquote{margin:0;font-size:var(--fz6);line-height:1.52;color:var(--text-1);letter-spacing:-.014em;
+  font-weight:400;text-wrap:pretty;flex:1}
+.hms-who{display:flex;flex-direction:column;gap:3px;margin-top:26px;padding-top:20px;border-top:1px solid var(--rule-1)}
+.hms-name{font-size:var(--fz3);font-weight:500;color:var(--text-1)}
+.hms-role{font-size:var(--fz2);color:var(--text-3)}
+
+@media(max-width:980px){
+  .story-inner{grid-template-columns:1fr;gap:34px}
+  .build-grid,.hms-grid{grid-template-columns:1fr}
+  .eval-grid{grid-template-columns:repeat(2,1fr)}
+  .eval-step:nth-child(3){border-left:none;padding-left:0}
+}
+@media(max-width:700px){
+  .story,.build,.evalsec,.hms{padding:88px 20px}
+  .eval-grid{grid-template-columns:1fr}
+  .eval-step{border-left:none;padding-left:0;padding-top:28px;border-top:1px solid var(--rule-1)}
+  .eval-step:first-child{border-top:none;padding-top:32px}
+  .build-card,.hms-card{padding:26px 24px}
+  .story-lead{padding-left:16px}
+}
