@@ -2129,28 +2129,42 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
    a token: --accent on this ground is #0E5C3C, the deep green that carries
    body text, and there is no light-ground mint in the token set — the bright
    #3DFF87 is defined for dark grounds only and is unreadable here. */
-.rbar{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:30px 0 22px}
-.rtabs{display:flex;gap:10px;flex-wrap:wrap}
-.rtab{padding:11px 18px;border-radius:9999px;border:1px solid var(--rule-inv-1);background:#FFFFFF;font-family:var(--ff);font-size:var(--fz3);font-weight:500;color:var(--text-inv-1);cursor:pointer;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);white-space:nowrap}
+.rbar{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:30px 0 22px}
+/* PILL SIZE IS TUNABLE FROM ONE PLACE. The four values below are the whole
+   control: change them here and the pills, their gap and their counts all
+   follow. They were baked into the .rtab rule before, so resizing meant
+   editing padding and font-size in two rules and then re-checking that the
+   row still fitted beside the newsletter.
+
+   Current values are a step down from the first pass, which set 11px/18px at
+   fz3 and came out heavy for what these are — a filter, not a call to
+   action. The row is the page's quietest control and was reading as its
+   loudest. */
+.rtabs{--rtab-py:7px;--rtab-px:13px;--rtab-fz:var(--fz2);--rtab-gap:7px;
+  display:flex;gap:var(--rtab-gap);flex-wrap:wrap}
+.rtab{padding:var(--rtab-py) var(--rtab-px);border-radius:9999px;border:1px solid var(--rule-inv-1);background:#FFFFFF;font-family:var(--ff);font-size:var(--rtab-fz);font-weight:500;color:var(--text-inv-1);cursor:pointer;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);white-space:nowrap}
 .rtab:hover{border-color:#8FE6BE;background:#F2FCF7}
 /* 10.4:1 — the deep ink on the mint, not the mint on white, which is the
    pairing that fails. */
 .rtab.on{background:#A7F0CE;border-color:#A7F0CE;color:#06231A}
 .rtab.on:hover{background:#9BEAC5;border-color:#9BEAC5}
 .rsub{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.rsub-l{font-size:var(--fz2);color:var(--text-inv-2)}
+.rsub-l{font-size:var(--fz2);color:var(--text-inv-2);white-space:nowrap}
 /* The export ran this row with three pills; there are five now, and the bar
-   is 1152px. Measured at 1440 the two halves wanted 1309px together, so the
-   row broke in two and the newsletter dropped under the pills. The label is
-   the only part that is a lead-in rather than information, so it is the part
-   that gives: it goes at 1180, where the row would otherwise wrap, and the
-   capsule alone still says what it is. */
-@media(max-width:1180px){.rsub-l{display:none}}
+   is 1152px. The first pass wanted 1309px across the two halves, so the row
+   broke in two and the newsletter dropped under the pills — which is what
+   the shortened label was paying for. Smaller pills bought the width back
+   and the full sentence is restored at the client's request.
+
+   The label is still the only part of the row that is a lead-in rather than
+   information, so it is still the part that gives: it hides at 1240, where
+   the row would otherwise wrap, and the capsule alone says what it is. */
+@media(max-width:1240px){.rsub-l{display:none}}
 /* White capsule on the cream ground, as in the export — it was
    --surface-inv-2, the same family as the band behind it, so the field had
    no edge. */
 .rsub-form{display:flex;gap:6px;padding:5px;background:#FFFFFF;border:1px solid var(--rule-inv-1);border-radius:9999px}
-.rsub-form input{border:none;background:none;padding:8px 14px;font-family:var(--ff);font-size:var(--fz3);color:var(--text-inv-1);outline:none;width:150px;min-width:0}
+.rsub-form input{border:none;background:none;padding:8px 13px;font-family:var(--ff);font-size:var(--fz2);color:var(--text-inv-1);outline:none;width:128px;min-width:0}
 @media(max-width:420px){.rsub-form input{width:100px}}
 /* The mint Subscribe button from the export. It was filled --chip, which
    made it the same colour as the capsule around it — a button that did not
@@ -2194,7 +2208,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 /* .rtabs / .rtab already exist above — they are the original tab bar, which
    outlived the three views it used to switch between. Only the count needed
    adding. */
-.rtab-ct{margin-left:8px;font-family:var(--fm);font-size:var(--fz1);color:var(--text-inv-3)}
+.rtab-ct{margin-left:7px;font-family:var(--fm);font-size:.85em;color:var(--text-inv-3)}
 .rtab.on .rtab-ct{color:var(--text-inv-2)}
 .rtab:focus-visible{outline:2px solid var(--accent-inv);outline-offset:2px}
 

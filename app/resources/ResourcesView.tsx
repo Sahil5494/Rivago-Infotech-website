@@ -235,7 +235,7 @@ export default function ResourcesView() {
         </div>
 
         <div className="rsub">
-          <span className="rsub-l">Updates, straight to your inbox.</span>
+          <span className="rsub-l">Get our latest updates sent straight to your inbox.</span>
           <NewsletterForm id="rsub-email" variant="inline" placeholder="your@email" />
         </div>
       </div>
