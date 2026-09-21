@@ -4,7 +4,7 @@ import { routes, offices, firm, marketsSentence, sentenceList } from "@/lib/rout
 import OfficesSection from "@/components/OfficesSection";
 import AboutHeroCanvas from "@/components/AboutHeroCanvas";
 import LogoMarquee from "@/components/LogoMarquee";
-import { testimonials } from "@/lib/testimonials";
+import ClientQuotes from "@/components/ClientQuotes";
 import CardSlider from "@/components/CardSlider";
 
 export const metadata: Metadata = {
@@ -346,7 +346,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── 6 · HOW WE EVALUATE TALENT ───────────────────────────────────── */}
-      <section className="evalsec gs lt">
+      <section className="evalsec gs inv">
         <div className="evalsec-inner">
           <div className="evalsec-head">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>How we evaluate</div>
@@ -366,40 +366,42 @@ export default function AboutPage() {
       </section>
 
       {/* ── 7 · HIRING MANAGER STORIES ───────────────────────────────────
-          READ THIS BEFORE ADDING TO IT. These four quotes come from
+          The home page's Clients section, same component and same shape: a
+          single full-width quote card with dots and arrows, changed rather
+          than tiled. It was a 2x2 grid of four small cards here — which is
+          exactly what ClientQuotes replaced on the home page, and for the
+          reason recorded in that component: a quote is the one piece of copy
+          on a page worth reading slowly, and four of them side by side at a
+          short measure invites nobody to read any.
+
+          THE BAND HAD TO FLIP WITH IT. .cq-card carries .inv and comes out
+          #0A1A0C; on the #060F07 this section used to be, that is a 1.07:1
+          step and the card would have disappeared into its own background.
+          The home page runs the same card on a light #EDF7F2 band precisely
+          so it lifts, which is the ladder the token block at the top of
+          globals.css describes. This band is now that band, to the same
+          value. HOW WE EVALUATE went dark in exchange, so the page still
+          alternates — see the banding note there.
+
+          READ THIS BEFORE ADDING TO IT. The four quotes come from
           lib/testimonials.ts, whose own header says they "remain endorsements
-          that have not been given". They are anonymised to a role and a
-          market, carry no figure and name no client — the form a hiring team
-          signs off on — but nobody has yet signed off.
-
-          They are already published in the Clients section of the home page,
-          so this is not a new publication. It is a second one, which is worth
-          being deliberate about rather than incidental. Two honest ways
-          forward: get four real sign-offs, which needs only a say-so at this
-          level of anonymity, or cut this section until they exist. What it
-          must not become is a place where more are written.
-
-          The file is the single source: add a real quote there and it appears
-          here and on the home page at once. */}
-      <section className="hms gs inv">
+          that have not been given". Anonymised to a role and a market, no
+          figure, no named client — the form a hiring team signs off on, but
+          nobody has yet signed off. They are already on the home page, so
+          this is a second publication rather than a new one. Four real
+          sign-offs fix it; at this level of anonymity that needs a say-so,
+          not a logo. What this must not become is a place where more are
+          written. */}
+      <section className="hms gs">
         <div className="hms-inner">
           <div className="hms-head">
-            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Hiring manager stories</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760, marginBottom: 0 }}>In their <em>own words.</em></h2>
-            <p className="hms-lede">Anonymised to a role and a market rather than a name — the form a hiring team can approve without legal sign-off.</p>
+            <div className="eyebrow ew-light" style={{ marginBottom: 14, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Hiring manager stories</div>
+            <h2 className="prf-h2">In their <em>own words.</em></h2>
+            <p className="prf-lede">Hiring teams in their own words, anonymised to a role and a market rather than a name.</p>
           </div>
-          <ul className="hms-grid">
-            {testimonials.map((t) => (
-              <li className="hms-card" key={t.name + t.badge}>
-                <span className="hms-badge">{t.badge}</span>
-                <blockquote>{t.quote}</blockquote>
-                <div className="hms-who">
-                  <span className="hms-name">{t.name}</span>
-                  <span className="hms-role">{t.role}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <div>
+            <ClientQuotes />
+          </div>
         </div>
       </section>
 
