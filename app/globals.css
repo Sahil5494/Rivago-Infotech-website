@@ -3525,6 +3525,13 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
   background:radial-gradient(110% 95% at 16% 50%,rgba(2,7,3,.82) 0%,rgba(2,7,3,.55) 45%,rgba(2,7,3,0) 100%)}
 .about-hero-inner{position:relative;z-index:2}
 
+/* The client marks under "By the numbers". Ruled off the figures above so
+   the two read as separate claims — the numbers are the firm's account of
+   itself, the marks are who agreed to be named. */
+.num-marks{margin-top:56px;padding-top:44px;border-top:1px solid var(--rule-inv-1)}
+.num-marks .clients-label{margin-bottom:22px}
+@media(max-width:700px){.num-marks{margin-top:40px;padding-top:34px}}
+
 /* ── 3 · OUR STORY ─────────────────────────────────────────────────────── */
 .story{padding:110px 44px;background:var(--surface-1)}
 .story-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:80px;align-items:start}

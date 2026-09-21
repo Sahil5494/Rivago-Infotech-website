@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { routes, offices, firm, marketsSentence, sentenceList } from "@/lib/routes";
 import OfficesSection from "@/components/OfficesSection";
 import AboutHeroCanvas from "@/components/AboutHeroCanvas";
+import LogoMarquee from "@/components/LogoMarquee";
 import { testimonials } from "@/lib/testimonials";
 import CardSlider from "@/components/CardSlider";
 
@@ -228,6 +229,26 @@ export default function AboutPage() {
                 <div className="num-l">{n.l}</div>
               </div>
             ))}
+          </div>
+
+          {/* The client marks, under the figures. Same LogoMarquee the home
+              page and /services/rpo use, reading the same ten entries from
+              lib/routes.ts — so a client added or removed appears on all
+              three at once.
+
+              This is the one piece of genuinely evidenced client proof on
+              the site: ten real clients whose marks are approved, per the
+              note in app/page.tsx. It belongs under the numbers because the
+              numbers are the firm's own account of itself and the marks are
+              somebody else's — the figures say what Rivago claims, the strip
+              says who agreed to be named.
+
+              No .inv here. The band is light, and .logo-chip img already
+              desaturates to a flat mark on a light ground; the inverted
+              variant is for the dark bands. */}
+          <div className="num-marks">
+            <div className="clients-label">Teams we recruit for</div>
+            <LogoMarquee />
           </div>
         </div>
       </section>
