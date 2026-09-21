@@ -13,6 +13,19 @@ const CREAM_NAV_PREFIXES = ["/resources", "/open-positions", "/view-jobs/role"];
  * Exact match only — "/view-jobs/role" is a normal cream page and keeps the global nav. */
 const NO_NAV_ROUTES = ["/view-jobs"];
 
+/* Routes whose first band is dark — see the note at isDarkHeroPage. "/"
+   is matched exactly; the rest also cover their children, which is what
+   carries /services to all seven service pages. */
+const DARK_HERO_PREFIXES = [
+  routes.home,
+  routes.about,
+  routes.services,
+  routes.industries,
+  routes.hireTalent,
+  routes.career,
+  routes.contactUs,
+];
+
 const Chevron = () => (
   <svg className="caret" viewBox="0 0 8 8" fill="none">
     <path d="M1.5 3l2.5 2.5L6.5 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -104,9 +117,25 @@ const mobileSections: { title: string; href?: string; links: { href: string; lab
 export default function Nav() {
   const pathname = usePathname();
   const isCreamPage = CREAM_NAV_PREFIXES.some((p) => pathname === p || pathname.startsWith(p + "/") || pathname.startsWith(p + "?"));
-  /* The home hero is a dark band running under the fixed nav, so the nav
-     has to invert there. Same mechanism as the cream pages below. */
-  const isDarkHeroPage = pathname === routes.home;
+  /* Pages that open on a dark band, so the nav inverts and floats over the
+     hero instead of sitting on it as a white bar. Same mechanism as the
+     cream pages above.
+
+     This was `pathname === routes.home`. Every one of the routes below has
+     a dark opening band and none of them got the treatment: measured at the
+     pixel twenty below the nav, /about is rgb(2,7,2), /industries,
+     /hire-talent, /career and /contact-us are rgb(3,12,5), /services and
+     all seven service pages rgb(7,32,16). Each was rendering an opaque
+     white bar over a near-black hero.
+
+     Prefix-matched rather than listed one by one so a new service page
+     inherits it. Kept as a list rather than measured at runtime because the
+     nav paints before the band does — a first frame with the wrong
+     treatment is exactly the flash this is meant to avoid. If a page's
+     opening band changes, its entry changes with it. */
+  const isDarkHeroPage = DARK_HERO_PREFIXES.some(
+    (p) => pathname === p || pathname.startsWith(p + "/"),
+  );
   const [solid, setSolid] = useState(false);
   const [openKey, setOpenKey] = useState<MMKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
