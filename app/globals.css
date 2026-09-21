@@ -3004,7 +3004,11 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 /* ============ ABOUT & CONTACT — ported from the real Claude Design exports ============ */
 
 /* Editorial hero (about) */
-.about-hero{padding:168px 44px 80px;position:relative}
+/* The home page hero's exact gradient and its 150px opening, so the two
+   dark openers on the site are the same object. This was a flat #030C05,
+   which is the one place About visibly diverged from the theme. */
+.about-hero{padding:150px 44px 96px;position:relative;
+  background:linear-gradient(180deg,#020703 0%,#040C06 52%,#07140A 100%)}
 .about-hero-inner{max-width:1240px;margin:0 auto}
 /* text-wrap:balance instead of two hard <br>. The breaks held the intended
    three lines at 1440 and fought the wrapping at every other width —
@@ -3078,7 +3082,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 @media(max-width:640px){.values-grid-4{grid-template-columns:1fr}}
 
 /* Careers closing band (about) */
-.careers{padding:130px 44px;text-align:center;position:relative;overflow:hidden;background:var(--bg)}
+.careers{padding:120px 44px;text-align:center;position:relative;overflow:hidden;background:var(--bg)}
 .careers::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(61,255,135,.08),transparent 60%);pointer-events:none}
 .careers-inner{position:relative;max-width:760px;margin:0 auto}
 .careers h2{font-size:var(--fz14);line-height:1.04;letter-spacing:-.045em;font-weight:500;color:var(--text)}
@@ -3513,12 +3517,16 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 /* A vignette so the headline never sits on top of a bright link. Radial from
    the left, where the copy is, fading out to the right where the field is
    most visible. */
+/* Lighter than it was, and keyed to the gradient's own top stop rather than
+   a flat #030C05 — at .94 it was painting over the gradient and giving the
+   band back the flat fill this change removes. It only has to keep the node
+   field off the copy. */
 .about-hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(120% 100% at 18% 50%,rgba(3,12,5,.94) 0%,rgba(3,12,5,.78) 42%,rgba(3,12,5,.35) 100%)}
+  background:radial-gradient(110% 95% at 16% 50%,rgba(2,7,3,.82) 0%,rgba(2,7,3,.55) 45%,rgba(2,7,3,0) 100%)}
 .about-hero-inner{position:relative;z-index:2}
 
 /* ── 3 · OUR STORY ─────────────────────────────────────────────────────── */
-.story{padding:120px 44px;background:var(--surface-1)}
+.story{padding:110px 44px;background:var(--surface-1)}
 .story-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:80px;align-items:start}
 .story-h2{margin-top:18px;font-size:var(--fz12);line-height:1.08;letter-spacing:-.024em;font-weight:500;color:var(--text);text-wrap:balance}
 .story-body{max-width:64ch}
@@ -3531,16 +3539,19 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
   font-weight:500;letter-spacing:-.016em;padding-left:22px;border-left:2px solid var(--accent);text-wrap:pretty}
 
 /* ── 4 · HOW WE BUILD DIFFERENTLY ──────────────────────────────────────── */
-.build{padding:120px 44px;background:var(--surface-3)}
+.build{padding:110px 44px;background:var(--surface-3)}
 .build-inner{max-width:1240px;margin:0 auto}
 .build-head{margin-bottom:54px}
 .build-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-.build-card{background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:20px;padding:34px 36px}
+/* --surface, matching .why-card on the home page: on a light band that is
+   rgba(0,8,5,.03), a wash rather than the solid --surface-inv-2 this had,
+   which read as a second panel colour the theme does not otherwise use. */
+.build-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:34px 36px}
 .build-card h3{font-size:var(--fz7);font-weight:500;color:var(--text-inv-1);letter-spacing:-.02em;line-height:1.24;margin:0 0 14px;text-wrap:balance}
 .build-card p{font-size:var(--fz3);color:var(--text-inv-2);line-height:1.72;margin:0;max-width:52ch}
 
 /* ── 6 · HOW WE EVALUATE ───────────────────────────────────────────────── */
-.evalsec{padding:120px 44px;background:var(--surface-2)}
+.evalsec{padding:110px 44px;background:var(--surface-2)}
 .evalsec-inner{max-width:1240px;margin:0 auto}
 .evalsec-head{margin-bottom:54px;max-width:820px}
 .evalsec-lede{font-size:var(--fz6);color:var(--text-2);line-height:1.72;font-weight:400;margin:20px 0 0;max-width:62ch}
@@ -3553,12 +3564,16 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 .eval-step p{font-size:var(--fz3);color:var(--text-2);line-height:1.7;margin:0}
 
 /* ── 7 · HIRING MANAGER STORIES ────────────────────────────────────────── */
-.hms{padding:120px 44px;background:var(--surface-2)}
+.hms{padding:110px 44px;background:var(--surface-2)}
 .hms-inner{max-width:1240px;margin:0 auto}
 .hms-head{margin-bottom:50px;max-width:820px}
 .hms-lede{font-size:var(--fz5);color:var(--text-2);line-height:1.72;margin:18px 0 0;max-width:60ch}
 .hms-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-.hms-card{position:relative;background:var(--surface);border:1px solid var(--rule-1);border-radius:20px;padding:32px 34px;
+/* --surface-3, not --surface. On a dark band --surface is rgba(240,244,240,
+   .04), a 4% overlay, where every dark card on the home page — .rfr-card,
+   .cq-card, .ind-card, .hins-card — is a solid #0A1A0C with the same
+   hairline. One card treatment per ground, site-wide. */
+.hms-card{position:relative;background:var(--surface-3);border:1px solid var(--rule-1);border-radius:20px;padding:32px 34px;
   display:flex;flex-direction:column}
 .hms-badge{align-self:flex-start;font-family:var(--fm);font-size:var(--fz1);letter-spacing:.07em;text-transform:uppercase;
   color:var(--accent);border:1px solid var(--tint-2);background:var(--tint-1);border-radius:999px;padding:6px 13px;margin-bottom:22px}
