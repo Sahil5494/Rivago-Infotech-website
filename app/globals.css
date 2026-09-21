@@ -3072,7 +3072,18 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 @media(max-width:960px){.leaders-grid{grid-template-columns:1fr 1fr}}
 
 /* Values grid — reused for "what we believe" (dark) and "what we won't do" (cream) */
-.values{padding:110px 44px;background:var(--chip);color:var(--dt)}
+/* --bg2 (#060F07), down a step from --chip (#0A1A0C), so the cards have a
+   ground to sit on. .ind-sec and .hins-sec on the home page run exactly
+   this pairing — a #0A1A0C card on a #060F07 band at 1.07:1, with the 1px
+   hairline doing the separating and the fill doing none, which is what the
+   token block at the top of this file argues for. */
+.values{padding:110px 44px;background:var(--bg2);color:var(--dt)}
+/* .why-card fills var(--surface), which on a dark band is a 4% white
+   overlay — right on the home page's WHITE Why Rivago band, wrong here.
+   --surface-3 is the dark-band card treatment .ind-card and .hins-card use.
+   Scoped, so the home page is untouched. */
+.values .why-card{background:var(--surface-3)}
+.values .why-card:hover{background:var(--chip)}
 .values-inner{max-width:1240px;margin:0 auto}
 .values-grid{grid-template-columns:repeat(3,1fr);gap:1px;border-radius:24px;margin-top:56px}
 .values-grid-divider{background:var(--rule-inv-1);border:1px solid var(--rule-inv-1)}
@@ -3587,8 +3598,12 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 /* ── 6 · HOW WE EVALUATE ───────────────────────────────────────────────── */
 /* Dark, so HIRING MANAGER STORIES below can be the light band its quote
    card needs. Every colour in .eval-* is a role token, so .inv in the
-   markup flips the whole section with no edits here. */
-.evalsec{padding:110px 44px;background:var(--surface-2)}
+   markup flips the whole section with no edits here.
+
+   --surface-3 (#0A1A0C) rather than --surface-2: OUR VALUES above dropped to
+   #060F07 to give its cards a ground, and two adjacent bands on the same
+   value is the one thing the dark ramp cannot survive. */
+.evalsec{padding:110px 44px;background:var(--surface-3)}
 .evalsec-inner{max-width:1240px;margin:0 auto}
 .evalsec-head{margin-bottom:54px;max-width:820px}
 .evalsec-lede{font-size:var(--fz6);color:var(--text-2);line-height:1.72;font-weight:400;margin:20px 0 0;max-width:62ch}

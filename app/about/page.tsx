@@ -5,7 +5,7 @@ import OfficesSection from "@/components/OfficesSection";
 import AboutHeroCanvas from "@/components/AboutHeroCanvas";
 import LogoMarquee from "@/components/LogoMarquee";
 import ClientQuotes from "@/components/ClientQuotes";
-import CardSlider from "@/components/CardSlider";
+import RefusalCards from "@/components/RefusalCards";
 
 export const metadata: Metadata = {
   title: "About Rivago Infotech · Partner-led search and staffing",
@@ -148,14 +148,8 @@ const numbers = [
    wrong credential discredits the whole page, and each one is checkable by a
    prospect in about a minute. */
 
-const refusals = [
-  { title: "We won't submit a CV", titleBreak: "without", em: "explicit consent.", desc: "Every candidate sees the brief, hears who the company is, and signs off on the submission. We've lost mandates over this. We've never lost a candidate's trust over it." },
-  { title: "We won't run a search", titleBreak: "with", em: "no scorecard.", desc: "If we can't agree on what “good” looks like in writing, the search doesn't start. It's the single most reliable predictor of a sticky placement, and the easiest discipline to skip." },
-  { title: "We won't hand off", titleBreak: "to a", em: "coordinator.", desc: "The partner who took the brief runs the search. The partner who runs the search closes the offer. The partner who closed the offer checks in at month twelve. One name. One person. Always." },
-  { title: "We won't poach", titleBreak: "from", em: "our own placements.", desc: "Twelve months off-limits as standard on retained engagements; twenty-four on senior-most retained searches. The promise that lets clients tell us things they wouldn't tell anyone else." },
-  { title: "We won't take an engagement", titleBreak: "we", em: "can't deliver.", desc: "If a brief is unwinnable — wrong comp band, wrong location, wrong timeline — we'll say so on the first call and lose the work. Nobody benefits from a six-month search that ends in nothing." },
-  { title: "We won't bill", titleBreak: "for", em: "a portal.", desc: "Every fee we charge buys a person on the line. If you wanted software you would have bought software. We're aware of the irony." },
-];
+/* `refusals` moved into components/RefusalCards.tsx with the layout, so
+   the copy and the cards that render it live in one file. */
 
 /* ── HOW WE EVALUATE TALENT ───────────────────────────────────────────────
    Asked for as "How we evaluate finance talent". Not written that way, and
@@ -317,31 +311,28 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── 5 · OUR VALUES ───────────────────────────────────────────────
-          Dark now. It was cream between two other light bands: measured, the
-          values → offices step was 1.01:1 and offices → careers 1.00:1, so
-          the bottom third of the page was one flat slab with 220px of empty
-          ground at a boundary the eye could not find. This is also the band
-          that most deserves it — a list of refusals is a statement, and dark
-          is this site's language for statements. */}
+      {/* ── 5 · OUR VALUES ─────────────────────────────────────────────────
+          The Why Rivago layout from the home page: two vertically offset
+          columns of cards, each with an icon, a claim and something held
+          back behind Read more. Same component classes, same stylesheet —
+          see the note at the top of RefusalCards.tsx for what the 01-06
+          numbers, the CardSlider and the CTA tile were traded for.
+
+          THE BAND DROPPED A STEP, from #0A1A0C to #060F07, because the card
+          needs somewhere to sit. .why-card is scoped to --surface-3 here —
+          #0A1A0C — which is the treatment every dark-band card on the home
+          page uses, and .ind-sec and .hins-sec run exactly this pairing at
+          1.07:1 with the 1px hairline doing the separating. HOW WE EVALUATE
+          took #0A1A0C in exchange so the two are not the same value. */}
       <section className="values inv" id="values">
         <div className="values-inner">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we won&apos;t do</div>
             <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>Our values, mostly stated<br />as the <em>things we refuse.</em></h2>
           </div>
-          {/* CardSlider, not a bare grid. It is a grid at width and a
-              swipeable track below it, which is how six cards stay usable on
-              a phone instead of becoming six full-height stacked blocks. */}
-          <CardSlider trackClassName="values-grid values-grid-divider" nav="dots">
-            {refusals.map((v, i) => (
-              <div className="value gs" key={v.title}>
-                <div className="value-num">{String(i + 1).padStart(2, "0")}</div>
-                <h3>{v.title}<br />{v.titleBreak} <em>{v.em}</em></h3>
-                <p>{v.desc}</p>
-              </div>
-            ))}
-          </CardSlider>
+          <div className="gs">
+            <RefusalCards />
+          </div>
         </div>
       </section>
 
