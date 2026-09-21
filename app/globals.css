@@ -3007,7 +3007,11 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 /* The home page hero's exact gradient and its 150px opening, so the two
    dark openers on the site are the same object. This was a flat #030C05,
    which is the one place About visibly diverged from the theme. */
-.about-hero{padding:150px 44px 96px;position:relative;
+/* sticky, z-index 0 and isolation, exactly as .hero-c — the band below pins
+   it and slides over. overflow:clip rather than hidden: clip does not make a
+   scroll container, so the sticky positioning still resolves against the
+   page. */
+.about-hero{padding:150px 44px 96px;position:sticky;top:0;z-index:0;overflow:clip;isolation:isolate;
   background:linear-gradient(180deg,#020703 0%,#040C06 52%,#07140A 100%)}
 .about-hero-inner{max-width:1240px;margin:0 auto}
 /* text-wrap:balance instead of two hard <br>. The breaks held the intended
@@ -3512,7 +3516,11 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 
 /* The motion background sits behind the hero's content and is never in the
    way of it: absolute, pointer-events none, and the inner content raised. */
-.about-hero{position:relative;overflow:hidden}
+/* This used to set position:relative and overflow:hidden, which cancelled
+   the sticky above — relative beats nothing, but it replaced the value, and
+   overflow:hidden on the pinned element is the other way this breaks. The
+   canvas still needs clipping, which overflow:clip on the rule above does. */
+.about-hero{isolation:isolate}
 .ah-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0}
 /* A vignette so the headline never sits on top of a bright link. Radial from
    the left, where the copy is, fading out to the right where the field is
@@ -3524,6 +3532,22 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 .about-hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(110% 95% at 16% 50%,rgba(2,7,3,.82) 0%,rgba(2,7,3,.55) 45%,rgba(2,7,3,0) 100%)}
 .about-hero-inner{position:relative;z-index:2}
+
+/* The shared scope for the pinned hero and the band that rides over it,
+   mirroring .ov-scope on the home page. */
+.ov-scope{position:relative;isolation:isolate}
+/* -34px 64px at .5, the same shadow .prob-sec casts upward over the home
+   page's hero. */
+.ov-over{position:relative;z-index:1;box-shadow:0 -34px 64px rgba(0,0,0,.5)}
+/* --bg3, not --bg. The home page makes the same move and says why: the band
+   sliding over a near-black hero reads as a panel arriving in proportion to
+   how bright it is. #F2F7F5 worked; white works harder, and the sequence
+   still alternates because the next band is dark. */
+.numbers.ov-over{background:var(--bg3);border-top:none}
+/* border-top:none with it. .numbers carries a hairline top and bottom for
+   when it is an ordinary band; at the leading edge of a panel sliding over
+   the hero it competes with the shadow. .prob-sec has no top border for the
+   same reason. */
 
 /* The client marks under "By the numbers". Ruled off the figures above so
    the two read as separate claims — the numbers are the firm's account of

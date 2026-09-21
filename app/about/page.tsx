@@ -185,6 +185,12 @@ export default function AboutPage() {
           Dark, with a drawn motion background rather than footage — see the
           note at the top of AboutHeroCanvas.tsx for why there is no video to
           play, and what the animation is actually depicting. */}
+      {/* The hero pins and "By the numbers" rides over it — the same
+          mechanism as the home page's hero and THE PROBLEM. .ov-scope is the
+          shared wrapper: position:relative and isolation:isolate, so the
+          hero's z-index means nothing outside these two sections and no
+          later band can be painted over by it. */}
+      <div className="ov-scope">
       <header className="about-hero inv">
         <AboutHeroCanvas />
         <div className="about-hero-inner">
@@ -215,8 +221,11 @@ export default function AboutPage() {
         </div>
       </header>
 
-      {/* ── 2 · BY THE NUMBERS ───────────────────────────────────────────── */}
-      <section className="numbers gs lt">
+      {/* ── 2 · BY THE NUMBERS ─────────────────────────────────────────────
+          Rides over the pinned hero: z-index above it, an opaque ground of
+          its own, and a shadow cast upward so the leading edge reads as a
+          panel arriving rather than a section that happens to be next. */}
+      <section className="numbers gs lt ov-over">
         <div className="numbers-inner">
           <div>
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>By the numbers</div>
@@ -252,6 +261,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      </div>{/* /.ov-scope */}
 
       {/* ── 3 · OUR STORY ────────────────────────────────────────────────
           Split out of what used to be one "belief" section carrying four
