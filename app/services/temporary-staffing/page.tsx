@@ -8,7 +8,6 @@ import {
   ModesSection,
   Proc2Section,
   IndustriesGrid2Section,
-  TestiCreamSection,
   IntakeBandSection,
   FaqSection,
   CtaSection,
@@ -53,10 +52,10 @@ export default function TemporaryStaffingPage() {
         heading={<>Capacity the day<br />you <em>actually need it.</em></>}
         lead="Most agencies scramble when you call. We do the opposite — a standing pool of pre-vetted workers, one partner who knows your operation, and payroll, scheduling and compliance already handled so people are productive on arrival."
         numsr={[
-          { v: "24–72", sup: "h", title: "To deployment", desc: "From confirmed brief to workers on the floor." },
+          { v: "Days, not weeks", t: true, title: "To deployment", desc: "Confirmed on the call, against a named start." },
           { v: "100", sup: "%", title: "Compliance handled", desc: "Payroll, tax and right-to-work, on us." },
           { v: "±", title: "Scale up or down", desc: "Flex headcount as the workload changes." },
-          { v: "600", sup: "+", title: "Temporary placements", desc: "Across four markets, to date." },
+          { v: "Same day", t: true, title: "Replacement cover", desc: "A no-show is swapped at no extra cost." },
         ]}
         cards={[
           { title: "Deployed in 24–72 hours", desc: "A standing, pre-vetted pool means we can put people on the floor the same week you call — sometimes the same day.", icon: svgIco('<circle cx="11" cy="11" r="8" stroke="var(--accent)" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>') },
@@ -93,15 +92,22 @@ export default function TemporaryStaffingPage() {
         sub="Every Rivago partner runs one practice. They know the shift patterns, the certifications each site demands, and which temps turn up on time in your sector."
       />
 
-      <TestiCreamSection
-        heading={<>Temporary teams,<br /><em>in their own words.</em></>}
-        sub="Plain English from ops leads, site managers and workforce planners who scaled with Rivago temps in the last eighteen months. No pseudonyms. No doctored quotes."
-        cards={[
-          { tag: "US · Retail", quote: "Black Friday nearly broke us the year before. Rivago ramped forty temps across three sites in seventy-two hours — same crew we'd rated the prior peak. Every shift covered, off payroll by January.", initials: "RP", name: "Ryan P.", role: "Workforce Planner · US retail group" },
-          { tag: "Canada · Healthcare", quote: "A norovirus outbreak took out a third of our floor staff overnight. Rivago had eight cleared support workers on-site the next morning — right-to-work and references already done. It saved the ward.", initials: "PR", name: "Priya R.", role: "Operations Lead · Ontario care provider" },
-          { tag: "UAE · Events", quote: "We run large events on impossible timelines. Rivago fields on-site managed crews — hospitality, logistics, front-of-house — with their own supervisor. Visas and payroll handled. We just run the show.", initials: "SM", name: "Samira M.", role: "Event Operations Director · Dubai" },
-        ]}
-      />
+      {/* THE CUSTOMER-STORY BAND STOOD HERE and has been removed, on all six
+          service pages that carried one.
+
+          Each held three quotes attributed to "Ryan P.", "Priya R." and
+          "Samira M." — the same three names on every page, with a different
+          job each time. Across the six, Ryan P. was a VP of Engineering, a
+          Director of Engineering, a Workforce Planner, a founder, a board
+          member and a board chair. Under all eighteen ran the line "No
+          pseudonyms. No doctored quotes."
+
+          None of the engagements happened. Rivago has no client who has
+          signed off on a published quote — the same reason the nine case
+          studies came off /resources and the nine "Client story" cards came
+          off /services. Put a band back when there are real quotes with real
+          sign-off; TestiCreamSection is gone with the copy, so it will need
+          rebuilding, which is the correct amount of friction. */}
 
       <IntakeBandSection
         heading={<>Tell us what you need.<br /><em>We&apos;ll do the rest.</em></>}

@@ -1978,6 +1978,11 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 .gtee{padding:28px;border:1px solid var(--border);border-radius:20px;background:var(--surface)}
 .gtee-val{font-size:var(--fz12);line-height:1;letter-spacing:-.035em;font-weight:500;color:var(--accent);margin-bottom:14px}
 .gtee-val sup{font-size:var(--fz7);vertical-align:super;margin-left:2px;color:var(--text3)}
+/* Phrase-sized variant — see the note on GteeStat in app/services/_components/shared.tsx.
+   min-height matches the display numeral's line box (--fz12 at line-height 1) and the
+   phrase sits on its bottom edge, so a row mixing "90 days" with "Base salary only"
+   still aligns every title beneath it. Without it the phrase tiles ran 12px high. */
+.gtee-val.t{font-size:var(--fz8);line-height:1.22;letter-spacing:-.02em;min-height:var(--fz12);display:flex;align-items:flex-end}
 .gtee-title{font-size:var(--fz5);font-weight:500;margin-bottom:4px;color:var(--text)}
 .gtee-desc{font-size:var(--fz4);color:var(--text2);line-height:1.65;font-weight:400}
 @media(max-width:900px){.guarantee{grid-template-columns:1fr}}
@@ -2688,49 +2693,13 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .eng-list li svg{flex-shrink:0;margin-top:3px}
 .eng-tag{align-self:flex-start;padding:3px 10px;border-radius:9999px;font-size:var(--fz1);font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--accent-inv);color:var(--cream);margin-bottom:16px}
 
-/* roles we fill — tabs + Industries-style panel */
-.rls{background:var(--bg);padding:120px 44px;border-top:1px solid var(--border)}
-.rls-inner{max-width:1240px;margin:0 auto}
-.rls-eyb{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
-.rls-eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.rls h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.1;color:var(--text)}
-.rls-lead{font-size:var(--fz6);color:var(--text2);max-width:560px;margin-top:18px;line-height:1.7;font-weight:400}
-.rls-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:46px 0 0}
-.rls-tab{padding:11px 20px;border:1px solid var(--border);background:var(--surface);border-radius:9999px;font-size:var(--fz3);font-weight:500;color:var(--text2);cursor:pointer;font-family:var(--ff);transition:all .2s var(--ease);white-space:nowrap}
-.rls-tab:hover{border-color:var(--tint-3);color:var(--text)}
-.rls-tab.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
-.rls-panel{margin-top:28px}
-.rls-panel.on{animation:rvUp .5s var(--ease)}
-.rls-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px}
-.rls-head h3{font-size:var(--fz9);font-weight:500;letter-spacing:-.02em;color:var(--text)}
-.rls-head .cnt{font-family:var(--fm);font-size:var(--fz1);color:var(--accent)}
-.rls-ind{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-.rls-illabel{font-size:var(--fz1);text-transform:uppercase;letter-spacing:.08em;color:var(--text3);font-weight:500;margin-bottom:2px}
-.rls-irlist{display:flex;flex-direction:column;border-top:1px solid var(--border);margin-top:18px}
-.rls-ir{display:grid;grid-template-columns:1fr auto;gap:18px;padding:14px 2px;border-bottom:1px solid var(--border);align-items:center}
-.rls-ir .nm{color:var(--text);font-weight:400;font-size:var(--fz3);letter-spacing:-.01em}
-.rls-ir .ct{color:var(--text3);font-family:var(--fm);font-size:var(--fz2);white-space:nowrap}
-.rls-panelR{display:flex;flex-direction:column;gap:16px}
-.rls-statgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
-.rls-stat{background:var(--bg);padding:22px 24px}
-.rls-stat .v{font-size:var(--fz11);line-height:1;letter-spacing:-.025em;color:var(--text);margin-bottom:8px;font-weight:500}
-.rls-stat .v .u{font-size:var(--fz3);color:var(--text3);margin-left:4px}
-/* See the note on this rule in app/services/services.css. */
-.rls-stat .v.t{font-size:var(--fz7);line-height:1.3;letter-spacing:-.015em;margin-bottom:6px}
-.rls-stat .l{font-size:var(--fz1);color:var(--text3);line-height:1.45}
-.rls-sample{padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:16px;border-left:2px solid var(--tint-3)}
-.rls-sample-h{font-size:var(--fz1);color:var(--accent);font-family:var(--fm);letter-spacing:.05em;margin-bottom:6px;text-transform:uppercase}
-.rls-sample-line{font-size:var(--fz3);color:var(--text);font-weight:500}
-.rls-sample-sub{font-size:var(--fz1);color:var(--text3);margin-top:3px}
-.rls-ministory{background:linear-gradient(165deg,rgba(61,255,135,.07),rgba(61,255,135,.012));border:1px solid var(--tint-2);border-radius:16px;padding:22px 24px}
-.rls-ministory-tag{display:inline-flex;align-items:center;gap:7px;font-size:var(--fz1);font-weight:500;letter-spacing:.04em;color:var(--accent);margin-bottom:12px}
-.rls-ministory-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.rls-ministory q{display:block;font-family:var(--ff);font-weight:500;font-size:var(--fz7);line-height:1.45;color:var(--text);letter-spacing:-.01em;margin-bottom:16px}
-.rls-ministory-by{display:flex;align-items:center;gap:11px}
-.rls-ministory-av{width:36px;height:36px;border-radius:50%;background:var(--grad-brand);display:flex;align-items:center;justify-content:center;font-weight:500;color:var(--on-accent);font-size:var(--fz1);flex-shrink:0}
-.rls-ministory-n{font-size:var(--fz2);font-weight:500;color:var(--text)}
-.rls-ministory-r{font-size:var(--fz1);color:var(--text3);margin-top:1px}
-@media(max-width:900px){.rls-ind{grid-template-columns:1fr;gap:36px}.rls-statgrid{grid-template-columns:1fr}}
+/* The .rls-* roles-we-fill rules used to be duplicated here and in
+   app/services/services.css, scoped under .svc2. Only app/services/page.tsx
+   renders .rls markup and it loads that stylesheet, whose higher specificity
+   won every declaration — so this copy painted nothing. Worse, it lacked the
+   display:none that actually hides an inactive panel, so anyone reading it
+   here would conclude the tabs were broken. Deleted; services.css is the
+   only copy. */
 
 /* process — five-stage timeline with connecting line */
 .proc2{background:var(--bg2);padding:120px 44px;border-top:1px solid var(--border);position:relative;overflow:hidden}
@@ -2903,8 +2872,21 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .swhy-top{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start}
 .swhy-lead{font-size:var(--fz6);color:var(--text2);line-height:1.75;font-weight:400;margin-top:20px;max-width:520px}
 .swhy-numsr{display:grid;grid-template-columns:1fr 1fr;gap:36px 30px;padding-top:6px}
+/* Subgrid so the value, the title and the description each line up ACROSS the
+   two columns, not just within a card. Bottom-aligning .v.t (above) fixes a
+   row whose values are all one line; it cannot fix one where a phrase wraps to
+   two lines on a phone and a numeral does not. Measured at 390: "A date in
+   writing" wrapped and pushed its title 18px below its neighbour's. */
+/* row-gap:0 because a subgrid inherits the PARENT's gap between its own rows —
+   the 36px meant to separate one card from the next reappeared between every
+   card's value, title and description. The spacing inside a card comes from
+   the margins on h3 and p below, as it did before. */
+.swhy-numr{display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:0}
 .swhy-numr .v{font-size:var(--fz14);font-weight:500;color:var(--accent);letter-spacing:-.04em;line-height:1;font-family:var(--ff);font-weight:500}
 .swhy-numr .v sup{font-size:var(--fz7);vertical-align:super;color:var(--text3);font-style:normal;font-family:var(--ff)}
+/* Mirrors .svc2 .why-numr .v.t in app/services/services.css, plus the same
+   bottom-aligned min-height as .gtee-val.t above — for the same reason. */
+.swhy-numr .v.t{font-size:var(--fz9);line-height:1.25;letter-spacing:-.02em;min-height:var(--fz14);display:flex;align-items:flex-end}
 .swhy-numr h3{font-size:var(--fz3);font-weight:500;color:var(--text);margin:12px 0 4px}
 .swhy-numr p{font-size:var(--fz4);color:var(--text2);line-height:1.6;font-weight:400}
 .swhy-eyb{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}

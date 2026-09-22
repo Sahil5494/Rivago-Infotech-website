@@ -9,7 +9,6 @@ import {
   ModesSection,
   Proc2Section,
   IndustriesGrid2Section,
-  TestiCreamSection,
   FaqSection,
   CtaSection,
 } from "../_components/shared";
@@ -66,9 +65,9 @@ export default function EmployerOfRecordPage() {
         heading={<>You found them.<br />We make it <em>legal.</em></>}
         lead="Most EOR providers are a payroll platform with a support ticket. We do the opposite — a named partner who knows the local rules, sets up the contract correctly the first time, and stays reachable for the life of the engagement."
         cards={[
-          { title: "Less risk on you", desc: "Talent are our W-2 employees, so worker misclassification stops being your problem. We keep them engaged and well looked-after too — which is what actually keeps co-employment risk down.", icon: svgIco('<path d="M11 2l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V5z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>') },
+          { title: "Less risk on you", desc: "Talent are employed by us on a local contract — W-2 in the United States, and its equivalent in each of the other markets — so worker misclassification stops being your problem. We keep them engaged and well looked-after too — which is what actually keeps co-employment risk down.", icon: svgIco('<path d="M11 2l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V5z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>') },
           { title: "Benefits that hold up", desc: "Everyone qualifies — even part-time or short assignments. Subsidised medical, dental and vision; paid sick leave for hourly talent in the US and Canada; a matched retirement plan; flexible spending accounts and more.", icon: svgIco('<rect x="3" y="4" width="16" height="14" rx="2" stroke="var(--accent)" stroke-width="1.5"/><path d="M11 8v6M8 11h6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>') },
-          { title: "Genuinely good care", desc: "Regular check-ins, career coaching and real human support — not a help desk. It is why our talent-satisfaction scores stay well above the industry, year after year.", icon: svgIco('<path d="M11 19s-7-4.2-7-9a4 4 0 017-2.6A4 4 0 0118 10c0 4.8-7 9-7 9z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/>') },
+          { title: "Genuinely good care", desc: "Regular check-ins, career coaching and a named person who answers — not a help desk and a ticket number. Someone who feels looked after stays, and an employee who stays is the whole point of the arrangement.", icon: svgIco('<path d="M11 19s-7-4.2-7-9a4 4 0 017-2.6A4 4 0 0118 10c0 4.8-7 9-7 9z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/>') },
           { title: "Compliant in every market", desc: "US, Canada, the UAE or India — payroll, tax and statutory rules handled locally by a partner who knows them, so every hire is right the first time.", icon: svgIco('<circle cx="11" cy="11" r="8" stroke="var(--accent)" stroke-width="1.5"/><path d="M3 11h16M11 3a14 14 0 010 16M11 3a14 14 0 000 16" stroke="var(--accent)" stroke-width="1.5"/>') },
         ]}
       />
@@ -123,15 +122,22 @@ export default function EmployerOfRecordPage() {
         sub="Whatever role you've already filled, we handle the employment — the same partner-led approach across every industry we recruit in, applied to the hire you found yourself."
       />
 
-      <TestiCreamSection
-        heading={<>Compliant hires,<br /><em>in their own words.</em></>}
-        sub="Plain English from founders and ops leads who hired across borders through Rivago's Employer of Record in the last eighteen months. No pseudonyms. No doctored quotes."
-        cards={[
-          { tag: "Canada · Technology", quote: "We found a brilliant engineer in Ontario but had no Canadian entity. Rivago had a compliant contract signed in four days — we never had to think about incorporation.", initials: "RP", name: "Ryan P.", role: "Founder · US SaaS startup" },
-          { tag: "UAE · Operations", quote: "We had contractors in Dubai who really should have been employees. Rivago converted the whole group to compliant contracts without a single day of disrupted pay.", initials: "PR", name: "Priya R.", role: "Operations Lead · Ontario-based agency" },
-          { tag: "US · Retail", quote: "We wanted to test a new market with two hires before committing to an entity. Rivago made it possible in a week — we now know it was the right call before spending a cent on incorporation.", initials: "SM", name: "Samira M.", role: "CEO · US retail brand" },
-        ]}
-      />
+      {/* THE CUSTOMER-STORY BAND STOOD HERE and has been removed, on all six
+          service pages that carried one.
+
+          Each held three quotes attributed to "Ryan P.", "Priya R." and
+          "Samira M." — the same three names on every page, with a different
+          job each time. Across the six, Ryan P. was a VP of Engineering, a
+          Director of Engineering, a Workforce Planner, a founder, a board
+          member and a board chair. Under all eighteen ran the line "No
+          pseudonyms. No doctored quotes."
+
+          None of the engagements happened. Rivago has no client who has
+          signed off on a published quote — the same reason the nine case
+          studies came off /resources and the nine "Client story" cards came
+          off /services. Put a band back when there are real quotes with real
+          sign-off; TestiCreamSection is gone with the copy, so it will need
+          rebuilding, which is the correct amount of friction. */}
 
       {/* PERSPECTIVES (doubles as the #intake anchor — EOR has no dedicated intake form) */}
       <section className="section alt" id="intake">

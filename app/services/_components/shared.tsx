@@ -491,7 +491,13 @@ export function InsightsSection({
 
 /* ── SERVICE-SUBPAGE TEMPLATE (real Claude Design leaf-page pattern) ── */
 
-export type SwhyNum = { v: string; sup?: string; title: string; desc: string };
+/* `t` sets the value in the phrase size rather than the display numeral —
+   the same escape hatch `.svc2 .why-numr .v.t` already gives the main
+   Services page. It is here because most of what this firm can honestly
+   state up front is a commitment ("A date in writing", "One partner"), not a
+   measured figure, and a four-tile grid that insists on numerals is what
+   produced the invented ones these pages used to carry. */
+export type SwhyNum = { v: string; sup?: string; title: string; desc: string; t?: boolean };
 export type SwhyCard = { title: string; desc: string; icon: ReactNode };
 
 export function SwhySection({
@@ -518,7 +524,7 @@ export function SwhySection({
             <div className="swhy-numsr gs">
               {numsr.map((n) => (
                 <div className="swhy-numr" key={n.title}>
-                  <div className="v">{n.v}{n.sup && <sup>{n.sup}</sup>}</div>
+                  <div className={n.t ? "v t" : "v"}>{n.v}{n.sup && <sup>{n.sup}</sup>}</div>
                   <h3>{n.title}</h3>
                   <p>{n.desc}</p>
                 </div>
@@ -635,7 +641,11 @@ export function Proc2Section({
   );
 }
 
-export type GteeStat = { val: ReactNode; sup?: string; title: string; desc: string };
+/* `t` as in SwhyNum above. The eyebrow on this section reads "What we put in
+   writing", so everything in it has to be something the engagement letter
+   actually says — a guarantee window, an introduction period, a fee basis.
+   Those are terms, and a term is usually a phrase. */
+export type GteeStat = { val: ReactNode; sup?: string; title: string; desc: string; t?: boolean };
 
 export function GuaranteeSection({ heading, stats }: { heading: ReactNode; stats: GteeStat[] }) {
   return (
@@ -648,7 +658,7 @@ export function GuaranteeSection({ heading, stats }: { heading: ReactNode; stats
         <div className="guarantee">
           {stats.map((s) => (
             <div className="gtee gs" key={s.title}>
-              <div className="gtee-val">{s.val}{s.sup && <sup>{s.sup}</sup>}</div>
+              <div className={s.t ? "gtee-val t" : "gtee-val"}>{s.val}{s.sup && <sup>{s.sup}</sup>}</div>
               <div className="gtee-title">{s.title}</div>
               <div className="gtee-desc">{s.desc}</div>
             </div>
@@ -686,33 +696,20 @@ export function IndustriesGrid2Section({ heading, sub }: { heading: ReactNode; s
   );
 }
 
-export type TcCard = { tag: string; quote: string; initials: string; name: string; role: string };
-
-export function TestiCreamSection({ heading, sub, cards }: { heading: ReactNode; sub: string; cards: TcCard[] }) {
-  return (
-    <section className="section cream inv">
-      <div className="wrap">
-        <div className="gs">
-          <Eyebrow dark>Customer story</Eyebrow>
-          <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>{heading}</h2>
-          <p style={{ color: "var(--dt2)", fontSize: "var(--fz5)", lineHeight: 1.78, fontWeight: 400, maxWidth: 540, marginTop: 22 }}>{sub}</p>
-        </div>
-        <div className="testi-cream">
-          {cards.map((c) => (
-            <div className="tc-card gs" key={c.name}>
-              <span className="tc-tag">{c.tag}</span>
-              <p className="tc-quote">{c.quote}</p>
-              <div className="tc-author">
-                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{c.initials}</div>
-                <div><div className="tc-author-name">{c.name}</div><div className="tc-author-role">{c.role}</div></div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+/* TestiCreamSection and its TcCard type were deleted here.
+ *
+ * It rendered the customer-story band on six service pages, and every one of
+ * them passed the same three invented people — "Ryan P.", "Priya R.",
+ * "Samira M." — with a different job on each page, beneath the sub-line "No
+ * pseudonyms. No doctored quotes."
+ *
+ * The copy came out, so the component came out with it. An empty testimonial
+ * component sitting in a shared file is an invitation to fill it, and
+ * whoever fills it next will be inventing quotes again. When Rivago has a
+ * client who has signed off on one, rebuilding this is twenty minutes.
+ *
+ * The .testi-cream CSS stays in globals.css: /services/rpo and /hire-talent
+ * hand-roll their own markup against it. */
 
 export type IntakeBullet = { strong: string; rest: string };
 

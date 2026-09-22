@@ -63,11 +63,19 @@ export default function RpoPage() {
       <SwhySection
         heading={<>An RPO partner that owns<br />the <em>outcome.</em></>}
         lead="Others hand you coordinators and a dashboard. We embed senior recruiters who own the whole lifecycle — and report on what matters: fill time, cost per hire, and who is still there a year on."
+        /* Was "40% faster time-to-fill", "30% lower cost-per-hire", "92%
+           hiring-manager CSAT" and "600+ placements". The first three are
+           exactly the numbers this page then promises to MEASURE for a client
+           — quoting them as achieved before any program has run is the one
+           claim an RPO buyer will check first. The fourth contradicted
+           `firm.hiresPlaced` (500+ across the whole firm) in lib/routes.ts.
+           Each tile now states how the program is run, which is what a buyer
+           is choosing between at this point on the page. */
         numsr={[
-          { v: "40", sup: "%", title: "Faster time-to-fill", desc: "Versus in-house baseline, first six months." },
-          { v: "30", sup: "%", title: "Lower cost-per-hire", desc: "Fewer agency fees, one accountable team." },
-          { v: "92", sup: "%", title: "Hiring-manager CSAT", desc: "Measured every quarter, acted on." },
-          { v: "600", sup: "+", title: "Placements to date", desc: "Across four markets and ten practices." },
+          { v: "One team", t: true, title: "Owns the program", desc: "Strategy, pipeline and delivery — not a queue of tickets." },
+          { v: "Weekly", t: true, title: "Reporting, in writing", desc: "Fill time, cost per hire and quality of hire." },
+          { v: "Your brand", t: true, title: "Not ours", desc: "Your careers page, your voice, your candidate experience." },
+          { v: "90", sup: "d", title: "Tracked past the offer", desc: "First-90-days check-ins and retention monitoring." },
         ]}
         cards={[
           { title: "We own the program", desc: "Strategy, pipeline and delivery run through one accountable Rivago team — not a queue of tickets and a self-serve tool.", icon: svgIco('<path d="M3 8l8-4 8 4v6l-8 4-8-4z" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 10v3l4 2 4-2v-3" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round"/>') },
@@ -132,30 +140,17 @@ export default function RpoPage() {
         sub="Recruiters who live in your market — they know the titles, the pay bands and where the talent hides."
       />
 
-      {/* CUSTOMER STORY */}
-      <section className="section cream">
-        <div className="wrap">
-          <div className="gs">
-            <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Customer story</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>A recruiting engine,<br /><em>handed over in weeks.</em></h2>
-          </div>
-          <div className="testi-cream">
-            <div className="tc-card gs" style={{ gridColumn: "span 2" }}>
-              <span className="tc-tag">US · Technology · Enterprise RPO</span>
-              <p className="tc-quote" style={{ fontSize: "var(--fz9)" }}>We were scaling from 200 to 600 people and our four-person TA team was drowning. Rivago stood up an embedded pod in three weeks, took over the whole funnel, and cut our time-to-fill by <em>nearly half</em> — while our internal team finally got to work on employer brand instead of firefighting.</p>
-              <div className="tc-author">
-                <div className="tc-author-av" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>DK</div>
-                <div><div className="tc-author-name">Daniel K.</div><div className="tc-author-role">VP People · US technology scale-up</div></div>
-              </div>
-            </div>
-            <div className="tc-card gs" style={{ justifyContent: "center", gap: 26, background: "var(--bg)", borderColor: "var(--border)" }}>
-              <div><div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz13)", color: "var(--accent)", lineHeight: 1, letterSpacing: "-.03em" }}>240</div><div style={{ fontSize: "var(--fz2)", color: "var(--text2)", marginTop: 8, fontWeight: 400 }}>hires in 12 months</div></div>
-              <div><div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz13)", color: "var(--accent)", lineHeight: 1, letterSpacing: "-.03em" }}>44<span style={{ fontSize: "var(--fz9)" }}>%</span></div><div style={{ fontSize: "var(--fz2)", color: "var(--text2)", marginTop: 8, fontWeight: 400 }}>faster time-to-fill</div></div>
-              <div><div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz13)", color: "var(--accent)", lineHeight: 1, letterSpacing: "-.03em" }}>3 wks</div><div style={{ fontSize: "var(--fz2)", color: "var(--text2)", marginTop: 8, fontWeight: 400 }}>to a live embedded team</div></div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* THE CUSTOMER-STORY BAND STOOD HERE. It carried a quote from
+          "Daniel K., VP People · US technology scale-up" about scaling from
+          200 to 600 people, beside three figures: 240 hires in 12 months, 44%
+          faster time-to-fill, three weeks to a live embedded team.
+
+          No such program was run and none of the figures were measured.
+          Removed with the customer-story bands on the other six service
+          pages, the nine "Client story" cards on /services and the nine case
+          studies on /resources — one decision, applied consistently: Rivago
+          does not yet have a client who has signed off on a published
+          engagement. When one does, this is the right place for it. */}
 
       {/* INSIGHTS */}
       <section className="section alt">

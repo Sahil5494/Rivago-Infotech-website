@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import ServicesClient from "./ServicesClient";
 import GlobeCanvas from "./_components/GlobeCanvas";
 import { STAGES } from "@/lib/process";
-import { numberWord } from "@/lib/routes";
+import { firm, numberWord, offices } from "@/lib/routes";
 import "./services.css";
 
 /* The Staffing Solutions page, ported from the supplied reference.
@@ -143,10 +143,12 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="rls-panelR">
-                  <div className="rls-ministory">
-                    <div className="rls-ministory-tag">Client story</div>
-                    <q>We had an AI roadmap and no one to build it. Rivago stood up our <em>ML, data and platform team</em> — LLM and GCP AI engineers included — in a single quarter.</q>
-                    <div className="rls-ministory-by"><div className="rls-ministory-av">RP</div><div><div className="rls-ministory-n">VP of AI / ML Engineering</div><div className="rls-ministory-r">Series-C SaaS · United States</div></div></div>
+                  <div className="rls-note">
+
+                    <div className="rls-note-tag">What makes this market hard</div>
+
+                    <p>The strongest platform and ML engineers are rarely on the market for more than a fortnight, and almost none of them apply. A search that waits for inbound applications is choosing from the people every other employer passed on first.</p>
+
                   </div>
                   <div className="rls-statgrid">
                     <div className="rls-stat"><div className="v t">Scorecard first</div><div className="l">Agreed before a single approach is made</div></div>
@@ -177,10 +179,12 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="rls-panelR">
-                  <div className="rls-ministory">
-                    <div className="rls-ministory-tag">Client story</div>
-                    <q>Regulatory and quality hires are <em>unforgiving</em> to get wrong. Every candidate Rivago sent could do the job on day one.</q>
-                    <div className="rls-ministory-by"><div className="rls-ministory-av">AL</div><div><div className="rls-ministory-n">Chief Medical Officer</div><div className="rls-ministory-r">Clinical-stage biotech · US</div></div></div>
+                  <div className="rls-note">
+
+                    <div className="rls-note-tag">What makes this market hard</div>
+
+                    <p>A clinical leader who is perfect on paper can still be unable to start. Licensure, DHA registration and credentialing run on their own timetable — checked at shortlist they cost a week, checked at offer they cost the search.</p>
+
                   </div>
                   <div className="rls-statgrid">
                     <div className="rls-stat"><div className="v t">Licensure verified</div><div className="l">Checked before a candidate reaches you</div></div>
@@ -211,10 +215,12 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="rls-panelR">
-                  <div className="rls-ministory">
-                    <div className="rls-ministory-tag">Client story</div>
-                    <q>We were scaling into three jurisdictions at once. Rivago found counsel who had <em>actually done it before</em>.</q>
-                    <div className="rls-ministory-by"><div className="rls-ministory-av">SV</div><div><div className="rls-ministory-n">General Counsel</div><div className="rls-ministory-r">Fintech · US & UAE</div></div></div>
+                  <div className="rls-note">
+
+                    <div className="rls-note-tag">What makes this market hard</div>
+
+                    <p>In-house legal hires fail on jurisdiction more often than on ability. Admission, conflicts and the right to advise in the market where the role actually sits are the first three questions, not the last.</p>
+
                   </div>
                   <div className="rls-statgrid">
                     <div className="rls-stat"><div className="v t">Jurisdiction checked</div><div className="l">Admission confirmed where the role sits</div></div>
@@ -245,10 +251,12 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="rls-panelR">
-                  <div className="rls-ministory">
-                    <div className="rls-ministory-tag">Client story</div>
-                    <q>Their partner knew our regulatory world cold. We had a <em>shortlist of four</em> for a hard compliance seat inside a week.</q>
-                    <div className="rls-ministory-by"><div className="rls-ministory-av">MS</div><div><div className="rls-ministory-n">Head of Talent</div><div className="rls-ministory-r">Global bank · Delaware</div></div></div>
+                  <div className="rls-note">
+
+                    <div className="rls-note-tag">What makes this market hard</div>
+
+                    <p>Finance loses more accepted offers to counter-offers than any other function. The conversation about what their employer will do the day they resign belongs at the start of the process, not the week the paperwork goes out.</p>
+
                   </div>
                   <div className="rls-statgrid">
                     <div className="rls-stat"><div className="v t">Regulator-ready</div><div className="l">Screened for the approvals the role needs</div></div>
@@ -279,10 +287,12 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="rls-panelR">
-                  <div className="rls-ministory">
-                    <div className="rls-ministory-tag">Client story</div>
-                    <q>Cleared, niche and fast — three things that rarely come together. Rivago delivered a <em>programme team</em> we could not build ourselves.</q>
-                    <div className="rls-ministory-by"><div className="rls-ministory-av">JT</div><div><div className="rls-ministory-n">Programme Director</div><div className="rls-ministory-r">Defence prime · US</div></div></div>
+                  <div className="rls-note">
+
+                    <div className="rls-note-tag">What makes this market hard</div>
+
+                    <p>Clearance is the timeline. A cleared candidate can start in weeks and an uncleared one needing sponsorship can take most of a year — and ITAR or EAR eligibility can rule someone out after everybody has agreed they are the right hire.</p>
+
                   </div>
                   <div className="rls-statgrid">
                     <div className="rls-stat"><div className="v t">Clearance confirmed</div><div className="l">Status verified before submission</div></div>
@@ -313,10 +323,12 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="rls-panelR">
-                  <div className="rls-ministory">
-                    <div className="rls-ministory-tag">Client story</div>
-                    <q>We were rolling out 5G and short on RF talent nationwide. Rivago <em>staffed the whole region</em> in under two months.</q>
-                    <div className="rls-ministory-by"><div className="rls-ministory-av">RN</div><div><div className="rls-ministory-n">VP Network</div><div className="rls-ministory-r">Telecom operator · UAE</div></div></div>
+                  <div className="rls-note">
+
+                    <div className="rls-note-tag">What makes this market hard</div>
+
+                    <p>Operators and their vendors hire from one pool and sit on opposite sides of the same negotiation. A recruiter who only knows one side is working half the market and quoting the wrong rate to both.</p>
+
                   </div>
                   <div className="rls-statgrid">
                     <div className="rls-stat"><div className="v t">Operator and vendor</div><div className="l">Both sides of the market covered</div></div>
@@ -347,10 +359,12 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="rls-panelR">
-                  <div className="rls-ministory">
-                    <div className="rls-ministory-tag">Client story</div>
-                    <q>An EV line launch with an <em>immovable date</em>. Rivago built the manufacturing and quality team that hit it.</q>
-                    <div className="rls-ministory-by"><div className="rls-ministory-av">DM</div><div><div className="rls-ministory-n">Director of Ops</div><div className="rls-ministory-r">EV manufacturer · US</div></div></div>
+                  <div className="rls-note">
+
+                    <div className="rls-note-tag">What makes this market hard</div>
+
+                    <p>Software-defined vehicle work needs people who understand a release cycle and a production line, and there are not many of them. Relocation decides more of these searches than compensation does.</p>
+
                   </div>
                   <div className="rls-statgrid">
                     <div className="rls-stat"><div className="v t">Relocation handled</div><div className="l">Raised on the first call, not at offer</div></div>
@@ -381,10 +395,12 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="rls-panelR">
-                  <div className="rls-ministory">
-                    <div className="rls-ministory-tag">Client story</div>
-                    <q>They placed a plant leadership team across two sites — <em>on time, on budget</em> — while our own pipeline was bone dry.</q>
-                    <div className="rls-ministory-by"><div className="rls-ministory-av">HK</div><div><div className="rls-ministory-n">VP Operations</div><div className="rls-ministory-r">Manufacturer · UAE</div></div></div>
+                  <div className="rls-note">
+
+                    <div className="rls-note-tag">What makes this market hard</div>
+
+                    <p>Two people with the same title can be doing entirely different jobs — one runs a sixty-person site, the other six hundred across three shifts. The org chart will not tell you which, so the brief has to.</p>
+
                   </div>
                   <div className="rls-statgrid">
                     <div className="rls-stat"><div className="v t">Site-level detail</div><div className="l">Screened on the operation, not the org chart</div></div>
@@ -415,10 +431,12 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="rls-panelR">
-                  <div className="rls-ministory">
-                    <div className="rls-ministory-tag">Client story</div>
-                    <q>We doubled the revenue org in a quarter. The reps Rivago placed <em>beat quota</em> faster than anyone we hired ourselves.</q>
-                    <div className="rls-ministory-by"><div className="rls-ministory-av">DK</div><div><div className="rls-ministory-n">Chief Revenue Officer</div><div className="rls-ministory-r">Growth-stage scale-up · Canada</div></div></div>
+                  <div className="rls-note">
+
+                    <div className="rls-note-tag">What makes this market hard</div>
+
+                    <p>Almost every revenue CV says 100% to plan. The questions worth asking are what the plan was, how many people carried it, and whether the number came from new business or a renewal book.</p>
+
                   </div>
                   <div className="rls-statgrid">
                     <div className="rls-stat"><div className="v t">Quota history checked</div><div className="l">In the conversation, not just the CV</div></div>
@@ -476,11 +494,17 @@ export default function ServicesPage() {
                 <div className="gd-eyb">Global delivery</div>
                 <h2>Four markets. <em>One handshake.</em></h2>
                 <p className="gd-lead">Wherever the role sits, a local partner runs it — backed by a centralised research and sourcing team. You get regional fluency and round-the-clock pipeline, on a single contract.</p>
+                {/* Four facts, every one of them from lib/routes.ts.
+                    This grid used to read "1,000+ Placements to date" and
+                    "10+ Years of global staffing". The client's own figure is
+                    500+ hires and a 2019 founding, so both were roughly
+                    double the truth — and the first contradicted four
+                    service pages that each separately claimed 600+. */}
                 <div className="gd-stats">
-                  <div className="gd-stat"><div className="v">3</div><div className="l">Offices across 3 countries</div></div>
+                  <div className="gd-stat"><div className="v">{offices.length}</div><div className="l">Offices, in {numberWord(new Set(offices.map((o) => o.country)).size)} countries</div></div>
                   <div className="gd-stat"><div className="v">1</div><div className="l">Central delivery hub, Pune</div></div>
-                  <div className="gd-stat"><div className="v">1,000+</div><div className="l">Placements to date</div></div>
-                  <div className="gd-stat"><div className="v">10+</div><div className="l">Years of global staffing</div></div>
+                  <div className="gd-stat"><div className="v">{firm.hiresPlaced}</div><div className="l">Hires placed to date</div></div>
+                  <div className="gd-stat"><div className="v">{firm.foundedYear}</div><div className="l">In global staffing since</div></div>
                 </div>
                 <a className="gd-browse" href="/about#offices">Browse all offices &amp; delivery centers <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
               </div>

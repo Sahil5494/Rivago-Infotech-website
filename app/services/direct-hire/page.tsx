@@ -9,7 +9,6 @@ import {
   Proc2Section,
   GuaranteeSection,
   IndustriesGrid2Section,
-  TestiCreamSection,
   IntakeBandSection,
   FaqSection,
   CtaSection,
@@ -18,12 +17,12 @@ import {
 export const metadata: Metadata = {
   title: "Direct Hire — Permanent Recruitment | Rivago Infotech",
   description:
-    "Direct, permanent recruitment from Rivago Infotech — one senior partner per search, a 48-hour shortlist, a 90-day replacement guarantee and a contingent fee you pay only on a hire that sticks. Permanent hiring across technology, finance, healthcare, legal and more.",
+    "Direct, permanent recruitment from Rivago Infotech — one senior partner per search, a delivery date agreed in writing, a 90-day replacement guarantee and a contingent fee you pay only on a hire that sticks. Permanent hiring across technology, finance, healthcare, legal and more.",
   alternates: { canonical: "https://rivagoinfotech.com/services/direct-hire" },
   openGraph: {
     title: "Direct Hire — Permanent Recruitment | Rivago Infotech",
     description:
-      "Direct, permanent recruitment from Rivago Infotech — one senior partner per search, a 48-hour shortlist, a 90-day replacement guarantee and a contingent fee you pay only on a hire that sticks.",
+      "Direct, permanent recruitment from Rivago Infotech — one senior partner per search, a delivery date agreed in writing, a 90-day replacement guarantee and a contingent fee you pay only on a hire that sticks.",
     url: "https://rivagoinfotech.com/services/direct-hire",
   },
 };
@@ -43,7 +42,7 @@ export default function DirectHirePage() {
         <div className="svh-inner">
           <div className="svh-eyb gs"><span className="dot"></span>Direct Hire · Permanent placement</div>
           <h1 className="gs">Direct hire,<br /><em>done properly.</em></h1>
-          <p className="gs">Permanent placements across every function and level. Five fully-screened candidates in 48 hours, a 90-day replacement guarantee, and a contingent fee — you pay on a hire that sticks, not on activity.</p>
+          <p className="gs">Permanent placements across every function and level. Three to five fully-screened candidates against a date agreed on the first call, a 90-day replacement guarantee, and a contingent fee — you pay on a hire that sticks, not on activity.</p>
           <div className="svh-cta gs">
             <Link className="btn btn-prim" href="#intake">Start a search <Arrow /></Link>
             <Link className="btn btn-ghost" href={routes.resources}>Read our hiring guides</Link>
@@ -54,16 +53,22 @@ export default function DirectHirePage() {
       <SwhySection
         heading={<>Built for teams that can&apos;t<br />afford <em>the wrong hire.</em></>}
         lead="Most agencies sell volume and hand your role to a junior. We do the opposite — one senior partner owns your permanent search end to end, sources the people who never apply, and stands behind the result in writing."
+        /* Was 48h median shortlist, a 94% offer-accept rate "last 12 months"
+           and 600+ permanent placements. None of the three was measured, and
+           the last contradicted the firm's own figure: `firm.hiresPlaced` in
+           lib/routes.ts is 500+ across ALL services, while this page,
+           contract-staffing, temporary-staffing and RPO each separately
+           claimed 600+. What is here now is what the engagement letter says. */
         numsr={[
-          { v: "48", sup: "h", title: "Median shortlist", desc: "Signed brief to three to five calibrated finalists." },
-          { v: "94", sup: "%", title: "Offer-accept rate", desc: "Last 12 months, every level." },
+          { v: "A date in writing", t: true, title: "Agreed on the intake call", desc: "Not a range, and not revised quietly if it slips." },
+          { v: "3–5", title: "Candidates, not thirty", desc: "Each one screened against the scorecard you signed off." },
           { v: "90", sup: "d", title: "Replacement guarantee", desc: "Leaves inside the window? We restart, free." },
-          { v: "600", sup: "+", title: "Permanent placements", desc: "Across four markets, to date." },
+          { v: "One partner", t: true, title: "Brief to placement", desc: "Whoever takes the brief runs the search." },
         ]}
         cards={[
           { title: "One partner, full ownership", desc: "The same senior partner from brief to placement. No handoffs to BD, no relays through account managers, no junior researchers running the candidate calls.", icon: svgIco('<circle cx="11" cy="8" r="3.5" stroke="var(--accent)" stroke-width="1.5"/><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>') },
           { title: "Industry specialists", desc: "Your brief goes to a partner who has recruited in your sector for seven-plus years — they know the comp bands, the unpublished orgs and the passive talent.", icon: svgIco('<path d="M11 2l2.2 4.4 4.8.7-3.5 3.4.8 4.8L11 13l-4.3 2.3.8-4.8L4 7.1l4.8-.7z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/>') },
-          { title: "Fast without cutting corners", desc: "48-hour median shortlists, every time. Every candidate is fully screened against your scorecard before your inbox — never keyword-matched by a machine.", icon: svgIco('<circle cx="11" cy="11" r="8" stroke="var(--accent)" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>') },
+          { title: "As fast as the role allows", desc: "You get a delivery date on the first call and we hold it or tell you early. Every candidate is screened against your scorecard before it reaches your inbox — never keyword-matched by a machine.", icon: svgIco('<circle cx="11" cy="11" r="8" stroke="var(--accent)" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>') },
           { title: "Confidential by default", desc: "Sensitive replacements and senior hires handled discreetly — NDA on request, off-market approaches, and your brand kept out of the search until you choose.", icon: svgIco('<rect x="4" y="9" width="14" height="10" rx="2" stroke="var(--accent)" stroke-width="1.5"/><path d="M7 9V6.5a4 4 0 018 0V9" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>') },
         ]}
       />
@@ -72,7 +77,7 @@ export default function DirectHirePage() {
         eyebrowText="How direct hire works"
         heading={<>Three ways to run a<br />permanent <em>direct-hire search.</em></>}
         modes={[
-          { num: "01", title: "Contingent direct hire", desc: "Our most common structure. We work your permanent role on a success basis — you pay only when a candidate signs and stays past the guarantee window.", bullets: ["48-hour median shortlist", "3–5 pre-screened candidates per role", "90-day replacement guarantee", "No upfront fee — pay on hire"] },
+          { num: "01", title: "Contingent direct hire", desc: "Our most common structure. We work your permanent role on a success basis — you pay only when a candidate signs and stays past the guarantee window.", bullets: ["Delivery date agreed in writing", "3–5 pre-screened candidates per role", "90-day replacement guarantee", "No upfront fee — pay on hire"] },
           { num: "02", title: "Exclusive direct hire", desc: "Give us the role exclusively and it moves to the top of the desk — deeper sourcing, faster turnaround and a partner who works it like a retained search, still on a contingent fee.", bullets: ["Priority sourcing & partner focus", "Full market map, not just active jobseekers", "90-day replacement guarantee", "Weekly written progress updates"], featured: true },
           { num: "03", title: "Retained direct hire", desc: "For business-critical, senior or confidential permanent roles where a wrong hire is expensive. A dedicated partner and researcher run the full search, off-market.", bullets: ["Dedicated partner + research analyst", "Confidential, off-market search", "12-month replacement guarantee", "Salary benchmarking included"] },
         ]}
@@ -80,7 +85,7 @@ export default function DirectHirePage() {
 
       <Proc2Section
         heading={<>A permanent search runs five stages.<br />None of them are <em>a portal.</em></>}
-        lead="From signed brief to a placed hire in about thirty days — every stage owned by one partner."
+        lead="The plan we work to runs about thirty days from signed brief to a placed hire — every stage owned by one partner, and revised with you if it has to move."
         stages={[
           { day: "Day 0–2", title: "Calibrate", desc: "A 60-minute working session sets the scorecard and the off-limits list. You sign off before we source.", deliverValue: "Signed-off scorecard" },
           { day: "Day 2–10", title: "Map", desc: "A longlist of 40–80 names from referrals, competitor maps and our private network — bespoke outreach only.", deliverValue: "40–80 name longlist" },
@@ -90,13 +95,19 @@ export default function DirectHirePage() {
         ]}
       />
 
+      {/* The eyebrow on this section reads "What we put in writing", so every
+          tile now holds an actual term of the engagement letter — and each one
+          is stated again, in full, in the FAQ below. It used to hold a 48-hour
+          shortlist, a 94% offer-accept rate and 600+ placements under the
+          heading "Four numbers we'll stand behind", which is a strong promise
+          to attach to figures nobody had measured. */}
       <GuaranteeSection
-        heading={<>Four numbers we&apos;ll stand behind<br />on the <em>first call.</em></>}
+        heading={<>Four things that go in<br />the <em>engagement letter.</em></>}
         stats={[
-          { val: "48", sup: "h", title: "Median time-to-shortlist", desc: "From signed JD to three to five calibrated finalists in your inbox." },
-          { val: "94", sup: "%", title: "Offer-acceptance rate", desc: "Last 12 months, across all engagements and seniority bands." },
-          { val: "90", sup: "days", title: "Replacement guarantee", desc: "If a permanent hire leaves inside 90 days we restart the search at no charge." },
-          { val: "600", sup: "+", title: "Permanent placements", desc: "Senior hires made across four markets — each owned end to end by one named partner." },
+          { val: "90", sup: "days", title: "Replacement guarantee", desc: "If a permanent hire resigns or is terminated on performance inside 90 days, we restart the search at no professional fee." },
+          { val: "12", sup: "months", title: "Introduction period", desc: "How long a candidate we introduced stays ours. Anyone already in your ATS beforehand is excluded, and we check that before submitting." },
+          { val: "Base salary only", t: true, title: "What the fee is calculated on", desc: "Bonus, equity, sign-on, relocation and benefits are all excluded, and the percentage is fixed before we source." },
+          { val: "Nothing", t: true, title: "If we cannot fill it", desc: "Contingent search — you pay no fee. You still get our written read on why: comp band, specification, location or seniority." },
         ]}
       />
 
@@ -105,15 +116,22 @@ export default function DirectHirePage() {
         sub="Every Rivago partner runs one practice. They've placed inside it for at least seven years. They know the comp bands, the org charts, and the people who haven't updated their LinkedIn in two years."
       />
 
-      <TestiCreamSection
-        heading={<>Permanent hires,<br /><em>in their own words.</em></>}
-        sub="Plain English from heads of talent, GCs, CFOs and founders who made permanent hires through Rivago in the last eighteen months. No pseudonyms. No doctored quotes."
-        cards={[
-          { tag: "US · Technology", quote: "We needed a permanent Head of Engineering and two staff engineers. Rivago had a shortlist in two days and all three signed inside the month — every one is still here a year later.", initials: "RP", name: "Ryan P.", role: "VP of Engineering · US Series-C SaaS" },
-          { tag: "Canada · Finance", quote: "Our last agency just forwarded résumés. Rivago sent three fully-screened permanent candidates in 38 hours — comp, notice and right-to-work already checked. Two went to offer that week.", initials: "PR", name: "Priya R.", role: "HR Director · Ontario financial services" },
-          { tag: "UAE · Healthcare", quote: "Permanent clinical leadership in the UAE is brutal — licensing, DHA registration, the lot. Rivago handled all of it without being told twice. Eleven permanent placements, zero compliance issues.", initials: "SM", name: "Samira M.", role: "Chief People Officer · Dubai hospital group" },
-        ]}
-      />
+      {/* THE CUSTOMER-STORY BAND STOOD HERE and has been removed, on all six
+          service pages that carried one.
+
+          Each held three quotes attributed to "Ryan P.", "Priya R." and
+          "Samira M." — the same three names on every page, with a different
+          job each time. Across the six, Ryan P. was a VP of Engineering, a
+          Director of Engineering, a Workforce Planner, a founder, a board
+          member and a board chair. Under all eighteen ran the line "No
+          pseudonyms. No doctored quotes."
+
+          None of the engagements happened. Rivago has no client who has
+          signed off on a published quote — the same reason the nine case
+          studies came off /resources and the nine "Client story" cards came
+          off /services. Put a band back when there are real quotes with real
+          sign-off; TestiCreamSection is gone with the copy, so it will need
+          rebuilding, which is the correct amount of friction. */}
 
       <IntakeBandSection
         heading={<>Tell us the role.<br /><em>We&apos;ll do the rest.</em></>}

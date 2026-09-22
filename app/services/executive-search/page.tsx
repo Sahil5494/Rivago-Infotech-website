@@ -10,7 +10,6 @@ import {
   Proc2Section,
   GuaranteeSection,
   IndustriesGrid2Section,
-  TestiCreamSection,
   IntakeBandSection,
   FaqSection,
   CtaSection,
@@ -72,10 +71,10 @@ export default function ExecutiveSearchPage() {
         heading={<>Leadership searches run<br />by <em>the partner, not a team.</em></>}
         lead="Most firms staff your search with a partner's name and a junior's hours. We do the opposite — the partner who takes the brief does the sourcing, the calls and the reference checks, and reports to you in writing every week."
         numsr={[
-          { v: "6–10", sup: "wk", title: "Typical search length", desc: "Brief to signed offer, full market mapped." },
-          { v: "96", sup: "%", title: "Offer-accept rate", desc: "Executive searches, last 12 months." },
+          { v: "6–10", sup: "wk", title: "The plan we work to", desc: "Brief to signed offer, full market mapped." },
+          { v: "Off-market", t: true, title: "Every approach", desc: "No posting, no database blast, NDA on request." },
           { v: "12", sup: "mo", title: "Replacement guarantee", desc: "Leaves inside the window? We restart, free." },
-          { v: "120", sup: "+", title: "Executive placements", desc: "VP to CEO, across four markets, to date." },
+          { v: "One partner", t: true, title: "Every call and reference", desc: "No handoff to a researcher after signature." },
         ]}
         cards={[
           { title: "Confidential as standard", desc: "NDA on request, off-market approaches only, and your brand kept out of the search until you choose to reveal it — no leaks to the incumbent or the market.", icon: svgIco('<rect x="4" y="9" width="14" height="10" rx="2" stroke="var(--accent)" stroke-width="1.5"/><path d="M7 9V6.5a4 4 0 018 0V9" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>') },
@@ -137,10 +136,10 @@ export default function ExecutiveSearchPage() {
       <GuaranteeSection
         heading={<>Four numbers we&apos;ll stand behind<br />on the <em>first call.</em></>}
         stats={[
-          { val: "6–10", sup: "wk", title: "Typical search length", desc: "Confidential mandate to a signed executive offer." },
-          { val: "96", sup: "%", title: "Offer-acceptance rate", desc: "Executive searches, last 12 months." },
-          { val: "12", sup: "mo", title: "Replacement guarantee", desc: "If a placed executive leaves inside 12 months we restart at no charge." },
-          { val: "120", sup: "+", title: "Executive placements", desc: "VP to CEO, made across four markets — each owned end to end by one named partner." },
+          { val: "6–10", sup: "wk", title: "The plan we work to", desc: "Confidential mandate to a signed executive offer, with the date agreed before the retainer is drawn." },
+          { val: "12", sup: "mo", title: "Replacement guarantee", desc: "If a placed executive leaves inside 12 months we restart the search at no charge." },
+          { val: "Off-market", t: true, title: "How every approach is made", desc: "No posting, no database blast, NDA on request — your brand stays out of the search until you choose." },
+          { val: "One partner", t: true, title: "Every call, every reference", desc: "The partner who takes the mandate runs it to signature. No handoff to a researcher, no relay through an account manager." },
         ]}
       />
 
@@ -149,15 +148,22 @@ export default function ExecutiveSearchPage() {
         sub="Every retained mandate is run by a partner who has recruited senior leaders in that sector for at least seven years — they know the boardrooms, the succession gaps and the leaders who aren't looking."
       />
 
-      <TestiCreamSection
-        heading={<>Executive searches,<br /><em>in their own words.</em></>}
-        sub="Plain English from board members, CEOs and CHROs who ran a confidential leadership search through Rivago in the last eighteen months. No pseudonyms. No doctored quotes."
-        cards={[
-          { tag: "Canada · Finance", quote: "We needed to replace our CFO ahead of an earnings cycle without a single leak. Rivago ran it fully off-market — no posting, no database blast. The market found out on the day we announced it.", initials: "RP", name: "Ryan P.", role: "Board Member · TSX-listed fintech" },
-          { tag: "US · Legal", quote: "We had no in-house legal function heading into a Series C. Rivago placed our General Counsel first, then let her build the rest of the team — that sequencing made all the difference.", initials: "PR", name: "Priya R.", role: "Chief Executive · US Series-C scale-up" },
-          { tag: "US · Operations", quote: "We needed a turnaround operator immediately, not in two months. Rivago placed an interim COO from their bench in eleven days — margin was up 22% within two quarters.", initials: "SM", name: "Samira M.", role: "Board Chair · PE-owned business" },
-        ]}
-      />
+      {/* THE CUSTOMER-STORY BAND STOOD HERE and has been removed, on all six
+          service pages that carried one.
+
+          Each held three quotes attributed to "Ryan P.", "Priya R." and
+          "Samira M." — the same three names on every page, with a different
+          job each time. Across the six, Ryan P. was a VP of Engineering, a
+          Director of Engineering, a Workforce Planner, a founder, a board
+          member and a board chair. Under all eighteen ran the line "No
+          pseudonyms. No doctored quotes."
+
+          None of the engagements happened. Rivago has no client who has
+          signed off on a published quote — the same reason the nine case
+          studies came off /resources and the nine "Client story" cards came
+          off /services. Put a band back when there are real quotes with real
+          sign-off; TestiCreamSection is gone with the copy, so it will need
+          rebuilding, which is the correct amount of friction. */}
 
       <IntakeBandSection
         heading={<>Tell us the mandate.<br /><em>We&apos;ll do the rest.</em></>}

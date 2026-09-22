@@ -9,7 +9,6 @@ import {
   Proc2Section,
   GuaranteeSection,
   IndustriesGrid2Section,
-  TestiCreamSection,
   IntakeBandSection,
   FaqSection,
   CtaSection,
@@ -54,10 +53,10 @@ export default function InterimLeadershipPage() {
         heading={<>A day-one operator,<br />not <em>a resume search.</em></>}
         lead="Most firms start looking once you call. We keep a standing bench of vetted interim executives ready now — so the gap between “we need someone” and “someone is running it” is measured in days, not months."
         numsr={[
-          { v: "7", sup: "d", title: "To a leader in seat", desc: "From confirmed brief to a start date." },
-          { v: "92", sup: "%", title: "Assignment success rate", desc: "Completed to plan, last 12 months." },
+          { v: "A standing bench", t: true, title: "Screened before you call", desc: "Referenced and available, not sourced from scratch." },
+          { v: "Operators", t: true, title: "Not consultants", desc: "Everyone has run the function before, under pressure." },
           { v: "1", sup: "wk", title: "Swap window", desc: "Not the right fit? We replace within a week." },
-          { v: "80", sup: "+", title: "Interim placements", desc: "Across four markets, to date." },
+          { v: "Day one", t: true, title: "Scope agreed in writing", desc: "What the assignment is, and when it ends." },
         ]}
         cards={[
           { title: "A standing, vetted bench", desc: "Interim executives pre-screened and reference-checked before you ever need them — so day one starts with someone already proven, not someone we just met.", icon: svgIco('<circle cx="11" cy="11" r="8" stroke="var(--accent)" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>') },
@@ -92,10 +91,10 @@ export default function InterimLeadershipPage() {
       <GuaranteeSection
         heading={<>Four numbers we&apos;ll stand behind<br />on the <em>first call.</em></>}
         stats={[
-          { val: "7", sup: "d", title: "Time to deployment", desc: "From confirmed brief to a leader starting in the seat." },
-          { val: "92", sup: "%", title: "Assignment success rate", desc: "Completed to plan, last 12 months." },
-          { val: "1", sup: "wk", title: "Swap window", desc: "Not the right fit? We replace the leader within a week, no charge." },
-          { val: "80", sup: "+", title: "Interim placements", desc: "Transitions and turnarounds led across four markets, to date." },
+          { val: "1", sup: "wk", title: "Swap window", desc: "Not the right fit? We replace the leader within a week, at no charge." },
+          { val: "In writing", t: true, title: "Scope and end date", desc: "What the assignment covers and when it finishes, agreed before day one rather than renegotiated at month three." },
+          { val: "No conversion fee", t: true, title: "If you keep them", desc: "Interim assignments that become permanent convert on terms fixed at the start, not on a percentage quoted afterwards." },
+          { val: "One partner", t: true, title: "Brief to handover", desc: "The partner who scoped the assignment stays on it through the handover to your permanent hire." },
         ]}
       />
 
@@ -104,15 +103,22 @@ export default function InterimLeadershipPage() {
         sub="Our interim bench is built from operators who have actually run these functions under pressure — not consultants between engagements. Sector fit is matched from day one."
       />
 
-      <TestiCreamSection
-        heading={<>Interim leaders,<br /><em>in their own words.</em></>}
-        sub="Plain English from board chairs, CEOs and CHROs who brought in a Rivago interim executive in the last eighteen months. No pseudonyms. No doctored quotes."
-        cards={[
-          { tag: "US · Operations", quote: "A PE-owned business in distress needed an operator immediately — not in two months. Rivago placed a turnaround COO from their bench who started in eleven days. Margin was up 22% within two quarters.", initials: "RP", name: "Ryan P.", role: "Board Chair · PE-owned business" },
-          { tag: "Canada · Finance", quote: "Our CFO left with two weeks' notice ahead of an audit. Rivago had an interim CFO in the seat within a week — she ran the audit clean and handed over to our permanent hire without a hitch.", initials: "PR", name: "Priya R.", role: "CEO · Ontario financial services" },
-          { tag: "UAE · Retail", quote: "We needed a fractional CMO two days a week while we searched for a full-time hire. Rivago's fractional exec ran our launch campaign in the meantime — we ended up keeping her on permanently.", initials: "SM", name: "Samira M.", role: "CEO · Dubai retail group" },
-        ]}
-      />
+      {/* THE CUSTOMER-STORY BAND STOOD HERE and has been removed, on all six
+          service pages that carried one.
+
+          Each held three quotes attributed to "Ryan P.", "Priya R." and
+          "Samira M." — the same three names on every page, with a different
+          job each time. Across the six, Ryan P. was a VP of Engineering, a
+          Director of Engineering, a Workforce Planner, a founder, a board
+          member and a board chair. Under all eighteen ran the line "No
+          pseudonyms. No doctored quotes."
+
+          None of the engagements happened. Rivago has no client who has
+          signed off on a published quote — the same reason the nine case
+          studies came off /resources and the nine "Client story" cards came
+          off /services. Put a band back when there are real quotes with real
+          sign-off; TestiCreamSection is gone with the copy, so it will need
+          rebuilding, which is the correct amount of friction. */}
 
       <IntakeBandSection
         heading={<>Tell us the gap.<br /><em>We&apos;ll do the rest.</em></>}

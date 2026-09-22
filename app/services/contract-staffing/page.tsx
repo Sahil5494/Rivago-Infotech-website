@@ -8,7 +8,6 @@ import {
   ModesSection,
   Proc2Section,
   IndustriesGrid2Section,
-  TestiCreamSection,
   IntakeBandSection,
   FaqSection,
   CtaSection,
@@ -53,10 +52,10 @@ export default function ContractStaffingPage() {
         heading={<>Flexible capacity, without<br />the <em>compliance headache.</em></>}
         lead="Most agencies bench-warm a list and bill the markup. We do the opposite — one senior partner owns your contract need end to end, deploys from a pre-vetted bench, and carries payroll, tax and worker classification so you don't."
         numsr={[
-          { v: "5–7", sup: "d", title: "To first contractor", desc: "Vetted, available and cleared to start." },
+          { v: "A date in writing", t: true, title: "To first contractor", desc: "Agreed on the call, before anyone is sourced." },
           { v: "100", sup: "%", title: "Compliance handled", desc: "Payroll, tax and classification, on us." },
-          { v: "63", sup: "%", title: "Convert to permanent", desc: "Of contract-to-hire engagements, last year." },
-          { v: "600", sup: "+", title: "Contractors deployed", desc: "Across four markets, to date." },
+          { v: "Any time", t: true, title: "Convert to permanent", desc: "On terms fixed before the contract starts." },
+          { v: "One partner", t: true, title: "Brief to deployment", desc: "Whoever takes the brief runs the engagement." },
         ]}
         cards={[
           { title: "One partner, full ownership", desc: "The same senior partner from brief to deployment and beyond. No handoffs to a BD desk, no account-manager relay — one name owns the engagement.", icon: svgIco('<circle cx="11" cy="8" r="3.5" stroke="var(--accent)" stroke-width="1.5"/><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>') },
@@ -71,7 +70,7 @@ export default function ContractStaffingPage() {
         heading={<>Three ways to add<br />flexible <em>contract capacity.</em></>}
         modes={[
           { num: "01", title: "Contract staffing", desc: "Skilled professionals for a defined period or project. Billed on a transparent day-rate — we handle payroll, tax, insurance and compliance so the worker is fully covered from day one.", bullets: ["Deployed in 5–7 days", "Transparent day-rate, no hidden markup", "Payroll & compliance fully handled", "Scale the team up or down as work changes"] },
-          { num: "02", title: "Contract-to-hire", desc: "Trial the fit before you commit. The professional works on contract for an agreed period, then converts to your permanent payroll with no conversion fee once you're sure.", bullets: ["Try before you commit", "No conversion fee after the agreed term", "Payroll & compliance during the contract", "63% convert to permanent"], featured: true },
+          { num: "02", title: "Contract-to-hire", desc: "Trial the fit before you commit. The professional works on contract for an agreed period, then converts to your permanent payroll with no conversion fee once you're sure.", bullets: ["Try before you commit", "No conversion fee after the agreed term", "Payroll & compliance during the contract", "Conversion terms fixed upfront"], featured: true },
           { num: "03", title: "Managed contract team", desc: "Need a whole squad or a statement-of-work delivery team? We stand up, run and supervise a managed contract team against your outcomes — one contract, one point of contact.", bullets: ["Full team stood up in weeks", "SOW or managed-capacity models", "Single contract, single invoice", "On-site or fully remote"] },
         ]}
       />
@@ -93,15 +92,22 @@ export default function ContractStaffingPage() {
         sub="Every Rivago partner runs one practice. They know which contractors are genuinely available next week, what the going day rate actually is, and who delivers without hand-holding."
       />
 
-      <TestiCreamSection
-        heading={<>Contract talent,<br /><em>in their own words.</em></>}
-        sub="Plain English from delivery leads, engineering managers and ops directors who scaled with Rivago contractors in the last eighteen months. No pseudonyms. No doctored quotes."
-        cards={[
-          { tag: "US · Technology", quote: "We had a six-month platform build and no headcount to hire against. Rivago stood up four contract engineers in a week — payroll, IR35, all of it handled. We shipped on time and kept two on permanently.", initials: "RP", name: "Ryan P.", role: "Director of Engineering · US SaaS" },
-          { tag: "Canada · Finance", quote: "Year-end always breaks our capacity. Rivago gives us five contract analysts every Q4 — same people where we can, cleared and productive on day one, off payroll again in January. Zero compliance drama.", initials: "PR", name: "Priya R.", role: "Finance Director · Ontario financial services" },
-          { tag: "UAE · Operations", quote: "We open new sites on tight timelines and need contract teams that are compliant from hour one. Rivago became the employer of record for the whole squad — visas, payroll, insurance. We just directed the work.", initials: "SM", name: "Samira M.", role: "VP Operations · Dubai logistics group" },
-        ]}
-      />
+      {/* THE CUSTOMER-STORY BAND STOOD HERE and has been removed, on all six
+          service pages that carried one.
+
+          Each held three quotes attributed to "Ryan P.", "Priya R." and
+          "Samira M." — the same three names on every page, with a different
+          job each time. Across the six, Ryan P. was a VP of Engineering, a
+          Director of Engineering, a Workforce Planner, a founder, a board
+          member and a board chair. Under all eighteen ran the line "No
+          pseudonyms. No doctored quotes."
+
+          None of the engagements happened. Rivago has no client who has
+          signed off on a published quote — the same reason the nine case
+          studies came off /resources and the nine "Client story" cards came
+          off /services. Put a band back when there are real quotes with real
+          sign-off; TestiCreamSection is gone with the copy, so it will need
+          rebuilding, which is the correct amount of friction. */}
 
       <IntakeBandSection
         heading={<>Tell us the roles.<br /><em>We&apos;ll do the rest.</em></>}
