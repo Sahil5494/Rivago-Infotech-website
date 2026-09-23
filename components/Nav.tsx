@@ -335,7 +335,7 @@ export default function Nav() {
             <span></span><span></span><span></span>
           </button>
           <Link className="btn-si" href={routes.signIn}>Sign in</Link>
-          <button type="button" className="btn-cta" data-hire>Hire Talent</button>
+          <button type="button" className="btn-cta" data-hire>Let&apos;s Talk</button>
         </div>
       </nav>
 
@@ -365,7 +365,7 @@ export default function Nav() {
             </div>
           ))}
           <Link className="mnav-cta" href={routes.signIn} style={{ background: "transparent", border: "1px solid var(--border)", color: "var(--text)" }} onClick={() => setMobileOpen(false)}>Sign in</Link>
-          <button type="button" className="mnav-cta" data-hire onClick={() => setMobileOpen(false)}>Hire Talent</button>
+          <button type="button" className="mnav-cta" data-hire onClick={() => setMobileOpen(false)}>Let&apos;s Talk</button>
         </div>
       </div>
     </>

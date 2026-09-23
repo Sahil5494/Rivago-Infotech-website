@@ -39,7 +39,7 @@ export default function ServicesPage() {
             <h1 className="rv rv2">Staffing for every role,<br />at <em>every level.</em></h1>
             <p className="rv rv3">Contract, contract-to-hire and direct hire across four countries. A specialist partner runs the search end to end — and stays on the line for every role after it.</p>
             <div className="svh-cta rv rv4">
-              <a className="btn btn--primary btn--lg" href="/hire-talent#intake" data-hire>Hire Talent <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+              <a className="btn btn--primary btn--lg" href="/hire-talent#intake" data-hire>Let&apos;s Talk <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
               <a className="btn btn--secondary btn--lg" href="/resources">Read our hiring guides</a>
             </div>
           </div>
@@ -633,7 +633,7 @@ export default function ServicesPage() {
             <h2>Tell us the role.<br />We&rsquo;ll be back <em>tomorrow.</em></h2>
             <p>A 30-minute scoping call with a partner — not a portal — and a written shortlist plan within one business day.</p>
             <div style={{display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap"}}>
-              <a className="btn-dark" href="/hire-talent#intake" data-hire>Hire Talent <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+              <a className="btn-dark" href="/hire-talent#intake" data-hire>Let&apos;s Talk <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
               <a className="btn-darkghost" href="/contact-us">Talk to us</a>
             </div>
           </div>

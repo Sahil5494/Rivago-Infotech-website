@@ -142,7 +142,7 @@ export default function HireModal() {
         </button>
         {!showOk ? (
           <div>
-            <div className="hire-eyb">Get started</div>
+            <div className="hire-eyb">Talk to an expert</div>
             <h2 id="hireTitle">Tell us what you <em>need.</em></h2>
             <div className="hire-q">Just to confirm, are you:</div>
             <div className="hire-seg" role="tablist">
