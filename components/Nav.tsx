@@ -280,7 +280,12 @@ export default function Nav() {
                   site. Removed rather than replaced: the promo reads fine on
                   its offer alone, and any figure put back here should be one
                   you would be comfortable being asked to prove. */}
-              <button type="button" className="mm-promo-btn" data-hire>Book your call <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h6M5.5 2.5l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+              {/* Same label as the other four [data-hire] buttons. They all open
+                  the same modal, so three different words for one action —
+                  "Hire Talent", "Book your call", "Let's Talk" — read as three
+                  separate offers. The promo's own title still says what the
+                  call is. */}
+              <button type="button" className="mm-promo-btn" data-hire>Let&apos;s Talk <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h6M5.5 2.5l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
             </div>
           </div>
 
