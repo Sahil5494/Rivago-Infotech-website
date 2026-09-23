@@ -80,13 +80,13 @@ export default function HireModal() {
     required.forEach((i) => (i.style.borderColor = ""));
     if (bad.length) {
       bad[0].focus();
-      bad.forEach((i) => (i.style.borderColor = "#ff6b6b"));
+      bad.forEach((i) => (i.style.borderColor = "var(--alert)"));
       setErr("Please complete the highlighted fields.");
       return;
     }
     const email = form.elements.namedItem("email") as HTMLInputElement | null;
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
-      email.style.borderColor = "#ff6b6b";
+      email.style.borderColor = "var(--alert)";
       email.focus();
       setErr("Please enter a valid email address.");
       return;
@@ -155,7 +155,7 @@ export default function HireModal() {
     >
       <div className="hire-modal">
         <button type="button" className="hire-x" aria-label="Close" onClick={() => setOpen(false)}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
         </button>
         {!showOk ? (
           <div>
@@ -178,7 +178,7 @@ export default function HireModal() {
               {errEmployer && <div className="hire-err show">{errEmployer}</div>}
               <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} aria-hidden="true" readOnly />
               <button type="submit" className="hire-submit" disabled={busy} style={{ opacity: busy ? 0.65 : undefined }}>
-                {busy ? "Sending…" : (<>Submit brief <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></>)}
+                {busy ? "Sending…" : (<>Submit brief <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></>)}
               </button>
               <div className="hire-foot">Opens a submission to info@rivagoinfotech.com — a senior partner replies within one business day.</div>
             </form>
@@ -204,7 +204,7 @@ export default function HireModal() {
               {errSeeker && <div className="hire-err show">{errSeeker}</div>}
               <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} aria-hidden="true" readOnly />
               <button type="submit" className="hire-submit" disabled={busy} style={{ opacity: busy ? 0.65 : undefined }}>
-                {busy ? "Sending…" : (<>Submit application <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></>)}
+                {busy ? "Sending…" : (<>Submit application <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></>)}
               </button>
               <div className="hire-foot">Sent to careers@rivagoinfotech.com. Remember to attach your CV before sending.</div>
             </form>

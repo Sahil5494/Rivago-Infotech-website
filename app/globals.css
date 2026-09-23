@@ -1882,47 +1882,76 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 }
 
 /* ── HIRE MODAL ── */
-.hire-ov{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(3,8,4,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.hire-ov.open{display:flex;animation:hireFade .25s ease}
+/* ── HIRING-BRIEF FORM (components/HireModal.tsx) ─────────────────────────
+   Reached from the "How can we help?" chooser, so it is the second panel of
+   one conversation and has to look like it.
+
+   It did not. The panel's background was var(--surface), which on this site
+   resolves to rgba(0,8,5,.03) — 97% transparent. Over the dark backdrop the
+   page showed straight through the form, and because every text colour in
+   it assumed a light ground, the heading "Tell us what you need.", the field
+   labels and the footer line rendered black on near-black: present, and
+   unreadable. The selected tab and the submit button put black text on the
+   dark green accent. The chooser before it was a solid mint panel with a
+   round close button, so the hand-off looked like switching to another site.
+
+   Every value below now comes from the same tokens as .hlp-modal: the
+   --cream panel (#edf7f2), white fields on --rule-inv-1 hairlines, --text-inv
+   greys, and --accent-inv (#0e5c3c) with --on-accent (#fff) text for the one
+   filled control in each state. The backdrop, radius, shadow, badge and
+   close button are the chooser's, value for value. */
+.hire-ov{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,4,3,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hire-ov.open{display:flex;animation:hireFade .22s ease}
 @keyframes hireFade{from{opacity:0}to{opacity:1}}
-.hire-modal{width:100%;max-width:560px;max-height:92vh;overflow-y:auto;background:var(--surface,var(--surface-3));border:1px solid var(--border,var(--rule-1));border-radius:22px;padding:36px 34px 34px;position:relative;box-shadow:0 30px 90px rgba(0,0,0,.55);animation:hirePop .3s var(--ease,cubic-bezier(.32,.72,0,1))}
-@keyframes hirePop{from{transform:translateY(16px) scale(.985);opacity:0}to{transform:none;opacity:1}}
-.hire-x{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:9px;border:1px solid var(--border,var(--rule-1));background:none;color:var(--text2,var(--text-2));cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.hire-x:hover{background:var(--surface2,var(--surface-3));color:var(--text,var(--text-1))}
-.hire-eyb{display:inline-flex;align-items:center;gap:7px;padding:4px 12px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent,var(--accent));margin-bottom:16px}
-.hire-eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent,var(--accent))}
-.hire-modal h2,.hire-modal h3{font-size:var(--fz10);font-weight:500;letter-spacing:-.02em;color:var(--text,var(--text-1));line-height:1.15;margin-bottom:7px}
-.hire-q{font-size:var(--fz2);font-weight:500;color:var(--text2,var(--text-2));margin-bottom:10px}
-.hire-seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:26px;background:var(--bg2,var(--surface-2));border:1px solid var(--border,var(--rule-1));border-radius:12px;padding:5px}
-.hire-seg button{padding:12px 10px;border:none;background:none;border-radius:8px;font-family:var(--ff);font-size:var(--fz3);font-weight:500;color:var(--text2,var(--text-2));cursor:pointer;transition:all .2s var(--ease,cubic-bezier(.32,.72,0,1))}
-.hire-seg button.on{background:var(--accent,var(--accent));color:var(--text-inv-1)}
+.hire-modal{width:100%;max-width:580px;max-height:92vh;overflow-y:auto;background:var(--cream,var(--surface-inv));color:var(--text-inv-1);border-radius:24px;padding:40px 40px 32px;position:relative;box-shadow:0 40px 100px rgba(0,0,0,.6);animation:hirePop .3s cubic-bezier(.32,.72,0,1)}
+@keyframes hirePop{from{transform:translateY(16px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+.hire-x{position:absolute;top:20px;right:20px;width:34px;height:34px;border-radius:50%;border:1px solid var(--rule-inv-1);background:none;color:var(--text-inv-3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.hire-x:hover{background:rgba(10,112,64,.08);border-color:rgba(10,112,64,.3);color:var(--text-inv-1)}
+.hire-x:focus-visible{outline:2px solid var(--accent-inv);outline-offset:2px}
+.hire-eyb{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border:1px solid rgba(10,112,64,.24);background:rgba(10,112,64,.07);border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--accent-inv);margin-bottom:16px}
+.hire-eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent-inv)}
+.hire-modal h2,.hire-modal h3{font-size:var(--fz10);font-weight:500;letter-spacing:-.025em;color:var(--text-inv-1);line-height:1.12;margin-bottom:18px;padding-right:40px}
+.hire-q{font-size:var(--fz2);font-weight:500;color:var(--text-inv-2);margin-bottom:10px}
+
+/* Employer / job-seeker switch. The selected half is the only filled green
+   in the panel until the submit button, so the choice reads first. */
+.hire-seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:26px;background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:13px;padding:5px}
+.hire-seg button{padding:12px 10px;border:none;background:none;border-radius:9px;font-family:var(--ff);font-size:var(--fz3);font-weight:500;color:var(--text-inv-2);cursor:pointer;transition:all .2s cubic-bezier(.32,.72,0,1)}
+.hire-seg button:hover{color:var(--text-inv-1);background:rgba(10,112,64,.06)}
+.hire-seg button.on{background:var(--accent-inv);color:var(--on-accent);box-shadow:0 2px 8px rgba(14,92,60,.22)}
+.hire-seg button:focus-visible{outline:2px solid var(--accent-inv);outline-offset:2px}
+
 .hire-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .hire-form[hidden]{display:none}
 .hire-field{display:flex;flex-direction:column;gap:6px}
 .hire-field.full{grid-column:1/-1}
-.hire-field label{font-size:var(--fz1);font-weight:500;color:var(--text2,var(--text-2))}
-.hire-field label .opt{color:var(--text3,var(--text-inv-3));font-weight:400}
-.hire-field input,.hire-field textarea{width:100%;padding:12px 14px;background:var(--bg2,var(--surface-2));border:1px solid var(--border,var(--rule-1));border-radius:10px;font-family:var(--ff);font-size:var(--fz3);color:var(--text,var(--text-1));outline:none;transition:border-color .2s}
-.hire-field input::placeholder,.hire-field textarea::placeholder{color:var(--text3,var(--text-inv-3))}
-.hire-field input:focus,.hire-field textarea:focus{border-color:var(--accent,var(--accent))}
+.hire-field label{font-size:var(--fz1);font-weight:500;color:var(--text-inv-2)}
+.hire-field label .opt{color:var(--text-inv-3);font-weight:400}
+.hire-field input,.hire-field textarea{width:100%;padding:12px 14px;background:var(--surface-inv);border:1px solid var(--rule-inv-1);border-radius:10px;font-family:var(--ff);font-size:var(--fz3);color:var(--text-inv-1);outline:none;transition:border-color .2s,box-shadow .2s}
+.hire-field input::placeholder,.hire-field textarea::placeholder{color:var(--text-inv-3);opacity:.75}
+.hire-field input:hover,.hire-field textarea:hover{border-color:var(--rule-inv-2)}
+.hire-field input:focus,.hire-field textarea:focus{border-color:var(--accent-inv);box-shadow:0 0 0 3px rgba(14,92,60,.12)}
 .hire-field textarea{resize:vertical;min-height:92px}
-.hire-file{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;background:var(--bg2,var(--surface-2));border:1px dashed var(--border,var(--rule-1));border-radius:10px;cursor:pointer;transition:border-color .2s}
-.hire-file:hover{border-color:var(--accent,var(--accent))}
-.hire-file-txt{font-size:var(--fz2);color:var(--text3,var(--text-inv-3))}
-.hire-file-txt.has{color:var(--text,var(--text-1))}
-.hire-file-btn{flex-shrink:0;font-size:var(--fz1);font-weight:500;color:var(--accent,var(--accent));border:1px solid var(--tint-3);border-radius:8px;padding:7px 13px}
-.hire-submit{grid-column:1/-1;margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px;background:var(--accent,var(--accent));color:var(--text-inv-1);border:none;border-radius:11px;font-family:var(--ff);font-size:var(--fz5);font-weight:500;cursor:pointer;transition:all .2s}
-.hire-submit:hover{filter:brightness(1.06);transform:translateY(-1px)}
-.hire-submit:disabled{cursor:default}
-.hire-err{display:none;grid-column:1/-1;padding:11px 14px;background:rgba(255,107,107,.09);border:1px solid rgba(255,107,107,.32);border-radius:9px;font-size:var(--fz2);color:var(--alert);line-height:1.5}
+.hire-file{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;background:var(--surface-inv);border:1px dashed var(--rule-inv-2);border-radius:10px;cursor:pointer;transition:border-color .2s}
+.hire-file:hover{border-color:var(--accent-inv)}
+.hire-file-txt{font-size:var(--fz2);color:var(--text-inv-3)}
+.hire-file-txt.has{color:var(--text-inv-1)}
+.hire-file-btn{flex-shrink:0;font-size:var(--fz1);font-weight:500;color:var(--accent-inv);border:1px solid rgba(10,112,64,.3);border-radius:8px;padding:7px 13px}
+.hire-submit{grid-column:1/-1;margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px;background:var(--accent-inv);color:var(--on-accent);border:none;border-radius:var(--pill,9999px);font-family:var(--ff);font-size:var(--fz5);font-weight:500;cursor:pointer;transition:all .2s}
+.hire-submit:hover{background:#0a4a30;transform:translateY(-1px);box-shadow:0 10px 24px rgba(14,92,60,.25)}
+.hire-submit:focus-visible{outline:2px solid var(--accent-inv);outline-offset:3px}
+.hire-submit:disabled{cursor:default;transform:none;box-shadow:none}
+.hire-err{display:none;grid-column:1/-1;padding:11px 14px;background:rgba(163,58,58,.07);border:1px solid rgba(163,58,58,.3);border-radius:9px;font-size:var(--fz2);color:var(--alert);line-height:1.5}
 .hire-err.show{display:block}
-.hire-foot{grid-column:1/-1;font-size:var(--fz1);color:var(--text3,var(--text-inv-3));text-align:center;margin-top:2px;line-height:1.5}
+.hire-foot{grid-column:1/-1;font-size:var(--fz1);color:var(--text-inv-3);text-align:center;margin-top:2px;line-height:1.5}
 .hire-ok{display:none;text-align:center;padding:24px 0 8px}
 .hire-ok.show{display:block;animation:hireFade .3s ease}
-.hire-ok-ic{width:56px;height:56px;border-radius:50%;background:var(--tint-1);border:1px solid var(--tint-3);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
-.hire-ok h3,.hire-ok h4{font-size:var(--fz8);font-weight:500;color:var(--text,var(--text-1));margin-bottom:8px;letter-spacing:-.01em}
-.hire-ok p{font-size:var(--fz6);color:var(--text2,var(--text-2));font-weight:400;line-height:1.65;max-width:380px;margin:0 auto}
-@media(max-width:520px){.hire-form{grid-template-columns:1fr}.hire-modal{padding:30px 22px}}
+.hire-ok-ic{width:56px;height:56px;border-radius:50%;background:rgba(10,112,64,.08);border:1px solid rgba(10,112,64,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.hire-ok-ic svg path{stroke:var(--accent-inv)}
+.hire-ok h3,.hire-ok h4{font-size:var(--fz8);font-weight:500;color:var(--text-inv-1);margin-bottom:8px;letter-spacing:-.01em;padding-right:0}
+.hire-ok p{font-size:var(--fz6);color:var(--text-inv-3);font-weight:400;line-height:1.65;max-width:380px;margin:0 auto}
+@media(max-width:620px){.hire-ov{padding:12px}.hire-modal{padding:28px 20px 22px;border-radius:20px}}
+@media(max-width:520px){.hire-form{grid-template-columns:1fr}}
 
 /* ── PAGE SIDE NAV ── */
 .pgnav-side{position:fixed;top:50%;transform:translateY(-50%);z-index:400;align-items:center;height:48px;padding:0 14px;background:var(--chrome-solid);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--rule-1);color:var(--text-2);text-decoration:none;font-family:var(--ff);font-size:var(--fz2);font-weight:500;box-shadow:0 14px 44px rgba(0,0,0,.4);transition:background .25s,color .25s,border-color .25s,transform .25s,box-shadow .25s}
