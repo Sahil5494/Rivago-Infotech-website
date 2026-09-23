@@ -346,56 +346,17 @@ export function IndustriesSection({
 
 /* ── CUSTOMER STORY (single featured cream panel) ── */
 
-export type StoryMetric = { val: string; label: string };
-
-export function StorySection({
-  eyebrowText = "Client story",
-  heading,
-  tag,
-  quote,
-  initials,
-  name,
-  role,
-  metrics,
-}: {
-  eyebrowText?: string;
-  heading: ReactNode;
-  tag: string;
-  quote: string;
-  initials: string;
-  name: string;
-  role: string;
-  metrics?: StoryMetric[];
-}) {
-  return (
-    <section className="section cream">
-      <div className="wrap">
-        <div className="gs" style={{ textAlign: "center" }}>
-          <Eyebrow dark style={{ margin: "0 auto 20px" }}>{eyebrowText}</Eyebrow>
-          <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 680, margin: "0 auto" }}>{heading}</h2>
-        </div>
-        <div className="tc-card gs" style={{ maxWidth: 800, margin: "48px auto 0", padding: "44px 42px" }}>
-          <span className="tc-tag">{tag}</span>
-          <p className="tc-quote-serif" style={{ fontSize: "var(--fz8)" }}>&ldquo;{quote}&rdquo;</p>
-          <div className="tc-author2">
-            <div style={{ width: 42, height: 42, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{initials}</div>
-            <div><div className="tc-author2-name">{name}</div><div className="tc-author2-role">{role}</div></div>
-          </div>
-          {metrics && metrics.length > 0 && (
-            <div style={{ display: "flex", gap: 32, marginTop: 28, paddingTop: 24, borderTop: "1px solid rgba(0,0,0,.07)", flexWrap: "wrap" }}>
-              {metrics.map((m) => (
-                <div key={m.label}>
-                  <div style={{ fontStyle: "normal", fontWeight: 500, fontSize: "var(--fz11)", color: "var(--accent-inv)", lineHeight: 1 }}>{m.val}</div>
-                  <div style={{ fontSize: "var(--fz1)", color: "var(--dt3)", marginTop: 6, maxWidth: 140 }}>{m.label}</div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-}
+/* StorySection and its StoryMetric type were deleted here.
+ *
+ * A single centred customer story with a quote, an avatar, a name, a role
+ * and an optional row of headline metrics — and no route imported it. It
+ * went for the same reason as TestiCreamSection above: the copy that would
+ * fill it does not exist, and a ready-made quote-with-metrics component
+ * sitting in a shared file is how invented quotes get written in the first
+ * place.
+ *
+ * With it went the last renderer of .testi-cream and the .tc-* family; see
+ * the note where those rules were in globals.css. */
 
 /* ── FAQ ── */
 
@@ -708,8 +669,9 @@ export function IndustriesGrid2Section({ heading, sub }: { heading: ReactNode; s
  * whoever fills it next will be inventing quotes again. When Rivago has a
  * client who has signed off on one, rebuilding this is twenty minutes.
  *
- * The .testi-cream CSS stays in globals.css: /services/rpo and /hire-talent
- * hand-roll their own markup against it. */
+ * Nothing renders .testi-cream any more. /services/rpo hand-rolled its own
+ * markup against it and that band went in the same pass; /hire-talent's went
+ * with the three quotes it carried. The rules are gone from globals.css. */
 
 export type IntakeBullet = { strong: string; rest: string };
 

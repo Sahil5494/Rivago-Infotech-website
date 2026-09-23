@@ -2,14 +2,15 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import IntakeForm from "@/components/IntakeForm";
 import { routes } from "@/lib/routes";
+import { practices } from "@/app/industries/data";
 
 export const metadata: Metadata = {
   title: "For clients — Rivago Infotech",
-  description: "Hire senior, fully-screened talent fast. Rivago Infotech delivers direct hire, contract and executive search with a 48-hour shortlist and one partner from brief to placement.",
+  description: "Hire senior, fully-screened talent fast. Rivago Infotech delivers direct hire, contract and executive search with a delivery date agreed in writing and one partner from brief to placement.",
   alternates: { canonical: "https://rivagoinfotech.com/hire-talent" },
   openGraph: {
     title: "For clients — Rivago Infotech",
-    description: "Hire senior, fully-screened talent fast. Rivago Infotech delivers direct hire, contract and executive search with a 48-hour shortlist and one partner from brief to placement.",
+    description: "Hire senior, fully-screened talent fast. Rivago Infotech delivers direct hire, contract and executive search with a delivery date agreed in writing and one partner from brief to placement.",
     url: "https://rivagoinfotech.com/hire-talent",
   },
 };
@@ -35,7 +36,7 @@ const modes = [
     num: "02",
     title: "Contingent placement",
     desc: "Manager to Senior individual contributor. Pay only on a placement that sticks past the guarantee window. Most common engagement.",
-    bullets: ["48-hour median shortlist", "3–5 pre-screened candidates per role", "Replacement guarantee — 90 days", "No upfront fee"],
+    bullets: ["Delivery date agreed in writing", "3–5 pre-screened candidates per role", "Replacement guarantee — 90 days", "No upfront fee"],
     highlight: true,
   },
   {
@@ -49,14 +50,14 @@ const modes = [
 
 const stages = [
   { step: "Stage 01 · Day 0–2", title: "The intake", desc: "A 60-minute working session with the hiring manager and the partner who will run the search. We pressure-test the JD, agree on must-haves vs. nice-to-haves, set the scorecard, and write the off-limits list. You sign off before we source a single profile.", side: [["Owner", "Lead partner"], ["Output", "Signed JD + scorecard"], ["Time", "~60 min"]] },
-  { step: "Stage 02 · Day 2–10", title: "Mapping & outreach", desc: "The research team builds a longlist of 40–80 names from competitor cap tables, alumni networks, and the Rivago private database. Outreach is bespoke per candidate — no copy-paste sequences. Response rates average 38% versus the industry baseline of 9%.", side: [["Longlist size", "40–80"], ["Reply rate", "38% avg"], ["Source mix", "Passive 80%"]] },
-  { step: "Stage 03 · Day 10–18", title: "Screen & calibrate", desc: "45-minute structured interviews with every respondent — the same scorecard your panel will use. We submit the first three calibration profiles by day 12 and adjust the brief based on your reactions. The shortlist hardens by day 18.", side: [["Screens conducted", "18–24"], ["Submitted profiles", "5–7"], ["Reference depth", "3 per finalist"]] },
-  { step: "Stage 04 · Day 18–28", title: "Panel & finalist", desc: "We project-manage the entire interview loop: scheduling, debriefs, calibration between rounds, and reference check coordination. You get a written brief 24 hours before each interview and a synthesis the morning after.", side: [["Loops scheduled", "3–5 finalists"], ["Debrief turn", "<24h"], ["Drop-off rate", "<6%"]] },
-  { step: "Stage 05 · Day 28–35 + 12mo", title: "Close & care", desc: "We negotiate the offer, handle counter-offer defence, and stay close through the first 90 days. At months three, six and twelve we check in with both sides. If anything breaks in the guarantee window, we restart the search at no charge.", side: [["Counter rate", "11%"], ["90-day stick", "97%"], ["12-mo retention", "93%"]] },
+  { step: "Stage 02 · Day 2–10", title: "Mapping & outreach", desc: "The research team builds a longlist of 40–80 names from competitor cap tables, alumni networks, and the Rivago private database. Every approach is written for the person receiving it — we do not run sequences, and we do not repost the ad at scale.", side: [["Longlist size", "40–80"], ["Outreach", "Bespoke, per name"], ["Approach", "Passive-first"]] },
+  { step: "Stage 03 · Day 10–18", title: "Screen & calibrate", desc: "45-minute structured interviews with every respondent — the same scorecard your panel will use. We submit the first three calibration profiles by day 12 and adjust the brief based on your reactions. The shortlist hardens by day 18.", side: [["Screen length", "45 minutes"], ["Submitted profiles", "5–7"], ["Reference depth", "3 per finalist"]] },
+  { step: "Stage 04 · Day 18–28", title: "Panel & finalist", desc: "We project-manage the entire interview loop: scheduling, debriefs, calibration between rounds, and reference check coordination. You get a written brief 24 hours before each interview and a synthesis the morning after.", side: [["Loops scheduled", "3–5 finalists"], ["Debrief turn", "<24h"], ["Written brief", "24h before"]] },
+  { step: "Stage 05 · Day 28–35 + 12mo", title: "Close & care", desc: "We negotiate the offer, handle counter-offer defence, and stay close through the first 90 days. At months three, six and twelve we check in with both sides. If anything breaks in the guarantee window, we restart the search at no charge.", side: [["Counter-offer", "Planned upfront"], ["Check-ins", "3, 6 and 12 mo"], ["Guarantee", "Restart, no charge"]] },
 ];
 
 const whyCards = [
-  { title: "Fast without cutting corners", desc: "21-day median shortlists, every time. Every candidate is fully screened against your scorecard before reaching your inbox — not keyword-matched and not parsed by a machine.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="var(--accent)" strokeWidth="1.5" /><path d="M11 7v4l3 2" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
+  { title: "As fast as the role allows", desc: "You get a delivery date on the first call and we hold it or tell you early. Every candidate is fully screened against your scorecard before reaching your inbox — not keyword-matched and not parsed by a machine.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="var(--accent)" strokeWidth="1.5" /><path d="M11 7v4l3 2" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
   { title: "One partner, full ownership", desc: "The same senior partner from brief to placement. No handoffs to BD, no relays through account managers, no junior researchers running the candidate calls.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="var(--accent)" strokeWidth="1.5" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
   { title: "Industry specialists", desc: "Your brief goes to a partner who's recruited in your sector for seven-plus years. They know the comp bands, the unpublished orgs and the people who haven't updated their LinkedIn in two years.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l2 5 5 .7-3.6 3.5.9 5L11 13.5l-4.3 2.5.9-5L4 7.7l5-.7z" stroke="var(--accent)" strokeWidth="1.5" strokeLinejoin="round" /></svg>) },
   { title: "Documented & auditable", desc: "Every search produces a full audit trail — scorecards, screening notes, reference depth, decision rationale. Ready for board, compliance or DEI review at any point.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l8 4v5c0 5-3.5 8.5-8 9.5C6.5 19.5 3 16 3 11V6z" stroke="var(--accent)" strokeWidth="1.5" strokeLinejoin="round" /></svg>) },
@@ -64,24 +65,35 @@ const whyCards = [
   { title: "Replacement guarantee", desc: "12-month replacement on retained engagements, 90-day on contingent — no questions asked, no extra fee. If a placement leaves, we restart the search at no charge.", icon: (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="6" width="16" height="13" rx="2" stroke="var(--accent)" strokeWidth="1.5" /><path d="M7 6V4a2 2 0 012-2h4a2 2 0 012 2v2M7 12l3 3 6-6" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
 ];
 
-const industryTiles = [
-  { name: "Technology", count: "312 active mandates", icon: (<svg viewBox="0 0 28 28" fill="none"><rect x="3" y="6" width="22" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" /><path d="M8 22v2M20 22v2M3 18h22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
-  { name: "Healthcare", count: "184 active mandates", icon: (<svg viewBox="0 0 28 28" fill="none"><path d="M14 4l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V8l8-4z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><path d="M14 10v6M11 13h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
-  { name: "Legal", count: "92 active mandates", icon: (<svg viewBox="0 0 28 28" fill="none"><path d="M5 23h18M7 23V11M21 23V11M5 11h18M9 7l5-3 5 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-  { name: "Finance", count: "228 active mandates", icon: (<svg viewBox="0 0 28 28" fill="none"><path d="M4 22V8M10 22V12M16 22V6M22 22V14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>) },
-  { name: "Aerospace", count: "74 active mandates", icon: (<svg viewBox="0 0 28 28" fill="none"><path d="M2 18l6-12 8 4 4-3 6 5-4 9H2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg>) },
-  { name: "Telecom", count: "86 active mandates", icon: (<svg viewBox="0 0 28 28" fill="none"><path d="M14 4v20M4 8c3 3 7 5 10 5s7-2 10-5M4 20c3-3 7-5 10-5s7 2 10 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
-  { name: "Automotive", count: "62 active mandates", icon: (<svg viewBox="0 0 28 28" fill="none"><circle cx="8" cy="20" r="2.5" stroke="currentColor" strokeWidth="1.5" /><circle cx="20" cy="20" r="2.5" stroke="currentColor" strokeWidth="1.5" /><path d="M3 14h22l-2-7H5l-2 7zM10.5 20h7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>) },
-  { name: "Supply & ops", count: "128 active mandates", icon: (<svg viewBox="0 0 28 28" fill="none"><rect x="4" y="8" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" /><path d="M4 12h20M10 8V4h8v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
-  { name: "Sales & marketing", count: "204 active mandates", icon: (<svg viewBox="0 0 28 28" fill="none"><path d="M4 12c0-2 2-3 4-3s4 1 4 3-2 3-4 3-4 1-4 3 2 3 4 3M20 9v12M16 12h8M16 18h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
-  { name: "People & HR", count: "96 active mandates", icon: (<svg viewBox="0 0 28 28" fill="none"><circle cx="10" cy="9" r="3" stroke="currentColor" strokeWidth="1.5" /><circle cx="20" cy="11" r="2.5" stroke="currentColor" strokeWidth="1.5" /><path d="M4 22c0-3.3 2.7-6 6-6s6 2.7 6 6M16 22c0-2.5 2-4.5 4-4.5s4 2 4 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>) },
-];
-
-const testimonials = [
-  { tag: "US · Banking", quote: "Three hires in two weeks, all still with us 18 months later. The first recruiter we've worked with who actually pushes back on the brief instead of just sending résumés.", initials: "JM", name: "Jamie M.", role: "Head of Talent Acquisition · US regional bank" },
-  { tag: "Canada · Financial services", quote: "The shortlist landed in 38 hours. Every candidate had been properly screened — comp, notice, right-to-work. Two went to offer that week. That's never happened before.", initials: "PR", name: "Priya R.", role: "HR Director · Ontario financial services" },
-  { tag: "UAE · Healthcare", quote: "Clinical staffing in the UAE is brutal — licensing, DHA registration, the works. Rivago handled all of it without being told twice. Eleven placements, zero compliance issues.", initials: "SM", name: "Samira M.", role: "Chief People Officer · Dubai hospital group" },
-];
+/* THE TILE STRIP IS NOW DERIVED FROM app/industries/data.ts.
+ *
+ * It used to be a hand-typed list whose second line read "312 active
+ * mandates", "184 active mandates", "92", "228", "74", "86", "62", "128",
+ * "204", "96" — 1,466 live mandates in total. Those are the exact figures
+ * that sat in app/services/data.ts as unreachable code and were deleted for
+ * being unmeasured; the same numbers were live here.
+ *
+ * Deriving the strip fixes a second thing. All ten tiles linked to the bare
+ * /industries URL, so ten distinct choices landed the reader in one place at
+ * the top of the page. Each practice section carries id={p.id}, so each tile
+ * can deep-link to its own, and the second line now names a real seat that
+ * practice fills instead of a number nobody could stand behind.
+ *
+ * Only the icons stay local — they are artwork, not data. They are keyed by
+ * practice id rather than by array position so that reordering or renaming a
+ * practice cannot silently pair the wrong drawing with the wrong sector. */
+const PRACTICE_ICONS: Record<string, React.ReactNode> = {
+  technology: (<svg viewBox="0 0 28 28" fill="none"><rect x="3" y="6" width="22" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" /><path d="M8 22v2M20 22v2M3 18h22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>),
+  healthcare: (<svg viewBox="0 0 28 28" fill="none"><path d="M14 4l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V8l8-4z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><path d="M14 10v6M11 13h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>),
+  legal: (<svg viewBox="0 0 28 28" fill="none"><path d="M5 23h18M7 23V11M21 23V11M5 11h18M9 7l5-3 5 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>),
+  finance: (<svg viewBox="0 0 28 28" fill="none"><path d="M4 22V8M10 22V12M16 22V6M22 22V14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>),
+  aerospace: (<svg viewBox="0 0 28 28" fill="none"><path d="M2 18l6-12 8 4 4-3 6 5-4 9H2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg>),
+  telecom: (<svg viewBox="0 0 28 28" fill="none"><path d="M14 4v20M4 8c3 3 7 5 10 5s7-2 10-5M4 20c3-3 7-5 10-5s7 2 10 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>),
+  automotive: (<svg viewBox="0 0 28 28" fill="none"><circle cx="8" cy="20" r="2.5" stroke="currentColor" strokeWidth="1.5" /><circle cx="20" cy="20" r="2.5" stroke="currentColor" strokeWidth="1.5" /><path d="M3 14h22l-2-7H5l-2 7zM10.5 20h7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>),
+  supply: (<svg viewBox="0 0 28 28" fill="none"><rect x="4" y="8" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" /><path d="M4 12h20M10 8V4h8v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>),
+  sales: (<svg viewBox="0 0 28 28" fill="none"><path d="M4 12c0-2 2-3 4-3s4 1 4 3-2 3-4 3-4 1-4 3 2 3 4 3M20 9v12M16 12h8M16 18h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>),
+  people: (<svg viewBox="0 0 28 28" fill="none"><circle cx="10" cy="9" r="3" stroke="currentColor" strokeWidth="1.5" /><circle cx="20" cy="11" r="2.5" stroke="currentColor" strokeWidth="1.5" /><path d="M4 22c0-3.3 2.7-6 6-6s6 2.7 6 6M16 22c0-2.5 2-4.5 4-4.5s4 2 4 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>),
+};
 
 const Arrow = () => (
   <svg className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -100,15 +112,26 @@ export default function HireTalentPage() {
           <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>For clients</span></div>
           <div className="eyebrow ew-light gs" style={{ marginBottom: 28, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>For clients</div>
           <h1 className="gs">The shortlist<br />that ends the <em>search.</em></h1>
-          <p className="lead gs">Senior operators across technology, healthcare, legal, finance, aerospace, telecom and automotive — pre-screened, on-brief, in your inbox in 48 hours. A partner on the line, not a portal.</p>
+          <p className="lead gs">Senior operators across technology, healthcare, legal, finance, aerospace, telecom and automotive — pre-screened, on-brief, and against a delivery date agreed on the first call. A partner on the line, not a portal.</p>
           <div className="gs" style={{ marginTop: 32, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <a className="btn btn-prim" href="#intake">Book a strategy call <Arrow /></a>
             <Link className="btn btn-ghost" href={routes.resources}>Read our hiring guides</Link>
           </div>
+          {/* THREE OF THESE FIVE ROWS WERE INVENTED: a 48-hour median
+              time-to-shortlist, a 94% offer-acceptance rate "LTM", and 93%
+              12-month retention. None was measured.
+
+              The first was also wrong twice over, because this page stated
+              the same fact three different ways: 48 hours here and in the
+              metadata and the engagement bullets, 21 days in "Why hiring
+              managers choose us" and in the guarantees band, and 38 hours
+              inside a testimonial. A reader who scrolls finds all three.
+
+              Every row now states something the engagement letter says. */}
           <div className="page-hero-meta gs">
-            <div className="page-hero-meta-row"><span>Median time-to-shortlist</span><strong>48 hours</strong></div>
-            <div className="page-hero-meta-row"><span>Offer-acceptance rate (LTM)</span><strong>94%</strong></div>
-            <div className="page-hero-meta-row"><span>12-month retention</span><strong>93%</strong></div>
+            <div className="page-hero-meta-row"><span>Time to shortlist</span><strong>Agreed in writing</strong></div>
+            <div className="page-hero-meta-row"><span>Replacement guarantee</span><strong>90d · 12mo retained</strong></div>
+            <div className="page-hero-meta-row"><span>Check-ins after the hire</span><strong>3, 6 and 12 months</strong></div>
             <div className="page-hero-meta-row"><span>Partners per search</span><strong>One. Always.</strong></div>
             <div className="page-hero-meta-row"><span>Markets covered</span><strong>US · CA · UAE · IN</strong></div>
           </div>
@@ -167,12 +190,18 @@ export default function HireTalentPage() {
         <div className="wrap">
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we put in writing</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Four numbers we&apos;ll stand behind<br />on the <em>first call.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 700 }}>Four things that go in<br />the <em>engagement letter.</em></h2>
           </div>
+          {/* The eyebrow above reads "What we put in writing", so every tile
+              has to be a term of the engagement letter. Two were not: a
+              21-day median time-to-shortlist (contradicting the 48 hours in
+              this page's own hero) and a 94% offer-acceptance rate. The .t
+              class sets a value in the phrase size — see the note on
+              .gtee-val.t in globals.css. */}
           <div className="guarantee">
-            <div className="gtee gs"><div className="gtee-val">21<sup>days</sup></div><div className="gtee-title">Median time-to-shortlist</div><div className="gtee-desc">From signed JD to three calibrated finalists in your inbox.</div></div>
-            <div className="gtee gs"><div className="gtee-val">94<sup>%</sup></div><div className="gtee-title">Offer-acceptance rate</div><div className="gtee-desc">Last 12 months, across all engagements and seniority bands.</div></div>
+            <div className="gtee gs"><div className="gtee-val">90<sup>days</sup></div><div className="gtee-title">Contingent replacement</div><div className="gtee-desc">If a contingent placement leaves inside 90 days we restart the search at no charge.</div></div>
             <div className="gtee gs"><div className="gtee-val">12<sup>mo</sup></div><div className="gtee-title">Retained replacement</div><div className="gtee-desc">If a retained placement leaves inside 12 months we restart the search at no charge.</div></div>
+            <div className="gtee gs"><div className="gtee-val t">Base salary only</div><div className="gtee-title">What the fee is calculated on</div><div className="gtee-desc">Bonus, equity, sign-on and relocation are excluded, and the percentage is fixed before we source.</div></div>
             <div className="gtee gs"><div className="gtee-val">1</div><div className="gtee-title">Partner on the line</div><div className="gtee-desc">One name on the engagement. No handoffs. No call centres. Mobile included.</div></div>
           </div>
         </div>
@@ -203,42 +232,37 @@ export default function HireTalentPage() {
           <div className="gs">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Practices</div>
             <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Specialist partners,<br />aligned to <em>your sector.</em></h2>
-            <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: "var(--fz5)", fontWeight: 400, lineHeight: 1.7 }}>Your brief goes straight to the partner who works your sector — not a shared queue. They already know who is good, who is moving, and what it takes to get them to take the call.</p>
+            <p style={{ color: "var(--text2)", maxWidth: 540, marginTop: 18, fontSize: "var(--fz5)", fontWeight: 400, lineHeight: 1.7 }}>Your brief goes straight to the partner who works your sector — not a shared queue. They already know who is good, who is moving, and what it takes to get them to take the call. Each tile names one seat that practice is built around.</p>
           </div>
           <div className="ind-strip">
-            {industryTiles.map((t) => (
-              <Link href={routes.industries} className="ind-tile gs" key={t.name}>
-                <span className="ic">{t.icon}</span>
-                <div className="nm">{t.name}</div>
-                <div className="ct">{t.count}</div>
+            {practices.map((p) => (
+              <Link href={`${routes.industries}#${p.id}`} className="ind-tile gs" key={p.id}>
+                <span className="ic">{PRACTICE_ICONS[p.id]}</span>
+                <div className="nm">{p.navLabel}</div>
+                <div className="ct">{p.roles[0]}</div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* TESTIMONIALS CREAM */}
-      <section className="section cream inv">
-        <div className="wrap">
-          <div className="gs">
-            <div className="eyebrow ew-dark" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>From hiring managers</div>
-            <h2 className="section-h2" style={{ color: "var(--dt)", maxWidth: 720 }}>In their<br /><em>own words.</em></h2>
-            <p style={{ color: "var(--dt2)", fontSize: "var(--fz5)", lineHeight: 1.78, fontWeight: 400, maxWidth: 540, marginTop: 22 }}>Plain English from heads of talent, GCs, CFOs and founders who hired through Rivago in the last eighteen months. No pseudonyms. No doctored quotes.</p>
-          </div>
-          <div className="testi-cream">
-            {testimonials.map((t) => (
-              <div className="tc-card gs" key={t.name}>
-                <span className="tc-tag">{t.tag}</span>
-                <p className="tc-quote-serif">{t.quote}</p>
-                <div className="tc-author2">
-                  <div style={{ width: 40, height: 40, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#3DFF87,#00A882)", color: "var(--text-inv-1)", fontWeight: 500, fontSize: "var(--fz2)", letterSpacing: ".02em" }}>{t.initials}</div>
-                  <div><div className="tc-author2-name">{t.name}</div><div className="tc-author2-role">{t.role}</div></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* THE TESTIMONIAL BAND STOOD HERE — three quotes, headed "In their own
+          words" over the line "No pseudonyms. No doctored quotes."
+
+          Two of the three were the same invented people already cleared off
+          the service sub-pages: "Priya R., HR Director · Ontario financial
+          services" and "Samira M., Chief People Officer · Dubai hospital
+          group", whose quote here was near-verbatim the one on
+          /services/direct-hire down to "Eleven placements, zero compliance
+          issues". Priya's opened "The shortlist landed in 38 hours" — a
+          third figure for a fact this page already stated two other ways.
+
+          Removed with the seven customer-story bands under /services, the
+          nine "Client story" cards on /services and the nine case studies on
+          /resources. Rivago has no client who has signed off on a published
+          quote. When one does, this band is worth rebuilding — it sat in a
+          good place on the page, between the practice strip and the intake
+          form, which is exactly where proof belongs. */}
 
       {/* INTAKE FORM */}
       <section className="intake-band lt" id="intake">

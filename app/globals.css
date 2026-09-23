@@ -998,12 +998,11 @@ a{color:inherit;text-decoration:none}
    with components/Testimonials.tsx; the proof wall (.pw-*) went with
    components/ProofWall.tsx. Both had exactly one consumer, the home page.
 
-   .tc-quote and .tc-author below were never part of either and survive —
-   /services/rpo renders both, and .testi-cream re-skins them on the service
-   pages. Deleting them alongside would break a page this change never
-   touched. */
-.tc-quote{font-size:var(--fz6);color:var(--text2);line-height:1.78;font-weight:400;margin-bottom:20px;flex:1}
-.tc-author{display:flex;align-items:center;gap:10px;border-top:1px solid var(--border);padding-top:16px;margin-top:auto}
+   .tc-quote and .tc-author outlived both, because /services/rpo rendered
+   them and .testi-cream re-skinned them on the service pages. Those bands
+   have since gone too — every one of them carried a quote nobody gave — so
+   the whole .tc-* family is now deleted. Nothing in the repo renders a
+   testimonial card. */
 
 /* Prefixed `hins-`, not `ins-`. A full set of .ins-grid / .ins-card /
    .ins-cat / .ins-meta rules already exists ~1,150 lines below this, serving
@@ -1997,14 +1996,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 @media(max-width:900px){.ind-strip{grid-template-columns:1fr 1fr}}
 
 /* Testimonials on cream */
-.testi-cream{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
-.tc-card{background:var(--surface-inv-2);border:1px solid rgba(0,0,0,.07);border-radius:24px;padding:32px 30px;display:flex;flex-direction:column;box-shadow:0 4px 16px rgba(11,19,17,.03)}
-.tc-tag{font-size:var(--fz1);font-weight:500;color:var(--accent-inv);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px;display:inline-flex;align-self:flex-start;padding:3px 10px;background:rgba(11,107,79,.07);border-radius:9999px}
-.tc-quote-serif{font-family:var(--ff);font-weight:500;font-size:var(--fz7);line-height:1.5;color:var(--dt);font-weight:400;margin-bottom:24px;flex:1;letter-spacing:-.005em}
-.tc-author2{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid rgba(0,0,0,.07);margin-top:auto}
-.tc-author2-name{font-size:var(--fz3);font-weight:500;color:var(--dt)}
-.tc-author2-role{font-size:var(--fz1);color:var(--dt3);margin-top:2px}
-@media(max-width:900px){.testi-cream{grid-template-columns:1fr}}
+/* .testi-cream and the .tc-card / .tc-tag / .tc-quote-serif / .tc-author2
+   family were here — the cream testimonial cards used on /hire-talent and,
+   through TestiCreamSection and StorySection, on six service pages. All of
+   that copy was invented, so the bands, the components and now the rules
+   have gone. Rebuilding is a small job when there is a real quote to put in
+   one; inventing the quote to fit the component is the failure mode this
+   deletion is guarding against. */
 
 /* Intake / brief form (dark) */
 .intake-band{padding:110px 44px;background:var(--bg);color:var(--text);border-top:1px solid var(--border)}
@@ -2029,6 +2027,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 .if-chip{padding:7px 13px;background:var(--rule-1);border:1px solid var(--border);border-radius:9999px;font-size:var(--fz2);color:var(--text2);cursor:pointer;font-family:var(--ff);transition:all .18s var(--ease)}
 .if-chip:hover{border-color:var(--border2);color:var(--text)}
 .if-chip.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:500}
+/* The intake form's error line. It renders only when there is an error, so
+   unlike .hire-err it needs no .show — that pattern exists because the modal's
+   markup is always present and toggled in the DOM. */
+.if-err{margin-top:18px;padding:11px 14px;background:rgba(255,107,107,.09);border:1px solid rgba(255,107,107,.32);border-radius:9px;font-size:var(--fz2);color:var(--alert);line-height:1.5}
 .if-submit{width:100%;margin-top:18px;background:var(--accent);color:var(--on-accent);border:0;padding:15px 24px;border-radius:var(--pill);font-family:var(--ff);font-weight:500;font-size:var(--fz3);cursor:pointer;display:inline-flex;justify-content:center;align-items:center;gap:8px;transition:all .18s var(--ease)}
 .if-submit:hover{background:var(--chip);transform:translateY(-1px)}
 .if-fineprint{font-size:var(--fz4);color:var(--text3);margin-top:12px;line-height:1.6;text-align:center}
@@ -2935,13 +2937,6 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .ins-meta{margin-top:auto;font-size:var(--fz1);color:var(--text3);font-family:var(--fm)}
 @media(max-width:900px){.ins-grid{grid-template-columns:1fr}}
 
-/* testi-cream real markup reuses .tc-quote/.tc-author names already used by the dark
-   home-page Testimonials.tsx card — scope overrides so that component is untouched. */
-.testi-cream .tc-quote{font-family:var(--ff);font-weight:500;font-size:var(--fz8);line-height:1.5;color:var(--dt);font-weight:400;margin-bottom:24px;flex:1;letter-spacing:-.005em}
-.testi-cream .tc-author{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--rule-inv-1);margin-top:auto}
-.testi-cream .tc-author-av{width:40px;height:40px;border-radius:50%;flex-shrink:0}
-.testi-cream .tc-author-name{font-size:var(--fz3);font-weight:500;color:var(--dt)}
-.testi-cream .tc-author-role{font-size:var(--fz1);color:var(--dt3);margin-top:2px}
 
 /* Payroll-transfer feature list (employer-of-record) */
 .ptx{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
