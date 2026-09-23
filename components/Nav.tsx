@@ -280,12 +280,15 @@ export default function Nav() {
                   site. Removed rather than replaced: the promo reads fine on
                   its offer alone, and any figure put back here should be one
                   you would be comfortable being asked to prove. */}
-              {/* Same label as the other four [data-hire] buttons. They all open
-                  the same modal, so three different words for one action —
-                  "Hire Talent", "Book your call", "Let's Talk" — read as three
-                  separate offers. The promo's own title still says what the
-                  call is. */}
-              <button type="button" className="mm-promo-btn" data-hire>Let&apos;s Talk <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h6M5.5 2.5l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+              {/* One of five "Let's Talk" buttons (with the nav CTA, the mobile
+                  menu CTA and two on /services). All five carry data-help and
+                  open the "How can we help?" chooser — the same one the home
+                  page's "Talk to an expert" buttons open — rather than going
+                  straight to the hiring-brief form, because a visitor clicking
+                  a nav button may be a candidate or an existing client, not
+                  only someone with a role to fill. The chooser's first option
+                  leads on to the brief form. */}
+              <button type="button" className="mm-promo-btn" data-help>Let&apos;s Talk <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h6M5.5 2.5l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
             </div>
           </div>
 
@@ -340,7 +343,7 @@ export default function Nav() {
             <span></span><span></span><span></span>
           </button>
           <Link className="btn-si" href={routes.signIn}>Sign in</Link>
-          <button type="button" className="btn-cta" data-hire>Let&apos;s Talk</button>
+          <button type="button" className="btn-cta" data-help>Let&apos;s Talk</button>
         </div>
       </nav>
 
@@ -370,7 +373,7 @@ export default function Nav() {
             </div>
           ))}
           <Link className="mnav-cta" href={routes.signIn} style={{ background: "transparent", border: "1px solid var(--border)", color: "var(--text)" }} onClick={() => setMobileOpen(false)}>Sign in</Link>
-          <button type="button" className="mnav-cta" data-hire onClick={() => setMobileOpen(false)}>Let&apos;s Talk</button>
+          <button type="button" className="mnav-cta" data-help onClick={() => setMobileOpen(false)}>Let&apos;s Talk</button>
         </div>
       </div>
     </>

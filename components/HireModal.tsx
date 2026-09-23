@@ -6,6 +6,9 @@ type Seg = "employer" | "seeker";
 
 const WEB3FORMS_ACCESS_KEY = "2344bac7-cbde-4313-8fea-b5716d55e448";
 
+/** Dispatched on window to open the hiring-brief form from anywhere. */
+export const OPEN_HIRE_EVENT = "rivago:open-hire";
+
 export default function HireModal() {
   const [open, setOpen] = useState(false);
   const [seg, setSeg] = useState<Seg>("employer");
@@ -30,8 +33,22 @@ export default function HireModal() {
         setOpen(true);
       }
     }
+    /* The "How can we help?" chooser (HelpModal) opens this form through an
+       event rather than by clicking some [data-hire] element it finds in the
+       page. It used to do the latter, which only worked while one existed —
+       and once the nav's "Let's Talk" moved to the chooser, several pages had
+       none, so its first option would have silently done nothing. */
+    function onOpen() {
+      setSeg("employer");
+      setShowOk(false);
+      setOpen(true);
+    }
     document.addEventListener("click", handler);
-    return () => document.removeEventListener("click", handler);
+    window.addEventListener(OPEN_HIRE_EVENT, onOpen);
+    return () => {
+      document.removeEventListener("click", handler);
+      window.removeEventListener(OPEN_HIRE_EVENT, onOpen);
+    };
   }, []);
 
   useEffect(() => {

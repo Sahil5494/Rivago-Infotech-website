@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { routes } from "@/lib/routes";
+import { OPEN_HIRE_EVENT } from "@/components/HireModal";
 
 export default function HelpModal() {
   const [open, setOpen] = useState(false);
@@ -35,8 +36,7 @@ export default function HelpModal() {
   function openHire(e: React.MouseEvent) {
     e.preventDefault();
     setOpen(false);
-    const el = document.querySelector<HTMLElement>("[data-hire]");
-    if (el) el.click();
+    window.dispatchEvent(new Event(OPEN_HIRE_EVENT));
   }
 
   return (
