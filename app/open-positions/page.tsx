@@ -19,7 +19,7 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://rivagoinfotech.com/" },
     { "@type": "ListItem", position: 2, name: "Careers", item: "https://rivagoinfotech.com/career" },
-    { "@type": "ListItem", position: 3, name: "Open Positions", item: "https://rivagoinfotech.com/career/open-positions" },
+    { "@type": "ListItem", position: 3, name: "Open Positions", item: "https://rivagoinfotech.com/open-positions" },
   ],
 };
 

@@ -18,6 +18,9 @@ image came from, the Stock asset ID is the answer.
 | `interim.jpg` | 1197729408 | Young Asian woman business trainer makes flip chart presentation… |
 | `eor.jpg` | 484663402 | Close Up of Pen on document contract agreement sign on document paper |
 
+`rpo.jpg` is also used on /career, in the "Where it all began" band,
+where it replaced a hotlinked Unsplash photo (28 September 2026).
+
 Two further assets were licensed and then not used. Both are on the account
 and available if another page wants them:
 

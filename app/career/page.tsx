@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { routes, firm } from "@/lib/routes";
+import { routes, firm, offices } from "@/lib/routes";
 
 export const metadata: Metadata = {
   title: "Work at Rivago — Careers in Recruitment | Rivago Infotech",
@@ -19,8 +19,9 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://rivagoinfotech.com/" },
     { "@type": "ListItem", position: 2, name: "Careers", item: "https://rivagoinfotech.com/career" },
-    { "@type": "ListItem", position: 3, name: "Work at Rivago", item: "https://rivagoinfotech.com/career/work-at-rivago" },
   ],
+  /* A third crumb pointed at /career/work-at-rivago, which is not a route —
+     structured data sending search engines to a 404. This page is /career. */
 };
 
 const Arrow = () => (
@@ -29,26 +30,15 @@ const Arrow = () => (
 
 const carVals = [
   { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="var(--accent)" strokeWidth="1.4" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "Senior or solo", d: "No farm of juniors. If you have placed in a sector for 5+ years, you will work as a partner here — your name on the brief, your call on the candidates." },
-  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="3" stroke="var(--accent)" strokeWidth="1.4" /><path d="M3 8h16" stroke="var(--accent)" strokeWidth="1.4" /></svg>, t: "Transparent comp", d: "Open base bands, simple commission structure. No clawbacks, no quota gymnastics. Top recruiters take home $400k+ here." },
-  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="var(--accent)" strokeWidth="1.4" /><path d="M11 6v5l3.5 2" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "No drip activity", d: "We measure outcomes, not call dials. 48-hour shortlists, placement rate, client retention. Hit them — work how you want." },
-];
-
-const perks = [
-  { icon: "💸", t: "Transparent commission", d: "Open formula, no clawbacks, paid monthly." },
-  { icon: "🌍", t: "Remote-first", d: "Optional office in your market. Quarterly partner offsites." },
-  { icon: "🩺", t: "Full health cover", d: "Premium plan, dental, vision, dependents covered." },
-  { icon: "🏖️", t: "28 days PTO", d: "Plus your country's public holidays. We mean it." },
-  { icon: "💰", t: "401(k) / pension match", d: "5% match in US/CA. India EPF as statutory. UAE end-of-service gratuity." },
-  { icon: "📚", t: "$3k learning budget", d: "Conferences, courses, books — your call." },
-  { icon: "💻", t: "Top-spec gear", d: "M-series MacBook Pro + monitor + chair stipend." },
-  { icon: "🤝", t: "Equity from year 2", d: "Stock options for all permanent partners after 12 months." },
+  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="3" stroke="var(--accent)" strokeWidth="1.4" /><path d="M3 8h16" stroke="var(--accent)" strokeWidth="1.4" /></svg>, t: "Transparent comp", d: "Open base bands, simple commission structure. No clawbacks, no quota gymnastics." },
+  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="var(--accent)" strokeWidth="1.4" /><path d="M11 6v5l3.5 2" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "No drip activity", d: "We measure outcomes, not call dials: placements that stick, clients who come back, candidates who would work with you again. Hit them — work how you want." },
 ];
 
 const values = [
-  { n: "01", t: "Own the outcome", d: "From first call to signed offer, the search is yours. We trust you with the brief and back your judgement — and we expect you to stand behind it." },
-  { n: "02", t: "Quality over noise", d: "Five right candidates beat fifty fast ones. We'd rather decline a brief than spam a client — and the same bar applies to how we work with each other." },
-  { n: "03", t: "Straight talk", d: "Honest with candidates, honest with clients, honest internally. No inflated ranges, no ghosting, no politics. If something's broken, we say so." },
-  { n: "04", t: "Keep learning", d: "Markets move, comp shifts, sectors evolve. The $3k learning budget isn't a perk — it's the expectation that you stay sharper than the market you place into." },
+  { t: "Own the outcome", d: "From first call to signed offer, the search is yours. We trust you with the brief and back your judgement — and we expect you to stand behind it." },
+  { t: "Quality over noise", d: "Five right candidates beat fifty fast ones. We'd rather decline a brief than spam a client — and the same bar applies to how we work with each other." },
+  { t: "Straight talk", d: "Honest with candidates, honest with clients, honest internally. No inflated ranges, no ghosting, no politics. If something's broken, we say so." },
+  { t: "Keep learning", d: "Markets move, comp shifts, sectors evolve. Staying sharper than the market you place into isn't a perk here — it's the job." },
 ];
 
 const hireSteps = [
@@ -92,23 +82,20 @@ export default function CareerPage() {
         </div>
       </section>
 
-      <section className="section alt lt" id="perks">
-        <div className="wrap">
-          <span className="eyebrow light">Perks &amp; benefits</span>
-          <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 620 }}>A grown-up <em>package.</em></h2>
-          <div className="perks">
-            {perks.map((p) => (
-              <div className="perk" key={p.t}>
-                <div className="perk-ico">{p.icon}</div>
-                <div className="perk-t">{p.t}</div>
-                <div className="perk-d">{p.d}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* PERKS & BENEFITS stood here: 28 days PTO, a 5% 401(k)/pension match,
+          full health cover, a $3k learning budget, a MacBook Pro and chair
+          stipend, stock options after 12 months, remote-first with quarterly
+          offsites, and a UAE end-of-service gratuity (Rivago has no UAE
+          entity to employ anyone under). None was confirmed, and a benefits
+          list on a careers page is a promise applicants hold you to. Removed
+          at the client's call on 28 September 2026; put it back with the
+          confirmed package. */}
 
-      <section className="section">
+      {/* Dark, for rhythm: with perks gone the page ran hero (dark) and then
+          four light sections in two near-identical mints — #edf7f2 and
+          #f2f7f5 — about 3,000px without a change of ground. .life-* is
+          built on role tokens, so .inv re-themes it without new rules. */}
+      <section className="section inv life-sec">
         <div className="wrap">
           <span className="eyebrow light">Working at Rivago</span>
           <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 640 }}>What it&apos;s actually like <em>inside.</em></h2>
@@ -119,17 +106,21 @@ export default function CareerPage() {
                 <div className="life-h">Small pods, real ownership, no theatre.</div>
                 <div className="life-p">You run your desk like it&apos;s your own business — pick your roles, set your approach, own the outcome. A partner reviews, never micromanages. Mornings are for candidate calls, afternoons for client work, and nobody&apos;s counting your dials.</div>
               </div>
+              {/* Was 5 "avg pod size", 0 activity quotas, and "50+ people, 5
+                  offices". The pod size was never measured, and the firm has
+                  three offices, not five. The two counts now come from
+                  lib/routes.ts; zero quotas is a policy, so it stays. */}
               <div style={{ display: "flex", gap: 28, marginTop: 24 }}>
-                <div><div className="life-stat">5</div><div className="life-stat-l">Avg pod size</div></div>
                 <div><div className="life-stat">0</div><div className="life-stat-l">Activity quotas</div></div>
-                <div><div className="life-stat">50+</div><div className="life-stat-l">People, 5 offices</div></div>
+                <div><div className="life-stat">{firm.people}</div><div className="life-stat-l">People</div></div>
+                <div><div className="life-stat">{offices.length}</div><div className="life-stat-l">Offices</div></div>
               </div>
             </div>
             <div className="life-col">
               <div className="life-card">
                 <div className="life-eyb">Rituals</div>
                 <div className="life-h">Monday market reads &amp; Friday wins</div>
-                <div className="life-p">Every week opens with a 20-minute market read and closes with the placements we&apos;re proud of. Quarterly, the whole firm meets in one city.</div>
+                <div className="life-p">Every week opens with a 20-minute market read and closes with the placements we&apos;re proud of.</div>
               </div>
               <div className="life-card">
                 <div className="life-eyb">How we talk</div>
@@ -145,10 +136,13 @@ export default function CareerPage() {
         <div className="wrap">
           <span className="eyebrow light">What we stand for</span>
           <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text-inv-1)", maxWidth: 640 }}>Four values we <em>actually hire for.</em></h2>
+          {/* No 01-04. The four are a set, not steps, and numbering a set
+              makes a reader look for an order that isn't there — the same
+              reason About's "What we won't do" lost its numbers. The hiring
+              steps below keep theirs, because those are a sequence. */}
           <div className="cv-grid">
             {values.map((v) => (
-              <div className="cv" key={v.n}>
-                <div className="cv-n">{v.n}</div>
+              <div className="cv" key={v.t}>
                 <div className="cv-t">{v.t}</div>
                 <div className="cv-d">{v.d}</div>
               </div>
@@ -161,7 +155,7 @@ export default function CareerPage() {
         <div className="wrap">
           <span className="eyebrow light">Getting started</span>
           <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 640 }}>How we hire — <em>four honest steps.</em></h2>
-          <p className="gs" style={{ maxWidth: 540, marginTop: 18, fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400 }}>The same process whether you&apos;re a first-time recruiter or a sector veteran. No take-home tests, no twelve-round gauntlets — just real conversations about real work.</p>
+          <p className="gs" style={{ maxWidth: 540, marginTop: 18, fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400 }}>The same process whatever sector you place in. No take-home tests, no twelve-round gauntlets — just real conversations about real work.</p>
           <div className="hire-steps">
             {hireSteps.map((s) => (
               <div className="hstep" key={s.n}>
@@ -183,8 +177,12 @@ export default function CareerPage() {
         </div>
         <div className="began-grid">
           <div className="began-photo">
+            {/* Was hotlinked from images.unsplash.com — the last live hotlink on the
+                site, the same kind removed from the home page and /resources. It is
+                now one of the Adobe Stock images already licensed to the account
+                (see public/assets/services/LICENCES.md), served locally. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80&auto=format&fit=crop" alt="Colleagues working together in an office" loading="lazy" decoding="async" />
+            <img src="/assets/services/rpo.jpg" alt="A team planning together around a wall of sticky notes" loading="lazy" decoding="async" />
           </div>
           <div className="began-card lt">
             <div className="began-card-h">Build with us.</div>
