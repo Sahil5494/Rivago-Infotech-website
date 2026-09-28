@@ -264,7 +264,7 @@ export default function AboutPage() {
           kind of recruitment firm" — a label and a heading that were about
           two different things. The origin is here; the operating principles
           are the section below. */}
-      <section className="story gs inv">
+      <section className="story gs inv" id="story">
         <div className="story-inner">
           <div>
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Our story</div>

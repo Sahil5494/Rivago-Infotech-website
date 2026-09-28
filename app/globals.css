@@ -1714,11 +1714,27 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 .nl[aria-expanded="true"]{color:var(--text)}
 
 /* Mega panel container — sits below the nav, full-width-ish */
-.mm-anchor{left:var(--mmx,50%)!important;transform:translateX(-50%) translateY(-6px)}
-.mm-careers-1col{display:flex;flex-direction:column;gap:4px;width:320px!important;padding:10px!important}
-.mm{position:fixed;top:62px;left:50%;transform:translateX(-50%) translateY(-6px);z-index:199;width:min(1080px,calc(100vw - 64px));background:var(--chrome-solid);backdrop-filter:blur(28px) saturate(140%);-webkit-backdrop-filter:blur(28px) saturate(140%);border:1px solid var(--rule-1);border-radius:18px;box-shadow:0 32px 80px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.04) inset;padding:24px;opacity:0;pointer-events:none;transition:opacity .22s var(--ease),transform .26s var(--ease);overflow:hidden}
-.mm::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 20% 0%,rgba(61,255,135,.05) 0%,transparent 65%);pointer-events:none}
+.mm{position:fixed;top:62px;left:50%;transform:translateX(-50%) translateY(-6px);z-index:199;width:min(1080px,calc(100vw - 64px));background:var(--chrome-solid);backdrop-filter:blur(28px) saturate(140%);-webkit-backdrop-filter:blur(28px) saturate(140%);border:1px solid var(--rule-1);border-radius:18px;box-shadow:0 32px 80px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.04) inset;padding:24px;opacity:0;pointer-events:none;transition:opacity .22s var(--ease),transform .26s var(--ease)}
+/* border-radius:inherit does the corner-clipping overflow:hidden on .mm used
+   to do. overflow had to go: it clipped .mm::after, the hover bridge below,
+   which sits outside the panel's box by design. */
+.mm::before{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(ellipse 50% 60% at 20% 0%,rgba(61,255,135,.05) 0%,transparent 65%);pointer-events:none}
 .mm.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+/* The bridge. Links end 12px above their panel (65 vs 77 at 1440), and in
+   that strip the pointer was outside every element, so moving straight down
+   from a trigger started the close timer — measured, Services closed at
+   y=68 and About and Careers at y=76, before the pointer arrived. This
+   invisible strip belongs to the panel, so the pointer never leaves the
+   menu on the way down. It only takes pointer events while its panel is
+   open, like the panel itself. */
+.mm::after{content:'';position:absolute;left:0;right:0;bottom:100%;height:14px}
+
+/* One-column panels (About, Careers). Each sits inside .nl-wrap with its own
+   trigger and is positioned against it — see the note in Nav.tsx on why a
+   fixed, screen-positioned panel drifted. top matches the wide panels':
+   they sit 12px below the link row, so these do too. */
+.nl-wrap{position:relative;display:inline-flex}
+.mm.mm-1col{position:absolute;top:calc(100% + 12px);left:50%;width:320px;padding:10px;display:flex;flex-direction:column;gap:4px}
 
 /* ── Services panel ── */
 .mm-services{display:grid;grid-template-columns:1.55fr 1fr;gap:24px}
@@ -1765,9 +1781,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 .mm-ind-foot-link{display:inline-flex;align-items:center;gap:5px;font-size:var(--fz1);color:var(--accent);font-weight:500;transition:gap .2s}
 .mm-ind-foot-link:hover{gap:9px}
 
-/* ── About panel (smaller) ── */
-.mm-about{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:min(680px,calc(100vw - 64px))}
-.mm-about.mm{width:min(680px,calc(100vw - 64px))}
 
 /* Active state for the nav link being hovered */
 .nl.active-mm{color:var(--text);background:var(--rule-1)}

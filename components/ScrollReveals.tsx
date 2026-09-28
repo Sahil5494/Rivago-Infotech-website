@@ -98,6 +98,45 @@ export default function ScrollReveals() {
       // it — their target values were unmeasured literals.
 
       ScrollTrigger.refresh();
+
+      /* refresh() measures by scrolling the window to 0 and then restoring
+         the position it found. On a page opened at an anchor, that position
+         is wherever the browser's jump to the anchor had got to when this
+         ran — measured, y=57 of 5,686 for /about#offices — so it "restored"
+         the page to a few lines below the top and the jump never finished.
+         Every link into a section on another page (the About menu's Our
+         story and Offices, the footer's office links) landed at the top.
+         Re-apply the anchor once refresh has done its measuring. Instant,
+         not smooth: this corrects a position the reader already asked for;
+         it is not a movement they should watch.
+
+         html{scroll-behavior:smooth} is switched off around the correction.
+         With it on, the browser's own smooth scroll to the anchor was still
+         in flight, and the two collided: the page overshot by 20-216px,
+         varying run to run. A second pass two frames later catches anything
+         that settled after the first. */
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      const target = id ? document.getElementById(id) : null;
+      if (target) {
+        const html = document.documentElement;
+        const prev = html.style.scrollBehavior;
+        html.style.scrollBehavior = "auto";
+        /* offsetTop, not getBoundingClientRect: the rect includes transforms,
+           and a target that is itself a .gs reveal (About's #story is) is
+           mid-slide here — reading it put the section 17px under the bar
+           once the slide finished. */
+        const layoutTop = (el: HTMLElement) => {
+          let y = 0;
+          for (let n: HTMLElement | null = el; n; n = n.offsetParent as HTMLElement | null) y += n.offsetTop;
+          return y;
+        };
+        const go = () => window.scrollTo(0, layoutTop(target));
+        go();
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          if (!cancelled) go();
+          html.style.scrollBehavior = prev;
+        }));
+      }
     })();
 
     return () => {

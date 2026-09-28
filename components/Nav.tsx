@@ -141,8 +141,6 @@ export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSectionOpen, setMobileSectionOpen] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const careersTriggerRef = useRef<HTMLAnchorElement>(null);
-  const careersPanelRef = useRef<HTMLDivElement>(null);
   const [prevPathname, setPrevPathname] = useState(pathname);
   if (pathname !== prevPathname) {
     setPrevPathname(pathname);
@@ -192,20 +190,14 @@ export default function Nav() {
 
   function show(key: MMKey) {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    if (key === "careers" && careersTriggerRef.current && careersPanelRef.current) {
-      const tr = careersTriggerRef.current;
-      const p = careersPanelRef.current;
-      const r = tr.getBoundingClientRect();
-      const half = (p.offsetWidth || 320) / 2;
-      const pad = 16;
-      const x = Math.min(Math.max(r.left + r.width / 2, half + pad), window.innerWidth - half - pad);
-      p.style.setProperty("--mmx", `${x}px`);
-    }
     setOpenKey(key);
   }
+  /* 220ms, up from 140: enough for a pointer taking a diagonal line from a
+     trigger to the far side of its panel. The gap straight below each
+     trigger is covered by .mm::after, so this only matters off-axis. */
   function scheduleHide() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setOpenKey(null), 140);
+    closeTimer.current = setTimeout(() => setOpenKey(null), 220);
   }
   function cancelHide() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -232,12 +224,53 @@ export default function Nav() {
           <Link className="nl" href={routes.resources}>
             Resources
           </Link>
-          <Link className={`nl${openKey === "about" ? " active-mm" : ""}`} href={routes.about} aria-expanded={openKey === "about"} onMouseEnter={() => show("about")} onFocus={() => show("about")}>
-            About <Chevron />
-          </Link>
-          <Link ref={careersTriggerRef} className={`nl${openKey === "careers" ? " active-mm" : ""}`} href={routes.career} aria-expanded={openKey === "careers"} onMouseEnter={() => show("careers")} onFocus={() => show("careers")}>
-            Careers <Chevron />
-          </Link>
+          {/* ABOUT and CAREERS are one-column panels, and each lives in a
+              wrapper with its own trigger so it is positioned against that
+              trigger, not the screen.
+
+              Careers used to be position:fixed at a left computed from the
+              trigger's screen position. But opening any panel turns the bar
+              solid, and the solid bar's backdrop-filter makes it the
+              containing block for fixed children — so that screen x was
+              applied inside the bar's box, and the panel landed shifted by
+              the bar's own left edge (180px at 1440 once the bar floats in).
+              Absolute inside the wrapper cannot drift, whatever the bar does. */}
+          <div className="nl-wrap">
+            <Link className={`nl${openKey === "about" ? " active-mm" : ""}`} href={routes.about} aria-expanded={openKey === "about"} onMouseEnter={() => show("about")} onFocus={() => show("about")}>
+              About <Chevron />
+            </Link>
+            <div className={`mm mm-1col${openKey === "about" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
+              <Link className="mm-link" href={`${routes.about}#story`}>
+                <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.3" /><path d="M8 5v3l2 1.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
+                <div className="mm-link-body"><div className="mm-link-title">Our story <Arrow /></div><div className="mm-link-desc">Why we built Rivago and what we stand for</div></div>
+              </Link>
+              {/* Pointed at /about, the same place as "Our story". The
+                  offices section has had id="offices" all along. */}
+              <Link className="mm-link" href={`${routes.about}#offices`}>
+                <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5 1.5 3 4 3 7c0 4 5 7.5 5 7.5s5-3.5 5-7.5c0-3-2-5.5-5-5.5z" stroke="currentColor" strokeWidth="1.3" /><circle cx="8" cy="7" r="1.8" stroke="currentColor" strokeWidth="1.3" /></svg></div>
+                <div className="mm-link-body"><div className="mm-link-title">Offices <Arrow /></div><div className="mm-link-desc">Wilmington · Pune · Ayr</div></div>
+              </Link>
+              <Link className="mm-link" href={routes.contactUs}>
+                <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="3" width="11" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.3" /><path d="M5 6h6M5 8.5h6M5 11h4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
+                <div className="mm-link-body"><div className="mm-link-title">Contact <Arrow /></div><div className="mm-link-desc">Talk to a partner across our three offices</div></div>
+              </Link>
+            </div>
+          </div>
+          <div className="nl-wrap">
+            <Link className={`nl${openKey === "careers" ? " active-mm" : ""}`} href={routes.career} aria-expanded={openKey === "careers"} onMouseEnter={() => show("careers")} onFocus={() => show("careers")}>
+              Careers <Chevron />
+            </Link>
+            <div className={`mm mm-1col${openKey === "careers" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
+              <Link className="mm-link" href={routes.searchJobs}>
+                <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 5.5h11v8h-11z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" /><path d="M6 5.5V4a1 1 0 011-1h2a1 1 0 011 1v1.5M2.5 9h11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
+                <div className="mm-link-body"><div className="mm-link-title">Search Jobs <Arrow /></div><div className="mm-link-desc">Browse every open role across our offices</div></div>
+              </Link>
+              <Link className="mm-link" href={routes.career}>
+                <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="currentColor" strokeWidth="1.2" /><path d="M3 13.5c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
+                <div className="mm-link-body"><div className="mm-link-title">Work at Rivago <Arrow /></div><div className="mm-link-desc">Life, values and how we run a desk</div></div>
+              </Link>
+            </div>
+          </div>
 
           {/* SERVICES panel */}
           <div className={`mm mm-services${openKey === "services" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
@@ -309,34 +342,6 @@ export default function Nav() {
             </div>
           </div>
 
-          {/* ABOUT panel */}
-          <div className={`mm mm-about${openKey === "about" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
-            <Link className="mm-link" href={routes.about}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.3" /><path d="M8 5v3l2 1.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
-              <div className="mm-link-body"><div className="mm-link-title">Our story <Arrow /></div><div className="mm-link-desc">Why we built Rivago and what we stand for</div></div>
-            </Link>
-
-            <Link className="mm-link" href={routes.about}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5 1.5 3 4 3 7c0 4 5 7.5 5 7.5s5-3.5 5-7.5c0-3-2-5.5-5-5.5z" stroke="currentColor" strokeWidth="1.3" /><circle cx="8" cy="7" r="1.8" stroke="currentColor" strokeWidth="1.3" /></svg></div>
-              <div className="mm-link-body"><div className="mm-link-title">Offices</div><div className="mm-link-desc">Wilmington · Pune · Ayr</div></div>
-            </Link>
-            <Link className="mm-link" href={routes.contactUs}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="3" width="11" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.3" /><path d="M5 6h6M5 8.5h6M5 11h4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
-              <div className="mm-link-body"><div className="mm-link-title">Contact</div><div className="mm-link-desc">Talk to a partner across our three offices</div></div>
-            </Link>
-          </div>
-
-          {/* CAREERS panel */}
-          <div ref={careersPanelRef} className={`mm mm-anchor mm-careers-1col${openKey === "careers" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
-            <Link className="mm-link" href={routes.searchJobs}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 5.5h11v8h-11z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" /><path d="M6 5.5V4a1 1 0 011-1h2a1 1 0 011 1v1.5M2.5 9h11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
-              <div className="mm-link-body"><div className="mm-link-title">Search Jobs <Arrow /></div><div className="mm-link-desc">Browse every open role across our offices</div></div>
-            </Link>
-            <Link className="mm-link" href={routes.career}>
-              <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="currentColor" strokeWidth="1.2" /><path d="M3 13.5c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
-              <div className="mm-link-body"><div className="mm-link-title">Work at Rivago <Arrow /></div><div className="mm-link-desc">Life, values and how we run a desk</div></div>
-            </Link>
-          </div>
         </div>
         <div className="nav-r">
           <button type="button" className="nav-burger" id="navBurger" aria-expanded={mobileOpen} aria-controls="mnav" aria-label={mobileOpen ? "Close menu" : "Open menu"} onClick={() => setMobileOpen((v) => !v)}>
