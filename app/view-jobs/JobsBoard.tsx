@@ -10,11 +10,58 @@ const FACETS = ["dept", "e", "w", "region"] as const;
 type Facet = (typeof FACETS)[number];
 type ActiveFacets = Record<Facet, Set<string>>;
 
+/* The data writes two places two ways: "Dubai, UAE" and "Dubai, AE",
+   "Pune, India" and "Pune, MH". This used to match only the first spelling
+   of each, and everything unmatched fell through to "US" — so the Region
+   filter listed six Dubai roles and six Pune roles under US. */
 function regionOf(c: string): string {
-  if (/India$/.test(c)) return "India";
-  if (/UAE$/.test(c)) return "UAE";
+  if (/(India|, MH)$/.test(c)) return "India";
+  if (/(UAE|, AE)$/.test(c)) return "UAE";
   if (/, (ON|BC|AB)$|Canada$/.test(c)) return "Canada";
   return "US";
+}
+
+/* SEARCH MATCHING. It used to be a raw substring test, which failed both ways:
+   - Too strict: "full stack" missed "Full-Stack Engineer" (the hyphen), "AI
+     engineer" missed "AI / LLM Engineer" (the slash), "remote" in the keyword
+     box found nothing because work style was not searched, and "Ontario"
+     found nothing because the data says "ON". Two of the four Popular
+     chips on /search-jobs — "Full Stack" and "Remote" — returned zero.
+   - Too loose: location "ON" matched 98 roles, because "on" is inside
+     Boston, Houston, Columbus...
+   Now both sides are normalised to plain words, and every word typed must
+   match the START of a word in the job — any order, any punctuation. The
+   location side also knows the state and province names behind the codes,
+   and each market's country names. */
+const PLACE_NAMES: Record<string, string> = {
+  TX: "Texas", MA: "Massachusetts", GA: "Georgia", AZ: "Arizona", OH: "Ohio",
+  FL: "Florida", NC: "North Carolina", NY: "New York", WA: "Washington",
+  CA: "California", TN: "Tennessee", DE: "Delaware", IL: "Illinois",
+  CO: "Colorado", MN: "Minnesota", ON: "Ontario", BC: "British Columbia",
+  AB: "Alberta", MH: "Maharashtra", AE: "United Arab Emirates",
+};
+const REGION_NAMES: Record<string, string> = {
+  US: "US USA United States America", Canada: "Canada", UAE: "UAE United Arab Emirates", India: "India",
+};
+/* "on-site" is one word here, typed any way. Split at the hyphen, its "on"
+   answered a search for "ON" (Ontario) — 81 results instead of 21. */
+const words = (s: string) =>
+  s.toLowerCase().replace(/\bon[\s-]?site\b/g, "onsite").replace(/[^a-z0-9]+/g, " ").trim().split(" ").filter(Boolean);
+function matches(haystack: string, query: string): boolean {
+  const q = words(query);
+  if (!q.length) return true;
+  const w = words(haystack);
+  /* One- and two-letter words match whole words only. At that length they
+     are almost always codes — ON, NY, TX, AI, US — and as prefixes they
+     caught unrelated words: "on" matched every "onsite" role. */
+  return q.every((t) => w.some((x) => (t.length <= 2 ? x === t : x.startsWith(t))));
+}
+function keywordText(j: BoardJob) {
+  return `${j.t} ${j.dept} ${j.e} ${j.f} ${j.w}`;
+}
+function placeText(j: BoardJob) {
+  const code = j.c.split(", ").pop() || "";
+  return `${j.c} ${j.w} ${PLACE_NAMES[code] || ""} ${REGION_NAMES[regionOf(j.c)]}`;
 }
 
 function valOf(j: BoardJob, f: Facet): string {
@@ -120,21 +167,18 @@ function JobsBoardInner() {
   const facetCount = FACETS.reduce((n, f) => n + active[f].size, 0);
 
   const view = useMemo(() => {
-    const qq = q.toLowerCase().trim();
-    const lq = l.toLowerCase().trim();
+    const qq = words(q).join(" ");
     let list = JOBS.filter((j) => {
-      const hay = `${j.t} ${j.dept} ${j.e} ${j.f}`.toLowerCase();
-      if (qq && hay.indexOf(qq) < 0) return false;
-      const loc = `${j.c} ${j.w}`.toLowerCase();
-      if (lq && loc.indexOf(lq) < 0) return false;
+      if (!matches(keywordText(j), q)) return false;
+      if (!matches(placeText(j), l)) return false;
       return FACETS.every((f) => active[f].size === 0 || active[f].has(valOf(j, f)));
     });
     if (sort === "newest") list = [...list].sort((a, b) => (a.d < b.d ? 1 : -1));
     else if (sort === "pay") list = [...list].sort((a, b) => payNum(b.p) - payNum(a.p));
     else if (qq) {
       list = [...list].sort((a, b) => {
-        const ai = a.t.toLowerCase().indexOf(qq);
-        const bi = b.t.toLowerCase().indexOf(qq);
+        const ai = words(a.t).join(" ").indexOf(qq);
+        const bi = words(b.t).join(" ").indexOf(qq);
         return (ai < 0 ? 99 : ai) - (bi < 0 ? 99 : bi);
       });
     }
@@ -236,7 +280,7 @@ function JobsBoardInner() {
       </div>
 
       <div className="jb-meta">
-        <div className="jb-count"><b>{total}</b> openings with Rivago</div>
+        <div className="jb-count"><b>{total}</b> {total === 1 ? "opening" : "openings"} with Rivago</div>
         <div className="jb-meta-r">
           <span className="jb-sel">
             <select aria-label="Sort roles" value={sort} onChange={(e) => { setSort(e.target.value as typeof sort); setPage(0); setSel(0); }}>

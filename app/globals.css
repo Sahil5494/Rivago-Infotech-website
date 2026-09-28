@@ -3292,7 +3292,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 @media(max-width:760px){.perks{grid-template-columns:1fr 1fr}}
 
 /* ===== Search Jobs ===== */
-.sj-hero,.sj-steps,.sj-vals,.sj-tst{scroll-margin-top:0}
+.sj-hero,.sj-steps,.sj-vals{scroll-margin-top:0}
 .sj-in{width:100%;max-width:1400px;margin:0 auto;padding:0 28px}
 .sj-hero{position:relative;padding:104px 28px 28px;background:var(--bg)}
 .sj-banner{position:relative;width:100%;max-width:1720px;margin:0 auto;min-height:min(78vh,760px);display:flex;align-items:center;justify-content:center;padding:80px 44px;border-radius:28px;overflow:hidden;background:radial-gradient(ellipse 78% 96% at 8% 62%,rgba(61,255,135,.30),transparent 60%),radial-gradient(ellipse 70% 90% at 96% 34%,rgba(0,168,130,.26),transparent 62%),radial-gradient(ellipse 60% 70% at 62% 8%,rgba(3,12,5,.96),transparent 66%),linear-gradient(135deg,#04160B 0%,#08210F 42%,var(--bg) 100%)}
@@ -3310,7 +3310,9 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .sj-go{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 30px;background:var(--accent);color:var(--bg);border:none;border-radius:var(--pill);font-family:var(--ff);font-size:var(--fz5);font-weight:500;cursor:pointer;white-space:nowrap;transition:filter .2s,transform .2s}
 .sj-go:hover{filter:brightness(1.06);transform:translateY(-1px)}
 .sj-quick{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:22px;align-items:center}
-.sj-quick span{font-size:var(--fz2);color:var(--text-3);padding:6px 2px}
+/* --text-2, not -3: over the banner's brightest corner -3 measured 3.9:1 at
+   390px, under the 4.5:1 small text needs. */
+.sj-quick span{font-size:var(--fz2);color:var(--text-2);padding:6px 2px}
 .sj-chip{padding:7px 15px;border:1px solid var(--rule-2);background:var(--rule-1);border-radius:9999px;font-size:var(--fz2);color:var(--text-2);cursor:pointer;font-family:var(--ff);transition:all .2s;backdrop-filter:blur(6px)}
 .sj-chip:hover{border-color:var(--tint-3);color:var(--accent);background:var(--tint-1)}
 .sj-cta{background:var(--cream);color:var(--dt);padding:130px 28px;text-align:center;position:relative;overflow:hidden}
@@ -3345,19 +3347,10 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .sj-val-ic{width:54px;height:54px;border-radius:15px;background:var(--tint-1);border:1px solid var(--tint-2);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
 .sj-val h3{font-size:var(--fz8);font-weight:500;color:var(--text);margin-bottom:11px;letter-spacing:-.015em}
 .sj-val p{font-size:var(--fz6);color:var(--text2);line-height:1.75;font-weight:400}
-.sj-tst{padding:80px 28px;background:var(--bg2);border-top:1px solid var(--border)}
-.sj-tst .eyb{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
-.sj-tst .eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.sj-tst h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.1;color:var(--text)}
-.sj-tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:54px}
-.sj-quote{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:46px 40px;display:flex;flex-direction:column;transition:all .28s var(--ease)}
-.sj-quote:hover{border-color:var(--tint-3);transform:translateY(-5px);box-shadow:0 22px 54px rgba(0,0,0,.28)}
-.sj-quote q{display:block;font-family:var(--ff);font-weight:500;font-size:var(--fz9);line-height:1.48;color:var(--text);letter-spacing:-.012em;margin-bottom:28px}
-.sj-quote-by{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:20px;border-top:1px solid var(--border)}
-.sj-av{width:42px;height:42px;border-radius:50%;background:var(--grad-brand);display:flex;align-items:center;justify-content:center;font-weight:500;color:var(--on-accent);font-size:var(--fz2);flex-shrink:0}
-.sj-quote-n{font-size:var(--fz5);font-weight:500;color:var(--text)}
-.sj-quote-r{font-size:var(--fz2);color:var(--text3);margin-top:3px}
-@media(max-width:900px){.sj-search{grid-template-columns:1fr}.sj-step-grid,.sj-tst-grid{grid-template-columns:1fr}.sj-val-grid{grid-template-columns:1fr 1fr}}
+/* The .sj-tst / .sj-quote / .sj-av rules for the "Ask the people who took the
+   job" testimonial band stood here; the band came out with its unattributed
+   quotes. */
+@media(max-width:900px){.sj-search{grid-template-columns:1fr}.sj-step-grid{grid-template-columns:1fr}.sj-val-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:820px){.sj-hero{padding:92px 14px 18px}.sj-banner{padding:64px 22px;border-radius:20px;min-height:auto}.sj-search{border-radius:20px;padding:10px;gap:6px}.sj-div{display:none}.sj-field input{padding:15px 16px 15px 48px}.sj-go{width:100%;border-radius:var(--pill)}}
 @media(max-width:520px){.sj-val-grid{grid-template-columns:1fr}.sj-hero{padding:112px 20px 60px}}
 
