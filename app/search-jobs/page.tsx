@@ -25,13 +25,14 @@ const breadcrumbJsonLd = {
   ],
 };
 
-/* Step 01 was titled "Search" over a paragraph about getting a reply to your
-   application, and step 03 was "Start Your Assignment" — contract-only
-   wording, in title case, on a page that also covers permanent roles. */
+/* Each paragraph now describes the step its title names. Every promise in
+   them was already on the site — the two-day reply, the recruiter briefing,
+   the contract check-ins — and the details listed under Search are fields
+   every job on the board carries. */
 const steps = [
-  { n: "01", t: "Apply", d: "Every application gets a human reply inside two business days, including the nos. You will know the client, the team and the range before you decide whether to interview." },
-  { n: "02", t: "Prepare", d: "Your recruiter has hired in your field for years. They will tell you who is on the panel, what they actually probe for, where the last candidate came unstuck, and what number to hold." },
-  { n: "03", t: "Start", d: "On contract, we run onboarding, payroll, timesheets and compliance, and check in at week one, month one and before every renewal. On a permanent hire, we check in at three, six and twelve months — so nothing lands on you by surprise." },
+  { n: "01", t: "Search", d: "Search by title, skill or city, or browse by sector and market. Every listing shows the work style, the engagement type and the pay up front, so you can rule a role in or out before you apply." },
+  { n: "02", t: "Connect", d: "Apply in minutes, and a recruiter who has hired in your field replies inside two business days — including the nos. Before any interview, they tell you who is on the panel, what they probe for and what number to hold." },
+  { n: "03", t: "Start Your Assignment", d: "We run onboarding, payroll, timesheets and compliance. Then we check in at week one, at month one, and before every renewal — so nothing lands on you by surprise." },
 ];
 
 /* ── "OPEN NOW" — derived from the jobs board's own data at build time, so
