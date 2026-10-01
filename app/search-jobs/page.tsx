@@ -194,20 +194,25 @@ export default function SearchJobsPage() {
         </div>
       </section>
 
-      <section className="sj-cta">
+      <section className="sj-cta inv">
         <div className="sj-cta-in">
           <div className="sj-cta-eyb">Your next move</div>
           <h2>Ready to take the<br /><em>next step?</em></h2>
-          {/* Was "Join thousands of professionals". The firm's own figure is
+          {/* Dark, like the home page's closing CTA: it follows two pale bands
+              (values, FAQ), and a third pale band let the page's last ask
+              blend into them. Buttons are the home CTA's pair, btn-hp and
+              btn-hg; the old btn-darkghost had an 11px radius against the
+              site's pill.
+              Was "Join thousands of professionals". The firm's own figure is
               firm.hiresPlaced in lib/routes.ts. */}
           <p>{firm.hiresPlaced} hires placed so far — every role briefed by the hiring manager, every candidate represented by a specialist.</p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link className="btn-dark" href={routes.viewJobs}>Browse all jobs <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
+            <Link className="btn-hp" href={routes.viewJobs}>Browse all jobs <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
             {/* Was "Talk to us" -> /contact-us, a page written for clients.
                 A candidate who has not found their role needs a way to be
                 found: this opens the CV form (data-hire="seeker"). The href is
                 the no-JS fallback. */}
-            <a className="btn-darkghost" href={routes.contactUs} data-hire="seeker">Send us your CV</a>
+            <a className="btn-hg" href={routes.contactUs} data-hire="seeker">Send us your CV</a>
           </div>
         </div>
       </section>
