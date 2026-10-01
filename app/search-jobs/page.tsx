@@ -52,10 +52,10 @@ export default function SearchJobsPage() {
           the type, search bar and chips take the same values as every other
           dark section.
 
-          It keeps what the previous cards got wrong fixed: content height, not
-          78vh; on the 1240px column with the logo and the sections below, so
-          the page-switch arrows never sit on it. The page opens on a light
-          frame, so the nav stays solid, as on Resources. */}
+          It fills the section — edge to edge inside a thin light rim, and the
+          first screen below the nav — with the content centred in it. The
+          page opens on that light rim, so the nav stays solid, as on
+          Resources. */}
       <section className="sj-hero">
         <div className="sj-card inv">
           <div className="sj-card-in">
