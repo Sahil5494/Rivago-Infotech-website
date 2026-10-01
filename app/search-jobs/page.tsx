@@ -45,23 +45,22 @@ export default function SearchJobsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
-      {/* The hero is a card on purpose, and the one hero on the site that is not
-          dark. Every other page opens on the same near-black band; this is the
-          page a candidate lands on to act, so it gets its own look — the bright
-          mint-to-green gradient the Careers page uses for its "Build with us"
-          card, dark type, and a white search bar.
+      {/* The hero is a card on purpose — an inset panel rather than the
+          full-width band the other pages open on — in the site's own dark
+          palette: the #0A1A0C-to-#030C05 ground and soft green glow the dark
+          sections use. .inv puts everything inside on the dark-theme tokens, so
+          the type, search bar and chips take the same values as every other
+          dark section.
 
-          An earlier version of this card was a dark green panel inset in a mint
-          frame: 834px tall, edge to edge so the page-switch arrows sat on its
-          corners, and with light-theme text colours on a dark ground. This one
-          is content-height, sits on the same 1240px column as the logo and the
-          sections below, and every colour in it is set for a light ground. The
-          page opens on a light frame, so the nav stays solid, as on Resources. */}
+          It keeps what the previous cards got wrong fixed: content height, not
+          78vh; on the 1240px column with the logo and the sections below, so
+          the page-switch arrows never sit on it. The page opens on a light
+          frame, so the nav stays solid, as on Resources. */}
       <section className="sj-hero">
-        <div className="sj-card">
+        <div className="sj-card inv">
           <div className="sj-card-in">
             <div className="crumbs sj-crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><Link href={routes.career}>Careers</Link><span className="crumbs-sep">/</span><span>Search Jobs</span></div>
-            <span className="sj-eyb">Live roles<span className="sj-eyb-more">&nbsp;&middot; Briefed by the hiring manager</span></span>
+            <span className="sj-eyb"><span>Live roles<span className="sj-eyb-more"> &middot; Briefed by the hiring manager</span></span></span>
             <h1>Find the right <em>opportunity for you.</em></h1>
             <p className="sj-lede">Every role we represent is briefed to us directly by the person doing the hiring. So before you interview, we can tell you who you would report to, why the seat is open, and what it actually pays.</p>
             <SearchJobsSearch />
