@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { routes, firm, marketsSentence } from "@/lib/routes";
 import { JOBS, regionOf } from "@/app/view-jobs/jobs-data";
+import { placements, initials } from "@/lib/placements";
 import SearchJobsSearch from "./SearchJobsSearch";
 
 export const metadata: Metadata = {
@@ -166,11 +167,30 @@ export default function SearchJobsPage() {
         </div>
       </section>
 
-      {/* "ASK THE PEOPLE WHO TOOK THE JOB" stood here: three quotes signed only
-          with initials, a job title and a city — "Offer in eleven days", "so I
-          let them place me twice more". Nobody gave them. Removed with every
-          other unattributed testimonial on the site; a band like this belongs
-          back here once placed candidates agree to be quoted. */}
+      {/* Real placements, supplied by the firm: name and role, nothing more.
+          No quotes — see lib/placements.ts before adding any. The band is
+          dark (.inv) so the page alternates light / dark like the home page
+          between "How we work" and the cream CTA. */}
+      <section className="sj-placed inv">
+        <div className="sj-in">
+          <div className="sj-placed-head">
+            <div className="eyb">Placed by Rivago</div>
+            <h2>Don&rsquo;t just take it <em>from us.</em></h2>
+            <p className="lede">Some of the people who found their next role through us.</p>
+          </div>
+          <ul className="sj-placed-grid">
+            {placements.map((c) => (
+              <li className="sj-person" key={c.name}>
+                <span className="sj-person-av" aria-hidden="true">{initials(c.name)}</span>
+                <span className="sj-person-tx">
+                  <span className="sj-person-n">{c.name}</span>
+                  {c.role && <span className="sj-person-r">{c.role}</span>}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       <section className="sj-cta">
         <div className="sj-cta-in">

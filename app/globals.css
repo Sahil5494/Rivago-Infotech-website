@@ -3412,6 +3412,24 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .sj-val-ic{width:54px;height:54px;border-radius:15px;background:var(--tint-1);border:1px solid var(--tint-2);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
 .sj-val h3{font-size:var(--fz8);font-weight:500;color:var(--text);margin-bottom:11px;letter-spacing:-.015em}
 .sj-val p{font-size:var(--fz6);color:var(--text2);line-height:1.75;font-weight:400}
+/* "Don't just take it from us" — placed candidates, name and role. A dark
+   band in the home page's palette; the names sit in a three-column list
+   rather than cards, because there is nothing in each entry for a card to
+   hold beyond two lines. */
+.sj-placed{position:relative;padding:96px 44px;background:var(--grad-glow),linear-gradient(160deg,#0A1A0C 0%,#030C05 70%);color:var(--text-1)}
+.sj-placed-head{max-width:640px}
+.sj-placed .eyb{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.sj-placed .eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.sj-placed h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.1;color:var(--text-1)}
+.sj-placed .lede{font-size:var(--fz5);color:var(--text-2);line-height:1.7;margin-top:16px}
+.sj-placed-grid{list-style:none;margin:52px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);column-gap:40px;border-top:1px solid var(--rule-1)}
+.sj-person{display:flex;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid var(--rule-1);min-width:0}
+.sj-person-av{flex:0 0 44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--tint-1);border:1px solid var(--tint-2);font-family:var(--fm);font-size:var(--fz2);font-weight:500;letter-spacing:.04em;color:var(--accent)}
+.sj-person-tx{display:flex;flex-direction:column;gap:3px;min-width:0}
+.sj-person-n{font-size:var(--fz6);font-weight:500;color:var(--text-1);overflow-wrap:anywhere}
+.sj-person-r{font-size:var(--fz3);color:var(--text-2)}
+@media(max-width:900px){.sj-placed{padding:64px 20px}.sj-placed-grid{grid-template-columns:1fr 1fr;column-gap:28px}}
+@media(max-width:620px){.sj-placed-grid{grid-template-columns:1fr}}
 /* The .sj-tst / .sj-quote / .sj-av rules for the "Ask the people who took the
    job" testimonial band stood here; the band came out with its unattributed
    quotes. */
