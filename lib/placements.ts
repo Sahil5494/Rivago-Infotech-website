@@ -11,7 +11,9 @@
    may be meant as "Prasad"; confirm with the firm before changing it. */
 /* `field` groups the role for the card's tag. It is the firm's practice
    area for the role, not anything the person said. */
-export type Placement = { name: string; role?: string; field?: string };
+/* `quote` is the person's own words, added only once they have sent them.
+   When present, their card switches to the quote layout automatically. */
+export type Placement = { name: string; role?: string; field?: string; quote?: string };
 
 export const placements: Placement[] = [
   { name: "Varun Singh", role: "Python Developer", field: "Software engineering" },
