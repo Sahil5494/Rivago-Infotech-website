@@ -3422,30 +3422,32 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .sj-placed .eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .sj-placed h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.1;color:var(--text-1)}
 .sj-placed .lede{font-size:var(--fz5);color:var(--text-2);line-height:1.7;margin-top:16px}
-.sj-placed-grid{list-style:none;margin:52px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sj-placed-rail{margin-top:44px}
+.sj-placed-ctl{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-bottom:20px}
+.sj-placed-count{font-family:var(--fm);font-size:var(--fz2);color:var(--text-2);margin-right:8px;font-variant-numeric:tabular-nums}
+.sj-placed-btn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface-3);border:1px solid var(--rule-2);color:var(--text-1);cursor:pointer;transition:border-color .2s,color .2s,opacity .2s}
+.sj-placed-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.sj-placed-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sj-placed-btn:disabled{opacity:.35;cursor:default}
+/* One row. Three cards in view: each is a third of the row less its share
+   of the two gaps. */
+.sj-placed-grid{list-style:none;margin:0;padding:0;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.sj-placed-grid::-webkit-scrollbar{display:none}
+.sj-placed-grid .sj-person{flex:0 0 calc((100% - 40px) / 3);scroll-snap-align:start}
+.sj-person-d{font-size:var(--fz4);color:var(--text-2);line-height:1.65;margin-top:14px}
 .sj-person{display:flex;flex-direction:column;padding:28px 28px 22px;background:var(--surface-3);border:1px solid var(--rule-1);border-radius:20px;min-width:0;transition:border-color .25s var(--ease),transform .25s var(--ease)}
-.sj-person:hover{border-color:var(--tint-3);transform:translateY(-3px)}
+.sj-person:hover{border-color:var(--tint-3)}
 .sj-person-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
 .sj-person-av{flex:0 0 48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--tint-1);border:1px solid var(--tint-2);font-family:var(--fm);font-size:var(--fz2);font-weight:500;letter-spacing:.04em;color:var(--accent)}
 .sj-person-f{font-size:var(--fz1);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);text-align:right}
 .sj-person-n{font-size:var(--fz8);font-weight:500;letter-spacing:-.015em;line-height:1.25;color:var(--text-1);overflow-wrap:anywhere}
 .sj-person-r{font-size:var(--fz4);color:var(--text-2);line-height:1.5;margin-top:6px}
 .sj-person-n,.sj-person-r{margin-bottom:0}
-.sj-person>:nth-last-child(2){margin-bottom:22px}
+.sj-person>:nth-last-child(2){margin-bottom:24px}
 .sj-person-r b{font-weight:500;color:var(--text-1)}
-.sj-placed-hint{display:none;margin-top:14px;font-size:var(--fz2);color:var(--text-3)}
 .sj-person-foot{display:flex;align-items:center;gap:7px;margin-top:auto;padding-top:18px;border-top:1px solid var(--rule-1);font-size:var(--fz2);color:var(--accent)}
-@media(max-width:900px){.sj-placed{padding:64px 20px}.sj-placed-grid{grid-template-columns:1fr 1fr;gap:16px}}
-/* Phones: a swipe rail rather than eighteen stacked cards, which made the
-   band about 4,800px tall. Same mechanic as the home page rails: snap, one
-   card in view with the next one peeking so the row reads as continuing. */
-@media(max-width:620px){
-  .sj-placed-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:40px -20px 0;padding:0 20px 8px;scroll-padding:0 20px;scrollbar-width:none}
-  .sj-placed-grid::-webkit-scrollbar{display:none}
-  .sj-person{flex:0 0 82%;scroll-snap-align:start}
-  .sj-person:hover{transform:none}
-  .sj-placed-hint{display:block}
-}
+@media(max-width:900px){.sj-placed{padding:64px 20px}.sj-placed-grid .sj-person{flex-basis:calc((100% - 20px) / 2)}}
+@media(max-width:620px){.sj-placed-grid .sj-person{flex-basis:86%}.sj-placed-ctl{justify-content:flex-start}}
 /* The .sj-tst / .sj-quote / .sj-av rules for the "Ask the people who took the
    job" testimonial band stood here; the band came out with its unattributed
    quotes. */

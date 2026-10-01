@@ -2,8 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { routes, firm, marketsSentence } from "@/lib/routes";
 import { JOBS, regionOf } from "@/app/view-jobs/jobs-data";
-import { placements, initials } from "@/lib/placements";
 import SearchJobsSearch from "./SearchJobsSearch";
+import PlacedRail from "./PlacedRail";
 
 export const metadata: Metadata = {
   title: "Search Jobs — Tech, Finance, Healthcare & More | Rivago Infotech",
@@ -167,8 +167,9 @@ export default function SearchJobsPage() {
         </div>
       </section>
 
-      {/* Real placements, supplied by the firm: name and role, nothing more.
-          No quotes — see lib/placements.ts before adding any. The band is
+      {/* Real placements, supplied by the firm (lib/placements.ts), in a
+          one-row rail with arrows (PlacedRail). No quotes are attributed to
+          anyone — see lib/placements.ts before adding any. The band is
           dark (.inv) so the page alternates light / dark like the home page
           between "How we work" and the cream CTA. */}
       <section className="sj-placed inv">
@@ -178,23 +179,7 @@ export default function SearchJobsPage() {
             <h2>Don&rsquo;t just take it <em>from us.</em></h2>
             <p className="lede">Some of the people who found their next role through us.</p>
           </div>
-          <ul className="sj-placed-grid" aria-label="Placed candidates">
-            {placements.map((c) => (
-              <li className="sj-person" key={c.name}>
-                <span className="sj-person-top">
-                  <span className="sj-person-av" aria-hidden="true">{initials(c.name)}</span>
-                  {c.field && <span className="sj-person-f">{c.field}</span>}
-                </span>
-                <span className="sj-person-n">{c.name}</span>
-                {c.role && <span className="sj-person-r">Placed as <b>{c.role}</b></span>}
-                <span className="sj-person-foot">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7.2l2.6 2.6L11 4.4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                  Placed through Rivago
-                </span>
-              </li>
-            ))}
-          </ul>
-          <p className="sj-placed-hint" aria-hidden="true">Swipe to see all {placements.length} &rarr;</p>
+          <PlacedRail />
         </div>
       </section>
 
