@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { routes } from "@/lib/routes";
-import { JOBS, FAMTXT, EEO, regionOf, type BoardJob } from "./jobs-data";
+import { JOBS, FAMTXT, EEO, regionOf, placeLabel, type BoardJob } from "./jobs-data";
 
 const FACETS = ["dept", "e", "w", "region"] as const;
 type Facet = (typeof FACETS)[number];
@@ -75,7 +75,7 @@ function payNum(p: string) {
 function briefText(j: BoardJob) {
   const f = FAMTXT[j.f] || FAMTXT.pm;
   return {
-    s: f.s.replace(/%T%/g, j.t) + ` The role is ${j.w.toLowerCase()} in ${j.c}, on a ${j.e.toLowerCase()} basis.`,
+    s: f.s.replace(/%T%/g, j.t) + ` The role is ${j.w.toLowerCase()} in ${placeLabel(j.c)}, on a ${j.e.toLowerCase()} basis.`,
     r: f.r,
     q: f.q,
   };
@@ -326,10 +326,10 @@ function JobsBoardInner() {
                   }}
                 >
                   <div className="jb-card-t">{j.t}</div>
-                  <div className="jb-card-l">{j.c} &middot; {j.w}</div>
+                  <div className="jb-card-l">{placeLabel(j.c)} &middot; {j.w}</div>
                   <div className="jb-card-tags">
                     <span className="jb-tag"><CalIcon />{j.e}</span>
-                    <span className="jb-tag"><PayIcon />{j.p}</span>
+                    {j.p && <span className="jb-tag"><PayIcon />{j.p}</span>}
                   </div>
                   <div className="jb-card-p">Posted {fmt(j.d)}</div>
                   <span
@@ -358,10 +358,10 @@ function JobsBoardInner() {
               <div className="jb-d-top">
                 <div>
                   <h1 className="jb-d-h1">{selectedJob.t}</h1>
-                  <div className="jb-d-sub">{selectedJob.c} &middot; {selectedJob.w} &middot; Posted {fmt(selectedJob.d)}</div>
+                  <div className="jb-d-sub">{placeLabel(selectedJob.c)} &middot; {selectedJob.w} &middot; Posted {fmt(selectedJob.d)}</div>
                   <div className="jb-d-chips">
                     <span className="jb-chip">{selectedJob.e}</span>
-                    <span className="jb-chip">{selectedJob.p}</span>
+                    {selectedJob.p && <span className="jb-chip">{selectedJob.p}</span>}
                     <span className="jb-chip">{selectedJob.dept}</span>
                   </div>
                 </div>

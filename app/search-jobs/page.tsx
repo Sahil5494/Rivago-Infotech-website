@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { routes, firm, marketsSentence } from "@/lib/routes";
-import { JOBS, regionOf } from "@/app/view-jobs/jobs-data";
+import { JOBS, regionOf, placeLabel } from "@/app/view-jobs/jobs-data";
 import SearchJobsSearch from "./SearchJobsSearch";
 import PlacedRail from "./PlacedRail";
 import Faq, { type FaqItem } from "@/components/Faq";
@@ -122,8 +122,8 @@ export default function SearchJobsPage() {
                 <Link className="sj-job" href={boardLink({ q: j.t, l: j.c.split(",")[0] })}>
                   <span className="sj-job-dept">{j.dept}</span>
                   <span className="sj-job-t">{j.t}</span>
-                  <span className="sj-job-meta">{j.c} · {j.w}</span>
-                  <span className="sj-job-foot"><span>{j.e}</span><span>{j.p}</span><span>Posted {posted(j.d)}</span></span>
+                  <span className="sj-job-meta">{placeLabel(j.c)} · {j.w}</span>
+                  <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span>{j.p}</span>}<span>Posted {posted(j.d)}</span></span>
                 </Link>
               </li>
             ))}

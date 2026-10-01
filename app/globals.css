@@ -1974,7 +1974,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
 @media(max-width:520px){.hire-form{grid-template-columns:1fr}}
 
 /* ── PAGE SIDE NAV ── */
-.pgnav-side{position:fixed;top:50%;transform:translateY(-50%);z-index:400;align-items:center;height:48px;padding:0 14px;background:var(--chrome-solid);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--rule-1);color:var(--text-2);text-decoration:none;font-family:var(--ff);font-size:var(--fz2);font-weight:500;box-shadow:0 14px 44px rgba(0,0,0,.4);transition:background .25s,color .25s,border-color .25s,transform .25s,box-shadow .25s}
+.pgnav-side{position:fixed;top:50%;transform:translateY(-50%);z-index:400;align-items:center;height:44px;padding:0 8px;background:var(--chrome-solid);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--rule-1);color:var(--text-2);text-decoration:none;font-family:var(--ff);font-size:var(--fz2);font-weight:500;box-shadow:0 14px 44px rgba(0,0,0,.4);transition:background .25s,color .25s,border-color .25s,transform .25s,box-shadow .25s,opacity .3s,visibility .3s}
+/* Hidden until PageNavSide adds .on — see useShowSideNav for when. */
+.pgnav-side:not(.on){opacity:0;visibility:hidden;pointer-events:none}
 .pgnav-side[hidden]{display:none}
 .pgnav-side:not([hidden]){display:inline-flex}
 .pgnav-side.back{left:0;border-left:none;border-radius:0 9999px 9999px 0;animation:pgnavL .5s cubic-bezier(.32,.72,0,1)}
@@ -1996,7 +1998,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 44px
   .pgnav-side{display:none!important}
   .gs,.fc,.hero-badge,.hero-h1,.hero-sub,.hero-btns{opacity:1!important;transform:none!important}
 }
-@media(max-width:560px){.pgnav-side{height:42px;padding:0 11px}.pgnav-side-lbl{display:none}}
+/* Below 1100px the page gutter (44px, 20px on phones) is narrower than the
+   tab, so it could only ever sit on content. The burger menu covers
+   navigation there. */
+@media(max-width:1099px){.pgnav-side{display:none!important}}
 
 /* ══════════════════════════════════════════════════════════
    INTERIOR PAGE KIT — shared by every non-home page
