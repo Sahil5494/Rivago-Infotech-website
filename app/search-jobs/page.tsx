@@ -4,6 +4,7 @@ import { routes, firm, marketsSentence } from "@/lib/routes";
 import { JOBS, regionOf } from "@/app/view-jobs/jobs-data";
 import SearchJobsSearch from "./SearchJobsSearch";
 import PlacedRail from "./PlacedRail";
+import Faq, { type FaqItem } from "@/components/Faq";
 
 export const metadata: Metadata = {
   title: "Search Jobs — Tech, Finance, Healthcare & More | Rivago Infotech",
@@ -56,12 +57,25 @@ const boardLink = (q: Record<string, string>) => `${routes.viewJobs}?${new URLSe
 const posted = (iso: string) =>
   new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
 
-const values = [
-  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l2.2 4.4 4.8.7-3.5 3.4.8 4.8L11 13l-4.3 2.3.8-4.8L4 7.1l4.8-.7z" stroke="var(--accent)" strokeWidth="1.4" strokeLinejoin="round" /></svg>, t: "We say no on your behalf", d: "You only ever see roles worth your time. We will not put a role in front of you that does not fit — and we will talk you out of a bad move, even when the fee says otherwise." },
-  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="var(--accent)" strokeWidth="1.4" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "A specialist, not a coordinator", d: "The person who calls you has recruited in your discipline for years. They can read your CV properly, and they negotiate for you personally — no handoffs." },
-  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 11l4 4 8-9" stroke="var(--accent)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>, t: "Feedback inside 48 hours", d: "After every interview you get the client's real words — good or bad. If it is a no, you hear why in time to use it, not three weeks later." },
-  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 19s-7-4.2-7-9a4 4 0 017-2.6A4 4 0 0118 10c0 4.8-7 9-7 9z" stroke="var(--accent)" strokeWidth="1.4" strokeLinejoin="round" /></svg>, t: "Paid right, paid on time", d: "Accurate payroll every cycle, and a named person who answers the phone when something is wrong." },
+/* Candidate FAQ — replaces "How we work", whose four cards repeated the
+   steps above (specialist recruiter, reply times, payroll). Its one idea
+   not said elsewhere, "we say no on your behalf", now closes the steps
+   lede.
+
+   Answers restate what the site already commits to, or general facts about
+   engagement types. Two need the firm's confirmation before launch: that
+   candidates are never charged, and how sponsorship is handled. Pay
+   frequency and W-2 / C2C are deliberately not stated — unconfirmed. */
+const faqItems: FaqItem[] = [
+  { q: "Do I pay anything to work with Rivago?", a: "No. Our fee is paid by the company that hires you. There is no charge to apply, to be represented, or to be placed." },
+  { q: "What is the difference between contract, contract-to-hire and direct hire?", a: "Contract roles run for a set period, and you work through Rivago while you are on assignment. Contract-to-hire starts the same way, with the option for the client to take you on as a permanent employee later. Direct hire means you join the client's payroll as a permanent employee from day one. Every listing on the board shows which one it is, and you can filter by it." },
+  { q: "How quickly will I hear back after applying?", a: "Every application gets a reply from a person inside two business days — including when the answer is no." },
+  { q: "Can I apply for more than one role?", a: "Yes. Apply for every role that fits. Your recruiter will talk you through which are the strongest match before anything goes to a client." },
+  { q: "Do you sponsor visas or work permits?", a: "Sponsorship is decided by the hiring company, role by role. Tell us your current work authorisation when you apply, and your recruiter will only put you forward for roles where it works." },
+  { q: "Who pays me on a contract role?", a: "On contract, Rivago runs your onboarding, payroll and timesheets, so you are paid by us — and you have a named person to call if anything is wrong." },
+  { q: "What if none of the open roles fit me?", a: "Send us your CV anyway. Your recruiter can match you to new roles as they are briefed, so you do not have to keep checking back." },
 ];
+
 
 export default function SearchJobsPage() {
   return (
@@ -138,29 +152,13 @@ export default function SearchJobsPage() {
         <div className="sj-in">
           <div className="eyb">What actually happens</div>
           <h2>No black holes.<br />No <em>disappearing acts.</em></h2>
-          <p className="lede">Most applications vanish. Here is what we commit to instead, in writing, every time.</p>
+          <p className="lede">Most applications vanish. Here is what we commit to instead, in writing, every time — and if a role is wrong for you, we will tell you so.</p>
           <div className="sj-step-grid">
             {steps.map((s) => (
               <div className="sj-step inv" key={s.n}>
                 <div className="sj-step-n">{s.n}</div>
                 <h3>{s.t}</h3>
                 <p>{s.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="sj-vals">
-        <div className="sj-in">
-          <div className="eyb">How we work</div>
-          <h2>Four things we do<br />that <em>most agencies will not.</em></h2>
-          <div className="sj-val-grid">
-            {values.map((v) => (
-              <div className="sj-val" key={v.t}>
-                <div className="sj-val-ic">{v.icon}</div>
-                <h3>{v.t}</h3>
-                <p>{v.d}</p>
               </div>
             ))}
           </div>
@@ -180,6 +178,16 @@ export default function SearchJobsPage() {
             <p className="lede">Some of the people who found their next role through us.</p>
           </div>
           <PlacedRail />
+        </div>
+      </section>
+
+      <section className="faq-sec">
+        <div className="faq-inner">
+          <div style={{ textAlign: "center" }}>
+            <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>Candidate FAQ</div>
+            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 0 }}>Before you <em>apply.</em></h2>
+          </div>
+          <Faq items={faqItems} />
         </div>
       </section>
 
