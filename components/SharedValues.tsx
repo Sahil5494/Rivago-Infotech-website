@@ -22,7 +22,7 @@ export default function SharedValues() {
     <section className="section cv-sec lt" id="values">
       <div className="wrap">
         <span className="eyebrow light">Who we are</span>
-        <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text-inv-1)", maxWidth: 640 }}>Our shared <em>values.</em></h2>
+        <h2 className="section-h2 gs" style={{ marginTop: 18, marginBottom: 0, color: "var(--text-inv-1)", maxWidth: 640 }}>Our shared <em>values.</em></h2>
         <p className="cv-lede gs">The four things we hire for — and hold ourselves to with candidates, clients and each other.</p>
         <div className="cv-grid">
           {values.map((v) => (
