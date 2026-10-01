@@ -17,9 +17,11 @@ const values = [
   { t: "Keep learning", d: "Markets move, pay shifts, sectors evolve. Staying sharper than the market we place into is not a perk here — it is the job." },
 ];
 
-export default function SharedValues() {
+/* tone="plain" puts the band on the page ground with a top rule, for a page
+   where it follows another cream band (Search Jobs). Careers keeps cream. */
+export default function SharedValues({ tone = "cream" }: { tone?: "cream" | "plain" }) {
   return (
-    <section className="section cv-sec lt" id="values">
+    <section className={`section cv-sec lt${tone === "plain" ? " cv-plain" : ""}`} id="values">
       <div className="wrap">
         <span className="eyebrow light">Who we are</span>
         <h2 className="section-h2 gs" style={{ marginTop: 18, marginBottom: 0, color: "var(--text-inv-1)", maxWidth: 640 }}>Our shared <em>values.</em></h2>

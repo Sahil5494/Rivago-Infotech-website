@@ -166,6 +166,12 @@ export default function SearchJobsPage() {
         </div>
       </section>
 
+      {/* Values before proof: what we stand for, then the people placed
+          who back it up, then the FAQ and the ask. On the plain ground
+          with a rule, not cream — it follows "What actually happens",
+          which is cream, and two cream bands ran together as one. */}
+      <SharedValues tone="plain" />
+
       {/* Real placements, supplied by the firm (lib/placements.ts), in a
           one-row rail with arrows (PlacedRail). No quotes are attributed to
           anyone — see lib/placements.ts before adding any. The band is
@@ -181,8 +187,6 @@ export default function SearchJobsPage() {
           <PlacedRail />
         </div>
       </section>
-
-      <SharedValues />
 
       <section className="faq-sec">
         <div className="faq-inner">

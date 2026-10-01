@@ -3262,6 +3262,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .perk-t{font-size:var(--fz3);font-weight:500;color:var(--text);margin-bottom:6px}
 .perk-d{font-size:var(--fz1);color:var(--text2);line-height:1.6;font-weight:400}
 .cv-sec{background:var(--cream)!important}
+.cv-sec.cv-plain{background:var(--bg)!important;border-top:1px solid var(--rule-inv-1)}
 .cv-sec .eyebrow.light{background:var(--tint-1);border:1px solid var(--tint-2);color:var(--accent-inv)}
 .cv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule-inv-1);border:1px solid var(--rule-inv-1);border-radius:20px;overflow:hidden;margin-top:48px}
 .cv-grid .cv{background:var(--surface-inv);padding:38px 34px;transition:background .25s var(--ease)}
