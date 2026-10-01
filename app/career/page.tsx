@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { routes, firm, offices } from "@/lib/routes";
+import SharedValues from "@/components/SharedValues";
 
 export const metadata: Metadata = {
   title: "Work at Rivago — Careers in Recruitment | Rivago Infotech",
@@ -34,12 +35,6 @@ const carVals = [
   { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="var(--accent)" strokeWidth="1.4" /><path d="M11 6v5l3.5 2" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "No drip activity", d: "We measure outcomes, not call dials: placements that stick, clients who come back, candidates who would work with you again. Hit them — work how you want." },
 ];
 
-const values = [
-  { t: "Own the outcome", d: "From first call to signed offer, the search is yours. We trust you with the brief and back your judgement — and we expect you to stand behind it." },
-  { t: "Quality over noise", d: "Five right candidates beat fifty fast ones. We'd rather decline a brief than spam a client — and the same bar applies to how we work with each other." },
-  { t: "Straight talk", d: "Honest with candidates, honest with clients, honest internally. No inflated ranges, no ghosting, no politics. If something's broken, we say so." },
-  { t: "Keep learning", d: "Markets move, comp shifts, sectors evolve. Staying sharper than the market you place into isn't a perk here — it's the job." },
-];
 
 const hireSteps = [
   { n: "1", t: "Intro call", d: "30 minutes with a partner. What you've placed, what you want next, what you'd never compromise on.", time: "~ 30 min · same week" },
@@ -132,24 +127,7 @@ export default function CareerPage() {
         </div>
       </section>
 
-      <section className="section cv-sec lt">
-        <div className="wrap">
-          <span className="eyebrow light">What we stand for</span>
-          <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text-inv-1)", maxWidth: 640 }}>Four values we <em>actually hire for.</em></h2>
-          {/* No 01-04. The four are a set, not steps, and numbering a set
-              makes a reader look for an order that isn't there — the same
-              reason About's "What we won't do" lost its numbers. The hiring
-              steps below keep theirs, because those are a sequence. */}
-          <div className="cv-grid">
-            {values.map((v) => (
-              <div className="cv" key={v.t}>
-                <div className="cv-t">{v.t}</div>
-                <div className="cv-d">{v.d}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SharedValues />
 
       <section className="section" id="hiring">
         <div className="wrap">

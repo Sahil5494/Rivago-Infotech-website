@@ -5,6 +5,7 @@ import { JOBS, regionOf } from "@/app/view-jobs/jobs-data";
 import SearchJobsSearch from "./SearchJobsSearch";
 import PlacedRail from "./PlacedRail";
 import Faq, { type FaqItem } from "@/components/Faq";
+import SharedValues from "@/components/SharedValues";
 
 export const metadata: Metadata = {
   title: "Search Jobs — Tech, Finance, Healthcare & More | Rivago Infotech",
@@ -180,6 +181,8 @@ export default function SearchJobsPage() {
           <PlacedRail />
         </div>
       </section>
+
+      <SharedValues />
 
       <section className="faq-sec">
         <div className="faq-inner">
