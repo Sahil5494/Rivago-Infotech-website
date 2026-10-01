@@ -3294,13 +3294,12 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 /* ===== Search Jobs ===== */
 .sj-hero,.sj-steps,.sj-vals{scroll-margin-top:0}
 .sj-in{width:100%;max-width:1400px;margin:0 auto;padding:0 28px}
-.sj-hero{position:relative;padding:104px 28px 28px;background:var(--bg)}
-.sj-banner{position:relative;width:100%;max-width:1720px;margin:0 auto;min-height:min(78vh,760px);display:flex;align-items:center;justify-content:center;padding:80px 44px;border-radius:28px;overflow:hidden;background:radial-gradient(ellipse 78% 96% at 8% 62%,rgba(61,255,135,.30),transparent 60%),radial-gradient(ellipse 70% 90% at 96% 34%,rgba(0,168,130,.26),transparent 62%),radial-gradient(ellipse 60% 70% at 62% 8%,rgba(3,12,5,.96),transparent 66%),linear-gradient(135deg,#04160B 0%,#08210F 42%,var(--bg) 100%)}
-.sj-hero-in{max-width:1120px;margin:0 auto;text-align:center;position:relative;z-index:1;width:100%}
-.sj-eyb{display:inline-flex;align-items:center;gap:8px;padding:6px 15px;border:1px solid var(--tint-3);background:var(--tint-1);border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-bottom:26px;backdrop-filter:blur(6px)}
-.sj-eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.sj-hero h1{font-size:var(--fz15);font-weight:500;letter-spacing:-.05em;line-height:1.04;color:var(--text-1)}
-.sj-hero .lede{font-size:var(--fz7);color:var(--text-2);max-width:760px;margin:22px auto 0;line-height:1.66;font-weight:400}
+/* Search Jobs hero. The band itself is the shared .page-hero (see the note in
+   app/search-jobs/page.tsx); these rules only fit the search into it. The
+   old .sj-banner card, its green/teal gradient, .sj-hero-in, .sj-eyb and the
+   hero's own h1/lede sizes were deleted with the inset-card build. */
+.sj-hero p.lead{max-width:720px}
+.sj-hero .sj-search{margin-top:36px}
 .sj-search{display:grid;grid-template-columns:1.2fr 1px .95fr auto;align-items:center;gap:0;width:100%;max-width:1080px;margin:40px auto 0;padding:7px 7px 7px 8px;background:rgba(8,18,11,.62);border:1px solid var(--rule-1);border-radius:9999px;backdrop-filter:blur(14px);box-shadow:0 18px 50px rgba(0,0,0,.4)}
 .sj-field{position:relative;display:flex;align-items:center}
 .sj-field svg{position:absolute;left:20px;color:var(--text-3);pointer-events:none}
@@ -3351,7 +3350,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
    job" testimonial band stood here; the band came out with its unattributed
    quotes. */
 @media(max-width:900px){.sj-search{grid-template-columns:1fr}.sj-step-grid{grid-template-columns:1fr}.sj-val-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:820px){.sj-hero{padding:92px 14px 18px}.sj-banner{padding:64px 22px;border-radius:20px;min-height:auto}.sj-search{border-radius:20px;padding:10px;gap:6px}.sj-div{display:none}.sj-field input{padding:15px 16px 15px 48px}.sj-go{width:100%;border-radius:var(--pill)}}
+@media(max-width:820px){.sj-search{border-radius:20px;padding:10px;gap:6px}.sj-div{display:none}.sj-field input{padding:15px 16px 15px 48px}.sj-go{width:100%;border-radius:var(--pill)}}
 @media(max-width:520px){.sj-val-grid{grid-template-columns:1fr}.sj-hero{padding:112px 20px 60px}}
 
 /* ===== Open Positions (careers job board — cream) ===== */

@@ -23,6 +23,7 @@ const DARK_HERO_PREFIXES = [
   routes.industries,
   routes.hireTalent,
   routes.career,
+  routes.searchJobs,
   routes.contactUs,
 ];
 

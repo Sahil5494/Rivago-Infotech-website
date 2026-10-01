@@ -45,19 +45,21 @@ export default function SearchJobsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
-      <section className="sj-hero">
-        {/* inv: the banner is a dark ground, and every colour inside it — the
-            heading, the lede, the "Popular" label, the gradient's own last stop
-            (var(--bg)) — is a role token. Without inv they took the light
-            theme's values: black text on dark green, and a gradient that washed
-            out to near-white on the right. */}
-        <div className="sj-banner inv">
-          <div className="sj-hero-in">
-            <div className="sj-eyb">Live roles &middot; Briefed by the hiring manager</div>
-            <h1>Find the right<br /><em>opportunity for you.</em></h1>
-            <p className="lede">Every role we represent is briefed to us directly by the person doing the hiring. So before you interview, we can tell you who you would report to, why the seat is open, and what it actually pays.</p>
-            <SearchJobsSearch />
-          </div>
+      {/* The hero is the shared .page-hero — the band Careers, Contact and the
+          service pages open on — with the search where those pages put their
+          buttons. It used to be its own build: a rounded green card inset in a
+          mint frame under a solid white nav bar, 834px tall, with brighter
+          green and teal glows than any other page. Three layers where every
+          other page has one, and the only dark-opening page whose nav did not
+          go transparent. Now the bar floats over it like everywhere else (see
+          DARK_HERO_PREFIXES in components/Nav.tsx). */}
+      <section className="page-hero inv sj-hero">
+        <div className="page-hero-inner wide">
+          <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><Link href={routes.career}>Careers</Link><span className="crumbs-sep">/</span><span>Search Jobs</span></div>
+          <span className="eyebrow light">Live roles &middot; Briefed by the hiring manager</span>
+          <h1 className="gs" style={{ marginTop: 18 }}>Find the right <em>opportunity for you.</em></h1>
+          <p className="lead gs">Every role we represent is briefed to us directly by the person doing the hiring. So before you interview, we can tell you who you would report to, why the seat is open, and what it actually pays.</p>
+          <SearchJobsSearch />
         </div>
       </section>
 
