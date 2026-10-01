@@ -58,7 +58,9 @@ const boardLink = (q: Record<string, string>) => `${routes.viewJobs}?${new URLSe
 const posted = (iso: string) =>
   new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
 
-/* Candidate FAQ — replaces "How we work", whose four cards repeated the
+/* Candidate FAQ — questions chosen from the ones candidates actually ask
+   (apply, what happens next, updates, evaluation, cost, roles, locations,
+   visas, no fit). Replaces "How we work", whose four cards repeated the
    steps above (specialist recruiter, reply times, payroll). Its one idea
    not said elsewhere, "we say no on your behalf", now closes the steps
    lede.
@@ -68,13 +70,19 @@ const posted = (iso: string) =>
    never charged, and Rivago does not sponsor visas or work permits. Pay
    frequency and W-2 / C2C are deliberately not stated — unconfirmed. */
 const faqItems: FaqItem[] = [
+  /* Points at the CV form, not the board's Apply button: Apply opens a
+     log-in gate whose forms send nothing (app/sign-in/SignInCard.tsx), so
+     the CV form is the only route that reaches the firm today. Revisit
+     this answer when Apply is wired up. */
+  { q: "How do I apply for a role?", a: "Find the role on the jobs board, then use \u201cSend us your CV\u201d at the bottom of this page and tell us which role it is. You can apply for as many roles as fit you — your recruiter will tell you which are the strongest match." },
+  { q: "What happens after I apply?", a: "A recruiter who hires in your field reads your application and replies inside two business days, including when the answer is no. If there is a fit, they call you to talk through the role: the client, the team, who you would report to and what it pays. Nothing goes to a client until you have seen the brief and said yes." },
+  { q: "How will I hear about my application?", a: "From your recruiter directly — a person, not an automated portal. After every interview you hear the client\u2019s feedback, good or bad, in time to use it." },
+  { q: "How are candidates evaluated?", a: "Against a written scorecard agreed with the hiring manager before the search opens, not against a keyword match. Your recruiter interviews you against that bar before anyone at the client sees your profile, and tells you what the panel will probe for." },
   { q: "Do I pay anything to work with Rivago?", a: "No. Our fee is paid by the company that hires you. There is no charge to apply, to be represented, or to be placed." },
-  { q: "What is the difference between contract, contract-to-hire and direct hire?", a: "Contract roles run for a set period, and you work through Rivago while you are on assignment. Contract-to-hire starts the same way, with the option for the client to take you on as a permanent employee later. Direct hire means you join the client's payroll as a permanent employee from day one. Every listing on the board shows which one it is, and you can filter by it." },
-  { q: "How quickly will I hear back after applying?", a: "Every application gets a reply from a person inside two business days — including when the answer is no." },
-  { q: "Can I apply for more than one role?", a: "Yes. Apply for every role that fits. Your recruiter will talk you through which are the strongest match before anything goes to a client." },
+  { q: "What kinds of roles do you recruit for?", a: "Technology, finance, healthcare, operations, sales and marketing, people, product, design, legal, research and executive roles. Each is one of three types: contract (a set period, working through Rivago), contract-to-hire (contract first, with the option of a permanent offer), or direct hire (on the client\u2019s payroll from day one). Every listing says which." },
+  { q: "Which locations do you hire for?", a: "The United States, Canada, the UAE and India, across on-site, hybrid and remote roles. Search by city, region or country, or filter the jobs board by market." },
   { q: "Do you sponsor visas or work permits?", a: "No. Rivago does not sponsor visas or work permits, so you will need current authorisation to work in the country where the role is based. Tell us your status when you apply, and your recruiter will only put you forward for roles where it works." },
-  { q: "Who pays me on a contract role?", a: "On contract, Rivago runs your onboarding, payroll and timesheets, so you are paid by us — and you have a named person to call if anything is wrong." },
-  { q: "What if none of the open roles fit me?", a: "Send us your CV anyway. Your recruiter can match you to new roles as they are briefed, so you do not have to keep checking back." },
+  { q: "There is no role that fits me right now. What should I do?", a: "Send us your CV anyway. Your recruiter can match you to new roles as they are briefed, so you do not have to keep checking back." },
 ];
 
 
@@ -193,6 +201,7 @@ export default function SearchJobsPage() {
           <div style={{ textAlign: "center" }}>
             <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>Candidate FAQ</div>
             <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 0 }}>Before you <em>apply.</em></h2>
+            <p className="gs" style={{ fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.7, margin: "14px auto 0" }}>The questions candidates ask us most.</p>
           </div>
           <Faq items={faqItems} />
         </div>
