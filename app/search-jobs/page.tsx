@@ -63,15 +63,15 @@ const posted = (iso: string) =>
    lede.
 
    Answers restate what the site already commits to, or general facts about
-   engagement types. Two need the firm's confirmation before launch: that
-   candidates are never charged, and how sponsorship is handled. Pay
+   engagement types. Confirmed by the firm (October 2026): candidates are
+   never charged, and Rivago does not sponsor visas or work permits. Pay
    frequency and W-2 / C2C are deliberately not stated — unconfirmed. */
 const faqItems: FaqItem[] = [
   { q: "Do I pay anything to work with Rivago?", a: "No. Our fee is paid by the company that hires you. There is no charge to apply, to be represented, or to be placed." },
   { q: "What is the difference between contract, contract-to-hire and direct hire?", a: "Contract roles run for a set period, and you work through Rivago while you are on assignment. Contract-to-hire starts the same way, with the option for the client to take you on as a permanent employee later. Direct hire means you join the client's payroll as a permanent employee from day one. Every listing on the board shows which one it is, and you can filter by it." },
   { q: "How quickly will I hear back after applying?", a: "Every application gets a reply from a person inside two business days — including when the answer is no." },
   { q: "Can I apply for more than one role?", a: "Yes. Apply for every role that fits. Your recruiter will talk you through which are the strongest match before anything goes to a client." },
-  { q: "Do you sponsor visas or work permits?", a: "Sponsorship is decided by the hiring company, role by role. Tell us your current work authorisation when you apply, and your recruiter will only put you forward for roles where it works." },
+  { q: "Do you sponsor visas or work permits?", a: "No. Rivago does not sponsor visas or work permits, so you will need current authorisation to work in the country where the role is based. Tell us your status when you apply, and your recruiter will only put you forward for roles where it works." },
   { q: "Who pays me on a contract role?", a: "On contract, Rivago runs your onboarding, payroll and timesheets, so you are paid by us — and you have a named person to call if anything is wrong." },
   { q: "What if none of the open roles fit me?", a: "Send us your CV anyway. Your recruiter can match you to new roles as they are briefed, so you do not have to keep checking back." },
 ];
