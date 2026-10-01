@@ -6,6 +6,7 @@ import AboutHeroCanvas from "@/components/AboutHeroCanvas";
 import LogoMarquee from "@/components/LogoMarquee";
 import ClientQuotes from "@/components/ClientQuotes";
 import RefusalCards from "@/components/RefusalCards";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "About Rivago Infotech · Partner-led search and staffing",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     "Rivago Infotech is a partner-led recruitment and staffing firm working from offices in Wilmington, Pune and Ayr. We place people across technology, healthcare, legal, finance and operations on a permanent, contract or interim basis. No portals, no handoffs, no automated outreach.",
   alternates: { canonical: "https://rivagoinfotech.com/about" },
   openGraph: {
+    ...ogBase,
     title: "About Rivago Infotech · Partner-led search and staffing",
     description: "Partner-led recruitment across technology, healthcare, legal, finance and operations, from offices in Wilmington, Pune and Ayr. No portals. No handoffs.",
     url: "https://rivagoinfotech.com/about",

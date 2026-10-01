@@ -14,6 +14,7 @@ import {
   FaqSection,
   CtaSection,
 } from "../_components/shared";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Executive Search — Confidential Retained Search | Rivago Infotech",
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
     "Confidential, retained search for VP- to C-suite roles. A dedicated partner and researcher map the market off-market, brief you in writing every week, and stand behind the result for twelve months.",
   alternates: { canonical: "https://rivagoinfotech.com/services/executive-search" },
   openGraph: {
+    ...ogBase,
     title: "Executive Search — Confidential Retained Search | Rivago Infotech",
     description: "Confidential, retained search for VP- to C-suite roles, with weekly written briefings and a 12-month replacement guarantee.",
     url: "https://rivagoinfotech.com/services/executive-search",

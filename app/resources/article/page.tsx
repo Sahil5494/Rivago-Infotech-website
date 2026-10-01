@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { routes } from "@/lib/routes";
 import { findArticle, articles, type Article, type ArticleSection } from "../data";
 import ArticleToc from "@/components/ArticleToc";
+import { ogBase } from "@/lib/og";
 
 /* findArticle returns undefined for an id that is not in the library, and
    both exports below answer 404 rather than substituting an article.
@@ -27,7 +28,8 @@ export async function generateMetadata({
     title: `${article.title} — Rivago Infotech`,
     description,
     alternates: { canonical: url },
-    openGraph: { title: `${article.title} — Rivago Infotech`, description, url },
+    openGraph: {
+    ...ogBase, title: `${article.title} — Rivago Infotech`, description, url },
   };
 }
 

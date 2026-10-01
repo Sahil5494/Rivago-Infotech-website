@@ -12,6 +12,7 @@ import {
   FaqSection,
   CtaSection,
 } from "../_components/shared";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Employer of Record — Hire Anywhere, Compliantly | Rivago Infotech",
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     "Hire anywhere without opening a local entity. Rivago becomes the legal employer — payroll, tax, benefits and contracts handled in-country — so you can onboard the person you found, wherever they are.",
   alternates: { canonical: "https://rivagoinfotech.com/services/employer-of-record" },
   openGraph: {
+    ...ogBase,
     title: "Employer of Record — Hire Anywhere, Compliantly | Rivago Infotech",
     description: "Hire anywhere without opening a local entity. Rivago becomes the legal employer — payroll, tax, benefits and contracts handled in-country.",
     url: "https://rivagoinfotech.com/services/employer-of-record",

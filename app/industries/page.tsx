@@ -3,12 +3,14 @@ import type { Metadata } from "next";
 import { routes, offices, servicesList } from "@/lib/routes";
 import IndustriesNav from "./IndustriesNav";
 import { practices, spine, writtenGuarantees } from "./data";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Industries — Rivago Infotech",
   description: "Ten specialist practices — technology, finance, healthcare, legal and more. Rivago Infotech places senior talent with deep sector depth across four markets.",
   alternates: { canonical: "https://rivagoinfotech.com/industries" },
   openGraph: {
+    ...ogBase,
     title: "Industries — Rivago Infotech",
     description: "Ten specialist practices — technology, finance, healthcare, legal and more. Rivago Infotech places senior talent with deep sector depth across four markets.",
     url: "https://rivagoinfotech.com/industries",

@@ -13,6 +13,7 @@ import {
   FaqSection,
   CtaSection,
 } from "../_components/shared";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Direct Hire — Permanent Recruitment | Rivago Infotech",
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
     "Direct, permanent recruitment from Rivago Infotech — one senior partner per search, a delivery date agreed in writing, a 90-day replacement guarantee and a contingent fee you pay only on a hire that sticks. Permanent hiring across technology, finance, healthcare, legal and more.",
   alternates: { canonical: "https://rivagoinfotech.com/services/direct-hire" },
   openGraph: {
+    ...ogBase,
     title: "Direct Hire — Permanent Recruitment | Rivago Infotech",
     description:
       "Direct, permanent recruitment from Rivago Infotech — one senior partner per search, a delivery date agreed in writing, a 90-day replacement guarantee and a contingent fee you pay only on a hire that sticks.",

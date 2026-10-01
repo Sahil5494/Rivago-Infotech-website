@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import ResourcesView from "./ResourcesView";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Resources · Rivago Infotech",
   description: "Hiring intelligence from Rivago Infotech — compensation benchmarks, market reads and hiring playbooks, free to read with no sign-up.",
   alternates: { canonical: "https://rivagoinfotech.com/resources" },
   openGraph: {
+    ...ogBase,
     title: "Resources · Rivago Infotech",
     description: "Hiring intelligence from Rivago Infotech — compensation benchmarks, market reads and hiring playbooks, free to read with no sign-up.",
     url: "https://rivagoinfotech.com/resources",

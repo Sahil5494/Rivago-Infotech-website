@@ -2,12 +2,14 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { routes, firm, offices } from "@/lib/routes";
 import SharedValues from "@/components/SharedValues";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Work at Rivago — Careers in Recruitment | Rivago Infotech",
   description: "Build your career at Rivago Infotech. Senior-only, partner-track recruiting roles across our offices in Delaware, Pune and Ontario.",
   alternates: { canonical: "https://rivagoinfotech.com/career" },
   openGraph: {
+    ...ogBase,
     title: "Work at Rivago — Careers in Recruitment | Rivago Infotech",
     description: "Build your career at Rivago Infotech. Senior-only, partner-track recruiting roles across our offices in Delaware, Pune and Ontario.",
     url: "https://rivagoinfotech.com/career",

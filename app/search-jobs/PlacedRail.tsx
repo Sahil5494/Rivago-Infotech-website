@@ -96,10 +96,10 @@ export default function PlacedRail() {
                   : "Matched to the role by a Rivago recruiter who specialises in the field."}
               </p>
             )}
-            <span className="sj-person-who">
-              <span className="sj-person-n">{c.name}</span>
+            <div className="sj-person-who">
+              <h3 className="sj-person-n">{c.name}</h3>
               <span className="sj-person-r">{c.role || "Placed through Rivago"}</span>
-            </span>
+            </div>
           </li>
         ))}
       </ul>

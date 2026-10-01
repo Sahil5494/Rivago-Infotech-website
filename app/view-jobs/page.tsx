@@ -1,12 +1,14 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import JobsBoard from "./JobsBoard";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Job Search · Browse All Jobs | Rivago Infotech",
   description: "Browse live client roles briefed directly to Rivago Infotech — AI, data, engineering, finance, healthcare and legal openings across the US, Canada, the UAE and India. Contract, contract-to-hire and direct hire.",
   alternates: { canonical: "https://rivagoinfotech.com/view-jobs" },
   openGraph: {
+    ...ogBase,
     title: "Job Search · Browse All Jobs | Rivago Infotech",
     description: "Browse live client roles briefed directly to Rivago Infotech — AI, data, engineering, finance, healthcare and legal openings across the US, Canada, the UAE and India.",
     url: "https://rivagoinfotech.com/view-jobs",

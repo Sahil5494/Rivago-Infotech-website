@@ -12,6 +12,7 @@ import {
   FaqSection,
   CtaSection,
 } from "../_components/shared";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Temporary Staffing — On-Demand & Seasonal | Rivago Infotech",
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     "On-demand professionals for peaks, seasonal spikes and leave cover. Vetted, compliant and deployed in 24–72 hours — scale your team up or down as the work changes, with zero long-term commitment.",
   alternates: { canonical: "https://rivagoinfotech.com/services/temporary-staffing" },
   openGraph: {
+    ...ogBase,
     title: "Temporary Staffing — On-Demand & Seasonal | Rivago Infotech",
     description: "On-demand professionals for peaks, seasonal spikes and leave cover, deployed in 24–72 hours with zero long-term commitment.",
     url: "https://rivagoinfotech.com/services/temporary-staffing",

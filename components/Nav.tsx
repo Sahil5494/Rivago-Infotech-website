@@ -27,19 +27,19 @@ const DARK_HERO_PREFIXES = [
 ];
 
 const Chevron = () => (
-  <svg className="caret" viewBox="0 0 8 8" fill="none">
+  <svg aria-hidden="true" className="caret" viewBox="0 0 8 8" fill="none">
     <path d="M1.5 3l2.5 2.5L6.5 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const Arrow = () => (
-  <svg className="mm-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none">
+  <svg aria-hidden="true" className="mm-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none">
     <path d="M2 5.5h6M5.5 2.5l3 3-3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const CircleIco = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none">
     <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.3" />
   </svg>
 );
@@ -241,17 +241,17 @@ export default function Nav() {
             </Link>
             <div className={`mm mm-1col${openKey === "about" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
               <Link className="mm-link" href={`${routes.about}#story`}>
-                <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.3" /><path d="M8 5v3l2 1.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
+                <div className="mm-link-ico"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.3" /><path d="M8 5v3l2 1.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
                 <div className="mm-link-body"><div className="mm-link-title">Our story <Arrow /></div><div className="mm-link-desc">Why we built Rivago and what we stand for</div></div>
               </Link>
               {/* Pointed at /about, the same place as "Our story". The
                   offices section has had id="offices" all along. */}
               <Link className="mm-link" href={`${routes.about}#offices`}>
-                <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5 1.5 3 4 3 7c0 4 5 7.5 5 7.5s5-3.5 5-7.5c0-3-2-5.5-5-5.5z" stroke="currentColor" strokeWidth="1.3" /><circle cx="8" cy="7" r="1.8" stroke="currentColor" strokeWidth="1.3" /></svg></div>
+                <div className="mm-link-ico"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5 1.5 3 4 3 7c0 4 5 7.5 5 7.5s5-3.5 5-7.5c0-3-2-5.5-5-5.5z" stroke="currentColor" strokeWidth="1.3" /><circle cx="8" cy="7" r="1.8" stroke="currentColor" strokeWidth="1.3" /></svg></div>
                 <div className="mm-link-body"><div className="mm-link-title">Offices <Arrow /></div><div className="mm-link-desc">Wilmington · Pune · Ayr</div></div>
               </Link>
               <Link className="mm-link" href={routes.contactUs}>
-                <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="3" width="11" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.3" /><path d="M5 6h6M5 8.5h6M5 11h4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
+                <div className="mm-link-ico"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="3" width="11" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.3" /><path d="M5 6h6M5 8.5h6M5 11h4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg></div>
                 <div className="mm-link-body"><div className="mm-link-title">Contact <Arrow /></div><div className="mm-link-desc">Talk to a partner across our three offices</div></div>
               </Link>
             </div>
@@ -262,11 +262,11 @@ export default function Nav() {
             </Link>
             <div className={`mm mm-1col${openKey === "careers" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
               <Link className="mm-link" href={routes.searchJobs}>
-                <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 5.5h11v8h-11z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" /><path d="M6 5.5V4a1 1 0 011-1h2a1 1 0 011 1v1.5M2.5 9h11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
+                <div className="mm-link-ico"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 5.5h11v8h-11z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" /><path d="M6 5.5V4a1 1 0 011-1h2a1 1 0 011 1v1.5M2.5 9h11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
                 <div className="mm-link-body"><div className="mm-link-title">Search Jobs <Arrow /></div><div className="mm-link-desc">Browse every open role across our offices</div></div>
               </Link>
               <Link className="mm-link" href={routes.career}>
-                <div className="mm-link-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="currentColor" strokeWidth="1.2" /><path d="M3 13.5c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
+                <div className="mm-link-ico"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="currentColor" strokeWidth="1.2" /><path d="M3 13.5c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg></div>
                 <div className="mm-link-body"><div className="mm-link-title">Work at Rivago <Arrow /></div><div className="mm-link-desc">Life, values and how we run a desk</div></div>
               </Link>
             </div>
@@ -321,7 +321,7 @@ export default function Nav() {
                   a nav button may be a candidate or an existing client, not
                   only someone with a role to fill. The chooser's first option
                   leads on to the brief form. */}
-              <button type="button" className="mm-promo-btn" data-help>Let&apos;s Talk <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h6M5.5 2.5l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+              <button type="button" className="mm-promo-btn" data-help>Let&apos;s Talk <svg aria-hidden="true" width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h6M5.5 2.5l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
             </div>
           </div>
 
@@ -366,7 +366,7 @@ export default function Nav() {
                     onClick={() => setMobileSectionOpen((cur) => (cur === sec.title ? null : sec.title))}
                   >
                     {sec.title}
-                    <svg className="cv" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    <svg aria-hidden="true" className="cv" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
                   </button>
                   <div className="mnav-sub" style={{ maxHeight: mobileSectionOpen === sec.title ? 999 : 0 }}>
                     {sec.links.map((l, i) => (

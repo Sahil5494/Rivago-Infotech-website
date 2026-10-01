@@ -8,6 +8,7 @@ import GlobeCanvas from "./_components/GlobeCanvas";
 import { STAGES } from "@/lib/process";
 import { firm, numberWord, offices } from "@/lib/routes";
 import "./services.css";
+import { ogBase } from "@/lib/og";
 
 /* The Staffing Solutions page, ported from the supplied reference.
    Its stylesheet is the reference's own, scoped under .svc2 in
@@ -19,13 +20,13 @@ export const metadata: Metadata = {
     "Contract, contract-to-hire and direct hire across four countries. A specialist partner runs the search end to end — and stays on the line for every role after it.",
   alternates: { canonical: "https://rivagoinfotech.com/services" },
   openGraph: {
+    ...ogBase,
     type: "website",
     siteName: "Rivago Infotech",
     title: "Staffing Solutions & Recruitment Services | Rivago Infotech",
     description:
       "Contract, contract-to-hire and direct hire across four countries. A specialist partner runs the search end to end — and stays on the line for every role after it.",
     url: "/services",
-    images: [{ url: "/assets/og-image.png", width: 1200, height: 630 }],
   },
 };
 

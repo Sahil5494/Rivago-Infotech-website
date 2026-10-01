@@ -6,12 +6,14 @@ import SearchJobsSearch from "./SearchJobsSearch";
 import PlacedRail from "./PlacedRail";
 import Faq, { type FaqItem } from "@/components/Faq";
 import SharedValues from "@/components/SharedValues";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Search Jobs — Tech, Finance, Healthcare & More | Rivago Infotech",
-  description: "Search open contract, contract-to-hire and permanent roles from Rivago Infotech's client network — technology, finance, healthcare, operations and more across the US, Canada, the UAE and India. Search by title, keyword or location and apply in minutes.",
+  description: "Search open contract, contract-to-hire and permanent roles from Rivago Infotech's client network — technology, finance, healthcare, operations and more across the US, Canada, the UAE and India. Search by title, keyword or location.",
   alternates: { canonical: "https://rivagoinfotech.com/search-jobs" },
   openGraph: {
+    ...ogBase,
     title: "Search Jobs — Tech, Finance, Healthcare & More | Rivago Infotech",
     description: "Search open contract, contract-to-hire and permanent roles from Rivago Infotech's client network across the US, Canada, the UAE and India.",
     url: "https://rivagoinfotech.com/search-jobs",
@@ -33,7 +35,7 @@ const breadcrumbJsonLd = {
    the contract check-ins — and the details listed under Search are fields
    every job on the board carries. */
 const steps = [
-  { n: "01", t: "Search", d: "Search by title, skill or city, or browse by sector and market. Every listing shows the work style, the engagement type and the pay up front, so you can rule a role in or out before you apply." },
+  { n: "01", t: "Search", d: "Search by title, skill or city, or browse by sector and market. Every listing shows the work style and the engagement type — and the pay, wherever the client has shared it — so you can rule a role in or out before you apply." },
   { n: "02", t: "Connect", d: "Apply in minutes, and a recruiter who has hired in your field replies inside two business days — including the nos. Before any interview, they tell you who is on the panel, what they probe for and what number to hold." },
   { n: "03", t: "Start Your Assignment", d: "We run onboarding, payroll, timesheets and compliance. Then we check in at week one, at month one, and before every renewal — so nothing lands on you by surprise." },
 ];
@@ -55,8 +57,6 @@ const countBy = (key: (j: (typeof JOBS)[number]) => string) => {
 const BY_SECTOR = countBy((j) => j.dept);
 const BY_MARKET = countBy((j) => regionOf(j.c));
 const boardLink = (q: Record<string, string>) => `${routes.viewJobs}?${new URLSearchParams(q)}`;
-const posted = (iso: string) =>
-  new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
 
 /* Candidate FAQ — questions chosen from the ones candidates actually ask
    (apply, what happens next, updates, evaluation, cost, roles, locations,
@@ -86,10 +86,19 @@ const faqItems: FaqItem[] = [
 ];
 
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+
 export default function SearchJobsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      {/* FAQPage, built from the same items the accordion renders, so the
+          two cannot disagree. */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       {/* The hero is a card on purpose — an inset panel rather than the
           full-width band the other pages open on — in the site's own dark
@@ -129,9 +138,9 @@ export default function SearchJobsPage() {
               <li key={`${j.t}|${j.c}`}>
                 <Link className="sj-job" href={boardLink({ q: j.t, l: j.c.split(",")[0] })}>
                   <span className="sj-job-dept">{j.dept}</span>
-                  <span className="sj-job-t">{j.t}</span>
+                  <h3 className="sj-job-t">{j.t}</h3>
                   <span className="sj-job-meta">{placeLabel(j.c)} · {j.w}</span>
-                  <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span>{j.p}</span>}<span>Posted {posted(j.d)}</span></span>
+                  <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span className="sj-job-pay">{j.p}</span>}</span>
                 </Link>
               </li>
             ))}
@@ -220,7 +229,7 @@ export default function SearchJobsPage() {
               firm.hiresPlaced in lib/routes.ts. */}
           <p>{firm.hiresPlaced} hires placed so far — every role briefed by the hiring manager, every candidate represented by a specialist.</p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link className="btn-hp" href={routes.viewJobs}>Browse all jobs <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
+            <Link className="btn-hp" href={routes.viewJobs}>Browse all jobs <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
             {/* Was "Talk to us" -> /contact-us, a page written for clients.
                 A candidate who has not found their role needs a way to be
                 found: this opens the CV form (data-hire="seeker"). The href is

@@ -3,12 +3,14 @@ import type { Metadata } from "next";
 import { routes } from "@/lib/routes";
 import OfficesSection from "@/components/OfficesSection";
 import ContactForm from "./ContactForm";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Contact · Rivago Infotech",
   description: "Talk to a senior Rivago partner — offices in Delaware, Pune and Ontario. Replies within one business day.",
   alternates: { canonical: "https://rivagoinfotech.com/contact-us" },
   openGraph: {
+    ...ogBase,
     title: "Contact · Rivago Infotech",
     description: "Talk to a senior Rivago partner — offices in Delaware, Pune and Ontario. Replies within one business day.",
     url: "https://rivagoinfotech.com/contact-us",

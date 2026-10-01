@@ -181,7 +181,7 @@ export default function HireModal() {
               {errEmployer && <div className="hire-err show">{errEmployer}</div>}
               <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} aria-hidden="true" readOnly />
               <button type="submit" className="hire-submit" disabled={busy} style={{ opacity: busy ? 0.65 : undefined }}>
-                {busy ? "Sending…" : (<>Submit brief <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></>)}
+                {busy ? "Sending…" : (<>Submit brief <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></>)}
               </button>
               <div className="hire-foot">Opens a submission to info@rivagoinfotech.com — a senior partner replies within one business day.</div>
             </form>
@@ -207,14 +207,14 @@ export default function HireModal() {
               {errSeeker && <div className="hire-err show">{errSeeker}</div>}
               <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} aria-hidden="true" readOnly />
               <button type="submit" className="hire-submit" disabled={busy} style={{ opacity: busy ? 0.65 : undefined }}>
-                {busy ? "Sending…" : (<>Submit application <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></>)}
+                {busy ? "Sending…" : (<>Submit application <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></>)}
               </button>
               <div className="hire-foot">Sent to careers@rivagoinfotech.com. Remember to attach your CV before sending.</div>
             </form>
           </div>
         ) : (
           <div className="hire-ok show">
-            <div className="hire-ok-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 7" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
+            <div className="hire-ok-ic"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 7" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
             <h3>{okTitle}</h3>
             <p>{okMsg}</p>
           </div>

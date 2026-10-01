@@ -13,6 +13,7 @@ import {
   CtaSection,
 } from "../_components/shared";
 import RpoModelsTabs from "./RpoModelsTabs";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "RPO — Recruitment Process Outsourcing | Rivago Infotech",
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
     "Rivago RPO embeds a dedicated recruiting team inside your business — owning talent strategy, sourcing, screening, onboarding and reporting. Enterprise, project-based and hybrid RPO models across the US, Canada, the UAE and India.",
   alternates: { canonical: "https://rivagoinfotech.com/services/rpo" },
   openGraph: {
+    ...ogBase,
     title: "RPO — Recruitment Process Outsourcing | Rivago Infotech",
     description: "An embedded recruiting team that owns talent strategy, sourcing, screening, onboarding and reporting — enterprise, project-based and hybrid RPO models.",
     url: "https://rivagoinfotech.com/services/rpo",

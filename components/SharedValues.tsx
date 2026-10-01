@@ -29,7 +29,7 @@ export default function SharedValues({ tone = "cream" }: { tone?: "cream" | "pla
         <div className="cv-grid">
           {values.map((v) => (
             <div className="cv" key={v.t}>
-              <div className="cv-t">{v.t}</div>
+              <h3 className="cv-t">{v.t}</h3>
               <div className="cv-d">{v.d}</div>
             </div>
           ))}

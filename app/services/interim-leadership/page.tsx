@@ -13,6 +13,7 @@ import {
   FaqSection,
   CtaSection,
 } from "../_components/shared";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Interim & Fractional Leadership — Ready on Day One | Rivago Infotech",
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
     "Vetted interim and fractional executives for a transition, a turnaround or a gap you can't leave open. Drawn from our bench and ready to start in as little as seven days.",
   alternates: { canonical: "https://rivagoinfotech.com/services/interim-leadership" },
   openGraph: {
+    ...ogBase,
     title: "Interim & Fractional Leadership — Ready on Day One | Rivago Infotech",
     description: "Vetted interim and fractional executives for a transition, a turnaround or a gap you can't leave open — ready to start in as little as seven days.",
     url: "https://rivagoinfotech.com/services/interim-leadership",

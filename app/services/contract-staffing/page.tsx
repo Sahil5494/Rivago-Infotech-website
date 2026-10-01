@@ -12,6 +12,7 @@ import {
   FaqSection,
   CtaSection,
 } from "../_components/shared";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Contract Staffing — Flexible & Contract-to-Hire | Rivago Infotech",
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     "Skilled professionals on flexible terms — pure contract, contract-to-hire, or a managed team. Rivago runs payroll, compliance and worker classification; you get productive people in days, not weeks.",
   alternates: { canonical: "https://rivagoinfotech.com/services/contract-staffing" },
   openGraph: {
+    ...ogBase,
     title: "Contract Staffing — Flexible & Contract-to-Hire | Rivago Infotech",
     description: "Skilled professionals on flexible terms. Rivago runs payroll, compliance and worker classification; you get productive people in days, not weeks.",
     url: "https://rivagoinfotech.com/services/contract-staffing",

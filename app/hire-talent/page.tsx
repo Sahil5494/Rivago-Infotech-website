@@ -3,12 +3,14 @@ import type { Metadata } from "next";
 import IntakeForm from "@/components/IntakeForm";
 import { routes } from "@/lib/routes";
 import { practices } from "@/app/industries/data";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "For clients — Rivago Infotech",
   description: "Hire senior, fully-screened talent fast. Rivago Infotech delivers direct hire, contract and executive search with a delivery date agreed in writing and one partner from brief to placement.",
   alternates: { canonical: "https://rivagoinfotech.com/hire-talent" },
   openGraph: {
+    ...ogBase,
     title: "For clients — Rivago Infotech",
     description: "Hire senior, fully-screened talent fast. Rivago Infotech delivers direct hire, contract and executive search with a delivery date agreed in writing and one partner from brief to placement.",
     url: "https://rivagoinfotech.com/hire-talent",

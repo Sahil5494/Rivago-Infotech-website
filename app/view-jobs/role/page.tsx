@@ -1,12 +1,14 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import RoleDetail from "./RoleDetail";
+import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Position · Rivago Infotech",
   description: "Role description for an open position at Rivago Infotech — what you will own, what we are looking for, and how our hiring process runs.",
   alternates: { canonical: "https://rivagoinfotech.com/view-jobs/role" },
   openGraph: {
+    ...ogBase,
     title: "Position · Rivago Infotech",
     description: "Role description for an open position at Rivago Infotech — what you will own, what we are looking for, and how our hiring process runs.",
     url: "https://rivagoinfotech.com/view-jobs/role",
