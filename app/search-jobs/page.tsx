@@ -45,21 +45,27 @@ export default function SearchJobsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
-      {/* The hero is the shared .page-hero — the band Careers, Contact and the
-          service pages open on — with the search where those pages put their
-          buttons. It used to be its own build: a rounded green card inset in a
-          mint frame under a solid white nav bar, 834px tall, with brighter
-          green and teal glows than any other page. Three layers where every
-          other page has one, and the only dark-opening page whose nav did not
-          go transparent. Now the bar floats over it like everywhere else (see
-          DARK_HERO_PREFIXES in components/Nav.tsx). */}
-      <section className="page-hero inv sj-hero">
-        <div className="page-hero-inner wide">
-          <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><Link href={routes.career}>Careers</Link><span className="crumbs-sep">/</span><span>Search Jobs</span></div>
-          <span className="eyebrow light">Live roles &middot; Briefed by the hiring manager</span>
-          <h1 className="gs" style={{ marginTop: 18 }}>Find the right <em>opportunity for you.</em></h1>
-          <p className="lead gs">Every role we represent is briefed to us directly by the person doing the hiring. So before you interview, we can tell you who you would report to, why the seat is open, and what it actually pays.</p>
-          <SearchJobsSearch />
+      {/* The hero is a card on purpose, and the one hero on the site that is not
+          dark. Every other page opens on the same near-black band; this is the
+          page a candidate lands on to act, so it gets its own look — the bright
+          mint-to-green gradient the Careers page uses for its "Build with us"
+          card, dark type, and a white search bar.
+
+          An earlier version of this card was a dark green panel inset in a mint
+          frame: 834px tall, edge to edge so the page-switch arrows sat on its
+          corners, and with light-theme text colours on a dark ground. This one
+          is content-height, sits on the same 1240px column as the logo and the
+          sections below, and every colour in it is set for a light ground. The
+          page opens on a light frame, so the nav stays solid, as on Resources. */}
+      <section className="sj-hero">
+        <div className="sj-card">
+          <div className="sj-card-in">
+            <div className="crumbs sj-crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><Link href={routes.career}>Careers</Link><span className="crumbs-sep">/</span><span>Search Jobs</span></div>
+            <span className="sj-eyb">Live roles<span className="sj-eyb-more">&nbsp;&middot; Briefed by the hiring manager</span></span>
+            <h1>Find the right <em>opportunity for you.</em></h1>
+            <p className="sj-lede">Every role we represent is briefed to us directly by the person doing the hiring. So before you interview, we can tell you who you would report to, why the seat is open, and what it actually pays.</p>
+            <SearchJobsSearch />
+          </div>
         </div>
       </section>
 
