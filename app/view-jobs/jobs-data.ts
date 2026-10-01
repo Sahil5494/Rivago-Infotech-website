@@ -15,6 +15,20 @@ export type BoardJob = {
   f: string;
 };
 
+/* The data writes two places two ways: "Dubai, UAE" and "Dubai, AE",
+   "Pune, India" and "Pune, MH". This used to match only the first spelling
+   of each, and everything unmatched fell through to "US" — so the Region
+   filter listed six Dubai roles and six Pune roles under US. */
+export function regionOf(c: string): string {
+  if (/(India|, MH)$/.test(c)) return "India";
+  if (/(UAE|, AE)$/.test(c)) return "UAE";
+  if (/, (ON|BC|AB)$|Canada$/.test(c)) return "Canada";
+  return "US";
+}
+
+/* Shared with /search-jobs, which counts roles per market on the server —
+   the reason this lives here and not in the client-only JobsBoard. */
+
 export const JOBS: BoardJob[] = [
   { t: "AI / LLM Engineer", c: "Austin, TX", w: "Remote", e: "Direct hire", p: "$219K", d: "2026-08-19", dept: "Technology", f: "ai" },
   { t: "Data Engineer", c: "Boston, MA", w: "Remote", e: "Contract", p: "$68/hr", d: "2026-08-20", dept: "Technology", f: "data" },

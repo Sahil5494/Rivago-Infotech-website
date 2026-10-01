@@ -26,9 +26,12 @@ export default function HireModal() {
   useEffect(() => {
     function handler(e: MouseEvent) {
       const target = e.target as HTMLElement;
-      if (target.closest("[data-hire]")) {
+      const trigger = target.closest<HTMLElement>("[data-hire]");
+      if (trigger) {
         e.preventDefault();
-        setSeg("employer");
+        /* data-hire="seeker" opens on the candidate form (CV upload) rather
+           than the hiring brief — used by "Send us your CV" on /search-jobs. */
+        setSeg(trigger.dataset.hire === "seeker" ? "seeker" : "employer");
         setShowOk(false);
         setOpen(true);
       }

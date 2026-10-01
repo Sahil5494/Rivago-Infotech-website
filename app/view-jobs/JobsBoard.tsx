@@ -4,22 +4,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { routes } from "@/lib/routes";
-import { JOBS, FAMTXT, EEO, type BoardJob } from "./jobs-data";
+import { JOBS, FAMTXT, EEO, regionOf, type BoardJob } from "./jobs-data";
 
 const FACETS = ["dept", "e", "w", "region"] as const;
 type Facet = (typeof FACETS)[number];
 type ActiveFacets = Record<Facet, Set<string>>;
 
-/* The data writes two places two ways: "Dubai, UAE" and "Dubai, AE",
-   "Pune, India" and "Pune, MH". This used to match only the first spelling
-   of each, and everything unmatched fell through to "US" — so the Region
-   filter listed six Dubai roles and six Pune roles under US. */
-function regionOf(c: string): string {
-  if (/(India|, MH)$/.test(c)) return "India";
-  if (/(UAE|, AE)$/.test(c)) return "UAE";
-  if (/, (ON|BC|AB)$|Canada$/.test(c)) return "Canada";
-  return "US";
-}
 
 /* SEARCH MATCHING. It used to be a raw substring test, which failed both ways:
    - Too strict: "full stack" missed "Full-Stack Engineer" (the hyphen), "AI
@@ -134,7 +124,13 @@ function JobsBoardInner() {
   const [page, setPage] = useState(0);
   const [sel, setSel] = useState(0);
   const [saved, setSaved] = useState<Record<string, boolean>>({});
-  const [active, setActive] = useState<ActiveFacets>({ dept: new Set(), e: new Set(), w: new Set(), region: new Set() });
+  /* ?dept= and ?region= preselect a facet, so the sector and market links on
+     /search-jobs open on exactly the roles their counts describe — a keyword
+     search for "Product" would also catch Technology's product managers. */
+  const [active, setActive] = useState<ActiveFacets>(() => {
+    const pre = (k: Facet) => new Set(searchParams.getAll(k));
+    return { dept: pre("dept"), e: new Set(), w: new Set(), region: pre("region") };
+  });
   const [panelOpen, setPanelOpen] = useState(false);
   const [gateOpen, setGateOpen] = useState(false);
   const [gateRole, setGateRole] = useState<string | null>(null);
