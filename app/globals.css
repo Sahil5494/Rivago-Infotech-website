@@ -3393,11 +3393,15 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .sj-steps h2{font-size:var(--fz13);font-weight:500;letter-spacing:-.03em;line-height:1.1;color:var(--dt)}
 .sj-steps .lede{font-size:var(--fz5);color:var(--dt2);line-height:1.7;font-weight:400;max-width:620px;margin-top:16px}
 .sj-step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:56px}
-.sj-step{background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:24px;padding:48px 42px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-.sj-step:hover{transform:translateY(-5px);box-shadow:0 22px 54px rgba(10,20,11,.08)}
-.sj-step-n{display:inline-flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:14px;background:rgba(10,112,64,.08);border:1px solid rgba(10,112,64,.18);font-family:var(--fm);font-size:var(--fz5);font-weight:500;color:var(--accent-inv);margin-bottom:26px}
-.sj-step h3{font-size:var(--fz9);font-weight:500;color:var(--dt);margin-bottom:12px;letter-spacing:-.015em}
-.sj-step p{font-size:var(--fz6);color:var(--dt2);line-height:1.75;font-weight:400}
+/* The landing page's card arrangement — WHAT WE BRING's .rfr-card: a dark
+   #0A1A0C card carrying .inv on the cream band, accent icon-row, muted
+   type tokens. Every colour here is a role token, so .inv resolves it. */
+.sj-step{background:var(--surface-3);border:1px solid var(--rule-1);border-radius:22px;padding:48px 44px 44px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.sj-step:hover{transform:translateY(-5px);box-shadow:0 22px 54px rgba(3,12,5,.22)}
+.sj-step-n{display:inline-flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:14px;background:var(--tint-1);border:1px solid var(--tint-2);font-family:var(--fm);font-size:var(--fz5);font-weight:500;color:var(--accent);margin-bottom:32px}
+.sj-step h3{font-size:var(--fz9);font-weight:500;color:var(--text-1);margin-bottom:14px;letter-spacing:-.02em}
+.sj-step p{font-size:var(--fz6);color:var(--text-2);line-height:1.75;font-weight:400}
+@media(max-width:620px){.sj-step{padding:38px 30px 34px}.sj-step-n{margin-bottom:26px}}
 .sj-vals{padding-top:88px;padding-bottom:88px;background:var(--bg)}
 .sj-vals .eyb{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
 .sj-vals .eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}

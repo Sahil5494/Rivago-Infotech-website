@@ -140,7 +140,7 @@ export default function SearchJobsPage() {
           <p className="lede">Most applications vanish. Here is what we commit to instead, in writing, every time.</p>
           <div className="sj-step-grid">
             {steps.map((s) => (
-              <div className="sj-step" key={s.n}>
+              <div className="sj-step inv" key={s.n}>
                 <div className="sj-step-n">{s.n}</div>
                 <h3>{s.t}</h3>
                 <p>{s.d}</p>
