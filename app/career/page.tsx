@@ -37,7 +37,7 @@ const Bag = () => (
   <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="5" width="12" height="8.5" rx="1.6" stroke="currentColor" strokeWidth="1.4" /><path d="M5.5 5V3.8A1.3 1.3 0 016.8 2.5h2.4a1.3 1.3 0 011.3 1.3V5" stroke="currentColor" strokeWidth="1.4" /></svg>
 );
 const Arrow = () => (
-  <svg className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  <svg aria-hidden="true" className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
 
 /* `k` is the card's eyebrow in Life at Rivago. */
@@ -68,6 +68,9 @@ const SHOWN_ROLES = 4;
    licensed stock image until the firm's own shoot, which replaces it. */
 export default function CareerPage() {
   const roles = positions.slice(0, SHOWN_ROLES);
+  const mode = (xs: string[]) => xs.sort((a, b) => xs.filter((x) => x === b).length - xs.filter((x) => x === a).length)[0];
+  const commonLocation = mode(positions.map((p) => p.location));
+  const commonType = mode(positions.map((p) => p.type));
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
@@ -81,7 +84,7 @@ export default function CareerPage() {
           <span className="eyebrow light">Work at Rivago</span>
           <h1 className="gs" style={{ marginTop: 18 }}>Build a career placing <em>other careers.</em></h1>
           <p className="lead gs" style={{ maxWidth: 600, margin: "24px auto 0" }}>We hire experienced recruiters, and the business development, client and delivery people who work beside them. Smaller team, bigger ownership — your work is yours from start to finish.</p>
-          <div className="gs" style={{ marginTop: 36, display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
+          <div className="gs cr-hero-btns" style={{ marginTop: 36, display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
             <Link className="btn btn-prim" href={routes.openPositions}>Join the team <Arrow /></Link>
             <a className="btn btn-ghost" href={routes.contactUs} data-hire="seeker">Send us your CV</a>
           </div>
@@ -109,10 +112,15 @@ export default function CareerPage() {
                   {/* The first clause of the role page's opening sentence, so it
                       reads as a whole sentence instead of being cut mid-line. */}
                   <p className="cr-role-sum">{copyFor(r.title, r.department).a.split(" — ")[0].replace(/[.,]?$/, ".")}</p>
-                  <span className="cr-role-meta">
-                    <span><Pin />{r.location}</span>
-                    <span><Bag />{r.type}</span>
-                  </span>
+                  {/* Location and type only where a role differs from the rest —
+                      all eight are "Pune, India or remote · Full-time", which
+                      the lede above already says. */}
+                  {(r.location !== commonLocation || r.type !== commonType) && (
+                    <span className="cr-role-meta">
+                      {r.location !== commonLocation && <span><Pin />{r.location}</span>}
+                      {r.type !== commonType && <span><Bag />{r.type}</span>}
+                    </span>
+                  )}
                   <span className="cr-role-foot">
                     {r.salary && <span className="cr-role-pay">{salaryLabel(r.salary)}</span>}
                     <span className="cr-role-go">View role <Arrow /></span>
@@ -150,36 +158,34 @@ export default function CareerPage() {
         <div className="wrap">
           <span className="eyebrow light">Life at Rivago</span>
           <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 640 }}>What it&apos;s actually like <em>inside.</em></h2>
-          <div className="life-grid">
-            <div className="life-card tall">
-              <div>
-                <div className="life-eyb">The day-to-day</div>
-                <div className="life-h">Real ownership, no theatre.</div>
-                <div className="life-p">You run your desk like it&apos;s your own business — pick your roles, set your approach, own the outcome. Mornings are for candidate calls, afternoons for client work.</div>
-              </div>
-              <div style={{ display: "flex", gap: 28, marginTop: 24 }}>
+          {/* One grid of six equal cards, three across — not a tall card
+              beside two stacked ones, which stretched the tall one and left a
+              dead gap between its text and its stats. On phones the six become
+              one swipe row (~1,900px of stacked cards before). */}
+          <div className="life-grid6" aria-label="Life at Rivago">
+            <div className="life-card">
+              <div className="life-eyb">The day-to-day</div>
+              <h3 className="life-h">Real ownership, no theatre.</h3>
+              <div className="life-p">You run your desk like it&apos;s your own business — pick your roles, set your approach, own the outcome.</div>
+              <div className="life-stats">
                 <div><div className="life-stat">{firm.people}</div><div className="life-stat-l">People</div></div>
                 <div><div className="life-stat">{offices.length}</div><div className="life-stat-l">Offices</div></div>
               </div>
             </div>
-            <div className="life-col">
-              <div className="life-card">
-                <div className="life-eyb">Since {firm.foundedYear}</div>
-                <div className="life-h">Founded by recruiters, run by partners</div>
-                <div className="life-p">Every search is led by a partner who has placed in that sector for years — the same people who decide how the firm works.</div>
-              </div>
-              <div className="life-card">
-                <div className="life-eyb">Where we work</div>
-                <div className="life-h">Four markets, one way of working</div>
-                <div className="life-p">We place into the United States, Canada, India and the UAE, from offices in {offices.map((o) => o.city).join(", ").replace(/, ([^,]*)$/, " and $1")}.</div>
-              </div>
+            <div className="life-card">
+              <div className="life-eyb">Since {firm.foundedYear}</div>
+              <h3 className="life-h">Founded by recruiters, run by partners</h3>
+              <div className="life-p">Every search is led by a partner who has placed in that sector for years — the same people who decide how the firm works.</div>
             </div>
-          </div>
-          <div className="life-row">
+            <div className="life-card">
+              <div className="life-eyb">Where we work</div>
+              <h3 className="life-h">Four markets, one way of working</h3>
+              <div className="life-p">We place into the United States, Canada, India and the UAE, from offices in {offices.map((o) => o.city).join(", ").replace(/, ([^,]*)$/, " and $1")}.</div>
+            </div>
             {carVals.map((v) => (
               <div className="life-card" key={v.t}>
                 <div className="life-eyb">{v.k}</div>
-                <div className="life-h">{v.t}</div>
+                <h3 className="life-h">{v.t}</h3>
                 <div className="life-p">{v.d}</div>
               </div>
             ))}

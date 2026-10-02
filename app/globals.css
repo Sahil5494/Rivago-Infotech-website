@@ -3325,11 +3325,9 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .life-col{display:grid;gap:14px}
 .life-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:30px;transition:all .25s var(--ease);position:relative;overflow:hidden}
 .life-card:hover{background:var(--surface2);border-color:var(--tint-2)}
-.life-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-@media(max-width:900px){.life-row{grid-template-columns:1fr}}
 .life-card.tall{min-height:240px;display:flex;flex-direction:column;justify-content:space-between}
 .life-eyb{font-size:var(--fz1);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-.life-h{font-size:var(--fz8);font-weight:500;color:var(--text);letter-spacing:-.015em;margin-bottom:10px;line-height:1.3}
+.life-h{font-size:var(--fz8);font-weight:500;color:var(--text);letter-spacing:-.015em;margin:0 0 10px;line-height:1.3}
 .life-p{font-size:var(--fz6);color:var(--text2);line-height:1.7;font-weight:400}
 .life-stat{font-size:var(--fz12);font-weight:500;color:var(--accent);letter-spacing:-.03em;line-height:1;font-family:var(--ff)}
 .life-stat-l{font-size:var(--fz2);color:var(--text3);margin-top:8px}
@@ -3819,7 +3817,7 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 .cr-role:focus-visible,.cr-all:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .cr-role-dept{font-size:var(--fz1);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 .cr-role-t{margin:10px 0 0;font-size:var(--fz9);font-weight:500;letter-spacing:-.018em;line-height:1.25}
-.cr-role-sum{margin:10px 0 0;font-size:var(--fz5);color:var(--text2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cr-role-sum{margin:10px 0 22px;font-size:var(--fz5);color:var(--text2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .cr-role-meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin:16px 0 20px;font-size:var(--fz3);color:var(--text2)}
 .cr-role-meta > span{display:inline-flex;align-items:center;gap:6px}
 .cr-role-meta svg{color:var(--accent);flex-shrink:0}
@@ -3836,6 +3834,19 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
    reader who stopped mid-section saw steps that looked disabled. */
 .pth.anim .pth-step{opacity:.55}
 .pth.anim .pth-step.in{opacity:1}
+
+/* Life at Rivago: six equal cards, three across; one swipe row on phones. */
+.life-grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
+.life-grid6 .life-card{display:flex;flex-direction:column}
+.life-stats{display:flex;gap:28px;margin-top:auto;padding-top:24px}
+@media(max-width:1000px){.life-grid6{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){
+  .life-grid6{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:36px -20px 0;padding:0 20px 8px;scroll-padding:0 20px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .life-grid6::-webkit-scrollbar{display:none}
+  .life-grid6 .life-card{flex:0 0 84%;scroll-snap-align:start}
+}
+/* Careers hero, phones: the two buttons stack at one width. */
+@media(max-width:620px){.cr-hero-btns{flex-direction:column;align-items:stretch;max-width:320px;margin-left:auto;margin-right:auto}.cr-hero-btns .btn{justify-content:center}}
 
 /* Pinned heroes for Careers (.page-hero.ph-pin) and Search Jobs (.sj-hero):
    sticky, z-index 0 and isolation, exactly as .hero-c and .about-hero.
