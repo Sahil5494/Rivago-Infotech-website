@@ -353,14 +353,10 @@ export default function AboutPage() {
           value. HOW WE EVALUATE above is white, a different light value.
 
           READ THIS BEFORE ADDING TO IT. The four quotes come from
-          lib/testimonials.ts, whose own header says they "remain endorsements
-          that have not been given". Anonymised to a role and a market, no
-          figure, no named client — the form a hiring team signs off on, but
-          nobody has yet signed off. They are already on the home page, so
-          this is a second publication rather than a new one. Four real
-          sign-offs fix it; at this level of anonymity that needs a say-so,
-          not a logo. What this must not become is a place where more are
-          written. */}
+          lib/testimonials.ts. The client confirmed on 2 October 2026 that
+          they are real client feedback, approved for the site in this
+          anonymised form. Add to them only with the same confirmation —
+          never write one. */}
       <section className="hms gs">
         <div className="hms-inner">
           <div className="hms-head">

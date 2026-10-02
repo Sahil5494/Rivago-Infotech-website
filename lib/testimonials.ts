@@ -7,17 +7,16 @@
    carrying no figure, no named client and no regulatory claim, which is the
    form a hiring team will actually sign off on.
 
-   Nothing imports this file today. Import it the moment a testimonial
-   section comes back.
+   Rendered by components/ClientQuotes.tsx on the home and About pages.
 
    The Dubai Hospital Group entry was removed outright: it named the DHA,
    claimed "zero compliance issues" on healthcare licensing, described a UAE
    engagement the firm has no office for, and carried a badge reading
    "Delaware · Professional Services" that contradicted its own text.
 
-   These remain endorsements that have not been given. Replace each one as a
-   real client agrees to a quote — anonymised to this level is normal in
-   recruitment and needs only their say-so, not their logo. */
+   CONFIRMED 2 October 2026: the client confirmed these four are real
+   client feedback and approved them for the site, anonymised as they are.
+   Anything added here needs the same confirmation; do not write new ones. */
 export const testimonials = [
   {
     badge: "Banking · US",
