@@ -1,8 +1,15 @@
-"use client";
 
-import { useState } from "react";
-
-/* The six refusals, in the Why Rivago layout from the home page.
+/* The six refusals.
+ *
+ * LAYOUT CHANGED (2 October 2026): a plain grid — three across, two at
+ * tablet, a swipe row on phones — with every card's full text showing. It
+ * was the home page's offset two-column masonry with the second half of
+ * each card behind "Read more": the page's most distinctive section was the
+ * hardest to scan, and on phones it stacked to ~2,660px. The held-back line
+ * (the cost of each refusal) now shows as a quieter second paragraph. The
+ * notes below describe the earlier layout and are kept for its reasoning.
+ *
+ * Was: the six refusals, in the Why Rivago layout from the home page.
  *
  * Deliberately the SAME CLASS NAMES as components/WhyCards.tsx — .why-grid,
  * .why-col, .why-card, .why-icon, .why-title, .why-desc, .why-extra,
@@ -80,51 +87,17 @@ const CARDS: Card[] = [
   },
 ];
 
-/* Left column takes the odd cards, right the even ones, and the LEFT column
-   is pushed down by the stylesheet so the two never line up — that offset is
-   the layout, exactly as on the home page. Three and three, so neither
-   column runs past the other at the bottom. */
-const LEFT = [0, 2, 4];
-const RIGHT = [1, 3, 5];
-
-function RefusalCard({ c, id }: { c: Card; id: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <article className="why-card">
-      <div className="why-icon">{c.icon}</div>
-      <h3 className="why-title">{c.t}</h3>
-      <p className={`why-desc${open ? " open" : ""}`}>{c.d}</p>
-      <div className="why-extra" id={id} hidden={!open}>
-        <p>{c.more}</p>
-      </div>
-      <button
-        type="button"
-        className="why-more"
-        aria-expanded={open}
-        aria-controls={id}
-        onClick={() => setOpen((v) => !v)}
-      >
-        {open ? "Read less" : "Read more"}
-        <span className="why-more-ico" aria-hidden="true">
-          <svg width="11" height="11" viewBox="0 0 11 11">
-            <path d="M1 5.5h9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            {!open && <path d="M5.5 1v9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />}
-          </svg>
-        </span>
-      </button>
-    </article>
-  );
-}
-
 export default function RefusalCards() {
   return (
-    <div className="why-grid">
-      <div className="why-col">
-        {LEFT.map((i) => <RefusalCard c={CARDS[i]} id={`ref-x-${i}`} key={CARDS[i].t} />)}
-      </div>
-      <div className="why-col">
-        {RIGHT.map((i) => <RefusalCard c={CARDS[i]} id={`ref-x-${i}`} key={CARDS[i].t} />)}
-      </div>
+    <div className="ref-grid">
+      {CARDS.map((c) => (
+        <article className="why-card ref-card" key={c.t}>
+          <div className="why-icon" aria-hidden="true">{c.icon}</div>
+          <h3 className="why-title">{c.t}</h3>
+          <p className="ref-d">{c.d}</p>
+          <p className="ref-more">{c.more}</p>
+        </article>
+      ))}
     </div>
   );
 }

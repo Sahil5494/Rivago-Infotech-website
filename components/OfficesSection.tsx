@@ -16,8 +16,11 @@ export default function OfficesSection() {
     <section className="offices" id="offices">
       <div className="offices-inner">
         <div className="gs">
-          <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Three offices</div>
-          <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Where we&apos;re <em>on the ground.</em></h2>
+          <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Offices &amp; markets</div>
+          {/* "Three offices" / "on the ground" sat over four cards, the fourth being
+              Dubai — a market served remotely with no office. The label and
+              heading now cover offices and markets both. */}
+          <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720 }}>Where we <em>work.</em></h2>
         </div>
         <div className="offices-grid">
           {officeCards.map((o) => (

@@ -404,7 +404,7 @@ export default function AboutPage() {
       {/* ── 9 · WORK WITH US ─────────────────────────────────────────────── */}
       <section className="careers inv" id="get-in-touch">
         <div className="careers-inner gs">
-          <div className="eyebrow ew-light" style={{ margin: "0 auto 28px", display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Work with us</div>
+          <div className="eyebrow ew-light" style={{ margin: "0 auto 28px", display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Let&apos;s talk</div>
           <h2>Start a conversation with<br />a <em>partner</em> — not a portal.</h2>
           <p>Whether you&apos;re building a team or weighing your next move, you&apos;ll talk to a senior partner who knows your market. No intake bots, no call queues, no CV black holes.</p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
