@@ -34,16 +34,15 @@ export const placements: Placement[] = [
   { name: "Venu Saraf", role: "Sr. AEM Developer", field: "Digital experience" },
   { name: "Kisanthyi Jeyakumar", role: "Support Engineer", field: "Support" },
   { name: "Vamsi Krishna Tetali", role: "AI Engineer", field: "AI & ML" },
-  /* Added 2 October 2026 to be featured on Search Jobs; role and field not
-     supplied yet, so their cards read "Placed through Rivago". */
-  { name: "Ram Tiwari" },
-  { name: "Sri Chakra Manas" },
-  { name: "Aravindham Kumar" },
+  /* Added 2 October 2026, roles supplied by the firm. */
+  { name: "Ram Tiwari", role: "Integration Program Manager", field: "Program management" },
+  { name: "Sri Chakra Manas", role: "Java Engineer", field: "Software engineering" },
+  { name: "Aravindhan Kumar", role: "PHP Engineer", field: "Software engineering" },
 ];
 
 /* Who "Don't just take it from us" on Search Jobs shows, in order — chosen
    by the firm. Names must match entries above exactly. */
-export const featuredPlacements = ["Ram Tiwari", "Sri Chakra Manas", "Ravikiran Yadava", "Aravindham Kumar", "Varun Singh", "Hariprasad Thalisetti"];
+export const featuredPlacements = ["Ram Tiwari", "Sri Chakra Manas", "Ravikiran Yadava", "Aravindhan Kumar", "Varun Singh", "Hariprasad Thalisetti"];
 
 /* First and last initial: "Naga Satish Reddy Dwarampudi" -> "ND". */
 export const initials = (name: string) => {

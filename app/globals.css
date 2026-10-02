@@ -3485,10 +3485,8 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
    less its share of the gaps. */
 .sj-placed-grid{list-style:none;margin:0;padding:0;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
 .sj-placed-grid::-webkit-scrollbar{display:none}
-/* Wide screens: two rows of three, every featured person in view. Six
-   across left ~190px a card, wrapping names and field labels. */
-.sj-placed-grid .sj-person{flex:0 0 calc((100% - 40px) / 3);scroll-snap-align:start}
-@media(min-width:1181px){.sj-placed-grid{flex-wrap:wrap;overflow:visible}}
+/* One row, four in view on wide screens; the arrows step to the rest. */
+.sj-placed-grid .sj-person{flex:0 0 calc((100% - 60px) / 4);scroll-snap-align:start}
 .sj-person{display:flex;flex-direction:column;align-items:center;text-align:center;min-height:0;padding:32px 22px 28px;background:var(--surface-3);border:1px solid var(--rule-1);border-radius:24px;min-width:0;transition:border-color .25s var(--ease)}
 .sj-person:hover{border-color:var(--tint-3)}
 .sj-person-q{color:var(--accent);align-self:flex-start;margin-bottom:22px}
