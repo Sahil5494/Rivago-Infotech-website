@@ -3810,17 +3810,25 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 .cr-lede{font-size:var(--fz5);color:var(--text2);line-height:1.7;max-width:560px;margin-top:16px}
 .cr-all{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border:1px solid var(--border2);border-radius:var(--pill);font-size:var(--fz4);font-weight:500;color:var(--text);white-space:nowrap;transition:border-color .2s,color .2s}
 .cr-all:hover{border-color:var(--accent);color:var(--accent)}
-.cr-role-grid{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+/* Two across, not four: at four each card was ~295px, wrapping titles and
+   leaving no room for a summary line. */
+.cr-role-grid{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .cr-role-grid li{display:flex}
-.cr-role{flex:1;display:flex;flex-direction:column;gap:8px;padding:26px 24px 24px;background:var(--surface);border:1px solid var(--border);border-radius:20px;color:var(--text);transition:border-color .25s var(--ease),transform .25s var(--ease)}
-.cr-role:hover{border-color:var(--tint-3);transform:translateY(-3px)}
+.cr-role{flex:1;display:flex;flex-direction:column;padding:28px 30px 22px;background:var(--surface);border:1px solid var(--border);border-radius:20px;color:var(--text);transition:border-color .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease)}
+.cr-role:hover{border-color:var(--tint-3);transform:translateY(-3px);box-shadow:0 18px 44px rgba(10,20,11,.07)}
 .cr-role:focus-visible,.cr-all:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .cr-role-dept{font-size:var(--fz1);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-.cr-role-t{margin:0;font-size:var(--fz8);font-weight:500;letter-spacing:-.015em;line-height:1.3}
-.cr-role-meta{font-size:var(--fz3);color:var(--text2)}
-.cr-role-pay{margin-top:auto;padding-top:14px;border-top:1px solid var(--border);font-size:var(--fz4);font-weight:500;color:var(--text);font-variant-numeric:tabular-nums}
-@media(max-width:1100px){.cr-role-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:620px){.cr-role-grid{grid-template-columns:1fr}}
+.cr-role-t{margin:10px 0 0;font-size:var(--fz9);font-weight:500;letter-spacing:-.018em;line-height:1.25}
+.cr-role-sum{margin:10px 0 0;font-size:var(--fz5);color:var(--text2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cr-role-meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin:16px 0 20px;font-size:var(--fz3);color:var(--text2)}
+.cr-role-meta > span{display:inline-flex;align-items:center;gap:6px}
+.cr-role-meta svg{color:var(--accent);flex-shrink:0}
+.cr-role-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:18px;border-top:1px solid var(--border)}
+
+.cr-role-pay{font-size:var(--fz5);font-weight:500;color:var(--text);font-variant-numeric:tabular-nums}
+.cr-role-go{display:inline-flex;align-items:center;gap:6px;font-size:var(--fz4);font-weight:500;color:var(--accent);margin-left:auto;transition:gap .2s}
+.cr-role:hover .cr-role-go{gap:10px}
+@media(max-width:760px){.cr-role-grid{grid-template-columns:1fr}.cr-role{padding:24px 22px 20px}}
 .began-wide{max-width:1240px;margin:0 auto;border-radius:22px;overflow:hidden;aspect-ratio:21/8;background:var(--surface-3)}
 .began-wide img{width:100%;height:100%;object-fit:cover;display:block}
 @media(max-width:760px){.began-wide{aspect-ratio:4/3}}

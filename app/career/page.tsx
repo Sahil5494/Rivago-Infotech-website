@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { routes, firm, offices } from "@/lib/routes";
 import SharedValues from "@/components/SharedValues";
 import HiringTimeline from "@/components/HiringTimeline";
-import { positions, salaryLabel } from "@/app/open-positions/positions-data";
+import { positions, salaryLabel, seniorityOf } from "@/app/open-positions/positions-data";
+import { copyFor } from "@/app/view-jobs/role/role-copy";
 import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
@@ -29,6 +30,12 @@ const breadcrumbJsonLd = {
      structured data sending search engines to a 404. This page is /career. */
 };
 
+const Pin = () => (
+  <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 14s4.5-4.1 4.5-7.5a4.5 4.5 0 10-9 0C3.5 9.9 8 14 8 14z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" /><circle cx="8" cy="6.5" r="1.6" stroke="currentColor" strokeWidth="1.4" /></svg>
+);
+const Bag = () => (
+  <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="5" width="12" height="8.5" rx="1.6" stroke="currentColor" strokeWidth="1.4" /><path d="M5.5 5V3.8A1.3 1.3 0 016.8 2.5h2.4a1.3 1.3 0 011.3 1.3V5" stroke="currentColor" strokeWidth="1.4" /></svg>
+);
 const Arrow = () => (
   <svg className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
@@ -97,10 +104,19 @@ export default function CareerPage() {
             {roles.map((r) => (
               <li key={r.id}>
                 <Link className="cr-role" href={`${routes.openPositions}/${r.id}`}>
-                  <span className="cr-role-dept">{r.department}</span>
+                  <span className="cr-role-dept">{r.department} &middot; {seniorityOf(r)}</span>
                   <h3 className="cr-role-t">{r.title}</h3>
-                  <span className="cr-role-meta">{r.location} &middot; {r.type}</span>
-                  {r.salary && <span className="cr-role-pay">{salaryLabel(r.salary)}</span>}
+                  {/* The first clause of the role page's opening sentence, so it
+                      reads as a whole sentence instead of being cut mid-line. */}
+                  <p className="cr-role-sum">{copyFor(r.title, r.department).a.split(" — ")[0].replace(/[.,]?$/, ".")}</p>
+                  <span className="cr-role-meta">
+                    <span><Pin />{r.location}</span>
+                    <span><Bag />{r.type}</span>
+                  </span>
+                  <span className="cr-role-foot">
+                    {r.salary && <span className="cr-role-pay">{salaryLabel(r.salary)}</span>}
+                    <span className="cr-role-go">View role <Arrow /></span>
+                  </span>
                 </Link>
               </li>
             ))}
