@@ -59,3 +59,12 @@ export const positions: Position[] = [
   { id: "account-director-strategic-clients", title: "Account Director · Strategic Clients", department: "Client", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Director" },
   { id: "delivery-operations-manager", title: "Delivery Operations Manager", department: "Operations", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Manager" },
 ];
+
+/* Level shown on a role page: the role's own, else read from the title. */
+export function seniorityOf(p: Pick<Position, "title" | "seniority">): string {
+  if (p.seniority) return p.seniority;
+  if (/Head/i.test(p.title)) return "Head of";
+  if (/Director/i.test(p.title)) return "Director";
+  if (/Senior|Lead/i.test(p.title)) return "Senior";
+  return "Mid–Senior";
+}

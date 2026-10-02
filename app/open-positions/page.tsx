@@ -4,13 +4,13 @@ import OpenPositionsBoard from "./OpenPositionsBoard";
 import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
-  title: "Careers · Rivago Infotech",
-  description: "Careers at Rivago Infotech. We are always talking to experienced recruiters — send us your CV for partner-track desks across Delaware, Pune and Ontario.",
+  title: "Open Positions · Careers at Rivago Infotech",
+  description: "Open positions at Rivago Infotech — recruitment, business development, client and delivery roles, based at our Pune office or remote.",
   alternates: { canonical: "https://rivagoinfotech.com/open-positions" },
   openGraph: {
     ...ogBase,
-    title: "Careers · Rivago Infotech",
-    description: positions.length ? `Browse ${positions.length} open senior roles at Rivago Infotech — partner-track positions across Delaware, Pune and Ontario.` : "Careers at Rivago Infotech. We are always talking to experienced recruiters — send us your CV.",
+    title: "Open Positions · Careers at Rivago Infotech",
+    description: positions.length ? `${positions.length} open roles at Rivago Infotech — recruitment, business development, client and delivery, based in Pune or remote.` : "Careers at Rivago Infotech. We are always talking to experienced recruiters — send us your CV.",
     url: "https://rivagoinfotech.com/open-positions",
   },
 };

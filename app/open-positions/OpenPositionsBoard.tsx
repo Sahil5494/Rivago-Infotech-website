@@ -23,26 +23,10 @@ const ArrowIcon = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
 
-function deriveSeniority(title: string): string {
-  if (/Senior|Head|Director|Lead/i.test(title)) {
-    if (/Head/i.test(title)) return "Head of";
-    if (/Director/i.test(title)) return "Director";
-    return "Senior";
-  }
-  return "Mid–Senior";
-}
-
-function roleHref(p: { title: string; location: string; department: string; seniority?: string }): string {
-  const params = new URLSearchParams({
-    mode: "internal",
-    role: p.title,
-    l: p.location,
-    d: p.department,
-    s: p.seniority || deriveSeniority(p.title),
-    e: "Full time · Permanent",
-  });
-  return `${routes.role}?${params}`;
-}
+/* Each opening has its own page (app/open-positions/[id]) — its own
+   title, share preview and search listing. They used to share one
+   /view-jobs/role?… URL titled "Position". */
+const roleHref = (p: { id: string }) => `${routes.openPositions}/${p.id}`;
 
 export default function OpenPositionsBoard() {
   const [query, setQuery] = useState("");

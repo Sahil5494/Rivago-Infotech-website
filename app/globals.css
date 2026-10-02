@@ -3665,7 +3665,9 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 
 /* ===== Role detail (/view-jobs/role — cream) ===== */
 .pd{max-width:860px;margin:0 auto;padding:118px 24px 40px}
-.pd-back{display:inline-flex;align-items:center;gap:8px;font-size:var(--fz2);color:var(--text-inv-2);text-decoration:none;margin-bottom:26px}
+/* flex + fit-content, not inline-flex: inline, it sat on the same line as
+   the eyebrow pill with no gap. 44px tall so it is a real tap target. */
+.pd-back{display:flex;width:fit-content;align-items:center;gap:8px;min-height:44px;font-size:var(--fz2);color:var(--text-inv-2);text-decoration:none;margin:-10px 0 16px}
 .pd-back:hover{color:var(--accent-inv)}
 .pd-eyb{display:inline-flex;align-items:center;gap:7px;padding:5px 13px;border:1px solid rgba(10,112,64,.22);background:rgba(10,112,64,.06);border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-inv);margin-bottom:18px}
 .pd-eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent-inv)}
@@ -3674,7 +3676,7 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 .pd-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
 .pd-chip{padding:6px 14px;border:1px solid var(--rule-inv-1);background:var(--surface-inv-2);border-radius:9999px;font-size:var(--fz2);font-weight:500;color:var(--text-inv-2)}
 .pd-cta{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0 0}
-.pd-p{display:inline-flex;align-items:center;gap:9px;padding:15px 30px;background:var(--text-1);color:var(--surface-1);border-radius:11px;font-size:var(--fz6);font-weight:500;text-decoration:none;transition:all .22s var(--ease)}
+.pd-p{display:inline-flex;align-items:center;gap:9px;padding:15px 30px;background:var(--text-1);color:var(--surface-1);border-radius:var(--pill);font-size:var(--fz6);font-weight:500;text-decoration:none;transition:all .22s var(--ease)}
 .pd-p:hover{background:var(--surface-3);transform:translateY(-2px);color:var(--cream)}
 .pd-body{max-width:860px;margin:0 auto;padding:44px 24px 90px}
 .pd-sec{padding-top:34px;margin-top:34px;border-top:1px solid var(--rule-inv-1)}
@@ -3685,10 +3687,12 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 .pd-sec li{position:relative;padding-left:24px;font-size:var(--fz5);color:var(--text-inv-2);line-height:1.72;font-weight:400}
 .pd-sec li::before{content:'';position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--accent-inv);opacity:.55}
 .pd-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.pd-step{background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:16px;padding:22px 20px}
-.pd-step .n{font-family:var(--fm);font-size:var(--fz1);color:var(--accent-inv);margin-bottom:10px}
-.pd-step h2{font-size:var(--fz5);font-weight:500;color:var(--text-inv-1);margin:0 0 6px}
-.pd-step p{font-size:var(--fz4);color:var(--text-inv-2);line-height:1.6;font-weight:400;margin:0}
+/* .pd-hstep, not .pd-step: that name belongs to the process rows on Hire
+   Talent and Services, whose rule set every card here in the mono face. */
+.pd-hstep{background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:16px;padding:22px 20px}
+.pd-hstep .n{font-family:var(--fm);font-size:var(--fz1);color:var(--accent-inv);margin-bottom:10px}
+.pd-hstep h2{font-size:var(--fz5);font-weight:500;color:var(--text-inv-1);margin:0 0 6px}
+.pd-hstep p{font-size:var(--fz4);color:var(--text-inv-2);line-height:1.6;font-weight:400;margin:0}
 .pd-end{margin-top:44px;padding:40px 36px;background:var(--surface-inv-2);border:1px solid var(--rule-inv-1);border-radius:22px;text-align:center}
 .pd-end h2{font-size:var(--fz10);font-weight:500;letter-spacing:-.02em;color:var(--text-inv-1);margin:0 0 10px}
 .pd-end p{font-size:var(--fz6);color:var(--text-inv-2);line-height:1.7;font-weight:400;max-width:520px;margin:0 auto 26px}
