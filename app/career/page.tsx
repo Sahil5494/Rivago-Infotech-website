@@ -63,7 +63,7 @@ export default function CareerPage() {
         </div>
       </section>
 
-      <section className="section alt" id="culture">
+      <section className="section alt">
         <div className="wrap">
           <span className="eyebrow light">How we work</span>
           <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 620 }}>A firm built for <em>good recruiters.</em></h2>
@@ -92,7 +92,7 @@ export default function CareerPage() {
           four light sections in two near-identical mints — #edf7f2 and
           #f2f7f5 — about 3,000px without a change of ground. .life-* is
           built on role tokens, so .inv re-themes it without new rules. */}
-      <section className="section inv life-sec">
+      <section className="section inv life-sec" id="culture">
         <div className="wrap">
           <span className="eyebrow light">Working at Rivago</span>
           <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 640 }}>What it&apos;s actually like <em>inside.</em></h2>
@@ -101,14 +101,16 @@ export default function CareerPage() {
               <div>
                 <div className="life-eyb">The day-to-day</div>
                 <div className="life-h">Small pods, real ownership, no theatre.</div>
-                <div className="life-p">You run your desk like it&apos;s your own business — pick your roles, set your approach, own the outcome. A partner reviews, never micromanages. Mornings are for candidate calls, afternoons for client work, and nobody&apos;s counting your dials.</div>
+                <div className="life-p">You run your desk like it&apos;s your own business — pick your roles, set your approach, own the outcome. A partner reviews, never micromanages. Mornings are for candidate calls, afternoons for client work.</div>
               </div>
-              {/* Was 5 "avg pod size", 0 activity quotas, and "50+ people, 5
+              {/* "0 activity quotas" went too: the same point was made three times on
+                  the page (here, "No drip activity" above, and "nobody's counting
+                  your dials" in this card). "No drip activity" keeps it.
+                  Was 5 "avg pod size", 0 activity quotas, and "50+ people, 5
                   offices". The pod size was never measured, and the firm has
                   three offices, not five. The two counts now come from
                   lib/routes.ts; zero quotas is a policy, so it stays. */}
               <div style={{ display: "flex", gap: 28, marginTop: 24 }}>
-                <div><div className="life-stat">0</div><div className="life-stat-l">Activity quotas</div></div>
                 <div><div className="life-stat">{firm.people}</div><div className="life-stat-l">People</div></div>
                 <div><div className="life-stat">{offices.length}</div><div className="life-stat-l">Offices</div></div>
               </div>
@@ -134,7 +136,7 @@ export default function CareerPage() {
       <section className="section" id="hiring">
         <div className="wrap">
           <span className="eyebrow light">Getting started</span>
-          <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 640 }}>How we hire — <em>four honest steps.</em></h2>
+          <h2 className="section-h2 gs" style={{ marginTop: 18, marginBottom: 0, color: "var(--text)", maxWidth: 640 }}>How we hire — <em>four honest steps.</em></h2>
           <p className="gs" style={{ maxWidth: 540, marginTop: 18, fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400 }}>The same process whatever sector you place in. No take-home tests, no twelve-round gauntlets — just real conversations about real work.</p>
           <div className="hire-steps">
             {hireSteps.map((s) => (
