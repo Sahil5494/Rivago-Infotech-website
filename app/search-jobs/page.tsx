@@ -217,10 +217,14 @@ export default function SearchJobsPage() {
             <div className="eyebrow ew-light gs">Candidate FAQ</div>
             <h2 className="section-h2 gs">Before you <em>apply.</em></h2>
             <p className="sj-faq-lede gs">The questions candidates ask us most.</p>
+            {/* Email, at the firm's request. "Your Rivago Talent account" from
+                the supplied copy became "an application": accounts do not
+                exist yet (Sign in sends nothing), so it named something a
+                candidate cannot have. Put it back when accounts go live. */}
             <div className="sj-faq-more gs">
-              <span className="sj-faq-more-t">Still have a question?</span>
-              <span className="sj-faq-more-d">Send us your CV with your question, and a recruiter will reply inside two business days.</span>
-              <a className="sj-faq-btn" href={routes.contactUs} data-hire="seeker">Send us your CV <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+              <span className="sj-faq-more-t">Have another question?</span>
+              <span className="sj-faq-more-d">If you need help with an application, or just have a general question, email us at <a className="sj-faq-mail" href="mailto:questions@rivagoinfotech.com">questions@rivagoinfotech.com</a>.</span>
+              <a className="sj-faq-btn" href="mailto:questions@rivagoinfotech.com">Send an email <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
             </div>
           </div>
           <div className="sj-faq-list">
