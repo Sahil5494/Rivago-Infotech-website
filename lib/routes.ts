@@ -189,6 +189,10 @@ export const sentenceList = (items: readonly string[]): string => {
   const serial = items.some((i) => / and /.test(i)) ? "," : "";
   return `${items.slice(0, -1).join(", ")}${serial} and ${items[items.length - 1]}`;
 };
+/* An article's own page. Was /resources/article?id=<id>, which still
+   redirects; every link on the site goes through this instead. */
+export const articleHref = (id: string) => `/resources/${id}`;
+
 
 const NEEDS_ARTICLE = new Set<string>(["United States", "UAE", "United Kingdom", "Netherlands", "Philippines"]);
 export const marketsSentence = (): string =>

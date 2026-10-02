@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { routes } from "@/lib/routes";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { routes, articleHref } from "@/lib/routes";
 import { articles, featuredArticle, CATEGORIES, type Category } from "./data";
 
 /* /resources, rebuilt to the reference layout the client sent (metaview.ai):
@@ -165,6 +165,59 @@ function CardArt({ size }: { size: "lg" | "sm" | "md" }) {
   return <div className={`rc-art rc-art-${size}`} aria-hidden="true" />;
 }
 
+/* A category row's rail with prev/next arrows. Rows clip their fourth card
+   on desktop, and a mouse has no sideways scroll, so without these most of a
+   row was out of reach. The rail is still a plain overflow scroller (every
+   card in the document and the tab order); the arrows only scroll it, are
+   disabled at either end, and disappear when the row fits. */
+function Rail({ label, head, children }: { label: string; head: React.ReactNode; children: React.ReactNode }) {
+  const ref = useRef<HTMLUListElement>(null);
+  const [can, setCan] = useState({ prev: false, next: false });
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const update = () =>
+      setCan({ prev: el.scrollLeft > 4, next: el.scrollLeft + el.clientWidth < el.scrollWidth - 4 });
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => {
+      el.removeEventListener("scroll", update);
+      ro.disconnect();
+    };
+  }, []);
+
+  const go = (dir: 1 | -1) => {
+    const el = ref.current;
+    if (!el) return;
+    const card = el.querySelector("li");
+    const step = card ? card.getBoundingClientRect().width + 22 : el.clientWidth * 0.8;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollBy({ left: dir * step, behavior: reduce ? "auto" : "smooth" });
+  };
+
+  return (
+    <>
+      <div className="rrow-h">
+      {head}
+      {(can.prev || can.next) && (
+        <div className="rrail-nav">
+          <button type="button" className="rrail-btn" onClick={() => go(-1)} disabled={!can.prev} aria-label={`Previous ${label}`}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11 7H3M6 4L3 7l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
+          <button type="button" className="rrail-btn" onClick={() => go(1)} disabled={!can.next} aria-label={`Next ${label}`}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
+        </div>
+      )}
+      </div>
+      <ul className="rrail" ref={ref}>{children}</ul>
+    </>
+  );
+}
+
 type TabId = "all" | Category;
 
 export default function ResourcesView() {
@@ -185,9 +238,17 @@ export default function ResourcesView() {
     ? articles.filter((a) => a.id !== featuredArticle.id && !featuredRest.includes(a))
     : visible;
 
+  /* Only categories with something in them get a tab or a row. Case
+     studies has none yet — an empty shelf with a "0" on its tab made the
+     library look thin — and returns by itself with its first entry. */
+  const liveCategories = CATEGORIES.filter((c) => articles.some((a) => a.category === c.id));
+
+  /* On All, the three featured articles are not repeated in their rows. */
+  const featuredIds = new Set([featuredArticle.id, ...featuredRest.map((a) => a.id)]);
+
   const tabs: { id: TabId; label: string }[] = [
     { id: "all", label: "All" },
-    ...CATEGORIES.map((c) => ({ id: c.id as TabId, label: c.plural })),
+    ...liveCategories.map((c) => ({ id: c.id as TabId, label: c.plural })),
   ];
 
   return (
@@ -274,7 +335,7 @@ export default function ResourcesView() {
                   it used to be inert — no href, no anchor anywhere inside it —
                   because it described an article that existed nowhere in the
                   library. See the note on FEATURED_ID in ./data.ts. */}
-              <Link className="rc rc-lg" data-cat={featuredArticle.category} href={`${routes.article}?id=${featuredArticle.id}`}>
+              <Link className="rc rc-lg" data-cat={featuredArticle.category} href={articleHref(featuredArticle.id)}>
                 <CardArt size="lg" />
                 <div className="rc-meta">
                   <span className="rc-cat">{featuredArticle.categoryLabel}</span>
@@ -287,7 +348,7 @@ export default function ResourcesView() {
 
               <div className="rfeat-side">
                 {featuredRest.map((a) => (
-                  <Link className="rc rc-sm" data-cat={a.category} key={a.id} href={`${routes.article}?id=${a.id}`}>
+                  <Link className="rc rc-sm" data-cat={a.category} key={a.id} href={articleHref(a.id)}>
                     <CardArt size="sm" />
                     <div className="rc-meta">
                       <span className="rc-cat">{a.categoryLabel}</span>
@@ -301,36 +362,31 @@ export default function ResourcesView() {
             </div>
           </section>
 
-          {CATEGORIES.map((c) => {
-            const items = articles.filter((a) => a.category === c.id);
+          {liveCategories.map((c) => {
+            const items = articles.filter((a) => a.category === c.id && !featuredIds.has(a.id));
+            if (!items.length) return null;
             return (
               <section className="rrow" key={c.id}>
-                <div className="rrow-h">
-                  <h2 className="rsec-h">{c.plural}</h2>
-                  <button type="button" className="rrow-all" onClick={() => setTab(c.id)}>
-                    View all<ArrowNE />
-                  </button>
-                </div>
-
-                {items.length > 0 ? (
-                  <ul className="rrail">
-                    {items.map((a) => (
-                      <li key={a.id}>
-                        <Link className="rc rc-rail" data-cat={a.category} href={`${routes.article}?id=${a.id}`}>
-                          <CardArt size="md" />
-                          <h3 className="rc-ti">{a.title}<ArrowNE /></h3>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  /* The Case studies row. Compact here because it is one row
-                     among four; the full explanation is on its own tab. */
-                  <p className="rrow-empty">
-                    Nothing here yet — we publish an engagement only once the client has signed it
-                    off. <button type="button" className="rlink" onClick={() => setTab("case")}>Why this is empty</button>
-                  </p>
-                )}
+                <Rail
+                  label={c.plural.toLowerCase()}
+                  head={
+                    <>
+                      <h2 className="rsec-h">{c.plural}</h2>
+                      <button type="button" className="rrow-all" onClick={() => setTab(c.id)}>
+                        View all<ArrowNE />
+                      </button>
+                    </>
+                  }
+                >
+                  {items.map((a) => (
+                    <li key={a.id}>
+                      <Link className="rc rc-rail" data-cat={a.category} href={articleHref(a.id)}>
+                        <CardArt size="md" />
+                        <h3 className="rc-ti">{a.title}<ArrowNE /></h3>
+                      </Link>
+                    </li>
+                  ))}
+                </Rail>
               </section>
             );
           })}
@@ -348,7 +404,7 @@ export default function ResourcesView() {
           {gridItems.length > 0 ? (
             <div className="rgrid">
               {gridItems.map((a) => (
-                <Link className="rc rc-md" data-cat={a.category} key={a.id} href={`${routes.article}?id=${a.id}`}>
+                <Link className="rc rc-md" data-cat={a.category} key={a.id} href={articleHref(a.id)}>
                   <CardArt size="md" />
                   <div className="rc-meta">
                     <span className="rc-cat">{a.categoryLabel}</span>

@@ -406,8 +406,8 @@ export const articles: Article[] = [
       { q: "Does skills-based hiring make hiring faster?", a: "No, and teams expecting that are usually disappointed. The work is front-loaded — designing assessments, training interviewers, reviewing structured applications — and a structured application takes longer to read than a CV. What it does reliably is widen the pool." },
     ],
     next: [
-      { label: "Structured interviews", href: "/resources/article?id=structured-interviews" },
-      { label: "Writing a job brief", href: "/resources/article?id=job-brief" },
+      { label: "Structured interviews", href: "/resources/structured-interviews" },
+      { label: "Writing a job brief", href: "/resources/job-brief" },
       { label: "Talk to a partner", href: "/contact-us" },
     ],
   },
@@ -660,8 +660,8 @@ export const articles: Article[] = [
       { q: "Should I match the market if it has moved past my existing team?", a: "That is a deliberate decision rather than a discovery, and it should be made before you go to market rather than after. A band that is right externally and wrong internally creates a problem the first time two people doing the same job compare notes." },
     ],
     next: [
-      { label: "Setting a salary band", href: "/resources/article?id=salary-band" },
-      { label: "What moves VP Engineering pay", href: "/resources/article?id=vp-eng-pay" },
+      { label: "Setting a salary band", href: "/resources/salary-band" },
+      { label: "What moves VP Engineering pay", href: "/resources/vp-eng-pay" },
       { label: "Talk to a partner", href: "/contact-us" },
     ],
   },

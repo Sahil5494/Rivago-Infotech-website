@@ -3,6 +3,7 @@
    next/image would fight, and the logos are small pre-optimised PNGs served
    from /public. Every one carries real alt text. */
 import type { Metadata } from "next";
+import Link from "next/link";
 import ServicesClient from "./ServicesClient";
 import GlobeCanvas from "./_components/GlobeCanvas";
 import { STAGES } from "@/lib/process";
@@ -41,7 +42,7 @@ export default function ServicesPage() {
             <p className="rv rv3">Contract, contract-to-hire and direct hire across four countries. A specialist partner runs the search end to end — and stays on the line for every role after it.</p>
             <div className="svh-cta rv rv4">
               <a className="btn btn--primary btn--lg" href="/hire-talent#intake" data-help>Let&apos;s Talk <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#030C05" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
-              <a className="btn btn--secondary btn--lg" href="/resources">Read our hiring guides</a>
+              <Link className="btn btn--secondary btn--lg" href="/resources">Read our hiring guides</Link>
             </div>
           </div>
         </section>
@@ -595,21 +596,21 @@ export default function ServicesPage() {
                 <div className="persp-eyb rv">Recent perspectives</div>
                 <h2 className="rv">Notes from the <em>front line.</em></h2>
               </div>
-              <a className="persp-link rv rv2" href="/resources">Read the blog <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+              <Link className="persp-link rv rv2" href="/resources">Read the blog <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
             </div>
             <div className="persp-grid">
-              <a className="persp-card rv" href="/resources">
+              <Link className="persp-card rv" href="/resources">
                 <div className="persp-img" style={{background: "linear-gradient(135deg,#0F2A1B,#0A7040)"}}><span className="persp-cat">Hiring playbook</span></div>
                 <div className="persp-body"><h3>What a real scorecard looks like in 2026</h3><p>The one-page framework our partners use to calibrate a search before a single name is sourced.</p><div className="persp-meta">8 min read · Hiring</div></div>
-              </a>
-              <a className="persp-card rv rv2" href="/resources">
+              </Link>
+              <Link className="persp-card rv rv2" href="/resources">
                 <div className="persp-img" style={{background: "linear-gradient(135deg,#12332A,#00A882)"}}><span className="persp-cat">Cost analysis</span></div>
                 <div className="persp-body"><h3>Contract vs. permanent: the true cost math</h3><p>A clear-eyed model for when flexible talent beats a permanent hire — and when it quietly costs you more.</p><div className="persp-meta">6 min read · Strategy</div></div>
-              </a>
-              <a className="persp-card rv rv3" href="/resources">
+              </Link>
+              <Link className="persp-card rv rv3" href="/resources">
                 <div className="persp-img" style={{background: "linear-gradient(135deg,#0B1F14,#3DFF87)"}}><span className="persp-cat">Global hiring</span></div>
                 <div className="persp-body"><h3>Hiring across the US, Canada and the UAE without tripping compliance</h3><p>Work authorisation, EOR and payroll, decoded for teams scaling into three regions at once.</p><div className="persp-meta">9 min read · Global</div></div>
-              </a>
+              </Link>
             </div>
           </div>
         </section>

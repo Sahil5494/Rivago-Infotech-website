@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { routes } from "@/lib/routes";
+import { articleHref } from "@/lib/routes";
 import { articles } from "@/app/resources/data";
 
 /* The insights mosaic.
@@ -70,7 +70,7 @@ export default function InsightsGrid() {
             className={`hins-card${tall ? " tall" : ""}`}
             data-cat={a.category}
             key={a.id}
-            href={`${routes.article}?id=${a.id}`}
+            href={articleHref(a.id)}
           >
             <span className="hins-cat">{a.categoryLabel}</span>
             <h3 className="hins-ti">{a.title}</h3>

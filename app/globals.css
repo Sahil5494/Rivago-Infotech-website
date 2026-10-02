@@ -2385,9 +2385,14 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
    colourway and nothing else now. */
 .rc-art{border-radius:18px;overflow:hidden;
   background:linear-gradient(140deg,#C9F7DE,#3DFF87 88%);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.rc-art-lg{aspect-ratio:16/10}
+.rc-art-lg{aspect-ratio:16/7}
 .rc-art-md{aspect-ratio:16/10}
 .rc-art-sm{aspect-ratio:16/6.5}
+/* The panels carry no text, at the client's call, so they are kept short:
+   colour that labels the category, not a blank block the reader scrolls
+   past. The featured card was 16/10 (~430px tall at desktop); rail cards
+   take a strip rather than a tile. The grid view keeps 16/10. */
+.rc-rail .rc-art{aspect-ratio:16/7}
 .rc:hover .rc-art{transform:translateY(-4px);box-shadow:0 20px 44px rgba(10,20,11,.16)}
 .rc:focus-visible{outline:none}
 .rc:focus-visible .rc-art{outline:2px solid var(--accent-inv);outline-offset:3px}
@@ -2426,7 +2431,14 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
    tabbing, which scrolls the focused card into view. */
 .rrow{padding:56px 0 0}
 .rrow-h{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:22px}
-.rrow-h .rsec-h{margin:0}
+.rrow-h .rsec-h{margin:0;margin-right:auto}
+.rrow-h{align-items:center}
+.rrail-nav{display:flex;gap:8px}
+.rrail-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule-inv-2);background:transparent;color:var(--text-inv-1);
+  display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease)}
+.rrail-btn:hover:not(:disabled){background:var(--text-inv-1);color:var(--bg);border-color:var(--text-inv-1)}
+.rrail-btn:disabled{opacity:.35;cursor:default}
+.rrail-btn:focus-visible{outline:2px solid var(--accent-inv);outline-offset:3px}
 .rrow-all{display:inline-flex;align-items:center;gap:2px;padding:0 0 2px;border:0;background:none;cursor:pointer;
   font-family:var(--ff);font-size:var(--fz2);font-weight:500;color:var(--text-inv-1);
   border-bottom:1px solid var(--rule-inv-2);transition:color .2s var(--ease),border-color .2s var(--ease)}
@@ -2489,6 +2501,8 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
   .rwrap{padding:96px 20px 0}
   .rrail>li{flex:0 0 78%}
   .rrow{padding:44px 0 0}
+  .rrail-nav{display:none}
+  .rc-art-sm{aspect-ratio:16/6}
   .rfeat-side{flex-direction:column}
   .rgrid{grid-template-columns:1fr;gap:38px}
   .rbar{flex-direction:column;align-items:flex-start}
