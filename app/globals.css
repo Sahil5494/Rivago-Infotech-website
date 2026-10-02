@@ -3255,7 +3255,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .office-team{display:flex;align-items:center;gap:10px;padding-top:16px;border-top:1px solid var(--border);margin-top:auto}
 .office-team .ct{font-size:var(--fz1);color:var(--text3);font-family:var(--fm)}
 @media(max-width:1080px){.offices-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:620px){.offices-grid{grid-template-columns:1fr}.offices{padding:80px 22px}}
+@media(max-width:620px){.offices-grid{grid-template-columns:1fr}.offices{padding:80px 20px}}
 
 /* Contact form */
 .contact-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:56px;align-items:start;max-width:1240px;margin:0 auto}
@@ -3981,4 +3981,13 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
   .eval-step:first-child{border-top:none;padding-top:32px}
   .build-card{padding:26px 24px}
   .story-lead{padding-left:16px}
+}
+
+/* About, phones: the site's 20px gutter, switched at one breakpoint for
+   every section. The hero and closing band kept their 44px desktop padding,
+   Offices used 22px, and the rest changed at 520-760px, so sections started
+   at different edges on the same screen.
+   Last in the file so it wins over each section's own padding. */
+@media(max-width:760px){
+  .about-hero,.numbers,.story,.build,.values,.evalsec,.hms,.offices,.careers{padding-left:20px;padding-right:20px}
 }
