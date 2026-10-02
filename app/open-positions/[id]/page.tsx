@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { positions, seniorityOf, salaryLabel } from "../positions-data";
 import RoleView from "@/app/view-jobs/role/RoleView";
 import { copyFor } from "@/app/view-jobs/role/role-copy";
-import { offices } from "@/lib/routes";
 import { ogBase } from "@/lib/og";
 
 /* One page per confirmed opening, built at compile time. A role id that is
@@ -48,10 +47,9 @@ export default async function PositionPage({ params }: { params: Promise<{ id: s
   };
   /* JobPosting, for Google for Jobs. Remote here means within India — the
      firm hires remote staff in India for these desks — so the remote
-     requirement names India. The Pune office address comes from lib/routes.ts
-     (confirmed real by the firm, 2 October 2026). */
+     requirement names India. Location is city and state only, at the firm's
+     request — no street or postcode. */
   const copy = copyFor(p.title, p.department);
-  const pune = offices.find((o) => o.city === "Pune");
   const posted = p.posted || new Date().toISOString().slice(0, 10);
   const validThrough = new Date(new Date(posted + "T00:00:00Z").getTime() + 60 * 864e5).toISOString().slice(0, 10);
   const jobPostingJsonLd = {
@@ -65,7 +63,7 @@ export default async function PositionPage({ params }: { params: Promise<{ id: s
     hiringOrganization: { "@type": "Organization", name: "Rivago Infotech", sameAs: BASE },
     jobLocation: {
       "@type": "Place",
-      address: { "@type": "PostalAddress", streetAddress: pune?.street, addressLocality: "Pune", addressRegion: "Maharashtra", postalCode: pune?.postal, addressCountry: "IN" },
+      address: { "@type": "PostalAddress", addressLocality: "Pune", addressRegion: "Maharashtra", addressCountry: "IN" },
     },
     ...(/remote/i.test(p.location) ? { jobLocationType: "TELECOMMUTE", applicantLocationRequirements: { "@type": "Country", name: "India" } } : {}),
     ...(p.salary ? { baseSalary: { "@type": "MonetaryAmount", currency: "INR", value: { "@type": "QuantitativeValue", minValue: p.salary.min, maxValue: p.salary.max, unitText: "YEAR" } } } : {}),
