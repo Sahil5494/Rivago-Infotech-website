@@ -112,6 +112,9 @@ export default function SearchJobsPage() {
           first screen below the nav — with the content centred in it. The
           page opens on that light rim, so the nav stays solid, as on
           Resources. */}
+      {/* Hero pins and "Latest openings" slides up over it — the home
+          page's mechanism (.ov-scope / .ov-over). */}
+      <div className="ov-scope">
       <section className="sj-hero">
         <div className="sj-card inv">
           <div className="sj-card-in">
@@ -124,7 +127,7 @@ export default function SearchJobsPage() {
         </div>
       </section>
 
-      <section className="sj-open">
+      <section className="sj-open ov-over">
         <div className="sj-in">
           <div className="sj-open-top">
             <div>
@@ -166,6 +169,7 @@ export default function SearchJobsPage() {
           </div>
         </div>
       </section>
+      </div>{/* /.ov-scope */}
 
       <section className="sj-steps">
         <div className="sj-in">

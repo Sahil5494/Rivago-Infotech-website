@@ -3757,6 +3757,12 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 /* -34px 64px at .5, the same shadow .prob-sec casts upward over the home
    page's hero. */
 .ov-over{position:relative;z-index:1;box-shadow:0 -34px 64px rgba(0,0,0,.5)}
+/* Pinned heroes for Careers (.page-hero.ph-pin) and Search Jobs (.sj-hero):
+   sticky, z-index 0 and isolation, exactly as .hero-c and .about-hero.
+   overflow:clip, not hidden — clip does not create a scroll container, so
+   sticky still resolves against the page. A modifier rather than a change
+   to .page-hero, which other pages use without the effect. */
+.page-hero.ph-pin,.sj-hero{position:sticky;top:0;z-index:0;overflow:clip;isolation:isolate}
 /* --bg3, not --bg. The home page makes the same move and says why: the band
    sliding over a near-black hero reads as a panel arriving in proportion to
    how bright it is. #F2F7F5 worked; white works harder, and the sequence

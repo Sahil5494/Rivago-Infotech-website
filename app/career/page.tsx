@@ -50,7 +50,10 @@ export default function CareerPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
-      <section className="page-hero inv">
+      {/* Hero pins and "How we work" slides up over it — the home page's
+          hero / THE PROBLEM mechanism (.ov-scope / .ov-over), as on About. */}
+      <div className="ov-scope">
+      <section className="page-hero inv ph-pin">
         <div className="page-hero-inner">
           <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>Careers</span></div>
           <span className="eyebrow light">Work at Rivago</span>
@@ -63,7 +66,7 @@ export default function CareerPage() {
         </div>
       </section>
 
-      <section className="section alt">
+      <section className="section alt ov-over">
         <div className="wrap">
           <span className="eyebrow light">How we work</span>
           <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 620 }}>A firm built around <em>good recruiting.</em></h2>
@@ -78,6 +81,7 @@ export default function CareerPage() {
           </div>
         </div>
       </section>
+      </div>{/* /.ov-scope */}
 
       {/* PERKS & BENEFITS stood here: 28 days PTO, a 5% 401(k)/pension match,
           full health cover, a $3k learning budget, a MacBook Pro and chair
