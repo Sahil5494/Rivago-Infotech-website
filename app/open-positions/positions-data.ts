@@ -15,6 +15,9 @@ export type Position = {
   locationType: "On-site" | "Hybrid" | "Remote";
 };
 
+/* "Client Success Manager — Dubai, UAE" removed 2 October 2026: the firm
+   confirmed it is not a real opening, and Rivago has no UAE entity to
+   employ anyone under. */
 export const positions: Position[] = [
   { id: "delivery-operations-manager", title: "Delivery Operations Manager", department: "Operations", location: "Pune, India", type: "Full-time", locationType: "On-site" },
   { id: "head-of-brand-marketing", title: "Head of Brand & Marketing", department: "Marketing", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
@@ -26,6 +29,5 @@ export const positions: Position[] = [
   { id: "data-analyst-market-intelligence", title: "Data Analyst · Market Intelligence", department: "Engineering", location: "Pune, India", type: "Full-time", locationType: "On-site" },
   { id: "finance-manager", title: "Finance Manager", department: "Finance", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
   { id: "compliance-contracts-counsel", title: "Compliance & Contracts Counsel", department: "Finance", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
-  { id: "client-success-manager", title: "Client Success Manager", department: "Client", location: "Dubai, UAE", type: "Full-time", locationType: "On-site" },
   { id: "account-director-strategic-clients", title: "Account Director · Strategic Clients", department: "Client", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
 ];
