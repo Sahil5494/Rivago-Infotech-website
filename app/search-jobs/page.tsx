@@ -56,6 +56,8 @@ const countBy = (key: (j: (typeof JOBS)[number]) => string) => {
 };
 const BY_SECTOR = countBy((j) => j.dept);
 const BY_MARKET = countBy((j) => regionOf(j.c));
+const posted = (iso: string) =>
+  new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
 const boardLink = (q: Record<string, string>) => `${routes.viewJobs}?${new URLSearchParams(q)}`;
 
 /* Candidate FAQ — questions chosen from the ones candidates actually ask
@@ -140,7 +142,7 @@ export default function SearchJobsPage() {
                   <span className="sj-job-dept">{j.dept}</span>
                   <h3 className="sj-job-t">{j.t}</h3>
                   <span className="sj-job-meta">{placeLabel(j.c)} · {j.w}</span>
-                  <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span className="sj-job-pay">{j.p}</span>}</span>
+                  <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span className="sj-job-pay">{j.p}</span>}<span className="sj-job-date">Posted {posted(j.d)}</span></span>
                 </Link>
               </li>
             ))}
