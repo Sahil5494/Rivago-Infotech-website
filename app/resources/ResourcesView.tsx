@@ -264,7 +264,7 @@ export default function ResourcesView() {
           Hiring intelligence, <em>free to read.</em>
         </h1>
         <p className="rstand">
-          Salary guides, interview guides and market reads from the partners running the searches. No sign-up, no gate.
+          Salary guides, interview guides and market reads from the recruiters running the searches. No sign-up, no gate.
         </p>
       </div>
 
@@ -298,7 +298,7 @@ export default function ResourcesView() {
         </div>
 
         <div className="rsub">
-          <span className="rsub-l">Get our latest updates sent straight to your inbox.</span>
+          <span className="rsub-l">New guides by email — no schedule, no spam.</span>
           <NewsletterForm id="rsub-email" variant="inline" placeholder="your@email" />
         </div>
       </div>
@@ -383,6 +383,11 @@ export default function ResourcesView() {
                       <Link className="rc rc-rail" data-cat={a.category} href={articleHref(a.id)}>
                         <CardArt size="md" />
                         <h3 className="rc-ti">{a.title}<ArrowNE /></h3>
+                        <div className="rc-rail-meta">
+                          <time dateTime={a.date}>{a.displayDate}</time>
+                          <span aria-hidden="true">·</span>
+                          <span>{a.readTime}</span>
+                        </div>
                       </Link>
                     </li>
                   ))}

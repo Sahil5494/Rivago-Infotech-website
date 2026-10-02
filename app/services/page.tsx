@@ -596,7 +596,7 @@ export default function ServicesPage() {
                 <div className="persp-eyb rv">Recent perspectives</div>
                 <h2 className="rv">Notes from the <em>front line.</em></h2>
               </div>
-              <Link className="persp-link rv rv2" href="/resources">Read the blog <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
+              <Link className="persp-link rv rv2" href="/resources">Read our articles <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
             </div>
             <div className="persp-grid">
               <Link className="persp-card rv" href="/resources">

@@ -69,7 +69,7 @@ export default function Footer() {
         <div>
           <div className="ft-h">Company</div>
           <Link className="ft-lnk" href={routes.about}>About</Link>
-          <Link className="ft-lnk" href={routes.resources}>Blog</Link>
+          <Link className="ft-lnk" href={routes.resources}>Resources</Link>
           <Link className="ft-lnk" href={routes.career}>Careers</Link>
           <Link className="ft-lnk" href={routes.viewJobs}>Search jobs</Link>
           <Link className="ft-lnk" href={routes.contactUs}>Contact</Link>

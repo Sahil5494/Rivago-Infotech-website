@@ -30,7 +30,7 @@ export type ArticleSection = {
 export type Category = "blog" | "case" | "interview" | "salary";
 
 export const CATEGORIES: { id: Category; label: string; plural: string }[] = [
-  { id: "blog", label: "Blog", plural: "Blogs" },
+  { id: "blog", label: "Article", plural: "Articles" },
   { id: "case", label: "Case study", plural: "Case studies" },
   { id: "interview", label: "Interview guide", plural: "Interview guides" },
   { id: "salary", label: "Salary guide", plural: "Salary guides" },
@@ -144,7 +144,7 @@ export const articles: Article[] = [
     displayDate: "18 Sep 2026",
     readTime: "9 min read",
     category: "blog",
-    categoryLabel: "Blog",
+    categoryLabel: "Article",
     image: { src: "/assets/services/direct-office.jpg", alt: "An open-plan office floor with people working at desks" },
     summary:
       "An engineering team should be built in sequence, not all at once. At seed you want builders who can ship across the stack, with architectural judgement borrowed rather than employed. At Series A you make your first hire who owns a domain rather than a ticket queue. At Series B you split delivery from platform, and add your first engineering manager — because the span of control, not the headcount, is what breaks first. At Series C you add a leadership layer above the managers. The two failure modes are hiring the senior title before there is anything for it to lead, and leaning on generalists long past the point the system needed an owner.",
@@ -248,7 +248,7 @@ export const articles: Article[] = [
     displayDate: "11 Sep 2026",
     readTime: "10 min read",
     category: "blog",
-    categoryLabel: "Blog",
+    categoryLabel: "Article",
     image: { src: "/assets/services/contract.jpg", alt: "A software developer working at a computer in an office" },
     summary:
       "AI is genuinely good at the parts of recruitment that are search and summarisation — finding people who match a pattern, drafting outreach, extracting structure from unstructured CVs, scheduling. It is unreliable at the parts that are judgement: deciding who is actually good, predicting performance, and assessing anything the training data under-represents. The practical line is that AI should widen the top of the funnel and remove administration, while a human owns every decision that eliminates a candidate. Buyers should ask any vendor three things: what the model was trained on, what happens when it is wrong, and who is accountable for the decision.",
@@ -419,7 +419,7 @@ export const articles: Article[] = [
     displayDate: "4 Sep 2026",
     readTime: "8 min read",
     category: "blog",
-    categoryLabel: "Blog",
+    categoryLabel: "Article",
     image: { src: "/assets/services/temporary.jpg", alt: "Warehouse workers scanning boxes on a distribution floor" },
     summary:
       "The four common engagement types solve different problems and are not interchangeable. Permanent hiring is for work that continues indefinitely and benefits from accumulated context. Contract is for defined scope with a known end — a project, a migration, a build. Temporary is for capacity: peaks, seasonal volume and cover. Interim is for a leadership gap, where the job is to hold or turn something around rather than to do the work. Choosing the wrong structure is expensive in a specific way: permanent hiring for temporary work produces redundancies, and contracting for permanent work loses the institutional knowledge you were paying to build.",
@@ -513,7 +513,7 @@ export const articles: Article[] = [
     displayDate: "28 Aug 2026",
     readTime: "8 min read",
     category: "blog",
-    categoryLabel: "Blog",
+    categoryLabel: "Article",
     image: { src: "/assets/services/eor.jpg", alt: "A pen resting on a signed contract" },
     summary:
       "An Employer of Record is a company that becomes the legal employer of your worker in a country where you have no entity, handling payroll, tax, benefits, contracts and statutory compliance while the person works for you day to day. It is the right tool for hiring one to a handful of people in a market you are testing, for moving quickly, and for removing classification risk. It is the wrong tool once headcount in a country is large enough that per-employee fees exceed the cost of an entity, where the role requires the worker to sign on your behalf, and in the small number of markets where EOR arrangements are legally constrained.",
@@ -928,7 +928,7 @@ export const articles: Article[] = [
     displayDate: "20 May 2026",
     readTime: "5 min read",
     category: "blog",
-    categoryLabel: "Blog",
+    categoryLabel: "Article",
     sections: [
       {
         h: "The decline rarely happens at the offer stage",
@@ -1034,7 +1034,7 @@ export const articles: Article[] = [
     displayDate: "28 Apr 2026",
     readTime: "5 min read",
     category: "blog",
-    categoryLabel: "Blog",
+    categoryLabel: "Article",
     sections: [
       {
         h: "Start with the sector, not the visa",
@@ -1099,7 +1099,7 @@ export const articles: Article[] = [
     displayDate: "8 Apr 2026",
     readTime: "4 min read",
     category: "blog",
-    categoryLabel: "Blog",
+    categoryLabel: "Article",
     sections: [
       {
         h: "What a portal actually optimises for",
@@ -1138,7 +1138,7 @@ export const articles: Article[] = [
     displayDate: "1 Apr 2026",
     readTime: "8 min read",
     category: "blog",
-    categoryLabel: "Blog",
+    categoryLabel: "Article",
     sections: [
       {
         h: "The number most companies underestimate",

@@ -2457,6 +2457,9 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
    has already said the category, and repeating it on every card in the row
    is the kind of redundancy that makes a rail look padded. */
 .rc-rail .rc-ti{font-size:var(--fz5);line-height:1.34;margin-top:14px}
+/* Date and length under each rail card, so the rows show the library is
+   current. The row heading already names the category, so it isn't repeated. */
+.rc-rail-meta{display:flex;align-items:center;gap:7px;margin-top:8px;font-family:var(--fm);font-size:var(--fz1);color:var(--text-inv-3)}
 
 .rrow-empty{font-size:var(--fz3);color:var(--text-inv-2);line-height:1.7;margin:0;max-width:62ch}
 /* A button that reads as a link — it changes a filter rather than navigating,
@@ -2498,7 +2501,10 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
   .rgrid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:700px){
-  .rwrap{padding:96px 20px 0}
+  .rwrap{padding:96px 20px 72px}
+  /* The bottom band carries the same sign-up at full width; on a phone the
+     top one only sat on its own line between the tabs and Featured. */
+  .rsub{display:none}
   .rrail>li{flex:0 0 78%}
   .rrow{padding:44px 0 0}
   .rrail-nav{display:none}
