@@ -124,19 +124,71 @@ const DEPT_COPY: Record<string, DeptCopy> = {
   },
 };
 
+/* Per-role copy for the openings the firm confirmed on 2 October 2026.
+   DRAFTED FROM THE JOB TITLE, FOR THE FIRM TO REVIEW: each line describes
+   what the title itself implies, and none sets an invented threshold (the
+   department templates above ask for "seven or more years … with the
+   billings to show it", which nobody specified). Keyed by title; any role
+   not listed here falls back to its department's copy. */
+const ROLE_COPY: Record<string, DeptCopy> = {
+  "Senior US Recruiter": {
+    a: "You recruit for Rivago's US clients end to end — taking the requirement, sourcing and screening candidates, and seeing each one through to a start date.",
+    own: ["Work US requirements end to end, from intake to start date.", "Source candidates directly, not only from inbound applications.", "Screen against the client's brief before anyone is submitted.", "Keep candidates informed at every stage, including when the answer is no."],
+    need: ["Experience recruiting for US clients, including US work authorisation and pay structures.", "Confident direct sourcing across job boards, LinkedIn and your own network.", "Able to work hours that overlap with US clients."],
+  },
+  "Recruitment Manager": {
+    a: "You lead a team of recruiters — setting priorities across open requirements, keeping quality high, and making sure every client and candidate gets a straight answer.",
+    own: ["Lead and coach a team of recruiters.", "Prioritise open requirements and put the right recruiter on each.", "Review submissions for quality before they reach clients.", "Track delivery and fix what is slowing it down."],
+    need: ["Experience as a recruiter, and in leading or mentoring a team.", "A clear view of what a good submission looks like.", "Able to hold a team to a standard and keep it motivated."],
+  },
+  "Talent Acquisition Specialist · Healthcare": {
+    a: "You recruit healthcare professionals for Rivago's clients — finding, screening and placing candidates in roles where licensing and credentials matter.",
+    own: ["Recruit for healthcare requirements end to end.", "Check licences, certifications and credentials before submission.", "Build a network of healthcare candidates for repeat needs.", "Keep candidates informed through every stage."],
+    need: ["Experience recruiting in healthcare.", "Familiarity with healthcare licensing and credentialing.", "Organised and precise with candidate documentation."],
+  },
+  "Business Development Manager": {
+    a: "You win new clients for Rivago — finding companies that need staffing and recruitment support, opening the conversation and turning it into an agreement.",
+    own: ["Identify and approach companies that need staffing or recruitment support.", "Run discovery conversations and shape proposals.", "Close new accounts and hand them to delivery with a clear brief.", "Keep an honest pipeline and forecast."],
+    need: ["Experience selling staffing, recruitment or other professional services.", "A track record of opening and closing new accounts.", "Confident with senior hiring and procurement contacts."],
+  },
+  "Business Development Executive": {
+    a: "You open doors for the business development team — researching target companies, starting conversations and booking the meetings that turn into new clients.",
+    own: ["Research target companies and the people who hire there.", "Run outreach by email, phone and LinkedIn.", "Qualify interest and book meetings for the team.", "Keep the CRM accurate."],
+    need: ["Some experience in sales, lead generation or business development — staffing is a plus.", "Clear, confident written and spoken English.", "Persistent and organised."],
+  },
+  "Account Manager": {
+    a: "You look after a set of existing clients — understanding what they need, keeping delivery on track and growing the work Rivago does for them.",
+    own: ["Own day-to-day relationships with a set of clients.", "Take new requirements and brief the recruiting team.", "Keep delivery on track and raise issues early.", "Find new opportunities within existing accounts."],
+    need: ["Experience managing client accounts in staffing or recruitment.", "Able to turn a client's need into a clear brief.", "Calm and straight with clients when things go wrong."],
+  },
+  "Account Director · Strategic Clients": {
+    a: "You own Rivago's most important client relationships — shaping each account's strategy, leading the commercial conversation and making sure delivery matches what was promised.",
+    own: ["Own a portfolio of strategic accounts and the revenue in them.", "Set the strategy for each account with the delivery team.", "Lead commercial and contract conversations.", "Represent Rivago with client leadership."],
+    need: ["Senior experience managing major accounts in staffing or professional services.", "Commercial judgement and negotiation experience.", "Credible with talent leaders and procurement alike."],
+  },
+  "Delivery Operations Manager": {
+    a: "You keep delivery running behind every requirement — the process, the data and the coordination that let recruiters spend their time on candidates and clients.",
+    own: ["Run delivery operations across live requirements.", "Keep pipeline and placement data accurate enough to report from.", "Coordinate onboarding, timesheets and compliance steps for placed consultants.", "Find manual steps and fix them."],
+    need: ["Experience in recruitment or staffing operations.", "Comfortable with ATS data and spreadsheets at volume.", "Organised and precise — you notice when a number looks wrong."],
+  },
+};
+
+/* Matches the Careers page, which now carries only confirmed facts. This
+   list used to promise a senior-only team, commission "with no threshold
+   games" and a tooling budget; "How we hire" promised a paid practical
+   session and a decision within five working days. None was confirmed. */
 const WHAT_WE_OFFER = [
-  "Senior-only team — no juniors learning on your accounts.",
-  "One partner per search, so the work you do is visibly yours.",
-  "Transparent commission with no threshold games.",
-  "Offices in Delaware, Pune and Ontario, with real flexibility on where you work.",
-  "Budget for the tooling and data you need to do the job properly.",
+  "A partner-led firm, founded in 2019, where your work is visibly yours.",
+  "Clear comp: base and commission explained up front, in writing, before you accept.",
+  "Work from our Pune office or remotely, depending on the role.",
+  "You own your work end to end, with no handoffs.",
 ];
 
 const HOW_WE_HIRE = [
-  { n: "01", t: "Intro call", d: "Thirty minutes with the hiring partner. Real questions, no screening script." },
-  { n: "02", t: "Craft conversation", d: "We go deep on work you have actually done, with the people you would work beside." },
-  { n: "03", t: "Practical session", d: "A live problem from the desk you would own. Paid if it takes real preparation." },
-  { n: "04", t: "Offer", d: "Decision within five working days of the last conversation, either way." },
+  { n: "01", t: "Intro call", d: "Thirty minutes with the hiring partner. What you have done, what you want next." },
+  { n: "02", t: "Working session", d: "We walk through a live brief together. Not a test — a real look at how you work." },
+  { n: "03", t: "Meet the team", d: "The people you would actually work beside. You are interviewing us as much as we are interviewing you." },
+  { n: "04", t: "Offer", d: "A written offer with base and commission spelled out — no negotiation games." },
 ];
 
 const BackIcon = () => (
@@ -156,9 +208,9 @@ export default function RoleDetail() {
   const mode = searchParams.get("mode") || "internal";
   const isInternal = mode === "internal";
 
-  const copy = DEPT_COPY[dept] || DEPT_COPY.Operations;
+  const copy = ROLE_COPY[role] || DEPT_COPY[dept] || DEPT_COPY.Operations;
   const engBasis = eng.toLowerCase().replace(/·/g, "").replace(/\s+/g, " ").trim();
-  const about = `${copy.a} The role is based in ${loc} on a ${engBasis} basis, at ${sen.toLowerCase()} level.`;
+  const about = `${copy.a} The role ${/ or remote$/i.test(loc) ? "can be" : "is"} based in ${loc}, on a ${engBasis} basis.`;
   const chips = [sen, dept, eng.split("·")[0].trim(), loc].filter(Boolean);
 
   const backHref = isInternal ? routes.openPositions : routes.viewJobs;
@@ -176,7 +228,12 @@ export default function RoleDetail() {
           {chips.map((c) => <span className="pd-chip" key={c}>{c}</span>)}
         </div>
         <div className="pd-cta">
-          <Link className="pd-p" href={applyHref}>Apply for this role <ArrowIcon /></Link>
+          {/* Internal roles apply through the CV form, which posts to the
+              firm; the client-role path still goes to sign-up until the
+              application platform is built. */}
+          {isInternal
+            ? <a className="pd-p" href={routes.contactUs} data-hire="seeker">Apply for this role <ArrowIcon /></a>
+            : <Link className="pd-p" href={applyHref}>Apply for this role <ArrowIcon /></Link>}
         </div>
       </div>
 
@@ -211,8 +268,17 @@ export default function RoleDetail() {
         </div>
         <div className="pd-end">
           <h2>Sound like your desk?</h2>
-          <p>Create an account to apply and track where your application stands. One partner reads every submission.</p>
-          <Link className="pd-p" href={applyHref}>Create an account to apply <ArrowIcon /></Link>
+          {isInternal ? (
+            <>
+              <p>Send us your CV and tell us this is the role you are applying for, and we will be in touch.</p>
+              <a className="pd-p" href={routes.contactUs} data-hire="seeker">Send us your CV <ArrowIcon /></a>
+            </>
+          ) : (
+            <>
+              <p>Create an account to apply and track where your application stands. One partner reads every submission.</p>
+              <Link className="pd-p" href={applyHref}>Create an account to apply <ArrowIcon /></Link>
+            </>
+          )}
         </div>
       </div>
     </>

@@ -5,20 +5,16 @@ import Link from "next/link";
 import { routes } from "@/lib/routes";
 import { positions, type Department } from "./positions-data";
 
-type FilterKey = "all" | "rec" | "ops" | "mkt" | "ppl" | "eng" | "fin" | "cli";
-
+/* Filters are built from the departments that actually have openings, so a
+   chip never leads to an empty list. ("Recruitment" used to be a chip with
+   no department behind it, which silently showed everything.) */
+const GROUP_ORDER: Department[] = ["Recruitment", "Business Development", "Client", "Operations", "Marketing", "People", "Engineering", "Finance"];
+const LIVE_DEPTS = GROUP_ORDER.filter((d) => positions.some((p) => p.department === d));
+type FilterKey = "all" | Department;
 const FILTERS: { key: FilterKey; label: string; dept?: Department }[] = [
   { key: "all", label: "All" },
-  { key: "rec", label: "Recruitment" },
-  { key: "ops", label: "Operations", dept: "Operations" },
-  { key: "mkt", label: "Marketing", dept: "Marketing" },
-  { key: "ppl", label: "People", dept: "People" },
-  { key: "eng", label: "Engineering", dept: "Engineering" },
-  { key: "fin", label: "Finance", dept: "Finance" },
-  { key: "cli", label: "Client", dept: "Client" },
+  ...LIVE_DEPTS.map((d) => ({ key: d as FilterKey, label: d, dept: d })),
 ];
-
-const GROUP_ORDER: Department[] = ["Operations", "Marketing", "People", "Engineering", "Finance", "Client"];
 
 const SearchIcon = () => (
   <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.4" /><path d="M11 11l3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" /></svg>
@@ -36,13 +32,13 @@ function deriveSeniority(title: string): string {
   return "Mid–Senior";
 }
 
-function roleHref(p: { title: string; location: string; department: string }): string {
+function roleHref(p: { title: string; location: string; department: string; seniority?: string }): string {
   const params = new URLSearchParams({
     mode: "internal",
     role: p.title,
     l: p.location,
     d: p.department,
-    s: deriveSeniority(p.title),
+    s: p.seniority || deriveSeniority(p.title),
     e: "Full time · Permanent",
   });
   return `${routes.role}?${params}`;
@@ -87,7 +83,7 @@ export default function OpenPositionsBoard() {
     <div className="jp">
       <div className="jp-eyebrow">Careers at Rivago &middot; <span>{positions.length}</span> open</div>
       <h1 className="jp-title">Open <em>positions.</em></h1>
-      <p className="jp-sub">Senior-only, partner-track roles across our offices in Delaware, Pune and Ontario. Every hire owns their work end to end — no juniors, no handoffs.</p>
+      <p className="jp-sub">Recruitment, business development, client and delivery roles — based at our Pune office or remote. Every hire owns their work end to end, with no handoffs.</p>
 
       <div className="jp-search">
         <SearchIcon />

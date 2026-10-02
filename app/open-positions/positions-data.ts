@@ -4,9 +4,12 @@
 // export. Not to be confused with app/view-jobs/jobs-data.ts, which lists
 // Rivago's CLIENTS' open roles for outside candidates.
 
-export type Department = "Operations" | "Marketing" | "People" | "Engineering" | "Finance" | "Client";
+export type Department = "Recruitment" | "Business Development" | "Client" | "Operations" | "Marketing" | "People" | "Engineering" | "Finance";
 
 export type Position = {
+  /* Shown as the level chip on the role page; derived from the title when
+     absent, which reads "Senior" for anything titled Senior/Lead/Director. */
+  seniority?: string;
   id: string;
   title: string;
   department: Department;
@@ -23,7 +26,10 @@ export type Position = {
    and staffing — none of the eleven is a recruiting desk. They are parked
    here, unpublished, until the firm confirms which are real. To publish a
    role, move its entry into `positions`; the board switches from the
-   general-application panel to the list as soon as one is there. */
+   general-application panel to the list as soon as one is there.
+   Delivery Operations Manager, Talent Acquisition Specialist and Account
+   Director were confirmed in their recruitment-firm form and are now in
+   `positions`; the entries here are the old, unconfirmed versions. */
 export const unconfirmedPositions: Position[] = [
   { id: "delivery-operations-manager", title: "Delivery Operations Manager", department: "Operations", location: "Pune, India", type: "Full-time", locationType: "On-site" },
   { id: "head-of-brand-marketing", title: "Head of Brand & Marketing", department: "Marketing", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
@@ -38,5 +44,18 @@ export const unconfirmedPositions: Position[] = [
   { id: "account-director-strategic-clients", title: "Account Director · Strategic Clients", department: "Client", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
 ];
 
-/* Published, confirmed openings. Empty until the firm confirms one. */
-export const positions: Position[] = [];
+/* Published, confirmed openings — supplied by the firm on 2 October 2026:
+   all hiring for Pune or remote. Role-page copy for each is in
+   app/view-jobs/role/RoleDetail.tsx (ROLE_COPY), drafted from the title and
+   marked for the firm's review. */
+const PUNE_OR_REMOTE = "Pune, India or remote";
+export const positions: Position[] = [
+  { id: "senior-us-recruiter", title: "Senior US Recruiter", department: "Recruitment", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Senior" },
+  { id: "recruitment-manager", title: "Recruitment Manager", department: "Recruitment", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Manager" },
+  { id: "talent-acquisition-specialist-healthcare", title: "Talent Acquisition Specialist · Healthcare", department: "Recruitment", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Mid–Senior" },
+  { id: "business-development-manager", title: "Business Development Manager", department: "Business Development", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Manager" },
+  { id: "business-development-executive", title: "Business Development Executive", department: "Business Development", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Associate" },
+  { id: "account-manager", title: "Account Manager", department: "Client", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Mid–Senior" },
+  { id: "account-director-strategic-clients", title: "Account Director · Strategic Clients", department: "Client", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Director" },
+  { id: "delivery-operations-manager", title: "Delivery Operations Manager", department: "Operations", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Manager" },
+];
