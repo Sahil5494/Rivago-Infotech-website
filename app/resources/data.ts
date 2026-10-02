@@ -61,9 +61,11 @@ export type Article = {
      professional endorsement. Nobody has given one, so there is nowhere to
      put an invented one. Add the field when a real reviewer exists. */
   summary?: string;
-  /* Hero image. Optional, and only the six long-form guides carry one —
-     see the note where they are set for why, and for which of them are a
-     genuine fit rather than decoration. */
+  /* Hero image, also the card art on /resources. Every article has one:
+     the six long-form guides use photos from public/assets/services, the
+     other fourteen from public/assets/resources (both Adobe Stock, licensed
+     to the Rivago account — see LICENCES.md in each folder). Optional, so a
+     new article without one falls back to its drawn diagram. */
   image?: { src: string; alt: string };
   sections: ArticleSection[];
   faqs?: { q: string; a: string }[];
@@ -687,6 +689,7 @@ export const articles: Article[] = [
     readTime: "6 min read",
     category: "interview",
     categoryLabel: "Interview guide",
+    image: { src: "/assets/resources/panel-debrief.jpg", alt: "Colleagues discussing documents around a meeting table" },
     sections: [
       {
         h: "The first voice anchors the room",
@@ -720,6 +723,7 @@ export const articles: Article[] = [
     readTime: "6 min read",
     category: "salary",
     categoryLabel: "Salary guide",
+    image: { src: "/assets/resources/salary-band.jpg", alt: "A manager working through figures on a calculator" },
     sections: [
       {
         h: "Decide before you meet anyone",
@@ -753,6 +757,7 @@ export const articles: Article[] = [
     readTime: "5 min read",
     category: "interview",
     categoryLabel: "Interview guide",
+    image: { src: "/assets/resources/reference-checks.jpg", alt: "A professional on a phone call at his desk, pen in hand" },
     sections: [
       {
         h: "The call most people make is worthless",
@@ -786,6 +791,7 @@ export const articles: Article[] = [
     readTime: "7 min read",
     category: "salary",
     categoryLabel: "Salary guide",
+    image: { src: "/assets/resources/comparing-offers.jpg", alt: "A person looking up at three chalk arrows pointing different ways" },
     sections: [
       {
         h: "The headline number is the least of it",
@@ -819,6 +825,7 @@ export const articles: Article[] = [
     readTime: "5 min read",
     category: "interview",
     categoryLabel: "Interview guide",
+    image: { src: "/assets/resources/interview-rounds.jpg", alt: "An interviewer and a candidate talking across a desk" },
     sections: [
       {
         h: "Every round should answer a question the last one could not",
@@ -852,6 +859,7 @@ export const articles: Article[] = [
     readTime: "6 min read",
     category: "salary",
     categoryLabel: "Salary guide",
+    image: { src: "/assets/resources/negotiating-offer.jpg", alt: "Two professionals in conversation across a table" },
     sections: [
       {
         h: "Ask once, clearly, with a number",
@@ -895,6 +903,7 @@ export const articles: Article[] = [
     readTime: "5 min read",
     category: "salary",
     categoryLabel: "Salary guide",
+    image: { src: "/assets/resources/vp-eng-pay.jpg", alt: "A product team's hands over app sketches and a phone" },
     sections: [
       {
         h: "Stage explains more than city",
@@ -929,6 +938,7 @@ export const articles: Article[] = [
     readTime: "5 min read",
     category: "blog",
     categoryLabel: "Article",
+    image: { src: "/assets/resources/offer-declined.jpg", alt: "A woman at her desk reading a letter" },
     sections: [
       {
         h: "The decline rarely happens at the offer stage",
@@ -969,6 +979,7 @@ export const articles: Article[] = [
     readTime: "7 min read",
     category: "interview",
     categoryLabel: "Interview guide",
+    image: { src: "/assets/resources/job-brief.jpg", alt: "A laptop, notepad and pen on a white desk" },
     sections: [
       {
         h: "The job description is not the brief",
@@ -1004,6 +1015,7 @@ export const articles: Article[] = [
     readTime: "9 min read",
     category: "salary",
     categoryLabel: "Salary guide",
+    image: { src: "/assets/resources/equity-explained.jpg", alt: "Hands pointing at charts on a tablet and printed reports" },
     sections: [
       {
         h: "The four-year, one-year-cliff standard",
@@ -1035,6 +1047,7 @@ export const articles: Article[] = [
     readTime: "5 min read",
     category: "blog",
     categoryLabel: "Article",
+    image: { src: "/assets/resources/uae-licensing.jpg", alt: "A doctor in scrubs reading a tablet in a hospital corridor" },
     sections: [
       {
         h: "Start with the sector, not the visa",
@@ -1066,6 +1079,7 @@ export const articles: Article[] = [
     readTime: "6 min read",
     category: "interview",
     categoryLabel: "Interview guide",
+    image: { src: "/assets/resources/structured-interviews.jpg", alt: "An interviewer writing notes during an interview" },
     sections: [
       {
         h: "What 'structured' actually means",
@@ -1100,6 +1114,7 @@ export const articles: Article[] = [
     readTime: "4 min read",
     category: "blog",
     categoryLabel: "Article",
+    image: { src: "/assets/resources/anti-portal.jpg", alt: "A magnifying glass over a stack of CVs" },
     sections: [
       {
         h: "What a portal actually optimises for",
@@ -1139,6 +1154,7 @@ export const articles: Article[] = [
     readTime: "8 min read",
     category: "blog",
     categoryLabel: "Article",
+    image: { src: "/assets/resources/bad-hire-cost.jpg", alt: "A tired manager rubbing her eyes at a desk in the evening" },
     sections: [
       {
         h: "The number most companies underestimate",

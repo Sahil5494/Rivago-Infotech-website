@@ -4,11 +4,11 @@ import type { Article } from "./data";
 
 /* The art panel on a Resources card.
  *
- * PHOTO where the article already has a licensed one (the six long-form
- * guides; see public/assets/services/LICENCES.md). No other photography is
- * licensed, and none is hotlinked or invented.
+ * PHOTO from the article's `image`. All twenty have one (Adobe Stock,
+ * licensed to the Rivago account; see LICENCES.md in public/assets/services
+ * and public/assets/resources).
  *
- * DIAGRAM for every other article: a schematic drawn for that topic, on the
+ * DIAGRAM as the fallback, for an article added without a photo: a schematic drawn for that topic, on the
  * category's colourway. They illustrate the idea and carry no figures —
  * no salaries, percentages or counts — because there is no measured data
  * behind any to show. Labels are generic terms (Min/Mid/Max, Y1-Y4) only.
