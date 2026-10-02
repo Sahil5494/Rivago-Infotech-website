@@ -2393,6 +2393,12 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
    scroll past. The Featured block keeps its original proportions, at the
    client's call. */
 .rc-rail .rc-art{aspect-ratio:16/7}
+.rc-art{position:relative;display:flex;align-items:center;justify-content:center}
+/* Diagram: centred, inset from the panel edge, never cropped. */
+.rc-diagram{width:88%;height:84%;display:block}
+/* Photo: fills the panel; a light green wash ties it to the colourways. */
+.rc-art-photo img{object-fit:cover}
+.rc-art-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(61,255,135,.10),rgba(11,59,36,.18))}
 .rc:hover .rc-art{transform:translateY(-4px);box-shadow:0 20px 44px rgba(10,20,11,.16)}
 .rc:focus-visible{outline:none}
 .rc:focus-visible .rc-art{outline:2px solid var(--accent-inv);outline-offset:3px}

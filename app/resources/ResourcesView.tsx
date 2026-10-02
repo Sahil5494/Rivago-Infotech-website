@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { routes, articleHref } from "@/lib/routes";
 import { articles, featuredArticle, CATEGORIES, type Category } from "./data";
+import ArticleArt from "./ArticleArt";
 
 /* /resources, rebuilt to the reference layout the client sent (metaview.ai):
  * title and standfirst, a row of category tabs, a Featured block running one
@@ -151,19 +152,9 @@ const ArrowNE = () => (
   </svg>
 );
 
-/* The art panel: the category's colourway and nothing else, at the client's
-   call. It used to carry the article's kicker ("Offer stage", "UAE
-   licensing") and a small RIVAGO wordmark. Both are gone, and the `kicker`
-   field left the Article type with them rather than staying in the data
-   unread — an unused field is exactly how `image`, `tag` and `kind` came to
-   sit in that file for nothing.
-
-   Worth knowing about the result: cards in one row now share a colourway
-   with no text to tell them apart, so a row of five salary guides is five
-   identical panels. The titles underneath do the distinguishing. */
-function CardArt({ size }: { size: "lg" | "sm" | "md" }) {
-  return <div className={`rc-art rc-art-${size}`} aria-hidden="true" />;
-}
+/* The art panel lives in ./ArticleArt: the article's licensed photo where it
+   has one, otherwise a diagram drawn for its topic. It used to be the
+   category colourway alone, at an earlier call of the client's. */
 
 /* A category row's rail with prev/next arrows. Rows clip their fourth card
    on desktop, and a mouse has no sideways scroll, so without these most of a
@@ -336,7 +327,7 @@ export default function ResourcesView() {
                   because it described an article that existed nowhere in the
                   library. See the note on FEATURED_ID in ./data.ts. */}
               <Link className="rc rc-lg" data-cat={featuredArticle.category} href={articleHref(featuredArticle.id)}>
-                <CardArt size="lg" />
+                <ArticleArt article={featuredArticle} size="lg" />
                 <div className="rc-meta">
                   <span className="rc-cat">{featuredArticle.categoryLabel}</span>
                   <span className="rc-dot" aria-hidden="true">·</span>
@@ -349,7 +340,7 @@ export default function ResourcesView() {
               <div className="rfeat-side">
                 {featuredRest.map((a) => (
                   <Link className="rc rc-sm" data-cat={a.category} key={a.id} href={articleHref(a.id)}>
-                    <CardArt size="sm" />
+                    <ArticleArt article={a} size="sm" />
                     <div className="rc-meta">
                       <span className="rc-cat">{a.categoryLabel}</span>
                       <span className="rc-dot" aria-hidden="true">·</span>
@@ -381,7 +372,7 @@ export default function ResourcesView() {
                   {items.map((a) => (
                     <li key={a.id}>
                       <Link className="rc rc-rail" data-cat={a.category} href={articleHref(a.id)}>
-                        <CardArt size="md" />
+                        <ArticleArt article={a} size="md" />
                         <h3 className="rc-ti">{a.title}<ArrowNE /></h3>
                         <div className="rc-rail-meta">
                           <time dateTime={a.date}>{a.displayDate}</time>
@@ -410,7 +401,7 @@ export default function ResourcesView() {
             <div className="rgrid">
               {gridItems.map((a) => (
                 <Link className="rc rc-md" data-cat={a.category} key={a.id} href={articleHref(a.id)}>
-                  <CardArt size="md" />
+                  <ArticleArt article={a} size="md" />
                   <div className="rc-meta">
                     <span className="rc-cat">{a.categoryLabel}</span>
                     <span className="rc-dot" aria-hidden="true">·</span>
