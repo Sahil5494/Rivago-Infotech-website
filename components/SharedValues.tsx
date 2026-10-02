@@ -19,13 +19,15 @@ const values = [
 
 /* tone="plain" puts the band on the page ground with a top rule, for a page
    where it follows another cream band (Search Jobs). Careers keeps cream. */
-export default function SharedValues({ tone = "cream" }: { tone?: "cream" | "plain" }) {
+/* `lede` overrides the intro line for a page with a different reader:
+   Careers speaks to people joining; Search Jobs to candidates. */
+export default function SharedValues({ tone = "cream", lede }: { tone?: "cream" | "plain"; lede?: string }) {
   return (
     <section className={`section cv-sec lt${tone === "plain" ? " cv-plain" : ""}`} id="values">
       <div className="wrap">
         <span className="eyebrow light">Who we are</span>
         <h2 className="section-h2 gs" style={{ marginTop: 18, marginBottom: 0, color: "var(--text-inv-1)", maxWidth: 640 }}>Our shared <em>values.</em></h2>
-        <p className="cv-lede gs">The four things we hire for — and hold ourselves to with candidates, clients and each other.</p>
+        <p className="cv-lede gs">{lede || "The four things we hire for — and hold ourselves to with candidates, clients and each other."}</p>
         <div className="cv-grid">
           {values.map((v) => (
             <div className="cv" key={v.t}>

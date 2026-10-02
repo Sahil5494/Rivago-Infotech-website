@@ -873,7 +873,7 @@ a{color:inherit;text-decoration:none}
    width and height from the measured node centres. */
 .pth-rail{position:absolute;top:25px;left:calc((100% - 84px) / 8);right:calc((100% - 84px) / 8);height:2px;background:var(--rule-inv-1);border-radius:2px;overflow:hidden}
 .pth-rail-fill{position:absolute;inset:0;background:var(--accent-inv);border-radius:2px;transform-origin:left;transform:scaleX(var(--pt-fill,1));transition:transform .2s linear}
-.pth-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.pth-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--pth-n,4),1fr);gap:28px}
 .pth-step{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center}
 .pth-node{position:relative;z-index:1;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
   background:var(--bg);border:1.5px solid var(--rule-inv-2);color:var(--text-inv-3);
@@ -3385,7 +3385,8 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .sj-job-t{margin:0;font-size:var(--fz8);font-weight:500;letter-spacing:-.015em;line-height:1.3}
 .sj-job-meta{font-size:var(--fz3);color:var(--text2)}
 .sj-job-foot{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:auto;padding-top:16px;border-top:1px solid var(--border);font-size:var(--fz2);color:var(--text2);font-variant-numeric:tabular-nums}
-.sj-job-foot .sj-job-date{margin-left:auto}
+.sj-job-go{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-weight:500;color:var(--accent);transition:gap .2s}
+.sj-job:hover .sj-job-go{gap:10px}
 .sj-browse{display:grid;gap:14px;margin-top:40px;padding-top:32px;border-top:1px solid var(--border)}
 .sj-browse-row{display:grid;grid-template-columns:110px 1fr;align-items:baseline;gap:12px}
 .sj-browse-row>div{display:flex;flex-wrap:wrap;gap:8px}
@@ -3484,8 +3485,8 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
    less its share of the gaps. */
 .sj-placed-grid{list-style:none;margin:0;padding:0;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
 .sj-placed-grid::-webkit-scrollbar{display:none}
-.sj-placed-grid .sj-person{flex:0 0 calc((100% - 60px) / 4);scroll-snap-align:start}
-.sj-person{display:flex;flex-direction:column;align-items:center;text-align:center;min-height:300px;padding:34px 26px 32px;background:var(--surface-3);border:1px solid var(--rule-1);border-radius:24px;min-width:0;transition:border-color .25s var(--ease)}
+.sj-placed-grid .sj-person{flex:0 0 calc((100% - 80px) / 5);scroll-snap-align:start}
+.sj-person{display:flex;flex-direction:column;align-items:center;text-align:center;min-height:0;padding:32px 22px 28px;background:var(--surface-3);border:1px solid var(--rule-1);border-radius:24px;min-width:0;transition:border-color .25s var(--ease)}
 .sj-person:hover{border-color:var(--tint-3)}
 .sj-person-q{color:var(--accent);align-self:flex-start;margin-bottom:22px}
 .sj-person-av{flex:0 0 52px;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--tint-1);border:1px solid var(--tint-2);font-family:var(--fm);font-size:var(--fz3);font-weight:500;letter-spacing:.04em;color:var(--accent);margin-bottom:24px}
@@ -3493,6 +3494,15 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .sj-person.has-quote .sj-person-d{color:var(--text-1)}
 .sj-person-who{display:flex;flex-direction:column;gap:4px;margin-top:auto;padding-top:28px}
 .sj-person-n{margin:0;font-size:var(--fz6);font-weight:500;line-height:1.4;letter-spacing:normal;color:var(--text-1);overflow-wrap:anywhere}
+/* Field label under the role: the card's one line of context now the
+   repeated sentence is gone. */
+.sj-person-f{display:inline-block;margin-top:14px;padding:4px 11px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:999px;font-size:var(--fz1);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.sj-placed-ctl[hidden]{display:none}
+/* Without a quote the card is initials, name, role, field — top-aligned so
+   names sit on one line across the row, and centred so the field pill keeps
+   its own width. A quote card keeps the name block pinned to the foot. */
+.sj-person .sj-person-who{margin-top:0;padding-top:0;align-items:center}
+.sj-person.has-quote .sj-person-who{margin-top:auto;padding-top:28px}
 .sj-person-r{font-size:var(--fz3);color:var(--text-3)}
 .sj-placed-ctl{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:32px}
 .sj-placed-count{font-family:var(--fm);font-size:var(--fz2);color:var(--text-2);font-variant-numeric:tabular-nums;min-width:8ch;text-align:center}
@@ -3502,7 +3512,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .sj-placed-btn:disabled{opacity:.35;cursor:default}
 @media(max-width:1180px){.sj-placed-grid .sj-person{flex-basis:calc((100% - 40px) / 3)}}
 @media(max-width:900px){.sj-placed{padding:64px 20px}.sj-placed-grid .sj-person{flex-basis:calc((100% - 20px) / 2)}}
-@media(max-width:620px){.sj-placed-grid .sj-person{flex-basis:86%;min-height:280px}}
+@media(max-width:620px){.sj-placed-grid .sj-person{flex-basis:78%}}
 /* The .sj-tst / .sj-quote / .sj-av rules for the "Ask the people who took the
    job" testimonial band stood here; the band came out with its unattributed
    quotes. */

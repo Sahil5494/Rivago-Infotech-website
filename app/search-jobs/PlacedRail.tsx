@@ -3,32 +3,28 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { placements, initials } from "@/lib/placements";
 
-/* "Don't just take it from us" — one row of placed-candidate cards (four in
-   view on wide screens, three, two, then one on phones), with arrows to
-   step through the rest. Card format follows the client's reference: big
-   quote mark, centred words, name and role at the foot. Same mechanic as the home page's ReframeRail: native
-   scroll-snap underneath, so touch swiping and keyboard scrolling work
-   without the buttons, and the buttons disable at either end.
+/* "Don't just take it from us" — a row of placed-candidate cards: all five
+   in view on wide screens; three, two, then one with arrows / swipe as the
+   screen narrows (the arrows hide when everything already fits). Native
+   scroll-snap underneath, so touch and keyboard scrolling work without the
+   buttons. Card: initials, name, role, field — or, once a person gives one,
+   their quote in the quote layout. Nothing is attributed to anyone. */
 
-   The line on each card is Rivago speaking, not the candidate: it restates
-   the promise the page already makes in "What actually happens" (a
-   recruiter who has hired in your field) for the field they were placed
-   in. Nothing here is attributed to the person, so those cards show the
-   person's initials rather than a quote mark. Real quotes go in
-   lib/placements.ts as `quote` once someone gives one, and that card
-   switches to the quote layout on its own. */
-
-const FIELD_LINE: Record<string, string> = {
-  "Software engineering": "software engineering",
-  Data: "data engineering and analytics",
-  "Front-end": "front-end engineering",
-  "CRM & Salesforce": "Salesforce and CRM",
-  "AI & ML": "AI and machine learning",
-  Support: "technical support",
-  "Digital experience": "AEM and digital experience",
-};
 
 const GAP = 20;
+
+/* Five, not all eighteen, at the firm's request: the first person from
+   each of five different fields, so the row shows range. Each card is
+   name, role and field — the repeated "Matched to the role by a Rivago
+   recruiter…" line read as filler eighteen times over. Anyone with a real
+   `quote` is shown first, in the quote layout. */
+const SHOWN = 5;
+const shown = (() => {
+  const quoted = placements.filter((p) => p.quote);
+  const seen = new Set<string>();
+  const byField = placements.filter((p) => !p.quote && p.field && !seen.has(p.field) && seen.add(p.field));
+  return [...quoted, ...byField].slice(0, SHOWN);
+})();
 
 export default function PlacedRail() {
   const railRef = useRef<HTMLUListElement>(null);
@@ -45,8 +41,8 @@ export default function PlacedRail() {
     if (card) {
       const step = card.getBoundingClientRect().width + GAP;
       const first = Math.round(el.scrollLeft / step) + 1;
-      const shown = Math.max(1, Math.round((el.clientWidth + GAP) / step));
-      setRange([first, Math.min(placements.length, first + shown - 1)]);
+      const inView = Math.max(1, Math.round((el.clientWidth + GAP) / step));
+      setRange([first, Math.min(shown.length, first + inView - 1)]);
     }
   }, []);
 
@@ -80,33 +76,26 @@ export default function PlacedRail() {
   return (
     <div className="sj-placed-rail">
       <ul className="sj-placed-grid" ref={railRef} aria-label="Placed candidates">
-        {placements.map((c) => (
+        {shown.map((c) => (
           <li className={`sj-person${c.quote ? " has-quote" : ""}`} key={c.name}>
             {c.quote ? (
               <svg className="sj-person-q" width="44" height="34" viewBox="0 0 44 34" fill="none" aria-hidden="true"><path d="M0 34V20.4C0 8.6 6 1.8 17.4 0l1.8 5C13 6.8 10 10.4 9.6 16H18v18H0zm25 0V20.4C25 8.6 31 1.8 42.4 0l1.6 5c-6.2 1.8-9.2 5.4-9.6 11H43v18H25z" fill="currentColor" /></svg>
             ) : (
               <span className="sj-person-av" aria-hidden="true">{initials(c.name)}</span>
             )}
-            {c.quote ? (
-              <blockquote className="sj-person-d">&ldquo;{c.quote}&rdquo;</blockquote>
-            ) : (
-              <p className="sj-person-d">
-                {c.field
-                  ? `Matched to the role by a Rivago recruiter who specialises in ${FIELD_LINE[c.field]}.`
-                  : "Matched to the role by a Rivago recruiter who specialises in the field."}
-              </p>
-            )}
+            {c.quote && <blockquote className="sj-person-d">&ldquo;{c.quote}&rdquo;</blockquote>}
             <div className="sj-person-who">
               <h3 className="sj-person-n">{c.name}</h3>
               <span className="sj-person-r">{c.role || "Placed through Rivago"}</span>
+              {c.field && <span className="sj-person-f">{c.field}</span>}
             </div>
           </li>
         ))}
       </ul>
-      <div className="sj-placed-ctl">
+      <div className="sj-placed-ctl" hidden={atStart && atEnd}>
         <button type="button" className="sj-placed-btn" onClick={() => go(-1)} disabled={atStart} aria-label="Previous people">{arrow(true)}</button>
         <span className="sj-placed-count" aria-live="polite">
-          {range[0] === range[1] ? range[0] : `${range[0]}–${range[1]}`} of {placements.length}
+          {range[0] === range[1] ? range[0] : `${range[0]}–${range[1]}`} of {shown.length}
         </span>
         <button type="button" className="sj-placed-btn" onClick={() => go(1)} disabled={atEnd} aria-label="Next people">{arrow(false)}</button>
       </div>

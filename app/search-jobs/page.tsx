@@ -6,6 +6,7 @@ import SearchJobsSearch from "./SearchJobsSearch";
 import PlacedRail from "./PlacedRail";
 import Faq, { type FaqItem } from "@/components/Faq";
 import SharedValues from "@/components/SharedValues";
+import HiringTimeline from "@/components/HiringTimeline";
 import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
@@ -143,8 +144,10 @@ export default function SearchJobsPage() {
                 <Link className="sj-job" href={boardLink({ q: j.t, l: j.c.split(",")[0] })}>
                   <span className="sj-job-dept">{j.dept}</span>
                   <h3 className="sj-job-t">{j.t}</h3>
-                  <span className="sj-job-meta">{placeLabel(j.c)} · {j.w}</span>
-                  <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span className="sj-job-pay">{j.p}</span>}<span className="sj-job-date">Posted {posted(j.d)}</span></span>
+                  <span className="sj-job-meta">{placeLabel(j.c)} · {j.w} · Posted {posted(j.d)}</span>
+                  {/* Same footer pattern as the Careers role cards: terms on the
+                      left, a visible way in on the right. */}
+                  <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span className="sj-job-pay">{j.p}</span>}<span className="sj-job-go">View role <svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></span></span>
                 </Link>
               </li>
             ))}
@@ -176,15 +179,10 @@ export default function SearchJobsPage() {
           <div className="eyb">What actually happens</div>
           <h2>No black holes.<br />No <em>disappearing acts.</em></h2>
           <p className="lede">Most applications vanish. Here is what we commit to instead, in writing, every time — and if a role is wrong for you, we will tell you so.</p>
-          <div className="sj-step-grid">
-            {steps.map((s) => (
-              <div className="sj-step inv" key={s.n}>
-                <div className="sj-step-n">{s.n}</div>
-                <h3>{s.t}</h3>
-                <p>{s.d}</p>
-              </div>
-            ))}
-          </div>
+          {/* The Careers page's "How we hire" timeline (HiringTimeline), so the
+              two pages explain their process the same way. It replaced three
+              heavy dark cards that stacked to ~1,500px on phones. */}
+          <HiringTimeline steps={steps} />
         </div>
       </section>
 
@@ -192,7 +190,7 @@ export default function SearchJobsPage() {
           who back it up, then the FAQ and the ask. On the plain ground
           with a rule, not cream — it follows "What actually happens",
           which is cream, and two cream bands ran together as one. */}
-      <SharedValues tone="plain" />
+      <SharedValues tone="plain" lede="The four things every recruiter here is held to — and what you can expect from us when we represent you." />
 
       {/* Real placements, supplied by the firm (lib/placements.ts), in a
           one-row rail with arrows (PlacedRail). No quotes are attributed to

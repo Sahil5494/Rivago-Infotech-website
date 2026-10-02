@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 
 /* The home page's OUR PROCESS timeline (ProcessTimeline, .pt-*) laid out
  * horizontally, for "How we hire" on /career: a rail across the top, a
@@ -82,7 +82,7 @@ export default function HiringTimeline({ steps }: { steps: HireStep[] }) {
   }, []);
 
   return (
-    <div className="pth" ref={wrapRef}>
+    <div className="pth" ref={wrapRef} style={{ ["--pth-n" as string]: steps.length } as CSSProperties}>
       <div className="pth-rail" aria-hidden="true">
         <span className="pth-rail-fill" />
       </div>
