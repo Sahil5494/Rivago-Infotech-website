@@ -75,7 +75,7 @@ export default function CareerPage() {
           <h1 className="gs" style={{ marginTop: 18 }}>Build a career placing <em>other careers.</em></h1>
           <p className="lead gs" style={{ maxWidth: 600, margin: "24px auto 0" }}>We hire experienced recruiters, and the business development, client and delivery people who work beside them. Smaller team, bigger ownership — your work is yours from start to finish.</p>
           <div className="gs" style={{ marginTop: 36, display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link className="btn btn-prim" href={routes.openPositions}>See {positions.length} open roles <Arrow /></Link>
+            <Link className="btn btn-prim" href={routes.openPositions}>Join the team <Arrow /></Link>
             <a className="btn btn-ghost" href={routes.contactUs} data-hire="seeker">Send us your CV</a>
           </div>
         </div>
@@ -189,7 +189,7 @@ export default function CareerPage() {
           <h2>Do the best work of <em>your career.</em></h2>
           <p>We&apos;re after people who pair real craft with genuine care — recruiters, account managers and the business development team behind them.</p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link className="btn-hp" href={routes.openPositions}>See {positions.length} open roles <Arrow /></Link>
+            <Link className="btn-hp" href={routes.openPositions}>Join the team <Arrow /></Link>
             <a className="btn-hg" href={routes.contactUs} data-hire="seeker">Send us your CV</a>
           </div>
         </div>
