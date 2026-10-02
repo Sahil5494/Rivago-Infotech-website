@@ -45,7 +45,7 @@ export const unconfirmedPositions: Position[] = [
 ];
 
 /* Published, confirmed openings — supplied by the firm on 2 October 2026:
-   all hiring for Pune or remote. Role-page copy for each is in
+   all hiring for Pune or remote, all full-time (confirmed). Role-page copy for each is in
    app/view-jobs/role/RoleDetail.tsx (ROLE_COPY), drafted from the title and
    marked for the firm's review. */
 const PUNE_OR_REMOTE = "Pune, India or remote";

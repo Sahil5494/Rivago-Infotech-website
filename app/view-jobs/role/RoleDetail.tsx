@@ -134,7 +134,7 @@ const ROLE_COPY: Record<string, DeptCopy> = {
   "Senior US Recruiter": {
     a: "You recruit for Rivago's US clients end to end — taking the requirement, sourcing and screening candidates, and seeing each one through to a start date.",
     own: ["Work US requirements end to end, from intake to start date.", "Source candidates directly, not only from inbound applications.", "Screen against the client's brief before anyone is submitted.", "Keep candidates informed at every stage, including when the answer is no."],
-    need: ["Experience recruiting for US clients, including US work authorisation and pay structures.", "Confident direct sourcing across job boards, LinkedIn and your own network.", "Able to work hours that overlap with US clients."],
+    need: ["Experience recruiting for US clients, including US work authorisation and pay structures.", "Confident direct sourcing across job boards, LinkedIn and your own network.", "Able to work hours that overlap with US clients."], // confirmed by the firm, 2 Oct 2026,
   },
   "Recruitment Manager": {
     a: "You lead a team of recruiters — setting priorities across open requirements, keeping quality high, and making sure every client and candidate gets a straight answer.",
