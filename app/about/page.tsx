@@ -299,7 +299,7 @@ export default function AboutPage() {
             </div>
             <div className="build-card">
               <h3>One name, start to finish</h3>
-              <p>The partner who takes the brief runs the search, closes the offer and checks in at month twelve. No handoff to a coordinator, no relay through an account manager, nobody learning your business on your mandate.</p>
+              <p>The partner who takes the brief runs the search, closes the offer and stays in touch after the start date. No handoff to a coordinator, no relay through an account manager, nobody learning your business on your mandate.</p>
             </div>
             <div className="build-card">
               <h3>Honest briefs, in both directions</h3>

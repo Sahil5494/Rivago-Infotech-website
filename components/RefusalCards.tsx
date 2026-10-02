@@ -63,13 +63,13 @@ const CARDS: Card[] = [
   },
   {
     t: "We won't hand off to a coordinator",
-    d: "The partner who took the brief runs the search, closes the offer, and checks in at month twelve. One name, one person.",
+    d: "The partner who took the brief runs the search, closes the offer, and stays in touch after the start date. One name, one person.",
     more: "No relay through an account manager, no handover to business development once the contract is signed, and nobody learning your business on your mandate.",
     icon: (<svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="7.5" r="3.5" {...P} /><path d="M4.5 18.5c0-3.3 2.9-5.5 6.5-5.5s6.5 2.2 6.5 5.5" {...P} /></svg>),
   },
   {
     t: "We won't poach from our own placements",
-    d: "Twelve months off-limits as standard on retained engagements, and twenty-four on the senior-most retained searches.",
+    d: "Anyone we place with you is off-limits to us. The off-limits period is agreed up front and written into the contract.",
     more: "It is the promise that lets a client tell us things about their own team they would not tell anyone else.",
     icon: (<svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 2.6l7 2.6v5.4c0 4-2.9 7.5-7 8.8-4.1-1.3-7-4.8-7-8.8V5.2z" {...P} /><path d="M8.6 11h4.8" {...P} /></svg>),
   },
