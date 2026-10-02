@@ -48,8 +48,8 @@ export default async function PositionPage({ params }: { params: Promise<{ id: s
   };
   /* JobPosting, for Google for Jobs. Remote here means within India — the
      firm hires remote staff in India for these desks — so the remote
-     requirement names India. The Pune office is given by city only: its
-     street line in lib/routes.ts ("43 Privet Drive") is a placeholder. */
+     requirement names India. The Pune office address comes from lib/routes.ts
+     (confirmed real by the firm, 2 October 2026). */
   const copy = copyFor(p.title, p.department);
   const pune = offices.find((o) => o.city === "Pune");
   const posted = p.posted || new Date().toISOString().slice(0, 10);
@@ -65,7 +65,7 @@ export default async function PositionPage({ params }: { params: Promise<{ id: s
     hiringOrganization: { "@type": "Organization", name: "Rivago Infotech", sameAs: BASE },
     jobLocation: {
       "@type": "Place",
-      address: { "@type": "PostalAddress", addressLocality: "Pune", addressRegion: "Maharashtra", postalCode: pune?.postal, addressCountry: "IN" },
+      address: { "@type": "PostalAddress", streetAddress: pune?.street, addressLocality: "Pune", addressRegion: "Maharashtra", postalCode: pune?.postal, addressCountry: "IN" },
     },
     ...(/remote/i.test(p.location) ? { jobLocationType: "TELECOMMUTE", applicantLocationRequirements: { "@type": "Country", name: "India" } } : {}),
     ...(p.salary ? { baseSalary: { "@type": "MonetaryAmount", currency: "INR", value: { "@type": "QuantitativeValue", minValue: p.salary.min, maxValue: p.salary.max, unitText: "YEAR" } } } : {}),
