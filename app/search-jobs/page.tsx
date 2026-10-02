@@ -61,8 +61,9 @@ const posted = (iso: string) =>
 const boardLink = (q: Record<string, string>) => `${routes.viewJobs}?${new URLSearchParams(q)}`;
 
 /* Candidate FAQ — questions chosen from the ones candidates actually ask
-   (apply, what happens next, updates, evaluation, cost, roles, locations,
-   visas, no fit). Replaces "How we work", whose four cards repeated the
+   (apply, what happens next, cost, roles, locations, visas, no fit) —
+   seven, after updates and evaluation were folded into "what happens
+   next" and the steps section. Replaces "How we work", whose four cards repeated the
    steps above (specialist recruiter, reply times, payroll). Its one idea
    not said elsewhere, "we say no on your behalf", now closes the steps
    lede.
@@ -77,9 +78,7 @@ const faqItems: FaqItem[] = [
      the CV form is the only route that reaches the firm today. Revisit
      this answer when Apply is wired up. */
   { q: "How do I apply for a role?", a: "Find the role on the jobs board, then use \u201cSend us your CV\u201d at the bottom of this page and tell us which role it is. You can apply for as many roles as fit you — your recruiter will tell you which are the strongest match." },
-  { q: "What happens after I apply?", a: "A recruiter who hires in your field reads your application and replies inside two business days, including when the answer is no. If there is a fit, they call you to talk through the role: the client, the team, who you would report to and what it pays. Nothing goes to a client until you have seen the brief and said yes." },
-  { q: "How will I hear about my application?", a: "From your recruiter directly — a person, not an automated portal. After every interview you hear the client\u2019s feedback, good or bad, in time to use it." },
-  { q: "How are candidates evaluated?", a: "Against a written scorecard agreed with the hiring manager before the search opens, not against a keyword match. Your recruiter interviews you against that bar before anyone at the client sees your profile, and tells you what the panel will probe for." },
+  { q: "What happens after I apply?", a: "A recruiter who hires in your field reads your application and replies inside two business days, including when the answer is no. If there is a fit, they call you to talk through the role: the client, the team, who you would report to and what it pays. Nothing goes to a client until you have seen the brief and said yes, and after every interview you hear the client\u2019s feedback, good or bad." },
   { q: "Do I pay anything to work with Rivago?", a: "No. Our fee is paid by the company that hires you. There is no charge to apply, to be represented, or to be placed." },
   { q: "What kinds of roles do you recruit for?", a: "Technology, finance, healthcare, operations, sales and marketing, people, product, design, legal, research and executive roles. Each is one of three types: contract (a set period, working through Rivago), contract-to-hire (contract first, with the option of a permanent offer), or direct hire (on the client\u2019s payroll from day one). Every listing says which." },
   { q: "Which locations do you hire for?", a: "The United States, Canada, the UAE and India, across on-site, hybrid and remote roles. Search by city, region or country, or filter the jobs board by market." },
