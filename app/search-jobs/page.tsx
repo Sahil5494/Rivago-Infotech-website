@@ -206,14 +206,26 @@ export default function SearchJobsPage() {
         </div>
       </section>
 
-      <section className="faq-sec">
-        <div className="faq-inner">
-          <div style={{ textAlign: "center" }}>
-            <div className="eyebrow ew-light gs" style={{ margin: "0 auto 16px" }}>Candidate FAQ</div>
-            <h2 className="section-h2 gs" style={{ color: "var(--text)", marginBottom: 0 }}>Before you <em>apply.</em></h2>
-            <p className="gs" style={{ fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.7, margin: "14px auto 0" }}>The questions candidates ask us most.</p>
+      {/* Two columns on this page only: heading, lede and a way out on the
+          left (sticky while the list scrolls), the questions on the right in
+          one list. The questions are not split across two columns — an
+          opened answer would make one column taller than the other, and the
+          reading order would be unclear. Stacks below 900px. */}
+      <section className="faq-sec sj-faq">
+        <div className="sj-in sj-faq-grid">
+          <div className="sj-faq-side">
+            <div className="eyebrow ew-light gs">Candidate FAQ</div>
+            <h2 className="section-h2 gs">Before you <em>apply.</em></h2>
+            <p className="sj-faq-lede gs">The questions candidates ask us most.</p>
+            <div className="sj-faq-more gs">
+              <span className="sj-faq-more-t">Still have a question?</span>
+              <span className="sj-faq-more-d">Send us your CV with your question, and a recruiter will reply inside two business days.</span>
+              <a className="sj-faq-btn" href={routes.contactUs} data-hire="seeker">Send us your CV <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+            </div>
           </div>
-          <Faq items={faqItems} />
+          <div className="sj-faq-list">
+            <Faq items={faqItems} />
+          </div>
         </div>
       </section>
 

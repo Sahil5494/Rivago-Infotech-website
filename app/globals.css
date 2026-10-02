@@ -3453,6 +3453,26 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 /* The .sj-tst / .sj-quote / .sj-av rules for the "Ask the people who took the
    job" testimonial band stood here; the band came out with its unattributed
    quotes. */
+/* Candidate FAQ, two columns (Search Jobs only). Overrides the shared
+   centred 800px .faq-sec layout through .sj-faq. */
+.faq-sec.sj-faq{padding:96px 44px}
+.sj-faq-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:start}
+.sj-faq-side{position:sticky;top:110px}
+.sj-faq-side .eyebrow{margin-bottom:16px}
+.sj-faq-side h2{color:var(--text);margin:0}
+.sj-faq-lede{font-size:var(--fz5);color:var(--text2);line-height:1.7;margin:14px 0 0;max-width:36ch}
+.sj-faq-more{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:40px;padding:26px 26px 28px;background:var(--surface-inv);border:1px solid var(--rule-inv-1);border-radius:20px;max-width:400px}
+.sj-faq-more-t{font-size:var(--fz6);font-weight:500;color:var(--text)}
+.sj-faq-more-d{font-size:var(--fz4);color:var(--text2);line-height:1.6}
+.sj-faq-btn{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:12px 22px;background:var(--text-1);color:var(--surface-1);border-radius:var(--pill);font-size:var(--fz4);font-weight:500;transition:transform .2s,filter .2s}
+.sj-faq-btn:hover{transform:translateY(-1px);filter:brightness(1.15)}
+.sj-faq-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sj-faq .faq-list{margin-top:0}
+/* Phones: heading, then the questions, then "Still have a question?" —
+   the way out belongs after the list, not before it. display:contents
+   lets the side column's children take grid order alongside the list. */
+@media(max-width:900px){.faq-sec.sj-faq{padding:72px 20px}.sj-faq-grid{grid-template-columns:1fr;gap:0}.sj-faq-side{display:contents}.sj-faq-list{order:1;margin-top:32px}.sj-faq-more{order:2;margin-top:32px;max-width:none}}
+
 /* Phone rhythm for the whole page: 64px bands, 20px gutter. Placed last in
    the block so it wins over each section's own desktop padding — the
    earlier copy sat above them and lost, leaving 88px on phones. */
