@@ -864,6 +864,50 @@ a{color:inherit;text-decoration:none}
 .pt.anim .pt-step.in{opacity:1}
 .pt.anim .pt-step.in .pt-body{transform:none}
 
+/* ── HIRING TIMELINE (.pth) — the .pt timeline above, horizontal ──
+   Same node, eyebrow, heading, chip and reveal as OUR PROCESS; the rail
+   runs across the top between the first and last node centres (12.5% in
+   from each side of a four-column row) and draws left to right. */
+.pth{position:relative;margin-top:56px}
+/* Default extents for the first paint; HiringTimeline then sets left, top,
+   width and height from the measured node centres. */
+.pth-rail{position:absolute;top:25px;left:calc((100% - 84px) / 8);right:calc((100% - 84px) / 8);height:2px;background:var(--rule-inv-1);border-radius:2px;overflow:hidden}
+.pth-rail-fill{position:absolute;inset:0;background:var(--accent-inv);border-radius:2px;transform-origin:left;transform:scaleX(var(--pt-fill,1));transition:transform .2s linear}
+.pth-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.pth-step{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center}
+.pth-node{position:relative;z-index:1;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--bg);border:1.5px solid var(--rule-inv-2);color:var(--text-inv-3);
+  font-family:var(--fm);font-size:var(--fz2);font-weight:600;font-variant-numeric:tabular-nums;margin-bottom:26px;
+  transition:background .4s var(--ease),border-color .4s var(--ease),color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease)}
+.pth-step.in .pth-node{background:var(--accent-inv);border-color:var(--accent-inv);color:#fff;box-shadow:0 0 0 8px rgba(14,92,60,.1);transform:scale(1.05)}
+.pth-eyb{font-family:var(--fm);font-size:var(--fz1);font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--text-inv-3);margin-bottom:9px;transition:color .4s var(--ease)}
+.pth-step.in .pth-eyb{color:var(--accent-inv)}
+.pth-h{font-size:var(--fz9);font-weight:500;letter-spacing:-.02em;line-height:1.2;color:var(--text-inv-1);margin:0 0 10px}
+.pth-d{font-size:var(--fz5);color:var(--text-inv-2);line-height:1.66;margin:0 auto;max-width:30ch}
+.pth-get{display:inline-flex;align-items:center;gap:8px;margin-top:15px;padding:7px 14px;border:1px solid var(--rule-inv-1);border-radius:999px;background:rgba(14,92,60,.06);font-size:var(--fz1);line-height:1.1}
+.pth-get-ico{display:inline-flex;color:var(--accent-inv)}
+.pth-get b{font-weight:500;color:var(--text-inv-1)}
+.pth.anim .pth-step{opacity:.32;transition:opacity .55s var(--ease)}
+.pth.anim .pth-body{transform:translateY(14px);transition:transform .55s var(--ease)}
+.pth.anim .pth-step.in{opacity:1}
+.pth.anim .pth-step.in .pth-body{transform:none}
+/* Phones and small tablets: vertical, rail down the left through the node
+   centres, the step to the right of its node. */
+@media(max-width:760px){
+  .pth-rail{top:26px;bottom:26px;left:25px;right:auto;width:2px}
+  .pth-rail-fill{transform-origin:top;transform:scaleY(var(--pt-fill,1))}
+  .pth-steps{grid-template-columns:1fr;gap:34px}
+  .pth-step{flex-direction:row;align-items:flex-start;text-align:left;gap:20px}
+  .pth-node{flex-shrink:0;margin-bottom:0}
+  .pth-d{margin:0}
+  .pth.anim .pth-body{transform:translateX(12px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .pth.anim .pth-step{opacity:1}
+  .pth.anim .pth-body{transform:none}
+  .pth-rail-fill,.pth-node,.pth-eyb,.pth-step,.pth-body{transition:none}
+}
+
 @media(prefers-reduced-motion:reduce){
   .pt.anim .pt-step{opacity:1}
   .pt.anim .pt-body{transform:none}
