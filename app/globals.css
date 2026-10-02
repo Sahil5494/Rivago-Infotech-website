@@ -3534,6 +3534,9 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .sj-faq-btn:hover{transform:translateY(-1px);filter:brightness(1.15)}
 .sj-faq-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .sj-faq .faq-list{margin-top:0}
+/* The eyebrow keeps its own width when the side column dissolves into the
+   grid on phones (display:contents made it a stretched grid item). */
+.sj-faq .eyebrow{justify-self:start;width:fit-content}
 /* Phones: heading, then the questions, then "Still have a question?" —
    the way out belongs after the list, not before it. display:contents
    lets the side column's children take grid order alongside the list. */
@@ -3858,6 +3861,17 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 }
 /* Careers hero, phones: the two buttons stack at one width. */
 @media(max-width:620px){.cr-hero-btns{flex-direction:column;align-items:stretch;max-width:320px;margin-left:auto;margin-right:auto}.cr-hero-btns .btn{justify-content:center}}
+
+/* Search Jobs, phones: each chip group is one sideways-scrolling row
+   instead of seven wrapped rows (~450px). */
+@media(max-width:620px){
+  .sj-browse-row > div{flex-wrap:nowrap;overflow-x:auto;margin-right:-20px;padding-right:20px;padding-bottom:4px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .sj-browse-row > div::-webkit-scrollbar{display:none}
+  .sj-browse-chip{flex-shrink:0}
+}
+/* Larger tap targets for small inline links, without changing the layout:
+   inline padding extends the hit area but not the line box. */
+.sj-crumbs a,.sj-faq-mail{padding:12px 4px;margin:0 -4px}
 
 /* Pinned heroes for Careers (.page-hero.ph-pin) and Search Jobs (.sj-hero):
    sticky, z-index 0 and isolation, exactly as .hero-c and .about-hero.

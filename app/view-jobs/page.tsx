@@ -5,12 +5,12 @@ import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Job Search · Browse All Jobs | Rivago Infotech",
-  description: "Browse live client roles briefed directly to Rivago Infotech — AI, data, engineering, finance, healthcare and legal openings across the US, Canada, the UAE and India. Contract, contract-to-hire and direct hire.",
+  description: "Browse live client roles briefed directly to Rivago Infotech — AI, data, engineering, finance, healthcare and legal openings across the US, Canada and the UAE. Contract, contract-to-hire and direct hire.",
   alternates: { canonical: "https://rivagoinfotech.com/view-jobs" },
   openGraph: {
     ...ogBase,
     title: "Job Search · Browse All Jobs | Rivago Infotech",
-    description: "Browse live client roles briefed directly to Rivago Infotech — AI, data, engineering, finance, healthcare and legal openings across the US, Canada, the UAE and India.",
+    description: "Browse live client roles briefed directly to Rivago Infotech — AI, data, engineering, finance, healthcare and legal openings across the US, Canada and the UAE.",
     url: "https://rivagoinfotech.com/view-jobs",
   },
 };

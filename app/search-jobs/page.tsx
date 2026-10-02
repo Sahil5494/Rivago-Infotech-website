@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { routes, firm, marketsSentence } from "@/lib/routes";
+import { routes, firm, sentenceList } from "@/lib/routes";
 import { JOBS, regionOf, placeLabel } from "@/app/view-jobs/jobs-data";
 import SearchJobsSearch from "./SearchJobsSearch";
 import PlacedRail from "./PlacedRail";
@@ -11,12 +11,12 @@ import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Search Jobs — Tech, Finance, Healthcare & More | Rivago Infotech",
-  description: "Search open contract, contract-to-hire and permanent roles from Rivago Infotech's client network — technology, finance, healthcare, operations and more across the US, Canada, the UAE and India. Search by title, keyword or location.",
+  description: "Search open contract, contract-to-hire and permanent roles from Rivago Infotech's client network — technology, finance, healthcare, operations and more across the US, Canada and the UAE. Search by title, keyword or location.",
   alternates: { canonical: "https://rivagoinfotech.com/search-jobs" },
   openGraph: {
     ...ogBase,
     title: "Search Jobs — Tech, Finance, Healthcare & More | Rivago Infotech",
-    description: "Search open contract, contract-to-hire and permanent roles from Rivago Infotech's client network across the US, Canada, the UAE and India.",
+    description: "Search open contract, contract-to-hire and permanent roles from Rivago Infotech's client network across the US, Canada and the UAE.",
     url: "https://rivagoinfotech.com/search-jobs",
   },
 };
@@ -57,6 +57,11 @@ const countBy = (key: (j: (typeof JOBS)[number]) => string) => {
 };
 const BY_SECTOR = countBy((j) => j.dept);
 const BY_MARKET = countBy((j) => regionOf(j.c));
+/* Markets that actually have roles on the board, not the firm's full list
+   (marketsSentence) — India's roles were removed, so the lede must not say
+   there are roles there. */
+const MARKET_NAME: Record<string, string> = { US: "the United States", Canada: "Canada", UAE: "the UAE", India: "India" };
+const JOB_MARKETS = sentenceList(BY_MARKET.map(([m]) => MARKET_NAME[m] || m));
 const posted = (iso: string) =>
   new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
 const boardLink = (q: Record<string, string>) => `${routes.viewJobs}?${new URLSearchParams(q)}`;
@@ -82,7 +87,7 @@ const faqItems: FaqItem[] = [
   { q: "What happens after I apply?", a: "A recruiter who hires in your field reads your application and replies inside two business days, including when the answer is no. If there is a fit, they call you to talk through the role: the client, the team, who you would report to and what it pays. Nothing goes to a client until you have seen the brief and said yes, and after every interview you hear the client\u2019s feedback, good or bad." },
   { q: "Do I pay anything to work with Rivago?", a: "No. Our fee is paid by the company that hires you. There is no charge to apply, to be represented, or to be placed." },
   { q: "What kinds of roles do you recruit for?", a: "Technology, finance, healthcare, operations, sales and marketing, people, product, design, legal, research and executive roles. Each is one of three types: contract (a set period, working through Rivago), contract-to-hire (contract first, with the option of a permanent offer), or direct hire (on the client\u2019s payroll from day one). Every listing says which." },
-  { q: "Which locations do you hire for?", a: "The United States, Canada, the UAE and India, across on-site, hybrid and remote roles. Search by city, region or country, or filter the jobs board by market." },
+  { q: "Which locations do you hire for?", a: "Roles are in the United States, Canada and the UAE — on-site, hybrid and remote. Search by city, region or country, or filter the jobs board by market." },
   { q: "Do you sponsor visas or work permits?", a: "No. Rivago does not sponsor visas or work permits, so you will need current authorisation to work in the country where the role is based. Tell us your status when you apply, and your recruiter will only put you forward for roles where it works." },
   { q: "There is no role that fits me right now. What should I do?", a: "Send us your CV anyway. Your recruiter can match you to new roles as they are briefed, so you do not have to keep checking back." },
 ];
@@ -134,7 +139,7 @@ export default function SearchJobsPage() {
             <div>
               <div className="eyb">Open now</div>
               <h2>Latest <em>openings.</em></h2>
-              <p className="lede">{JOBS.length} open roles across {marketsSentence()}. Below, the newest in each sector.</p>
+              <p className="lede">{JOBS.length} open roles across {JOB_MARKETS}. Below, the newest in each sector.</p>
             </div>
             <Link className="sj-open-all" href={routes.viewJobs}>Browse all {JOBS.length} roles <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
           </div>
@@ -147,7 +152,7 @@ export default function SearchJobsPage() {
                   <span className="sj-job-meta">{placeLabel(j.c)} · {j.w} · Posted {posted(j.d)}</span>
                   {/* Same footer pattern as the Careers role cards: terms on the
                       left, a visible way in on the right. */}
-                  <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span className="sj-job-pay">{j.p}</span>}<span className="sj-job-go">View role <svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></span></span>
+                  <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span className="sj-job-pay">{j.p}</span>}<span className="sj-job-go">View details <svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></span></span>
                 </Link>
               </li>
             ))}
