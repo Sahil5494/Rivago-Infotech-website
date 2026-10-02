@@ -2385,13 +2385,13 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
    colourway and nothing else now. */
 .rc-art{border-radius:18px;overflow:hidden;
   background:linear-gradient(140deg,#C9F7DE,#3DFF87 88%);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.rc-art-lg{aspect-ratio:16/7}
+.rc-art-lg{aspect-ratio:16/10}
 .rc-art-md{aspect-ratio:16/10}
 .rc-art-sm{aspect-ratio:16/6.5}
-/* The panels carry no text, at the client's call, so they are kept short:
-   colour that labels the category, not a blank block the reader scrolls
-   past. The featured card was 16/10 (~430px tall at desktop); rail cards
-   take a strip rather than a tile. The grid view keeps 16/10. */
+/* Rail cards take a strip rather than a tile: the panels carry no text, so
+   a short band of colour labels the category without a blank block to
+   scroll past. The Featured block keeps its original proportions, at the
+   client's call. */
 .rc-rail .rc-art{aspect-ratio:16/7}
 .rc:hover .rc-art{transform:translateY(-4px);box-shadow:0 20px 44px rgba(10,20,11,.16)}
 .rc:focus-visible{outline:none}
@@ -2502,7 +2502,6 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
   .rrail>li{flex:0 0 78%}
   .rrow{padding:44px 0 0}
   .rrail-nav{display:none}
-  .rc-art-sm{aspect-ratio:16/6}
   .rfeat-side{flex-direction:column}
   .rgrid{grid-template-columns:1fr;gap:38px}
   .rbar{flex-direction:column;align-items:flex-start}
