@@ -6,12 +6,12 @@ import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Work at Rivago — Careers in Recruitment | Rivago Infotech",
-  description: "Build your career at Rivago Infotech. Senior-only, partner-track recruiting roles across our offices in Delaware, Pune and Ontario.",
+  description: "Build your career at Rivago Infotech — recruiting, business development, client and delivery roles, based in Pune or remote.",
   alternates: { canonical: "https://rivagoinfotech.com/career" },
   openGraph: {
     ...ogBase,
     title: "Work at Rivago — Careers in Recruitment | Rivago Infotech",
-    description: "Build your career at Rivago Infotech. Senior-only, partner-track recruiting roles across our offices in Delaware, Pune and Ontario.",
+    description: "Build your career at Rivago Infotech — recruiting, business development, client and delivery roles, based in Pune or remote.",
     url: "https://rivagoinfotech.com/career",
   },
 };
@@ -32,7 +32,7 @@ const Arrow = () => (
 );
 
 const carVals = [
-  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="var(--accent)" strokeWidth="1.4" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "Senior or solo", d: "No farm of juniors. If you have placed in a sector for 5+ years, you will work as a partner here — your name on the brief, your call on the candidates." },
+  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="var(--accent)" strokeWidth="1.4" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "Your desk, your call", d: "Recruiters run their searches as partners — your name on the brief, your call on the candidates. Business development, client and delivery roles own their part of the work the same way." },
   { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="3" stroke="var(--accent)" strokeWidth="1.4" /><path d="M3 8h16" stroke="var(--accent)" strokeWidth="1.4" /></svg>, t: "Clear comp", d: "Base and commission explained up front, in writing, before you accept. No quota gymnastics." },
   { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="var(--accent)" strokeWidth="1.4" /><path d="M11 6v5l3.5 2" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "No drip activity", d: "We measure outcomes, not call dials: placements that stick, clients who come back, candidates who would work with you again. Hit them — work how you want." },
 ];
@@ -55,7 +55,7 @@ export default function CareerPage() {
           <div className="crumbs"><Link href={routes.home}>Home</Link><span className="crumbs-sep">/</span><span>Careers</span></div>
           <span className="eyebrow light">Work at Rivago</span>
           <h1 className="gs" style={{ marginTop: 18 }}>Build a career placing <em>other careers.</em></h1>
-          <p className="lead gs" style={{ maxWidth: 600, margin: "24px auto 0" }}>We hire senior — and pay accordingly. Smaller team, bigger ownership, every search yours from intake to placement.</p>
+          <p className="lead gs" style={{ maxWidth: 600, margin: "24px auto 0" }}>We hire experienced recruiters, and the business development, client and delivery people who work beside them. Smaller team, bigger ownership — your work is yours from start to finish.</p>
           <div className="gs" style={{ marginTop: 36, display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
             <Link className="btn btn-prim" href={routes.openPositions}>Join the team <Arrow /></Link>
             <a className="btn btn-ghost" href="#culture">Our culture</a>
@@ -66,7 +66,7 @@ export default function CareerPage() {
       <section className="section alt">
         <div className="wrap">
           <span className="eyebrow light">How we work</span>
-          <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 620 }}>A firm built for <em>good recruiters.</em></h2>
+          <h2 className="section-h2 gs" style={{ marginTop: 18, color: "var(--text)", maxWidth: 620 }}>A firm built around <em>good recruiting.</em></h2>
           <div className="car-vals">
             {carVals.map((v) => (
               <div className="car-val" key={v.t}>
@@ -142,7 +142,7 @@ export default function CareerPage() {
         <div className="wrap">
           <span className="eyebrow light">Getting started</span>
           <h2 className="section-h2 gs" style={{ marginTop: 18, marginBottom: 0, color: "var(--text)", maxWidth: 640 }}>How we hire — <em>four honest steps.</em></h2>
-          <p className="gs" style={{ maxWidth: 540, marginTop: 18, fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400 }}>The same process whatever sector you place in. No take-home tests, no twelve-round gauntlets — just real conversations about real work.</p>
+          <p className="gs" style={{ maxWidth: 540, marginTop: 18, fontSize: "var(--fz5)", color: "var(--text2)", lineHeight: 1.7, fontWeight: 400 }}>The same process for every role. No take-home tests, no twelve-round gauntlets — just real conversations about real work.</p>
           <div className="hire-steps">
             {hireSteps.map((s) => (
               <div className="hstep" key={s.n}>
@@ -173,7 +173,7 @@ export default function CareerPage() {
           </div>
           <div className="began-card lt">
             <div className="began-card-h">Build with us.</div>
-            <div className="began-card-p">We&apos;re after senior operators who pair real craft with genuine care for the people they place. At Rivago every partner owns their desk end to end and shapes how we hire across four markets. Come do the best work of your career.</div>
+            <div className="began-card-p">We&apos;re after people who pair real craft with genuine care — recruiters, account managers and the business development team behind them. Everyone owns their work end to end, across four markets. Come do the best work of your career.</div>
             <Link className="began-card-btn" href={routes.openPositions}>Join the team <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#0A140B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
           </div>
         </div>
