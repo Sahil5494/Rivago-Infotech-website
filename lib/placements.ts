@@ -7,8 +7,8 @@
    does, add a `quote` here rather than writing one.
 
    Check before going live that each person is happy to be named publicly.
-   Spellings are as supplied, with capitalisation normalised — "Hari Parasd"
-   may be meant as "Prasad"; confirm with the firm before changing it. */
+   Spellings are as supplied, with capitalisation normalised. "Hari Parasd"
+   was corrected to "Hariprasad" by the firm (2 October 2026). */
 /* `field` groups the role for the card's tag. It is the firm's practice
    area for the role, not anything the person said. */
 /* `quote` is the person's own words, added only once they have sent them.
@@ -22,7 +22,7 @@ export const placements: Placement[] = [
   { name: "Arshdeep Singh", role: "Java Backend Developer", field: "Software engineering" },
   { name: "Naga Satish Reddy Dwarampudi", role: "Java Backend Developer", field: "Software engineering" },
   { name: "Alexey Kuvshinov", role: "Lead Python Developer", field: "Software engineering" },
-  { name: "Hari Parasd Thalisetti", role: "Senior Data Engineer", field: "Data" },
+  { name: "Hariprasad Thalisetti", role: "Senior Data Engineer", field: "Data" },
   { name: "Raymond Chang", role: "Data Analyst", field: "Data" },
   { name: "Sai Akhil", role: "Graph Data Engineer", field: "Data" },
   { name: "Radha Krishnan Swamynathan", role: "Java Developer with ReactJS", field: "Software engineering" },
@@ -34,7 +34,16 @@ export const placements: Placement[] = [
   { name: "Venu Saraf", role: "Sr. AEM Developer", field: "Digital experience" },
   { name: "Kisanthyi Jeyakumar", role: "Support Engineer", field: "Support" },
   { name: "Vamsi Krishna Tetali", role: "AI Engineer", field: "AI & ML" },
+  /* Added 2 October 2026 to be featured on Search Jobs; role and field not
+     supplied yet, so their cards read "Placed through Rivago". */
+  { name: "Ram Tiwari" },
+  { name: "Sri Chakra Manas" },
+  { name: "Aravindham Kumar" },
 ];
+
+/* Who "Don't just take it from us" on Search Jobs shows, in order — chosen
+   by the firm. Names must match entries above exactly. */
+export const featuredPlacements = ["Ram Tiwari", "Sri Chakra Manas", "Ravikiran Yadava", "Aravindham Kumar", "Varun Singh", "Hariprasad Thalisetti"];
 
 /* First and last initial: "Naga Satish Reddy Dwarampudi" -> "ND". */
 export const initials = (name: string) => {

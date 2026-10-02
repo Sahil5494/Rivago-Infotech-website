@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { placements, initials } from "@/lib/placements";
+import { placements, featuredPlacements, initials } from "@/lib/placements";
 
 /* "Don't just take it from us" — a row of placed-candidate cards: all five
    in view on wide screens; three, two, then one with arrows / swipe as the
@@ -13,18 +13,13 @@ import { placements, initials } from "@/lib/placements";
 
 const GAP = 20;
 
-/* Five, not all eighteen, at the firm's request: the first person from
-   each of five different fields, so the row shows range. Each card is
-   name, role and field — the repeated "Matched to the role by a Rivago
-   recruiter…" line read as filler eighteen times over. Anyone with a real
-   `quote` is shown first, in the quote layout. */
-const SHOWN = 5;
-const shown = (() => {
-  const quoted = placements.filter((p) => p.quote);
-  const seen = new Set<string>();
-  const byField = placements.filter((p) => !p.quote && p.field && !seen.has(p.field) && seen.add(p.field));
-  return [...quoted, ...byField].slice(0, SHOWN);
-})();
+/* The people the firm chose to feature (featuredPlacements), in its order.
+   Each card is initials, name, role and field — or a real quote once the
+   person gives one. Anyone missing from the list is skipped rather than
+   breaking the row. */
+const shown = featuredPlacements
+  .map((n) => placements.find((p) => p.name === n))
+  .filter((p): p is (typeof placements)[number] => Boolean(p));
 
 export default function PlacedRail() {
   const railRef = useRef<HTMLUListElement>(null);
