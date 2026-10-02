@@ -265,8 +265,11 @@ export default function AboutPage() {
           paragraphs under the label "Our story" and the heading "A different
           kind of recruitment firm" — a label and a heading that were about
           two different things. The origin is here; the operating principles
-          are the section below. */}
-      <section className="story gs inv" id="story">
+          are the section below.
+
+          Light (.lt, pale mint #F2F7F5) so it separates from OUR VALUES, the
+          dark band that now follows it, and from the white numbers above. */}
+      <section className="story gs lt" id="story">
         <div className="story-inner">
           <div>
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Our story</div>
@@ -281,35 +284,12 @@ export default function AboutPage() {
             <p className="story-lead">We wanted to build the firm we had always wanted to hire from. Honest about the brief. Slow to send the wrong candidate. Fast for the right one.</p>
             <p>The search industry built itself around <em>volume.</em> More CVs. More portals. More &ldquo;candidates per requisition.&rdquo; We came up inside it and watched the work degrade for both sides — hiring managers drowning in unscreened profiles, candidates ignored after their fourth round.</p>
             <p>None of that is a technology problem. It is what happens when the people doing the work are measured on how many profiles they send rather than on whether the hire was right, and when nobody who took the brief is still on the engagement by the time an offer goes out.</p>
-            <p>So we built it the other way round. Each partner carries a small number of searches, which is what lets them turn one down. Every refusal further down this page depends on that.</p>
+            <p>So we built it the other way round. Each partner carries a small number of searches, which is what lets them turn one down. Every refusal below depends on that.</p>
           </div>
         </div>
       </section>
 
-      {/* ── 4 · HOW WE EVALUATE TALENT ─────────────────────────────────────
-          Light, and placed between OUR STORY and OUR VALUES, both dark: the
-          page now alternates dark and light all the way down. It used to sit
-          after OUR VALUES as a second dark band in a row. */}
-      <section className="evalsec gs lt">
-        <div className="evalsec-inner">
-          <div className="evalsec-head">
-            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>How we evaluate</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760, marginBottom: 0 }}>The same four steps, <em>whichever desk takes it.</em></h2>
-            <p className="evalsec-lede">Ten practices, one method. What changes between a cloud architect and a general counsel is the bar — not how it gets set, or who checks it.</p>
-          </div>
-          <ol className="eval-grid">
-            {evaluation.map((e) => (
-              <li className="eval-step" key={e.n}>
-                <span className="eval-n">{e.n}</span>
-                <h3>{e.h}</h3>
-                <p>{e.p}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* ── 5 · OUR VALUES ─────────────────────────────────────────────────
+      {/* ── 4 · OUR VALUES ─────────────────────────────────────────────────
           The Why Rivago layout from the home page: two vertically offset
           columns of cards, each with an icon, a claim and something held
           back behind Read more. Same component classes, same stylesheet —
@@ -333,6 +313,28 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── 5 · HOW WE EVALUATE TALENT ─────────────────────────────────────
+          Light, after OUR VALUES (dark), so the page alternates. Hiring
+          manager stories below is the pale-mint band, a different value. */}
+      <section className="evalsec gs lt">
+        <div className="evalsec-inner">
+          <div className="evalsec-head">
+            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>How we evaluate</div>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760, marginBottom: 0 }}>The same four steps, <em>whichever desk takes it.</em></h2>
+            <p className="evalsec-lede">Ten practices, one method. What changes between a cloud architect and a general counsel is the bar — not how it gets set, or who checks it.</p>
+          </div>
+          <ol className="eval-grid">
+            {evaluation.map((e) => (
+              <li className="eval-step" key={e.n}>
+                <span className="eval-n">{e.n}</span>
+                <h3>{e.h}</h3>
+                <p>{e.p}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       {/* ── 6 · HIRING MANAGER STORIES ───────────────────────────────────
           The home page's Clients section, same component and same shape: a
           single full-width quote card with dots and arrows, changed rather
@@ -348,7 +350,7 @@ export default function AboutPage() {
           The home page runs the same card on a light #EDF7F2 band precisely
           so it lifts, which is the ladder the token block at the top of
           globals.css describes. This band is now that band, to the same
-          value. OUR VALUES above is dark, so the page still alternates.
+          value. HOW WE EVALUATE above is white, a different light value.
 
           READ THIS BEFORE ADDING TO IT. The four quotes come from
           lib/testimonials.ts, whose own header says they "remain endorsements

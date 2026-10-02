@@ -3935,8 +3935,7 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 
 
 /* ── 4 · HOW WE EVALUATE ───────────────────────────────────────────────── */
-/* Light (.lt in the markup), between OUR STORY and OUR VALUES, which are
-   both dark. Every colour in .eval-* is a role token, so the class in the
+/* Light (.lt in the markup), after OUR VALUES, which is dark. Every colour in .eval-* is a role token, so the class in the
    markup sets the theme with no edits here; --surface-3 is white under .lt. */
 .evalsec{padding:110px 44px;background:var(--surface-3)}
 .evalsec-inner{max-width:1240px;margin:0 auto}
