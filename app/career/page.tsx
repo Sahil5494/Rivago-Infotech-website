@@ -33,16 +33,16 @@ const Arrow = () => (
 
 const carVals = [
   { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="var(--accent)" strokeWidth="1.4" /><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "Senior or solo", d: "No farm of juniors. If you have placed in a sector for 5+ years, you will work as a partner here — your name on the brief, your call on the candidates." },
-  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="3" stroke="var(--accent)" strokeWidth="1.4" /><path d="M3 8h16" stroke="var(--accent)" strokeWidth="1.4" /></svg>, t: "Transparent comp", d: "Open base bands, simple commission structure. No clawbacks, no quota gymnastics." },
+  { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="3" stroke="var(--accent)" strokeWidth="1.4" /><path d="M3 8h16" stroke="var(--accent)" strokeWidth="1.4" /></svg>, t: "Clear comp", d: "Base and commission explained up front, in writing, before you accept. No quota gymnastics." },
   { icon: <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="var(--accent)" strokeWidth="1.4" /><path d="M11 6v5l3.5 2" stroke="var(--accent)" strokeWidth="1.4" strokeLinecap="round" /></svg>, t: "No drip activity", d: "We measure outcomes, not call dials: placements that stick, clients who come back, candidates who would work with you again. Hit them — work how you want." },
 ];
 
 
 const hireSteps = [
-  { n: "1", t: "Intro call", d: "30 minutes with a partner. What you've placed, what you want next, what you'd never compromise on.", time: "~ 30 min · same week" },
+  { n: "1", t: "Intro call", d: "30 minutes with a partner. What you've placed, what you want next, what you'd never compromise on.", time: "~ 30 min" },
   { n: "2", t: "Working session", d: "We walk through a live brief together. Not a test — a real look at how you think about a search.", time: "~ 60 min" },
-  { n: "3", t: "Meet the pod", d: "Coffee with the people you'd actually work beside. You're interviewing us as much as we're interviewing you.", time: "Informal" },
-  { n: "4", t: "Offer & onboard", d: "Transparent comp, no negotiation games. Day one you get a desk, a pod, and your first brief.", time: "Within a week" },
+  { n: "3", t: "Meet the team", d: "Coffee with the people you'd actually work beside. You're interviewing us as much as we're interviewing you.", time: "Informal" },
+  { n: "4", t: "Offer & onboard", d: "A written offer with base and commission spelled out — no negotiation games. Then onboarding, and your first brief.", time: "" },
 ];
 
 export default function CareerPage() {
@@ -57,7 +57,7 @@ export default function CareerPage() {
           <h1 className="gs" style={{ marginTop: 18 }}>Build a career placing <em>other careers.</em></h1>
           <p className="lead gs" style={{ maxWidth: 600, margin: "24px auto 0" }}>We hire senior — and pay accordingly. Smaller team, bigger ownership, every search yours from intake to placement.</p>
           <div className="gs" style={{ marginTop: 36, display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link className="btn btn-prim" href={routes.openPositions}>See open roles <Arrow /></Link>
+            <Link className="btn btn-prim" href={routes.openPositions}>Join the team <Arrow /></Link>
             <a className="btn btn-ghost" href="#culture">Our culture</a>
           </div>
         </div>
@@ -100,8 +100,8 @@ export default function CareerPage() {
             <div className="life-card tall">
               <div>
                 <div className="life-eyb">The day-to-day</div>
-                <div className="life-h">Small pods, real ownership, no theatre.</div>
-                <div className="life-p">You run your desk like it&apos;s your own business — pick your roles, set your approach, own the outcome. A partner reviews, never micromanages. Mornings are for candidate calls, afternoons for client work.</div>
+                <div className="life-h">Real ownership, no theatre.</div>
+                <div className="life-p">You run your desk like it&apos;s your own business — pick your roles, set your approach, own the outcome. Mornings are for candidate calls, afternoons for client work.</div>
               </div>
               {/* "0 activity quotas" went too: the same point was made three times on
                   the page (here, "No drip activity" above, and "nobody's counting
@@ -115,16 +115,21 @@ export default function CareerPage() {
                 <div><div className="life-stat">{offices.length}</div><div className="life-stat-l">Offices</div></div>
               </div>
             </div>
+            {/* The two cards here were "Monday market reads & Friday wins" and
+                "Async-first: Slack for the day, docs for decisions, protected
+                deep-work blocks" — specific rituals nobody had confirmed, which a
+                new hire would test on day one. Replaced with confirmed facts:
+                founded 2019, four markets, the three offices in lib/routes.ts. */}
             <div className="life-col">
               <div className="life-card">
-                <div className="life-eyb">Rituals</div>
-                <div className="life-h">Monday market reads &amp; Friday wins</div>
-                <div className="life-p">Every week opens with a 20-minute market read and closes with the placements we&apos;re proud of.</div>
+                <div className="life-eyb">Since {firm.foundedYear}</div>
+                <div className="life-h">Founded by recruiters, run by partners</div>
+                <div className="life-p">Every search is led by a partner who has placed in that sector for years — the same people who decide how the firm works.</div>
               </div>
               <div className="life-card">
-                <div className="life-eyb">How we talk</div>
-                <div className="life-h">Async-first, calm by default</div>
-                <div className="life-p">Slack for the day, docs for decisions, calls only when they earn it. Deep-work blocks are protected — your calendar is yours.</div>
+                <div className="life-eyb">Where we work</div>
+                <div className="life-h">Four markets, one way of working</div>
+                <div className="life-p">We place into the United States, Canada, India and the UAE, from offices in {offices.map((o) => o.city).join(", ").replace(/, ([^,]*)$/, " and $1")}.</div>
               </div>
             </div>
           </div>
@@ -144,7 +149,7 @@ export default function CareerPage() {
                 <div className="hstep-n">{s.n}</div>
                 <div className="hstep-t">{s.t}</div>
                 <div className="hstep-d">{s.d}</div>
-                <div className="hstep-time">{s.time}</div>
+                {s.time && <div className="hstep-time">{s.time}</div>}
               </div>
             ))}
           </div>
@@ -169,7 +174,7 @@ export default function CareerPage() {
           <div className="began-card lt">
             <div className="began-card-h">Build with us.</div>
             <div className="began-card-p">We&apos;re after senior operators who pair real craft with genuine care for the people they place. At Rivago every partner owns their desk end to end and shapes how we hire across four markets. Come do the best work of your career.</div>
-            <Link className="began-card-btn" href={routes.openPositions}>See open roles <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#0A140B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
+            <Link className="began-card-btn" href={routes.openPositions}>Join the team <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#0A140B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
           </div>
         </div>
       </section>

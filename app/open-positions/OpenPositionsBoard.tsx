@@ -65,6 +65,24 @@ export default function OpenPositionsBoard() {
 
   const groups = GROUP_ORDER.map((dept) => ({ dept, roles: filtered.filter((p) => p.department === dept) })).filter((g) => g.roles.length > 0);
 
+  /* No confirmed openings: say so plainly and take a general application
+     instead of showing a list of roles nobody is hiring for. The button
+     opens the CV form (HireModal, data-hire="seeker"), which posts to the
+     firm; the href is the no-JS fallback. */
+  if (positions.length === 0) {
+    return (
+      <div className="jp">
+        <div className="jp-eyebrow">Careers at Rivago</div>
+        <h1 className="jp-title">Open <em>positions.</em></h1>
+        <div className="jp-general lt">
+          <h2 className="jp-general-h">No advertised openings right now.</h2>
+          <p className="jp-general-p">We are always talking to experienced recruiters. Tell us your sector, the markets you place into and how long you have been doing it, and we will be in touch when a desk opens that fits.</p>
+          <a className="jp-general-btn" href={routes.contactUs} data-hire="seeker">Send us your CV <ArrowIcon /></a>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="jp">
       <div className="jp-eyebrow">Careers at Rivago &middot; <span>{positions.length}</span> open</div>

@@ -5,12 +5,12 @@ import { ogBase } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Careers · Rivago Infotech",
-  description: "Browse open senior roles at Rivago Infotech and apply — partner-track positions across Delaware, Pune and Ontario.",
+  description: "Careers at Rivago Infotech. We are always talking to experienced recruiters — send us your CV for partner-track desks across Delaware, Pune and Ontario.",
   alternates: { canonical: "https://rivagoinfotech.com/open-positions" },
   openGraph: {
     ...ogBase,
     title: "Careers · Rivago Infotech",
-    description: `Browse ${positions.length} open senior roles at Rivago Infotech and apply — partner-track positions across Delaware, Pune and Ontario.`,
+    description: positions.length ? `Browse ${positions.length} open senior roles at Rivago Infotech — partner-track positions across Delaware, Pune and Ontario.` : "Careers at Rivago Infotech. We are always talking to experienced recruiters — send us your CV.",
     url: "https://rivagoinfotech.com/open-positions",
   },
 };

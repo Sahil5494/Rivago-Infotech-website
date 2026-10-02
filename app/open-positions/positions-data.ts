@@ -18,7 +18,13 @@ export type Position = {
 /* "Client Success Manager — Dubai, UAE" removed 2 October 2026: the firm
    confirmed it is not a real opening, and Rivago has no UAE entity to
    employ anyone under. */
-export const positions: Position[] = [
+/* NONE OF THESE IS CONFIRMED AS OPEN (2 October 2026). The Dubai role above
+   proved not to exist, and the firm says it mainly hires for recruitment
+   and staffing — none of the eleven is a recruiting desk. They are parked
+   here, unpublished, until the firm confirms which are real. To publish a
+   role, move its entry into `positions`; the board switches from the
+   general-application panel to the list as soon as one is there. */
+export const unconfirmedPositions: Position[] = [
   { id: "delivery-operations-manager", title: "Delivery Operations Manager", department: "Operations", location: "Pune, India", type: "Full-time", locationType: "On-site" },
   { id: "head-of-brand-marketing", title: "Head of Brand & Marketing", department: "Marketing", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
   { id: "content-social-lead", title: "Content & Social Lead", department: "Marketing", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
@@ -31,3 +37,6 @@ export const positions: Position[] = [
   { id: "compliance-contracts-counsel", title: "Compliance & Contracts Counsel", department: "Finance", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
   { id: "account-director-strategic-clients", title: "Account Director · Strategic Clients", department: "Client", location: "Delaware, US", type: "Full-time", locationType: "On-site" },
 ];
+
+/* Published, confirmed openings. Empty until the firm confirms one. */
+export const positions: Position[] = [];
