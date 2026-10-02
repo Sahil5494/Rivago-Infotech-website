@@ -9,11 +9,11 @@ const ArrowIcon = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
 
-export type RoleViewProps = { role: string; loc: string; dept: string; sen: string; eng: string; isInternal: boolean };
+export type RoleViewProps = { role: string; loc: string; dept: string; sen: string; eng: string; isInternal: boolean; pay?: string; posted?: string };
 
 /* The role page itself. No hooks, so it renders on the server for
    /open-positions/[id] and inside the client wrapper for /view-jobs/role. */
-export default function RoleView({ role, loc, dept, sen, eng, isInternal }: RoleViewProps) {
+export default function RoleView({ role, loc, dept, sen, eng, isInternal, pay, posted }: RoleViewProps) {
   const copy = copyFor(role, dept);
   const engBasis = eng.toLowerCase().replace(/·/g, "").replace(/\s+/g, " ").trim();
   const about = `${copy.a} The role ${/ or remote$/i.test(loc) ? "can be" : "is"} based in ${loc}, on a ${engBasis} basis.`;
@@ -31,7 +31,8 @@ export default function RoleView({ role, loc, dept, sen, eng, isInternal }: Role
         <Link className="pd-back" href={backHref}><BackIcon />{backLabel}</Link>
         <div className="pd-eyb">{isInternal ? "Careers at Rivago" : "Client role"} &middot; {dept}</div>
         <h1>{role}</h1>
-        <div className="pd-sub">{loc} &middot; {eng}</div>
+        <div className="pd-sub">{loc} &middot; {eng}{posted && <> &middot; Posted {posted}</>}</div>
+        {pay && <div className="pd-pay"><span>Salary</span>{pay}</div>}
         <div className="pd-chips">
           {chips.map((c) => <span className="pd-chip" key={c}>{c}</span>)}
         </div>

@@ -6,7 +6,18 @@
 
 export type Department = "Recruitment" | "Business Development" | "Client" | "Operations" | "Marketing" | "People" | "Engineering" | "Finance";
 
+/* Fixed annual pay in INR. Ranges set 2 October 2026 from public market data
+   for each role in Pune / India (Glassdoor India, PayScale, Indeed India
+   salary pages — 25th–75th percentiles where given), at the firm's request
+   for "the common salary in the market". `incentives` marks roles where
+   commission or incentives are normal on top. Review against the firm's
+   actual bands before publishing changes. */
+export type Salary = { min: number; max: number; incentives?: boolean };
+
 export type Position = {
+  /* ISO date the role was posted. */
+  posted?: string;
+  salary?: Salary;
   /* Shown as the level chip on the role page; derived from the title when
      absent, which reads "Senior" for anything titled Senior/Lead/Director. */
   seniority?: string;
@@ -49,15 +60,16 @@ export const unconfirmedPositions: Position[] = [
    app/view-jobs/role/RoleDetail.tsx (ROLE_COPY), drafted from the title and
    marked for the firm's review. */
 const PUNE_OR_REMOTE = "Pune, India or remote";
+const POSTED = "2026-10-02";
 export const positions: Position[] = [
-  { id: "senior-us-recruiter", title: "Senior US Recruiter", department: "Recruitment", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Senior" },
-  { id: "recruitment-manager", title: "Recruitment Manager", department: "Recruitment", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Manager" },
-  { id: "talent-acquisition-specialist-healthcare", title: "Talent Acquisition Specialist · Healthcare", department: "Recruitment", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Mid–Senior" },
-  { id: "business-development-manager", title: "Business Development Manager", department: "Business Development", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Manager" },
-  { id: "business-development-executive", title: "Business Development Executive", department: "Business Development", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Associate" },
-  { id: "account-manager", title: "Account Manager", department: "Client", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Mid–Senior" },
-  { id: "account-director-strategic-clients", title: "Account Director · Strategic Clients", department: "Client", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Director" },
-  { id: "delivery-operations-manager", title: "Delivery Operations Manager", department: "Operations", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Manager" },
+  { id: "senior-us-recruiter", title: "Senior US Recruiter", department: "Recruitment", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Senior", posted: POSTED, salary: { min: 500000, max: 900000, incentives: true } },
+  { id: "recruitment-manager", title: "Recruitment Manager", department: "Recruitment", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Manager", posted: POSTED, salary: { min: 900000, max: 1500000 } },
+  { id: "talent-acquisition-specialist-healthcare", title: "Talent Acquisition Specialist · Healthcare", department: "Recruitment", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Mid–Senior", posted: POSTED, salary: { min: 400000, max: 800000, incentives: true } },
+  { id: "business-development-manager", title: "Business Development Manager", department: "Business Development", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Manager", posted: POSTED, salary: { min: 800000, max: 1500000, incentives: true } },
+  { id: "business-development-executive", title: "Business Development Executive", department: "Business Development", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Associate", posted: POSTED, salary: { min: 350000, max: 600000, incentives: true } },
+  { id: "account-manager", title: "Account Manager", department: "Client", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Mid–Senior", posted: POSTED, salary: { min: 600000, max: 1200000, incentives: true } },
+  { id: "account-director-strategic-clients", title: "Account Director · Strategic Clients", department: "Client", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Director", posted: POSTED, salary: { min: 1800000, max: 3000000 } },
+  { id: "delivery-operations-manager", title: "Delivery Operations Manager", department: "Operations", location: PUNE_OR_REMOTE, type: "Full-time", locationType: "Remote", seniority: "Manager", posted: POSTED, salary: { min: 800000, max: 1500000 } },
 ];
 
 /* Level shown on a role page: the role's own, else read from the title. */
@@ -67,4 +79,10 @@ export function seniorityOf(p: Pick<Position, "title" | "seniority">): string {
   if (/Director/i.test(p.title)) return "Director";
   if (/Senior|Lead/i.test(p.title)) return "Senior";
   return "Mid–Senior";
+}
+
+/* "₹5–9 LPA" style label, as Indian job ads quote pay. */
+export function salaryLabel(sal: Salary): string {
+  const l = (n: number) => String(Math.round((n / 100000) * 10) / 10);
+  return `₹${l(sal.min)}–${l(sal.max)} LPA${sal.incentives ? " + incentives" : ""}`;
 }

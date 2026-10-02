@@ -3668,6 +3668,8 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 /* flex + fit-content, not inline-flex: inline, it sat on the same line as
    the eyebrow pill with no gap. 44px tall so it is a real tap target. */
 .pd-back{display:flex;width:fit-content;align-items:center;gap:8px;min-height:44px;font-size:var(--fz2);color:var(--text-inv-2);text-decoration:none;margin:-10px 0 16px}
+.pd-pay{display:inline-flex;align-items:baseline;gap:10px;margin-top:14px;padding:8px 16px;background:var(--surface-inv);border:1px solid var(--rule-inv-1);border-radius:var(--pill);font-size:var(--fz5);font-weight:500;color:var(--text-inv-1);font-variant-numeric:tabular-nums}
+.pd-pay span{font-size:var(--fz1);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-inv)}
 .pd-back:hover{color:var(--accent-inv)}
 .pd-eyb{display:inline-flex;align-items:center;gap:7px;padding:5px 13px;border:1px solid rgba(10,112,64,.22);background:rgba(10,112,64,.06);border-radius:22px;font-size:var(--fz1);font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-inv);margin-bottom:18px}
 .pd-eyb::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent-inv)}

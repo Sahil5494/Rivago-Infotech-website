@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { routes } from "@/lib/routes";
-import { positions, type Department } from "./positions-data";
+import { positions, salaryLabel, type Department } from "./positions-data";
 
 /* Filters are built from the departments that actually have openings, so a
    chip never leads to an empty list. ("Recruitment" used to be a chip with
@@ -89,7 +89,7 @@ export default function OpenPositionsBoard() {
                 <Link key={p.id} className="jrow" href={roleHref(p)}>
                   <div>
                     <div className="jrow-t">{p.title}</div>
-                    <div className="jrow-m">{p.department} &middot; {p.location} &middot; {p.type}</div>
+                    <div className="jrow-m">{p.department} &middot; {p.location} &middot; {p.type}{p.salary && <> &middot; {salaryLabel(p.salary)}</>}</div>
                   </div>
                   <span className="jrow-arr"><ArrowIcon /></span>
                 </Link>
