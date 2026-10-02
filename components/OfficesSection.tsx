@@ -32,7 +32,9 @@ export default function OfficesSection() {
                   <span key={line}>{line}{i < o.addr.length - 1 && <br />}</span>
                 ))}
               </div>
-              <div className="office-team"><div className="ct">{o.team}</div></div>
+              {/* Only the market card has a footnote. The three offices used to
+                  draw the same rule with nothing under it. */}
+              {o.team && <div className="office-team"><div className="ct">{o.team}</div></div>}
             </div>
           ))}
         </div>

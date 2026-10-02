@@ -225,7 +225,7 @@ export default function AboutPage() {
         <div className="numbers-inner">
           <div>
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>By the numbers</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>What we cover, and <em>where we cover it.</em></h2>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>A small firm, <em>by design.</em></h2>
           </div>
           <div className="numbers-card">
             {numbers.map((n) => (
@@ -281,65 +281,16 @@ export default function AboutPage() {
             <p className="story-lead">We wanted to build the firm we had always wanted to hire from. Honest about the brief. Slow to send the wrong candidate. Fast for the right one.</p>
             <p>The search industry built itself around <em>volume.</em> More CVs. More portals. More &ldquo;candidates per requisition.&rdquo; We came up inside it and watched the work degrade for both sides — hiring managers drowning in unscreened profiles, candidates ignored after their fourth round.</p>
             <p>None of that is a technology problem. It is what happens when the people doing the work are measured on how many profiles they send rather than on whether the hire was right, and when nobody who took the brief is still on the engagement by the time an offer goes out.</p>
+            <p>So we built it the other way round. Each partner carries a small number of searches, which is what lets them turn one down. Every refusal further down this page depends on that.</p>
           </div>
         </div>
       </section>
 
-      {/* ── 4 · HOW WE BUILD DIFFERENTLY ─────────────────────────────────── */}
-      <section className="build gs">
-        <div className="build-inner">
-          <div className="build-head">
-            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we believe</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760, marginBottom: 0 }}>How we build <em>differently.</em></h2>
-          </div>
-          <div className="build-grid">
-            <div className="build-card">
-              <h3>Fewer searches per partner</h3>
-              <p>A partner carrying a small number of mandates can afford to turn one down. That is the whole mechanism behind every refusal on this page — none of them survives a desk measured on volume.</p>
-            </div>
-            <div className="build-card">
-              <h3>One name, start to finish</h3>
-              <p>The partner who takes the brief runs the search, closes the offer and stays in touch after the start date. No handoff to a coordinator, no relay through an account manager, nobody learning your business on your mandate.</p>
-            </div>
-            <div className="build-card">
-              <h3>Honest briefs, in both directions</h3>
-              <p>Candidates see the brief and know who the company is before anything is submitted. Clients hear on the first call when a search is unwinnable as scoped, including when that costs us the work.</p>
-            </div>
-            <div className="build-card">
-              <h3>Relationships longer than a mandate</h3>
-              <p>You explain your hiring bar once. The same partner already knows your interview loop and who you turned down last time, which is why the second search is faster than the first.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 5 · OUR VALUES ─────────────────────────────────────────────────
-          The Why Rivago layout from the home page: two vertically offset
-          columns of cards, each with an icon, a claim and something held
-          back behind Read more. Same component classes, same stylesheet —
-          see the note at the top of RefusalCards.tsx for what the 01-06
-          numbers, the CardSlider and the CTA tile were traded for.
-
-          THE BAND DROPPED A STEP, from #0A1A0C to #060F07, because the card
-          needs somewhere to sit. .why-card is scoped to --surface-3 here —
-          #0A1A0C — which is the treatment every dark-band card on the home
-          page uses, and .ind-sec and .hins-sec run exactly this pairing at
-          1.07:1 with the 1px hairline doing the separating. HOW WE EVALUATE
-          took #0A1A0C in exchange so the two are not the same value. */}
-      <section className="values inv" id="values">
-        <div className="values-inner">
-          <div className="gs">
-            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we won&apos;t do</div>
-            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>Our values, mostly stated<br />as the <em>things we refuse.</em></h2>
-          </div>
-          <div className="gs">
-            <RefusalCards />
-          </div>
-        </div>
-      </section>
-
-      {/* ── 6 · HOW WE EVALUATE TALENT ───────────────────────────────────── */}
-      <section className="evalsec gs inv">
+      {/* ── 4 · HOW WE EVALUATE TALENT ─────────────────────────────────────
+          Light, and placed between OUR STORY and OUR VALUES, both dark: the
+          page now alternates dark and light all the way down. It used to sit
+          after OUR VALUES as a second dark band in a row. */}
+      <section className="evalsec gs lt">
         <div className="evalsec-inner">
           <div className="evalsec-head">
             <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>How we evaluate</div>
@@ -358,7 +309,31 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── 7 · HIRING MANAGER STORIES ───────────────────────────────────
+      {/* ── 5 · OUR VALUES ─────────────────────────────────────────────────
+          The Why Rivago layout from the home page: two vertically offset
+          columns of cards, each with an icon, a claim and something held
+          back behind Read more. Same component classes, same stylesheet —
+          see the note at the top of RefusalCards.tsx for what the 01-06
+          numbers, the CardSlider and the CTA tile were traded for.
+
+          THE BAND DROPPED A STEP, from #0A1A0C to #060F07, because the card
+          needs somewhere to sit. .why-card is scoped to --surface-3 here —
+          #0A1A0C — which is the treatment every dark-band card on the home
+          page uses, and .ind-sec and .hins-sec run exactly this pairing at
+          1.07:1 with the 1px hairline doing the separating. */}
+      <section className="values inv" id="values">
+        <div className="values-inner">
+          <div className="gs">
+            <div className="eyebrow ew-light" style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we won&apos;t do</div>
+            <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 720, marginBottom: 0 }}>Our values, mostly stated<br />as the <em>things we refuse.</em></h2>
+          </div>
+          <div className="gs">
+            <RefusalCards />
+          </div>
+        </div>
+      </section>
+
+      {/* ── 6 · HIRING MANAGER STORIES ───────────────────────────────────
           The home page's Clients section, same component and same shape: a
           single full-width quote card with dots and arrows, changed rather
           than tiled. It was a 2x2 grid of four small cards here — which is
@@ -373,8 +348,7 @@ export default function AboutPage() {
           The home page runs the same card on a light #EDF7F2 band precisely
           so it lifts, which is the ladder the token block at the top of
           globals.css describes. This band is now that band, to the same
-          value. HOW WE EVALUATE went dark in exchange, so the page still
-          alternates — see the banding note there.
+          value. OUR VALUES above is dark, so the page still alternates.
 
           READ THIS BEFORE ADDING TO IT. The four quotes come from
           lib/testimonials.ts, whose own header says they "remain endorsements
@@ -398,10 +372,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── 8 · OUR OFFICES ──────────────────────────────────────────────── */}
+      {/* ── 7 · OUR OFFICES ──────────────────────────────────────────────── */}
       <OfficesSection />
 
-      {/* ── 9 · WORK WITH US ─────────────────────────────────────────────── */}
+      {/* ── 8 · WORK WITH US ─────────────────────────────────────────────── */}
       <section className="careers inv" id="get-in-touch">
         <div className="careers-inner gs">
           <div className="eyebrow ew-light" style={{ margin: "0 auto 28px", display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Let&apos;s talk</div>
@@ -411,8 +385,9 @@ export default function AboutPage() {
             <Link className="btn btn-prim" href={`${routes.hireTalent}#intake`} data-hire>Submit a Brief
               <svg className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </Link>
-            <Link className="btn btn-ghost" href={routes.contactUs}>Contact us</Link>
+            <Link className="btn btn-ghost" href={routes.searchJobs}>Search jobs</Link>
           </div>
+          <Link className="careers-join" href={routes.career}><span>We&apos;re hiring too — see roles at Rivago</span> <i aria-hidden="true">→</i></Link>
         </div>
       </section>
     </>
