@@ -1,3 +1,16 @@
+/* Each practice now lists two kinds of role.
+
+   `roles` is the leadership searches the practice has always shown.
+
+   `core` is the hiring beneath them, and it is not written from scratch: it
+   groups the actual job titles on the live board (app/view-jobs/jobs-data.ts)
+   into families. The board is mostly contract and contract-to-hire hiring in
+   those families, which this page used to leave out entirely.
+
+   `jobDepts` maps the practice to the board's `dept` values, so the page can
+   count live roles and link to them. Aerospace, telecom and automotive have
+   no roles on the board today, so they have no core list, no count and no
+   link — nothing is claimed for them that the board does not show. */
 export const practices = [
   {
     id: "technology",
@@ -6,6 +19,8 @@ export const practices = [
     titleTop: "Technology &",
     titleEm: "engineering leadership.",
     lede: "Engineering and platform leadership, from a company's first VP of Engineering through to a CTO succession — across cloud-native startups and enterprise stacks alike.",
+    jobDepts: ["Technology", "Product", "Design"],
+    core: ["Full-stack & backend engineers", "Frontend & mobile engineers", "Data & analytics engineers", "ML / AI engineers", "DevOps, SRE & cloud", "QA & test automation", "Security engineers", "Product managers & designers"],
     roles: [
       "VP / SVP of Engineering",
       "Chief Technology Officer",
@@ -22,6 +37,8 @@ export const practices = [
     titleTop: "Healthcare,",
     titleEm: "clinical & biotech.",
     lede: "Provider, payer and life-sciences hiring, where licensure and credentialing shape the timeline as much as the search does. We raise that at brief stage rather than at offer.",
+    jobDepts: ["Healthcare"],
+    core: ["Nurse managers & clinical nurse specialists", "Clinical research associates", "Clinical data managers", "Regulatory affairs", "QA / GMP", "Pharmacovigilance"],
     roles: [
       "Chief Medical Officer",
       "Director of Clinical Operations",
@@ -37,6 +54,8 @@ export const practices = [
     titleTop: "Legal &",
     titleEm: "general counsel.",
     lede: "First-GC searches, deputy succession and lateral hires for in-house teams — including the confidential ones, where the incumbent does not yet know the search is running.",
+    jobDepts: ["Legal"],
+    core: ["Corporate & commercial counsel", "Privacy counsel", "Contracts managers", "Paralegals"],
     roles: [
       "General Counsel",
       "Deputy General Counsel",
@@ -51,6 +70,8 @@ export const practices = [
     titleTop: "Finance, banking",
     titleEm: "capital markets.",
     lede: "CFO succession, treasury, risk and the long bench beneath them, across our Wilmington, Ontario and Pune desks.",
+    jobDepts: ["Finance"],
+    core: ["FP&A analysts & managers", "Controllers & accountants", "Compliance & AML", "Treasury analysts", "Internal audit"],
     roles: [
       "Chief Financial Officer",
       "Head of Treasury",
@@ -67,6 +88,8 @@ export const practices = [
     titleEm: "cleared talent.",
     titleMid: "defence &",
     lede: "Tier-1 OEMs, defence primes and the supplier ecosystem beneath them. Where a role requires clearance, we establish that at brief stage — it governs who can realistically be approached.",
+    jobDepts: [],
+    core: [],
     roles: [
       "Director of Manufacturing",
       "Principal Systems Engineer",
@@ -81,6 +104,8 @@ export const practices = [
     titleTop: "Telecom &",
     titleEm: "network infrastructure.",
     lede: "5G core, fibre rollout, MSO leadership. We staff inside the operator and the supplier — pricing intelligence across both sides of the table.",
+    jobDepts: [],
+    core: [],
     roles: [
       "Principal Network Architect",
       "VP of Network Operations",
@@ -95,6 +120,8 @@ export const practices = [
     titleTop: "Automotive &",
     titleEm: "mobility.",
     lede: "OEM, tier-1 supplier, and the new mobility entrants. Battery, ADAS, software-defined vehicle — we know who's hiring and who's quietly looking.",
+    jobDepts: [],
+    core: [],
     roles: [
       "Director of Manufacturing Engineering",
       "Head of Battery Engineering",
@@ -109,6 +136,8 @@ export const practices = [
     titleTop: "Supply chain",
     titleEm: "operations.",
     lede: "From distribution-centre leadership to global head-of-supply roles. We staff the spine of the business — the people who keep the operation moving when everything else is on fire.",
+    jobDepts: ["Operations"],
+    core: ["Supply chain & demand planning", "Logistics & transportation", "Distribution centre & plant managers", "Manufacturing, process & quality engineers", "Procurement"],
     roles: [
       "Chief Operating Officer",
       "VP of Supply Chain",
@@ -124,6 +153,8 @@ export const practices = [
     titleEm: "growth.",
     titleMid: "marketing &",
     lede: "CRO succession, first-VP-of-marketing hires, demand-gen leadership. We know the OTE patterns and we know which “100% to plan” résumé actually beat the number.",
+    jobDepts: ["Sales & Marketing"],
+    core: ["Account executives", "Customer success", "Demand generation & product marketing", "Sales engineers & implementation"],
     roles: [
       "Chief Revenue Officer",
       "VP of Marketing",
@@ -139,6 +170,8 @@ export const practices = [
     titleEm: "HR leadership.",
     titleMid: "&",
     lede: "The function that hires our function. CHRO succession, head-of-talent searches and total-rewards leaders — briefs written by people who know exactly how a search should run.",
+    jobDepts: ["People"],
+    core: ["HR business partners & managers", "Technical recruiters & sourcers", "Talent acquisition managers", "Compensation & benefits", "L&D"],
     roles: [
       "Chief People Officer",
       "VP of Talent Acquisition",

@@ -2795,6 +2795,24 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
    ══════════════════════════════════════════════════════════ */
 .ind-nav{position:sticky;top:62px;z-index:50;background:var(--chrome-solid);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 .ind-nav-inner{max-width:1240px;margin:0 auto;padding:14px 44px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+/* On the dark-nav pages the site menu is a floating pill (top 14px, 60px
+   tall when scrolled), and the old full-width bar at top:62px sat under its
+   lower edge with page text showing above it. The tab bar becomes a second
+   pill, docked just below the menu, the same width as the menu's solid
+   state. The band itself is transparent so nothing frames it. */
+body.theme-dark-nav .ind-nav{top:84px;padding:12px 20px 0;margin-bottom:-58px;background:none;border:0;
+  -webkit-backdrop-filter:none;backdrop-filter:none;pointer-events:none}
+body.theme-dark-nav .ind-nav-inner{max-width:1080px;padding:6px;border-radius:999px;pointer-events:auto;
+  background:var(--chrome-solid);border:1px solid var(--rule-1);box-shadow:0 10px 30px rgba(0,0,0,.18);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+/* Ten tabs in the menu's 1080px: tighter than the full-width bar's tabs, or
+   the last one clips. */
+body.theme-dark-nav .ind-nav-link{padding:8px 11px}
+@media(max-width:640px){
+  body.theme-dark-nav .ind-nav{top:76px;padding:10px 10px 0}
+  /* Fade at the right edge says there are more sectors to swipe to. */
+  body.theme-dark-nav .ind-nav-inner{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+}
 .ind-nav-inner::-webkit-scrollbar{display:none}
 .ind-nav-link{padding:8px 14px;font-size:var(--fz2);color:var(--text3);border-radius:9999px;white-space:nowrap;cursor:pointer;transition:all .18s var(--ease);border:1px solid transparent;text-decoration:none}
 .ind-nav-link:hover{color:var(--text);background:var(--rule-1)}
@@ -2808,21 +2826,7 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 @media(max-width:900px){.ind-guarantee-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:500px){.ind-guarantee-grid{grid-template-columns:1fr}}
 
-.industry{padding:120px 44px;border-bottom:1px solid var(--border);position:relative}
-.industry.inv{background:var(--surface-1)}
-.industry-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .industry-label{display:inline-flex;align-items:center;padding:5px 14px;border:1px solid var(--tint-2);background:var(--tint-1);border-radius:22px;font-family:var(--fm);font-size:var(--fz1);color:var(--accent);letter-spacing:.06em;margin-bottom:16px}
-.industry-h2{font-size:var(--fz13);line-height:1.04;letter-spacing:-.028em;font-weight:500;margin-bottom:22px}
-.industry-lede{font-size:var(--fz8);color:var(--text2);line-height:1.7;font-weight:400;margin-bottom:36px;max-width:480px}
-.industry-roles-label{font-size:var(--fz1);text-transform:uppercase;letter-spacing:.08em;color:var(--text3);font-weight:500}
-/* The roles list used to be a two-column grid — title on the left, a
-   placement count on the right. The counts were invented and are gone, so
-   the row is a single column now and the `.ct` rule that styled the count
-   has gone with them. */
-.industry-roles{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border)}
-.ir-row{padding:14px 0;border-bottom:1px solid var(--border);font-size:var(--fz3)}
-.ir-row .nm{color:var(--text)}
-.industry-panel{display:flex;flex-direction:column;gap:18px}
 /* Gone with the invented content on /industries: `.lead-*` styled the
    practice-partner card (name, avatar, credential chips), `.stat-*` the
    four-metric grid beside it, and `.cross-stats-*` / `.cs-*` the site-wide
@@ -2835,7 +2839,39 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .sample-h{font-size:var(--fz1);color:var(--accent);font-family:var(--fm);letter-spacing:.05em;margin-bottom:6px;text-transform:uppercase}
 .sample-line{font-size:var(--fz3);color:var(--text);font-weight:500}
 .sample-sub{font-size:var(--fz4);color:var(--text3);margin-top:3px}
-@media(max-width:960px){.industry-inner{grid-template-columns:1fr;gap:40px}}
+
+/* ── PRACTICE GRID ────────────────────────────────────────────────────────
+   Ten cards, two across, on one dark band — replacing ten full-width
+   alternating sections. Cards are the home page's dark-band card: a
+   --surface-3 panel on the band with a hairline. */
+.ind-practices{padding:96px 44px 110px;background:var(--surface-2)}
+.ind-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ipc{display:flex;flex-direction:column;background:var(--surface-3);border:1px solid var(--rule-1);border-radius:22px;padding:36px 36px 30px;scroll-margin-top:188px}
+.ipc .industry-label{align-self:flex-start}
+.ipc-h{font-size:var(--fz10);line-height:1.1;letter-spacing:-.024em;font-weight:500;color:var(--text-1);margin:2px 0 14px;text-wrap:balance}
+.ipc-lede{font-size:var(--fz4);color:var(--text-2);line-height:1.7;margin:0 0 24px;max-width:56ch}
+.ipc-group{margin-bottom:20px}
+.ipc-gl{font-size:var(--fz1);font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--text-3);margin:0 0 10px}
+.ipc-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.ipc-chips li{font-size:var(--fz2);color:var(--text-1);padding:6px 12px;border:1px solid var(--rule-1);border-radius:999px;background:var(--tint-1);line-height:1.35}
+.ipc-foot{margin-top:auto;padding-top:20px;border-top:1px solid var(--rule-1)}
+.ipc-link{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0;border:0;background:none;cursor:pointer;
+  font-family:var(--ff);font-size:var(--fz3);font-weight:500;color:var(--accent);text-decoration:none}
+.ipc-link .arrow{transition:transform .2s var(--ease)}
+.ipc-link:hover .arrow{transform:translateX(3px)}
+.ipc-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+@media(max-width:900px){
+  .ind-practices{padding:64px 20px 72px}
+  .ind-grid{grid-template-columns:1fr}
+  .ipc{padding:28px 24px 22px;scroll-margin-top:172px}
+}
+@media(max-width:640px){
+  .ipc{scroll-margin-top:166px}
+}
+
+/* ── CLIENT MARKS under the hero ─────────────────────────────────────── */
+.ind-logos{padding:52px 0 48px;background:var(--bg)}
+.ind-logos .clients-label{margin-bottom:22px}
 
 /* ============ SERVICES — ported from the real Claude Design export ============ */
 
