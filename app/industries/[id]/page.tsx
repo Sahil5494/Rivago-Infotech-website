@@ -1,18 +1,30 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { routes, industryHref, servedMarkets, offices } from "@/lib/routes";
-import { practices, spine, writtenGuarantees } from "../data";
+import { routes, industryHref, servedMarkets, offices, sentenceList } from "@/lib/routes";
+import { practices, spine } from "../data";
 import { sectorExtras } from "../sector-data";
-import { JOBS, placeLabel } from "@/app/view-jobs/jobs-data";
+import { JOBS, placeLabel, regionOf } from "@/app/view-jobs/jobs-data";
+import { placements, featuredPlacements } from "@/lib/placements";
+import LogoMarquee from "@/components/LogoMarquee";
+import PlacedRail from "@/app/search-jobs/PlacedRail";
+import Faq, { type FaqItem } from "@/components/Faq";
 import HiringTimeline from "@/components/HiringTimeline";
 import { ogBase } from "@/lib/og";
 
 /* One page per practice, built at compile time from the same data as the
  * /industries hub — the practice's own copy and roles, its live roles on
- * the job board, and the firm-wide process and commitments. Nothing on a
- * sector page is written for it alone, so the ten cannot drift from the hub
- * or from each other. An id that is not a practice is a 404. */
+ * the job board, its placements, and the firm-wide process. Every figure on
+ * the page (open roles, remote share, engagement mix, markets) is counted
+ * from the board, and the FAQ answers are built from those counts and from
+ * answers the site already gives elsewhere, so nothing is written for a
+ * sector that the data does not show. An id that is not a practice is a 404.
+ *
+ * Running order: hero (with the practice's own figures), client marks,
+ * roles (core first, then leadership), latest openings, placed candidates,
+ * how a search runs, FAQ, closing brief CTA, and a slim row of links to
+ * the other practices. "What we put in writing" is not repeated here; it
+ * stays on the hub. */
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -43,6 +55,8 @@ const Arrow = () => (
 const posted = (iso: string) =>
   new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
 const boardLink = (q: [string, string][]) => `${routes.viewJobs}?${new URLSearchParams(q)}`;
+const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
+const MARKET_NAME: Record<string, string> = { US: "the United States", Canada: "Canada", UAE: "the UAE", India: "India" };
 
 export default async function SectorPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -54,6 +68,66 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
   const latest = jobs.slice(0, 6);
   const allHref = boardLink(extra.jobDepts.map((d) => ["dept", d]));
   const others = practices.filter((o) => o.id !== p.id);
+  const sector = p.navLabel.toLowerCase();
+
+  /* The practice's own figures, counted from the board. */
+  const count = (f: (j: (typeof jobs)[number]) => boolean) => jobs.filter(f).length;
+  const remote = count((j) => j.w === "Remote");
+  const hybrid = count((j) => j.w === "Hybrid");
+  const onsite = count((j) => j.w === "On-Site");
+  const contract = count((j) => j.e === "Contract");
+  const c2h = count((j) => j.e === "Contract-to-hire");
+  const direct = count((j) => j.e === "Direct hire");
+  const markets = [...new Set(jobs.map((j) => regionOf(j.c)))];
+
+  /* Placed candidates: the featured six first, then everyone else with a role. */
+  const placed = extra.placed
+    ? [
+        ...featuredPlacements.map((n) => placements.find((x) => x.name === n)).filter((x): x is (typeof placements)[number] => Boolean(x)),
+        ...placements.filter((x) => x.role && !featuredPlacements.includes(x.name)),
+      ]
+    : [];
+
+  /* FAQ — each answer is a count from the board or an answer the site
+     already gives (Search Jobs FAQ, the brief form's reply time). */
+  const faq: FaqItem[] = [
+    {
+      q: `What ${sector} roles do you recruit for?`,
+      a: extra.core.length
+        ? `Most of our ${sector} hiring falls into these families: ${extra.core.join("; ")}. We also run leadership searches: ${p.roles.join("; ")}.`
+        : `Leadership and senior specialist searches: ${p.roles.join("; ")}. Send us a brief for anything else in the sector and we will tell you plainly whether it is a search we can run well.`,
+    },
+    ...(jobs.length
+      ? [
+          {
+            q: "Do you place contract, contract-to-hire and permanent roles?",
+            a: `All three. Of the ${plural(jobs.length, `open ${sector} role`)} on our job board today, ${contract} are contract, ${c2h} contract-to-hire and ${direct} direct hire (on the client\u2019s payroll from day one). Every listing says which.`,
+          },
+          {
+            q: "Are the roles remote?",
+            a: `Many are. Of the ${jobs.length} open today, ${remote} are remote, ${hybrid} hybrid and ${onsite} on-site. You can filter the job board by work style.`,
+          },
+          {
+            q: "Where are the roles based?",
+            a: `${sentenceList(markets.map((m) => MARKET_NAME[m] || m)).replace(/^the/, "The")}. Search the job board by city, region or country, or filter by market.`,
+          },
+        ]
+      : []),
+    {
+      q: `How do I start a search in ${sector}?`,
+      a: `Submit a brief from this page. A partner in our ${sector} practice reads it and replies within one business day.`,
+    },
+    {
+      q: "I\u2019m a candidate. How do I apply?",
+      a: jobs.length
+        ? "Find the role on the job board, then send us your CV from the Search Jobs page and tell us which role it is. There is no charge to apply, to be represented or to be placed \u2014 our fee is paid by the hiring company."
+        : "Send us your CV from the Search Jobs page and tell us the kind of role you want. There is no charge to apply, to be represented or to be placed \u2014 our fee is paid by the hiring company.",
+    },
+    {
+      q: "Do you sponsor visas or work permits?",
+      a: "No. Rivago does not sponsor visas or work permits, so candidates need current authorisation to work in the country where the role is based.",
+    },
+  ];
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -74,13 +148,25 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
     areaServed: servedMarkets.map((m) => ({ "@type": "Country", name: m === "UAE" ? "United Arab Emirates" : m })),
     url: `${BASE}${industryHref(p.id)}`,
   };
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  };
+
+  /* Bands alternate light/dark. With no openings and no placements between
+     them, roles and the timeline would both be white, so the lower half
+     shifts to the pale ground. */
+  const thin = latest.length === 0 && placed.length === 0;
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      {/* ── HERO ── the hub's hero, scoped to one practice. */}
+      {/* ── 1 · HERO ── with the practice's own figures where the board has
+          them; the firm's markets and offices where it does not. */}
       <header className="page-hero inv">
         <div className="page-hero-inner">
           <div className="crumbs">
@@ -98,50 +184,64 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
           <div className="sec-hero-btns gs">
             <button type="button" className="btn btn-prim" data-hire>Submit a brief <Arrow /></button>
             {jobs.length > 0 ? (
-              <Link className="btn btn-ghost" href={allHref}>See {jobs.length} open role{jobs.length === 1 ? "" : "s"}</Link>
+              <Link className="btn btn-ghost" href={allHref}>See {plural(jobs.length, "open role")}</Link>
             ) : (
               <Link className="btn btn-ghost" href={routes.industries}>All industries</Link>
             )}
           </div>
-          <div className="page-hero-meta sec-meta gs">
-            {jobs.length > 0 && <div className="page-hero-meta-row"><span>Open roles</span><strong>{jobs.length}</strong></div>}
-            <div className="page-hero-meta-row"><span>Markets</span><strong>{servedMarkets.length}</strong></div>
-            <div className="page-hero-meta-row"><span>Offices</span><strong>{offices.length}</strong></div>
-          </div>
+          {jobs.length > 0 ? (
+            <div className="page-hero-meta sec-meta gs">
+              <div className="page-hero-meta-row"><span>Open roles</span><strong>{jobs.length}</strong></div>
+              <div className="page-hero-meta-row"><span>Remote</span><strong>{remote}</strong></div>
+              <div className="page-hero-meta-row"><span>Contract &amp; C2H</span><strong>{contract + c2h}</strong></div>
+              <div className="page-hero-meta-row"><span>Direct hire</span><strong>{direct}</strong></div>
+            </div>
+          ) : (
+            <div className="page-hero-meta sec-meta gs">
+              <div className="page-hero-meta-row"><span>Markets</span><strong>{servedMarkets.length}</strong></div>
+              <div className="page-hero-meta-row"><span>Offices</span><strong>{offices.length}</strong></div>
+            </div>
+          )}
         </div>
       </header>
 
-      {/* ── ROLES ── leadership searches, and (where the board shows them)
-          the core roles beneath. */}
-      <section className={`section lt sec-roles${latest.length ? "" : " alt"}`}>
+      {/* ── 2 · CLIENT MARKS ── the approved strip shared with Home and About. */}
+      <section className="sec-logos" aria-label="Teams we recruit for">
+        <div className="clients-label">Teams we recruit for</div>
+        <LogoMarquee />
+      </section>
+
+      {/* ── 3 · ROLES ── core roles first (where the volume is), then
+          leadership. */}
+      <section className="section lt sec-roles">
         <div className="wrap">
           <div className="eyebrow ew-light gs" style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we recruit</div>
           <h2 className="section-h2 gs sec-h">Roles in this <em>practice.</em></h2>
           <div className={`sec-roles-grid${extra.core.length ? "" : " one"}`}>
-            <div className="sec-roles-col gs">
-              <h3 className="sec-roles-l">Leadership</h3>
-              <ul className="sec-roles-list">{p.roles.map((r) => <li key={r}>{r}</li>)}</ul>
-            </div>
             {extra.core.length > 0 && (
               <div className="sec-roles-col gs">
                 <h3 className="sec-roles-l">Core roles we fill</h3>
                 <ul className="sec-roles-list">{extra.core.map((r) => <li key={r}>{r}</li>)}</ul>
               </div>
             )}
+            <div className="sec-roles-col gs">
+              <h3 className="sec-roles-l">Leadership</h3>
+              <ul className="sec-roles-list">{p.roles.map((r) => <li key={r}>{r}</li>)}</ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── OPEN ROLES ── the newest on the board for this practice, in the
-          Search Jobs card. Left out entirely where the board has none. */}
+      {/* ── 4 · LATEST OPENINGS ── Search Jobs' card. Left out where the
+          board has none. */}
       {latest.length > 0 && (
         <section className="sj-open sec-open">
           <div className="sj-in">
             <div className="sj-open-top">
               <div>
                 <div className="eyb">Open now</div>
-                <h2>Latest {p.navLabel.toLowerCase()} <em>openings.</em></h2>
-                <p className="lede">{jobs.length} open role{jobs.length === 1 ? "" : "s"} in this practice. Below, the newest.</p>
+                <h2>Latest {sector} <em>openings.</em></h2>
+                <p className="lede">{plural(jobs.length, "open role")} in this practice. Below, the newest.</p>
               </div>
               <Link className="sj-open-all" href={allHref}>See all {jobs.length} <Arrow /></Link>
             </div>
@@ -161,8 +261,23 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
         </section>
       )}
 
-      {/* ── HOW A SEARCH RUNS ── the firm-wide five stages. */}
-      <section className="section lt sec-spine">
+      {/* ── 5 · RECENTLY PLACED ── real placements from lib/placements.ts,
+          in Search Jobs' carousel. Only where the practice has them. */}
+      {placed.length > 0 && (
+        <section className="sj-placed inv">
+          <div className="sj-in">
+            <div className="sj-placed-head">
+              <div className="eyb">Placed by Rivago</div>
+              <h2>Recently <em>placed.</em></h2>
+              <p className="lede">Some of the {sector} people who found their next role through us.</p>
+            </div>
+            <PlacedRail people={placed} />
+          </div>
+        </section>
+      )}
+
+      {/* ── 6 · HOW A SEARCH RUNS ── the firm-wide five stages. */}
+      <section className={`section lt sec-spine${thin ? " alt" : ""}`}>
         <div className="wrap">
           <div className="eyebrow ew-light gs" style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>How a search runs</div>
           <h2 className="section-h2 gs sec-h">The same five stages, <em>in every practice.</em></h2>
@@ -170,51 +285,43 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
         </div>
       </section>
 
-      {/* ── COMMITMENTS ── the hub's "What we put in writing", unchanged. */}
-      <section className="section cream lt sec-writing">
-        <div className="wrap">
-          <div className="eyebrow gs sec-eyb-inv"><span className="eyebrow-dot"></span>What we put in writing</div>
-          <h2 className="section-h2 gs sec-h">Four things we commit to <em>on the first call.</em></h2>
-          <div className="sec-gtee">
-            {writtenGuarantees.map(([when, title, desc]) => (
-              <div className="sec-gtee-card gs" key={title}>
-                <div className="sec-gtee-when">{when}</div>
-                <h3 className="sec-gtee-t">{title}</h3>
-                <p className="sec-gtee-d">{desc}</p>
-              </div>
-            ))}
+      {/* ── 7 · FAQ ── two columns like Search Jobs: heading on the left,
+          questions on the right. */}
+      <section className={`faq-sec sj-faq sec-faq${thin ? " alt" : ""}`}>
+        <div className="sj-in sj-faq-grid">
+          <div className="sj-faq-side">
+            <div className="eyebrow ew-light gs">{p.navLabel} FAQ</div>
+            <h2 className="section-h2 gs">Questions about <em>{sector} hiring.</em></h2>
+            <p className="sj-faq-lede gs">For hiring teams and candidates alike.</p>
+          </div>
+          <div className="sj-faq-list">
+            <Faq items={faq} />
           </div>
         </div>
       </section>
 
-      {/* ── OTHER PRACTICES ── every sector page links to the other nine. */}
-      <section className="section lt sec-others">
-        <div className="wrap">
-          <div className="eyebrow ew-light gs" style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Other practices</div>
-          <h2 className="section-h2 gs sec-h">Hiring in another <em>sector?</em></h2>
-          <ul className="sec-others-grid">
-            {others.map((o) => (
-              <li key={o.id}>
-                <Link className="sec-other gs" href={industryHref(o.id)}>
-                  <span className="sec-other-nm">{o.navLabel}</span>
-                  <span className="sec-other-sub">{o.roles[0]}</span>
-                  <Arrow />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* ── CTA ── */}
+      {/* ── 8 · CTA ── */}
       <section className="clients-cta gs inv">
-        <h2>Hiring in <em>{p.navLabel.toLowerCase()}?</em></h2>
-        <p>Send the brief. A partner in our {p.navLabel.toLowerCase()} practice reads it and replies within one business day.</p>
+        <h2>Hiring in <em>{sector}?</em></h2>
+        <p>Send the brief. A partner in our {sector} practice reads it and replies within one business day.</p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
           <button type="button" className="btn btn-prim" data-hire>Submit a brief <Arrow /></button>
           <Link className="btn btn-ghost" href={routes.industries}>All industries</Link>
         </div>
       </section>
+
+      {/* ── 9 · OTHER PRACTICES ── a slim row above the footer, so the page
+          ends on the call to action rather than on navigation. */}
+      <nav className="sec-others" aria-label="Other practices">
+        <div className="sec-others-in">
+          <span className="sec-others-l">Other practices</span>
+          <ul className="sec-others-list">
+            {others.map((o) => (
+              <li key={o.id}><Link href={industryHref(o.id)}>{o.navLabel}</Link></li>
+            ))}
+          </ul>
+        </div>
+      </nav>
     </>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { placements, featuredPlacements, initials } from "@/lib/placements";
+import { placements, featuredPlacements, initials, type Placement } from "@/lib/placements";
 
 /* "Don't just take it from us" — a row of placed-candidate cards: all five
    in view on wide screens; three, two, then one with arrows / swipe as the
@@ -17,11 +17,14 @@ const GAP = 20;
    Each card is initials, name, role and field — or a real quote once the
    person gives one. Anyone missing from the list is skipped rather than
    breaking the row. */
-const shown = featuredPlacements
+const featured = featuredPlacements
   .map((n) => placements.find((p) => p.name === n))
   .filter((p): p is (typeof placements)[number] => Boolean(p));
 
-export default function PlacedRail() {
+/* `people` lets another page show a different set — a sector page passes the
+   placements in its own fields. Defaults to the featured six. */
+export default function PlacedRail({ people }: { people?: readonly Placement[] } = {}) {
+  const shown = people ?? featured;
   const railRef = useRef<HTMLUListElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
@@ -39,7 +42,7 @@ export default function PlacedRail() {
       const inView = Math.max(1, Math.round((el.clientWidth + GAP) / step));
       setRange([first, Math.min(shown.length, first + inView - 1)]);
     }
-  }, []);
+  }, [shown.length]);
 
   useEffect(() => {
     const el = railRef.current;

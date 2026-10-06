@@ -14,8 +14,11 @@
    get no departments and no core list — their pages show the leadership
    roles the practice already claimed and nothing the board does not
    support. */
-export const sectorExtras: Record<string, { jobDepts: readonly string[]; core: readonly string[] }> = {
+/* `placed` shows the placed-candidates row from lib/placements.ts. Every
+   placement there is a technology hire, so only technology sets it. */
+export const sectorExtras: Record<string, { jobDepts: readonly string[]; core: readonly string[]; placed?: boolean }> = {
   technology: {
+    placed: true,
     jobDepts: ["Technology", "Product", "Design"],
     core: [
       "Full-stack & backend engineers",
