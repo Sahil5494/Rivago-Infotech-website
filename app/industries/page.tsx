@@ -4,6 +4,7 @@ import { routes, offices, servedMarkets } from "@/lib/routes";
 import LogoMarquee from "@/components/LogoMarquee";
 import { JOBS } from "@/app/view-jobs/jobs-data";
 import IndustriesNav from "./IndustriesNav";
+import HiringTimeline from "@/components/HiringTimeline";
 import { practices, spine, writtenGuarantees } from "./data";
 import { ogBase } from "@/lib/og";
 
@@ -77,6 +78,10 @@ export default function IndustriesPage() {
         <LogoMarquee />
       </section>
 
+      {/* The tab bar and the practices share one wrapper, so the bar stays
+          pinned only while the practices are on screen and scrolls away with
+          them instead of covering every heading below. */}
+      <div className="ind-scope">
       <IndustriesNav />
 
       {/* THE PRACTICES, as one grid of cards. They were ten full-width
@@ -92,7 +97,6 @@ export default function IndustriesPage() {
             const open = openFor(depts);
             return (
               <article className="ipc gs" id={p.id} key={p.id}>
-                <div className="industry-label">{p.practiceNum}</div>
                 <h2 className="ipc-h">
                   {p.titleTop}<br />
                   {"titleMid" in p && p.titleMid ? `${p.titleMid} ` : ""}
@@ -102,12 +106,12 @@ export default function IndustriesPage() {
 
                 <div className="ipc-group">
                   <h3 className="ipc-gl">Leadership</h3>
-                  <ul className="ipc-chips">{p.roles.map((r) => <li key={r}>{r}</li>)}</ul>
+                  <ul className="ipc-chips ipc-chips-lead">{p.roles.map((r) => <li key={r}>{r}</li>)}</ul>
                 </div>
                 {core.length > 0 && (
                   <div className="ipc-group">
                     <h3 className="ipc-gl">Core roles we fill</h3>
-                    <ul className="ipc-chips">{core.map((r) => <li key={r}>{r}</li>)}</ul>
+                    <ul className="ipc-chips ipc-chips-core">{core.map((r) => <li key={r}>{r}</li>)}</ul>
                   </div>
                 )}
 
@@ -125,41 +129,35 @@ export default function IndustriesPage() {
           })}
         </div>
       </section>
+      </div>{/* /.ind-scope */}
 
-      {/* COMMON SPINE */}
-      <section className="section" style={{ borderTop: "1px solid var(--border)" }}>
-        <div className="wrap gs">
-          <div className="eyebrow ew-light" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>The common spine</div>
-          <h2 className="section-h2" style={{ color: "var(--text)", maxWidth: 760, marginBottom: 22 }}>Ten practices.<br /><em>One search methodology.</em></h2>
-          <p style={{ color: "var(--text2)", fontSize: "var(--fz7)", fontWeight: 400, lineHeight: 1.7, maxWidth: 560, marginBottom: 64 }}>Every practice runs the same five-stage process. The only thing that changes is who&apos;s on the other end of the phone — and how much they already know about your sector when they pick it up.</p>
-          <div className="ind-spine-grid" style={{ gap: 1, background: "var(--border)", border: "1px solid var(--border)", borderRadius: 20, overflow: "hidden" }}>
-            {spine.map(([step, title, desc]) => (
-              <div key={step} style={{ background: "var(--bg)", padding: "36px 28px" }}>
-                <div style={{ fontFamily: "var(--fm)", fontSize: "var(--fz1)", color: "var(--accent)", letterSpacing: ".06em", marginBottom: 18 }}>{step}</div>
-                <div style={{ fontSize: "var(--fz5)", color: "var(--text)", fontWeight: 500, marginBottom: 10 }}>{title}</div>
-                <div style={{ fontSize: "var(--fz4)", color: "var(--text3)", lineHeight: 1.65, fontWeight: 400 }}>{desc}</div>
-              </div>
-            ))}
-          </div>
+      {/* COMMON SPINE — the same horizontal step timeline as Careers and
+          Search Jobs (vertical on phones), on white so it separates from the
+          pale-mint commitments band that follows. */}
+      <section className="section lt ind-spine">
+        <div className="wrap">
+          <div className="eyebrow ew-light gs" style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>The common spine</div>
+          <h2 className="section-h2 gs ind-sec-h">Ten practices.<br /><em>One search methodology.</em></h2>
+          <p className="ind-sec-lede gs">Every practice runs the same five-stage process. The only thing that changes is who&apos;s on the other end of the phone — and how much they already know about your sector when they pick it up.</p>
+          <HiringTimeline steps={spine.map(([, t, d], k) => ({ n: String(k + 1), t, d }))} />
         </div>
       </section>
 
-      {/* WHAT WE PUT IN WRITING (CREAM) */}
-      <section className="section cream lt">
-        <div className="wrap gs">
-          <div className="ind-writing-head" style={{ gap: 80, alignItems: "end", marginBottom: 56 }}>
-            <div>
-              <div className="eyebrow" style={{ marginBottom: 18, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(11,19,17,.06)", color: "var(--text-inv-2)" }}><span className="eyebrow-dot" style={{ background: "var(--accent-inv)" }}></span>What we put in writing</div>
-              <h2 className="section-h2" style={{ color: "var(--text-inv-1)" }}>Four things we commit to<br /><em>on the first call.</em></h2>
-            </div>
-            <p style={{ color: "var(--text-inv-2)", fontSize: "var(--fz5)", lineHeight: 1.78, fontWeight: 400, maxWidth: 460 }}>Same in technology as in healthcare. Same in finance as in defence. The practice lead changes; the bar doesn&apos;t.</p>
-          </div>
-          <div className="ind-guarantee-grid" style={{ gap: 16 }}>
+      {/* WHAT WE PUT IN WRITING — heading and lede stacked on the left
+          (they sat in two columns with the lede dropped to the bottom right),
+          and the four cards two by two so their text lengths even out. On
+          phones they become a swipe row. */}
+      <section className="section cream lt ind-writing">
+        <div className="wrap">
+          <div className="eyebrow gs ind-eyb-inv"><span className="eyebrow-dot"></span>What we put in writing</div>
+          <h2 className="section-h2 gs ind-sec-h">Four things we commit to<br /><em>on the first call.</em></h2>
+          <p className="ind-sec-lede gs">Same in technology as in healthcare. Same in finance as in defence. The practice lead changes; the bar doesn&apos;t.</p>
+          <div className="ind-gtee">
             {writtenGuarantees.map(([when, title, desc]) => (
-              <div key={title} style={{ background: "var(--surface-inv-2)", borderRadius: 24, padding: "36px 32px 40px", border: "1px solid rgba(11,19,17,.06)" }}>
-                <div style={{ fontFamily: "var(--fm)", fontSize: "var(--fz1)", letterSpacing: ".06em", textTransform: "uppercase", color: "var(--accent-inv)", paddingBottom: 16, marginBottom: 22, borderBottom: "1px solid rgba(11,19,17,.1)" }}>{when}</div>
-                <div style={{ fontSize: "var(--fz5)", fontWeight: 500, color: "var(--text-inv-1)", marginBottom: 8 }}>{title}</div>
-                <div style={{ fontSize: "var(--fz4)", color: "var(--text-inv-2)", lineHeight: 1.65, fontWeight: 400 }}>{desc}</div>
+              <div className="ind-gtee-card gs" key={title}>
+                <div className="ind-gtee-when">{when}</div>
+                <h3 className="ind-gtee-t">{title}</h3>
+                <p className="ind-gtee-d">{desc}</p>
               </div>
             ))}
           </div>
@@ -174,12 +172,12 @@ export default function IndustriesPage() {
           The markup is in git history at the commit that removed it. */}
 
       {/* CTA */}
-      <section className="clients-cta gs inv">
+      <section className="clients-cta gs inv ind-cta">
         <h2>Which practice<br />are you <em>hiring into?</em></h2>
         <p>We&apos;ll put the practice lead on the line for a 30-minute scoping call. Tell us which sector to bring.</p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <button className="btn btn-cream-prim" data-hire>Book a scoping call <Arrow /></button>
-          <Link className="btn btn-cream-ghost" href={routes.resources}>Read our hiring guides</Link>
+          <button className="btn btn-prim" data-hire>Book a scoping call <Arrow /></button>
+          <Link className="btn btn-ghost" href={routes.resources}>Read our hiring guides</Link>
         </div>
       </section>
     </>

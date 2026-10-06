@@ -15,7 +15,6 @@ export const practices = [
   {
     id: "technology",
     navLabel: "Technology",
-    practiceNum: "Practice 01",
     titleTop: "Technology &",
     titleEm: "engineering leadership.",
     lede: "Engineering and platform leadership, from a company's first VP of Engineering through to a CTO succession — across cloud-native startups and enterprise stacks alike.",
@@ -33,7 +32,6 @@ export const practices = [
   {
     id: "healthcare",
     navLabel: "Healthcare",
-    practiceNum: "Practice 02",
     titleTop: "Healthcare,",
     titleEm: "clinical & biotech.",
     lede: "Provider, payer and life-sciences hiring, where licensure and credentialing shape the timeline as much as the search does. We raise that at brief stage rather than at offer.",
@@ -50,7 +48,6 @@ export const practices = [
   {
     id: "legal",
     navLabel: "Legal",
-    practiceNum: "Practice 03",
     titleTop: "Legal &",
     titleEm: "general counsel.",
     lede: "First-GC searches, deputy succession and lateral hires for in-house teams — including the confidential ones, where the incumbent does not yet know the search is running.",
@@ -66,7 +63,6 @@ export const practices = [
   {
     id: "finance",
     navLabel: "Finance",
-    practiceNum: "Practice 04",
     titleTop: "Finance, banking",
     titleEm: "capital markets.",
     lede: "CFO succession, treasury, risk and the long bench beneath them, across our Wilmington, Ontario and Pune desks.",
@@ -83,7 +79,6 @@ export const practices = [
   {
     id: "aerospace",
     navLabel: "Aerospace & defence",
-    practiceNum: "Practice 05",
     titleTop: "Aerospace,",
     titleEm: "cleared talent.",
     titleMid: "defence &",
@@ -100,7 +95,6 @@ export const practices = [
   {
     id: "telecom",
     navLabel: "Telecom",
-    practiceNum: "Practice 06",
     titleTop: "Telecom &",
     titleEm: "network infrastructure.",
     lede: "5G core, fibre rollout, MSO leadership. We staff inside the operator and the supplier — pricing intelligence across both sides of the table.",
@@ -116,7 +110,6 @@ export const practices = [
   {
     id: "automotive",
     navLabel: "Automotive",
-    practiceNum: "Practice 07",
     titleTop: "Automotive &",
     titleEm: "mobility.",
     lede: "OEM, tier-1 supplier, and the new mobility entrants. Battery, ADAS, software-defined vehicle — we know who's hiring and who's quietly looking.",
@@ -132,7 +125,6 @@ export const practices = [
   {
     id: "supply",
     navLabel: "Supply & operations",
-    practiceNum: "Practice 08",
     titleTop: "Supply chain",
     titleEm: "operations.",
     lede: "From distribution-centre leadership to global head-of-supply roles. We staff the spine of the business — the people who keep the operation moving when everything else is on fire.",
@@ -148,7 +140,6 @@ export const practices = [
   {
     id: "sales",
     navLabel: "Sales & marketing",
-    practiceNum: "Practice 09",
     titleTop: "Sales,",
     titleEm: "growth.",
     titleMid: "marketing &",
@@ -165,7 +156,6 @@ export const practices = [
   {
     id: "people",
     navLabel: "People & HR",
-    practiceNum: "Practice 10",
     titleTop: "People",
     titleEm: "HR leadership.",
     titleMid: "&",

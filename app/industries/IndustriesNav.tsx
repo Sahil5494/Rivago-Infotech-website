@@ -5,6 +5,29 @@ import { practices } from "./data";
 
 export default function IndustriesNav() {
   const [active, setActive] = useState<string>(practices[0].id);
+  const [gone, setGone] = useState(false);
+
+  /* As the practices run out, the pinned bar is pushed up under the site
+     menu and a sliver of it showed above the menu. Fade it out once the end
+     of the practices is near the top of the screen. */
+  useEffect(() => {
+    const scope = document.querySelector<HTMLElement>(".ind-scope");
+    if (!scope) return;
+    let raf = 0;
+    const check = () => {
+      raf = 0;
+      setGone(scope.getBoundingClientRect().bottom < 240);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(check); };
+    check();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   useEffect(() => {
     const sections = practices
@@ -49,7 +72,7 @@ export default function IndustriesNav() {
   };
 
   return (
-    <div className="ind-nav">
+    <div className={`ind-nav${gone ? " gone" : ""}`}>
       <div className="ind-nav-inner">
         {practices.map((p) => (
           <a key={p.id} className={`ind-nav-link${active === p.id ? " active" : ""}`} href={`#${p.id}`} onClick={(e) => go(e, p.id)} aria-current={active === p.id ? "true" : undefined}>
