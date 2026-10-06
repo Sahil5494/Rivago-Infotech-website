@@ -4,7 +4,7 @@ import { Fragment, type ReactNode } from "react";
 import Faq, { type FaqItem } from "@/components/Faq";
 import IntakeForm from "@/components/IntakeForm";
 import CardSlider from "@/components/CardSlider";
-import { routes, industriesList } from "@/lib/routes";
+import { routes, industriesList, industryHref } from "@/lib/routes";
 import { indgCards } from "../data";
 
 /* ── ICONS ──
@@ -326,7 +326,7 @@ export function IndustriesSection({
         </div>
         <div className="ind-grid gs" style={{ marginTop: 44 }}>
           {industriesList.map((ind) => (
-            <Link className="ind-card" href={`${routes.industries}#${ind.anchor}`} key={ind.title}>
+            <Link className="ind-card" href={industryHref(ind.anchor)} key={ind.title}>
               <div className="ind-icon"><IndustryIcon name={ind.anchor} /></div>
               <div className="ind-title">{ind.title}</div>
               <div className="ind-desc">{ind.desc}</div>

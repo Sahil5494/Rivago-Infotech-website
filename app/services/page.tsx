@@ -521,57 +521,57 @@ export default function ServicesPage() {
                 <div className="indg-eyb rv">Industries</div>
                 <h2 className="rv">Ten practices. <em>Real depth in each.</em></h2>
               </div>
-              <a className="indg-link rv rv2" href="/industries">Explore all industries <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+              <Link className="indg-link rv rv2" href="/industries">Explore all industries <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
             </div>
             <div className="ind-grid2">
-              <a className="ind-card2" href="/industries">
+              <Link className="ind-card2" href="/industries/technology">
                 <span className="ico">💻</span>
                 <div className="t">Technology</div>
                 <div className="d">Software engineering, cloud infrastructure, data, cybersecurity, AI/ML, product management and digital transformation from startup to enterprise.</div>
                 <div className="tags"><span className="tag">Engineering</span><span className="tag">Cloud</span><span className="tag">Data</span><span className="tag">AI/ML</span></div>
-              </a>
-              <a className="ind-card2" href="/industries">
+              </Link>
+              <Link className="ind-card2" href="/industries/finance">
                 <span className="ico">🏦</span>
                 <div className="t">Finance & Banking</div>
                 <div className="d">Investment banking, risk, compliance, financial planning, treasury and accounting across global financial institutions and fintech firms.</div>
                 <div className="tags"><span className="tag">Risk</span><span className="tag">Compliance</span><span className="tag">FP&amp;A</span><span className="tag">Treasury</span></div>
-              </a>
-              <a className="ind-card2" href="/industries">
+              </Link>
+              <Link className="ind-card2" href="/industries/healthcare">
                 <span className="ico">🏥</span>
                 <div className="t">Healthcare</div>
                 <div className="d">Clinical, nursing, allied health, pharmaceutical and healthcare administration across hospitals, clinics and life-sciences organisations.</div>
                 <div className="tags"><span className="tag">Clinical</span><span className="tag">Pharma</span><span className="tag">Allied Health</span></div>
-              </a>
-              <a className="ind-card2" href="/industries">
+              </Link>
+              <Link className="ind-card2" href="/industries/legal">
                 <span className="ico">⚖️</span>
                 <div className="t">Legal</div>
                 <div className="d">In-house counsel, contracts, privacy, compliance officers and legal operations professionals across corporate and private practice.</div>
                 <div className="tags"><span className="tag">In-house</span><span className="tag">Contracts</span><span className="tag">Compliance</span></div>
-              </a>
-              <a className="ind-card2" href="/industries">
+              </Link>
+              <Link className="ind-card2" href="/industries/aerospace">
                 <span className="ico">✈️</span>
                 <div className="t">Aerospace & Defence</div>
                 <div className="d">Tier-1 OEMs, defence primes and the supplier ecosystem — cleared engineering, systems and programme talent, pre-vetted for clearance.</div>
                 <div className="tags"><span className="tag">Systems</span><span className="tag">Cleared</span><span className="tag">Programme</span></div>
-              </a>
-              <a className="ind-card2" href="/industries">
+              </Link>
+              <Link className="ind-card2" href="/industries/supply">
                 <span className="ico">🏭</span>
                 <div className="t">Supply & Operations</div>
                 <div className="d">Supply chain, procurement, logistics and plant leadership for companies scaling their physical and digital operations globally.</div>
                 <div className="tags"><span className="tag">Supply Chain</span><span className="tag">Procurement</span><span className="tag">Logistics</span></div>
-              </a>
-              <a className="ind-card2" href="/industries">
+              </Link>
+              <Link className="ind-card2" href="/industries/sales">
                 <span className="ico">📈</span>
                 <div className="t">Sales & Marketing</div>
                 <div className="d">B2B and B2C sales, demand generation, brand, growth, customer success and revenue operations across all markets.</div>
                 <div className="tags"><span className="tag">Sales</span><span className="tag">Growth</span><span className="tag">Brand</span><span className="tag">CX</span></div>
-              </a>
-              <a className="ind-card2" href="/industries">
+              </Link>
+              <Link className="ind-card2" href="/industries/people">
                 <span className="ico">👥</span>
                 <div className="t">People & HR</div>
                 <div className="d">HR business partners, talent acquisition, L&amp;D, reward and employee relations from coordinator to CHRO across every sector.</div>
                 <div className="tags"><span className="tag">HR BP</span><span className="tag">TA</span><span className="tag">L&amp;D</span><span className="tag">Reward</span></div>
-              </a>
+              </Link>
             </div>
           </div>
         </section>

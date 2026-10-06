@@ -2823,6 +2823,10 @@ body.theme-cream-nav #nav .nav-burger{border-color:var(--rule-inv-1);color:var(-
 .ir-row{padding:14px 0;border-bottom:1px solid var(--border);font-size:var(--fz3)}
 .ir-row .nm{color:var(--text)}
 .industry-panel{display:flex;flex-direction:column;gap:18px}
+.industry-more{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;min-height:44px;margin-top:6px;font-size:var(--fz3);font-weight:500;color:var(--accent);text-decoration:none}
+.industry-more .arrow{transition:transform .2s var(--ease)}
+.industry-more:hover .arrow{transform:translateX(3px)}
+.industry-more:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 /* Gone with the invented content on /industries: `.lead-*` styled the
    practice-partner card (name, avatar, credential chips), `.stat-*` the
    four-metric grid beside it, and `.cross-stats-*` / `.cs-*` the site-wide
@@ -4003,4 +4007,49 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
    Last in the file so it wins over each section's own padding. */
 @media(max-width:760px){
   .about-hero,.numbers,.story,.values,.evalsec,.hms,.offices,.careers{padding-left:20px;padding-right:20px}
+}
+
+/* ── SECTOR PAGES (/industries/[id]) ──────────────────────────────────────
+   Built from the hub's pieces: the page hero, the Search Jobs job cards, the
+   shared step timeline and the commitments cards. */
+.sec-hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.sec-h{color:var(--text-inv-1);max-width:760px;margin:18px 0 0}
+.sec-roles{background:#FFFFFF}
+/* With no open-roles band between them, roles and the white timeline would
+   run together — roles takes the pale ground instead. */
+.sec-roles.alt{background:var(--surface-1)}
+.sec-meta .page-hero-meta-row{min-width:0}
+.sec-roles-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:44px}
+.sec-roles-grid.one{grid-template-columns:minmax(0,560px)}
+.sec-roles-l{font-size:var(--fz1);font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--text-inv-3);margin:0 0 6px}
+.sec-roles-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-inv-1)}
+.sec-roles-list li{padding:15px 0;border-bottom:1px solid var(--rule-inv-1);font-size:var(--fz4);color:var(--text-inv-1)}
+.sec-open{border-top:1px solid var(--rule-1)}
+.sec-spine{background:#FFFFFF;border-top:1px solid var(--rule-inv-1)}
+.sec-writing{border-top:1px solid var(--rule-inv-1)}
+.sec-eyb-inv{display:inline-flex;align-items:center;gap:7px;background:rgba(11,19,17,.06);color:var(--text-inv-2)}
+.sec-eyb-inv .eyebrow-dot{background:var(--accent-inv)}
+.sec-gtee{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+.sec-gtee-card{background:var(--surface-inv-2);border:1px solid rgba(11,19,17,.08);border-radius:22px;padding:30px 30px 32px}
+.sec-gtee-when{font-family:var(--fm);font-size:var(--fz1);letter-spacing:.06em;text-transform:uppercase;color:var(--accent-inv);padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid rgba(11,19,17,.1)}
+.sec-gtee-t{font-size:var(--fz6);font-weight:500;color:var(--text-inv-1);margin:0 0 8px}
+.sec-gtee-d{font-size:var(--fz4);color:var(--text-inv-2);line-height:1.66;margin:0;max-width:56ch}
+.sec-others{background:#FFFFFF;border-top:1px solid var(--rule-inv-1)}
+.sec-others-grid{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sec-other{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;column-gap:12px;row-gap:4px;align-items:center;padding:20px 22px;border:1px solid var(--rule-inv-1);border-radius:16px;background:var(--surface-1);text-decoration:none;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.sec-other:hover{border-color:var(--tint-3);transform:translateY(-2px)}
+.sec-other:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sec-other-nm{font-size:var(--fz5);font-weight:500;color:var(--text-inv-1)}
+.sec-other-sub{grid-column:1;font-size:var(--fz2);color:var(--text-inv-3)}
+.sec-other .arrow{grid-column:2;grid-row:1 / span 2;color:var(--accent-inv)}
+.sec-other:focus-visible{outline-color:var(--accent-inv)}
+@media(max-width:900px){
+  .sec-roles-grid{grid-template-columns:1fr;gap:36px}
+  .sec-others-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .sec-others-grid{grid-template-columns:1fr}
+  .sec-gtee{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:36px -20px 0;padding:0 20px 8px;scroll-padding:0 20px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .sec-gtee::-webkit-scrollbar{display:none}
+  .sec-gtee-card{flex:0 0 84%;scroll-snap-align:start;padding:26px 22px 28px}
 }

@@ -192,6 +192,8 @@ export const sentenceList = (items: readonly string[]): string => {
 /* An article's own page. Was /resources/article?id=<id>, which still
    redirects; every link on the site goes through this instead. */
 export const articleHref = (id: string) => `/resources/${id}`;
+/* A practice's own page (/industries/<id>). The hub keeps its #id anchors. */
+export const industryHref = (id: string) => `/industries/${id}`;
 
 
 const NEEDS_ARTICLE = new Set<string>(["United States", "UAE", "United Kingdom", "Netherlands", "Philippines"]);

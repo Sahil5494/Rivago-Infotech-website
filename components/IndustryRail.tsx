@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import IndustryIcon from "./IndustryIcon";
-import { routes, industriesList } from "@/lib/routes";
+import { industriesList, industryHref } from "@/lib/routes";
 
 /* The industries rail: cards scroll sideways, the next one peeks in at the
  * right edge, and a pair of arrows sits against that edge.
@@ -68,7 +68,7 @@ export default function IndustryRail() {
         aria-label="Industries — scroll for more"
       >
         {industriesList.map((ind) => (
-          <Link className="ind-card" href={`${routes.industries}#${ind.anchor}`} key={ind.title}>
+          <Link className="ind-card" href={industryHref(ind.anchor)} key={ind.title}>
             <div className="ind-icon"><IndustryIcon name={ind.anchor} /></div>
             <div className="ind-title">{ind.title}</div>
             <div className="ind-desc">{ind.desc}</div>

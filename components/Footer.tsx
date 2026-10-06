@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { routes, servedMarkets } from "@/lib/routes";
+import { routes, servedMarkets, industryHref } from "@/lib/routes";
 
 /** Routes that render their own standalone footer and must not get the global one.
  * Exact match only — "/view-jobs/role" is a normal cream page and keeps the global footer. */
@@ -55,16 +55,16 @@ export default function Footer() {
         </div>
         <div>
           <div className="ft-h">Industries</div>
-          <Link className="ft-lnk" href={`${routes.industries}#technology`}>Technology</Link>
-          <Link className="ft-lnk" href={`${routes.industries}#healthcare`}>Healthcare</Link>
-          <Link className="ft-lnk" href={`${routes.industries}#legal`}>Legal</Link>
-          <Link className="ft-lnk" href={`${routes.industries}#finance`}>Finance &amp; Banking</Link>
-          <Link className="ft-lnk" href={`${routes.industries}#aerospace`}>Aerospace &amp; Defence</Link>
-          <Link className="ft-lnk" href={`${routes.industries}#telecom`}>Telecom</Link>
-          <Link className="ft-lnk" href={`${routes.industries}#automotive`}>Automotive</Link>
-          <Link className="ft-lnk" href={`${routes.industries}#supply`}>Supply &amp; Operations</Link>
-          <Link className="ft-lnk" href={`${routes.industries}#sales`}>Sales &amp; Marketing</Link>
-          <Link className="ft-lnk" href={`${routes.industries}#people`}>People &amp; HR</Link>
+          <Link className="ft-lnk" href={industryHref("technology")}>Technology</Link>
+          <Link className="ft-lnk" href={industryHref("healthcare")}>Healthcare</Link>
+          <Link className="ft-lnk" href={industryHref("legal")}>Legal</Link>
+          <Link className="ft-lnk" href={industryHref("finance")}>Finance &amp; Banking</Link>
+          <Link className="ft-lnk" href={industryHref("aerospace")}>Aerospace &amp; Defence</Link>
+          <Link className="ft-lnk" href={industryHref("telecom")}>Telecom</Link>
+          <Link className="ft-lnk" href={industryHref("automotive")}>Automotive</Link>
+          <Link className="ft-lnk" href={industryHref("supply")}>Supply &amp; Operations</Link>
+          <Link className="ft-lnk" href={industryHref("sales")}>Sales &amp; Marketing</Link>
+          <Link className="ft-lnk" href={industryHref("people")}>People &amp; HR</Link>
         </div>
         <div>
           <div className="ft-h">Company</div>

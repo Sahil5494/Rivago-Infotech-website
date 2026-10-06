@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { routes, offices, servicesList } from "@/lib/routes";
+import { routes, offices, servicesList, industryHref } from "@/lib/routes";
 import IndustriesNav from "./IndustriesNav";
 import { practices, spine, writtenGuarantees } from "./data";
 import { ogBase } from "@/lib/og";
@@ -88,6 +88,8 @@ export default function IndustriesPage() {
                   <div className="ir-row" key={nm}><span className="nm">{nm}</span></div>
                 ))}
               </div>
+              {/* Each practice now has its own page. */}
+              <Link className="industry-more" href={industryHref(p.id)}>Explore {p.navLabel.toLowerCase()} <Arrow /></Link>
             </div>
           </div>
         </section>

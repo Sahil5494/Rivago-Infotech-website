@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
-import { routes, articleHref } from "@/lib/routes";
+import { routes, articleHref, industryHref } from "@/lib/routes";
 import { positions } from "@/app/open-positions/positions-data";
 import { articles } from "@/app/resources/data";
+import { practices } from "@/app/industries/data";
 
 const BASE = "https://rivagoinfotech.com";
 
@@ -30,6 +31,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     routes.terms,
     routes.cookies,
   ];
+
+  /* Each practice has its own page. */
+  paths.push(...practices.map((p) => industryHref(p.id)));
 
   /* Each confirmed opening has its own page. */
   paths.push(...positions.map((p) => `${routes.openPositions}/${p.id}`));

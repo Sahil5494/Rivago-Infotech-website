@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import IntakeForm from "@/components/IntakeForm";
-import { routes } from "@/lib/routes";
+import { routes, industryHref } from "@/lib/routes";
 import { practices } from "@/app/industries/data";
 import { ogBase } from "@/lib/og";
 
@@ -238,7 +238,7 @@ export default function HireTalentPage() {
           </div>
           <div className="ind-strip">
             {practices.map((p) => (
-              <Link href={`${routes.industries}#${p.id}`} className="ind-tile gs" key={p.id}>
+              <Link href={industryHref(p.id)} className="ind-tile gs" key={p.id}>
                 <span className="ic">{PRACTICE_ICONS[p.id]}</span>
                 <div className="nm">{p.navLabel}</div>
                 <div className="ct">{p.roles[0]}</div>

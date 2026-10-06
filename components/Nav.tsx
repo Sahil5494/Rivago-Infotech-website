@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { routes } from "@/lib/routes";
+import { routes, industryHref } from "@/lib/routes";
 
 /** Routes whose page is a light/cream canvas from y=0 (no dark hero) — nav must render
  * permanently solid with dark-on-cream colors here, matching the source design. */
@@ -59,14 +59,14 @@ const specialistLinks = [
   { href: routes.employerOfRecord, title: "Employer of Record", desc: "Hire anywhere, compliantly — we become the legal employer" },
 ];
 const industryLinks = [
-  { icon: "💻", title: "Technology", desc: "Engineering · Cloud · Data · Product" },
-  { icon: "🏦", title: "Finance & Banking", desc: "Risk · Compliance · FP&A · Treasury" },
-  { icon: "🏥", title: "Healthcare", desc: "Clinical · Pharma · Allied health" },
-  { icon: "⚖️", title: "Legal", desc: "In-house · Contracts · Compliance" },
-  { icon: "📈", title: "Sales & Marketing", desc: "Sales · Growth · Brand · CX" },
-  { icon: "🏭", title: "Operations", desc: "Supply chain · Procurement · Logistics" },
-  { icon: "👥", title: "Human Resources", desc: "HR BP · TA · L&D · Reward" },
-  { icon: "🏗️", title: "Engineering", desc: "Civil · Mechanical · Energy" },
+  { icon: "💻", title: "Technology", desc: "Engineering · Cloud · Data · Product", href: industryHref("technology") },
+  { icon: "🏦", title: "Finance & Banking", desc: "Risk · Compliance · FP&A · Treasury", href: industryHref("finance") },
+  { icon: "🏥", title: "Healthcare", desc: "Clinical · Pharma · Allied health", href: industryHref("healthcare") },
+  { icon: "⚖️", title: "Legal", desc: "In-house · Contracts · Compliance", href: industryHref("legal") },
+  { icon: "📈", title: "Sales & Marketing", desc: "Sales · Growth · Brand · CX", href: industryHref("sales") },
+  { icon: "🏭", title: "Operations", desc: "Supply chain · Procurement · Logistics", href: industryHref("supply") },
+  { icon: "👥", title: "Human Resources", desc: "HR BP · TA · L&D · Reward", href: industryHref("people") },
+  { icon: "🏗️", title: "Engineering", desc: "Civil · Mechanical · Energy", href: routes.industries },
 ];
 
 const mobileSections: { title: string; href?: string; links: { href: string; label: string }[] }[] = [
@@ -86,13 +86,13 @@ const mobileSections: { title: string; href?: string; links: { href: string; lab
   {
     title: "Industries",
     links: [
-      { href: routes.industries, label: "Technology" },
-      { href: routes.industries, label: "Finance & Banking" },
-      { href: routes.industries, label: "Healthcare" },
-      { href: routes.industries, label: "Legal" },
-      { href: routes.industries, label: "Sales & Marketing" },
-      { href: routes.industries, label: "Operations" },
-      { href: routes.industries, label: "Human Resources" },
+      { href: industryHref("technology"), label: "Technology" },
+      { href: industryHref("finance"), label: "Finance & Banking" },
+      { href: industryHref("healthcare"), label: "Healthcare" },
+      { href: industryHref("legal"), label: "Legal" },
+      { href: industryHref("sales"), label: "Sales & Marketing" },
+      { href: industryHref("supply"), label: "Operations" },
+      { href: industryHref("people"), label: "Human Resources" },
       { href: routes.industries, label: "Engineering" },
     ],
   },
@@ -328,7 +328,7 @@ export default function Nav() {
           {/* INDUSTRIES panel */}
           <div className={`mm mm-ind${openKey === "industries" ? " open" : ""}`} onMouseEnter={cancelHide} onMouseLeave={scheduleHide}>
             {industryLinks.map((l) => (
-              <Link key={l.title} className="mm-link" href={routes.industries}>
+              <Link key={l.title} className="mm-link" href={l.href}>
                 <div className="mm-link-ico">{l.icon}</div>
                 <div className="mm-link-body">
                   <div className="mm-link-title">{l.title}</div>
