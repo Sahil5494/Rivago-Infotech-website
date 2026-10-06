@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const p = find(id);
   if (!p) return {};
   const title = `${p.navLabel} recruitment · Rivago Infotech`;
-  const description = p.lede;
+  const description = sectorExtras[p.id]?.lede ?? p.lede;
   const url = `${BASE}${industryHref(p.id)}`;
   return {
     title,
@@ -69,6 +69,7 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
   const allHref = boardLink(extra.jobDepts.map((d) => ["dept", d]));
   const others = practices.filter((o) => o.id !== p.id);
   const sector = p.navLabel.toLowerCase();
+  const lede = extra.lede ?? p.lede;
 
   /* The practice's own figures, counted from the board. */
   const count = (f: (j: (typeof jobs)[number]) => boolean) => jobs.filter(f).length;
@@ -143,7 +144,7 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
     "@type": "Service",
     name: `${p.navLabel} recruitment`,
     serviceType: "Recruitment and staffing",
-    description: p.lede,
+    description: lede,
     provider: { "@id": `${BASE}/#organization` },
     areaServed: servedMarkets.map((m) => ({ "@type": "Country", name: m === "UAE" ? "United Arab Emirates" : m })),
     url: `${BASE}${industryHref(p.id)}`,
@@ -176,11 +177,17 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
           </div>
           <div className="eyebrow ew-light gs" style={{ marginBottom: 28, display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Industries · {p.navLabel}</div>
           <h1 className="gs">
-            {p.titleTop}<br />
-            {"titleMid" in p && p.titleMid ? `${p.titleMid} ` : ""}
-            <em>{p.titleEm}</em>
+            {extra.title ? (
+              <>{extra.title.top}<br /><em>{extra.title.em}</em></>
+            ) : (
+              <>
+                {p.titleTop}<br />
+                {"titleMid" in p && p.titleMid ? `${p.titleMid} ` : ""}
+                <em>{p.titleEm}</em>
+              </>
+            )}
           </h1>
-          <p className="lead gs" style={{ marginTop: 24 }}>{p.lede}</p>
+          <p className="lead gs" style={{ marginTop: 24 }}>{lede}</p>
           <div className="sec-hero-btns gs">
             <button type="button" className="btn btn-prim" data-hire>Submit a brief <Arrow /></button>
             {jobs.length > 0 ? (
@@ -249,10 +256,13 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
               {latest.map((j) => (
                 <li key={`${j.t}|${j.c}`}>
                   <Link className="sj-job" href={boardLink([["q", j.t], ["l", j.c.split(",")[0]]])}>
-                    <span className="sj-job-dept">{j.dept}</span>
+                    {/* Every card on a sector page is in that sector, so the
+                        top line carries the work style instead, and "View
+                        details" says where it actually goes. */}
+                    <span className="sj-job-dept">{j.w}</span>
                     <h3 className="sj-job-t">{j.t}</h3>
-                    <span className="sj-job-meta">{placeLabel(j.c)} · {j.w} · Posted {posted(j.d)}</span>
-                    <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span className="sj-job-pay">{j.p}</span>}<span className="sj-job-go">View details <Arrow /></span></span>
+                    <span className="sj-job-meta">{placeLabel(j.c)} · Posted {posted(j.d)}</span>
+                    <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span className="sj-job-pay">{j.p}</span>}<span className="sj-job-go">View on job board <Arrow /></span></span>
                   </Link>
                 </li>
               ))}

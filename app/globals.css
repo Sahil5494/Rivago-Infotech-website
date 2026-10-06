@@ -4016,6 +4016,11 @@ body.jb-lock{margin:0;background:var(--bg);color:var(--text);font-family:var(--f
 .sec-h{color:var(--text-inv-1);max-width:760px;margin:18px 0 0}
 .sec-roles{background:#FFFFFF}
 .sec-meta .page-hero-meta-row{min-width:0}
+@media(max-width:640px){
+  .sec-meta .page-hero-meta-row{flex:0 0 50%;border-bottom:1px solid var(--border)}
+  .sec-meta .page-hero-meta-row:nth-child(2n){border-right:none}
+  .sec-meta .page-hero-meta-row:nth-last-child(-n+2){border-bottom:none}
+}
 .sec-roles-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:44px}
 .sec-roles-grid.one{grid-template-columns:minmax(0,560px)}
 .sec-roles-l{font-size:var(--fz1);font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--text-inv-3);margin:0 0 6px}

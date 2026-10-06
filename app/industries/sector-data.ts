@@ -15,10 +15,23 @@
    roles the practice already claimed and nothing the board does not
    support. */
 /* `placed` shows the placed-candidates row from lib/placements.ts. Every
-   placement there is a technology hire, so only technology sets it. */
-export const sectorExtras: Record<string, { jobDepts: readonly string[]; core: readonly string[]; placed?: boolean }> = {
+   placement there is a technology hire, so only technology sets it.
+
+   `title` / `lede` override the hub's wording on the sector page only. The
+   hub's technology copy is about leadership searches; the sector page leads
+   with the hands-on engineering hiring the board and the placements show,
+   and keeps leadership as the second half of the sentence. */
+export const sectorExtras: Record<string, {
+  jobDepts: readonly string[];
+  core: readonly string[];
+  placed?: boolean;
+  title?: { top: string; em: string };
+  lede?: string;
+}> = {
   technology: {
     placed: true,
+    title: { top: "Technology &", em: "engineering talent." },
+    lede: "Contract, contract-to-hire and permanent engineers — full-stack, data, cloud, AI and QA — and the leadership searches above them, from a company's first VP of Engineering to a CTO succession.",
     jobDepts: ["Technology", "Product", "Design"],
     core: [
       "Full-stack & backend engineers",
