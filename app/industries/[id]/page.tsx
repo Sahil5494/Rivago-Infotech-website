@@ -1,10 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { routes, industryHref, servedMarkets, offices, sentenceList } from "@/lib/routes";
+import { routes, industryHref, articleHref, servedMarkets, offices, sentenceList } from "@/lib/routes";
 import { practices, spine } from "../data";
 import { sectorExtras } from "../sector-data";
 import { JOBS, placeLabel, regionOf } from "@/app/view-jobs/jobs-data";
+import { articles } from "@/app/resources/data";
 import { placements, featuredPlacements } from "@/lib/placements";
 import LogoMarquee from "@/components/LogoMarquee";
 import PlacedRail from "@/app/search-jobs/PlacedRail";
@@ -23,7 +24,9 @@ import { ogBase } from "@/lib/og";
  * Running order: hero (with the practice's own figures), client marks,
  * roles (core first, then leadership), latest openings, placed candidates,
  * how a search runs, FAQ, closing brief CTA, and a slim row of links to
- * the other practices. "What we put in writing" is not repeated here; it
+ * the other practices. A practice with `rich` content (technology so far)
+ * runs longer: hero, marks, why the hiring is hard, why Rivago, roles, its
+ * own search stages, placed, openings, FAQ, CTA. "What we put in writing" is not repeated here; it
  * stays on the hub. */
 export const dynamicParams = false;
 
@@ -159,6 +162,186 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
      them, roles and the timeline would both be white, so the lower half
      shifts to the pale ground. */
   const thin = latest.length === 0 && placed.length === 0;
+  const rich = extra.rich;
+
+  const hardSection = (
+    <>
+      {/* ── WHY IT'S HARD ── the problem, in four cards, each linked to the
+          firm's own article on it. */}
+      <section className="section lt sec-hard">
+        <div className="wrap">
+          <div className="eyebrow ew-light gs" style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>The problem</div>
+          <h2 className="section-h2 gs sec-h">Why {sector} hiring <em>is hard.</em></h2>
+          <div className="sec-hard-grid">
+            {rich?.hard.map((c) => {
+              const a = c.article ? articles.find((x) => x.id === c.article) : undefined;
+              return (
+                <div className="sec-hard-card gs" key={c.t}>
+                  <h3 className="sec-hard-t">{c.t}</h3>
+                  <p className="sec-hard-d">{c.d}</p>
+                  {a && <Link className="sec-hard-link" href={articleHref(a.id)}>Read: {a.title} <Arrow /></Link>}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+  const whySection = (
+    <>
+      {/* ── WHY RIVAGO ── the answer, from figures on the board and in
+          lib/placements.ts and the commitment the hub already makes. */}
+      <section className="section sec-why inv">
+        <div className="wrap">
+          <div className="eyebrow ew-light gs" style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>Why Rivago</div>
+          <h2 className="section-h2 gs sec-h-inv">Why Rivago for <em>{sector} hiring.</em></h2>
+          <div className="sec-why-grid">
+            <div className="sec-why-card gs">
+              <div className="sec-why-v">{jobs.length}</div>
+              <h3 className="sec-why-t">Live {sector} roles</h3>
+              <p className="sec-why-d">Open on our job board right now, across {sentenceList(markets.map((m) => MARKET_NAME[m] || m))}.</p>
+            </div>
+            {placed.length > 0 && (
+              <div className="sec-why-card gs">
+                <div className="sec-why-v">{placed.length}</div>
+                <h3 className="sec-why-t">People placed, by name</h3>
+                <p className="sec-why-d">Python, Java, PHP, React, data and AI engineers among them — every one named further down this page.</p>
+              </div>
+            )}
+            <div className="sec-why-card gs">
+              <div className="sec-why-v">3</div>
+              <h3 className="sec-why-t">Ways to hire, one process</h3>
+              <p className="sec-why-d">Contract, contract-to-hire or permanent. Of the live roles, {contract} are contract, {c2h} contract-to-hire and {direct} direct hire.</p>
+            </div>
+            <div className="sec-why-card gs">
+              <div className="sec-why-v">1</div>
+              <h3 className="sec-why-t">Named partner per search</h3>
+              <p className="sec-why-d">The person who takes your brief screens the candidates and stands behind the recommendation. No handoff to a team you have never met.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+  const rolesSection = (
+    <>
+      {/* ── ROLES ── core roles first (where the volume is), then
+          leadership. */}
+      <section className="section lt sec-roles">
+        <div className="wrap">
+          <div className="eyebrow ew-light gs" style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we recruit</div>
+          <h2 className="section-h2 gs sec-h">Roles in this <em>practice.</em></h2>
+          <div className={`sec-roles-grid${extra.core.length ? "" : " one"}`}>
+            {extra.core.length > 0 && (
+              <div className="sec-roles-col gs">
+                <h3 className="sec-roles-l">Core roles we fill</h3>
+                <ul className="sec-roles-list">{extra.core.map((r) => <li key={r}>{r}</li>)}</ul>
+              </div>
+            )}
+            <div className="sec-roles-col gs">
+              <h3 className="sec-roles-l">Leadership</h3>
+              <ul className="sec-roles-list">{p.roles.map((r) => <li key={r}>{r}</li>)}</ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+  const openingsSection = (
+    <>
+      {/* ── LATEST OPENINGS ── Search Jobs' card. Left out where the
+          board has none. */}
+      {latest.length > 0 && (
+        <section className="sj-open sec-open">
+          <div className="sj-in">
+            <div className="sj-open-top">
+              <div>
+                <div className="eyb">Open now</div>
+                <h2>Latest {sector} <em>openings.</em></h2>
+                <p className="lede">{plural(jobs.length, "open role")} in this practice. Below, the newest.</p>
+              </div>
+              <Link className="sj-open-all" href={allHref}>See all {jobs.length} <Arrow /></Link>
+            </div>
+            <ul className="sj-jobs">
+              {latest.map((j) => (
+                <li key={`${j.t}|${j.c}`}>
+                  <Link className="sj-job" href={boardLink([["q", j.t], ["l", j.c.split(",")[0]]])}>
+                    {/* Every card on a sector page is in that sector, so the
+                        top line carries the work style instead, and "View
+                        details" says where it actually goes. */}
+                    <span className="sj-job-dept">{j.w}</span>
+                    <h3 className="sj-job-t">{j.t}</h3>
+                    <span className="sj-job-meta">{placeLabel(j.c)} · Posted {posted(j.d)}</span>
+                    <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span className="sj-job-pay">{j.p}</span>}<span className="sj-job-go">View on job board <Arrow /></span></span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+    </>
+  );
+  const placedSection = (
+    <>
+      {/* ── RECENTLY PLACED ── real placements from lib/placements.ts,
+          in Search Jobs' carousel. Only where the practice has them. */}
+      {placed.length > 0 && (
+        <section className="sj-placed inv">
+          <div className="sj-in">
+            <div className="sj-placed-head">
+              <div className="eyb">Placed by Rivago</div>
+              <h2>Recently <em>placed.</em></h2>
+              <p className="lede">Some of the {sector} people who found their next role through us.</p>
+            </div>
+            <PlacedRail people={placed} />
+          </div>
+        </section>
+      )}
+    </>
+  );
+  const spineSection = (
+    <>
+      {/* ── HOW A SEARCH RUNS ── the firm-wide five stages. */}
+      <section className={`section lt sec-spine${thin || rich ? " alt" : ""}`}>
+        <div className="wrap">
+          <div className="eyebrow ew-light gs" style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>How a search runs</div>
+          {rich ? (
+            <>
+              {/* The firm's five stages in the sector's words, with how a
+                  candidate is evaluated built into stages 1 and 3. */}
+              <h2 className="section-h2 gs sec-h">How we run a <em>{sector} search.</em></h2>
+              <HiringTimeline steps={rich.steps.map((st, k) => ({ n: String(k + 1), t: st.t, d: st.d }))} />
+            </>
+          ) : (
+            <>
+              <h2 className="section-h2 gs sec-h">The same five stages, <em>in every practice.</em></h2>
+              <HiringTimeline steps={spine.map(([, t, d], k) => ({ n: String(k + 1), t, d }))} />
+            </>
+          )}
+        </div>
+      </section>
+    </>
+  );
+  const faqSection = (
+    <>
+      {/* ── FAQ ── two columns like Search Jobs: heading on the left,
+          questions on the right. */}
+      <section className={`faq-sec sj-faq sec-faq${thin || rich ? " alt" : ""}`}>
+        <div className="sj-in sj-faq-grid">
+          <div className="sj-faq-side">
+            <div className="eyebrow ew-light gs">{p.navLabel} FAQ</div>
+            <h2 className="section-h2 gs">Questions about <em>{sector} hiring.</em></h2>
+            <p className="sj-faq-lede gs">For hiring teams and candidates alike.</p>
+          </div>
+          <div className="sj-faq-list">
+            <Faq items={faq} />
+          </div>
+        </div>
+      </section>
+    </>
+  );
 
   return (
     <>
@@ -166,7 +349,7 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      {/* ── 1 · HERO ── with the practice's own figures where the board has
+      {/* ── HERO ── with the practice's own figures where the board has
           them; the firm's markets and offices where it does not. */}
       <header className="page-hero inv">
         <div className="page-hero-inner">
@@ -212,105 +395,36 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
         </div>
       </header>
 
-      {/* ── 2 · CLIENT MARKS ── the approved strip shared with Home and About. */}
+      {/* ── CLIENT MARKS ── the approved strip shared with Home and About. */}
       <section className="sec-logos" aria-label="Teams we recruit for">
         <div className="clients-label">Teams we recruit for</div>
         <LogoMarquee />
       </section>
 
-      {/* ── 3 · ROLES ── core roles first (where the volume is), then
-          leadership. */}
-      <section className="section lt sec-roles">
-        <div className="wrap">
-          <div className="eyebrow ew-light gs" style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>What we recruit</div>
-          <h2 className="section-h2 gs sec-h">Roles in this <em>practice.</em></h2>
-          <div className={`sec-roles-grid${extra.core.length ? "" : " one"}`}>
-            {extra.core.length > 0 && (
-              <div className="sec-roles-col gs">
-                <h3 className="sec-roles-l">Core roles we fill</h3>
-                <ul className="sec-roles-list">{extra.core.map((r) => <li key={r}>{r}</li>)}</ul>
-              </div>
-            )}
-            <div className="sec-roles-col gs">
-              <h3 className="sec-roles-l">Leadership</h3>
-              <ul className="sec-roles-list">{p.roles.map((r) => <li key={r}>{r}</li>)}</ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4 · LATEST OPENINGS ── Search Jobs' card. Left out where the
-          board has none. */}
-      {latest.length > 0 && (
-        <section className="sj-open sec-open">
-          <div className="sj-in">
-            <div className="sj-open-top">
-              <div>
-                <div className="eyb">Open now</div>
-                <h2>Latest {sector} <em>openings.</em></h2>
-                <p className="lede">{plural(jobs.length, "open role")} in this practice. Below, the newest.</p>
-              </div>
-              <Link className="sj-open-all" href={allHref}>See all {jobs.length} <Arrow /></Link>
-            </div>
-            <ul className="sj-jobs">
-              {latest.map((j) => (
-                <li key={`${j.t}|${j.c}`}>
-                  <Link className="sj-job" href={boardLink([["q", j.t], ["l", j.c.split(",")[0]]])}>
-                    {/* Every card on a sector page is in that sector, so the
-                        top line carries the work style instead, and "View
-                        details" says where it actually goes. */}
-                    <span className="sj-job-dept">{j.w}</span>
-                    <h3 className="sj-job-t">{j.t}</h3>
-                    <span className="sj-job-meta">{placeLabel(j.c)} · Posted {posted(j.d)}</span>
-                    <span className="sj-job-foot"><span>{j.e}</span>{j.p && <span className="sj-job-pay">{j.p}</span>}<span className="sj-job-go">View on job board <Arrow /></span></span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+      {/* Running order. The longer sector page (rich) reads problem → answer
+          → scope → method → proof → action; the others keep the shorter
+          order. */}
+      {rich ? (
+        <>
+          {hardSection}
+          {whySection}
+          {rolesSection}
+          {spineSection}
+          {placedSection}
+          {openingsSection}
+          {faqSection}
+        </>
+      ) : (
+        <>
+          {rolesSection}
+          {openingsSection}
+          {placedSection}
+          {spineSection}
+          {faqSection}
+        </>
       )}
 
-      {/* ── 5 · RECENTLY PLACED ── real placements from lib/placements.ts,
-          in Search Jobs' carousel. Only where the practice has them. */}
-      {placed.length > 0 && (
-        <section className="sj-placed inv">
-          <div className="sj-in">
-            <div className="sj-placed-head">
-              <div className="eyb">Placed by Rivago</div>
-              <h2>Recently <em>placed.</em></h2>
-              <p className="lede">Some of the {sector} people who found their next role through us.</p>
-            </div>
-            <PlacedRail people={placed} />
-          </div>
-        </section>
-      )}
-
-      {/* ── 6 · HOW A SEARCH RUNS ── the firm-wide five stages. */}
-      <section className={`section lt sec-spine${thin ? " alt" : ""}`}>
-        <div className="wrap">
-          <div className="eyebrow ew-light gs" style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><span className="eyebrow-dot"></span>How a search runs</div>
-          <h2 className="section-h2 gs sec-h">The same five stages, <em>in every practice.</em></h2>
-          <HiringTimeline steps={spine.map(([, t, d], k) => ({ n: String(k + 1), t, d }))} />
-        </div>
-      </section>
-
-      {/* ── 7 · FAQ ── two columns like Search Jobs: heading on the left,
-          questions on the right. */}
-      <section className={`faq-sec sj-faq sec-faq${thin ? " alt" : ""}`}>
-        <div className="sj-in sj-faq-grid">
-          <div className="sj-faq-side">
-            <div className="eyebrow ew-light gs">{p.navLabel} FAQ</div>
-            <h2 className="section-h2 gs">Questions about <em>{sector} hiring.</em></h2>
-            <p className="sj-faq-lede gs">For hiring teams and candidates alike.</p>
-          </div>
-          <div className="sj-faq-list">
-            <Faq items={faq} />
-          </div>
-        </div>
-      </section>
-
-      {/* ── 8 · CTA ── */}
+      {/* ── CTA ── */}
       <section className="clients-cta gs inv">
         <h2>Hiring in <em>{sector}?</em></h2>
         <p>Send the brief. A partner in our {sector} practice reads it and replies within one business day.</p>
@@ -320,7 +434,7 @@ export default async function SectorPage({ params }: { params: Promise<{ id: str
         </div>
       </section>
 
-      {/* ── 9 · OTHER PRACTICES ── a slim row above the footer, so the page
+      {/* ── OTHER PRACTICES ── a slim row above the footer, so the page
           ends on the call to action rather than on navigation. */}
       <nav className="sec-others" aria-label="Other practices">
         <div className="sec-others-in">
